@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] [Range(0, 100)] private float _moveSpeed;
     [SerializeField][Range(0, 100)] private float _jumpForce;
-    [SerializeField][Range(0, 100)] private float _canceledJumpForce;
+    [SerializeField][Range(0, 1)] private float _canceledJumpMultiplier;
 
     private Rigidbody _rigidbody;
 
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ShortJump()
     {
-        Vector3 jumpVector = new Vector3(_rigidbody.velocity.x, _canceledJumpForce, 0);
+        Vector3 jumpVector = new Vector3(_rigidbody.velocity.x, _canceledJumpMultiplier, 0);
         _rigidbody.velocity = jumpVector;
     }
 }

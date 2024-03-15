@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private GroundCheck _groundCheck;
 
     private float _horizontalDirection;
 
@@ -21,7 +22,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed && _groundCheck.IsGrounded())
         {
             _playerMovement.Jump();
         }
