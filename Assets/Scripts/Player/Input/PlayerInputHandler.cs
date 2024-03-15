@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    [SerializeField][Range(0, 1)] private float _canceledJumpMultiplier;
+
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private GroundCheck _groundCheck;
 
@@ -24,11 +26,11 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if(context.performed && _groundCheck.IsGrounded())
         {
-            _playerMovement.Jump();
+            _playerMovement.Jump(1);
         }
         if(context.canceled && _playerMovement.PlayerRigidbody.velocity.y > 0f)
         {
-            _playerMovement.ShortJump();
+            _playerMovement.Jump(_canceledJumpMultiplier);
         }
     }
 }
