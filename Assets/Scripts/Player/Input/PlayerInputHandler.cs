@@ -18,4 +18,16 @@ public class PlayerInputHandler : MonoBehaviour
     {
         _horizontalDirection = context.ReadValue<float>();
     }
+
+    public void OnJumpInput(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            _playerMovement.Jump();
+        }
+        if(context.canceled && _playerMovement.PlayerRigidbody.velocity.y > 0f)
+        {
+            _playerMovement.ShortJump();
+        }
+    }
 }

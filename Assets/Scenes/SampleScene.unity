@@ -578,6 +578,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 15
+  _jumpForce: 10
+  _canceledJumpForce: 5
 --- !u!114 &1727329202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,6 +635,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 02fa1b80-a1a2-49a6-93f6-67fef6130ee8
     m_ActionName: 'Player/HorizontalInput[/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1727329202}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnJumpInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8a41638f-de5c-41e7-a1e3-ec51d78fe7c3
+    m_ActionName: 'Player/Jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
