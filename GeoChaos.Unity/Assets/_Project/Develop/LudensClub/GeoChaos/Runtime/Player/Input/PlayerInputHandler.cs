@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +10,17 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private GroundCheck _groundCheck;
 
     private float _horizontalDirection;
+    private InputAction _horizontalAction;
+    private InputAction _jumpAction;
+    private int _value;
+
+    private void Start()
+    {
+        var input = GetComponent<PlayerInput>();
+        
+        _horizontalAction = input.actions["HorizontalMovement"];
+        _jumpAction = input.actions["Jump"];
+    }
 
     private void FixedUpdate()
     {
