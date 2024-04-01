@@ -15,6 +15,6 @@ MonoBehaviour:
   MovementSpeed: 5
   MovementResponseDelay: 0.2
   AccelerationTime: 0.5
-  JumpForce: 5
+  JumpForce: 7.5
   ForcedStopInertia: 2
   VelocityDropToStop: 1
