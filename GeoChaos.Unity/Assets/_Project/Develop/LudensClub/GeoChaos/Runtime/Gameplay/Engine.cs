@@ -1,6 +1,5 @@
 ﻿using System;
 using Leopotam.EcsLite;
-using Leopotam.EcsLite.UnityEditor;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using Zenject;
@@ -10,26 +9,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
   public class Engine : IInitializable, ITickable, IDisposable
   {
     private readonly IEcsSystemFactory _factory;
-    private readonly IEcsWorldProvider _provider;
     private EcsWorld _world;
     private EcsSystems _systems;
 
-    public Engine(IEcsSystemFactory factory, IEcsWorldProvider provider)
+    public Engine(IEcsSystemFactory factory, GameWorldWrapper gameWorldWrapper)
     {
       _factory = factory;
-      _provider = provider;
 
-      _world = new EcsWorld();
+      _world = gameWorldWrapper.World;
       _systems = new EcsSystems(_world);
 
-      _provider.World = _world;
-
       _systems
-        .Add(_factory.Create<CreatePlayerSystem>())
-#if UNITY_EDITOR
-        .Add(new EcsWorldDebugSystem(entityNameFormat: "D8"))
-#endif
-        ;
+        .Add(_factory.Create<HeroFeature>());
     }
 
     public void Initialize()

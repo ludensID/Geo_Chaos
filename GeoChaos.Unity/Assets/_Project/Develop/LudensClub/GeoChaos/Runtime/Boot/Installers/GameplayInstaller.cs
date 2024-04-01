@@ -1,8 +1,8 @@
-﻿using Leopotam.EcsLite;
+﻿using LudensClub.GeoChaos.Runtime.Debugging;
 using LudensClub.GeoChaos.Runtime.Gameplay;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
-using UnityEngine;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Boot
@@ -11,25 +11,39 @@ namespace LudensClub.GeoChaos.Runtime.Boot
   {
     public override void InstallBindings()
     {
-      BindEcsSystemFactory(); 
-      BindEcsWorldProvider();
+      BindEcsSystemFactory();
+      BindGameWorldWrapper();
       BindPlayerFactory();
+
+#if UNITY_EDITOR
+      BindEcsWorldDebugEngine();
+#endif
+
       BindEngine();
     }
-    
+
+#if UNITY_EDITOR
+    private void BindEcsWorldDebugEngine()
+    {
+      Container
+        .BindInterfacesTo<EcsWorldDebugEngine>()
+        .AsSingle()
+        .NonLazy();
+    }
+#endif
+
+    private void BindGameWorldWrapper()
+    {
+      Container
+        .BindInterfacesAndSelfTo<GameWorldWrapper>()
+        .AsSingle();
+    }
+
     private void BindEcsSystemFactory()
     {
       Container
         .Bind<IEcsSystemFactory>()
         .To<EcsSystemFactory>()
-        .AsSingle();
-    }
-
-    private void BindEcsWorldProvider()
-    {
-      Container
-        .Bind<IEcsWorldProvider>()
-        .To<EcsWorldProvider>()
         .AsSingle();
     }
 
@@ -43,8 +57,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindPlayerFactory()
     {
       Container
-        .Bind<IPlayerFactory>()
-        .To<PlayerFactory>()
+        .Bind<IHeroFactory>()
+        .To<HeroFactory>()
         .AsSingle();
     }
   }
