@@ -1,0 +1,49 @@
+﻿using System.Collections.Generic;
+using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
+using NSubstitute;
+using UnityEngine;
+
+namespace LudensClub.GeoChaos.Testing
+{
+  public static class Setup
+  {
+    public static void Movable(EcsWorld world, int hero, bool canMove = true)
+    {
+      ref Movable movable = ref world.Add<Movable>(hero);
+      movable.CanMove = canMove;
+    }
+    
+    public static ref MovementQueue MovementQueue(EcsWorld world, int hero)
+    {
+      ref MovementQueue queue = ref world.Add<MovementQueue>(hero);
+      queue.NextMovements = new Queue<DelayedMovement>();
+      return ref queue;
+    }
+
+    public static IConfigProvider ConfigProvider()
+    {
+      var provider = Create.ConfigProvider();
+      provider.Get<HeroConfig>().Returns(ScriptableObject.CreateInstance<HeroConfig>());
+      return provider;
+    }
+
+    public static IInputDataProvider InputDataProvider(int horizontalMovement)
+    {
+      var inputDataProvider = Create.InputDataProvider();
+      inputDataProvider.Data.Returns(new InputData { HorizontalMovement = horizontalMovement });
+      return inputDataProvider;
+    }
+
+    public static int Hero(EcsWorld world)
+    {
+      int hero = Create.Hero(world);
+      Movable(world, hero);
+      MovementQueue(world, hero);
+      return hero;
+    }
+  }
+}

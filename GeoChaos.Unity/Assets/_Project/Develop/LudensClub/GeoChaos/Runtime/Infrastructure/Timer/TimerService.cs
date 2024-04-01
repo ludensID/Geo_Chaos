@@ -16,6 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       foreach (ITimerable timer in _timers.ToArray())
       {
         timer.TimeLeft -= Time.fixedDeltaTime;
+        
         if (timer.TimeLeft <= 0)
           RemoveTimer(timer);
       }

@@ -1,5 +1,7 @@
 ﻿using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Debugging;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -10,7 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
   {
     [SerializeField] private ConfigProvider _configProvider;
     [SerializeField] private PlayerInput _input;
-    
+
     public override void InstallBindings()
     {
       BindConfigProvider();
@@ -18,7 +20,32 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindInputController();
       BindTimerService();
       BindCoroutineRunner();
+      BindGameOjbjectConverter();
+
+#if UNITY_EDITOR
+      BindInputDebug();
+#endif
     }
+
+    private void BindGameOjbjectConverter()
+    {
+      Container
+        .Bind<IGameObjectConverter>()
+        .To<GameObjectConverter>()
+        .AsSingle();
+    }
+
+#if UNITY_EDITOR
+    private void BindInputDebug()
+    {
+      Container
+        .Bind<InputDebug>()
+        .FromNewComponentOnNewGameObject()
+        .WithGameObjectName($"[{nameof(InputDebug)}]")
+        .AsSingle()
+        .NonLazy();
+    }
+#endif
 
     private void BindConfigProvider()
     {
