@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Leopotam.EcsLite;
@@ -42,3 +43,4 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
     }
   }
 }
+#endif

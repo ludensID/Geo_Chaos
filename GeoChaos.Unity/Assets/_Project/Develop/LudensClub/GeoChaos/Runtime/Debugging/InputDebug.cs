@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿#if UNITY_EDITOR
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using TriInspector;
 using UnityEngine;
 using Zenject;
@@ -22,3 +23,4 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
     }
   }
 }
+#endif

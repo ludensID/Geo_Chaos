@@ -1,7 +1,4 @@
-﻿#if UNITY_EDITOR
-using LudensClub.GeoChaos.Runtime.Debugging;
-#endif
-using LudensClub.GeoChaos.Runtime.Gameplay;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
@@ -18,21 +15,11 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindPlayerFactory();
 
 #if UNITY_EDITOR
-      BindEcsWorldDebugEngine();
+      Debugging.DebugInstaller.BindEcsWorldDebugEngine(Container);
 #endif
 
       BindEngine();
     }
-
-#if UNITY_EDITOR
-    private void BindEcsWorldDebugEngine()
-    {
-      Container
-        .BindInterfacesTo<EcsWorldDebugEngine>()
-        .AsSingle()
-        .NonLazy();
-    }
-#endif
 
     private void BindGameWorldWrapper()
     {

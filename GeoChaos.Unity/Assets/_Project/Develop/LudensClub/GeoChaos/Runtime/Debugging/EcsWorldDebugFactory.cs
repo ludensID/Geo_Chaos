@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+﻿#if UNITY_EDITOR
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using UnityEngine;
 using Zenject;
 
@@ -23,3 +24,4 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
     }
   }
 }
+#endif

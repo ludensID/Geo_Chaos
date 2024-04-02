@@ -1,5 +1,4 @@
 ﻿using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Debugging;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;
@@ -20,32 +19,20 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindInputController();
       BindTimerService();
       BindCoroutineRunner();
-      BindGameOjbjectConverter();
+      BindGameObjectConverter();
 
 #if UNITY_EDITOR
-      BindInputDebug();
+      Debugging.DebugInstaller.BindInputDebug(Container);
 #endif
     }
 
-    private void BindGameOjbjectConverter()
+    private void BindGameObjectConverter()
     {
       Container
         .Bind<IGameObjectConverter>()
         .To<GameObjectConverter>()
         .AsSingle();
     }
-
-#if UNITY_EDITOR
-    private void BindInputDebug()
-    {
-      Container
-        .Bind<InputDebug>()
-        .FromNewComponentOnNewGameObject()
-        .WithGameObjectName($"[{nameof(InputDebug)}]")
-        .AsSingle()
-        .NonLazy();
-    }
-#endif
 
     private void BindConfigProvider()
     {

@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿#if UNITY_EDITOR
+using Leopotam.EcsLite;
 using UnityEngine;
 using Zenject;
 
@@ -22,3 +23,4 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
     }
   }
 }
+#endif
