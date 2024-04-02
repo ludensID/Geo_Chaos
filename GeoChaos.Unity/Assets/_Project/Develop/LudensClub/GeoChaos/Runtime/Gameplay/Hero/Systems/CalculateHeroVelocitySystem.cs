@@ -15,7 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       _world = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
-      
+
       _heroes = _world.Filter<Hero>()
         .Inc<Movable>()
         .Inc<MovementQueue>()
@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Inc<HeroVelocity>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (int hero in _heroes)
@@ -32,26 +32,40 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         if (!movement.NextMovements.TryPeek(out DelayedMovement delayedMovement) || delayedMovement.WaitingTime > 0)
           continue;
 
+        
         ref HeroMovementVector vector = ref _world.Get<HeroMovementVector>(hero);
-        float delta = _config.MovementSpeed / _config.AccelerationTime * Time.deltaTime;
-        if (delayedMovement.Direction == 0)
-        {
-          vector.Speed -= delta;
-        }
-        else
-        {
-          vector.Speed += delta;
-          vector.Direction = delayedMovement.Direction;
-        }
-
-        vector.Speed = Mathf.Clamp(vector.Speed, 0, _config.MovementSpeed);
+        CalculateVector(ref vector, delayedMovement);
 
         ref HeroVelocity velocity = ref _world.Get<HeroVelocity>(hero);
         velocity.Velocity.x = vector.Speed * vector.Direction;
         velocity.OverrideVelocityX = true;
-        
+
         movement.NextMovements.Dequeue();
       }
+    }
+
+    private void CalculateVector(ref HeroMovementVector vector, DelayedMovement delayedMovement)
+    {
+      float delta = CalculateSpeedDelta();
+      if (delayedMovement.Direction == 0)
+      {
+        vector.Speed -= delta;
+      }
+      else
+      {
+        vector.Speed += delta;
+        vector.Direction = delayedMovement.Direction;
+      }
+
+      vector.Speed = Mathf.Clamp(vector.Speed, 0, _config.MovementSpeed);
+    }
+
+    private float CalculateSpeedDelta()
+    {
+      float delta = _config.AccelerationTime == 0
+        ? _config.MovementSpeed
+        : _config.MovementSpeed / _config.AccelerationTime * Time.deltaTime;
+      return delta;
     }
   }
 }
