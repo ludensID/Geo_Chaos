@@ -1,4 +1,6 @@
-﻿using LudensClub.GeoChaos.Runtime.Debugging;
+﻿#if UNITY_EDITOR
+using LudensClub.GeoChaos.Runtime.Debugging;
+#endif
 using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;

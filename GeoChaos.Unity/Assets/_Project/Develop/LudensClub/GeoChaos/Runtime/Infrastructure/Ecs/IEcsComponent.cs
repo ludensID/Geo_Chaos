@@ -1,4 +1,6 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure
+﻿using System;
+
+namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public interface IEcsComponent
   {
