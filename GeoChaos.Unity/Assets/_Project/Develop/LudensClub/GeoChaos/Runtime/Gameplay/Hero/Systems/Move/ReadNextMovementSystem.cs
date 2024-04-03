@@ -1,6 +1,5 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Utils;
-using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
@@ -23,6 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       foreach (int movement in _movements)
       {
         ref MovementQueue queue = ref _world.Get<MovementQueue>(movement);
+        
         if (queue.NextMovements.Count > 0)
         {
           DelayedMovement next = queue.NextMovements[0];

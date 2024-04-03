@@ -28,11 +28,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       Add(systems.Create<StopHeroJumpSystem>());
 
       Add(systems.Create<DeleteDashCommandSystem>());
+      Add(systems.Create<DeleteStopDashCommandSystem>());
       Add(systems.Create<ReadDashInputSystem>());
       Add(systems.Create<CheckForHeroDashSystem>());
       Add(systems.Create<DashHeroSystem>());
       Add(systems.Create<CheckStopHeroDashSystem>());
       Add(systems.Create<StopHeroDashSystem>());
+      Add(systems.Create<DashHeroViewSystem>());
+      Add(systems.Create<StopDashHeroViewSystem>());
 
       Add(systems.Create<CalculateHeroVelocitySystem>());
       

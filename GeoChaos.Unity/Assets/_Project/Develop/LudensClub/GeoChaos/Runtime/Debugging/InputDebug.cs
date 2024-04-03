@@ -1,4 +1,5 @@
 ﻿#if UNITY_EDITOR
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using TriInspector;
 using UnityEditor;
@@ -10,7 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
   public class InputDebug : MonoBehaviour
   {
     private IInputDataProvider _inputProvider;
-    [ShowInInspector, InlineProperty] public InputData Data { get; set; }
+    private EcsWorld _world;
+    [ShowInInspector, InlineProperty, HideLabel] public InputData Data { get; set; }
 
     [Inject]
     public void Construct(IInputDataProvider inputProvider)

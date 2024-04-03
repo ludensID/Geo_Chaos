@@ -2,7 +2,6 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
-using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 {
@@ -20,9 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
       _world = gameWorldWrapper.World;
 
       _heroes = _world.Filter<Hero>()
-        .Inc<DashAvailable>()
         .Inc<DashCommand>()
-        .Inc<RigidbodyRef>()
         .Inc<HeroMovementVector>()
         .End();
     }
@@ -31,20 +28,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
     {
       foreach (int hero in _heroes)
       {
-        ref DashColliderRef dashColliderRef = ref _world.Get<DashColliderRef>(hero);
-        dashColliderRef.Collider.enabled = true;
-
-        ref ColliderRef colliderRef = ref _world.Get<ColliderRef>(hero);
-        colliderRef.Collider.enabled = false;
-        
-        ref RigidbodyRef rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
-        rigidbodyRef.Rigidbody.gravityScale = 0;
-
         ref HeroMovementVector vector = ref _world.Get<HeroMovementVector>(hero);
         vector.Speed.x = _config.DashVelocity;
         vector.Speed.y = 0;
         
-
         ref IsDashing isDashing = ref _world.Add<IsDashing>(hero);
         isDashing.TimeLeft = _config.DashTime;
         _timerSvc.AddTimer(isDashing.TimeLeft);
@@ -61,8 +48,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         
         if(_world.Has<JumpAvailable>(hero))
           _world.Del<JumpAvailable>(hero);
-        
-        _world.Del<DashCommand>(hero);
       }
     }
   }

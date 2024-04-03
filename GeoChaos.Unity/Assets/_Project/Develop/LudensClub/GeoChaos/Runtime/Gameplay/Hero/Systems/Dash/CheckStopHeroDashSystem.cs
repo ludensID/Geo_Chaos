@@ -12,8 +12,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
     {
       _world = gameWorldWrapper.World;
 
-      _heroes = _world.Filter<Hero>()
-        .Inc<DashAvailable>()
+      _heroes = _world
+        .Filter<DashAvailable>()
         .Inc<IsDashing>()
         .End();
     }

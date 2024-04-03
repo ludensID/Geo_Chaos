@@ -15,19 +15,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
       _input = input;
       _world = gameWorldWrapper.World;
 
-      _heroes = _world.Filter<Hero>()
-        .Inc<DashAvailable>()
+      _heroes = _world
+        .Filter<DashAvailable>()
         .End();
     }
-      
+
     public void Run(EcsSystems systems)
     {
       foreach (int hero in _heroes)
       {
-        if (!_input.Data.IsDash)
-          return;
-
-        _world.Add<DashCommand>(hero);
+        if (_input.Data.IsDash)
+          _world.Add<DashCommand>(hero);
       }
     }
   }
