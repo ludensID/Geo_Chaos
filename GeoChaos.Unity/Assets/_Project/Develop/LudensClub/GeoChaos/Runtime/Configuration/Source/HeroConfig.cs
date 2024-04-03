@@ -4,9 +4,10 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Runtime.Configuration
 {
   [CreateAssetMenu(fileName = CAC.HERO_FILE, menuName = CAC.HERO_MENU)]
+  [DeclareFoldoutGroup("Tech")]
   public class HeroConfig : ScriptableObject
   {
-    public float MovementSpeed;
+    [Title("Movement")] public float MovementSpeed;
     [Range(0, 1)] public float MovementResponseDelay;
     public float AccelerationTime;
 
@@ -28,13 +29,22 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     // [Range(0, 3)]
     // public float JumpCoefficient = 1;
 
+    [Title("Jump")]
     // [OnValueChanged(nameof(OnJumpForceChanged))]
     public float JumpForce;
 
     public float ForcedStopInertia;
     public float VelocityDropToStop;
 
-    [ShowInInspector] public float VelocityToStop => JumpForce - VelocityDropToStop;
+    [ShowInInspector] [PropertyOrder(6)] public float VelocityToStop => JumpForce - VelocityDropToStop;
+
+    [Title("Dash")] public float DashVelocity;
+    public float DashTime;
+    [ShowInInspector] [PropertyOrder(8)] public float DashDistance => DashVelocity * DashTime;
+    [GroupNext("Tech")] public LayerMask DefaultLayer;
+    public LayerMask DashLayer;
+
+
 
 // #if UNITY_EDITOR
 //     public void OnJumpCoefficientChanged()

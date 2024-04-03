@@ -23,6 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
       _noStoppeds = _world.Filter<Hero>()
         .Inc<JumpAvailable>()
+        .Inc<IsJumping>()
         .Exc<WaitToStopJump>()
         .End();
     }
@@ -39,7 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       foreach (int noStopped in _noStoppeds)
       {
         ref JumpAvailable jump = ref _world.Get<JumpAvailable>(noStopped);
-        if (_inputProvider.Data.IsJumpCanceled && jump.IsJumping)
+        if (_inputProvider.Data.IsJumpCanceled)
           _world.Add<StopJumpCommand>(noStopped);
       }
     }

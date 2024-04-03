@@ -14,6 +14,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Serializable]
   public struct MovementQueue : IEcsComponent
   {
-    public Queue<DelayedMovement> NextMovements;
+    public List<DelayedMovement> NextMovements;
   }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
@@ -12,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Serializable]
   public struct HeroMovementVector : IEcsComponent
   {
-    public float Speed;
-    public float Direction;
+    public Vector2 Speed;
+    public Vector2 Direction;
   }
 }

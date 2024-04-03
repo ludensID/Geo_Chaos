@@ -13,8 +13,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _world = gameWorldWrapper.World;
 
       _heroes = _world.Filter<Hero>()
-        .Inc<JumpAvailable>()
-        .Inc<HeroVelocity>()
+        .Inc<IsJumping>()
+        .Inc<HeroMovementVector>()
         .End();
     }
     
@@ -22,10 +22,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (int hero in _heroes)
       {
-        ref HeroVelocity velocity = ref _world.Get<HeroVelocity>(hero);
-        ref JumpAvailable jump = ref _world.Get<JumpAvailable>(hero);
-        if (velocity.Velocity.y <= 0)
-          jump.IsJumping = false;
+        ref HeroMovementVector vector = ref _world.Get<HeroMovementVector>(hero);
+        if (vector.Speed.y <= 0)
+          _world.Del<IsJumping>(hero);
       }
     }
   }

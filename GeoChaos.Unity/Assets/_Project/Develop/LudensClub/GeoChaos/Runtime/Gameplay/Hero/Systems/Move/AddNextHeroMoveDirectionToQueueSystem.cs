@@ -23,17 +23,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _world = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
-      _heroes = _world.Filter<Hero>().Inc<Movable>().Inc<MovementQueue>().End();
+      _heroes = _world
+        .Filter<Hero>()
+        .Inc<Movable>()
+        .Inc<MovementQueue>()
+        .End();
     }
     
     public void Run(EcsSystems systems)
     {
       foreach (int move in _heroes)
       {
-        var movable = _world.Get<Movable>(move);
-        if (!movable.CanMove)
-          continue;
-        
         var delayedMovement = new DelayedMovement
         {
           WaitingTime = _config.MovementResponseDelay,
@@ -42,7 +42,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         _timer.AddTimer(delayedMovement.WaitingTime);
         
         var movement = _world.Get<MovementQueue>(move);
-        movement.NextMovements.Enqueue(delayedMovement);
+        movement.NextMovements.Add(delayedMovement);
       }
     }
   }

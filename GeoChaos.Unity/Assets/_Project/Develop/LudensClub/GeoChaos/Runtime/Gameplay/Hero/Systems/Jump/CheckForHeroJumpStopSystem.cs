@@ -4,13 +4,13 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
-  public class StopHeroJumpSystem : IEcsRunSystem
+  public class CheckForHeroJumpStopSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
     private readonly EcsFilter _heroes;
     private readonly HeroConfig _config;
 
-    public StopHeroJumpSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
+    public CheckForHeroJumpStopSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
       _world = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
@@ -28,15 +28,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       {
         ref HeroVelocity velocity = ref _world.Get<HeroVelocity>(hero);
         
-        velocity.Velocity.y = _config.ForcedStopInertia;
-        velocity.OverrideVelocityY = true;
+        if (velocity.Velocity.y <= _config.ForcedStopInertia)
+          _world.Del<StopJumpCommand>(hero);
 
-        ref JumpAvailable jump = ref _world.Get<JumpAvailable>(hero);
-        jump.IsJumping = false;
-
-        _world.Del<StopJumpCommand>(hero);
+        if (velocity.Velocity.y > _config.VelocityToStop)
+        {
+          _world.Del<StopJumpCommand>(hero);
+          _world.Add<WaitToStopJump>(hero);
+        }
       }
     }
   }
-  
 }

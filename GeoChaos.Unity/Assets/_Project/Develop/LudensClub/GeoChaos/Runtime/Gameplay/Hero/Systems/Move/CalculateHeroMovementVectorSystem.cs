@@ -5,22 +5,21 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
-  public class CalculateHeroVelocitySystem : IEcsRunSystem
+  public class CalculateHeroMovementVectorSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
     private readonly EcsFilter _heroes;
     private readonly HeroConfig _config;
 
-    public CalculateHeroVelocitySystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
+    public CalculateHeroMovementVectorSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
       _world = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
       _heroes = _world.Filter<Hero>()
         .Inc<Movable>()
-        .Inc<MovementQueue>()
+        .Inc<MoveCommand>()
         .Inc<HeroMovementVector>()
-        .Inc<HeroVelocity>()
         .End();
     }
 
@@ -28,36 +27,27 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (int hero in _heroes)
       {
-        ref MovementQueue movement = ref _world.Get<MovementQueue>(hero);
-        if (!movement.NextMovements.TryPeek(out DelayedMovement delayedMovement) || delayedMovement.WaitingTime > 0)
-          continue;
-
+        ref MoveCommand command = ref _world.Get<MoveCommand>(hero);
         
         ref HeroMovementVector vector = ref _world.Get<HeroMovementVector>(hero);
-        CalculateVector(ref vector, delayedMovement);
-
-        ref HeroVelocity velocity = ref _world.Get<HeroVelocity>(hero);
-        velocity.Velocity.x = vector.Speed * vector.Direction;
-        velocity.OverrideVelocityX = true;
-
-        movement.NextMovements.Dequeue();
+        CalculateVector(ref vector, command.Direction);
       }
     }
 
-    private void CalculateVector(ref HeroMovementVector vector, DelayedMovement delayedMovement)
+    private void CalculateVector(ref HeroMovementVector vector, float direction)
     {
       float delta = CalculateSpeedDelta();
-      if (delayedMovement.Direction == 0)
+      if (direction == 0)
       {
-        vector.Speed -= delta;
+        vector.Speed.x -= delta;
       }
       else
       {
-        vector.Speed += delta;
-        vector.Direction = delayedMovement.Direction;
+        vector.Speed.x += delta;
+        vector.Direction.x = direction;
       }
 
-      vector.Speed = Mathf.Clamp(vector.Speed, 0, _config.MovementSpeed);
+      vector.Speed.x = Mathf.Clamp(vector.Speed.x, 0, _config.MovementSpeed);
     }
 
     private float CalculateSpeedDelta()

@@ -15,9 +15,14 @@ MonoBehaviour:
   MovementSpeed: 5
   MovementResponseDelay: 0.2
   AccelerationTime: 0.5
-  Gravity: -9.81
-  GravityScale: 1
-  JumpCoefficient: 0.76452595
   JumpForce: 7.5
   ForcedStopInertia: 2
   VelocityDropToStop: 1
+  DashVelocity: 50
+  DashTime: 0.12
+  DefaultLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  DashLayer:
+    serializedVersion: 2
+    m_Bits: 64

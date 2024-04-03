@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Tests.EditMode
 
       // Assert.
       queue.NextMovements.Count.Should().Be(1);
-      queue.NextMovements.Peek().Direction.Should().Be(horizontalMovement);
+      queue.NextMovements[0].Direction.Should().Be(horizontalMovement);
       
       systems.Destroy();
     }

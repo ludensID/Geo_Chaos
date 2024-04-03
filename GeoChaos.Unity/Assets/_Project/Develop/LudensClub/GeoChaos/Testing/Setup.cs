@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Testing
     public static ref MovementQueue MovementQueue(EcsWorld world, int hero)
     {
       ref MovementQueue queue = ref world.Add<MovementQueue>(hero);
-      queue.NextMovements = new Queue<DelayedMovement>();
+      queue.NextMovements = new List<DelayedMovement>();
       return ref queue;
     }
 

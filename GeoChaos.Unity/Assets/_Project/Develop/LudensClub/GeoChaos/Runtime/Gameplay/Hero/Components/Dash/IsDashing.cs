@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,8 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct JumpAvailable : IEcsComponent
+  public struct IsDashing : IEcsComponent
   {
-    public bool IsJumping;
+    public Timer TimeLeft;
   }
 }

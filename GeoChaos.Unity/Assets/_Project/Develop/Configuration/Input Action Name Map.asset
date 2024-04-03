@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a03474c2a47c42c79e73746664cc8411, type: 3}
   m_Name: Input Action Name Map
   m_EditorClassIdentifier: 
-  HorizontalMovementAction: HorizontalMovement
+  HorizontalMovementAction: Horizontal Movement
   JumpAction: Jump
+  DashAction: Dash

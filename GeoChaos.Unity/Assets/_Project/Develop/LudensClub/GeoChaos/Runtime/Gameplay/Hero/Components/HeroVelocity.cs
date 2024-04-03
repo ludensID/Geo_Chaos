@@ -14,7 +14,5 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   public struct HeroVelocity : IEcsComponent
   {
     public Vector3 Velocity;
-    public bool OverrideVelocityX;
-    public bool OverrideVelocityY;
   }
 }

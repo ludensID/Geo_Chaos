@@ -6,20 +6,19 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public class InputController : IInputController, ITickable
   {
-    private readonly PlayerInput _input;
-    private readonly InputActionNameMap _actionMap;
     private readonly IInputDataProvider _provider;
     private readonly InputAction _horizontalAction;
     private readonly InputAction _jumpAction;
+    private readonly InputAction _dashAction;
 
     public InputController(PlayerInput input, IConfigProvider configProvider, IInputDataProvider provider)
     {
-      _input = input;
-      _actionMap = configProvider.Get<InputActionNameMap>();
       _provider = provider;
 
-      _horizontalAction = input.actions[_actionMap.HorizontalMovementAction];
-      _jumpAction = input.actions[_actionMap.JumpAction];
+      var actionMap = configProvider.Get<InputActionNameMap>();
+      _horizontalAction = input.actions[actionMap.HorizontalMovementAction];
+      _jumpAction = input.actions[actionMap.JumpAction];
+      _dashAction = input.actions[actionMap.DashAction];
     }
 
     public void Tick()
@@ -41,6 +40,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       data.IsJumpStarted = _jumpAction.WasPerformedThisFrame();
       data.IsJumpCanceled = _jumpAction.WasReleasedThisFrame();
 
+      data.IsDash = _dashAction.WasPerformedThisFrame();
+      
       _provider.Data = data;
     }
   }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 using TriInspector;
 using UnityEngine;
 using Zenject;
@@ -16,7 +17,7 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
     
     [ShowInInspector]
     [ListDrawerSettings(Draggable = false, HideAddButton = true, HideRemoveButton = true, ShowElementLabels = true)]
-    [OnValueChanged(nameof(OnComponentsChanged))]
+    [OnValueChanged(TriUtils.ON + nameof(Components) + TriUtils.CHANGED)]
     public List<IEcsComponent> Components;
 
     [ShowInInspector]

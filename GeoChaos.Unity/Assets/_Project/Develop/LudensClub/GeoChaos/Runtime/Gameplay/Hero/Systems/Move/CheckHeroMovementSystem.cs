@@ -2,9 +2,9 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
-  public class LockHeroMovementSystem : IEcsRunSystem
+  public class CheckHeroMovementSystem : IEcsRunSystem
   {
-    public LockHeroMovementSystem()
+    public CheckHeroMovementSystem()
     {
       
     }
