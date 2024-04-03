@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
@@ -23,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       foreach (int hero in _heroes)
       {
         ref HeroMovementVector vector = ref _world.Get<HeroMovementVector>(hero);
-        if (vector.Speed.y <= 0)
+        if (vector.Direction.y <= 0)
           _world.Del<IsJumping>(hero);
       }
     }

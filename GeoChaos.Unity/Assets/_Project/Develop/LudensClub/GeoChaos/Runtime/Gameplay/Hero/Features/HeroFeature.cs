@@ -13,9 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       
       Add(systems.Create<ReadHeroViewVelocitySystem>());
 
-      Add(systems.Create<CheckHeroMovementSystem>());
-      Add(systems.Create<AddNextHeroMoveDirectionToQueueSystem>());
-      Add(systems.Create<ReadNextMovementSystem>());
+      Add(systems.Create<ReadMovementSystem>());
       Add(systems.Create<CalculateHeroMovementVectorSystem>());
       Add(systems.Create<DeleteMoveCommandSystem>());
 

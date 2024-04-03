@@ -1,5 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
 using Zenject;
@@ -11,14 +12,23 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     public override void InstallBindings()
     {
       BindEcsSystemFactory();
+      BindInputWorldWrapper();
       BindGameWorldWrapper();
       BindPlayerFactory();
 
 #if UNITY_EDITOR
       Debugging.DebugInstaller.BindEcsWorldDebugEngine(Container);
+      Debugging.DebugInstaller.BindInputDelayDebug(Container);
 #endif
 
       BindEngine();
+    }
+
+    private void BindInputWorldWrapper()
+    {
+      Container
+        .BindInterfacesAndSelfTo<InputWorldWrapper>()
+        .AsSingle();
     }
 
     private void BindGameWorldWrapper()

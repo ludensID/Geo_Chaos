@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -17,13 +16,6 @@ namespace LudensClub.GeoChaos.Testing
       movable.CanMove = canMove;
     }
     
-    public static ref MovementQueue MovementQueue(EcsWorld world, int hero)
-    {
-      ref MovementQueue queue = ref world.Add<MovementQueue>(hero);
-      queue.NextMovements = new List<DelayedMovement>();
-      return ref queue;
-    }
-
     public static IConfigProvider ConfigProvider()
     {
       var provider = Create.ConfigProvider();
@@ -42,7 +34,6 @@ namespace LudensClub.GeoChaos.Testing
     {
       int hero = Create.Hero(world);
       Movable(world, hero);
-      MovementQueue(world, hero);
       return hero;
     }
   }

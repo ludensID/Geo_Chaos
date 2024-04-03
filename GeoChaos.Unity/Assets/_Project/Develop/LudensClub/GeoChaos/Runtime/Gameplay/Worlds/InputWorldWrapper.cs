@@ -1,11 +1,13 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Worlds
 {
-  public class GameWorldWrapper : IWorldWrapper
+  public class InputWorldWrapper : IWorldWrapper
   {
     private EcsWorld _world = new EcsWorld();
 
+    public string Name => "Input";
     public EcsWorld World => _world;
 
     public void Dispose()

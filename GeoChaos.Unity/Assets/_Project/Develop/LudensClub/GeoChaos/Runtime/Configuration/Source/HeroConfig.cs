@@ -4,7 +4,6 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Runtime.Configuration
 {
   [CreateAssetMenu(fileName = CAC.HERO_FILE, menuName = CAC.HERO_MENU)]
-  [DeclareFoldoutGroup("Tech")]
   public class HeroConfig : ScriptableObject
   {
     [Title("Movement")] public float MovementSpeed;
@@ -40,9 +39,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Dash")] public float DashVelocity;
     public float DashTime;
-    [ShowInInspector] [PropertyOrder(8)] public float DashDistance => DashVelocity * DashTime;
-    [GroupNext("Tech")] public LayerMask DefaultLayer;
-    public LayerMask DashLayer;
+    [ShowInInspector] [PropertyOrder(8)] 
+    public float DashDistance => DashVelocity * DashTime;
 
 
 

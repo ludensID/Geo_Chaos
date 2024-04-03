@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
+using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
@@ -22,9 +22,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       {
         ref Movable movable = ref _world.Add<Movable>(hero);
         movable.CanMove = true;
-
-        ref MovementQueue movementQueue = ref _world.Add<MovementQueue>(hero);
-        movementQueue.NextMovements = new List<DelayedMovement>();
 
         ref HeroMovementVector vector = ref _world.Add<HeroMovementVector>(hero);
         vector.Direction.x = 1;

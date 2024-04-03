@@ -22,6 +22,14 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
         .AsSingle()
         .NonLazy();
     }
+
+    public static void BindInputDelayDebug(DiContainer container)
+    {
+      container
+        .BindInterfacesTo<InputDelayDebug>()
+        .AsSingle()
+        .NonLazy();
+    }
   }
 }
 #endif

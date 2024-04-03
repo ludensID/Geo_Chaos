@@ -13,16 +13,10 @@ MonoBehaviour:
   m_Name: Hero Config
   m_EditorClassIdentifier: 
   MovementSpeed: 5
-  MovementResponseDelay: 0.2
+  MovementResponseDelay: 0
   AccelerationTime: 0.5
   JumpForce: 7.5
   ForcedStopInertia: 2
   VelocityDropToStop: 1
   DashVelocity: 50
   DashTime: 0.12
-  DefaultLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  DashLayer:
-    serializedVersion: 2
-    m_Bits: 64
