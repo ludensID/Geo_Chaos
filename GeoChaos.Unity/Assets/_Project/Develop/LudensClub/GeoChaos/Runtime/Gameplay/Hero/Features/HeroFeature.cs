@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       Add(systems.Create<CreateHeroEntitySystem>());
 
       Add(systems.Create<InitializeHeroMovementSystem>());
+      Add(systems.Create<InitializeHeroGravitySystem>());
       
       Add(systems.Create<ReadHeroViewVelocitySystem>());
 

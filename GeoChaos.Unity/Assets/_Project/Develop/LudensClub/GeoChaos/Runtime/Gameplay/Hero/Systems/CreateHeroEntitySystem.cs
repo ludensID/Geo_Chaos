@@ -13,7 +13,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     private readonly IGameObjectConverter _converter;
     private readonly EcsWorld _world;
 
-    public CreateHeroEntitySystem(IHeroFactory factory, GameWorldWrapper worldWrapper, IGameObjectConverter converter)
+    public CreateHeroEntitySystem(IHeroFactory factory,
+      GameWorldWrapper worldWrapper,
+      IGameObjectConverter converter)
     {
       _factory = factory;
       _converter = converter;

@@ -5,6 +5,7 @@
     public const string ON = "On";
     public const string CHANGED = "Changed";
     public const string DROP = "Drop";
+    public const string FREE = "_free";
 
     public static class Names
     {

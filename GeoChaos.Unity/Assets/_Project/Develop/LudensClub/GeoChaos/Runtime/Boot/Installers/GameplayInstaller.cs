@@ -1,5 +1,4 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
@@ -18,7 +17,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
 #if UNITY_EDITOR
       Debugging.DebugInstaller.BindEcsWorldDebugEngine(Container);
-      Debugging.DebugInstaller.BindInputDelayDebug(Container);
+      Debugging.DebugInstaller.BindInputWatcherDebug(Container);
+      Debugging.DebugInstaller.BindGravityScaleWatcher(Container);
 #endif
 
       BindEngine();

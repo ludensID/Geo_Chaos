@@ -1,4 +1,5 @@
 ﻿#if UNITY_EDITOR
+using LudensClub.GeoChaos.Runtime.Debugging.Watchers;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Debugging
@@ -23,10 +24,18 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
         .NonLazy();
     }
 
-    public static void BindInputDelayDebug(DiContainer container)
+    public static void BindInputWatcherDebug(DiContainer container)
     {
       container
-        .BindInterfacesTo<InputDelayDebug>()
+        .BindInterfacesTo<InputDelayWatcher>()
+        .AsSingle()
+        .NonLazy();
+    }
+    
+    public static void BindGravityScaleWatcher(DiContainer container)
+    {
+      container
+        .BindInterfacesTo<GravityScaleWatcher>()
         .AsSingle()
         .NonLazy();
     }

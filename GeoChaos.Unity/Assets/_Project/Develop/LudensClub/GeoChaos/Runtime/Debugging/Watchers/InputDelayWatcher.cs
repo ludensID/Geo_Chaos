@@ -5,15 +5,15 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using Zenject;
 
-namespace LudensClub.GeoChaos.Runtime.Debugging
+namespace LudensClub.GeoChaos.Runtime.Debugging.Watchers
 {
-  public class InputDelayDebug : ITickable
+  public class InputDelayWatcher : ITickable
   {
     private readonly EcsWorld _world;
     private readonly HeroConfig _config;
     private float _delay;
 
-    public InputDelayDebug(InputWorldWrapper inputWorldWrapper, IConfigProvider configProvider)
+    public InputDelayWatcher(InputWorldWrapper inputWorldWrapper, IConfigProvider configProvider)
     {
       _world = inputWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();

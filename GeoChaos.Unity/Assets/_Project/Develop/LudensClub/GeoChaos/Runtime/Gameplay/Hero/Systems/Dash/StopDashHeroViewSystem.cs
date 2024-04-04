@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
@@ -8,10 +9,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
   {
     private readonly EcsWorld _world;
     private readonly EcsFilter _heroes;
+    private readonly HeroConfig _config;
 
-    public StopDashHeroViewSystem(GameWorldWrapper gameWorldWrapper)
+    public StopDashHeroViewSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
       _world = gameWorldWrapper.World;
+      _config = configProvider.Get<HeroConfig>();
 
       _heroes = _world
         .Filter<StopDashCommand>()
@@ -32,7 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         colliderRef.Collider.enabled = true;
         
         ref RigidbodyRef rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
-        rigidbodyRef.Rigidbody.gravityScale = 1;
+        rigidbodyRef.Rigidbody.gravityScale = _config.GravityScale;
       }
     }
   }
