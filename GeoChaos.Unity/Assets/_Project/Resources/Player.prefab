@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4600133539520871387}
   - component: {fileID: 4140852320947023786}
+  - component: {fileID: 5628618048376851390}
   m_Layer: 6
   m_Name: DashCollider
   m_TagString: Untagged
@@ -42,7 +43,7 @@ CapsuleCollider2D:
   m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8a52096240b6e6f4a980b592ed1068d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -55,7 +56,7 @@ CapsuleCollider2D:
     m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 511
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -69,6 +70,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &5628618048376851390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430404059593757034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348c620513bc41ab99a9deb828b54891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderType: 100
+  _view: {fileID: 3491215743248813858}
+  _collider: {fileID: 4140852320947023786}
 --- !u!1 &2959957301472713733
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +127,8 @@ GameObject:
   - component: {fileID: 3171219819677041890}
   - component: {fileID: 6140254060140529780}
   - component: {fileID: 4220543373771047474}
-  m_Layer: 0
+  - component: {fileID: 1009982758062000189}
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +215,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8a52096240b6e6f4a980b592ed1068d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -211,7 +228,7 @@ CapsuleCollider2D:
     m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 511
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -225,6 +242,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &1009982758062000189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4045553092761671660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348c620513bc41ab99a9deb828b54891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderType: 1
+  _view: {fileID: 3491215743248813858}
+  _collider: {fileID: 4220543373771047474}
 --- !u!1 &4479722840739274266
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +273,7 @@ GameObject:
   - component: {fileID: -4470947871162947153}
   - component: {fileID: 5955171661119470606}
   - component: {fileID: 5619485382491563823}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Characteristics.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using LudensClub.GeoChaos.Runtime.Props;
@@ -27,6 +28,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       int hero = _world.NewEntity();
       _world.Add<Hero>(hero);
       _converter.Convert(_world, hero, _factory.Create(Vector3.zero));
+
+      ref Health health = ref _world.Add<Health>(hero);
+      health.Value = 100;
     }
   }
 }

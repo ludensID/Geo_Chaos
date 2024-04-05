@@ -15,9 +15,11 @@ MonoBehaviour:
   MovementSpeed: 5
   MovementResponseDelay: 0.2
   AccelerationTime: 0.5
-  GravityScale: 2
-  JumpForce: 10.606602
+  GravityScale: 3
+  JumpForce: 12.990381
   ForcedStopInertia: 2
   VelocityDropToStop: 1.4142135
   DashVelocity: 50
   DashTime: 0.12
+  Health: 100
+  DashDamage: 10

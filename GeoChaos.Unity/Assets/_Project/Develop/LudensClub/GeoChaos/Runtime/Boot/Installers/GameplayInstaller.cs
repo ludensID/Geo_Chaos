@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
+using LudensClub.GeoChaos.Runtime.Props.Enemy;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Boot
@@ -13,7 +14,10 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEcsSystemFactory();
       BindInputWorldWrapper();
       BindGameWorldWrapper();
+      BindMessageWorldWrapper();
+      BindCollisionFiller();
       BindPlayerFactory();
+      BindEnemyFactory();
 
 #if UNITY_EDITOR
       Debugging.DebugInstaller.BindEcsWorldDebugEngine(Container);
@@ -22,6 +26,29 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 #endif
 
       BindEngine();
+    }
+
+    private void BindEnemyFactory()
+    {
+      Container
+        .Bind<IEnemyFactory>()
+        .To<EnemyFactory>()
+        .AsSingle();
+    }
+
+    private void BindMessageWorldWrapper()
+    {
+      Container
+        .BindInterfacesAndSelfTo<MessageWorldWrapper>()
+        .AsSingle();
+    }
+
+    private void BindCollisionFiller()
+    {
+      Container
+        .Bind<ICollisionFiller>()
+        .To<CollisionFiller>()
+        .AsSingle();
     }
 
     private void BindInputWorldWrapper()

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 384
   AcceptableGroundDistance: 0.02

@@ -5,6 +5,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public class View : MonoBehaviour
   {
-    public EcsPackedEntityWithWorld Entity;
+    public EcsPackedEntity Entity;
   }
 }

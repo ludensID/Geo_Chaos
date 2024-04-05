@@ -1,5 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Utils;
-using TriInspector;
+﻿using TriInspector;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Configuration
@@ -50,9 +49,13 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float DashVelocity;
     public float DashTime;
     
-    [ShowInInspector] 
-    [PropertyOrder(12)] 
+    [ShowInInspector]
+    [PropertyOrder(9)]
     public float DashDistance => DashVelocity * DashTime;
+
+    [Title("Characteristics")] 
+    public float Health;
+    public float DashDamage;
   }
 
   // [DeclareBoxGroup(nameof(JumpHeight), Title = "$" + nameof(TitleJumpHeight), HideTitle = true)]

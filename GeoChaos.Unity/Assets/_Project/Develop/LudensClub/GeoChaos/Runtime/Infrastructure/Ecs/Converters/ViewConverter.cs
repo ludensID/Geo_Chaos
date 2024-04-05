@@ -12,6 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     {
       ref ViewRef viewRef = ref world.Add<ViewRef>(entity);
       viewRef.Value = View;
+      View.Entity = world.PackEntity(entity);
     }
   }
 }

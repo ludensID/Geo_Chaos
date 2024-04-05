@@ -45,7 +45,7 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     {
       ref ViewRef viewRef = ref world.Add<ViewRef>(entity);
       viewRef.Value = creator.Invoke();
-      viewRef.Value.Entity = world.PackEntityWithWorld(entity);
+      viewRef.Value.Entity = world.PackEntity(entity);
       return ref viewRef;
     }
   }
