@@ -8,28 +8,47 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
   public class CheckForHeroOnGroundSystem : IEcsRunSystem
   {
-    private readonly EcsWorld _world;
+    private readonly EcsWorld _game;
     private readonly PhysicsConfig _physics;
-    private readonly EcsFilter _heroes;
+    private readonly EcsFilter _grounds;
+    private readonly EcsFilter _onGrounds;
 
     public CheckForHeroOnGroundSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
-      _world = gameWorldWrapper.World;
+      _game = gameWorldWrapper.World;
       _physics = configProvider.Get<PhysicsConfig>();
 
-      _heroes = _world.Filter<Hero>()
-        .Inc<Ground>()
+      _grounds = _game
+        .Filter<Ground>()
+        .Inc<GroundCheckRef>()
+        .Exc<IsOnGround>()
+        .End();
+
+      _onGrounds = _game
+        .Filter<IsOnGround>()
         .Inc<GroundCheckRef>()
         .End();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
+      foreach (int ground in _grounds)
       {
-        ref GroundCheckRef groundCheckRef = ref _world.Get<GroundCheckRef>(hero);
-        ref Ground ground = ref _world.Get<Ground>(hero);
-        ground.IsOnGround = IsGroundCasted(groundCheckRef.Bottom.position);
+        ref GroundCheckRef groundCheckRef = ref _game.Get<GroundCheckRef>(ground);
+        if (IsGroundCasted(groundCheckRef.Bottom.position))
+        {
+          _game.Add<IsOnGround>(ground);
+          _game.Add<OnGround>(ground);
+        }
+      }
+
+      foreach (int onGround in _onGrounds)
+      {
+        ref GroundCheckRef groundCheckRef = ref _game.Get<GroundCheckRef>(onGround);
+        if (!IsGroundCasted(groundCheckRef.Bottom.position))
+        {
+          _game.Del<IsOnGround>(onGround);
+        }
       }
     }
 

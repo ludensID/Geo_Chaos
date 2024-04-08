@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     private readonly EcsFilter _vectors;
 
     public CalculateHeroVelocitySystem(GameWorldWrapper gameWorldWrapper)
-    { 
+    {
       _world = gameWorldWrapper.World;
 
       _vectors = _world
@@ -18,13 +18,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Inc<HeroVelocity>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int vector in _vectors)
+      foreach (var vector in _vectors)
       {
-        ref HeroMovementVector movementVector = ref _world.Get<HeroMovementVector>(vector);
-        ref HeroVelocity velocity = ref _world.Get<HeroVelocity>(vector);
+        ref var movementVector = ref _world.Get<HeroMovementVector>(vector);
+        ref var velocity = ref _world.Get<HeroVelocity>(vector);
         velocity.Velocity = movementVector.Direction * movementVector.Speed;
       }
     }

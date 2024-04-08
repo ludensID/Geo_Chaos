@@ -24,17 +24,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
         .Filter<TwoSideCollision>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int col in _collisions)
+      foreach (var col in _collisions)
       {
-        ref TwoSideCollision collision = ref _message.Get<TwoSideCollision>(col);
-        if (TrySelect(collision, ColliderType.Dash, ColliderType.Body, out PackedCollider damager,
-            out PackedCollider target) && !damager.Entity.EqualsTo(target.Entity))
+        ref var collision = ref _message.Get<TwoSideCollision>(col);
+        if (TrySelect(collision, ColliderType.Dash, ColliderType.Body, out var damager,
+          out var target) && !damager.Entity.EqualsTo(target.Entity))
         {
           var message = _message.NewEntity();
-          ref DamageMessage damage = ref _message.Add<DamageMessage>(message);
+          ref var damage = ref _message.Add<DamageMessage>(message);
           damage.Damage = _config.DashDamage;
           damage.Damager = damager.Entity;
           damage.Target = target.Entity;
@@ -54,7 +54,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
 
     public bool DoubleOr(ColliderType aLeft, ColliderType bLeft, ColliderType aRight, ColliderType bRight)
     {
-      return aLeft == aRight && bLeft == bRight || aLeft == bRight && bLeft == aRight;
+      return (aLeft == aRight && bLeft == bRight) || (aLeft == bRight && bLeft == aRight);
     }
   }
 }

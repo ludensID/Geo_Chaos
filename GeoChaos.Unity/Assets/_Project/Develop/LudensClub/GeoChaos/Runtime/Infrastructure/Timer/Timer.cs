@@ -6,10 +6,18 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
   [Serializable]
   public class Timer : ITimerable, IComparable, IComparable<Timer>
   {
-    public static implicit operator float(Timer obj) => obj.TimeLeft;
-    public static implicit operator Timer(float obj) => new Timer { TimeLeft = obj };
+    public static implicit operator float(Timer obj)
+    {
+      return obj.TimeLeft;
+    }
 
-    [SerializeField] private float _timeLeft;
+    public static implicit operator Timer(float obj)
+    {
+      return new Timer() { TimeLeft = obj };
+    }
+
+    [SerializeField]
+    private float _timeLeft;
 
     public float TimeLeft
     {

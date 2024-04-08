@@ -24,30 +24,27 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         .Inc<HeroMovementVector>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
+      foreach (var hero in _heroes)
       {
-        ref HeroMovementVector vector = ref _world.Get<HeroMovementVector>(hero);
+        ref var vector = ref _world.Get<HeroMovementVector>(hero);
         vector.Speed.x = _config.DashVelocity;
         vector.Speed.y = 0;
-        
-        ref IsDashing isDashing = ref _world.Add<IsDashing>(hero);
+
+        ref var isDashing = ref _world.Add<IsDashing>(hero);
         isDashing.TimeLeft = _config.DashTime;
         _timerSvc.AddTimer(isDashing.TimeLeft);
-        
-        // stop jumping
-        if(_world.Has<IsJumping>(hero))
-          _world.Del<IsJumping>(hero);
 
-        if (_world.Has<WaitToStopJump>(hero))
-          _world.Del<WaitToStopJump>(hero);
+        // stop jumping
+        if (_world.Has<IsJumping>(hero))
+          _world.Del<IsJumping>(hero);
 
         if (_world.Has<Movable>(hero))
           _world.Del<Movable>(hero);
-        
-        if(_world.Has<JumpAvailable>(hero))
+
+        if (_world.Has<JumpAvailable>(hero))
           _world.Del<JumpAvailable>(hero);
       }
     }

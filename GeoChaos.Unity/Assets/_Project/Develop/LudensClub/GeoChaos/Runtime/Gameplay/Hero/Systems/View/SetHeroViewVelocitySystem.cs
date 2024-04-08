@@ -17,14 +17,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Inc<HeroVelocity>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
+      foreach (var hero in _heroes)
       {
-        ref HeroVelocity velocity = ref _world.Get<HeroVelocity>(hero);
-        ref RigidbodyRef rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
-        
+        ref var velocity = ref _world.Get<HeroVelocity>(hero);
+        ref var rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
+
         rigidbodyRef.Rigidbody.velocity = velocity.Velocity;
       }
     }

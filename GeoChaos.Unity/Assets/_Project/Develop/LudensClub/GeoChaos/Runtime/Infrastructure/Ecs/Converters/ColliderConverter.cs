@@ -7,11 +7,12 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 {
   public class ColliderConverter : MonoBehaviour, IEcsConverter
   {
-    [SerializeField] private Collider2D _collider;
-    
+    [SerializeField]
+    private Collider2D _collider;
+
     public void Convert(EcsWorld world, int entity)
     {
-      ref ColliderRef colliderRef = ref world.Add<ColliderRef>(entity);
+      ref var colliderRef = ref world.Add<ColliderRef>(entity);
       colliderRef.Collider = _collider;
     }
   }

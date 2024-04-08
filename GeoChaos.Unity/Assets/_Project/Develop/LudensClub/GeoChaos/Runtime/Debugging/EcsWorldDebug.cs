@@ -12,7 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
 {
   public class EcsWorldDebug : MonoBehaviour, IEcsWorldEventListener
   {
-    private readonly List<EcsEntityViewDebug> _entities = new List<EcsEntityViewDebug>();
+    private readonly List<EcsEntityViewDebug> _entities = new();
     private EcsWorld _world;
     private EcsEntityViewDebugFactory _factory;
 
@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
 
     private void Update()
     {
-      foreach (EcsEntityViewDebug entity in _entities)
+      foreach (var entity in _entities)
       {
         var components = new object[_world.GetComponentsCount(entity.Entity)];
         _world.GetComponents(entity.Entity, ref components);
@@ -46,7 +46,7 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
 
     public void OnEntityDestroyed(int entity)
     {
-      EcsEntityViewDebug entityView = _entities.Find(x => x.Entity == entity);
+      var entityView = _entities.Find(x => x.Entity == entity);
       _entities.Remove(entityView);
     }
 

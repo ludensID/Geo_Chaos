@@ -13,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components
   [Serializable]
   public struct DamageMessage : IEcsComponent
   {
-    public EcsPackedEntity Damager; 
+    public EcsPackedEntity Damager;
     public EcsPackedEntity Target;
     public float Damage;
   }

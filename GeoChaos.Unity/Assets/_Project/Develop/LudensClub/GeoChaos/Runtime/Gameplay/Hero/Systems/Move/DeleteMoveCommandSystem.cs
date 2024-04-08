@@ -17,13 +17,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Filter<MoveCommand>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int command in _commands)
-      {
-        _world.Del<MoveCommand>(command);
-      }
+      foreach (var command in _commands) _world.Del<MoveCommand>(command);
     }
   }
 }

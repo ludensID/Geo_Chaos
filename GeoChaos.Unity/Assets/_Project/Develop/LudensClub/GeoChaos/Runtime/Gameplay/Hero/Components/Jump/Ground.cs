@@ -12,6 +12,5 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Serializable]
   public struct Ground : IEcsComponent
   {
-    public bool IsOnGround;
   }
 }

@@ -15,15 +15,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     private readonly EcsFilter _jumpStartedInputs;
     private readonly EcsFilter _jumpCanceledInputs;
 
-    public ReadInputForHeroJumpSystem(GameWorldWrapper gameWorldWrapper, InputWorldWrapper inputWorldWrapper, IInputDataProvider input)
+    public ReadInputForHeroJumpSystem(GameWorldWrapper gameWorldWrapper, InputWorldWrapper inputWorldWrapper,
+      IInputDataProvider input)
     {
       _input = input;
       _world = gameWorldWrapper.World;
-      EcsWorld inputWorld = inputWorldWrapper.World;
+      var inputWorld = inputWorldWrapper.World;
 
       _grounds = _world.Filter<Hero>()
         .Inc<JumpAvailable>()
-        .Inc<Ground>()
+        .Inc<IsOnGround>()
         .End();
 
       _jumpStartedInputs = inputWorld
@@ -34,7 +35,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _noStoppeds = _world.Filter<Hero>()
         .Inc<JumpAvailable>()
         .Inc<IsJumping>()
-        .Exc<WaitToStopJump>()
         .End();
 
       _jumpCanceledInputs = inputWorld
@@ -46,20 +46,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     public void Run(EcsSystems systems)
     {
       // if(_input.Data.IsJumpStarted)
-      foreach (int _ in _jumpStartedInputs)
-        foreach (int hero in _grounds)
-        {
-          ref Ground ground = ref _world.Get<Ground>(hero);
-          if (ground.IsOnGround)
-            _world.Add<JumpCommand>(hero);
-        }
-      
+      foreach (var _ in _jumpStartedInputs)
+      foreach (var hero in _grounds)
+      {
+        _world.Add<JumpCommand>(hero);
+      }
+
       // if(_input.Data.IsJumpCanceled)
-      foreach (int _ in _jumpCanceledInputs)
-        foreach (int noStopped in _noStoppeds)
-        {
-          _world.Add<StopJumpCommand>(noStopped);
-        }
+      foreach (var _ in _jumpCanceledInputs)
+      foreach (var noStopped in _noStoppeds)
+        _world.Add<StopJumpCommand>(noStopped);
     }
   }
 }

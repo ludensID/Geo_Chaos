@@ -12,6 +12,5 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
   [Serializable]
   public struct DelayedInput : IEcsComponent
   {
-    
   }
 }

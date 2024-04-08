@@ -15,13 +15,10 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
       _worldWrappers = worldWrappers;
       _factory = factory;
     }
-    
+
     public void Initialize()
     {
-      foreach (IWorldWrapper worldWrapper in _worldWrappers)
-      {
-        _factory.Create(worldWrapper);
-      }
+      foreach (var worldWrapper in _worldWrappers) _factory.Create(worldWrapper);
     }
   }
 }

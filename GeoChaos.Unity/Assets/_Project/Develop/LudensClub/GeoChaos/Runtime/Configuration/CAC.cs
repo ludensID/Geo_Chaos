@@ -15,8 +15,11 @@
 
     public const string CONFIG_PROVIDER_FILE = "Config Provider";
     public const string CONFIG_PROVIDER_MENU = PROJECT_NAME + "Config Provider";
-    
+
     public const string PHYSICS_FILE = "Physics Config";
     public const string PHYSICS_MENU = PROJECT_NAME + "Phisics";
+
+    public const string PREFAB_FILE = "Prefab Config";
+    public const string PREFAB_MENU = PROJECT_NAME + "Prefabs";
   }
 }

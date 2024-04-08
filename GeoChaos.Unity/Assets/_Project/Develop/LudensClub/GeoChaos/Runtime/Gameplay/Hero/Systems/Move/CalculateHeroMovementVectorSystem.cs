@@ -26,18 +26,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
+      foreach (var hero in _heroes)
       {
-        ref MoveCommand command = ref _world.Get<MoveCommand>(hero);
-        
-        ref HeroMovementVector vector = ref _world.Get<HeroMovementVector>(hero);
+        ref var command = ref _world.Get<MoveCommand>(hero);
+
+        ref var vector = ref _world.Get<HeroMovementVector>(hero);
         CalculateVector(ref vector, command.Direction);
       }
     }
 
     private void CalculateVector(ref HeroMovementVector vector, float direction)
     {
-      float delta = CalculateSpeedDelta();
+      var delta = CalculateSpeedDelta();
       if (direction == 0)
       {
         vector.Speed.x -= delta;
@@ -53,7 +53,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
     private float CalculateSpeedDelta()
     {
-      float delta = _config.AccelerationTime == 0
+      var delta = _config.AccelerationTime == 0
         ? _config.MovementSpeed
         : _config.MovementSpeed / _config.AccelerationTime * Time.deltaTime;
       return delta;

@@ -33,15 +33,15 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
     public void HandleInput()
     {
-      InputData data = _provider.Data;
+      var data = _provider.Data;
 
       data.HorizontalMovement = _horizontalAction.ReadValue<float>();
-      
+
       data.IsJumpStarted = _jumpAction.WasPerformedThisFrame();
       data.IsJumpCanceled = _jumpAction.WasReleasedThisFrame();
 
       data.IsDash = _dashAction.WasPerformedThisFrame();
-      
+
       _provider.Data = data;
     }
   }

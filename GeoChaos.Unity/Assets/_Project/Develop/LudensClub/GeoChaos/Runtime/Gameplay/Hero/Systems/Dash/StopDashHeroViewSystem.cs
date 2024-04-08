@@ -23,18 +23,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         .Inc<ColliderRef>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
+      foreach (var hero in _heroes)
       {
-        ref DashColliderRef dashColliderRef = ref _world.Get<DashColliderRef>(hero);
+        ref var dashColliderRef = ref _world.Get<DashColliderRef>(hero);
         dashColliderRef.Collider.enabled = false;
 
-        ref ColliderRef colliderRef = ref _world.Get<ColliderRef>(hero);
+        ref var colliderRef = ref _world.Get<ColliderRef>(hero);
         colliderRef.Collider.enabled = true;
-        
-        ref RigidbodyRef rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
+
+        ref var rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
         rigidbodyRef.Rigidbody.gravityScale = _config.GravityScale;
       }
     }

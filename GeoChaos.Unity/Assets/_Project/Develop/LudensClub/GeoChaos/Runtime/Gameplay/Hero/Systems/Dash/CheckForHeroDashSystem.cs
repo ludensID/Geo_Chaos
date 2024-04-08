@@ -22,11 +22,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
-      {
+      foreach (var hero in _heroes)
         if (_world.Has<IsDashing>(hero))
           _world.Del<DashCommand>(hero);
-      }
     }
   }
 }

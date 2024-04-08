@@ -17,13 +17,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         .Filter<StopDashCommand>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int command in _commands)
-      {
-        _world.Del<StopDashCommand>(command);
-      }
+      foreach (var command in _commands) _world.Del<StopDashCommand>(command);
     }
   }
 }

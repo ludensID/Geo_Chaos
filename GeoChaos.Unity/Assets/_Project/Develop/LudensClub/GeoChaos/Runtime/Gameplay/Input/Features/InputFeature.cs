@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
     public InputFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<InitializeInputDelaySystem>());
-      
+
       Add(systems.Create<DestroyExpiredEntitiesSystem>());
       Add(systems.Create<UpdateExpireTimeSystem>());
       Add(systems.Create<ReadInputSystem>());

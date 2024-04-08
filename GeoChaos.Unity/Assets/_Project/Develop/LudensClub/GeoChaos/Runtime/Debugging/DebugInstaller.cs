@@ -15,7 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
         .AsSingle()
         .NonLazy();
     }
-    
+
     public static void BindEcsWorldDebugEngine(DiContainer container)
     {
       container
@@ -31,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
         .AsSingle()
         .NonLazy();
     }
-    
+
     public static void BindGravityScaleWatcher(DiContainer container)
     {
       container

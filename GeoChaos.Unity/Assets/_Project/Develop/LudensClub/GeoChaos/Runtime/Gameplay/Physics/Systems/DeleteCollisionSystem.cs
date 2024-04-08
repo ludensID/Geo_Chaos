@@ -14,13 +14,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
       _message = messageWorldWrapper.World;
 
       _collisions = _message
-        .Filter<CollisionComponent>()
+        .Filter<CollisionMessage>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int col in _collisions)
+      foreach (var col in _collisions)
         _message.DelEntity(col);
     }
   }

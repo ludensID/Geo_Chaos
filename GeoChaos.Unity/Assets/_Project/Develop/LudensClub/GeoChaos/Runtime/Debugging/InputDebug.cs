@@ -12,7 +12,11 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
   {
     private IInputDataProvider _inputProvider;
     private EcsWorld _world;
-    [ShowInInspector, InlineProperty, HideLabel] public InputData Data { get; set; }
+
+    [ShowInInspector]
+    [InlineProperty]
+    [HideLabel]
+    public InputData Data { get; set; }
 
     [Inject]
     public void Construct(IInputDataProvider inputProvider)

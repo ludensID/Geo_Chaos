@@ -9,8 +9,11 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 {
   public class ProjectInstaller : MonoInstaller
   {
-    [SerializeField] private ConfigProvider _configProvider;
-    [SerializeField] private PlayerInput _input;
+    [SerializeField]
+    private ConfigProvider _configProvider;
+
+    [SerializeField]
+    private PlayerInput _input;
 
     public override void InstallBindings()
     {

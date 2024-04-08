@@ -18,10 +18,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         .Inc<IsDashing>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
+      foreach (var hero in _heroes)
       {
         _world.Add<Movable>(hero);
         _world.Add<JumpAvailable>(hero);

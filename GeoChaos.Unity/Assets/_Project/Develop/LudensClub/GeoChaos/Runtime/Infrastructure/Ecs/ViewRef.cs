@@ -11,6 +11,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
   [Serializable]
   public struct ViewRef : IEcsComponent
   {
-    public View Value;
+    public View View;
   }
 }

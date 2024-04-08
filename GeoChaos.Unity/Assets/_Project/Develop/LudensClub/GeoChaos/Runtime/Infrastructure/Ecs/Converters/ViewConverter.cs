@@ -7,11 +7,11 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
   public class ViewConverter : MonoBehaviour, IEcsConverter
   {
     public View View;
-    
+
     public void Convert(EcsWorld world, int entity)
     {
-      ref ViewRef viewRef = ref world.Add<ViewRef>(entity);
-      viewRef.Value = View;
+      ref var viewRef = ref world.Add<ViewRef>(entity);
+      viewRef.View = View;
       View.Entity = world.PackEntity(entity);
     }
   }

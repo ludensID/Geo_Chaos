@@ -21,9 +21,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
+      foreach (var hero in _heroes)
       {
-        ref IsDashing isDashing = ref _world.Get<IsDashing>(hero);
+        ref var isDashing = ref _world.Get<IsDashing>(hero);
         if (isDashing.TimeLeft <= 0)
           _world.Add<StopDashCommand>(hero);
       }

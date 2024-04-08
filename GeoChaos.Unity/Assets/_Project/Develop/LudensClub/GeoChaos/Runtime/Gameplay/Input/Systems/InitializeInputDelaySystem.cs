@@ -15,11 +15,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
       _world = inputWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
     }
-    
+
     public void Init(EcsSystems systems)
     {
-      int delay = _world.NewEntity();
-      ref InputDelay inputDelay = ref _world.Add<InputDelay>(delay);
+      var delay = _world.NewEntity();
+      ref var inputDelay = ref _world.Add<InputDelay>(delay);
       inputDelay.Delay = _config.MovementResponseDelay;
     }
   }

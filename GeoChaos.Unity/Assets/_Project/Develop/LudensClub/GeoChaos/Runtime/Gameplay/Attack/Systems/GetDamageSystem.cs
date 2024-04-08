@@ -21,14 +21,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Systems
         .Filter<DamageMessage>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int damage in _damages)
+      foreach (var damage in _damages)
       {
-        ref DamageMessage message = ref _message.Get<DamageMessage>(damage);
-        message.Target.Unpack(_game, out int target);
-        ref Health health = ref _game.Get<Health>(target);
+        ref var message = ref _message.Get<DamageMessage>(damage);
+        message.Target.Unpack(_game, out var target);
+        ref var health = ref _game.Get<Health>(target);
         health.Value -= message.Damage;
         _message.DelEntity(damage);
       }

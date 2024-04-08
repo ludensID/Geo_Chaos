@@ -19,11 +19,9 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
       _systems = new EcsSystems(gameWorldWrapper.World);
       _systems.Add(new EcsWorldDebugSystem(entityNameFormat: "D8"));
 
-      foreach (IWorldWrapper wrapper in wrappers)
-      {
+      foreach (var wrapper in wrappers)
         _systems.AddWorld(wrapper.World, wrapper.Name)
-          .Add(new EcsWorldDebugSystem(worldName: wrapper.Name, entityNameFormat: "D8"));
-      }
+          .Add(new EcsWorldDebugSystem(wrapper.Name, entityNameFormat: "D8"));
     }
 
     public void Initialize()

@@ -22,17 +22,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Inc<HeroMovementVector>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
+      foreach (var hero in _heroes)
       {
-        ref HeroMovementVector vector = ref _world.Get<HeroMovementVector>(hero);
+        ref var vector = ref _world.Get<HeroMovementVector>(hero);
         vector.Speed.y = _config.JumpForce;
         vector.Direction.y = 1;
-        
+
         _world.Add<IsJumping>(hero);
-        
+
         _world.Del<JumpCommand>(hero);
       }
     }

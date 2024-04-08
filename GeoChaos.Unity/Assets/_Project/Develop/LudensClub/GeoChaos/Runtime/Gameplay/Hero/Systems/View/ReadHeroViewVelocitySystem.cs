@@ -18,14 +18,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Inc<HeroMovementVector>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int vector in _vectors)
+      foreach (var vector in _vectors)
       {
-        ref RigidbodyRef rigidbodyRef = ref _world.Get<RigidbodyRef>(vector);
-        ref HeroMovementVector movementVector = ref _world.Get<HeroMovementVector>(vector);
-        Vector2 velocity = rigidbodyRef.Rigidbody.velocity;
+        ref var rigidbodyRef = ref _world.Get<RigidbodyRef>(vector);
+        ref var movementVector = ref _world.Get<HeroMovementVector>(vector);
+        var velocity = rigidbodyRef.Rigidbody.velocity;
         movementVector.Speed.y = Mathf.Abs(velocity.y);
         movementVector.Direction.y = Mathf.Sign(velocity.y);
       }

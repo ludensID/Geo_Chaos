@@ -1,8 +1,10 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay;
+﻿using System.Collections.Generic;
+using System.Linq;
+using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
-using LudensClub.GeoChaos.Runtime.Props.Enemy;
+using UnityEngine;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Boot
@@ -14,10 +16,10 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEcsSystemFactory();
       BindInputWorldWrapper();
       BindGameWorldWrapper();
+      BindViewFactory();
       BindMessageWorldWrapper();
       BindCollisionFiller();
-      BindPlayerFactory();
-      BindEnemyFactory();
+      BindSpawnPoints();
 
 #if UNITY_EDITOR
       Debugging.DebugInstaller.BindEcsWorldDebugEngine(Container);
@@ -28,11 +30,20 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEngine();
     }
 
-    private void BindEnemyFactory()
+    private void BindViewFactory()
     {
       Container
-        .Bind<IEnemyFactory>()
-        .To<EnemyFactory>()
+        .Bind<IViewFactory>()
+        .To<ViewFactory>()
+        .AsSingle();
+    }
+
+    private void BindSpawnPoints()
+    {
+      var spawns = FindObjectsByType<SpawnPoint>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).ToList();
+      Container
+        .Bind<List<SpawnPoint>>()
+        .FromInstance(spawns)
         .AsSingle();
     }
 
@@ -77,14 +88,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     {
       Container
         .BindInterfacesTo<Engine>()
-        .AsSingle();
-    }
-
-    private void BindPlayerFactory()
-    {
-      Container
-        .Bind<IHeroFactory>()
-        .To<HeroFactory>()
         .AsSingle();
     }
   }

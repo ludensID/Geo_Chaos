@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8a6465eacd45f18b247b9b0ce98322, type: 3}
   m_Name: Hero Config
   m_EditorClassIdentifier: 
-  MovementSpeed: 5
-  MovementResponseDelay: 0.2
-  AccelerationTime: 0.5
-  GravityScale: 3
-  JumpForce: 12.990381
-  ForcedStopInertia: 2
-  VelocityDropToStop: 1.4142135
-  DashVelocity: 50
-  DashTime: 0.12
+  MovementResponseDelay: 0
+  MovementSpeed: 7
+  AccelerationTime: 0.15
+  JumpTime: 0.66
+  JumpHeight: 5
+  FallGravityMultiplier: 1
+  DashVelocity: 33.4
+  DashTime: 0.15
   Health: 100
   DashDamage: 10

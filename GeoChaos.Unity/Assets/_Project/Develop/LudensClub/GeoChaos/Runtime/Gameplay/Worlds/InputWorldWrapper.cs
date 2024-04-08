@@ -5,7 +5,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Worlds
 {
   public class InputWorldWrapper : IWorldWrapper
   {
-    private EcsWorld _world = new EcsWorld();
+    private EcsWorld _world = new();
 
     public string Name => "Input";
     public EcsWorld World => _world;

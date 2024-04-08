@@ -25,10 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Debugging.Watchers
       if (_delay != _config.MovementResponseDelay)
       {
         _delay = _config.MovementResponseDelay;
-        foreach (int input in _world.Filter<DelayedInput>().End())
-        {
-          _world.DelEntity(input);
-        }
+        foreach (var input in _world.Filter<DelayedInput>().End()) _world.DelEntity(input);
       }
     }
   }

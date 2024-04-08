@@ -7,11 +7,12 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 {
   public class RigidbodyConverter : MonoBehaviour, IEcsConverter
   {
-    [SerializeField] private Rigidbody2D _rigidbody;
-    
+    [SerializeField]
+    private Rigidbody2D _rigidbody;
+
     public void Convert(EcsWorld world, int entity)
     {
-      ref RigidbodyRef rigidbodyRef = ref world.Add<RigidbodyRef>(entity);
+      ref var rigidbodyRef = ref world.Add<RigidbodyRef>(entity);
       rigidbodyRef.Rigidbody = _rigidbody;
     }
   }

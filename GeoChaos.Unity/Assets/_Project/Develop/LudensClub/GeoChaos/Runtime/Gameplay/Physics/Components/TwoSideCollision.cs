@@ -15,7 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components
   {
     public PackedCollider Sender;
     public PackedCollider Other;
-    
+
     public TwoSideCollision(PackedCollider sender, PackedCollider other)
     {
       Sender = sender;

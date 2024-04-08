@@ -25,18 +25,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
+      foreach (var hero in _heroes)
       {
-        ref HeroVelocity velocity = ref _world.Get<HeroVelocity>(hero);
-        
-        if (velocity.Velocity.y <= _config.ForcedStopInertia)
-          _world.Del<StopJumpCommand>(hero);
+        ref var velocity = ref _world.Get<HeroVelocity>(hero);
 
-        if (velocity.Velocity.y > _config.VelocityToStop)
-        {
+        if (velocity.Velocity.y <= 0)
           _world.Del<StopJumpCommand>(hero);
-          _world.Add<WaitToStopJump>(hero);
-        }
       }
     }
   }

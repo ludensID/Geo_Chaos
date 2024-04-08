@@ -6,17 +6,17 @@ namespace LudensClub.GeoChaos.Runtime.Utils
   {
     public static int GetLayerIndex(this LayerMask obj)
     {
-      int index = 0;
-      int layer = obj.value;
+      var index = 0;
+      var layer = obj.value;
       while (layer > 1)
       {
         layer >>= 1;
         ++index;
       }
-      
+
       return index;
     }
-    
+
     public static bool Contains(this LayerMask mask, int layer)
     {
       return (mask & (1 << layer)) > 0;

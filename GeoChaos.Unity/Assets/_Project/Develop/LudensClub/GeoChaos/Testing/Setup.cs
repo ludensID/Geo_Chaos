@@ -12,10 +12,10 @@ namespace LudensClub.GeoChaos.Testing
   {
     public static void Movable(EcsWorld world, int hero, bool canMove = true)
     {
-      ref Movable movable = ref world.Add<Movable>(hero);
+      ref var movable = ref world.Add<Movable>(hero);
       movable.CanMove = canMove;
     }
-    
+
     public static IConfigProvider ConfigProvider()
     {
       var provider = Create.ConfigProvider();
@@ -32,7 +32,7 @@ namespace LudensClub.GeoChaos.Testing
 
     public static int Hero(EcsWorld world)
     {
-      int hero = Create.Hero(world);
+      var hero = Create.Hero(world);
       Movable(world, hero);
       return hero;
     }

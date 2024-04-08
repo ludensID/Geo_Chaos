@@ -18,12 +18,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
         .Filter<ExpireTimer>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int timer in _timers)
+      foreach (var timer in _timers)
       {
-        ref ExpireTimer expireTimer = ref _world.Get<ExpireTimer>(timer);
+        ref var expireTimer = ref _world.Get<ExpireTimer>(timer);
         expireTimer.PassedTime += Time.deltaTime;
       }
     }

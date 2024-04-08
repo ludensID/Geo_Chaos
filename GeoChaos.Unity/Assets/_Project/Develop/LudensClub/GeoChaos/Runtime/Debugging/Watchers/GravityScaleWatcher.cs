@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+﻿using System;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -10,14 +10,16 @@ namespace LudensClub.GeoChaos.Runtime.Debugging.Watchers
 {
   public class GravityScaleWatcher : ITickable
   {
+    private readonly EcsWorld _game;
     private readonly HeroConfig _config;
-    private readonly EcsWorld _world;
     private float _gravityScale;
+
 
     public GravityScaleWatcher(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
-      _world = gameWorldWrapper.World;
+      _game = gameWorldWrapper.World; 
       _config = configProvider.Get<HeroConfig>();
+
       _gravityScale = _config.GravityScale;
     }
     
@@ -26,13 +28,16 @@ namespace LudensClub.GeoChaos.Runtime.Debugging.Watchers
       if (_gravityScale != _config.GravityScale)
       {
         _gravityScale = _config.GravityScale;
-        foreach (int hero in _world.Filter<Hero>().Inc<RigidbodyRef>().End())
+        if (!float.IsFinite(_gravityScale))
+          return;
+        
+        foreach (int hero in _game.Filter<Hero>().Inc<GravityScale>().End())
         {
-          ref RigidbodyRef rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
-          rigidbodyRef.Rigidbody.gravityScale = _config.GravityScale;
+          ref GravityScale gravityScale = ref _game.Get<GravityScale>(hero);
+          gravityScale.Value = _game.Has<IsFalling>(hero) ? _config.FallGravityScale : _config.GravityScale;
+          gravityScale.Override = true;
         }
       }
     }
   }
 }
-#endif

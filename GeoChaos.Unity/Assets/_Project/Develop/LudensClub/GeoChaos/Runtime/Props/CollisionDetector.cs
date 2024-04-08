@@ -7,9 +7,15 @@ namespace LudensClub.GeoChaos.Runtime.Props
 {
   public class CollisionDetector : MonoBehaviour
   {
-    [SerializeField] private ColliderType _colliderType; 
-    [SerializeField] private View _view;
-    [SerializeField] private Collider2D _collider;
+    [SerializeField]
+    private ColliderType _colliderType;
+
+    [SerializeField]
+    private View _view;
+
+    [SerializeField]
+    private Collider2D _collider;
+
     private ICollisionFiller _filler;
 
     [Inject]
@@ -22,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
     {
       _filler.Fill(_collider, _colliderType, _view.Entity, other.collider);
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
       _filler.Fill(_collider, _colliderType, _view.Entity, other);

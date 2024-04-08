@@ -21,11 +21,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
     public void Run(EcsSystems systems)
     {
       float maxTime = 0;
-      int expiredEntity = -1;
+      var expiredEntity = -1;
 
-      foreach (int expireUp in _expireUps)
+      foreach (var expireUp in _expireUps)
       {
-        ref ExpireTimer timer = ref _world.Get<ExpireTimer>(expireUp);
+        ref var timer = ref _world.Get<ExpireTimer>(expireUp);
         if (timer.PassedTime > maxTime)
         {
           maxTime = timer.PassedTime;

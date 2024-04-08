@@ -28,13 +28,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
     public void Run(EcsSystems systems)
     {
-      foreach (int input in _inputs)
-        foreach (int movable in _movables)
-        {
-          ref HorizontalMovement horizontalMovement = ref _inputWorld.Get<HorizontalMovement>(input);
-          ref MoveCommand command = ref _world.Add<MoveCommand>(movable);
-          command.Direction = horizontalMovement.Direction;
-        }
+      foreach (var input in _inputs)
+      foreach (var movable in _movables)
+      {
+        ref var horizontalMovement = ref _inputWorld.Get<HorizontalMovement>(input);
+        ref var command = ref _world.Add<MoveCommand>(movable);
+        command.Direction = horizontalMovement.Direction;
+      }
     }
   }
 }

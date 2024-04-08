@@ -29,11 +29,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 
     public void Run(EcsSystems systems)
     {
-      foreach (int _ in _inputs)
-        foreach (int hero in _heroes)
-        {
-          _world.Add<DashCommand>(hero);
-        }
+      foreach (var _ in _inputs)
+      foreach (var hero in _heroes)
+        _world.Add<DashCommand>(hero);
     }
   }
 }

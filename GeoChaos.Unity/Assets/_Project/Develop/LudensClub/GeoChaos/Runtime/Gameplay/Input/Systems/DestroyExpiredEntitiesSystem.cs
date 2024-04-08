@@ -16,13 +16,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
         .Filter<Expired>()
         .End();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int expired in _expireds)
-      {
-        _world.DelEntity(expired);
-      }
+      foreach (var expired in _expireds) _world.DelEntity(expired);
     }
   }
 }

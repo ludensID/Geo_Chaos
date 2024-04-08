@@ -24,9 +24,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 
     public void Run(EcsSystems systems)
     {
-      foreach (int expirable in _expirable)
+      foreach (var expirable in _expirable)
       {
-        ref ExpireTimer timer = ref _world.Get<ExpireTimer>(expirable);
+        ref var timer = ref _world.Get<ExpireTimer>(expirable);
         if (timer.PassedTime >= _config.MovementResponseDelay)
           _world.Add<ExpireUp>(expirable);
       }

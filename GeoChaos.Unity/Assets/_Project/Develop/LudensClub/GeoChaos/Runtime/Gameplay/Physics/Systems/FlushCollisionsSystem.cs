@@ -16,14 +16,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
       _filler = filler;
       _world = messageWorldWrapper.World;
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (TwoSideCollision collision in _filler.Flush())
+      foreach (var collision in _filler.Flush())
       {
-        int collisionEntity = _world.NewEntity();
-        _world.Add<CollisionComponent>(collisionEntity);
-        ref TwoSideCollision collisionComp = ref _world.Add<TwoSideCollision>(collisionEntity);
+        var collisionEntity = _world.NewEntity();
+        _world.Add<CollisionMessage>(collisionEntity);
+        ref var collisionComp = ref _world.Add<TwoSideCollision>(collisionEntity);
         collisionComp = collision;
       }
     }
