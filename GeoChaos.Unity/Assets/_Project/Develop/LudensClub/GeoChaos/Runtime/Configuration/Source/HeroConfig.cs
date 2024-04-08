@@ -53,12 +53,13 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Dash")]
     public float DashVelocity;
-
     public float DashTime;
 
     [ShowInInspector]
     [PropertyOrder(10)]
     public float DashDistance => DashVelocity * DashTime;
+    
+    public float DashCooldown;
 
     [Title("Characteristics")]
     public float Health;

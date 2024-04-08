@@ -1,19 +1,25 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 {
   public class StopHeroDashSystem : IEcsRunSystem
   {
-    private readonly EcsWorld _world;
+    private readonly ITimerService _timerSvc;
+    private readonly EcsWorld _game;
     private readonly EcsFilter _heroes;
+    private readonly HeroConfig _config;
 
-    public StopHeroDashSystem(GameWorldWrapper gameWorldWrapper)
+    public StopHeroDashSystem(GameWorldWrapper gameWorldWrapper, ITimerService timerSvc, IConfigProvider configProvider)
     {
-      _world = gameWorldWrapper.World;
+      _timerSvc = timerSvc;
+      _game = gameWorldWrapper.World;
+      _config = configProvider.Get<HeroConfig>();
 
-      _heroes = _world.Filter<Hero>()
+      _heroes = _game.Filter<Hero>()
         .Inc<StopDashCommand>()
         .Inc<IsDashing>()
         .End();
@@ -21,12 +27,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 
     public void Run(EcsSystems systems)
     {
-      foreach (var hero in _heroes)
+      foreach (int hero in _heroes)
       {
-        _world.Add<Movable>(hero);
-        _world.Add<JumpAvailable>(hero);
+        _game.Add<Movable>(hero);
+        _game.Add<JumpAvailable>(hero);
 
-        _world.Del<IsDashing>(hero);
+        _game.Del<IsDashing>(hero);
+
+        ref DashCooldown cooldown = ref _game.Add<DashCooldown>(hero);
+        cooldown.Timer = _config.DashCooldown;
+        _timerSvc.AddTimer(cooldown.Timer);
       }
     }
   }

@@ -33,6 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
       Add(systems.Create<DeleteDashCommandSystem>());
       Add(systems.Create<DeleteStopDashCommandSystem>());
+      Add(systems.Create<RemoveDashCooldownSystem>());
       Add(systems.Create<ReadDashInputSystem>());
       Add(systems.Create<CheckForHeroDashSystem>());
       Add(systems.Create<DashHeroSystem>());

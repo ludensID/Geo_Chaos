@@ -22,5 +22,6 @@ MonoBehaviour:
   JumpLength: 9.240001
   DashVelocity: 33.4
   DashTime: 0.15
+  DashCooldown: 4
   Health: 100
   DashDamage: 10

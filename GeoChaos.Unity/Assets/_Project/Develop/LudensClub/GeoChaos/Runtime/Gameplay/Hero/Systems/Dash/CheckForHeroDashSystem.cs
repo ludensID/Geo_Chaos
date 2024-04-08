@@ -6,25 +6,34 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 {
   public class CheckForHeroDashSystem : IEcsRunSystem
   {
-    private readonly EcsWorld _world;
-    private readonly EcsFilter _heroes;
+    private readonly EcsWorld _game;
+    private readonly EcsFilter _dashes;
+    private readonly EcsFilter _cooldowns;
 
     public CheckForHeroDashSystem(GameWorldWrapper gameWorldWrapper)
     {
-      _world = gameWorldWrapper.World;
+      _game = gameWorldWrapper.World;
 
-      _heroes = _world.Filter<Hero>()
-        .Inc<DashAvailable>()
+      _dashes = _game
+        .Filter<DashAvailable>()
         .Inc<DashCommand>()
+        .Inc<IsDashing>()
+        .End();
+
+      _cooldowns = _game
+        .Filter<DashAvailable>()
+        .Inc<DashCommand>()
+        .Inc<DashCooldown>()
         .End();
     }
-
-
+    
     public void Run(EcsSystems systems)
     {
-      foreach (var hero in _heroes)
-        if (_world.Has<IsDashing>(hero))
-          _world.Del<DashCommand>(hero);
+      foreach (int hero in _dashes)
+        _game.Del<DashCommand>(hero);
+
+      foreach (int cooldown in _cooldowns)
+        _game.Del<DashCommand>(cooldown);
     }
   }
 }

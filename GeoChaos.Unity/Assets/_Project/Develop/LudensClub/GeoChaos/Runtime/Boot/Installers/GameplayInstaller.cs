@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
+using LudensClub.GeoChaos.Runtime.UI;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +12,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 {
   public class GameplayInstaller : MonoInstaller
   {
+    [SerializeField]
+    private DashCooldownView _dashCooldownView;
+    
     public override void InstallBindings()
     {
       BindEcsSystemFactory();
@@ -28,6 +32,16 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 #endif
 
       BindEngine();
+
+      BindDashCooldownPresenter();
+    }
+
+    private void BindDashCooldownPresenter()
+    {
+      Container
+        .BindInterfacesTo<DashCooldownPresenter>()
+        .AsSingle()
+        .WithArguments(_dashCooldownView);
     }
 
     private void BindViewFactory()
