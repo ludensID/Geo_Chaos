@@ -8,16 +8,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
   public class CalculateHeroMovementVectorSystem : IEcsRunSystem
   {
-    private readonly EcsWorld _world;
+    private readonly EcsWorld _game;
     private readonly EcsFilter _heroes;
     private readonly HeroConfig _config;
 
     public CalculateHeroMovementVectorSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
-      _world = gameWorldWrapper.World;
+      _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
-      _heroes = _world.Filter<Hero>()
+      _heroes = _game.Filter<Hero>()
         .Inc<Movable>()
         .Inc<MoveCommand>()
         .Inc<HeroMovementVector>()
@@ -26,18 +26,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
     public void Run(EcsSystems systems)
     {
-      foreach (var hero in _heroes)
+      foreach (int hero in _heroes)
       {
-        ref var command = ref _world.Get<MoveCommand>(hero);
-
-        ref var vector = ref _world.Get<HeroMovementVector>(hero);
-        CalculateVector(ref vector, command.Direction);
+        ref MoveCommand command = ref _game.Get<MoveCommand>(hero);
+        ref HorizontalSpeed speed = ref _game.Get<HorizontalSpeed>(hero);
+        ref HeroMovementVector vector = ref _game.Get<HeroMovementVector>(hero);
+        CalculateVector(ref vector, command.Direction, speed.Value);
       }
     }
 
-    private void CalculateVector(ref HeroMovementVector vector, float direction)
+    private void CalculateVector(ref HeroMovementVector vector, float direction, float speed)
     {
-      var delta = CalculateSpeedDelta();
+      float delta = CalculateSpeedDelta(speed);
       if (direction == 0)
       {
         vector.Speed.x -= delta;
@@ -48,14 +48,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         vector.Direction.x = direction;
       }
 
-      vector.Speed.x = Mathf.Clamp(vector.Speed.x, 0, _config.MovementSpeed);
+      vector.Speed.x = Mathf.Clamp(vector.Speed.x, 0, speed);
     }
 
-    private float CalculateSpeedDelta()
+    private float CalculateSpeedDelta(float speed)
     {
-      var delta = _config.AccelerationTime == 0
-        ? _config.MovementSpeed
-        : _config.MovementSpeed / _config.AccelerationTime * Time.deltaTime;
+      float delta = _config.AccelerationTime == 0
+        ? speed
+        : speed / _config.AccelerationTime * Time.deltaTime;
       return delta;
     }
   }

@@ -17,7 +17,9 @@ MonoBehaviour:
   AccelerationTime: 0.15
   JumpTime: 0.66
   JumpHeight: 5
-  FallGravityMultiplier: 1
+  FallVelocityMultiplier: 1
+  JumpHorizontalSpeedMultiplier: 2
+  JumpLength: 9.240001
   DashVelocity: 33.4
   DashTime: 0.15
   Health: 100

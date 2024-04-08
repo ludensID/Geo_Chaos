@@ -48,6 +48,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         if (!IsGroundCasted(groundCheckRef.Bottom.position))
         {
           _game.Del<IsOnGround>(onGround);
+          _game.Add<OnNotGround>(onGround);
         }
       }
     }

@@ -19,13 +19,21 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float JumpTime;
 
     public float JumpHeight;
-    public float FallGravityMultiplier;
-    // public float JumpLength;
+
+    [Range(0.001f, 10)]
+    public float FallVelocityMultiplier = 1;
+
+    [OnValueChanged(TriConstants.ON + nameof(JumpHorizontalSpeedMultiplier) + TriConstants.CHANGED)]
+    [Range(0.001f, 10)]
+    public float JumpHorizontalSpeedMultiplier = 1;
+
+    [ReadOnly]
+    public float JumpLength;
 
     [ShowInInspector]
-    [PropertyOrder(6)]
+    [PropertyOrder(8)]
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
-    public float Gravity => -2 * JumpHeight * Mathf.Pow(1 + 1 / FallGravityMultiplier, 2) / (JumpTime * JumpTime);
+    public float Gravity => -2 * JumpHeight * Mathf.Pow(1 + 1 / FallVelocityMultiplier, 2) / (JumpTime * JumpTime);
 
     [ShowInInspector]
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
@@ -33,19 +41,15 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [ShowInInspector]
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
-    public float FallGravityScale => Mathf.Pow(FallGravityMultiplier, 2) * GravityScale;
+    public float FallGravityScale => Mathf.Pow(FallVelocityMultiplier, 2) * GravityScale;
 
     [ShowInInspector]
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
-    public float JumpForce => (1 + 1 / FallGravityMultiplier) * 2 * JumpHeight / JumpTime;
+    public float JumpForce => (1 + 1 / FallVelocityMultiplier) * 2 * JumpHeight / JumpTime;
 
-    // [ShowInInspector]
-    // [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
-    // public float JumpHorizontalSpeedMultiplier => JumpLength / (MovementSpeed * JumpTime);
-    //
-    // [ShowInInspector]
-    // [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
-    // public float JumpHorizontalSpeed => JumpLength / JumpTime;
+    [ShowInInspector]
+    [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
+    public float JumpHorizontalSpeed => MovementSpeed * JumpHorizontalSpeedMultiplier;
 
     [Title("Dash")]
     public float DashVelocity;
@@ -53,7 +57,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float DashTime;
 
     [ShowInInspector]
-    [PropertyOrder(8)]
+    [PropertyOrder(10)]
     public float DashDistance => DashVelocity * DashTime;
 
     [Title("Characteristics")]
@@ -62,8 +66,14 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float DashDamage;
   }
 
+#if UNITY_EDITOR
   [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.JUMP, Title = TriConstants.TECH)]
   public partial class HeroConfig
   {
+    public void OnJumpHorizontalSpeedMultiplierChanged()
+    {
+      JumpLength = MovementSpeed * JumpHorizontalSpeedMultiplier * JumpTime;
+    }
   }
+#endif
 }

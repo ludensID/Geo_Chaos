@@ -8,6 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   {
     private readonly EcsWorld _game;
     private readonly EcsFilter _onGrounds;
+    private readonly EcsFilter _onNotGrounds;
 
     public DeleteOnGroundSystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -16,13 +17,22 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _onGrounds = _game
         .Filter<OnGround>()
         .End();
+
+      _onNotGrounds = _game
+        .Filter<OnNotGround>()
+        .End();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (var onGround in _onGrounds)
+      foreach (int onGround in _onGrounds)
       {
         _game.Del<OnGround>(onGround);
+      }
+
+      foreach (int onNotGround in _onNotGrounds)
+      {
+        _game.Del<OnNotGround>(onNotGround);
       }
     }
   }

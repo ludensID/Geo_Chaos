@@ -23,6 +23,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       Add(systems.Create<CheckForHeroOnGroundSystem>());
       Add(systems.Create<FallHeroSystem>());
       Add(systems.Create<LandHeroSystem>());
+      
+      Add(systems.Create<SetJumpHorizontalSpeedSystem>());
+      
       Add(systems.Create<ReadInputForHeroJumpSystem>());
       Add(systems.Create<JumpHeroSystem>());
       Add(systems.Create<CheckForHeroJumpStopSystem>());

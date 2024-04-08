@@ -31,6 +31,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         ref var movable = ref _game.Add<Movable>(hero);
         movable.CanMove = true;
 
+        ref HorizontalSpeed speed = ref _game.Add<HorizontalSpeed>(hero);
+        speed.Value = _config.MovementSpeed;
+        
         ref var vector = ref _game.Add<HeroMovementVector>(hero);
         vector.Direction.x = 1;
 
