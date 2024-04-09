@@ -21,12 +21,21 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindInputDataProvider();
       BindInputController();
       BindTimerService();
+      BindTimerFactory();
       BindCoroutineRunner();
       BindGameObjectConverter();
 
 #if UNITY_EDITOR
       Debugging.DebugInstaller.BindInputDebug(Container);
 #endif
+    }
+
+    private void BindTimerFactory()
+    {
+      Container
+        .Bind<ITimerFactory>()
+        .To<TimerFactory>()
+        .AsSingle();
     }
 
     private void BindGameObjectConverter()

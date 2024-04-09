@@ -8,14 +8,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 {
   public class DashHeroSystem : IEcsRunSystem
   {
-    private readonly ITimerService _timerSvc;
+    private readonly ITimerFactory _timers;
     private readonly EcsWorld _world;
     private readonly EcsFilter _heroes;
     private readonly HeroConfig _config;
 
-    public DashHeroSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider, ITimerService timerSvc)
+    public DashHeroSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider, ITimerFactory timers)
     {
-      _timerSvc = timerSvc;
+      _timers = timers;
       _config = configProvider.Get<HeroConfig>();
       _world = gameWorldWrapper.World;
 
@@ -34,8 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         vector.Speed.y = 0;
 
         ref var isDashing = ref _world.Add<IsDashing>(hero);
-        isDashing.TimeLeft = _config.DashTime;
-        _timerSvc.AddTimer(isDashing.TimeLeft);
+        isDashing.TimeLeft = _timers.Create(_config.DashTime);
 
         // stop jumping
         if (_world.Has<IsJumping>(hero))

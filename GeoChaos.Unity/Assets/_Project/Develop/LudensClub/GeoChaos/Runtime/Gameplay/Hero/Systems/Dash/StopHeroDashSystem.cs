@@ -8,14 +8,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 {
   public class StopHeroDashSystem : IEcsRunSystem
   {
-    private readonly ITimerService _timerSvc;
+    private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsFilter _heroes;
     private readonly HeroConfig _config;
 
-    public StopHeroDashSystem(GameWorldWrapper gameWorldWrapper, ITimerService timerSvc, IConfigProvider configProvider)
+    public StopHeroDashSystem(GameWorldWrapper gameWorldWrapper, ITimerFactory timers, IConfigProvider configProvider)
     {
-      _timerSvc = timerSvc;
+      _timers = timers;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
@@ -35,8 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         _game.Del<IsDashing>(hero);
 
         ref DashCooldown cooldown = ref _game.Add<DashCooldown>(hero);
-        cooldown.Timer = _config.DashCooldown;
-        _timerSvc.AddTimer(cooldown.Timer);
+        cooldown.Timer = _timers.Create(_config.DashCooldown);
       }
     }
   }
