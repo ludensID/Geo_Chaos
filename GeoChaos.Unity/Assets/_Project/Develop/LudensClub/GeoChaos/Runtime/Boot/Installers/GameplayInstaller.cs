@@ -26,9 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindSpawnPoints();
 
 #if UNITY_EDITOR
-      Debugging.DebugInstaller.BindEcsWorldDebugEngine(Container);
-      Debugging.DebugInstaller.BindInputWatcherDebug(Container);
-      Debugging.DebugInstaller.BindGravityScaleWatcher(Container);
+      Debugging.DebugBridge.InstallGameplay(Container);
 #endif
 
       BindEngine();
