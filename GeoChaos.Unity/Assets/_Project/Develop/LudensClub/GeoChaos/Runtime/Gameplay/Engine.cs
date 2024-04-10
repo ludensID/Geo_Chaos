@@ -2,12 +2,10 @@
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Enemy;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Feature;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Feature;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Feature;
-using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using Zenject;
 
@@ -15,24 +13,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
 {
   public class Engine : IInitializable, ITickable, IDisposable
   {
-    private readonly IEcsSystemFactory _factory;
-    private EcsWorld _world;
     private EcsSystems _systems;
 
-    public Engine(IEcsSystemFactory factory, GameWorldWrapper gameWorldWrapper)
+    public Engine(IEcsSystemsFactory systemsFactory, IEcsSystemFactory factory)
     {
-      _factory = factory;
-
-      _world = gameWorldWrapper.World;
-      _systems = new EcsSystems(_world);
+      _systems = systemsFactory.Create();
 
       _systems
-        .Add(_factory.Create<CreationFeature>())
-        .Add(_factory.Create<CollisionFeature>())
-        .Add(_factory.Create<InputFeature>())
-        .Add(_factory.Create<AttackFeature>())
-        .Add(_factory.Create<EnemyFeature>())
-        .Add(_factory.Create<HeroFeature>());
+        .Add(factory.Create<CreationFeature>())
+        .Add(factory.Create<CollisionFeature>())
+        .Add(factory.Create<InputFeature>())
+        .Add(factory.Create<AttackFeature>())
+        .Add(factory.Create<EnemyFeature>())
+        .Add(factory.Create<HeroFeature>());
     }
 
     public void Initialize()
@@ -51,12 +44,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
       {
         _systems.Destroy();
         _systems = null;
-      }
-
-      if (_world != null)
-      {
-        _world.Destroy();
-        _world = null;
       }
     }
   }

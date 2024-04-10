@@ -14,14 +14,15 @@ namespace LudensClub.GeoChaos.Runtime.Boot
   {
     [SerializeField]
     private DashCooldownView _dashCooldownView;
-    
+
     public override void InstallBindings()
     {
       BindEcsSystemFactory();
       BindInputWorldWrapper();
       BindGameWorldWrapper();
-      BindViewFactory();
       BindMessageWorldWrapper();
+      BindEcsSystemsFactory();
+      BindViewFactory();
       BindCollisionFiller();
       BindSpawnPoints();
 
@@ -32,6 +33,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEngine();
 
       BindDashCooldownPresenter();
+    }
+
+    private void BindEcsSystemsFactory()
+    {
+      Container
+        .Bind<IEcsSystemsFactory>()
+        .To<EcsSystemsFactory>()
+        .AsSingle();
     }
 
     private void BindDashCooldownPresenter()

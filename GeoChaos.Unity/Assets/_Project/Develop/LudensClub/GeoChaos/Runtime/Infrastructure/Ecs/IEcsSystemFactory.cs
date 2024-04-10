@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿using System.Collections.Generic;
+using Leopotam.EcsLite;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
