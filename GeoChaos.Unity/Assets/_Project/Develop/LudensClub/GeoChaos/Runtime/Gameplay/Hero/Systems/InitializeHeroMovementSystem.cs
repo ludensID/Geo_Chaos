@@ -34,10 +34,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         ref HorizontalSpeed speed = ref _game.Add<HorizontalSpeed>(hero);
         speed.Value = _config.MovementSpeed;
         
-        ref var vector = ref _game.Add<HeroMovementVector>(hero);
+        ref var vector = ref _game.Add<MovementVector>(hero);
         vector.Direction.x = 1;
 
-        _game.Add<HeroVelocity>(hero);
+        _game.Add<Velocity>(hero);
         _game.Add<Ground>(hero);
         _game.Add<JumpAvailable>(hero);
         ref var gravityScale = ref _game.Add<GravityScale>(hero);

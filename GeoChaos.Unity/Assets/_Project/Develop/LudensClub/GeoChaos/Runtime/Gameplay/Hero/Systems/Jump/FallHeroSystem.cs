@@ -17,7 +17,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _config = configProvider.Get<HeroConfig>();
 
       _onGrounds = _game
-        .Filter<HeroMovementVector>()
+        .Filter<MovementVector>()
         .Inc<GravityScale>()
         .Exc<IsFalling>()
         .End();
@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (int onGround in _onGrounds)
       {
-        ref HeroMovementVector vector = ref _game.Get<HeroMovementVector>(onGround);
+        ref MovementVector vector = ref _game.Get<MovementVector>(onGround);
         if (vector.Direction.y <= 0)
         {
           if(_game.Has<IsJumping>(onGround))

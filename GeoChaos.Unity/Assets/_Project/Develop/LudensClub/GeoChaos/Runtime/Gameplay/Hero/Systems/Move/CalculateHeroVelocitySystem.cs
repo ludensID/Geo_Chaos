@@ -14,8 +14,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _world = gameWorldWrapper.World;
 
       _vectors = _world
-        .Filter<HeroMovementVector>()
-        .Inc<HeroVelocity>()
+        .Filter<MovementVector>()
+        .Inc<Velocity>()
         .End();
     }
 
@@ -23,9 +23,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (var vector in _vectors)
       {
-        ref var movementVector = ref _world.Get<HeroMovementVector>(vector);
-        ref var velocity = ref _world.Get<HeroVelocity>(vector);
-        velocity.Velocity = movementVector.Direction * movementVector.Speed;
+        ref var movementVector = ref _world.Get<MovementVector>(vector);
+        ref var velocity = ref _world.Get<Velocity>(vector);
+        velocity.Value = movementVector.Direction * movementVector.Speed;
       }
     }
   }

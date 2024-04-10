@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
@@ -9,19 +10,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
   {
     private readonly EcsWorld _world;
     private readonly EcsFilter _heroes;
-    private readonly EcsWorld _inputWorld;
     private readonly EcsFilter _inputs;
 
     public ReadDashInputSystem(GameWorldWrapper gameWorldWrapper, InputWorldWrapper inputWorldWrapper)
     {
       _world = gameWorldWrapper.World;
-      _inputWorld = inputWorldWrapper.World;
+      EcsWorld inputWorld = inputWorldWrapper.World;
 
       _heroes = _world
         .Filter<DashAvailable>()
+        .Exc<IsMovementLocked>()
         .End();
 
-      _inputs = _inputWorld
+      _inputs = inputWorld
         .Filter<Expired>()
         .Inc<IsDash>()
         .End();

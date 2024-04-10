@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _heroes = _world.Filter<Hero>()
         .Inc<JumpAvailable>()
         .Inc<JumpCommand>()
-        .Inc<HeroMovementVector>()
+        .Inc<MovementVector>()
         .End();
     }
 
@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (var hero in _heroes)
       {
-        ref var vector = ref _world.Get<HeroMovementVector>(hero);
+        ref var vector = ref _world.Get<MovementVector>(hero);
         vector.Speed.y = _config.JumpForce;
         vector.Direction.y = 1;
 

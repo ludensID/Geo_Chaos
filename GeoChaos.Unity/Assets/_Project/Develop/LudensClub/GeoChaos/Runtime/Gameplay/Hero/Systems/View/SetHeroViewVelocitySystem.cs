@@ -14,7 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _world = gameWorldWrapper.World;
       _heroes = _world.Filter<Hero>()
         .Inc<RigidbodyRef>()
-        .Inc<HeroVelocity>()
+        .Inc<Velocity>()
         .End();
     }
 
@@ -22,10 +22,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (var hero in _heroes)
       {
-        ref var velocity = ref _world.Get<HeroVelocity>(hero);
+        ref var velocity = ref _world.Get<Velocity>(hero);
         ref var rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
 
-        rigidbodyRef.Rigidbody.velocity = velocity.Velocity;
+        rigidbodyRef.Rigidbody.velocity = velocity.Value;
       }
     }
   }

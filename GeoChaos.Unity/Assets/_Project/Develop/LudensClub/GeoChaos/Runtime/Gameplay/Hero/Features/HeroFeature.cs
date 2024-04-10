@@ -1,7 +1,10 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
 {
   public class HeroFeature : EcsFeature
   {
@@ -14,6 +17,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       Add(systems.Create<InitializeHeroRigidbodySystem>());
 
       Add(systems.Create<ReadHeroViewVelocitySystem>());
+      
+      Add(systems.Create<DeleteLockMovementEventsSystem>());
+      Add(systems.Create<LockMovementSystem>());
 
       Add(systems.Create<ReadMovementSystem>());
       Add(systems.Create<CalculateHeroMovementVectorSystem>());
@@ -27,6 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       Add(systems.Create<SetJumpHorizontalSpeedSystem>());
       
       Add(systems.Create<ReadInputForHeroJumpSystem>());
+      Add(systems.Create<LockHeroJumpSystem>());
       Add(systems.Create<JumpHeroSystem>());
       Add(systems.Create<CheckForHeroJumpStopSystem>());
       Add(systems.Create<StopHeroJumpSystem>());

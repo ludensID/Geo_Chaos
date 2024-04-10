@@ -17,10 +17,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _config = configProvider.Get<HeroConfig>();
 
       _heroes = _world.Filter<Hero>()
-        .Inc<JumpAvailable>()
         .Inc<StopJumpCommand>()
         .Inc<IsJumping>()
-        .Inc<HeroMovementVector>()
+        .Inc<MovementVector>()
         .End();
     }
 
@@ -28,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (var hero in _heroes)
       {
-        ref var vector = ref _world.Get<HeroMovementVector>(hero);
+        ref var vector = ref _world.Get<MovementVector>(hero);
         vector.Speed.y = 0;
 
         _world.Del<IsJumping>(hero);

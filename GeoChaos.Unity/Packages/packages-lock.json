@@ -7,7 +7,7 @@
       "dependencies": {
         "com.unity.localization": "1.0.0"
       },
-      "hash": "57e726cc4f2c8d3488011f312d5b22dab2b19dc5"
+      "hash": "0c5b8f4480f55bf4fdd21c8e6da9620571c3ff43"
     },
     "com.esotericsoftware.spine.spine-csharp": {
       "version": "https://github.com/EsotericSoftware/spine-runtimes.git?path=spine-csharp/src#4.1",

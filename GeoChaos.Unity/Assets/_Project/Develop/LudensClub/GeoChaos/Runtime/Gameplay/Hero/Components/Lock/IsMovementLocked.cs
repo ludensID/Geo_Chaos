@@ -1,8 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -11,9 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct HeroMovementVector : IEcsComponent
+  public struct IsMovementLocked : IEcsComponent
   {
-    public Vector2 Speed;
-    public Vector2 Direction;
   }
 }

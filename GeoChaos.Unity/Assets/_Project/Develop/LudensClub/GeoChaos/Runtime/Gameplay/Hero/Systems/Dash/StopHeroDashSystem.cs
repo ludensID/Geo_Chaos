@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
@@ -29,11 +30,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
     {
       foreach (int hero in _heroes)
       {
-        _game.Add<Movable>(hero);
-        _game.Add<JumpAvailable>(hero);
-
         _game.Del<IsDashing>(hero);
-
+        _game.Add<UnlockMovementCommand>(hero);
+        
         ref DashCooldown cooldown = ref _game.Add<DashCooldown>(hero);
         cooldown.Timer = _timers.Create(_config.DashCooldown);
       }

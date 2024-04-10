@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _heroes = _game.Filter<Hero>()
         .Inc<Movable>()
         .Inc<MoveCommand>()
-        .Inc<HeroMovementVector>()
+        .Inc<MovementVector>()
         .End();
     }
 
@@ -30,12 +30,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       {
         ref MoveCommand command = ref _game.Get<MoveCommand>(hero);
         ref HorizontalSpeed speed = ref _game.Get<HorizontalSpeed>(hero);
-        ref HeroMovementVector vector = ref _game.Get<HeroMovementVector>(hero);
+        ref MovementVector vector = ref _game.Get<MovementVector>(hero);
         CalculateVector(ref vector, command.Direction, speed.Value);
       }
     }
 
-    private void CalculateVector(ref HeroMovementVector vector, float direction, float speed)
+    private void CalculateVector(ref MovementVector vector, float direction, float speed)
     {
       float delta = CalculateSpeedDelta(speed);
       if (direction == 0)

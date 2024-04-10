@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
       _fallings = _game
         .Filter<IsFalling>()
-        .Inc<HeroMovementVector>()
+        .Inc<MovementVector>()
         .Inc<GravityScale>()
         .End();
     }
@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (int falling in _fallings)
       {
-        ref HeroMovementVector vector = ref _game.Get<HeroMovementVector>(falling);
+        ref MovementVector vector = ref _game.Get<MovementVector>(falling);
         if (vector.Direction.y >= 0)
         {
           _game.Del<IsFalling>(falling);
