@@ -10,8 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
     private readonly IInputDataProvider _input;
     private readonly EcsWorld _world;
 
-    public ReadInputSystem(InputWorldWrapper inputWorldWrapper,
-      IInputDataProvider input)
+    public ReadInputSystem(InputWorldWrapper inputWorldWrapper, IInputDataProvider input)
     {
       _input = input;
       _world = inputWorldWrapper.World;
@@ -19,10 +18,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 
     public void Run(EcsSystems systems)
     {
-      var input = _world.NewEntity();
+      int input = _world.NewEntity();
       _world.Add<DelayedInput>(input);
 
-      ref var movement = ref _world.Add<HorizontalMovement>(input);
+      ref HorizontalMovement movement = ref _world.Add<HorizontalMovement>(input);
       movement.Direction = _input.Data.HorizontalMovement;
 
       if (_input.Data.IsJumpStarted)
@@ -34,7 +33,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
       if (_input.Data.IsDash)
         _world.Add<IsDash>(input);
 
-      ref var timer = ref _world.Add<ExpireTimer>(input);
+      if (_input.Data.IsAttack)
+        _world.Add<IsAttack>(input);
+
+      ref ExpireTimer timer = ref _world.Add<ExpireTimer>(input);
       timer.PassedTime = 0;
     }
   }

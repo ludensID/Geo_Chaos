@@ -1,7 +1,10 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -51,13 +54,26 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<CheckStopHeroDashSystem>());
       Add(systems.Create<StopHeroDashSystem>());
 
+      Add(systems.Create<CalculateHeroVelocitySystem>());
+      
+      Add(systems.Create<Delete<OnAttackStarted, GameWorldWrapper>>());
+      Add(systems.Create<Delete<OnAttackFinished, GameWorldWrapper>>());
+      Add(systems.Create<ReadAttackInputSystem>());
+      Add(systems.Create<CheckAttackSystem>());
+      Add(systems.Create<ResetComboCounterSystem>());
+      Add(systems.Create<HeroAttackSystem>());
+      Add(systems.Create<StopHeroAttackSystem>());
+      
+      Add(systems.Create<HeroViewAttackSystem>());
+      
       Add(systems.Create<DashHeroViewSystem>());
       Add(systems.Create<StopDashHeroViewSystem>());
 
-      Add(systems.Create<CalculateHeroVelocitySystem>());
-
       Add(systems.Create<SetViewGravitySystem>());
       Add(systems.Create<SetHeroViewVelocitySystem>());
+      Add(systems.Create<SetHeroViewRotationSystem>());
+      
+      Add(systems.Create<SetHeroSwordViewColorSystem>());
     }
   }
 }

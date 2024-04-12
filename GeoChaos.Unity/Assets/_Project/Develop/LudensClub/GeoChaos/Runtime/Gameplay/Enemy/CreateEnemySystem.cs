@@ -3,6 +3,7 @@ using LudensClub.GeoChaos.Runtime.Characteristics.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemy;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
@@ -28,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Enemy
       foreach (var enemy in _enemies
         .Where((ref EntityId x) => x.Id == EntityType.Enemy))
       {
-        _game.Add<Enemy>(enemy);
+        _game.Add<EnemyTag>(enemy);
 
         ref var health = ref _game.Add<Health>(enemy);
         health.Value = 100;

@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
 
     public void Run(EcsSystems systems)
     {
-      foreach (var col in _collisions)
+      foreach (int col in _collisions)
         _message.DelEntity(col);
     }
   }

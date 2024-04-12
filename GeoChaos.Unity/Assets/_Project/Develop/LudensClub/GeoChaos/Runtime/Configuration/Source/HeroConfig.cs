@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Utils;
+﻿using System.Collections.Generic;
+using LudensClub.GeoChaos.Runtime.Utils;
 using TriInspector;
 using UnityEngine;
 
@@ -53,28 +54,28 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Dash")]
     public float DashVelocity;
+
     public float DashTime;
 
     [ShowInInspector]
     [PropertyOrder(10)]
     public float DashDistance => DashVelocity * DashTime;
-    
+
     public float DashCooldown;
+
+    [Title("Attack")]
+    [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
+    public List<float> HitDurations = new(3) { 0, 0, 0 };
+
+    [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
+    public List<float> ComboAttackPeriods = new(2) { 0, 0 };
 
     [Title("Characteristics")]
     public float Health;
 
     public float DashDamage;
-  }
 
-#if UNITY_EDITOR
-  [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.JUMP, Title = TriConstants.TECH)]
-  public partial class HeroConfig
-  {
-    public void OnJumpHorizontalSpeedMultiplierChanged()
-    {
-      JumpLength = MovementSpeed * JumpHorizontalSpeedMultiplier * JumpTime;
-    }
+    [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
+    public List<float> HitDamages = new(3) { 0, 0, 0 };
   }
-#endif
 }

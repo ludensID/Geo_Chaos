@@ -12,7 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     public SetHeroViewVelocitySystem(GameWorldWrapper gameWorldWrapper)
     {
       _world = gameWorldWrapper.World;
-      _heroes = _world.Filter<Hero>()
+      _heroes = _world.Filter<HeroTag>()
         .Inc<RigidbodyRef>()
         .Inc<Velocity>()
         .End();

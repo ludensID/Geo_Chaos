@@ -19,13 +19,16 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
     public string DashAction;
+    
+    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
+    public string AttackAction;
 
 #if UNITY_EDITOR
     private static IEnumerable<string> DropActionNames()
     {
-      var assets = AssetDatabase.FindAssets($"t:{nameof(InputActionAsset)}");
+      string[] assets = AssetDatabase.FindAssets($"t:{nameof(InputActionAsset)}");
       var asset = AssetDatabase.LoadAssetAtPath<InputActionAsset>(AssetDatabase.GUIDToAssetPath(assets[0]));
-      var map = asset.FindActionMap("Player");
+      InputActionMap map = asset.FindActionMap("Player");
       return map.actions.Select(x => x.name);
     }
 #endif

@@ -1,9 +1,11 @@
-﻿using Leopotam.EcsLite;
+﻿using System;
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Props
 {
+  [Serializable]
   public struct PackedCollider
   {
     public Collider2D Collider;

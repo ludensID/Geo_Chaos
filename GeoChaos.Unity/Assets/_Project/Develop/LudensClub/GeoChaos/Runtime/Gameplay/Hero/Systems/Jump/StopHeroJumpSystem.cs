@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _world = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
-      _heroes = _world.Filter<Hero>()
+      _heroes = _world.Filter<HeroTag>()
         .Inc<StopJumpCommand>()
         .Inc<IsJumping>()
         .Inc<MovementVector>()

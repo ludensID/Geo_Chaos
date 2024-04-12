@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Utils;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Debugging.Monitoring
 {
@@ -13,7 +15,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private readonly IEcsEntityPresenterFactory _entityFactory;
     private readonly IEcsUniversePresenter _parent;
     private readonly List<IEcsEntityPresenter> _children = new();
-    private readonly List<int> _dirtyEntities = new();
+    private readonly HashSet<int> _dirtyEntities = new();
     private Type[] _typesCache;
     private int[] _entities;
 
@@ -34,9 +36,9 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     {
       View = _viewFactory.Create(_parent.View.transform);
       View.gameObject.name = $"[ECS-WORLD {_wrapper.Name}]";
-      
+
       _wrapper.World.AddEventListener(this);
-      
+
       var entities = new int[_wrapper.World.GetAllocatedEntitiesCount()];
       _wrapper.World.GetAllEntities(ref _entities);
       foreach (int entity in entities)
@@ -45,6 +47,16 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     public void Tick()
     {
+      var updatables = _children.Select(x => x.Entity).Except(_dirtyEntities);
+      
+      if (updatables.Count() + _dirtyEntities.Count != _children.Count)
+        throw new ArgumentException();
+
+      foreach (int updatable in updatables)
+      {
+        _children[updatable].UpdateView();
+      }
+
       foreach (int dirtyEntity in _dirtyEntities)
       {
         _children[dirtyEntity].Tick();

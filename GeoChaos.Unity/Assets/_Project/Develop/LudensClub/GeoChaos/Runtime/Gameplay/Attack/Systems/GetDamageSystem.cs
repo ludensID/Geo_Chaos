@@ -3,6 +3,7 @@ using LudensClub.GeoChaos.Runtime.Characteristics.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Systems
 {
@@ -24,12 +25,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Systems
 
     public void Run(EcsSystems systems)
     {
-      foreach (var damage in _damages)
+      foreach (int damage in _damages)
       {
-        ref var message = ref _message.Get<DamageMessage>(damage);
-        message.Target.Unpack(_game, out var target);
-        ref var health = ref _game.Get<Health>(target);
+        ref DamageMessage message = ref _message.Get<DamageMessage>(damage);
+        message.Target.Unpack(_game, out int target);
+        ref Health health = ref _game.Get<Health>(target);
         health.Value -= message.Damage;
+        
         _message.DelEntity(damage);
       }
     }

@@ -15,7 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _game = gameWorldWrapper.World;
 
       _heroes = _game
-        .Filter<Hero>()
+        .Filter<HeroTag>()
         .Inc<InitializeCommand>()
         .End();
     }

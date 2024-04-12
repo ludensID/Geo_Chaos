@@ -10,13 +10,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
 {
   public class DamageFromDashSystem : IEcsRunSystem
   {
+    private readonly ICollisionService _collisionSvc;
     private readonly EcsFilter _collisions;
     private readonly EcsWorld _message;
     private readonly HeroConfig _config;
 
     public DamageFromDashSystem(MessageWorldWrapper messageWorldWrapper,
-      IConfigProvider configProvider)
+      IConfigProvider configProvider,
+      ICollisionService collisionSvc)
     {
+      _collisionSvc = collisionSvc;
       _message = messageWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
@@ -29,32 +32,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
     {
       foreach (var col in _collisions)
       {
-        ref var collision = ref _message.Get<TwoSideCollision>(col);
-        if (TrySelect(collision, ColliderType.Dash, ColliderType.Body, out var damager,
-          out var target) && !damager.Entity.EqualsTo(target.Entity))
+        ref TwoSideCollision collision = ref _message.Get<TwoSideCollision>(col);
+        if (_collisionSvc.TrySelectDamagerAndTarget(collision, ColliderType.Dash, ColliderType.Body,
+          out PackedCollider damager, out PackedCollider target) && !damager.Entity.EqualsTo(target.Entity))
         {
-          var message = _message.NewEntity();
-          ref var damage = ref _message.Add<DamageMessage>(message);
+          int message = _message.NewEntity();
+          ref DamageMessage damage = ref _message.Add<DamageMessage>(message);
           damage.Damage = _config.DashDamage;
           damage.Damager = damager.Entity;
           damage.Target = target.Entity;
         }
       }
-    }
-
-    public bool TrySelect(TwoSideCollision collision, ColliderType damagerType, ColliderType targetType,
-      out PackedCollider damager, out PackedCollider target)
-    {
-      var selection = new List<PackedCollider> { collision.Sender, collision.Other };
-      damager = selection.Find(x => x.Type == damagerType);
-      target = selection.Find(x => x.Type == targetType);
-
-      return damager.Collider && target.Collider;
-    }
-
-    public bool DoubleOr(ColliderType aLeft, ColliderType bLeft, ColliderType aRight, ColliderType bRight)
-    {
-      return (aLeft == aRight && bLeft == bRight) || (aLeft == bRight && bLeft == aRight);
     }
   }
 }

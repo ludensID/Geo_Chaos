@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Debugging
@@ -7,6 +8,8 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
   {
     public static event Action<DiContainer> OnProjectInstalled;
     public static event Action<DiContainer> OnGameplayInstalled;
+
+    public static event Action<bool> OnHeroAttackColliderMeshChanged;
 
     public static void InstallProject(DiContainer container)
     {
@@ -17,5 +20,11 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
     {
       OnGameplayInstalled?.Invoke(container);
     }
+
+    public static void ChangeHeroAttackColliderMesh(bool enabled)
+    {
+      OnHeroAttackColliderMeshChanged?.Invoke(enabled);
+    }
   }
 }
+#endif

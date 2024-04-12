@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       foreach (var command in _commands
         .Where((ref EntityId x) => x.Id == EntityType.Hero))
       {
-        _game.Add<Hero>(command);
+        _game.Add<HeroTag>(command);
 
         ref var health = ref _game.Add<Health>(command);
         health.Value = 100;

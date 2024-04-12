@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Linq;
+using LudensClub.GeoChaos.Runtime.Characteristics.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Debugging.Monitoring
 {
@@ -13,6 +18,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private readonly IEcsWorldPresenter _parent;
     private Type[] _typesCache;
     private object[] _components;
+    private int _componentCount;
 
     public int Entity { get; }
     public EcsEntityView View { get; private set; }
@@ -42,22 +48,13 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
         UpdateView();
       }
+      else
+      {
+        View.Components.Clear();
+        _componentCount = 0;
+      }
 
       View.gameObject.name = entityName;
-    }
-
-    private void UpdateView()
-    {
-      int componentCount = _wrapper.World.GetComponents(Entity, ref _components);
-      Resize(componentCount);
-
-      for (int i = 0; i < componentCount; i++)
-      {
-        EcsComponentView componentView = View.Components[i];
-        object component = _components[i];
-        if (componentView.Value == null || !componentView.Value.Equals(component))
-          componentView.Value = (IEcsComponent) component;
-      }
     }
 
     private string UpdateName(string entityName)
@@ -71,18 +68,38 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       return entityName;
     }
 
-    private void Resize(int componentCount)
+    public void UpdateView()
+    {
+      _componentCount = _wrapper.World.GetComponents(Entity, ref _components);
+      Resize();
+
+      if (View.Components.Count != _componentCount)
+        throw new IndexOutOfRangeException();
+
+      for (int i = 0; i < _componentCount; i++)
+      {
+        EcsComponentView componentView = View.Components[i];
+        object component = _components[i];
+        if (componentView.Value == null || !componentView.Value.Equals(component))
+          componentView.Value = (IEcsComponent)component;
+      }
+    }
+
+    private void Resize()
     {
       int viewCount = View.Components.Count;
-      if (componentCount < viewCount)
+      if (_componentCount < viewCount)
       {
-        View.Components.RemoveRange(componentCount, viewCount - componentCount);
+        View.Components.RemoveRange(_componentCount, viewCount - _componentCount);
       }
-      else if (componentCount > viewCount)
+      else if (_componentCount > viewCount)
       {
-        for (int i = viewCount; i < componentCount; i++)
+        for (int i = viewCount; i < _componentCount; i++)
           View.Components.Add(new EcsComponentView());
       }
+
+      if (View.Components.Count != _componentCount)
+        throw new IndexOutOfRangeException();
     }
 
     public void SetActive(bool value)

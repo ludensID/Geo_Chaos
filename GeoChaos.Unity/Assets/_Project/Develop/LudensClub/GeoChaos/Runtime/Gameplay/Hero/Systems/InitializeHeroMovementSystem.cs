@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
@@ -19,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _config = configProvider.Get<HeroConfig>();
 
       _heroes = _game
-        .Filter<Hero>()
+        .Filter<HeroTag>()
         .Inc<InitializeCommand>()
         .End();
     }
@@ -46,6 +47,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
         ref var dash = ref _game.Add<DashAvailable>(hero);
         dash.CanDash = true;
+
+        _game.Add<AttackAvailable>(hero);
+        _game.Add<ComboAttackCounter>(hero);
       }
     }
   }

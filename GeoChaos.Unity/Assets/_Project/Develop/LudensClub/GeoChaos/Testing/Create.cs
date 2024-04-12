@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Testing
     public static int Hero(EcsWorld world)
     {
       var hero = world.NewEntity();
-      world.Add<Hero>(hero);
+      world.Add<HeroTag>(hero);
       return hero;
     }
   }

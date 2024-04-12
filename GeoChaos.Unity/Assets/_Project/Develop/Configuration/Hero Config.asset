@@ -23,5 +23,21 @@ MonoBehaviour:
   DashVelocity: 33.4
   DashTime: 0.15
   DashCooldown: 4
+  HitDurations:
+  - 0.2
+  - 0.5
+  - 1
+  ComboAttackPeriods:
+  - 0.3
+  - 0.5
   Health: 100
   DashDamage: 10
+  HitDamages:
+  - 10
+  - 20
+  - 30
+  IsColliderMeshEnabled: 1
+  HitColliderSizes:
+  - 1
+  - 1.6
+  - 2.5

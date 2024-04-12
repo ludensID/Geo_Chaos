@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.UI
       _game = gameWorldWrapper.World;
 
       _heroCooldowns = _game
-        .Filter<Hero>()
+        .Filter<HeroTag>()
         .Inc<DashCooldown>()
         .End();
     }

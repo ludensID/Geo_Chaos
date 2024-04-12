@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using LudensClub.GeoChaos.Runtime.Gameplay;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
@@ -15,6 +16,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     [SerializeField]
     private DashCooldownView _dashCooldownView;
 
+    [SerializeField]
+    private EnemyHealthView _enemyHealthView;
+
     public override void InstallBindings()
     {
       BindEcsSystemFactory();
@@ -24,6 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEcsSystemsFactory();
       BindViewFactory();
       BindCollisionFiller();
+      BindCollisionService();
       BindSpawnPoints();
 
 #if UNITY_EDITOR
@@ -33,6 +38,23 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEngine();
 
       BindDashCooldownPresenter();
+      BindEnemyHealthView();
+    }
+
+    private void BindEnemyHealthView()
+    {
+      Container
+        .BindInterfacesTo<EnemyHealthPresenter>()
+        .AsSingle()
+        .WithArguments(_enemyHealthView);
+    }
+
+    private void BindCollisionService()
+    {
+      Container
+        .Bind<ICollisionService>()
+        .To<CollisionService>()
+        .AsSingle();
     }
 
     private void BindEcsSystemsFactory()

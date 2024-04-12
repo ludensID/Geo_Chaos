@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _world = gameWorldWrapper.World;
       EcsWorld inputWorld = inputWorldWrapper.World;
 
-      _grounds = _world.Filter<Hero>()
+      _grounds = _world.Filter<HeroTag>()
         .Inc<JumpAvailable>()
         .Inc<IsOnGround>()
         .Exc<IsMovementLocked>()
@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Inc<IsJumpStarted>()
         .End();
 
-      _noStoppeds = _world.Filter<Hero>()
+      _noStoppeds = _world.Filter<HeroTag>()
         .Inc<JumpAvailable>()
         .Inc<IsJumping>()
         .Exc<IsMovementLocked>()

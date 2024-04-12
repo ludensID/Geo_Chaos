@@ -8,5 +8,6 @@
     void Tick();
     void Initialize();
     void SetActive(bool value);
+    void UpdateView();
   }
 }

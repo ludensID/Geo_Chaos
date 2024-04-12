@@ -12,6 +12,7 @@
     {
       public const string ACTION_NAMES = "ActionNames";
       public const string JUMP = "Jump";
+      public const string ATTACK_COLLIDERS = "AttackColliders";
 
       public static class Explicit
       {

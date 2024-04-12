@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
       _config = configProvider.Get<HeroConfig>();
       _game = gameWorldWrapper.World;
 
-      _heroes = _game.Filter<Hero>()
+      _heroes = _game.Filter<HeroTag>()
         .Inc<DashCommand>()
         .Inc<MovementVector>()
         .End();

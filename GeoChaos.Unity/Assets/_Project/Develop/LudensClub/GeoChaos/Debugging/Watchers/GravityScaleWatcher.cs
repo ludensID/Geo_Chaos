@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
         if (!float.IsFinite(_gravityScale))
           return;
         
-        foreach (int hero in _game.Filter<Hero>().Inc<GravityScale>().End())
+        foreach (int hero in _game.Filter<HeroTag>().Inc<GravityScale>().End())
         {
           ref GravityScale gravityScale = ref _game.Get<GravityScale>(hero);
           gravityScale.Value = _game.Has<IsFalling>(hero) ? _config.FallGravityScale : _config.GravityScale;
