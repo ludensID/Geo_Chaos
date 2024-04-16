@@ -1,7 +1,6 @@
 ﻿#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Linq;
-using LudensClub.GeoChaos.Runtime.Debugging;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Converters;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -29,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
       IsColliderMeshEnabled ? "Disable Collider Meshes" : "Enable Collider Meshes";  
 
     [PropertySpace(SpaceBefore = 20)]
-    [PropertyOrder(16)]
+    [PropertyOrder(18)]
     // [Group(TriConstants.Names.ATTACK_COLLIDERS)]
     // [Button("$" + nameof(EnableColliderMeshButtonName))]
     // public void EnableColliderMesh()

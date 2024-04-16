@@ -5,6 +5,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -63,6 +64,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<ResetComboCounterSystem>());
       Add(systems.Create<HeroAttackSystem>());
       Add(systems.Create<StopHeroAttackSystem>());
+
+      Add(systems.Create<ClearSelectedRingsSystem>());
+      Add(systems.Create<SelectRingsInHookRadiusSystem>());
+      Add(systems.Create<SelectRingsDirectedToHeroSystem>());
+      Add(systems.Create<SelectRingsInHeroViewSystem>());
+      Add(systems.Create<SelectNearestRingSystem>());
       
       Add(systems.Create<HeroViewAttackSystem>());
       

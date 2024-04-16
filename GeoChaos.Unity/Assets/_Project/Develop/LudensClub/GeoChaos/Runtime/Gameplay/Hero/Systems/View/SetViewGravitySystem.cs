@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     public void Run(EcsSystems systems)
     {
       foreach (var body in _bodies
-        .Where((ref GravityScale x) => x.Override))
+        .Where<GravityScale>(x => x.Override))
       {
         ref GravityScale gravityScale = ref _game.Get<GravityScale>(body);
         ref RigidbodyRef rigidbodyRef = ref _game.Get<RigidbodyRef>(body);

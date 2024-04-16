@@ -30,6 +30,8 @@ MonoBehaviour:
   ComboAttackPeriods:
   - 0.3
   - 0.5
+  HookRadius: 20
+  RingHorizontalDistance: 1
   Health: 100
   DashDamage: 10
   HitDamages:

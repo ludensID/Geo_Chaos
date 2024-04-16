@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Feature
     public CreationFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<SpawnEntitiesSystem>());
+      Add(systems.Create<CreateRingByViewSystem>());
 
       Add(systems.Create<Delete<OnConverted, GameWorldWrapper>>());
       Add(systems.Create<CreateViewByPrefabSystem>());

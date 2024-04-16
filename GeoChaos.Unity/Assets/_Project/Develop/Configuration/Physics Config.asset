@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b32bd0ab40845ea9fe8447aa0b9194c, type: 3}
   m_Name: Physics Config
   m_EditorClassIdentifier: 
-  GroundLayer:
+  GroundMask:
     serializedVersion: 2
     m_Bits: 384
   AcceptableGroundDistance: 0.02

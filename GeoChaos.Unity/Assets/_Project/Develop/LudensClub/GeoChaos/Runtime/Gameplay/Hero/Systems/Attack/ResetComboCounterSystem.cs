@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
     public void Run(EcsSystems systems)
     {
       foreach (int timer in _timers
-        .Where((ref ComboAttackTimer x) => x.TimeLeft <= 0))
+        .Where<ComboAttackTimer>(x => x.TimeLeft <= 0))
       {
         ref ComboAttackCounter counter = ref _game.Get<ComboAttackCounter>(timer);
         counter.Count = 0;

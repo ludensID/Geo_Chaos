@@ -32,7 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
     public void Run(EcsSystems systems)
     {
       foreach (int hero in _heroes
-        .Where((ref HitTimer x) => x.TimeLeft <= 0))
+        .Where<HitTimer>(x => x.TimeLeft <= 0))
       {
         _game.Del<HitTimer>(hero);
         _game.Del<IsAttacking>(hero);

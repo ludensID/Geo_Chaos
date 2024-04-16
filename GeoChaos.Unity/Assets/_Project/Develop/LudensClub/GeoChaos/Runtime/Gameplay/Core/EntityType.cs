@@ -3,6 +3,7 @@
   public enum EntityType
   {
     Hero = 1,
-    Enemy = 2
+    Enemy = 2,
+    Ring = 15
   }
 }

@@ -58,7 +58,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       var origin = new Vector2(position.x, position.y);
       Vector2 direction = Vector2.zero;
       RaycastHit2D raycastHit = Physics2D.CircleCast(origin, _physics.AcceptableGroundDistance, direction,
-        Mathf.Infinity, _physics.GroundLayer);
+        Mathf.Infinity, _physics.GroundMask);
       return raycastHit.collider != null;
     }
   }

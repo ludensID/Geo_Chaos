@@ -5,6 +5,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
+using LudensClub.GeoChaos.Runtime.Props.Ring;
 using LudensClub.GeoChaos.Runtime.UI;
 using UnityEngine;
 using Zenject;
@@ -30,6 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindCollisionFiller();
       BindCollisionService();
       BindSpawnPoints();
+      BindRingViews();
 
 #if UNITY_EDITOR
       Debugging.DebugBridge.InstallGameplay(Container);
@@ -39,6 +41,15 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindDashCooldownPresenter();
       BindEnemyHealthView();
+    }
+
+    private void BindRingViews()
+    {
+      List<RingView> rings = FindObjectsByType<RingView>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).ToList();
+      Container
+        .Bind<List<RingView>>()
+        .FromInstance(rings)
+        .AsSingle();
     }
 
     private void BindEnemyHealthView()

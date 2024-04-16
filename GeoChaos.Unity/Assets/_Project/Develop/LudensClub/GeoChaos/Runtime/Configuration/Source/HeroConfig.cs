@@ -58,7 +58,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float DashTime;
 
     [ShowInInspector]
-    [PropertyOrder(10)]
+    [PropertyOrder(11)]
     public float DashDistance => DashVelocity * DashTime;
 
     public float DashCooldown;
@@ -69,6 +69,11 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
     public List<float> ComboAttackPeriods = new(2) { 0, 0 };
+
+    [Title("Grappling Hook")]
+    public float HookRadius;
+
+    public float RingHorizontalDistance;
 
     [Title("Characteristics")]
     public float Health;

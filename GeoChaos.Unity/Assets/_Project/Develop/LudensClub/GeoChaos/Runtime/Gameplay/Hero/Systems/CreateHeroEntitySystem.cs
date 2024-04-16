@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     public void Run(EcsSystems systems)
     {
       foreach (var command in _commands
-        .Where((ref EntityId x) => x.Id == EntityType.Hero))
+        .Where<EntityId>(x => x.Id == EntityType.Hero))
       {
         _game.Add<HeroTag>(command);
 
