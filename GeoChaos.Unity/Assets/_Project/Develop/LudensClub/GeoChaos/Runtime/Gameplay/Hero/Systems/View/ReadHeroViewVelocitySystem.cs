@@ -8,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   public class ReadHeroViewVelocitySystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _vectors;
+    private readonly EcsEntities _vectors;
 
     public ReadHeroViewVelocitySystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -16,17 +16,20 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
       _vectors = _world.Filter<RigidbodyRef>()
         .Inc<MovementVector>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var vector in _vectors)
+      foreach (EcsEntity vector in _vectors)
       {
-        ref var rigidbodyRef = ref _world.Get<RigidbodyRef>(vector);
-        ref var movementVector = ref _world.Get<MovementVector>(vector);
-        var velocity = rigidbodyRef.Rigidbody.velocity;
-        movementVector.Speed.y = Mathf.Abs(velocity.y);
+        Vector2 velocity = vector.Get<RigidbodyRef>().Rigidbody.velocity;
+        ref MovementVector movementVector = ref vector.Get<MovementVector>();
+        
+        movementVector.Speed = new Vector2(Mathf.Abs(velocity.x), Mathf.Abs(velocity.y));
+        
+        if (Mathf.Abs(velocity.x) > 0)
+          movementVector.Direction.x = Mathf.Sign(velocity.x);
         movementVector.Direction.y = Mathf.Sign(velocity.y);
       }
     }

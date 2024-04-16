@@ -16,3 +16,4 @@ MonoBehaviour:
   JumpAction: Jump
   DashAction: Dash
   AttackAction: Attack
+  HookAction: Hook

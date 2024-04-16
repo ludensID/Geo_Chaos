@@ -15,12 +15,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     private readonly EcsEntities _heroes;
     private readonly EcsEntities _selectedRings;
     private readonly PhysicsConfig _physics;
+    private readonly HeroConfig _config;
 
     public SelectRingsInHeroViewSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
       _game = gameWorldWrapper.World;
       _physics = configProvider.Get<PhysicsConfig>();
-
+      _config = configProvider.Get<HeroConfig>();
+      
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<ViewRef>()
@@ -38,16 +40,27 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       foreach (EcsEntity hero in _heroes)
       foreach (EcsEntity ring in _selectedRings)
       {
-        Transform heroTransform = hero.Get<ViewRef>().View.transform;
-        Transform ringTransform = ring.Get<ViewRef>().View.transform;
-        Vector3 vector = ringTransform.position - heroTransform.position;
-        RaycastHit2D centerRaycast = Physics2D.Raycast(heroTransform.position, vector.normalized, vector.magnitude,
+        Vector3 heroPosition = hero.Get<ViewRef>().View.transform.position;
+        Vector3 ringPosition = ring.Get<ViewRef>().View.transform.position;
+        Vector3 vector = ringPosition - heroPosition;
+        RaycastHit2D centerRaycast = Physics2D.Raycast(heroPosition, vector.normalized, vector.magnitude,
           _physics.GroundMask);
-        RaycastHit2D topRaycast = Physics2D.Raycast(heroTransform.position + Vector3.up, vector.normalized,
+
+        Vector3 topVector = GetMovementVector(heroPosition, ring.Get<RingPoints>().TargetPoint.position);
+        RaycastHit2D topRaycast = Physics2D.Raycast(heroPosition + Vector3.up, topVector.normalized,
           vector.magnitude, _physics.GroundMask);
         if (centerRaycast.collider != null || topRaycast.collider != null)
           ring.Del<Selected>();
       }
+    }
+
+    private Vector3 GetMovementVector(Vector3 heroPosition, Vector3 ringPosition)
+    {
+      float height = Mathf.Abs(heroPosition.y - ringPosition.y);
+      float velocityY = Mathf.Sqrt(2 * _config.PositiveGravity * height);
+      float time = velocityY / _config.PositiveGravity;
+      float velocityX = (ringPosition.x - heroPosition.x) / time;
+      return new Vector3(velocityX, velocityY);
     }
   }
 }

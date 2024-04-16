@@ -1,6 +1,7 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems;
@@ -55,7 +56,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<CheckStopHeroDashSystem>());
       Add(systems.Create<StopHeroDashSystem>());
 
-      Add(systems.Create<CalculateHeroVelocitySystem>());
       
       Add(systems.Create<Delete<OnAttackStarted, GameWorldWrapper>>());
       Add(systems.Create<Delete<OnAttackFinished, GameWorldWrapper>>());
@@ -70,6 +70,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<SelectRingsDirectedToHeroSystem>());
       Add(systems.Create<SelectRingsInHeroViewSystem>());
       Add(systems.Create<SelectNearestRingSystem>());
+      
+      Add(systems.Create<Delete<OnHookStarted, GameWorldWrapper>>());
+      Add(systems.Create<Delete<OnHookFinished, GameWorldWrapper>>());
+      Add(systems.Create<ReadHookInputSystem>());
+      Add(systems.Create<CheckForSelectedRingSystem>());
+      Add(systems.Create<HookSystem>());
+      Add(systems.Create<CalculateHookSystem>());
+      Add(systems.Create<CheckForHookTimerSystem>());
+      Add(systems.Create<StopHookSystem>());
+      
+      Add(systems.Create<CalculateHeroVelocitySystem>());
       
       Add(systems.Create<HeroViewAttackSystem>());
       

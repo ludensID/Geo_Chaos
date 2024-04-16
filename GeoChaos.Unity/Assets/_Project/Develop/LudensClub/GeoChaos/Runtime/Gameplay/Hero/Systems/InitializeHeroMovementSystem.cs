@@ -3,6 +3,7 @@ using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
@@ -11,8 +12,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   public class InitializeHeroMovementSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _heroes;
     private readonly HeroConfig _config;
+    private readonly EcsEntities _heroes;
 
     public InitializeHeroMovementSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
@@ -22,34 +23,28 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<InitializeCommand>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var hero in _heroes)
+      foreach (EcsEntity hero in _heroes)
       {
-        ref var movable = ref _game.Add<Movable>(hero);
-        movable.CanMove = true;
-
-        ref HorizontalSpeed speed = ref _game.Add<HorizontalSpeed>(hero);
-        speed.Value = _config.MovementSpeed;
-        
-        ref var vector = ref _game.Add<MovementVector>(hero);
-        vector.Direction.x = 1;
-
-        _game.Add<Velocity>(hero);
-        _game.Add<Ground>(hero);
-        _game.Add<JumpAvailable>(hero);
-        ref var gravityScale = ref _game.Add<GravityScale>(hero);
-        gravityScale.Value = _config.GravityScale;
-        gravityScale.Override = true;
-
-        ref var dash = ref _game.Add<DashAvailable>(hero);
-        dash.CanDash = true;
-
-        _game.Add<AttackAvailable>(hero);
-        _game.Add<ComboAttackCounter>(hero);
+        hero.Add((ref Movable movable) => movable.CanMove = true)
+          .Add((ref HorizontalSpeed speed) => speed.Value = _config.MovementSpeed)
+          .Add((ref MovementVector vector) => vector.Direction.x = 1)
+          .Add<Velocity>()
+          .Add<Ground>()
+          .Add<JumpAvailable>()
+          .Add((ref GravityScale gravity) =>
+          {
+            gravity.Value = _config.GravityScale;
+            gravity.Override = true;
+          })
+          .Add((ref DashAvailable dash) => dash.CanDash = true)
+          .Add<AttackAvailable>()
+          .Add<ComboAttackCounter>()
+          .Add<HookAvailable>();
       }
     }
   }

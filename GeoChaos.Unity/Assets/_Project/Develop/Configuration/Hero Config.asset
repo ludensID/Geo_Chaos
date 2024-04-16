@@ -31,7 +31,9 @@ MonoBehaviour:
   - 0.3
   - 0.5
   HookRadius: 20
-  RingHorizontalDistance: 1
+  RingHorizontalDistance: 1.5
+  PullUpHeight: 2
+  PullDownHeight: 1
   Health: 100
   DashDamage: 10
   HitDamages:

@@ -11,6 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     private readonly InputAction _jumpAction;
     private readonly InputAction _dashAction;
     private readonly InputAction _attackAction;
+    private readonly InputAction _hookAction;
 
     public InputController(PlayerInput input, IConfigProvider configProvider, IInputDataProvider provider)
     {
@@ -21,6 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       _jumpAction = input.actions[actionMap.JumpAction];
       _dashAction = input.actions[actionMap.DashAction];
       _attackAction = input.actions[actionMap.AttackAction];
+      _hookAction = input.actions[actionMap.HookAction];
     }
 
     public void Tick()
@@ -44,6 +46,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
       data.IsDash = _dashAction.WasPerformedThisFrame();
       data.IsAttack = _attackAction.WasPerformedThisFrame();
+      data.IsHook = _hookAction.WasPerformedThisFrame();
 
       _provider.Data = data;
     }

@@ -24,7 +24,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       {
         ref var velocity = ref _world.Get<Velocity>(hero);
         ref var rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
-
         rigidbodyRef.Rigidbody.velocity = velocity.Value;
       }
     }

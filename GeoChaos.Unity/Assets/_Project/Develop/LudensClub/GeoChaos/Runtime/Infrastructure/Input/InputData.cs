@@ -10,5 +10,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     public float HorizontalMovement;
     public bool IsDash;
     public bool IsAttack;
+    public bool IsHook;
   }
 }

@@ -36,6 +36,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float Gravity => -2 * JumpHeight * Mathf.Pow(1 + 1 / FallVelocityMultiplier, 2) / (JumpTime * JumpTime);
 
+    public float PositiveGravity => Mathf.Abs(Gravity);
+
     [ShowInInspector]
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float GravityScale => Gravity / Physics2D.gravity.y;
@@ -43,6 +45,10 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [ShowInInspector]
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float FallGravityScale => Mathf.Pow(FallVelocityMultiplier, 2) * GravityScale;
+
+    public float FallGravity => Physics.gravity.y * FallGravityScale;
+
+    public float PositiveFallGravity => Mathf.Abs(FallGravity);
 
     [ShowInInspector]
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
@@ -74,6 +80,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float HookRadius;
 
     public float RingHorizontalDistance;
+    public float PullUpHeight;
+    public float PullDownHeight;
 
     [Title("Characteristics")]
     public float Health;

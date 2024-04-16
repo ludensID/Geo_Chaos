@@ -36,6 +36,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
       if (_input.Data.IsAttack)
         _world.Add<IsAttack>(input);
 
+      if (_input.Data.IsHook)
+        _world.Add<IsHook>(input);
+
       ref ExpireTimer timer = ref _world.Add<ExpireTimer>(input);
       timer.PassedTime = 0;
     }
