@@ -75,8 +75,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             pulling.AccelerationX = accelerationX;
             pulling.VelocityX = startVelocityX;
           });
-          
-          Debug.Log($"{accelerationX}, {velocityX}, {pullTime}, {fallTime}, {alpha}, {fallTime > pullTime}, {fallDistance > pullDistance}");
         }
 
         hero.Replace((ref MovementVector x) =>
