@@ -90,6 +90,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<SetViewGravitySystem>());
       Add(systems.Create<SetHeroViewVelocitySystem>());
       Add(systems.Create<SetHeroViewRotationSystem>());
+      Add(systems.Create<DrawHookViewSystem>());
       
       Add(systems.Create<SetHeroSwordViewColorSystem>());
     }

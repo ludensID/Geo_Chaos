@@ -43,7 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         Vector3 heroPosition = hero.Get<ViewRef>().View.transform.position;
         Vector3 targetPosition = ring.Get<RingPoints>().TargetPoint.position;
 
-        float maxHeight = heroPosition.y > targetPosition.y
+        float maxHeight = heroPosition.y > targetPosition.y + _config.PullUpHeight
           ? heroPosition.y
           : targetPosition.y + _config.PullUpHeight;
         float heroDistance = maxHeight - heroPosition.y;
