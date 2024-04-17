@@ -1,9 +1,8 @@
-﻿using System;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
+namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
-  public interface IEcsWorldWrapper : IDisposable
+  public interface IEcsWorldWrapper
   {
     string Name { get; }
     EcsWorld World { get; }

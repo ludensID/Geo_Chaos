@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
-  public class CalculateHookSystem : IEcsRunSystem
+  public class CalculatePullVelocitySystem : IEcsRunSystem
   {
     private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     private readonly EcsEntities _selectedRings;
     private readonly HeroConfig _config;
 
-    public CalculateHookSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider, ITimerFactory timers)
+    public CalculatePullVelocitySystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider, ITimerFactory timers)
     {
       _timers = timers;
       _game = gameWorldWrapper.World;
@@ -43,18 +43,41 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         Vector3 heroPosition = hero.Get<ViewRef>().View.transform.position;
         Vector3 targetPosition = ring.Get<RingPoints>().TargetPoint.position;
 
-        float maxHeight = heroPosition.y > targetPosition.y + _config.PullUpHeight
-          ? heroPosition.y
-          : targetPosition.y + _config.PullUpHeight;
+        float maxHeight = Mathf.Max(heroPosition.y, targetPosition.y + _config.PullUpHeight);
+        bool isDown = maxHeight == heroPosition.y;
+        bool isDelta = Mathf.Abs(maxHeight - heroPosition.y) < _config.VerticalHookTargetDelta;
         float heroDistance = maxHeight - heroPosition.y;
-        if (heroDistance < 0)
-          heroDistance = 0;
         float targetDistance = maxHeight - targetPosition.y;
 
         float startVelocityY = Mathf.Sqrt(2 * _config.PositiveGravity * heroDistance);
-        float time = startVelocityY / _config.PositiveGravity
-          + Mathf.Sqrt(2 * targetDistance / _config.PositiveFallGravity);
-        float velocityX = Mathf.Abs(heroPosition.x - targetPosition.x) / time;
+        float pullTime = startVelocityY / _config.PositiveGravity;
+        float fallTime = Mathf.Sqrt(2 * targetDistance / _config.PositiveFallGravity);
+        float distance = Mathf.Abs(heroPosition.x - targetPosition.x);
+
+        float time = pullTime + fallTime;
+        float velocityX = distance / time;
+
+        if (!isDown && !isDelta)
+        {
+          Vector3 ringPosition = ring.Get<ViewRef>().View.transform.position;
+          float pullDistance = Mathf.Abs(heroPosition.x - ringPosition.x);
+          float fallDistance = Mathf.Abs(ringPosition.x - targetPosition.x);
+
+          float alpha = fallTime * (pullTime + fallTime / 2);
+          float startVelocityX = Mathf.Abs((pullTime * pullTime * fallDistance - 2 * alpha * pullDistance)
+            / (pullTime * (pullTime * fallTime - 2 * alpha)));
+
+          float accelerationX = (pullDistance - startVelocityX * pullTime) * 2 / (pullTime * pullTime);
+          velocityX = startVelocityX;
+
+          hero.Add((ref HookPulling pulling) =>
+          {
+            pulling.AccelerationX = accelerationX;
+            pulling.VelocityX = startVelocityX;
+          });
+          
+          Debug.Log($"{accelerationX}, {velocityX}, {pullTime}, {fallTime}, {alpha}, {fallTime > pullTime}, {fallDistance > pullDistance}");
+        }
 
         hero.Replace((ref MovementVector x) =>
         {

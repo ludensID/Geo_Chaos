@@ -12,7 +12,8 @@
     {
       public const string ACTION_NAMES = "ActionNames";
       public const string JUMP = "Jump";
-      public const string ATTACK_COLLIDERS = "AttackColliders";
+      public const string ATTACK_COLLIDERS = "Attack Colliders";
+      public const string GRAPPLING_HOOK = "Grapling Hook";
 
       public static class Explicit
       {

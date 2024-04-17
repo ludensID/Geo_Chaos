@@ -39,7 +39,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       {
         Transform heroTransform = hero.Get<ViewRef>().View.transform;
         Transform ringTransform = ring.Get<ViewRef>().View.transform;
-        if (Vector2.Distance(heroTransform.position, ringTransform.position) <= _config.HookRadius)
+        if (ringTransform.gameObject.activeInHierarchy
+          && Vector2.Distance(heroTransform.position, ringTransform.position) <= _config.HookRadius)
           ring.Add<Selected>();
       }
     }

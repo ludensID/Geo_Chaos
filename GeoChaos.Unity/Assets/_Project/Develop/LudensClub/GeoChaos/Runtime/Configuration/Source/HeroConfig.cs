@@ -76,12 +76,14 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
     public List<float> ComboAttackPeriods = new(2) { 0, 0 };
 
-    [Title("Grappling Hook")]
+    [Title(TriConstants.Names.GRAPPLING_HOOK)]
     public float HookRadius;
 
     public float RingHorizontalDistance;
     public float PullUpHeight;
-    public float PullDownHeight;
+    
+    [Group(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
+    public float VerticalHookTargetDelta;
 
     [Title("Characteristics")]
     public float Health;

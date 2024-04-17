@@ -22,6 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
     public override void InstallBindings()
     {
+      BindEcsDisposer();
       BindEcsSystemFactory();
       BindInputWorldWrapper();
       BindGameWorldWrapper();
@@ -41,6 +42,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindDashCooldownPresenter();
       BindEnemyHealthView();
+    }
+
+    private void BindEcsDisposer()
+    {
+      Container
+        .BindInterfacesTo<EcsDisposer>()
+        .AsSingle();
     }
 
     private void BindRingViews()

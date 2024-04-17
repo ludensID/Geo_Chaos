@@ -13,7 +13,7 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Runtime.Configuration
 {
   [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.JUMP, Title = TriConstants.TECH)]
-  // [DeclareFoldoutGroup(TriConstants.Names.ATTACK_COLLIDERS)]
+  [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK, Title = TriConstants.TECH)]
   public partial class HeroConfig
   {
     public void OnJumpHorizontalSpeedMultiplierChanged()
@@ -21,25 +21,10 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
       JumpLength = MovementSpeed * JumpHorizontalSpeedMultiplier * JumpTime;
     }
 
-    [HideInInspector]
-    public bool IsColliderMeshEnabled;
-
-    public string EnableColliderMeshButtonName =>
-      IsColliderMeshEnabled ? "Disable Collider Meshes" : "Enable Collider Meshes";  
-
     [PropertySpace(SpaceBefore = 20)]
-    [PropertyOrder(18)]
-    // [Group(TriConstants.Names.ATTACK_COLLIDERS)]
-    // [Button("$" + nameof(EnableColliderMeshButtonName))]
-    // public void EnableColliderMesh()
-    // {
-    //   IsColliderMeshEnabled = !IsColliderMeshEnabled;
-    //   DebugBridge.ChangeHeroAttackColliderMesh(IsColliderMeshEnabled);
-    // }
-    
+    [PropertyOrder(20)]
     [Range(0.01f, 5)]
     [EnableInEditMode]
-    // [Group(TriConstants.Names.ATTACK_COLLIDERS)]
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
     [OnValueChanged(TriConstants.ON + nameof(HitColliderSizes) + TriConstants.CHANGED)]
     [LabelText("$" + nameof(HitColliderSizesEditModeName))]

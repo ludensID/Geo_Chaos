@@ -25,6 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         .Where<HookTimer>(timer => timer.TimeLeft <= 0))
       {
         timer.Add<StopHookCommand>();
+        timer.Del<HookPulling>();
         timer.Del<HookTimer>();
       }
     }

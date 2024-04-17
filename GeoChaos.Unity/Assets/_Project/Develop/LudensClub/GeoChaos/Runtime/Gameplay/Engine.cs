@@ -1,5 +1,4 @@
-﻿using System;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Enemy;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Feature;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Feature;
@@ -11,15 +10,20 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay
 {
-  public class Engine : IInitializable, ITickable, IDisposable
+  public class Engine : IInitializable, IFixedTickable, ITickable
   {
-    private EcsSystems _systems;
+    private readonly EcsSystems _fixedUpdateSystems;
+    private readonly EcsSystems _updateSystems;
 
     public Engine(IEcsSystemsFactory systemsFactory, IEcsSystemFactory factory)
     {
-      _systems = systemsFactory.Create();
+      _fixedUpdateSystems = systemsFactory.Create();
+      _updateSystems = systemsFactory.Create();
 
-      _systems
+      _fixedUpdateSystems
+        .Add(factory.Create<HeroPhysicsFeature>());
+
+      _updateSystems
         .Add(factory.Create<CreationFeature>())
         .Add(factory.Create<CollisionFeature>())
         .Add(factory.Create<InputFeature>())
@@ -30,21 +34,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
 
     public void Initialize()
     {
-      _systems.Init();
+      _fixedUpdateSystems.Init();
+      _updateSystems.Init();
+    }
+
+    public void FixedTick()
+    {
+      _fixedUpdateSystems.Run();
     }
 
     public void Tick()
     {
-      _systems.Run();
-    }
-
-    public void Dispose()
-    {
-      if (_systems != null)
-      {
-        _systems.Destroy();
-        _systems = null;
-      }
+      _updateSystems.Run();
     }
   }
 }
