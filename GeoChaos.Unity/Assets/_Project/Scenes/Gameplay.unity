@@ -551,7 +551,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook (8)
+      value: Ring(8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -619,7 +619,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook (2)
+      value: Ring (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
@@ -920,7 +920,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook (4)
+      value: Ring (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1125,7 +1125,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook (1)
+      value: Ring (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1193,7 +1193,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook (10)
+      value: Ring (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1261,7 +1261,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook (11)
+      value: Ring (11)
       objectReference: {fileID: 0}
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
@@ -1379,7 +1379,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook (14)
+      value: Ring (14)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1581,7 +1581,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook (5)
+      value: Ring (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2530,7 +2530,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook (13)
+      value: Ring (13)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2732,7 +2732,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook (9)
+      value: Ring (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2879,7 +2879,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook (12)
+      value: Ring (12)
       objectReference: {fileID: 0}
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
@@ -3135,7 +3135,7 @@ PrefabInstance:
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_Name
-      value: Hook
+      value: Ring
       objectReference: {fileID: 0}
     - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
