@@ -45,7 +45,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
         float maxHeight = Mathf.Max(heroPosition.y, targetPosition.y + _config.PullUpHeight);
         bool isDown = maxHeight == heroPosition.y;
-        bool isDelta = Mathf.Abs(maxHeight - heroPosition.y) < _config.VerticalHookTargetDelta;
+        bool isHeroDelta = Mathf.Abs(maxHeight - heroPosition.y) < _config.VerticalHookHeroDelta;
+        if (isDown && Mathf.Abs(maxHeight - targetPosition.y) < _config.VerticalHookTargetDelta)
+          maxHeight += _config.PullDownHeight;
         float heroDistance = maxHeight - heroPosition.y;
         float targetDistance = maxHeight - targetPosition.y;
 
@@ -57,7 +59,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         float time = pullTime + fallTime;
         float velocityX = distance / time;
 
-        if (!isDown && !isDelta)
+        if (!isDown && !isHeroDelta)
         {
           Vector3 ringPosition = ring.Get<ViewRef>().View.transform.position;
           float pullDistance = Mathf.Abs(heroPosition.x - ringPosition.x);

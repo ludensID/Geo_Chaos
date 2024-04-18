@@ -621,6 +621,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hook (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -857,15 +862,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 393115545918740451, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4042149824017120213, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.82
+      value: -1.6100409
       objectReference: {fileID: 0}
     - target: {fileID: 4042149824017120213, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.74
+      value: 13.91
       objectReference: {fileID: 0}
     - target: {fileID: 4042149824017120213, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
@@ -1253,6 +1263,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hook (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1516,12 +1531,12 @@ PrefabInstance:
     - target: {fileID: 4042149824017120213, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.9799595
+      value: -9.77
       objectReference: {fileID: 0}
     - target: {fileID: 4042149824017120213, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.74
+      value: 13.91
       objectReference: {fileID: 0}
     - target: {fileID: 4042149824017120213, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
         type: 3}
@@ -1985,7 +2000,7 @@ Transform:
   m_GameObject: {fileID: 1488398957}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.88996, y: 13.752055, z: 0}
+  m_LocalPosition: {x: -5.680001, y: 13.922055, z: 0}
   m_LocalScale: {x: 7.2832503, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2866,6 +2881,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hook (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3116,6 +3136,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hook
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955269178035326057, guid: 18ee9db713b29a34b98a1bb0dc8e1b21,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -79,12 +79,17 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title(TriConstants.Names.GRAPPLING_HOOK)]
     public float HookRadius;
 
-    public float RingHorizontalDistance;
-    public float PullUpHeight;
+    [Range(1, 10)]
+    public float RingHorizontalDistance = 1;
     
-    [Group(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
+    [GroupNext(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
+    public float PullUpHeight;
+    public float VerticalHookHeroDelta;
+
+    public float PullDownHeight;
     public float VerticalHookTargetDelta;
 
+    [UnGroupNext]
     [Title("Characteristics")]
     public float Health;
 

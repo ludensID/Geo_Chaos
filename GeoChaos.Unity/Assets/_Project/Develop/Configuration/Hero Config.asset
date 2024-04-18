@@ -33,7 +33,9 @@ MonoBehaviour:
   HookRadius: 20
   RingHorizontalDistance: 1
   PullUpHeight: 1.5
-  VerticalHookTargetDelta: 0.5
+  VerticalHookHeroDelta: 0.5
+  PullDownHeight: 3
+  VerticalHookTargetDelta: 2
   Health: 100
   DashDamage: 10
   HitDamages:

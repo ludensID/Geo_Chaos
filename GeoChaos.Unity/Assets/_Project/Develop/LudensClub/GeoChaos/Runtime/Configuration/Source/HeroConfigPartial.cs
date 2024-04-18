@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     }
 
     [PropertySpace(SpaceBefore = 20)]
-    [PropertyOrder(20)]
+    [PropertyOrder(13)]
     [Range(0.01f, 5)]
     [EnableInEditMode]
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
