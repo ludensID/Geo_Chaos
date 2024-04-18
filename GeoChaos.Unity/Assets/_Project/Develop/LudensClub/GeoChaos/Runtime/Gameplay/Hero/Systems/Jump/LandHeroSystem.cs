@@ -8,8 +8,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   public class LandHeroSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _fallings;
     private readonly HeroConfig _config;
+    private readonly EcsEntities _fallings;
 
     public LandHeroSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
@@ -20,21 +20,20 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Filter<IsFalling>()
         .Inc<MovementVector>()
         .Inc<GravityScale>()
-        .End();
+        .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (int falling in _fallings)
+      foreach (EcsEntity falling in _fallings
+        .Where<MovementVector>(x => x.Direction.y >= 0))
       {
-        ref MovementVector vector = ref _game.Get<MovementVector>(falling);
-        if (vector.Direction.y >= 0)
-        {
-          _game.Del<IsFalling>(falling);
-          ref GravityScale gravityScale = ref _game.Get<GravityScale>(falling);
-          gravityScale.Value = _config.GravityScale;
-          gravityScale.Override = true;
-        }
+        falling.Del<IsFalling>()
+          .Replace((ref GravityScale gravity) =>
+          {
+            gravity.Value = _config.GravityScale;
+            gravity.Override = true;
+          });
       }
     }
   }

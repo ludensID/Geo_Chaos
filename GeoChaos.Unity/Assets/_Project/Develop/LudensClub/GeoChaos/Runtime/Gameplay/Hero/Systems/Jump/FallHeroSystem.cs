@@ -8,8 +8,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   public class FallHeroSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _onGrounds;
     private readonly HeroConfig _config;
+    private readonly EcsEntities _onGrounds;
 
     public FallHeroSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
@@ -20,29 +20,24 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Filter<MovementVector>()
         .Inc<GravityScale>()
         .Exc<IsFalling>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (int onGround in _onGrounds)
+      foreach (EcsEntity onGround in _onGrounds
+        .Where<MovementVector>(x => x.Direction.y <= 0))
       {
-        ref MovementVector vector = ref _game.Get<MovementVector>(onGround);
-        if (vector.Direction.y <= 0)
-        {
-          if(_game.Has<IsJumping>(onGround))
-            _game.Del<IsJumping>(onGround);
-          AddFallingComponents(onGround);
-        }
+        if (onGround.Is<IsJumping>())
+          onGround.Del<IsJumping>();
+        
+        onGround.Add<IsFalling>()
+          .Replace((ref GravityScale gravity) =>
+          {
+            gravity.Value = _config.FallGravityScale;
+            gravity.Override = true;
+          });
       }
-    }
-
-    private void AddFallingComponents(int entity)
-    {
-      _game.Add<IsFalling>(entity);
-      ref GravityScale gravityScale = ref _game.Get<GravityScale>(entity);
-      gravityScale.Value = _config.FallGravityScale;
-      gravityScale.Override = true;
     }
   }
 }

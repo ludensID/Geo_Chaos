@@ -9,8 +9,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   {
     private readonly EcsWorld _game;
     private readonly HeroConfig _config;
-    private readonly EcsFilter _onGrounds;
-    private readonly EcsFilter _onNotGrounds;
+    private readonly EcsEntities _onGrounds;
+    private readonly EcsEntities _onNotGrounds;
 
     public SetJumpHorizontalSpeedSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
@@ -20,31 +20,30 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _onGrounds = _game
         .Filter<HorizontalSpeed>()
         .Inc<OnGround>()
-        .End();
+        .Collect();
 
       _onNotGrounds = _game
         .Filter<HorizontalSpeed>()
         .Inc<OnNotGround>()
-        .End();
+        .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (int onGround in _onGrounds)
+      foreach (EcsEntity onGround in _onGrounds)
       {
         SetHorizontalSpeed(onGround, _config.MovementSpeed);
       }
 
-      foreach (int onNotGround in _onNotGrounds)
+      foreach (EcsEntity onNotGround in _onNotGrounds)
       {
         SetHorizontalSpeed(onNotGround, _config.JumpHorizontalSpeed);
       }
     }
 
-    private void SetHorizontalSpeed(int entity, float value)
+    private void SetHorizontalSpeed(EcsEntity entity, float value)
     {
-      ref HorizontalSpeed speed = ref _game.Get<HorizontalSpeed>(entity);
-      speed.Value = value;
+      entity.Replace((ref HorizontalSpeed speed) => speed.Value = value);
     }
   }
 }

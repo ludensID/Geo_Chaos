@@ -10,15 +10,17 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay
 {
-  public class Engine : IInitializable, IFixedTickable, ITickable
+  public class Engine : IInitializable, IFixedTickable, ITickable, ILateTickable
   {
     private readonly EcsSystems _fixedUpdateSystems;
     private readonly EcsSystems _updateSystems;
+    private readonly EcsSystems _lateUpdateSystems;
 
     public Engine(IEcsSystemsFactory systemsFactory, IEcsSystemFactory factory)
     {
       _fixedUpdateSystems = systemsFactory.Create();
       _updateSystems = systemsFactory.Create();
+      _lateUpdateSystems = systemsFactory.Create(); 
 
       _fixedUpdateSystems
         .Add(factory.Create<HeroPhysicsFeature>());
@@ -30,12 +32,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<AttackFeature>())
         .Add(factory.Create<EnemyFeature>())
         .Add(factory.Create<HeroFeature>());
+
+      _lateUpdateSystems
+        .Add(factory.Create<LateHeroFeature>());
     }
 
     public void Initialize()
     {
       _fixedUpdateSystems.Init();
       _updateSystems.Init();
+      _lateUpdateSystems.Init();
     }
 
     public void FixedTick()
@@ -46,6 +52,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
     public void Tick()
     {
       _updateSystems.Run();
+    }
+
+    public void LateTick()
+    {
+      _lateUpdateSystems.Run();
     }
   }
 }
