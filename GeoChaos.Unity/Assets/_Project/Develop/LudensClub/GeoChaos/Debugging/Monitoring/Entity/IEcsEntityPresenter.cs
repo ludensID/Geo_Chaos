@@ -9,5 +9,7 @@
     void Initialize();
     void SetActive(bool value);
     void UpdateView();
+    void AddComponents();
+    void RemoveComponents();
   }
 }

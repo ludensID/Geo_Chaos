@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Linq;
-using LudensClub.GeoChaos.Runtime.Characteristics.Components;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Debugging.Monitoring
@@ -19,6 +16,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private Type[] _typesCache;
     private object[] _components;
     private int _componentCount;
+    private IEcsPool[] _pools;
+    private IEcsPool[] _valuePools;
 
     public int Entity { get; }
     public EcsEntityView View { get; private set; }
@@ -37,6 +36,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     public void Initialize()
     {
       View = _viewFactory.Create(_parent.View.transform);
+      View.SetController(this);
     }
 
     public void Tick()
@@ -85,6 +85,13 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       }
     }
 
+    private void UpdatePools()
+    {
+      int count = _wrapper.World.GetAllPools(ref _pools);
+      _valuePools = new IEcsPool[count];
+      Array.Copy(_pools, _valuePools, count);
+    }
+
     private void Resize()
     {
       int viewCount = View.Components.Count;
@@ -106,6 +113,30 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     {
       if (View)
         View.gameObject.SetActive(value);
+    }
+
+    public void AddComponents()
+    {
+      UpdatePools();
+      foreach (EcsComponentView component in View.ComponentPull)
+      {
+        IEcsPool pool = _valuePools.First(x => x.GetComponentType().Name == component.Value.GetType().Name);
+        if (pool.Has(Entity))
+          pool.SetRaw(Entity, component.Value);
+        else
+          pool.AddRaw(Entity, component.Value);
+      }
+    }
+
+    public void RemoveComponents()
+    {
+      UpdatePools();
+      foreach (EcsComponentView component in View.ComponentPull)
+      {
+        IEcsPool pool = _valuePools.First(x => x.GetComponentType().Name == component.Value.GetType().Name);
+        if (pool.Has(Entity))
+          pool.Del(Entity);
+      }
     }
   }
 }
