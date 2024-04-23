@@ -29,8 +29,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       {
         ref HookPulling pulling = ref hero.Get<HookPulling>();
         pulling.VelocityX += pulling.AccelerationX * Time.fixedDeltaTime;
-        if (pulling.VelocityX < 0)
-          pulling.VelocityX = 0;
+        pulling.VelocityX = MathUtils.Clamp(pulling.VelocityX, 0);
+        
         ref MovementVector vector = ref hero.Get<MovementVector>();
         vector.Speed.x = pulling.VelocityX;
       }

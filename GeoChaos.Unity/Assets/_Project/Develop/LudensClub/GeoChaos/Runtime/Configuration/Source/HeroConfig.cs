@@ -81,6 +81,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Range(1, 10)]
     public float RingHorizontalDistance = 1;
+
+    [Min(0.01f)]
+    public float HookPrecastTime;
     
     [GroupNext(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
     public float PullUpHeight;

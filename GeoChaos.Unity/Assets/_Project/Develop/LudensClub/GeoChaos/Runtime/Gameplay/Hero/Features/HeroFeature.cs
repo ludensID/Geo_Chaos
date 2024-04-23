@@ -8,6 +8,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -70,13 +71,20 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<SelectRingsInHeroViewSystem>());
       Add(systems.Create<SelectNearestRingSystem>());
       
-      Add(systems.Create<Delete<OnHookStarted, GameWorldWrapper>>());
-      Add(systems.Create<Delete<OnHookFinished, GameWorldWrapper>>());
       Add(systems.Create<ReadHookInputSystem>());
       Add(systems.Create<CheckForSelectedRingSystem>());
+      Add(systems.Create<MarkSelectedRingAsHookedSystem>());
       Add(systems.Create<HookSystem>());
-      Add(systems.Create<CalculatePullVelocitySystem>());
-      Add(systems.Create<StopHookSystem>());
+      Add(systems.Create<Delete<OnHookPrecastStarted, GameWorldWrapper>>());
+      Add(systems.Create<PrecastHookSystem>());
+      Add(systems.Create<CheckForHookPrecastTimerSystem>());
+      
+      Add(systems.Create<Delete<HookCommand, GameWorldWrapper>>());
+      
+      // Add(systems.Create<Delete<OnHookStarted, GameWorldWrapper>>());
+      // Add(systems.Create<Delete<OnHookFinished, GameWorldWrapper>>());
+      // Add(systems.Create<CalculatePullVelocitySystem>());
+      // Add(systems.Create<StopHookSystem>());
       
       Add(systems.Create<CalculateHeroVelocitySystem>());
       
@@ -88,6 +96,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<SetViewGravitySystem>());
       Add(systems.Create<SetHeroViewVelocitySystem>());
       Add(systems.Create<SetHeroViewRotationSystem>());
+      Add(systems.Create<PrecastHookViewSystem>());
       
       Add(systems.Create<SetHeroSwordViewColorSystem>());
     }

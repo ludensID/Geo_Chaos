@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
   {
     public LateHeroFeature(IEcsSystemFactory systems) 
     {
-      Add(systems.Create<DrawHookViewSystem>());
+      // Add(systems.Create<DrawHookViewSystem>());
     }
   }
 }

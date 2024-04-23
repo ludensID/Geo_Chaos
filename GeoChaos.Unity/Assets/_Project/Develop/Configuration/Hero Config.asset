@@ -32,6 +32,7 @@ MonoBehaviour:
   - 0.5
   HookRadius: 20
   RingHorizontalDistance: 1
+  HookPrecastTime: 0.2
   PullUpHeight: 1.5
   VerticalHookHeroDelta: 0.5
   PullDownHeight: 3
