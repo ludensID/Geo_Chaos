@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _game = gameWorldWrapper.World;
 
       _commands = _game
-        .Filter<StopHookCommand>()
+        .Filter<OnHookPullingFinished>()
         .Inc<Hooking>()
         .Inc<IsMovementLocked>()
         .Collect();
@@ -34,12 +34,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     {
       foreach (EcsEntity command in _commands)
       {
-        command.Del<Hooking>()
-          .Add<OnHookFinished>()
+        command
+          .Del<Hooking>()
           .Add<UnlockMovementCommand>()
-          .Replace((ref MovementVector vector) => vector.Speed.x = 0)
-          .Del<StopHookCommand>();
-
+          .Del<HookPulling>()
+          .Del<HookTimer>()
+          .Replace((ref GravityScale gravity) =>
+          {
+            gravity.Enabled = true;
+            gravity.Override = true;
+          });
+          
         foreach (EcsEntity ring in _selectedRings)
           ring.Del<Hooked>();
       }

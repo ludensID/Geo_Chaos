@@ -38,6 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           .Add<JumpAvailable>()
           .Add((ref GravityScale gravity) =>
           {
+            gravity.Enabled = true;
             gravity.Value = _config.GravityScale;
             gravity.Override = true;
           })

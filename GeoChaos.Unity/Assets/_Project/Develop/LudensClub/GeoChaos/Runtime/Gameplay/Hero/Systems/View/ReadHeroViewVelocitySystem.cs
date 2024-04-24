@@ -21,16 +21,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity vector in _vectors)
+      foreach (EcsEntity vector in _vectors
+        .Where<MovementVector>(x => !x.Immutable))
       {
         Vector2 velocity = vector.Get<RigidbodyRef>().Rigidbody.velocity;
-        ref MovementVector movementVector = ref vector.Get<MovementVector>();
-        
-        movementVector.Speed = new Vector2(Mathf.Abs(velocity.x), Mathf.Abs(velocity.y));
-        
-        if (Mathf.Abs(velocity.x) > 0)
-          movementVector.Direction.x = Mathf.Sign(velocity.x);
-        movementVector.Direction.y = Mathf.Sign(velocity.y);
+        (Vector3 length, Vector3 direction) = MiscUtils.DecomposeVector(velocity);
+        vector.Replace((ref MovementVector movementVector) =>
+        {
+          movementVector.Speed = length;
+          if (length.x != 0)
+            movementVector.Direction.x = direction.x;
+          movementVector.Direction.y = direction.y;
+        });
       }
     }
   }

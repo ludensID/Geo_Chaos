@@ -10,9 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct HookPulling : IEcsComponent
+  public struct OnHookPullingStarted : IEcsComponent
   {
-    public float AccelerationX;
-    public float VelocityX;
   }
 }

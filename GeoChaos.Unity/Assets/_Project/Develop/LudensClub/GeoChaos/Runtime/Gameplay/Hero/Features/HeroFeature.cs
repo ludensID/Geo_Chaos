@@ -76,15 +76,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<MarkSelectedRingAsHookedSystem>());
       Add(systems.Create<HookSystem>());
       Add(systems.Create<Delete<OnHookPrecastStarted, GameWorldWrapper>>());
+      Add(systems.Create<Delete<OnHookPrecastFinished, GameWorldWrapper>>());
       Add(systems.Create<PrecastHookSystem>());
       Add(systems.Create<CheckForHookPrecastTimerSystem>());
+      Add(systems.Create<Delete<OnHookPullingStarted, GameWorldWrapper>>());
+      Add(systems.Create<Delete<OnHookPullingFinished, GameWorldWrapper>>());
+      Add(systems.Create<PullHeroOnHookSystem>());
+      Add(systems.Create<StopHookPullingSystem>());
+      Add(systems.Create<StopHookSystem>());
       
       Add(systems.Create<Delete<HookCommand, GameWorldWrapper>>());
-      
-      // Add(systems.Create<Delete<OnHookStarted, GameWorldWrapper>>());
-      // Add(systems.Create<Delete<OnHookFinished, GameWorldWrapper>>());
-      // Add(systems.Create<CalculatePullVelocitySystem>());
-      // Add(systems.Create<StopHookSystem>());
       
       Add(systems.Create<CalculateHeroVelocitySystem>());
       

@@ -12,7 +12,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View
     private readonly EcsWorld _game;
     private readonly EcsEntities _precastedHooks;
     private readonly EcsEntities _startedPrecasts;
-    private readonly EcsEntities _finishedPrecasts;
 
     public PrecastHookViewSystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -26,11 +25,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View
 
       _precastedHooks = _game
         .Filter<HookPrecast>()
-        .Inc<HookRef>()
-        .Collect();
-
-      _finishedPrecasts = _game
-        .Filter<OnHookPrecastFinished>()
         .Inc<ViewRef>()
         .Inc<HookRef>()
         .Collect();
@@ -53,11 +47,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View
       foreach (EcsEntity hook in _precastedHooks)
       {
         ref HookRef hookRef = ref hook.Get<HookRef>();
+        ref ViewRef viewRef = ref hook.Get<ViewRef>();
         ref HookPrecast precast = ref hook.Get<HookPrecast>();
         
         var points = new Vector3[2];
         hookRef.Hook.GetPositions(points);
-        
+
+        points[0] = viewRef.View.transform.position;
         Vector2 deltaVector = Vector2.ClampMagnitude(precast.Velocity * Time.deltaTime,
           Vector2.Distance(precast.TargetPoint, points[1]));
         points[1] += (Vector3)deltaVector;

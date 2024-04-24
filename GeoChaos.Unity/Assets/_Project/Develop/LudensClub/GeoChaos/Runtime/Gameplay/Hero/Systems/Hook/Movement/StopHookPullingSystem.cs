@@ -5,27 +5,28 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
-  public class CheckForHookTimerSystem : IEcsRunSystem
+  public class StopHookPullingSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsEntities _hookTimers;
+    private readonly EcsEntities _stopCommands;
 
-    public CheckForHookTimerSystem(GameWorldWrapper gameWorldWrapper)
+    public StopHookPullingSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
-      _hookTimers = _game
-        .Filter<HookTimer>()
-        .Exc<StopHookPullingCommand>()
+      _stopCommands = _game
+        .Filter<StopHookPullingCommand>()
+        .Inc<HookPulling>()
         .Collect();
     }
-
+    
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity timer in _hookTimers
-        .Where<HookTimer>(timer => timer.TimeLeft <= 0))
+      foreach (EcsEntity command in _stopCommands)
       {
-        timer.Add<StopHookPullingCommand>();
+        command
+          .Del<StopHookPullingCommand>()
+          .Add<OnHookPullingFinished>();
       }
     }
   }

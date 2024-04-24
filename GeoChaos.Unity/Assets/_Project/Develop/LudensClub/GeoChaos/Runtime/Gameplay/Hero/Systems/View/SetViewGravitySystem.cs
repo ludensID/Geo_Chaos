@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       {
         ref GravityScale gravityScale = ref _game.Get<GravityScale>(body);
         ref RigidbodyRef rigidbodyRef = ref _game.Get<RigidbodyRef>(body);
-        rigidbodyRef.Rigidbody.gravityScale = gravityScale.Value;
+        rigidbodyRef.Rigidbody.gravityScale = gravityScale.Enabled ? gravityScale.Value : 0;
         gravityScale.Override = false;
       }
     }

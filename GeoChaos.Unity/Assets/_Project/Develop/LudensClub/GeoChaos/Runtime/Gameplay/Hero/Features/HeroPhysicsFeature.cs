@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
     {
       Add(systems.Create<ReadHeroViewVelocitySystem>());
       
-      Add(systems.Create<PullHeroSystem>());
+      Add(systems.Create<CheckForHeroReachRingSystem>());
       Add(systems.Create<CheckForHookTimerSystem>());
       
       Add(systems.Create<CalculateHeroVelocitySystem>());

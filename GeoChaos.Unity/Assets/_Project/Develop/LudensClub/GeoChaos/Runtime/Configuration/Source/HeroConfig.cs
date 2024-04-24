@@ -84,13 +84,11 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Min(0.01f)]
     public float HookPrecastTime;
+    public float HookVelocity;
     
     [GroupNext(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
     public float PullUpHeight;
-    public float VerticalHookHeroDelta;
-
-    public float PullDownHeight;
-    public float VerticalHookTargetDelta;
+    public float PullTimeOffset;
 
     [UnGroupNext]
     [Title("Characteristics")]

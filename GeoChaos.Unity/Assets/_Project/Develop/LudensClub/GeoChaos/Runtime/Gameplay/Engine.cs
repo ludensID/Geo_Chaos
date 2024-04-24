@@ -34,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<HeroFeature>());
 
       _lateUpdateSystems
-        .Add(factory.Create<LateHeroFeature>());
+        .Add(factory.Create<HeroLateFeature>());
     }
 
     public void Initialize()

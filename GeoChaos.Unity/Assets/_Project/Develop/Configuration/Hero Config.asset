@@ -32,11 +32,10 @@ MonoBehaviour:
   - 0.5
   HookRadius: 20
   RingHorizontalDistance: 1
-  HookPrecastTime: 0.2
-  PullUpHeight: 1.5
-  VerticalHookHeroDelta: 0.5
-  PullDownHeight: 3
-  VerticalHookTargetDelta: 2
+  HookPrecastTime: 0.1
+  HookVelocity: 50
+  PullUpHeight: 0.5
+  PullTimeOffset: 1
   Health: 100
   DashDamage: 10
   HitDamages:

@@ -3,11 +3,11 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
 {
-  public class LateHeroFeature : EcsFeature
+  public class HeroLateFeature : EcsFeature
   {
-    public LateHeroFeature(IEcsSystemFactory systems) 
+    public HeroLateFeature(IEcsSystemFactory systems) 
     {
-      // Add(systems.Create<DrawHookViewSystem>());
+      Add(systems.Create<DrawHookViewSystem>());
     }
   }
 }

@@ -21,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
       _heroes = _game
         .Filter<HeroTag>()
-        .Inc<Hooking>()
+        .Inc<HookPulling>()
         .Inc<HookRef>()
         .Inc<ViewRef>()
         .Collect();
@@ -32,7 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         .Collect();
 
       _finishedHooks = _game
-        .Filter<OnHookFinished>()
+        .Filter<OnHookPullingFinished>()
         .Inc<HookRef>()
         .Collect();
     }

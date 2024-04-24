@@ -12,6 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Serializable]
   public struct GravityScale : IEcsComponent
   {
+    public bool Enabled;
     public float Value;
     public bool Override;
   }
