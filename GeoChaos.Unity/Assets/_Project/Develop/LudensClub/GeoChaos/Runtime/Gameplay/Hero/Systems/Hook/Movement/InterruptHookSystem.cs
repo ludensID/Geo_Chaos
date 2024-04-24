@@ -33,6 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       foreach (EcsEntity command in _precastCommands)
       {
         command
+          .Del<InterruptHookCommand>()
           .Del<HookPrecast>()
           .EnsureDel<OnHookPrecastStarted>()
           .EnsureDel<OnHookPrecastFinished>()
@@ -46,6 +47,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Add<OnHookInterrupted>()
           .Del<HookPulling>()
           .Del<HookTimer>()
+          .EnsureDel<StopHookPullingCommand>()
           .EnsureDel<OnHookPullingStarted>()
           .EnsureDel<OnHookPullingFinished>()
           .Replace((ref GravityScale gravity) =>
