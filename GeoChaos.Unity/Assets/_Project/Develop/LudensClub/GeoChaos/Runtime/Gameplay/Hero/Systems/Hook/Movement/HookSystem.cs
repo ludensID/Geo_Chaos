@@ -1,19 +1,25 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
   public class HookSystem : IEcsRunSystem
   {
+    private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _commands;
+    private readonly HeroConfig _config;
 
-    public HookSystem(GameWorldWrapper gameWorldWrapper)
+    public HookSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider, ITimerFactory timers)
     {
+      _timers = timers;
       _game = gameWorldWrapper.World;
+      _config = configProvider.Get<HeroConfig>();
 
       _commands = _game
         .Filter<HookCommand>()
@@ -24,8 +30,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     {
       foreach (EcsEntity command in _commands)
       {
-        command.Add<Hooking>()
-          .Add<LockMovementCommand>();
+        command
+          .Add<Hooking>()
+          .Add<LockMovementCommand>()
+          .Add((ref HookInputCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.HookInputCooldown));
       }
     }
   }

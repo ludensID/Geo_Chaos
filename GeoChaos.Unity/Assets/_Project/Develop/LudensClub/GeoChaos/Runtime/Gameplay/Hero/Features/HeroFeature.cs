@@ -74,6 +74,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<SelectRingsInHeroViewSystem>());
       Add(systems.Create<SelectNearestRingSystem>());
       
+      Add(systems.Create<DeleteHookInputCooldownSystem>());
       Add(systems.Create<ReadHookInputSystem>());
       
       Add(systems.Create<ConvertDelayedToCurrentHookInputSystem>());

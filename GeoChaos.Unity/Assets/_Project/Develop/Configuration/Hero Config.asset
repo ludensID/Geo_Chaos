@@ -37,6 +37,7 @@ MonoBehaviour:
   HookVelocity: 50
   PullUpHeight: 0.5
   PullTimeOffset: 1
+  HookInputCooldown: 0.1
   Health: 100
   DashDamage: 10
   HitDamages:

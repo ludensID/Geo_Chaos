@@ -22,6 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         .Filter<HookAvailable>()
         .Inc<Hooking>()
         .Inc<InterruptHookAvailable>()
+        .Exc<HookInputCooldown>()
         .Collect();
 
       _inputs = _input

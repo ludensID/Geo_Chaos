@@ -90,6 +90,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [GroupNext(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
     public float PullUpHeight;
     public float PullTimeOffset;
+    public float HookInputCooldown;
 
     [UnGroupNext]
     [Title("Characteristics")]
