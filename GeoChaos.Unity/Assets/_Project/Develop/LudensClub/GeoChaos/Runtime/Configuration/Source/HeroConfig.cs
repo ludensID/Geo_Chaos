@@ -91,6 +91,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float PullUpHeight;
     public float PullTimeOffset;
     public float HookInputCooldown;
+    public float RingReleasingTime;
 
     [UnGroupNext]
     [Title("Characteristics")]

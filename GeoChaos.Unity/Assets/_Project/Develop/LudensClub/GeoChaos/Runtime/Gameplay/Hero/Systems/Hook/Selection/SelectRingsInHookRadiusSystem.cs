@@ -30,6 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         .Filter<RingTag>()
         .Inc<ViewRef>()
         .Exc<Hooked>()
+        .Exc<Releasing>()
         .Collect();
     }
 

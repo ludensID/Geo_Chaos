@@ -68,6 +68,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<HeroAttackSystem>());
       Add(systems.Create<StopHeroAttackSystem>());
 
+      Add(systems.Create<ReleaseRingsSystem>());
       Add(systems.Create<ClearSelectedRingsSystem>());
       Add(systems.Create<SelectRingsInHookRadiusSystem>());
       Add(systems.Create<SelectRingsDirectedToHeroSystem>());
