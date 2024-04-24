@@ -77,6 +77,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public List<float> ComboAttackPeriods = new(2) { 0, 0 };
 
     [Title(TriConstants.Names.GRAPPLING_HOOK)]
+    public bool AllowHookInterruption;
     public float HookRadius;
 
     [Range(1, 10)]

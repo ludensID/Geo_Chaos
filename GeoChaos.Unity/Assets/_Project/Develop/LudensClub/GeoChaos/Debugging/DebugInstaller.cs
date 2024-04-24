@@ -35,12 +35,21 @@ namespace LudensClub.GeoChaos.Debugging
     {
       BindInputWatcherDebug();
       BindGravityScaleWatcher();
+      BindHookInterruptionWatcher();
       BindEcsUniverseViewFactory();
       BindEcsWorldPresenterFactory();
       BindEcsWorldViewFactory();
       BindEcsEntityPresenterFactory();
       BindEcsEntityViewFactory();
       BindEcsUniversePresenter();
+    }
+
+    private static void BindHookInterruptionWatcher()
+    {
+      Container
+        .BindInterfacesTo<HookInterruptionWatcher>()
+        .AsSingle()
+        .NonLazy();
     }
 
     public static void BindInputDebug()

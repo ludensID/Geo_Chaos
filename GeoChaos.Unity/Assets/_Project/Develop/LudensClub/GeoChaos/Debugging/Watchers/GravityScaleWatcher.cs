@@ -11,17 +11,22 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
   {
     private readonly EcsWorld _game;
     private readonly HeroConfig _config;
+    private readonly EcsFilter _heroes;
     private float _gravityScale;
 
 
     public GravityScaleWatcher(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
-      _game = gameWorldWrapper.World; 
+      _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
       _gravityScale = _config.GravityScale;
+      _heroes = _game
+        .Filter<HeroTag>()
+        .Inc<GravityScale>()
+        .End();
     }
-    
+
     public void Tick()
     {
       if (_gravityScale != _config.GravityScale)
@@ -29,8 +34,8 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
         _gravityScale = _config.GravityScale;
         if (!float.IsFinite(_gravityScale))
           return;
-        
-        foreach (int hero in _game.Filter<HeroTag>().Inc<GravityScale>().End())
+
+        foreach (int hero in _heroes)
         {
           ref GravityScale gravityScale = ref _game.Get<GravityScale>(hero);
           gravityScale.Value = _game.Has<IsFalling>(hero) ? _config.FallGravityScale : _config.GravityScale;

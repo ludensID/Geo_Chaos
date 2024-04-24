@@ -19,13 +19,10 @@ namespace LudensClub.GeoChaos.Runtime.Utils
 
     public IEnumerator<EcsEntity> GetEnumerator()
     {
-      var list = new List<EcsEntity>();
       foreach (int i in Filter)
       {
-        list.Add(new EcsEntity(World, i));
+        yield return new EcsEntity(World, i);
       }
-
-      return list.GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
@@ -37,14 +34,11 @@ namespace LudensClub.GeoChaos.Runtime.Utils
       where TComponent : struct, IEcsComponent
     {
       EcsPool<TComponent> pool = World.GetPool<TComponent>();
-      var selection = new List<EcsEntity>();
       foreach (int i in Filter)
       {
         if (predicate.Invoke(pool.Get(i)))
-          selection.Add(new EcsEntity(World, i));
+          yield return new EcsEntity(World, i);
       }
-
-      return selection;
     }
   }
 }

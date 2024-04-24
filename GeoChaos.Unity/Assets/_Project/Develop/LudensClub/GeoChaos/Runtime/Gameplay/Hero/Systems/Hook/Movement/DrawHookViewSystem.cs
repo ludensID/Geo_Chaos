@@ -14,6 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     private readonly EcsEntities _heroes;
     private readonly EcsEntities _rings;
     private readonly EcsEntities _finishedHooks;
+    private readonly EcsEntities _interruptedHooks;
 
     public DrawHookViewSystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -35,6 +36,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         .Filter<OnHookPullingFinished>()
         .Inc<HookRef>()
         .Collect();
+
+      _interruptedHooks = _game
+        .Filter<OnHookInterrupted>()
+        .Inc<HookRef>()
+        .Collect();
     }
     
     public void Run(EcsSystems systems)
@@ -52,6 +58,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       }
 
       foreach (EcsEntity hook in _finishedHooks)
+      {
+        hook.Get<HookRef>().Hook.positionCount = 0;
+      }
+
+      foreach (var hook in _interruptedHooks)
       {
         hook.Get<HookRef>().Hook.positionCount = 0;
       }

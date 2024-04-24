@@ -6,6 +6,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View;
@@ -52,6 +53,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<Delete<StopDashCommand, GameWorldWrapper>>());
       Add(systems.Create<RemoveDashCooldownSystem>());
       Add(systems.Create<ReadDashInputSystem>());
+      Add(systems.Create<ConvertDelayedToCurrentDashInputSystem>());
+      Add(systems.Create<ReadDashDelayedInputSystem>());
       Add(systems.Create<CheckForHeroDashSystem>());
       Add(systems.Create<DashHeroSystem>());
       Add(systems.Create<CheckStopHeroDashSystem>());
@@ -72,16 +75,27 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<SelectNearestRingSystem>());
       
       Add(systems.Create<ReadHookInputSystem>());
+      
+      Add(systems.Create<ConvertDelayedToCurrentHookInputSystem>());
+      Add(systems.Create<ReadHookDelayedInputSystem>());
+      
       Add(systems.Create<CheckForSelectedRingSystem>());
       Add(systems.Create<MarkSelectedRingAsHookedSystem>());
       Add(systems.Create<HookSystem>());
+      
       Add(systems.Create<Delete<OnHookPrecastStarted, GameWorldWrapper>>());
       Add(systems.Create<Delete<OnHookPrecastFinished, GameWorldWrapper>>());
       Add(systems.Create<PrecastHookSystem>());
       Add(systems.Create<CheckForHookPrecastTimerSystem>());
+      
       Add(systems.Create<Delete<OnHookPullingStarted, GameWorldWrapper>>());
       Add(systems.Create<Delete<OnHookPullingFinished, GameWorldWrapper>>());
       Add(systems.Create<PullHeroOnHookSystem>());
+      
+      Add(systems.Create<Delete<OnHookInterrupted, GameWorldWrapper>>());
+      Add(systems.Create<InterruptHookSystem>());
+      Add(systems.Create<FinishHookInterruptionSystem>());
+      
       Add(systems.Create<StopHookPullingSystem>());
       Add(systems.Create<StopHookSystem>());
       

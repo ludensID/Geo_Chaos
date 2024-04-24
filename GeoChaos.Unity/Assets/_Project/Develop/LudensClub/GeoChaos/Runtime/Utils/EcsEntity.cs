@@ -52,6 +52,15 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     {
       return World.Has<TComponent>(Entity);
     }
+    
+    [HideInCallstack]
+    public void Is<TComponent>(bool value) where TComponent : struct, IEcsComponent
+    {
+      if (value)
+        World.Add<TComponent>(Entity);
+      else
+        World.Del<TComponent>(Entity);
+    }
 
     [HideInCallstack]
     public ref TComponent Change<TComponent>(ActionRef<TComponent> replacer) where TComponent : struct, IEcsComponent
@@ -66,6 +75,14 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     {
       ref TComponent component = ref World.Get<TComponent>(Entity);
       replacer.Invoke(ref component);
+      return this;
+    }
+    
+    [HideInCallstack]
+    public EcsEntity EnsureDel<TComponent>() where TComponent : struct, IEcsComponent
+    {
+      if(World.Has<TComponent>(Entity))
+        World.Del<TComponent>(Entity);
       return this;
     }
 

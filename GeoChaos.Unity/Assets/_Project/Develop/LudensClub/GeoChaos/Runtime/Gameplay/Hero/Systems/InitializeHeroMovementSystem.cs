@@ -46,6 +46,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           .Add<AttackAvailable>()
           .Add<ComboAttackCounter>()
           .Add<HookAvailable>();
+
+        if (_config.AllowHookInterruption)
+          hero.Add<InterruptHookAvailable>();
       }
     }
   }
