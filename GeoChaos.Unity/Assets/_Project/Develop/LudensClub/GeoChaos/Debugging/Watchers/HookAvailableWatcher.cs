@@ -7,38 +7,39 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Debugging.Watchers
 {
-  public class HookInterruptionWatcher : IWatcher
+  public class HookAvailableWatcher : IWatcher
   {
     private readonly EcsWorld _game;
     private readonly HeroConfig _config;
-    private bool _allowHookInterruption;
     private readonly EcsEntities _heroes;
+    private bool _hookAvailable;
 
-    public HookInterruptionWatcher(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
+    public HookAvailableWatcher(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
-      _allowHookInterruption = _config.AllowHookInterruption;
       _heroes = _game
         .Filter<HeroTag>()
         .Collect();
-    }
 
+      _hookAvailable = _config.EnableHook;
+    }
+    
     public bool IsDifferent()
     {
-      return _allowHookInterruption != _config.AllowHookInterruption;
+      return _hookAvailable != _config.EnableHook;
     }
 
     public void Assign()
     {
-      _allowHookInterruption = _config.AllowHookInterruption;
+      _hookAvailable = _config.EnableHook;
     }
 
     public void OnChanged()
     {
       foreach (EcsEntity hero in _heroes)
-        hero.Is<InterruptHookAvailable>(_allowHookInterruption);
+        hero.Is<HookAvailable>(_hookAvailable);
     }
   }
 }

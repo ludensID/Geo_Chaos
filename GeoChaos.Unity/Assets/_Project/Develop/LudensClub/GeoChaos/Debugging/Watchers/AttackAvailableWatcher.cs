@@ -1,44 +1,45 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Debugging.Watchers
 {
-  public class HookInterruptionWatcher : IWatcher
+  public class AttackAvailableWatcher : IWatcher
   {
     private readonly EcsWorld _game;
     private readonly HeroConfig _config;
-    private bool _allowHookInterruption;
     private readonly EcsEntities _heroes;
+    private bool _attackAvailable;
 
-    public HookInterruptionWatcher(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
+    public AttackAvailableWatcher(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
-      _allowHookInterruption = _config.AllowHookInterruption;
       _heroes = _game
         .Filter<HeroTag>()
         .Collect();
-    }
 
+      _attackAvailable = _config.EnableAttack;
+    }
+    
     public bool IsDifferent()
     {
-      return _allowHookInterruption != _config.AllowHookInterruption;
+      return _attackAvailable != _config.EnableAttack;
     }
 
     public void Assign()
     {
-      _allowHookInterruption = _config.AllowHookInterruption;
+      _attackAvailable = _config.EnableAttack;
     }
 
     public void OnChanged()
     {
       foreach (EcsEntity hero in _heroes)
-        hero.Is<InterruptHookAvailable>(_allowHookInterruption);
+        hero.Is<AttackAvailable>(_attackAvailable);
     }
   }
 }

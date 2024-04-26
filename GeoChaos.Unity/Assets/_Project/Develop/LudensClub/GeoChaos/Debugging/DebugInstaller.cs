@@ -36,12 +36,47 @@ namespace LudensClub.GeoChaos.Debugging
       BindInputWatcherDebug();
       BindGravityScaleWatcher();
       BindHookInterruptionWatcher();
+      BindDashAvailableWatcher();
+      BindAttackAvailableWatcher();
+      BindHookAvailableWatcher();
+
+      BindGlobalWatcher();
+      
       BindEcsUniverseViewFactory();
       BindEcsWorldPresenterFactory();
       BindEcsWorldViewFactory();
       BindEcsEntityPresenterFactory();
       BindEcsEntityViewFactory();
       BindEcsUniversePresenter();
+    }
+
+    private static void BindHookAvailableWatcher()
+    {
+      Container
+        .BindInterfacesTo<HookAvailableWatcher>()
+        .AsSingle();
+    }
+
+    private static void BindAttackAvailableWatcher()
+    {
+      Container
+        .BindInterfacesTo<AttackAvailableWatcher>()
+        .AsSingle();
+    }
+
+    private static void BindDashAvailableWatcher()
+    {
+      Container
+        .BindInterfacesTo<DashAvailableWatcher>()
+        .AsSingle();
+    }
+
+    private static void BindGlobalWatcher()
+    {
+      Container
+        .BindInterfacesTo<GlobalWatcher>()
+        .AsSingle()
+        .NonLazy();
     }
 
     private static void BindHookInterruptionWatcher()

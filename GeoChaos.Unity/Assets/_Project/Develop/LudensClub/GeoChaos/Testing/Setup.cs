@@ -13,7 +13,6 @@ namespace LudensClub.GeoChaos.Testing
     public static void Movable(EcsWorld world, int hero, bool canMove = true)
     {
       ref var movable = ref world.Add<Movable>(hero);
-      movable.CanMove = canMove;
     }
 
     public static IConfigProvider ConfigProvider()
@@ -22,6 +21,7 @@ namespace LudensClub.GeoChaos.Testing
       provider.Get<HeroConfig>().Returns(ScriptableObject.CreateInstance<HeroConfig>());
       return provider;
     }
+    
 
     public static IInputDataProvider InputDataProvider(int horizontalMovement)
     {

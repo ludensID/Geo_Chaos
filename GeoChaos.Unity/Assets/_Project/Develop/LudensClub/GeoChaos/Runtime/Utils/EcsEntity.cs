@@ -54,7 +54,7 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     }
     
     [HideInCallstack]
-    public void Is<TComponent>(bool value) where TComponent : struct, IEcsComponent
+    public EcsEntity Is<TComponent>(bool value) where TComponent : struct, IEcsComponent
     {
       switch (value, World.Has<TComponent>(Entity))
       {
@@ -65,6 +65,8 @@ namespace LudensClub.GeoChaos.Runtime.Utils
           World.Del<TComponent>(Entity);
           break;
       }
+
+      return this;
     }
 
     [HideInCallstack]

@@ -12,6 +12,5 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
   [Serializable]
   public struct DashAvailable : IEcsComponent
   {
-    public bool CanDash;
   }
 }

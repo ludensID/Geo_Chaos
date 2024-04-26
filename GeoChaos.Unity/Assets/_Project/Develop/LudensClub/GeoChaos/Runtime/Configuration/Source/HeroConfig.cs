@@ -59,17 +59,20 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float JumpHorizontalSpeed => MovementSpeed * JumpHorizontalSpeedMultiplier;
 
     [Title("Dash")]
+    [LabelText("Enabled")]
+    public bool EnableDash;
     public float DashVelocity;
-
     public float DashTime;
 
     [ShowInInspector]
-    [PropertyOrder(11)]
+    [PropertyOrder(12)]
     public float DashDistance => DashVelocity * DashTime;
 
     public float DashCooldown;
 
     [Title("Attack")]
+    [LabelText("Enabled")]
+    public bool EnableAttack;
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
     public List<float> HitDurations = new(3) { 0, 0, 0 };
 
@@ -77,6 +80,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public List<float> ComboAttackPeriods = new(2) { 0, 0 };
 
     [Title(TriConstants.Names.GRAPPLING_HOOK)]
+    [LabelText("Enabled")]
+    public bool EnableHook;
     public bool AllowHookInterruption;
     public float HookRadius;
 

@@ -30,7 +30,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (EcsEntity hero in _heroes)
       {
-        hero.Add((ref Movable movable) => movable.CanMove = true)
+        hero
+          .Add<Movable>()
           .Add((ref HorizontalSpeed speed) => speed.Value = _config.MovementSpeed)
           .Add((ref MovementVector vector) => vector.Direction.x = 1)
           .Add<Velocity>()
@@ -42,13 +43,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
             gravity.Value = _config.GravityScale;
             gravity.Override = true;
           })
-          .Add((ref DashAvailable dash) => dash.CanDash = true)
-          .Add<AttackAvailable>()
+          .Is<DashAvailable>(_config.EnableDash)
+          .Is<AttackAvailable>(_config.EnableAttack)
           .Add<ComboAttackCounter>()
-          .Add<HookAvailable>();
-
-        if (_config.AllowHookInterruption)
-          hero.Add<InterruptHookAvailable>();
+          .Is<HookAvailable>(_config.EnableHook)
+          .Is<InterruptHookAvailable>(_config.AllowHookInterruption);
       }
     }
   }

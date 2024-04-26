@@ -12,6 +12,5 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Serializable]
   public struct Movable : IEcsComponent
   {
-    public bool CanMove;
   }
 }

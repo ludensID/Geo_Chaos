@@ -7,13 +7,12 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Debugging.Watchers
 {
-  public class GravityScaleWatcher : ITickable
+  public class GravityScaleWatcher : IWatcher
   {
     private readonly EcsWorld _game;
     private readonly HeroConfig _config;
     private readonly EcsFilter _heroes;
     private float _gravityScale;
-
 
     public GravityScaleWatcher(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
@@ -27,20 +26,26 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
         .End();
     }
 
-    public void Tick()
+    public bool IsDifferent()
     {
-      if (_gravityScale != _config.GravityScale)
-      {
-        _gravityScale = _config.GravityScale;
-        if (!float.IsFinite(_gravityScale))
-          return;
+      return _gravityScale != _config.GravityScale;
+    }
 
-        foreach (int hero in _heroes)
-        {
-          ref GravityScale gravityScale = ref _game.Get<GravityScale>(hero);
-          gravityScale.Value = _game.Has<IsFalling>(hero) ? _config.FallGravityScale : _config.GravityScale;
-          gravityScale.Override = true;
-        }
+    public void Assign()
+    {
+      _gravityScale = _config.GravityScale;
+    }
+
+    public void OnChanged()
+    {
+      if (!float.IsFinite(_gravityScale))
+        return;
+
+      foreach (int hero in _heroes)
+      {
+        ref GravityScale gravityScale = ref _game.Get<GravityScale>(hero);
+        gravityScale.Value = _game.Has<IsFalling>(hero) ? _config.FallGravityScale : _config.GravityScale;
+        gravityScale.Override = true;
       }
     }
   }

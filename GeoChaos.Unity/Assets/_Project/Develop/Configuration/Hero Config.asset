@@ -20,9 +20,11 @@ MonoBehaviour:
   FallVelocityMultiplier: 1
   JumpHorizontalSpeedMultiplier: 2
   JumpLength: 9.240001
+  EnableDash: 1
   DashVelocity: 33.4
   DashTime: 0.15
   DashCooldown: 4
+  EnableAttack: 1
   HitDurations:
   - 0.2
   - 0.5
@@ -30,6 +32,7 @@ MonoBehaviour:
   ComboAttackPeriods:
   - 0.3
   - 0.5
+  EnableHook: 1
   AllowHookInterruption: 1
   HookRadius: 20
   RingHorizontalDistance: 1
