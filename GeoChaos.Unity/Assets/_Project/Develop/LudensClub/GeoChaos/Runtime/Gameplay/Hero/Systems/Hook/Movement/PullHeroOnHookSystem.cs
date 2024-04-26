@@ -49,11 +49,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         Vector3 heroPosition = heroTransform.position;
         Vector3 target = targetTransform.position;
 
-        if (target.y + _config.PullUpHeight >= heroPosition.y)
-        {
-          target.y += _config.PullUpHeight;
-        }
-
         Vector3 vector = target - heroPosition;
         float time = vector.magnitude / _config.HookVelocity;
         Vector2 velocity = vector / time;
@@ -66,12 +61,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           movementVector.Direction = direction;
         });
         
-        precast.Replace((ref GravityScale gravity) =>
-        {
-          gravity.Enabled = false;
-          gravity.Override = true;
-        });
-
         precast.Add((ref HookTimer timer) => timer.TimeLeft = _timers.Create(time + _config.PullTimeOffset));
 
         precast

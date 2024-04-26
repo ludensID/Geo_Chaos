@@ -3,7 +3,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
-using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
@@ -50,16 +49,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .EnsureDel<StopHookPullingCommand>()
           .EnsureDel<OnHookPullingStarted>()
           .EnsureDel<OnHookPullingFinished>()
-          .Replace((ref GravityScale gravity) =>
-          {
-            gravity.Enabled = true;
-            gravity.Override = true;
-          })
-          .Replace((ref MovementVector vector) =>
-          {
-            vector.Immutable = false;
-            vector.Speed = Vector2.zero;
-          });
+          .Replace((ref MovementVector vector) => vector.Immutable = false);
       }
     }
   }

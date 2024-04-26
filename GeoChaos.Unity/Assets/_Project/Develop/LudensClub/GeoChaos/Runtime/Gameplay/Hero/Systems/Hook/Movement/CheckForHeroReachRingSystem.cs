@@ -37,7 +37,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           pulling.Replace((ref MovementVector vector) =>
           {
             vector.Immutable = false;
-            vector.Speed = Vector2.zero;
           });
         }
       }

@@ -48,7 +48,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         vector.Direction.x = direction;
       }
 
-      vector.Speed.x = Mathf.Clamp(vector.Speed.x, 0, speed);
+      if (direction != 0 || vector.Speed.x <= speed)
+        vector.Speed.x = Mathf.Clamp(vector.Speed.x, 0, speed);
     }
 
     private float CalculateSpeedDelta(float speed)

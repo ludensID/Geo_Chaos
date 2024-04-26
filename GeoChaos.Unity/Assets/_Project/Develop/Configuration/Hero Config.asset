@@ -34,7 +34,7 @@ MonoBehaviour:
   HookRadius: 20
   RingHorizontalDistance: 1
   HookPrecastTime: 0.1
-  HookVelocity: 50
+  HookVelocity: 30
   PullUpHeight: 0.5
   PullTimeOffset: 1
   HookInputCooldown: 0.1

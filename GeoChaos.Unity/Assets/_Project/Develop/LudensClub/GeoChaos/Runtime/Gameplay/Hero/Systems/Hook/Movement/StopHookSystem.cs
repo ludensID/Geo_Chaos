@@ -1,6 +1,5 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
@@ -35,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         .Inc<Hooked>()
         .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity command in _commands)
@@ -44,12 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Del<Hooking>()
           .Add<UnlockMovementCommand>()
           .Del<HookPulling>()
-          .Del<HookTimer>()
-          .Replace((ref GravityScale gravity) =>
-          {
-            gravity.Enabled = true;
-            gravity.Override = true;
-          });
+          .Del<HookTimer>();
 
         foreach (EcsEntity ring in _selectedRings)
         {
