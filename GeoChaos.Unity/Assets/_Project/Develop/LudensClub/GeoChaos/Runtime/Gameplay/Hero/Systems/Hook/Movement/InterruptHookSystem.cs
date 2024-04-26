@@ -34,8 +34,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         command
           .Del<InterruptHookCommand>()
           .Del<HookPrecast>()
-          .EnsureDel<OnHookPrecastStarted>()
-          .EnsureDel<OnHookPrecastFinished>()
+          .DelEnsure<OnHookPrecastStarted>()
+          .DelEnsure<OnHookPrecastFinished>()
           .Add<OnHookInterrupted>();
       }
 
@@ -46,9 +46,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Add<OnHookInterrupted>()
           .Del<HookPulling>()
           .Del<HookTimer>()
-          .EnsureDel<StopHookPullingCommand>()
-          .EnsureDel<OnHookPullingStarted>()
-          .EnsureDel<OnHookPullingFinished>()
+          .DelEnsure<StopHookPullingCommand>()
+          .DelEnsure<OnHookPullingStarted>()
+          .DelEnsure<OnHookPullingFinished>()
           .Replace((ref MovementVector vector) => vector.Immutable = false);
       }
     }

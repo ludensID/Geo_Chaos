@@ -9,9 +9,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   public class ReadMovementSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _movables;
     private readonly EcsWorld _inputWorld;
-    private readonly EcsFilter _inputs;
+    private readonly EcsEntities _movables;
+    private readonly EcsEntities _inputs;
 
     public ReadMovementSystem(GameWorldWrapper gameWorldWrapper, InputWorldWrapper inputWorldWrapper)
     {
@@ -21,22 +21,22 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _movables = _world
         .Filter<Movable>()
         .Exc<IsMovementLocked>()
-        .End();
+        .Collect();
 
       _inputs = _inputWorld
         .Filter<Expired>()
         .Inc<HorizontalMovement>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var input in _inputs)
-      foreach (var movable in _movables)
+      foreach (EcsEntity input in _inputs)
+      foreach (EcsEntity movable in _movables)
       {
-        ref var horizontalMovement = ref _inputWorld.Get<HorizontalMovement>(input);
-        ref var command = ref _world.Add<MoveCommand>(movable);
-        command.Direction = horizontalMovement.Direction;
+        float direction = input.Get<HorizontalMovement>().Direction;
+        if (direction != 0)
+          movable.Add((ref MoveCommand command) => command.Direction = direction);
       }
     }
   }

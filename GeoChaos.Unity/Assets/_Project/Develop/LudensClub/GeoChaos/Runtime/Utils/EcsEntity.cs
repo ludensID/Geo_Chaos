@@ -56,10 +56,15 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     [HideInCallstack]
     public void Is<TComponent>(bool value) where TComponent : struct, IEcsComponent
     {
-      if (value)
-        World.Add<TComponent>(Entity);
-      else
-        World.Del<TComponent>(Entity);
+      switch (value, World.Has<TComponent>(Entity))
+      {
+        case (true, false):
+          World.Add<TComponent>(Entity);
+          break;
+        case (false, true):
+          World.Del<TComponent>(Entity);
+          break;
+      }
     }
 
     [HideInCallstack]
@@ -79,7 +84,7 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     }
     
     [HideInCallstack]
-    public EcsEntity EnsureDel<TComponent>() where TComponent : struct, IEcsComponent
+    public EcsEntity DelEnsure<TComponent>() where TComponent : struct, IEcsComponent
     {
       if(World.Has<TComponent>(Entity))
         World.Del<TComponent>(Entity);
