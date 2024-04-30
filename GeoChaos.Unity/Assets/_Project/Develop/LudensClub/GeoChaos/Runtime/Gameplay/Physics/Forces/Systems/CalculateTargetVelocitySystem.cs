@@ -60,6 +60,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 
           if (force.Is<Instant>())
           {
+            if(force.Get<SpeedForce>().Type == SpeedForceType.Hook)
+              Debug.Log("Hook");
             force.Replace((ref Impact impact) =>
             {
               impact.X = false;

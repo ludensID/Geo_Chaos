@@ -75,14 +75,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         float direction = command.Get<MoveCommand>().Direction;
         float speed = command.Get<HorizontalSpeed>().Value;
         float acceleration = CalculateAcceleration(speed);
-
+        
         foreach (EcsEntity force in _forces
           .GetLoop(SpeedForceType.Move, command.Pack()))
         {
           force
             .Replace((ref MovementVector vector) => vector.Direction.x = direction)
-            .Replace((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed)
-            .Replace((ref Acceleration a) => a.Value.x = acceleration);
+            .Replace((ref Acceleration a) => a.Value.x = acceleration)
+            .Replace((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed);
         }
       }
 

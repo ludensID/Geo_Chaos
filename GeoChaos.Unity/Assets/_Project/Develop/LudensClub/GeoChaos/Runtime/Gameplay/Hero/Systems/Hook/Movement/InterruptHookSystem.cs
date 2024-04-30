@@ -45,7 +45,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       foreach (EcsEntity command in _pullCommands)
       {
         foreach (EcsEntity force in _forceLoop
-          .GetLoop(SpeedForceType.Dash, command.Pack()))
+          .GetLoop(SpeedForceType.Hook, command.Pack()))
         {
           force
             .Del<Unique>()
