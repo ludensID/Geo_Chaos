@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
@@ -12,10 +12,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _pullings;
+    private readonly SpeedForceLoop _forceLoop;
 
-    public CheckForHeroReachRingSystem(GameWorldWrapper gameWorldWrapper)
+    public CheckForHeroReachRingSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
     {
       _game = gameWorldWrapper.World;
+
+      _forceLoop = forceLoopSvc.CreateLoop();
 
       _pullings = _game
         .Filter<HookPulling>()
@@ -23,23 +26,34 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         .Inc<MovementVector>()
         .Exc<StopHookPullingCommand>()
         .Collect();
-    } 
-    
+    }
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity pulling in _pullings)
       {
         Transform heroTransform = pulling.Get<ViewRef>().View.transform;
         ref HookPulling hookPulling = ref pulling.Get<HookPulling>();
-        if ((hookPulling.Target.x - heroTransform.position.x) * Mathf.Sign(hookPulling.Velocity.x) <= 0)
+        if (IsHeroReachedRing(hookPulling.Target, heroTransform.position, hookPulling.Velocity))
         {
-          pulling.Add<StopHookPullingCommand>();
-          pulling.Replace((ref MovementVector vector) =>
+          foreach (EcsEntity force in _forceLoop
+            .GetLoop(SpeedForceType.Hook, pulling.Pack()))
           {
-            vector.Immutable = false;
-          });
+            force
+              .Del<Unique>()
+              .Del<Immutable>()
+              .Add<Instant>();
+          }
+
+          pulling.Add<StopHookPullingCommand>();
         }
       }
+    }
+
+    private static bool IsHeroReachedRing(Vector2 ring, Vector2 hero, Vector2 velocity)
+    {
+      Vector2 delta = (ring - hero) * velocity;
+      return delta.x <= 0 && delta.y <= 0;
     }
   }
 }

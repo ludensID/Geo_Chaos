@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump
       _game = gameWorldWrapper.World;
 
       _jumpings = _game
-        .Filter<IsJumping>()
+        .Filter<Jumping>()
         .Inc<OnMovementLocked>()
         .End();
     }
@@ -24,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump
     public void Run(EcsSystems systems)
     {
       foreach (int jumping in _jumpings)
-        _game.Del<IsJumping>(jumping);
+        _game.Del<Jumping>(jumping);
     }
   }
 }

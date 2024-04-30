@@ -46,11 +46,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         command
           .Add<OnHookPrecastStarted>()
           .Add((ref HookPrecast precast) =>
-        {
-          precast.TimeLeft = _timers.Create(_config.HookPrecastTime);
-          precast.Velocity = distance / _config.HookPrecastTime;
-          precast.TargetPoint = ringPosition;
-        });
+          {
+            precast.TimeLeft = _timers.Create(_config.HookPrecastTime);
+            precast.Velocity = distance / _config.HookPrecastTime;
+            precast.TargetPoint = ringPosition;
+          });
       }
     }
   }

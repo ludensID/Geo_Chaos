@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
@@ -11,10 +11,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     private readonly EcsWorld _game;
     private readonly EcsEntities _precastCommands;
     private readonly EcsEntities _pullCommands;
+    private readonly SpeedForceLoop _forceLoop;
 
-    public InterruptHookSystem(GameWorldWrapper gameWorldWrapper)
+    public InterruptHookSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
     {
       _game = gameWorldWrapper.World;
+
+      _forceLoop = forceLoopSvc.CreateLoop();
 
       _precastCommands = _game
         .Filter<InterruptHookCommand>()
@@ -41,6 +44,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
       foreach (EcsEntity command in _pullCommands)
       {
+        foreach (EcsEntity force in _forceLoop
+          .GetLoop(SpeedForceType.Dash, command.Pack()))
+        {
+          force
+            .Del<Unique>()
+            .Del<Immutable>()
+            .Add<Instant>();
+        }
+
         command
           .Del<InterruptHookCommand>()
           .Add<OnHookInterrupted>()
@@ -48,8 +60,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Del<HookTimer>()
           .DelEnsure<StopHookPullingCommand>()
           .DelEnsure<OnHookPullingStarted>()
-          .DelEnsure<OnHookPullingFinished>()
-          .Replace((ref MovementVector vector) => vector.Immutable = false);
+          .DelEnsure<OnHookPullingFinished>();
       }
     }
   }

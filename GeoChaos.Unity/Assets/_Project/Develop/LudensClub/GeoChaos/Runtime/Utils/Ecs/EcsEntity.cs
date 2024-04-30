@@ -7,21 +7,31 @@ namespace LudensClub.GeoChaos.Runtime.Utils
 {
   public delegate void ActionRef<TComponent>(ref TComponent component);
 
-  public class EcsEntity
+  public class EcsEntity : IDisposable
   {
-    public EcsWorld World { get; }
-    public int Entity { get; }
+    public EcsWorld World { get; private set; }
+    public int Entity { get; private set; }
+    public bool IsAlive { get; private set; }
 
     public EcsEntity(EcsWorld world, int entity)
     {
       World = world;
       Entity = entity;
+      IsAlive = world != null && entity != -1;
     }
 
     [HideInCallstack]
     public EcsEntity Add<TComponent>() where TComponent : struct, IEcsComponent
     {
       World.Add<TComponent>(Entity);
+      return this;
+    }
+    
+    [HideInCallstack]
+    public EcsEntity Add<TComponent>(TComponent component) where TComponent : struct, IEcsComponent
+    {
+      ref TComponent addedComponent = ref World.Add<TComponent>(Entity);
+      addedComponent = component;
       return this;
     }
 
@@ -78,13 +88,21 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     }
 
     [HideInCallstack]
+    public EcsEntity Replace<TComponent>(TComponent component) where TComponent : struct, IEcsComponent
+    {
+      ref TComponent replacedComponent = ref World.Get<TComponent>(Entity);
+      replacedComponent = component;
+      return this;
+    }
+
+    [HideInCallstack]
     public EcsEntity Replace<TComponent>(ActionRef<TComponent> replacer) where TComponent : struct, IEcsComponent
     {
       ref TComponent component = ref World.Get<TComponent>(Entity);
       replacer.Invoke(ref component);
       return this;
     }
-    
+
     [HideInCallstack]
     public EcsEntity DelEnsure<TComponent>() where TComponent : struct, IEcsComponent
     {
@@ -99,42 +117,23 @@ namespace LudensClub.GeoChaos.Runtime.Utils
       World.Del<TComponent>(Entity);
       return this;
     }
-  }
 
-  public class EcsEntity<TComponent> : EcsEntity where TComponent : struct, IEcsComponent
-  {
-    public EcsEntity(EcsWorld world, int entity) : base(world, entity)
+    public void Dispose()
     {
+      World.DelEntity(Entity);
+      World = null;
+      Entity = -1;
+      IsAlive = false;
     }
 
-    [HideInCallstack]
-    public EcsEntity<TComponent> Add()
+    public EcsPackedEntity Pack()
     {
-      World.GetPool<TComponent>().Add(Entity);
-      return this;
+      return World.PackEntity(Entity);
     }
 
-    [HideInCallstack]
-    public ref TComponent GetComponent()
+    public EcsPackedEntityWithWorld PackWithWorld()
     {
-      return ref World.Get<TComponent>(Entity);
-    }
-
-    [HideInCallstack]
-    public EcsEntity<TComponent> Del()
-    {
-      World.Del<TComponent>(Entity);
-      return this;
-    }
-
-    [HideInCallstack]
-    public EcsEntity<TComponent> Assign(Action<EcsShell<TComponent>> assigner)
-    {
-      ref TComponent ecsComponent = ref GetComponent();
-      var shell = new EcsShell<TComponent>(ecsComponent);
-      assigner.Invoke(shell);
-      ecsComponent = shell.Value;
-      return this;
+      return World.PackEntityWithWorld(Entity);
     }
   }
 }

@@ -1,21 +1,28 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 {
   public class DashHeroSystem : IEcsRunSystem
   {
+    private readonly ISpeedForceFactory _forceFactory;
     private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
-    private readonly EcsFilter _heroes;
     private readonly HeroConfig _config;
+    private readonly EcsEntities _heroes;
 
-    public DashHeroSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider, ITimerFactory timers)
+    public DashHeroSystem(GameWorldWrapper gameWorldWrapper,
+      ISpeedForceFactory forceFactory,
+      IConfigProvider configProvider,
+      ITimerFactory timers)
     {
+      _forceFactory = forceFactory;
       _timers = timers;
       _config = configProvider.Get<HeroConfig>();
       _game = gameWorldWrapper.World;
@@ -23,21 +30,24 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
       _heroes = _game.Filter<HeroTag>()
         .Inc<DashCommand>()
         .Inc<MovementVector>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var hero in _heroes)
+      foreach (EcsEntity hero in _heroes)
       {
-        ref var vector = ref _game.Get<MovementVector>(hero);
-        vector.Speed.x = _config.DashVelocity;
-        vector.Speed.y = 0;
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Dash, hero.Pack(), true, true)
+        {
+          Speed = new Vector2(_config.DashVelocity, 0),
+          Direction = hero.Get<MovementVector>().Direction,
+          Unique = true,
+          Immutable = true
+        });
 
-        ref var isDashing = ref _game.Add<IsDashing>(hero);
-        isDashing.TimeLeft = _timers.Create(_config.DashTime);
-
-        _game.Add<LockMovementCommand>(hero);
+        hero
+          .Add((ref IsDashing dashing) => dashing.TimeLeft = _timers.Create(_config.DashTime))
+          .Add<LockMovementCommand>();
       }
     }
   }

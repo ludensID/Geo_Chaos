@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Move;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
@@ -9,20 +10,37 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
   public class CalculateHeroMovementVectorSystem : IEcsRunSystem
   {
+    private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
     private readonly HeroConfig _config;
     private readonly EcsEntities _movings;
     private readonly EcsEntities _commands;
+    private readonly EcsEntities _startCommands;
+    private readonly SpeedForceLoop _forces;
 
-    public CalculateHeroMovementVectorSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
+    public CalculateHeroMovementVectorSystem(GameWorldWrapper gameWorldWrapper,
+      ISpeedForceLoopService forceLoopSvc,
+      ISpeedForceFactory forceFactory,
+      IConfigProvider configProvider)
     {
+      _forceFactory = forceFactory;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
+      _forces = forceLoopSvc.CreateLoop();
+
+      _startCommands = _game
+        .Filter<Movable>()
+        .Inc<MoveCommand>()
+        .Inc<MovementVector>()
+        .Exc<Moving>()
+        .Collect();
+        
       _commands = _game
         .Filter<Movable>()
         .Inc<MoveCommand>()
         .Inc<MovementVector>()
+        .Inc<Moving>()
         .Collect();
 
       _movings = _game
@@ -35,41 +53,66 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
     public void Run(EcsSystems systems)
     {
+      foreach (EcsEntity command in _startCommands)
+      {
+        float direction = command.Get<MoveCommand>().Direction;
+        float speed = command.Get<HorizontalSpeed>().Value;
+        float acceleration = CalculateAcceleration(speed);
+
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), true)
+        {
+          Direction = new Vector2(direction, 0),
+          Accelerated = true,
+          MaxSpeed = speed,
+          Acceleration = new Vector2(acceleration, 0)
+        });
+
+        command.Add<Moving>();
+      }
+      
       foreach (EcsEntity command in _commands)
       {
         float direction = command.Get<MoveCommand>().Direction;
         float speed = command.Get<HorizontalSpeed>().Value;
-        float delta = CalculateSpeedDelta(speed);
+        float acceleration = CalculateAcceleration(speed);
 
-        command.Replace((ref MovementVector vector) =>
+        foreach (EcsEntity force in _forces
+          .GetLoop(SpeedForceType.Move, command.Pack()))
         {
-          vector.Speed.x += delta;
-          vector.Direction.x = direction;
-          vector.Speed.x = Mathf.Clamp(vector.Speed.x, 0, speed);
-        });
-
-        command.Is<Moving>(true);
+          force
+            .Replace((ref MovementVector vector) => vector.Direction.x = direction)
+            .Replace((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed)
+            .Replace((ref Acceleration a) => a.Value.x = acceleration);
+        }
       }
 
       foreach (EcsEntity moving in _movings)
       {
         float speed = moving.Get<HorizontalSpeed>().Value;
-        float delta = CalculateSpeedDelta(speed);
+        float acceleration = CalculateAcceleration(speed);
+        
+        foreach (EcsEntity force in _forces
+          .GetLoop(SpeedForceType.Move, moving.Pack()))
+        {
+          force
+            .Replace((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed)
+            .Replace((ref Acceleration a) => a.Value.x = -acceleration);
 
-        ref MovementVector vector = ref moving.Get<MovementVector>();
-        vector.Speed.x -= delta;
-        vector.Speed.x = Mathf.Clamp(vector.Speed.x, 0, speed);
-
-        moving.Is<Moving>(vector.Speed.x != 0);
+          if (force.Get<MovementVector>().Speed.x == 0)
+          {
+            force.Replace((ref Impact impact) => impact.X = false);
+            moving.Del<Moving>();
+          }
+        }
       }
     }
-
-    private float CalculateSpeedDelta(float speed)
+    
+    private float CalculateAcceleration(float speed)
     {
-      float delta = _config.AccelerationTime == 0
-        ? speed
-        : speed / _config.AccelerationTime * Time.deltaTime;
-      return delta;
+      float acceleration = _config.AccelerationTime == 0
+        ? speed / Time.fixedDeltaTime * 100
+        : speed / _config.AccelerationTime;
+      return acceleration;
     }
   }
 }

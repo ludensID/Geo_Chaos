@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
       _hookTimers = _game
         .Filter<HookTimer>()
-        .Exc<StopHookPullingCommand>()
+        .Exc<InterruptHookCommand>()
         .Collect();
     }
 
@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       foreach (EcsEntity timer in _hookTimers
         .Where<HookTimer>(timer => timer.TimeLeft <= 0))
       {
-        timer.Add<StopHookPullingCommand>();
+        timer.Add<InterruptHookCommand>();
       }
     }
   }

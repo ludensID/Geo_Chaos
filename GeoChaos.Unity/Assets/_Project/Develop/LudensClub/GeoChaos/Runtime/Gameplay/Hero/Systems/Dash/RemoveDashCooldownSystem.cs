@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
       foreach (int cooldown in _cooldowns)
       {
         ref DashCooldown dashCooldown = ref _game.Get<DashCooldown>(cooldown);
-        if (dashCooldown.Timer <= 0)
+        if (dashCooldown.TimeLeft <= 0)
           _game.Del<DashCooldown>(cooldown);
       }
     }

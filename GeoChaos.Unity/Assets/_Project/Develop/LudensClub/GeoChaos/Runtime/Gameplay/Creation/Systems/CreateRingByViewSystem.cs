@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
     {
       foreach (RingView ringView in _rings)
       {
-        EcsEntity ring = _game.NewEcsEntity()
+        EcsEntity ring = _game.CreateEntity()
           .Add<RingTag>()
           .Add((ref EntityId x) => x.Id = EntityType.Ring);
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementResponseDelay: 0
   MovementSpeed: 7
-  AccelerationTime: 0.15
+  AccelerationTime: 0
   JumpTime: 0.66
   JumpHeight: 5
   FallVelocityMultiplier: 1

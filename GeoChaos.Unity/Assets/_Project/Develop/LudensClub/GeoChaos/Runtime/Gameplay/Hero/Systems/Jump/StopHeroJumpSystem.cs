@@ -1,37 +1,42 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
   public class StopHeroJumpSystem : IEcsRunSystem
   {
+    private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _world;
-    private readonly EcsFilter _heroes;
-    private readonly HeroConfig _config;
+    private readonly EcsEntities _heroes;
 
-    public StopHeroJumpSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
+    public StopHeroJumpSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceFactory forceFactory)
     {
+      _forceFactory = forceFactory;
       _world = gameWorldWrapper.World;
-      _config = configProvider.Get<HeroConfig>();
 
       _heroes = _world.Filter<HeroTag>()
         .Inc<StopJumpCommand>()
-        .Inc<IsJumping>()
+        .Inc<Jumping>()
         .Inc<MovementVector>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var hero in _heroes)
+      foreach (EcsEntity hero in _heroes)
       {
-        ref var vector = ref _world.Get<MovementVector>(hero);
-        vector.Speed.y = 0;
-
-        _world.Del<IsJumping>(hero);
-        _world.Del<StopJumpCommand>(hero);
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Jump, hero.Pack(), impactY: true)
+        {
+          Speed = new Vector2(0, 0),
+          Instant = true
+        });
+        
+        hero
+          .Del<Jumping>()
+          .Del<StopJumpCommand>();
       }
     }
   }

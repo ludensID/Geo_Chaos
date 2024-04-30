@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
@@ -28,8 +29,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       foreach (EcsEntity onGround in _onGrounds
         .Where<MovementVector>(x => x.Direction.y <= 0))
       {
-        if (onGround.Is<IsJumping>())
-          onGround.Del<IsJumping>();
+        if (onGround.Is<Jumping>())
+          onGround.Del<Jumping>();
         
         onGround.Add<IsFalling>()
           .Replace((ref GravityScale gravity) =>

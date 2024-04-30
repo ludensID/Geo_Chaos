@@ -1,20 +1,23 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View
 {
-  public class ReadHeroViewVelocitySystem : IEcsRunSystem
+  public class ReadViewVelocitySystem : IEcsRunSystem
   {
-    private readonly EcsWorld _world;
+    private readonly EcsWorld _game;
     private readonly EcsEntities _vectors;
 
-    public ReadHeroViewVelocitySystem(GameWorldWrapper gameWorldWrapper)
+    public ReadViewVelocitySystem(GameWorldWrapper gameWorldWrapper)
     {
-      _world = gameWorldWrapper.World;
+      _game = gameWorldWrapper.World;
 
-      _vectors = _world.Filter<RigidbodyRef>()
+      _vectors = _game
+        .Filter<RigidbodyRef>()
         .Inc<MovementVector>()
         .Collect();
     }

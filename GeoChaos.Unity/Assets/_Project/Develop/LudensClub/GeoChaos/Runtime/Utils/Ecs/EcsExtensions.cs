@@ -58,19 +58,13 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     }
 
     [HideInCallstack]
-    public static EcsEntity StartChain(this EcsWorld world, int entity)
-    {
-      return new EcsEntity(world, entity);
-    }
-
-    [HideInCallstack]
     public static EcsEntities Collect(this EcsWorld.Mask mask)
     {
       return new EcsEntities(mask.End());
     }
 
     [HideInCallstack]
-    public static EcsEntity NewEcsEntity(this EcsWorld world)
+    public static EcsEntity CreateEntity(this EcsWorld world)
     {
       return new EcsEntity(world, world.NewEntity());
     }

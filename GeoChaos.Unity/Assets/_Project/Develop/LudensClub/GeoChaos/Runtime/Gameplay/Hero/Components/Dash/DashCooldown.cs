@@ -12,6 +12,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
   [Serializable]
   public struct DashCooldown : IEcsComponent
   {
-    public Timer Timer;
+    public Timer TimeLeft;
   }
 }

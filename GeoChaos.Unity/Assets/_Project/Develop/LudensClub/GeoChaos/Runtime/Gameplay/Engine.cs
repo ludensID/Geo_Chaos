@@ -5,6 +5,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Feature;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Feature;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using Zenject;
 
@@ -23,6 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
       _lateUpdateSystems = systemsFactory.Create(); 
 
       _fixedUpdateSystems
+        .Add(factory.Create<ForceFeature>())
         .Add(factory.Create<HeroPhysicsFeature>());
 
       _updateSystems

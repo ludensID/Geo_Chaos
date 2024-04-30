@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -12,14 +13,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
   public class PullHeroOnHookSystem : IEcsRunSystem
   {
+    private readonly ISpeedForceFactory _forceFactory;
     private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _finishedPrecasts;
     private readonly EcsEntities _hookedRings;
     private readonly HeroConfig _config;
 
-    public PullHeroOnHookSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider, ITimerFactory timers)
+    public PullHeroOnHookSystem(GameWorldWrapper gameWorldWrapper,
+      ISpeedForceFactory forceFactory,
+      IConfigProvider configProvider,
+      ITimerFactory timers)
     {
+      _forceFactory = forceFactory;
       _timers = timers;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
@@ -54,11 +60,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         Vector2 velocity = vector / time;
 
         (Vector3 length, Vector3 direction) = MiscUtils.DecomposeVector(velocity);
-        precast.Replace((ref MovementVector movementVector) =>
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, precast.Pack(), true, true)
         {
-          movementVector.Immutable = true;
-          movementVector.Speed = length;
-          movementVector.Direction = direction;
+          Speed = length,
+          Direction = direction,
+          Unique = true,
+          Immutable = true
         });
         
         precast.Add((ref HookTimer timer) => timer.TimeLeft = _timers.Create(time + _config.PullTimeOffset));

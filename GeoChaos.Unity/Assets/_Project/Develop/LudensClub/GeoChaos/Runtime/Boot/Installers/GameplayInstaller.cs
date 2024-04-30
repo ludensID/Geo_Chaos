@@ -2,6 +2,7 @@
 using System.Linq;
 using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
@@ -27,6 +28,10 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindInputWorldWrapper();
       BindGameWorldWrapper();
       BindMessageWorldWrapper();
+      BindPhysicsWorldWrapper();
+
+      BindSpeedForceLoopService();
+      BindSpeedForceFactory();
       BindEcsSystemsFactory();
       BindViewFactory();
       BindCollisionFiller();
@@ -42,6 +47,29 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindDashCooldownPresenter();
       BindEnemyHealthView();
+    }
+
+    private void BindSpeedForceLoopService()
+    {
+      Container
+        .Bind<ISpeedForceLoopService>()
+        .To<SpeedForceLoopService>()
+        .AsSingle();
+    }
+
+    private void BindSpeedForceFactory()
+    {
+      Container
+        .Bind<ISpeedForceFactory>()
+        .To<SpeedForceFactory>()
+        .AsSingle();
+    }
+
+    private void BindPhysicsWorldWrapper()
+    {
+      Container
+        .BindInterfacesAndSelfTo<PhysicsWorldWrapper>()
+        .AsSingle();
     }
 
     private void BindEcsDisposer()

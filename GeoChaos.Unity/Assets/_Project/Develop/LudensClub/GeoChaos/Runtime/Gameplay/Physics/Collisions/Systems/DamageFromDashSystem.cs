@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;

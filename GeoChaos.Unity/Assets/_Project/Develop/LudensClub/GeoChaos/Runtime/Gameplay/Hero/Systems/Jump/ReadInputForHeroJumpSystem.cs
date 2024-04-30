@@ -32,7 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
       _noStoppeds = _world.Filter<HeroTag>()
         .Inc<JumpAvailable>()
-        .Inc<IsJumping>()
+        .Inc<Jumping>()
         .Exc<IsMovementLocked>()
         .End();
 

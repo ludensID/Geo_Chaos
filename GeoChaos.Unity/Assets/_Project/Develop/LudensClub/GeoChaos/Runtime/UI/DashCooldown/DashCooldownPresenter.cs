@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.UI
       foreach (int heroCooldown in _heroCooldowns)
       {
         ref DashCooldown cooldown = ref _game.Get<DashCooldown>(heroCooldown);
-        float viewTime = Mathf.Clamp(cooldown.Timer.TimeLeft, 0, cooldown.Timer.TimeLeft);
+        float viewTime = Mathf.Clamp(cooldown.TimeLeft.TimeLeft, 0, cooldown.TimeLeft.TimeLeft);
         _view.SetText(viewTime.ToString("F"));
       }
     }
