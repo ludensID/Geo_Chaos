@@ -104,14 +104,6 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     }
 
     [HideInCallstack]
-    public EcsEntity DelEnsure<TComponent>() where TComponent : struct, IEcsComponent
-    {
-      if(World.Has<TComponent>(Entity))
-        World.Del<TComponent>(Entity);
-      return this;
-    }
-
-    [HideInCallstack]
     public EcsEntity Del<TComponent>() where TComponent : struct, IEcsComponent
     {
       World.Del<TComponent>(Entity);

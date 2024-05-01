@@ -29,12 +29,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         ref MovementVector vector = ref accelerate.Get<MovementVector>();
         ref MaxSpeed maxSpeed = ref accelerate.Get<MaxSpeed>();
         vector.Speed += acceleration.Value * Time.fixedDeltaTime;
-        vector.Speed = ClampToZeroByMin(vector.Speed);
+        vector.Speed = ClampByMinToZero(vector.Speed);
         vector.Speed = Vector2.ClampMagnitude(vector.Speed, maxSpeed.Speed);
       }
     }
 
-    private Vector2 ClampToZeroByMin(Vector2 vector)
+    private Vector2 ClampByMinToZero(Vector2 vector)
     {
       if (vector.x < 0)
         vector.x = 0;

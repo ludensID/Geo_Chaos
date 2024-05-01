@@ -66,7 +66,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           MaxSpeed = speed,
           Acceleration = new Vector2(acceleration, 0)
         });
-
+        
         command.Add<Moving>();
       }
       
@@ -97,8 +97,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           force
             .Replace((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed)
             .Replace((ref Acceleration a) => a.Value.x = -acceleration);
-
-          if (force.Get<MovementVector>().Speed.x == 0)
+          
+          if (force.Get<MovementVector>().Speed.x <= 0)
           {
             force.Replace((ref Impact impact) => impact.X = false);
             moving.Del<Moving>();
@@ -109,10 +109,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     
     private float CalculateAcceleration(float speed)
     {
-      float acceleration = _config.AccelerationTime == 0
+      return _config.AccelerationTime == 0
         ? speed / Time.fixedDeltaTime * 100
         : speed / _config.AccelerationTime;
-      return acceleration;
     }
   }
 }

@@ -74,10 +74,10 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [LabelText("Enabled")]
     public bool EnableAttack;
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
-    public List<float> HitDurations = new(3) { 0, 0, 0 };
+    public List<float> HitDurations = new List<float>(3) { 0, 0, 0 };
 
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
-    public List<float> ComboAttackPeriods = new(2) { 0, 0 };
+    public List<float> ComboAttackPeriods = new List<float>(2) { 0, 0 };
 
     [Title(TriConstants.Names.GRAPPLING_HOOK)]
     [LabelText("Enabled")]
@@ -91,9 +91,19 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Min(0.01f)]
     public float HookPrecastTime;
     public float HookVelocity;
+
+    [GroupNext(TriConstants.Names.HOOK_UPGRADES)]
+    [Range(0, 1)]
+    public float StartControlCoefficient = 0.5f;
+    [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("Drag Force")]
+    public bool EnableDragForce;
+    public bool IsRelativeHookSpeed;
+    public float DragForceMultiplier;
+    
+    [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("AD Control")]    
+    public bool EnableADControl;
     
     [GroupNext(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
-    public float PullUpHeight;
     public float PullTimeOffset;
     public float HookInputCooldown;
     public float RingReleasingTime;
@@ -105,6 +115,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float DashDamage;
 
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
-    public List<float> HitDamages = new(3) { 0, 0, 0 };
+    public List<float> HitDamages = new List<float>(3) { 0, 0, 0 };
   }
 }

@@ -8,16 +8,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
   public class InterruptHookSystem : IEcsRunSystem
   {
+    private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
     private readonly EcsEntities _precastCommands;
     private readonly EcsEntities _pullCommands;
-    private readonly SpeedForceLoop _forceLoop;
 
-    public InterruptHookSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
+    public InterruptHookSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceFactory forceFactory)
     {
+      _forceFactory = forceFactory;
       _game = gameWorldWrapper.World;
-
-      _forceLoop = forceLoopSvc.CreateLoop();
 
       _precastCommands = _game
         .Filter<InterruptHookCommand>()
@@ -37,30 +36,25 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         command
           .Del<InterruptHookCommand>()
           .Del<HookPrecast>()
-          .DelEnsure<OnHookPrecastStarted>()
-          .DelEnsure<OnHookPrecastFinished>()
+          .Is<OnHookPrecastStarted>(false)
+          .Is<OnHookPrecastFinished>(false)
           .Add<OnHookInterrupted>();
       }
 
       foreach (EcsEntity command in _pullCommands)
       {
-        foreach (EcsEntity force in _forceLoop
-          .GetLoop(SpeedForceType.Hook, command.Pack()))
-        {
-          force
-            .Del<Unique>()
-            .Del<Immutable>()
-            .Add<Instant>();
-        }
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, command.Pack()));
 
         command
           .Del<InterruptHookCommand>()
           .Add<OnHookInterrupted>()
           .Del<HookPulling>()
           .Del<HookTimer>()
-          .DelEnsure<StopHookPullingCommand>()
-          .DelEnsure<OnHookPullingStarted>()
-          .DelEnsure<OnHookPullingFinished>();
+          .Is<ControlDelay>(false)
+          .Is<StopHookPullingCommand>(false)
+          .Is<OnHookPullingStarted>(false)
+          .Is<OnHookPullingFinished>(false)
+          .Is<DragForcing>(false);
       }
     }
   }

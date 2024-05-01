@@ -37,8 +37,12 @@ MonoBehaviour:
   HookRadius: 20
   RingHorizontalDistance: 1
   HookPrecastTime: 0.2
-  HookVelocity: 30
-  PullUpHeight: 0.5
+  HookVelocity: 35
+  StartControlCoefficient: 0.5
+  EnableDragForce: 1
+  IsRelativeHookSpeed: 1
+  DragForceMultiplier: 1
+  EnableADControl: 0
   PullTimeOffset: 1
   HookInputCooldown: 0.1
   RingReleasingTime: 0.1

@@ -1,6 +1,5 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
 {
@@ -11,10 +10,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct HookPulling : IEcsComponent
+  public struct ControlFactor : IEcsComponent
   {
-    public Vector2 Velocity;
-    public float Time;
-    public Vector3 Target;
+    public float Factor;
+    public float Growth;
   }
 }

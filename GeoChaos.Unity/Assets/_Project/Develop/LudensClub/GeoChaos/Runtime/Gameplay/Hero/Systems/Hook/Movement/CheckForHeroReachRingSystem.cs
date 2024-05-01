@@ -41,8 +41,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           {
             force
               .Del<Unique>()
-              .Del<Immutable>()
-              .Add<Instant>();
+              .Del<Immutable>();
+
+            ref Impact impact = ref force.Get<Impact>();
+            impact.Y = false;
+            if (!pulling.Is<DragForceAvailable>())
+              impact.X = false;
           }
 
           pulling.Add<StopHookPullingCommand>();
@@ -53,7 +57,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     private static bool IsHeroReachedRing(Vector2 ring, Vector2 hero, Vector2 velocity)
     {
       Vector2 delta = (ring - hero) * velocity;
-      return delta.x <= 0 && delta.y <= 0;
+      return delta is { x: <= 0, y: <= 0 };
     }
   }
 }
