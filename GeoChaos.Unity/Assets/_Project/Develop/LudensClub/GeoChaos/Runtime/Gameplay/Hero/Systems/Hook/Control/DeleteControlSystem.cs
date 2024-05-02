@@ -21,6 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
       _vectors = _game
         .Filter<MovementVector>()
+        .Exc<HookPulling>()
         .Collect();
     }
 
@@ -32,16 +33,22 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         float entityVelocityX = entityVector.Speed.x * entityVector.Direction.x;
         if (vector.Is<DragForcing>())
         {
+          bool fullControl = vector.Is<IsOnGround>();
           foreach (EcsEntity force in _forceLoop
             .GetLoop(SpeedForceType.Hook, vector.Pack()))
           {
             ref MovementVector forceVector = ref force.Get<MovementVector>();
-            if (forceVector.Speed.x <= 0 || entityVelocityX * forceVector.Direction.x <= 0 || vector.Is<IsOnGround>())
+            if (forceVector.Speed.x <= 0 || entityVelocityX * forceVector.Direction.x <= 0 || fullControl)
             {
-              force.Replace((ref Impact impact) => impact.X = false);
-              vector.Del<DragForcing>();
+              fullControl = true;
+              force
+                .Replace((ref MovementVector vector) => vector.Speed.x = 0)
+                .Add<Instant>();
             }
           }
+
+          if (fullControl)
+            vector.Del<DragForcing>();
         }
 
         if (vector.Is<Controlling>())
@@ -51,7 +58,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             .GetLoop(SpeedForceType.Move, vector.Pack()))
           {
             ref MovementVector forceVector = ref force.Get<MovementVector>();
-            if (vector.Get<ControlFactor>().Factor >= 1 || fullControl)
+            if ((vector.Is<DragForceAvailable>() ||
+              vector.Get<ControlFactor>().Factor >= 1) && !vector.Is<DragForcing>() ||
+              fullControl)
             {
               fullControl = true;
               force.Del<Added>();
