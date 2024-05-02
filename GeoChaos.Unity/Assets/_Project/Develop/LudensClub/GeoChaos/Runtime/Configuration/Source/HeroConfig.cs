@@ -102,6 +102,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     
     [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("AD Control")]    
     public bool EnableADControl;
+    [Range(0, 1)]
+    [HideInInspector]
+    public float SpeedRatio = 1;
     
     [GroupNext(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
     public float PullTimeOffset;

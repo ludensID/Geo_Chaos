@@ -56,8 +56,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
     private static bool IsHeroReachedRing(Vector2 ring, Vector2 hero, Vector2 velocity)
     {
-      Vector2 delta = (ring - hero) * velocity;
-      return delta is { x: <= 0, y: <= 0 };
+      Vector2 distance = (ring - hero);
+      Vector2 delta = distance * velocity;
+      return delta is { x: <= 0, y: <= 0 } || distance.sqrMagnitude <= 1;
     }
   }
 }

@@ -1,5 +1,4 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
@@ -20,7 +19,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
       _movables = _world
         .Filter<Movable>()
-        .Exc<IsMovementLocked>()
         .Collect();
 
       _inputs = _inputWorld

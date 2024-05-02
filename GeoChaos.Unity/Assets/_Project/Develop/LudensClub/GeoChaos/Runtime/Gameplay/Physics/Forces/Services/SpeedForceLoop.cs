@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿using System.Linq;
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
@@ -15,6 +16,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     public EcsEntities GetEntities()
     {
       return _entities;
+    }
+
+    public EcsEntity GetForce(SpeedForceType type, EcsPackedEntity owner)
+    {
+      return GetLoop(type, owner).FirstOrDefault();
     }
 
     public EcsEntities GetLoop(SpeedForceType type, EcsPackedEntity owner)

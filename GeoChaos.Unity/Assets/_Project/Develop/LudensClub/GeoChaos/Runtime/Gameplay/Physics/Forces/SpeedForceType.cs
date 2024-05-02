@@ -6,6 +6,6 @@
     Jump = 2,
     Dash = 3,
     Hook = 4,
-    Drag = 5
+    Control = 6
   }
 }

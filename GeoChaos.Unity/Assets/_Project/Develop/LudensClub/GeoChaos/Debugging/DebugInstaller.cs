@@ -40,6 +40,7 @@ namespace LudensClub.GeoChaos.Debugging
       BindAttackAvailableWatcher();
       BindHookAvailableWatcher();
       BindDragForceAvailableWatcher();
+      BindControllableWatcher();
 
       BindGlobalWatcher();
 
@@ -49,6 +50,13 @@ namespace LudensClub.GeoChaos.Debugging
       BindEcsEntityPresenterFactory();
       BindEcsEntityViewFactory();
       BindEcsUniversePresenter();
+    }
+
+    private static void BindControllableWatcher()
+    {
+      Container
+        .BindInterfacesTo<ControllableWatcher>()
+        .AsSingle();
     }
 
     private static void BindDragForceAvailableWatcher()

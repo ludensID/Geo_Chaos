@@ -42,7 +42,8 @@ MonoBehaviour:
   EnableDragForce: 1
   IsRelativeHookSpeed: 1
   DragForceMultiplier: 1
-  EnableADControl: 0
+  EnableADControl: 1
+  SpeedRatio: 1
   PullTimeOffset: 1
   HookInputCooldown: 0.1
   RingReleasingTime: 0.1

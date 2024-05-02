@@ -54,7 +54,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Is<StopHookPullingCommand>(false)
           .Is<OnHookPullingStarted>(false)
           .Is<OnHookPullingFinished>(false)
-          .Is<DragForcing>(false);
+          .Is<DragForcing>(false)
+          .Is<Controlling>(false);
       }
     }
   }

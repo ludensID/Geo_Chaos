@@ -13,6 +13,5 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
   public struct ControlFactor : IEcsComponent
   {
     public float Factor;
-    public float Growth;
   }
 }

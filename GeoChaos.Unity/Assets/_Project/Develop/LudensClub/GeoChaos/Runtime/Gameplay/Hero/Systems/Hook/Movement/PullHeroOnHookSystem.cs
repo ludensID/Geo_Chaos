@@ -72,6 +72,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
         precast
           .Is<DragForcing>(false)
+          .Is<Controlling>(false)
           .Add<OnHookPullingStarted>()
           .Add((ref ControlDelay delay) => delay.TimeLeft = _timers.Create(time * _config.StartControlCoefficient))
           .Add((ref HookPulling pulling) =>

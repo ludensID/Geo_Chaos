@@ -13,5 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
   public struct Controlling : IEcsComponent
   {
     public float Rate;
+    public float MaxSpeed;
+    public float Acceleration;
   }
 }

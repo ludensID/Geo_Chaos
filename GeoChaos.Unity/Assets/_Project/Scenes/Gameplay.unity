@@ -250,7 +250,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 59863bc9a9074514ab23250b071e232f, type: 2}
+  m_Material: {fileID: 6200000, guid: 8a52096240b6e6f4a980b592ed1068d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -680,7 +680,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 59863bc9a9074514ab23250b071e232f, type: 2}
+  m_Material: {fileID: 6200000, guid: 8a52096240b6e6f4a980b592ed1068d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1210,7 +1210,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 59863bc9a9074514ab23250b071e232f, type: 2}
+  m_Material: {fileID: 6200000, guid: 8a52096240b6e6f4a980b592ed1068d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1628,7 +1628,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 59863bc9a9074514ab23250b071e232f, type: 2}
+  m_Material: {fileID: 6200000, guid: 8a52096240b6e6f4a980b592ed1068d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2091,7 +2091,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 59863bc9a9074514ab23250b071e232f, type: 2}
+  m_Material: {fileID: 6200000, guid: 8a52096240b6e6f4a980b592ed1068d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
