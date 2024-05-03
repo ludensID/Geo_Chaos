@@ -74,12 +74,23 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Is<DragForcing>(false)
           .Is<Controlling>(false)
           .Add<OnHookPullingStarted>()
-          .Add((ref ControlDelay delay) => delay.TimeLeft = _timers.Create(time * _config.StartControlCoefficient))
+          .Add((ref DragForceDelay delay) =>
+            delay.TimeLeft = _timers.Create(time * 2 * _config.StartDragForceCoefficient))
           .Add((ref HookPulling pulling) =>
           {
             pulling.Velocity = velocity;
-            pulling.Time = time;
+            pulling.JumpTime = time * 2;
             pulling.Target = target;
+          })
+          .Replace((ref GravityScale gravity) =>
+          {
+            gravity.Enabled = false;
+            gravity.Override = true;
+          })
+          .Replace((ref Hooking hooking) =>
+          {
+            hooking.Velocity = velocity;
+            hooking.JumpTime = time * 2;
           });
       }
     }

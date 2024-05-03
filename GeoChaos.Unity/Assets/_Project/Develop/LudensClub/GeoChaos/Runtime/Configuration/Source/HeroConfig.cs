@@ -61,6 +61,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title("Dash")]
     [LabelText("Enabled")]
     public bool EnableDash;
+
     public float DashVelocity;
     public float DashTime;
 
@@ -73,6 +74,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title("Attack")]
     [LabelText("Enabled")]
     public bool EnableAttack;
+
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
     public List<float> HitDurations = new List<float>(3) { 0, 0, 0 };
 
@@ -82,6 +84,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title(TriConstants.Names.GRAPPLING_HOOK)]
     [LabelText("Enabled")]
     public bool EnableHook;
+
     public bool AllowHookInterruption;
     public float HookRadius;
 
@@ -90,24 +93,30 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Min(0.01f)]
     public float HookPrecastTime;
+
     public float HookVelocity;
 
     [GroupNext(TriConstants.Names.HOOK_UPGRADES)]
-    [Range(0, 1)]
-    public float StartControlCoefficient = 0.5f;
+    public bool UseGradient;
+    
+    public float StartDragForceCoefficient => UseGradient ? 1f / 3f : 1f / 2f;
+
     [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("Drag Force")]
     public bool EnableDragForce;
+
     public bool IsRelativeHookSpeed;
     public float DragForceMultiplier;
-    
-    [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("AD Control")]    
+
+    [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("AD Control")]
     [EnableIf(nameof(EnableADControl))]
     public bool EnableADControl;
+
     [Range(0, 1)]
     public float SpeedRatio = 1;
-    
+
     [GroupNext(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
     public float PullTimeOffset;
+
     public float HookInputCooldown;
     public float RingReleasingTime;
 

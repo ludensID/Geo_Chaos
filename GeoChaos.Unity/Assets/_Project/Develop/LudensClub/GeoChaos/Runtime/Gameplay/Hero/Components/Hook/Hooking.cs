@@ -1,5 +1,6 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
 {
@@ -12,5 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
   [Serializable]
   public struct Hooking : IEcsComponent
   {
+    public Vector2 Velocity;
+    public float JumpTime;
   }
 }

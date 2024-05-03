@@ -8,52 +8,49 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
-  public class CheckForControlDelaySystem : IEcsRunSystem
+  public class CheckForDragForceDelayExpiredSystem : IEcsRunSystem
   {
-    private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
     private readonly EcsEntities _delays;
     private readonly HeroConfig _config;
     private readonly SpeedForceLoop _forceLoop;
 
-    public CheckForControlDelaySystem(GameWorldWrapper gameWorldWrapper,
+    public CheckForDragForceDelayExpiredSystem(GameWorldWrapper gameWorldWrapper,
       ISpeedForceLoopService forceLoopSvc,
-      ISpeedForceFactory forceFactory,
       IConfigProvider configProvider)
     {
-      _forceFactory = forceFactory;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
       _forceLoop = forceLoopSvc.CreateLoop();
 
       _delays = _game
-        .Filter<ControlDelay>()
-        .Inc<HookPulling>()
+        .Filter<DragForceDelay>()
+        .Inc<Hooking>()
         .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity delay in _delays
-        .Where<ControlDelay>(x => x.TimeLeft <= 0))
+        .Where<DragForceDelay>(x => x.TimeLeft <= 0))
       {
-        delay.Del<ControlDelay>();
+        delay.Del<DragForceDelay>();
         EcsEntity hookForce = _forceLoop.GetForce(SpeedForceType.Hook, delay.Pack());
         hookForce
           .Del<Unique>()
           .Del<Immutable>();
 
-        float controlTime = delay.Get<HookPulling>().Time * (1 - _config.StartControlCoefficient) * 2;
-
-
+        float controlTime = delay.Get<Hooking>().JumpTime * (1 - _config.StartDragForceCoefficient * 2);
+        controlTime = MathUtils.Clamp(controlTime, 0.0001f);
+        
         if (delay.Is<DragForceAvailable>())
         {
           delay
             .Add((ref DragForcing forcing) =>
             {
               forcing.Rate = 1 / controlTime;
-              forcing.SpeedX = Mathf.Abs(delay.Get<HookPulling>().Velocity.x);
+              forcing.SpeedX = Mathf.Abs(delay.Get<Hooking>().Velocity.x);
             })
             .Replace((ref DragForceFactor factor) => factor.Factor = 0);
 

@@ -1,5 +1,4 @@
-﻿using System.Data;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;

@@ -60,11 +60,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 
           if (force.Is<Instant>())
           {
-            force.Replace((ref Impact impact) =>
-            {
-              impact.X = false;
-              impact.Y = false;
-            });
+            force.Dispose();
           }
         }
         

@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct ControlDelay : IEcsComponent
+  public struct DragForceDelay : IEcsComponent
   {
     public Timer TimeLeft;
   }

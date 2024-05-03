@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
@@ -45,7 +46,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
               impact.X = false;
           }
 
-          pulling.Add<StopHookPullingCommand>();
+          pulling.Add<StopHookPullingCommand>()
+            .Replace((ref GravityScale gravity) =>
+            {
+              gravity.Enabled = true;
+              gravity.Override = true;
+            });
         }
       }
     }
@@ -54,7 +60,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     {
       Vector2 distance = (ring - hero);
       Vector2 delta = distance * velocity;
-      return delta is { x: <= 0, y: <= 0 } || distance.sqrMagnitude <= 1;
+      return delta is { x: <= 0, y: <= 0 } || distance.sqrMagnitude <= 0.1;
     }
   }
 }

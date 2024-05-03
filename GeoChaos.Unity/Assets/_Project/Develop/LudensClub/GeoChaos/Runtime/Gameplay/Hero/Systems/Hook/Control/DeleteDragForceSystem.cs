@@ -7,13 +7,13 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
-  public class DeleteControlSystem : IEcsRunSystem
+  public class DeleteDragForceSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly SpeedForceLoop _forceLoop;
     private readonly EcsEntities _vectors;
 
-    public DeleteControlSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
+    public DeleteDragForceSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
     {
       _game = gameWorldWrapper.World;
 
@@ -38,9 +38,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             .GetLoop(SpeedForceType.Hook, vector.Pack()))
           {
             ref MovementVector forceVector = ref force.Get<MovementVector>();
-            if (forceVector.Speed.x <= 0 || entityVelocityX * forceVector.Direction.x <= 0 || fullControl)
+            if ((!force.Is<Instant>() && forceVector.Speed.x <= 0) || fullControl)
             {
-              fullControl = true;
               force
                 .Replace((ref MovementVector vector) => vector.Speed.x = 0)
                 .Add<Instant>();
