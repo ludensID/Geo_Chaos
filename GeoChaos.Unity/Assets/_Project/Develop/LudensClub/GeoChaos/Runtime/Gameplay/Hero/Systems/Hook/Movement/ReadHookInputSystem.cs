@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<HookAvailable>()
-        .Exc<IsMovementLocked>()
+        .Exc<MovementLocked>()
         .Exc<HookInputCooldown>()
         .Collect();
 

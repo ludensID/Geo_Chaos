@@ -6,18 +6,18 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
-  public class StopHookLandingSystem : IEcsRunSystem
+  public class StopHookFallingSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _hookLandings;
 
-    public StopHookLandingSystem(GameWorldWrapper gameWorldWrapper)
+    public StopHookFallingSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
       _hookLandings = _game
-        .Filter<HookLanding>()
-        .Inc<IsOnGround>()
+        .Filter<HookFalling>()
+        .Inc<OnGround>()
         .Collect();
     }
     
@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       foreach (EcsEntity hookLanding in _hookLandings)
       {
         hookLanding
-          .Del<HookLanding>()
+          .Del<HookFalling>()
           .Add<StopHookCommand>();
       }
     }

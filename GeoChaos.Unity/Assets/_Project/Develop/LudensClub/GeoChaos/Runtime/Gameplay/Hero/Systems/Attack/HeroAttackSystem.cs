@@ -49,7 +49,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
         vector.Speed.x = 0;
         
         _game.Add<OnAttackStarted>(hero);
-        _game.Add<IsAttacking>(hero);
+        _game.Add<Attacking>(hero);
         
         _game.Del<AttackCommand>(hero);
       }

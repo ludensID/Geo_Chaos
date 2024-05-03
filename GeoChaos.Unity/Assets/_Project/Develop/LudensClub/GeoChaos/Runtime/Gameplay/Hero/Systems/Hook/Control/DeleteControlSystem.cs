@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         float entityVelocityX = entityVector.Speed.x * entityVector.Direction.x;
         if (vector.Is<DragForcing>())
         {
-          bool fullControl = vector.Is<IsOnGround>();
+          bool fullControl = vector.Is<OnGround>();
           foreach (EcsEntity force in _forceLoop
             .GetLoop(SpeedForceType.Hook, vector.Pack()))
           {
@@ -53,7 +53,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
         if (vector.Is<Controlling>())
         {
-          bool fullControl = vector.Is<IsOnGround>();
+          bool fullControl = vector.Is<OnGround>();
           foreach (EcsEntity force in _forceLoop
             .GetLoop(SpeedForceType.Move, vector.Pack()))
           {

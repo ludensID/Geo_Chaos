@@ -19,12 +19,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
       _onGrounds = _game
         .Filter<HorizontalSpeed>()
-        .Inc<OnGround>()
+        .Inc<OnLanded>()
         .Collect();
 
       _onNotGrounds = _game
         .Filter<HorizontalSpeed>()
-        .Inc<OnNotGround>()
+        .Inc<OnLeftGround>()
         .Collect();
     }
     

@@ -15,7 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 
       _heroes = _world
         .Filter<DashAvailable>()
-        .Inc<IsDashing>()
+        .Inc<Dashing>()
         .End();
     }
 
@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
     {
       foreach (var hero in _heroes)
       {
-        ref var isDashing = ref _world.Get<IsDashing>(hero);
+        ref var isDashing = ref _world.Get<Dashing>(hero);
         if (isDashing.TimeLeft <= 0)
           _world.Add<StopDashCommand>(hero);
       }

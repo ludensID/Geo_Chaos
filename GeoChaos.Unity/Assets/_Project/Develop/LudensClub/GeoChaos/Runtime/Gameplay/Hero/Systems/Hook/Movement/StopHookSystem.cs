@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _commands = _game
         .Filter<StopHookCommand>()
         .Inc<Hooking>()
-        .Inc<IsMovementLocked>()
+        .Inc<MovementLocked>()
         .Collect();
     }
 

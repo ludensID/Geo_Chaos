@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
 
       _commands = _game
         .Filter<MoveCommand>()
-        .Inc<IsMovementLocked>()
+        .Inc<MovementLocked>()
         .Exc<Controlling>()
         .Collect();
     }

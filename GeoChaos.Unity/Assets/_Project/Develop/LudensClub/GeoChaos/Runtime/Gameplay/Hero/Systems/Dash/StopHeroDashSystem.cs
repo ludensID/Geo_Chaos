@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 
       _heroes = _game.Filter<HeroTag>()
         .Inc<StopDashCommand>()
-        .Inc<IsDashing>()
+        .Inc<Dashing>()
         .Collect();
     }
 
@@ -41,7 +41,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         });
         
         hero
-          .Del<IsDashing>()
+          .Del<Dashing>()
           .Add<UnlockMovementCommand>()
           .Add((ref DashCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.DashCooldown));
       }

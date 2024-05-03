@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct OnNotGround : IEcsComponent
+  public struct OnLanded : IEcsComponent
   {
   }
 }

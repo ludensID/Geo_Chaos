@@ -21,11 +21,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _grounds = _game
         .Filter<Ground>()
         .Inc<GroundCheckRef>()
-        .Exc<IsOnGround>()
+        .Exc<OnGround>()
         .End();
 
       _onGrounds = _game
-        .Filter<IsOnGround>()
+        .Filter<OnGround>()
         .Inc<GroundCheckRef>()
         .End();
     }
@@ -35,15 +35,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       foreach (int ground in _grounds
         .Where<GroundCheckRef>(x => IsGroundCasted(x.Bottom.position)))
       {
-        _game.Add<IsOnGround>(ground);
         _game.Add<OnGround>(ground);
+        _game.Add<OnLanded>(ground);
       }
 
       foreach (int onGround in _onGrounds
         .Where<GroundCheckRef>(x => !IsGroundCasted(x.Bottom.position)))
       {
-        _game.Del<IsOnGround>(onGround);
-        _game.Add<OnNotGround>(onGround);
+        _game.Del<OnGround>(onGround);
+        _game.Add<OnLeftGround>(onGround);
       }
     }
 

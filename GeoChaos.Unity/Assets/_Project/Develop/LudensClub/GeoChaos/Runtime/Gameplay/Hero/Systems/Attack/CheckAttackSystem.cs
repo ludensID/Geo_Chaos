@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<AttackCommand>()
-        .Inc<IsAttacking>()
+        .Inc<Attacking>()
         .End();
     }
     

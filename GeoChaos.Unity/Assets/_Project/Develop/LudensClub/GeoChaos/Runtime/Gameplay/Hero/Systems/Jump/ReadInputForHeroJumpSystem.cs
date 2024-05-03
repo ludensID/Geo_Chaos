@@ -21,8 +21,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
       _grounds = _world.Filter<HeroTag>()
         .Inc<JumpAvailable>()
-        .Inc<IsOnGround>()
-        .Exc<IsMovementLocked>()
+        .Inc<OnGround>()
+        .Exc<MovementLocked>()
         .End();
 
       _jumpStartedInputs = inputWorld
@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _noStoppeds = _world.Filter<HeroTag>()
         .Inc<JumpAvailable>()
         .Inc<Jumping>()
-        .Exc<IsMovementLocked>()
+        .Exc<MovementLocked>()
         .End();
 
       _jumpCanceledInputs = inputWorld

@@ -17,7 +17,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
       _dashes = _game
         .Filter<DashAvailable>()
         .Inc<DashCommand>()
-        .Inc<IsDashing>()
+        .Inc<Dashing>()
         .End();
 
       _cooldowns = _game

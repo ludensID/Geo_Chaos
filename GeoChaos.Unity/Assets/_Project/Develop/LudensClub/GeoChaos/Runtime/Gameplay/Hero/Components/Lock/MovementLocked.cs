@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct HookLanding : IEcsComponent
+  public struct MovementLocked : IEcsComponent
   {
   }
 }

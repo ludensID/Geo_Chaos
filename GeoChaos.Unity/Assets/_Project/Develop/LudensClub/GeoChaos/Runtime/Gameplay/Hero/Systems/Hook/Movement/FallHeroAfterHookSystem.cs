@@ -5,12 +5,12 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
-  public class LandHeroAfterHookSystem : IEcsRunSystem
+  public class FallHeroAfterHookSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _finishes;
 
-    public LandHeroAfterHookSystem(GameWorldWrapper gameWorldWrapper)
+    public FallHeroAfterHookSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     {
       foreach (EcsEntity finish in _finishes)
       {
-        finish.Add<HookLanding>();
+        finish.Add<HookFalling>();
       }
     }
   }

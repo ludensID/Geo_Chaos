@@ -29,14 +29,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems
       foreach (int lockCommand in _lockCommands)
       {
         _game.Add<OnMovementLocked>(lockCommand);
-        _game.Add<IsMovementLocked>(lockCommand);
+        _game.Add<MovementLocked>(lockCommand);
         _game.Del<LockMovementCommand>(lockCommand);
       }
 
       foreach (int unlockCommand in _unlockCommands)
       {
         _game.Add<OnMovementUnlocked>(unlockCommand);
-        _game.Del<IsMovementLocked>(unlockCommand);
+        _game.Del<MovementLocked>(unlockCommand);
         _game.Del<UnlockMovementCommand>(unlockCommand);
       }
     }

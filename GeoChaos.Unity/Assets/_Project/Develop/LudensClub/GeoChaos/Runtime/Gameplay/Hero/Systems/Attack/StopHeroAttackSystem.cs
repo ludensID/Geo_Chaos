@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<HitTimer>()
-        .Inc<IsAttacking>()
+        .Inc<Attacking>()
         .End();
     }
 
@@ -35,7 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
         .Where<HitTimer>(x => x.TimeLeft <= 0))
       {
         _game.Del<HitTimer>(hero);
-        _game.Del<IsAttacking>(hero);
+        _game.Del<Attacking>(hero);
         _game.Add<OnAttackFinished>(hero);
         _game.Add<UnlockMovementCommand>(hero);
 

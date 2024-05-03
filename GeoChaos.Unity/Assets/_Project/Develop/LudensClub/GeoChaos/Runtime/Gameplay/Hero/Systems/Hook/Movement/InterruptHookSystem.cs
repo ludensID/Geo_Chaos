@@ -31,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
       _landCommands = _game
         .Filter<InterruptHookCommand>()
-        .Inc<HookLanding>()
+        .Inc<HookFalling>()
         .Collect();
     }
 
@@ -68,7 +68,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         land
           .Del<InterruptHookCommand>()
           .Add<OnHookInterrupted>()
-          .Del<HookLanding>()
+          .Del<HookFalling>()
           .Is<DragForcing>(false)
           .Is<Controlling>(false);
       }

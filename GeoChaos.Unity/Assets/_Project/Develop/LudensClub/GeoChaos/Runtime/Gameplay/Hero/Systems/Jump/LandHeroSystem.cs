@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _config = configProvider.Get<HeroConfig>();
 
       _fallings = _game
-        .Filter<IsFalling>()
+        .Filter<Falling>()
         .Inc<MovementVector>()
         .Inc<GravityScale>()
         .Collect();
@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       foreach (EcsEntity falling in _fallings
         .Where<MovementVector>(x => x.Direction.y >= 0))
       {
-        falling.Del<IsFalling>()
+        falling.Del<Falling>()
           .Replace((ref GravityScale gravity) =>
           {
             gravity.Value = _config.GravityScale;

@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         ref HeroSwordViewRef swordRef = ref _game.Get<HeroSwordViewRef>(hero);
         swordRef.View.SetColor(swordRef.View.DefaultColor);
 
-        if (_game.Has<IsAttacking>(hero))
+        if (_game.Has<Attacking>(hero))
           swordRef.View.SetColor(swordRef.View.AttackColor);
 
         if (_game.Has<ComboAttackTimer>(hero))

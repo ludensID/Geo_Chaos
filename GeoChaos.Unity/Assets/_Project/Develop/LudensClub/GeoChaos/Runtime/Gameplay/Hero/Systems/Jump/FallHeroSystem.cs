@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _onGrounds = _game
         .Filter<MovementVector>()
         .Inc<GravityScale>()
-        .Exc<IsFalling>()
+        .Exc<Falling>()
         .Collect();
     }
 
@@ -32,7 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         if (onGround.Is<Jumping>())
           onGround.Del<Jumping>();
         
-        onGround.Add<IsFalling>()
+        onGround.Add<Falling>()
           .Replace((ref GravityScale gravity) =>
           {
             gravity.Value = _config.FallGravityScale;

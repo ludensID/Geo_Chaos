@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<AttackAvailable>()
-        .Exc<IsMovementLocked>()
+        .Exc<MovementLocked>()
         .End();
 
       _inputs = _input

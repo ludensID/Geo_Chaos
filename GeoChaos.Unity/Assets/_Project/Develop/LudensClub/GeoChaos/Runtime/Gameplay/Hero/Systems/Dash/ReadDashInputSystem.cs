@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 
       _heroes = _world
         .Filter<DashAvailable>()
-        .Exc<IsMovementLocked>()
+        .Exc<MovementLocked>()
         .End();
 
       _inputs = inputWorld
