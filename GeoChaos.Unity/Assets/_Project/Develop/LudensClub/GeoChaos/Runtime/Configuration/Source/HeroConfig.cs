@@ -89,6 +89,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float HookRadius;
 
     [Range(1, 10)]
+    [HideInInspector]
     public float RingHorizontalDistance = 1;
 
     [Min(0.01f)]

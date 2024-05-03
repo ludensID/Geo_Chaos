@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿using System;
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
@@ -9,6 +10,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
+  [Obsolete]
   public class SelectRingsDirectedToHeroSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
