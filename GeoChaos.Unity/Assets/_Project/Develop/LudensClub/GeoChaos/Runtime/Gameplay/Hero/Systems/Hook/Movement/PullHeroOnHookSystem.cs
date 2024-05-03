@@ -60,7 +60,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         Vector2 velocity = vector / time;
 
         (Vector3 length, Vector3 direction) = MiscUtils.DecomposeVector(velocity);
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, precast.Pack(), true, true)
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, precast.Pack(), Vector2.one)
         {
           Speed = length,
           Direction = direction,

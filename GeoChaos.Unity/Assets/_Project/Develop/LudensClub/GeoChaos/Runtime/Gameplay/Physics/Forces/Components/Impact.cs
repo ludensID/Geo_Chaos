@@ -1,5 +1,6 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
@@ -12,7 +13,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   [Serializable]
   public struct Impact : IEcsComponent
   {
-    public bool X;
-    public bool Y;
+    public Vector2 Vector;
   }
 }

@@ -7,8 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   {
     public SpeedForceType SpeedType;
     public EcsPackedEntity Owner;
-    public bool ImpactX;
-    public bool ImpactY;
+    public Vector2 Impact;
     public Vector2 Speed;
     public Vector2 Direction;
     public bool Accelerated;
@@ -19,12 +18,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     public bool Unique;
     public bool Immutable;
 
-    public SpeedForceData(SpeedForceType type, EcsPackedEntity owner,  bool impactX = false, bool impactY = false)
+    public SpeedForceData(SpeedForceType type, EcsPackedEntity owner,  Vector2 impact = default(Vector2))
     {
       SpeedType = type;
       Owner = owner;
-      ImpactX = impactX;
-      ImpactY = impactY;
+      Impact = impact;
     }
   }
 }

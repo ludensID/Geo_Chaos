@@ -18,11 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         .Add<SpeedForceCommand>()
         .Add((ref SpeedForce speedForce) => speedForce.Type = data.SpeedType)
         .Add((ref Owner owner) => owner.Entity = data.Owner)
-        .Add((ref Impact impact) =>
-        {
-          impact.X = data.ImpactX;
-          impact.Y = data.ImpactY;
-        })
+        .Add((ref Impact impact) => impact.Vector = data.Impact)
         .Add((ref MovementVector vector) =>
         {
           vector.Speed = data.Speed;

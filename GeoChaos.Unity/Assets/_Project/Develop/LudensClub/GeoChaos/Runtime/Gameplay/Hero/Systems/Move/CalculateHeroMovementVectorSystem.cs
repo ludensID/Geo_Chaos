@@ -59,7 +59,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         float speed = command.Get<HorizontalSpeed>().Value;
         float acceleration = CalculateAcceleration(speed);
 
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), true)
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)
         {
           Direction = new Vector2(direction, 0),
           Accelerated = true,
@@ -100,7 +100,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           
           if (force.Get<MovementVector>().Speed.x <= 0)
           {
-            force.Replace((ref Impact impact) => impact.X = false);
+            force.Replace((ref Impact impact) => impact.Vector.x = 0);
             moving.Del<Moving>();
           }
         }

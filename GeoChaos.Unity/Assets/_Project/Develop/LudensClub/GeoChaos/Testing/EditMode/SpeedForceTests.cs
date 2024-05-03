@@ -21,7 +21,8 @@ namespace LudensClub.GeoChaos.Testing.EditMode
       EcsEntity entity = game.World.CreateEntity();
       entity.Add<MovementVector>()
         .Add<ForceAvailable>();
-      Create.SpeedForce(physics, speed: speed, direction: Vector2.one, impact: new Impact { X = true, Y = true }, owner: entity.Pack());
+      Create.SpeedForce(physics, speed: speed, direction: Vector2.one, impact: new Impact { Vector = Vector2.one },
+        owner: entity.Pack());
 
       ref MovementVector vector = ref entity.Get<MovementVector>();
       systems.Add(new CalculateTargetVelocitySystem(physics, game));

@@ -98,12 +98,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     private Vector2 ChangeVelocityByImpact(EcsEntity force, Vector2 velocity, Func<float, float, float, float> @operator)
     {
       ref Impact impact = ref force.Get<Impact>();
-      var impactVector = new Vector2(impact.X ? 1 : 0, impact.Y ? 1 : 0);
-
       ref MovementVector vector = ref force.Get<MovementVector>();
       for (int i = 0; i < 2; i++)
       {
-        if (impactVector[i] > 0)
+        if (impact.Vector[i] > 0)
           velocity[i] = @operator.Invoke(velocity[i], vector.Speed[i], vector.Direction[i]);
       }
 

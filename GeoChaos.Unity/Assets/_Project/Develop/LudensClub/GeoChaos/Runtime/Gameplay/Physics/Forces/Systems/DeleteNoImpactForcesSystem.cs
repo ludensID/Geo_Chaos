@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
@@ -21,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity force in _noImpactForces
-        .Where<Impact>(x => x is { X: false, Y: false }))
+        .Where<Impact>(x => x.Vector == Vector2.zero))
       {
         force.Dispose();
       }
