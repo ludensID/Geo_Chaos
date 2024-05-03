@@ -12,6 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     private readonly EcsWorld _game;
     private readonly EcsEntities _precastCommands;
     private readonly EcsEntities _pullCommands;
+    private readonly EcsEntities _landCommands;
 
     public InterruptHookSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceFactory forceFactory)
     {
@@ -27,13 +28,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         .Filter<InterruptHookCommand>()
         .Inc<HookPulling>()
         .Collect();
+
+      _landCommands = _game
+        .Filter<InterruptHookCommand>()
+        .Inc<HookLanding>()
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity command in _precastCommands)
+      foreach (EcsEntity precast in _precastCommands)
       {
-        command
+        precast
           .Del<InterruptHookCommand>()
           .Del<HookPrecast>()
           .Is<OnHookPrecastStarted>(false)
@@ -41,19 +47,28 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Add<OnHookInterrupted>();
       }
 
-      foreach (EcsEntity command in _pullCommands)
+      foreach (EcsEntity pull in _pullCommands)
       {
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, command.Pack()));
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, pull.Pack()));
 
-        command
+        pull
           .Del<InterruptHookCommand>()
           .Add<OnHookInterrupted>()
           .Del<HookPulling>()
           .Del<HookTimer>()
           .Is<ControlDelay>(false)
-          .Is<StopHookPullingCommand>(false)
           .Is<OnHookPullingStarted>(false)
           .Is<OnHookPullingFinished>(false)
+          .Is<DragForcing>(false)
+          .Is<Controlling>(false);
+      }
+
+      foreach (EcsEntity land in _landCommands)
+      {
+        land
+          .Del<InterruptHookCommand>()
+          .Add<OnHookInterrupted>()
+          .Del<HookLanding>()
           .Is<DragForcing>(false)
           .Is<Controlling>(false);
       }

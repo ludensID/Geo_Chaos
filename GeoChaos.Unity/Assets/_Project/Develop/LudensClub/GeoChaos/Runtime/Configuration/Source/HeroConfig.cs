@@ -101,6 +101,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float DragForceMultiplier;
     
     [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("AD Control")]    
+    [EnableIf(nameof(EnableADControl))]
     public bool EnableADControl;
     [Range(0, 1)]
     public float SpeedRatio = 1;

@@ -58,8 +58,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             .GetLoop(SpeedForceType.Move, vector.Pack()))
           {
             ref MovementVector forceVector = ref force.Get<MovementVector>();
-            if ((vector.Is<DragForceAvailable>() ||
-              vector.Get<ControlFactor>().Factor >= 1) && !vector.Is<DragForcing>() ||
+            if (((vector.Is<DragForceAvailable>() ||
+              vector.Get<ControlFactor>().Factor >= 1) && !vector.Is<DragForcing>()) ||
               fullControl)
             {
               fullControl = true;

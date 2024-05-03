@@ -39,10 +39,10 @@ MonoBehaviour:
   HookPrecastTime: 0.2
   HookVelocity: 35
   StartControlCoefficient: 0.5
-  EnableDragForce: 1
+  EnableDragForce: 0
   IsRelativeHookSpeed: 1
   DragForceMultiplier: 1
-  EnableADControl: 1
+  EnableADControl: 0
   SpeedRatio: 1
   PullTimeOffset: 1
   HookInputCooldown: 0.1

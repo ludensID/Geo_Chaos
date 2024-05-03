@@ -93,13 +93,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<Delete<OnHookPullingStarted, GameWorldWrapper>>());
       Add(systems.Create<Delete<OnHookPullingFinished, GameWorldWrapper>>());
       Add(systems.Create<PullHeroOnHookSystem>());
+      Add(systems.Create<StopHookPullingSystem>());
+      
+      Add(systems.Create<LandHeroAfterHookSystem>());
+      Add(systems.Create<StopHookLandingSystem>());
+      Add(systems.Create<StopHookSystem>());
       
       Add(systems.Create<Delete<OnHookInterrupted, GameWorldWrapper>>());
       Add(systems.Create<InterruptHookSystem>());
       Add(systems.Create<FinishHookInterruptionSystem>());
-      
-      Add(systems.Create<StopHookPullingSystem>());
-      Add(systems.Create<StopHookSystem>());
       
       Add(systems.Create<Delete<HookCommand, GameWorldWrapper>>());
       
