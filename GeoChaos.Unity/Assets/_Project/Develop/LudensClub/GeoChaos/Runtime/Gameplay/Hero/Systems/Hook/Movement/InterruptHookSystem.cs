@@ -67,8 +67,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         precast
           .Del<InterruptHookCommand>()
           .Del<HookPrecast>()
-          .Is<OnHookPrecastStarted>(false)
-          .Is<OnHookPrecastFinished>(false)
+          .Has<OnHookPrecastStarted>(false)
+          .Has<OnHookPrecastFinished>(false)
           .Add<OnHookInterrupted>();
       }
 
@@ -81,9 +81,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Add<OnHookInterrupted>()
           .Del<HookPulling>()
           .Del<HookTimer>()
-          .Is<OnHookPullingStarted>(false)
-          .Is<OnHookPullingFinished>(false)
-          .Is<Controlling>(false)
+          .Has<OnHookPullingStarted>(false)
+          .Has<OnHookPullingFinished>(false)
+          .Has<Controlling>(false)
           .Replace((ref GravityScale gravity) =>
           {
             gravity.Enabled = true;
@@ -108,7 +108,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Del<InterruptHookCommand>()
           .Add<OnHookInterrupted>()
           .Del<HookFalling>()
-          .Is<Controlling>(false);
+          .Has<Controlling>(false);
 
         DisableDragForce(land.Pack());
       }
@@ -119,8 +119,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       foreach (EcsEntity drag in _drags
         .Where<Owner>(x => x.Entity.EqualsTo(packedEntity)))
       {
-        drag.Is<DragForceDelay>(false)
-          .Is<Enabled>(false);
+        drag.Has<DragForceDelay>(false)
+          .Has<Enabled>(false);
       }
     }
   }

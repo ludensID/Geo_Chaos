@@ -78,7 +78,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         precast.Add((ref HookTimer timer) => timer.TimeLeft = _timers.Create(time + _config.PullTimeOffset));
 
         precast
-          .Is<Controlling>(false)
+          .Has<Controlling>(false)
           .Add<OnHookPullingStarted>()
           .Add((ref HookPulling pulling) =>
           {
@@ -97,7 +97,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             hooking.JumpTime = time * 2;
           });
 
-        if (precast.Is<DragForceAvailable>())
+        if (precast.Has<DragForceAvailable>())
         {
           float controlTime = time * 2 * (1 - _config.StartDragForceCoefficient * 2);
           controlTime = MathUtils.Clamp(controlTime, 0.0001f);

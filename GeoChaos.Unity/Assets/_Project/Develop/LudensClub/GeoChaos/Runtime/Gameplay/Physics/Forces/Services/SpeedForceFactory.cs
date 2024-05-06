@@ -24,11 +24,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           vector.Speed = data.Speed;
           vector.Direction = data.Direction;
         })
-        .Is<Instant>(data.Instant)
-        .Is<Added>(data.Added)
-        .Is<Unique>(data.Unique)
-        .Is<Immutable>(data.Immutable)
-        .Is<Draggable>(data.Draggable);
+        .Has<Instant>(data.Instant)
+        .Has<Added>(data.Added)
+        .Has<Unique>(data.Unique)
+        .Has<Immutable>(data.Immutable)
+        .Has<Draggable>(data.Draggable);
 
       if (data.Accelerated)
       {

@@ -45,13 +45,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
             gravity.Value = _config.GravityScale;
             gravity.Override = true;
           })
-          .Is<DashAvailable>(_config.EnableDash)
-          .Is<AttackAvailable>(_config.EnableAttack)
+          .Has<DashAvailable>(_config.EnableDash)
+          .Has<AttackAvailable>(_config.EnableAttack)
           .Add<ComboAttackCounter>()
-          .Is<HookAvailable>(_config.EnableHook)
-          .Is<InterruptHookAvailable>(_config.AllowHookInterruption)
-          .Is<DragForceAvailable>(_config.EnableDragForce)
-          .Is<Controllable>(_config.EnableADControl)
+          .Has<HookAvailable>(_config.EnableHook)
+          .Has<InterruptHookAvailable>(_config.AllowHookInterruption)
+          .Has<DragForceAvailable>(_config.EnableDragForce)
+          .Has<Controllable>(_config.EnableADControl)
           .Add<ControlFactor>();
       }
     }

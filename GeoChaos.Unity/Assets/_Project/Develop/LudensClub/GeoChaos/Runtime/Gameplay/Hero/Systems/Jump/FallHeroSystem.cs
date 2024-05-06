@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       foreach (EcsEntity onGround in _onGrounds
         .Where<MovementVector>(x => x.Direction.y <= 0))
       {
-        if (onGround.Is<Jumping>())
+        if (onGround.Has<Jumping>())
           onGround.Del<Jumping>();
         
         onGround.Add<Falling>()

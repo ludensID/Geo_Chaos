@@ -59,7 +59,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         {
           velocity = AssignVelocityByImpact(force, velocity);
 
-          if (force.Is<Instant>())
+          if (force.Has<Instant>())
           {
             force.Dispose();
           }
@@ -75,7 +75,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           .Where<Owner>(x => x.Entity.EqualsTo(owner.Pack())))
         {
           velocity = AssignVelocityByImpact(force, velocity);
-          movementVector.Immutable = force.Is<Immutable>();
+          movementVector.Immutable = force.Has<Immutable>();
         }
 
         (Vector3 length, Vector3 direction) = MiscUtils.DecomposeVector(velocity);

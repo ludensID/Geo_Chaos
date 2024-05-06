@@ -44,27 +44,19 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     }
 
     [HideInCallstack]
-    public ref TComponent Assign<TComponent>(ActionRef<TComponent> assigner) where TComponent : struct, IEcsComponent
-    {
-      ref TComponent component = ref World.Add<TComponent>(Entity);
-      assigner.Invoke(ref component);
-      return ref component;
-    }
-
-    [HideInCallstack]
     public ref TComponent Get<TComponent>() where TComponent : struct, IEcsComponent
     {
       return ref World.Get<TComponent>(Entity);
     }
 
     [HideInCallstack]
-    public bool Is<TComponent>() where TComponent : struct, IEcsComponent
+    public bool Has<TComponent>() where TComponent : struct, IEcsComponent
     {
       return World.Has<TComponent>(Entity);
     }
     
     [HideInCallstack]
-    public EcsEntity Is<TComponent>(bool value) where TComponent : struct, IEcsComponent
+    public EcsEntity Has<TComponent>(bool value) where TComponent : struct, IEcsComponent
     {
       switch (value, World.Has<TComponent>(Entity))
       {
@@ -77,14 +69,6 @@ namespace LudensClub.GeoChaos.Runtime.Utils
       }
 
       return this;
-    }
-
-    [HideInCallstack]
-    public ref TComponent Change<TComponent>(ActionRef<TComponent> replacer) where TComponent : struct, IEcsComponent
-    {
-      ref TComponent component = ref World.Get<TComponent>(Entity);
-      replacer.Invoke(ref component);
-      return ref component;
     }
 
     [HideInCallstack]

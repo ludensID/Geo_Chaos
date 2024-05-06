@@ -42,7 +42,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           {
             ref Impact impact = ref force.Get<Impact>();
             impact.Vector.y = 0;
-            if (!pulling.Is<DragForceAvailable>())
+            if (!pulling.Has<DragForceAvailable>())
               impact.Vector.x = 0;
           }
 

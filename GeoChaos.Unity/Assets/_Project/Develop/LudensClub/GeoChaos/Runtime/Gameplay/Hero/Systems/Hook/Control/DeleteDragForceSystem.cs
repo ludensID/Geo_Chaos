@@ -38,15 +38,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       foreach (EcsEntity draggable in _draggables)
       {
         ref MovementVector entityVector = ref draggable.Get<MovementVector>();
-        bool fullControl = draggable.Is<OnGround>();
+        bool fullControl = draggable.Has<OnGround>();
 
-        if (!draggable.Is<HookPulling>())
+        if (!draggable.Has<HookPulling>())
         {
           foreach (EcsEntity force in _forceLoop
             .GetLoop(SpeedForceType.Hook, draggable.Pack()))
           {
             ref MovementVector forceVector = ref force.Get<MovementVector>();
-            if ((!force.Is<Instant>() && forceVector.Speed.x <= 0) || fullControl)
+            if ((!force.Has<Instant>() && forceVector.Speed.x <= 0) || fullControl)
             {
               force
                 .Replace((ref MovementVector vector) => vector.Speed.x = 0)
@@ -60,8 +60,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           foreach (EcsEntity drag in _dragForces
             .Where<Owner>(x => x.Entity.EqualsTo(draggable.Pack())))
           {
-            drag.Is<DragForceDelay>(false)
-              .Is<Enabled>(false);
+            drag.Has<DragForceDelay>(false)
+              .Has<Enabled>(false);
           }
         }
 

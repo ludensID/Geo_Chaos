@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
     public void OnChanged()
     {
       foreach (EcsEntity hero in _heroes)
-        hero.Is<InterruptHookAvailable>(_allowHookInterruption);
+        hero.Has<InterruptHookAvailable>(_allowHookInterruption);
     }
   }
 }

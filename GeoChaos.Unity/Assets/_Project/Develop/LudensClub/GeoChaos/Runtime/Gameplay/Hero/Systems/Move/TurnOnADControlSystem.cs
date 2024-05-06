@@ -45,7 +45,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
           });
 
           force
-            .Is<Added>(true)
+            .Has<Added>(true)
             .Replace((ref Acceleration acceleration) => acceleration.Value.x *= factor)
             .Replace((ref MaxSpeed speed) => speed.Speed *= factor);
         }

@@ -40,7 +40,7 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
     {
       foreach (EcsEntity hero in _heroes)
       {
-        hero.Is<Controllable>(_controllable);
+        hero.Has<Controllable>(_controllable);
       }
     }
   }

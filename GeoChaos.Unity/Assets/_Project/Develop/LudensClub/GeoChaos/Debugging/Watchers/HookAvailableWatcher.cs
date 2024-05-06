@@ -39,7 +39,7 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
     public void OnChanged()
     {
       foreach (EcsEntity hero in _heroes)
-        hero.Is<HookAvailable>(_hookAvailable);
+        hero.Has<HookAvailable>(_hookAvailable);
     }
   }
 }
