@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Testing.EditMode
         owner: entity.Pack());
 
       ref MovementVector vector = ref entity.Get<MovementVector>();
-      systems.Add(new CalculateTargetVelocitySystem(physics, game));
+      systems.Add(new CalculateTargetMovementVectorSystem(physics, game));
       systems.Init();
 
       // Act.

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
-  public class CalculateTargetVelocitySystem : IEcsRunSystem
+  public class CalculateTargetMovementVectorSystem : IEcsRunSystem
   {
     private readonly EcsWorld _physics;
     private readonly EcsWorld _game;
@@ -15,7 +15,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     private readonly EcsEntities _addedForces;
     private readonly EcsEntities _uniqueForces;
 
-    public CalculateTargetVelocitySystem(PhysicsWorldWrapper physicsWorldWrapper, GameWorldWrapper gameWorldWrapper)
+    public CalculateTargetMovementVectorSystem(PhysicsWorldWrapper physicsWorldWrapper,
+      GameWorldWrapper gameWorldWrapper)
     {
       _physics = physicsWorldWrapper.World;
       _game = gameWorldWrapper.World;

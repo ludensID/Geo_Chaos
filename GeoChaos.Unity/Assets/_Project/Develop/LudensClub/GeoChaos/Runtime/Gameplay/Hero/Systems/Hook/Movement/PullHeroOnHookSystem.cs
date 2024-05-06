@@ -19,8 +19,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     private readonly EcsEntities _finishedPrecasts;
     private readonly EcsEntities _hookedRings;
     private readonly HeroConfig _config;
+    private readonly EcsWorld _physics;
+    private readonly EcsEntities _drags;
 
     public PullHeroOnHookSystem(GameWorldWrapper gameWorldWrapper,
+      PhysicsWorldWrapper physicsWorldWrapper,
       ISpeedForceFactory forceFactory,
       IConfigProvider configProvider,
       ITimerFactory timers)
@@ -28,6 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _forceFactory = forceFactory;
       _timers = timers;
       _game = gameWorldWrapper.World;
+      _physics = physicsWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
       _finishedPrecasts = _game
@@ -42,6 +46,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         .Inc<Hooked>()
         .Inc<ViewRef>()
         .Inc<RingPoints>()
+        .Collect();
+
+      _drags = _physics
+        .Filter<DragForce>()
         .Collect();
     }
 
@@ -64,18 +72,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         {
           Speed = length,
           Direction = direction,
-          Unique = true,
-          Immutable = true
+          Draggable = true
         });
-        
+
         precast.Add((ref HookTimer timer) => timer.TimeLeft = _timers.Create(time + _config.PullTimeOffset));
 
         precast
-          .Is<DragForcing>(false)
           .Is<Controlling>(false)
           .Add<OnHookPullingStarted>()
-          .Add((ref DragForceDelay delay) =>
-            delay.TimeLeft = _timers.Create(time * 2 * _config.StartDragForceCoefficient))
           .Add((ref HookPulling pulling) =>
           {
             pulling.Velocity = velocity;
@@ -92,6 +96,21 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             hooking.Velocity = velocity;
             hooking.JumpTime = time * 2;
           });
+
+        if (precast.Is<DragForceAvailable>())
+        {
+          float controlTime = time * 2 * (1 - _config.StartDragForceCoefficient * 2);
+          controlTime = MathUtils.Clamp(controlTime, 0.0001f);
+
+          foreach (EcsEntity drag in _drags
+            .Where<Owner>(x => x.Entity.EqualsTo(precast.Pack())))
+          {
+            drag.Add((ref DragForceDelay delay) =>
+                delay.TimeLeft = _timers.Create(time * 2 * _config.StartDragForceCoefficient + 1 / _config.HookVelocity))
+              .Replace((ref GradientRate rate) => rate.Rate = 1 / controlTime)
+              .Replace((ref RelativeSpeed relative) => relative.Speed = Mathf.Abs(velocity.x));
+          }
+        }
       }
     }
   }

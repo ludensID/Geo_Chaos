@@ -20,8 +20,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     private readonly EcsEntities _landCommands;
     private readonly EcsEntities _hookedRings;
     private readonly HeroConfig _config;
+    private readonly EcsWorld _physics;
+    private readonly EcsEntities _drags;
 
     public InterruptHookSystem(GameWorldWrapper gameWorldWrapper,
+      PhysicsWorldWrapper physicsWorldWrapper,
       ISpeedForceFactory forceFactory,
       ITimerFactory timers,
       IConfigProvider configProvider)
@@ -29,6 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _forceFactory = forceFactory;
       _timers = timers;
       _game = gameWorldWrapper.World;
+      _physics = physicsWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
       _precastCommands = _game
@@ -49,6 +53,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _hookedRings = _game
         .Filter<RingTag>()
         .Inc<Hooked>()
+        .Collect();
+
+      _drags = _physics
+        .Filter<DragForce>()
         .Collect();
     }
 
@@ -73,10 +81,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Add<OnHookInterrupted>()
           .Del<HookPulling>()
           .Del<HookTimer>()
-          .Is<DragForceDelay>(false)
           .Is<OnHookPullingStarted>(false)
           .Is<OnHookPullingFinished>(false)
-          .Is<DragForcing>(false)
           .Is<Controlling>(false)
           .Replace((ref GravityScale gravity) =>
           {
@@ -90,6 +96,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             .Del<Hooked>()
             .Add((ref Releasing releasing) => releasing.TimeLeft = _timers.Create(_config.RingReleasingTime));
         }
+        
+        DisableDragForce(pull.Pack());
       }
 
       foreach (EcsEntity land in _landCommands)
@@ -100,9 +108,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Del<InterruptHookCommand>()
           .Add<OnHookInterrupted>()
           .Del<HookFalling>()
-          .Is<DragForceDelay>(false)
-          .Is<DragForcing>(false)
           .Is<Controlling>(false);
+
+        DisableDragForce(land.Pack());
+      }
+    }
+
+    private void DisableDragForce(EcsPackedEntity packedEntity)
+    {
+      foreach (EcsEntity drag in _drags
+        .Where<Owner>(x => x.Entity.EqualsTo(packedEntity)))
+      {
+        drag.Is<DragForceDelay>(false)
+          .Is<Enabled>(false);
       }
     }
   }

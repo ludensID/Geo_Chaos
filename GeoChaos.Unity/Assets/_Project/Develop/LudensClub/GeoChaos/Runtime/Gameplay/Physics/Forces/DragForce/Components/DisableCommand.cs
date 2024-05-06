@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,9 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct DragForcing : IEcsComponent
+  public struct DisableCommand : IEcsComponent
   {
-    public float Rate;
-    public float SpeedX;
   }
 }

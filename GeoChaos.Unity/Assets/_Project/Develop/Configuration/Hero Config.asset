@@ -37,7 +37,7 @@ MonoBehaviour:
   HookRadius: 20
   RingHorizontalDistance: 1
   HookPrecastTime: 0.2
-  HookVelocity: 20
+  HookVelocity: 30
   UseGradient: 1
   EnableDragForce: 1
   IsRelativeHookSpeed: 1

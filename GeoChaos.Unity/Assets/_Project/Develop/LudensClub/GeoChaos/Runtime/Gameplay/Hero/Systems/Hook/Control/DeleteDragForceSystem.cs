@@ -11,31 +11,39 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
   {
     private readonly EcsWorld _game;
     private readonly SpeedForceLoop _forceLoop;
-    private readonly EcsEntities _vectors;
+    private readonly EcsEntities _draggables;
+    private readonly EcsWorld _physics;
+    private readonly EcsEntities _dragForces;
 
-    public DeleteDragForceSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
+    public DeleteDragForceSystem(GameWorldWrapper gameWorldWrapper, PhysicsWorldWrapper physicsWorldWrapper,
+      ISpeedForceLoopService forceLoopSvc)
     {
       _game = gameWorldWrapper.World;
+      _physics = physicsWorldWrapper.World;
 
       _forceLoop = forceLoopSvc.CreateLoop();
 
-      _vectors = _game
-        .Filter<MovementVector>()
-        .Exc<HookPulling>()
+      _draggables = _game
+        .Filter<DragForceAvailable>()
+        .Collect();
+
+      _dragForces = _physics
+        .Filter<DragForce>()
+        .Inc<Enabled>()
         .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity vector in _vectors)
+      foreach (EcsEntity draggable in _draggables)
       {
-        ref MovementVector entityVector = ref vector.Get<MovementVector>();
-        float entityVelocityX = entityVector.Speed.x * entityVector.Direction.x;
-        if (vector.Is<DragForcing>())
+        ref MovementVector entityVector = ref draggable.Get<MovementVector>();
+        bool fullControl = draggable.Is<OnGround>();
+
+        if (!draggable.Is<HookPulling>())
         {
-          bool fullControl = vector.Is<OnGround>();
           foreach (EcsEntity force in _forceLoop
-            .GetLoop(SpeedForceType.Hook, vector.Pack()))
+            .GetLoop(SpeedForceType.Hook, draggable.Pack()))
           {
             ref MovementVector forceVector = ref force.Get<MovementVector>();
             if ((!force.Is<Instant>() && forceVector.Speed.x <= 0) || fullControl)
@@ -45,30 +53,37 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
                 .Add<Instant>();
             }
           }
-
-          if (fullControl)
-            vector.Del<DragForcing>();
         }
 
-        if (vector.Is<Controlling>())
+        if (fullControl)
         {
-          bool fullControl = vector.Is<OnGround>();
-          foreach (EcsEntity force in _forceLoop
-            .GetLoop(SpeedForceType.Move, vector.Pack()))
+          foreach (EcsEntity drag in _dragForces
+            .Where<Owner>(x => x.Entity.EqualsTo(draggable.Pack())))
           {
-            ref MovementVector forceVector = ref force.Get<MovementVector>();
-            if (((vector.Is<DragForceAvailable>() ||
-              vector.Get<ControlFactor>().Factor >= 1) && !vector.Is<DragForcing>()) ||
-              fullControl)
-            {
-              fullControl = true;
-              force.Del<Added>();
-            }
+            drag.Is<DragForceDelay>(false)
+              .Is<Enabled>(false);
           }
-
-          if (fullControl)
-            vector.Del<Controlling>();
         }
+
+        // if (draggable.Is<Controlling>())
+        // {
+        //   bool fullControl = draggable.Is<OnGround>();
+        //   foreach (EcsEntity force in _forceLoop
+        //     .GetLoop(SpeedForceType.Move, draggable.Pack()))
+        //   {
+        //     ref MovementVector forceVector = ref force.Get<MovementVector>();
+        //     if (((draggable.Is<DragForceAvailable>() ||
+        //         draggable.Get<ControlFactor>().Factor >= 1) && !draggable.Is<DragForcing>()) ||
+        //       fullControl)
+        //     {
+        //       fullControl = true;
+        //       force.Del<Added>();
+        //     }
+        //   }
+        //
+        //   if (fullControl)
+        //     draggable.Del<Controlling>();
+        // }
       }
     }
   }

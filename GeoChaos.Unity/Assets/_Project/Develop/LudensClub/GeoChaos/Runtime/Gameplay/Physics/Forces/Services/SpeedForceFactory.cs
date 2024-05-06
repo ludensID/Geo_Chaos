@@ -27,7 +27,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         .Is<Instant>(data.Instant)
         .Is<Added>(data.Added)
         .Is<Unique>(data.Unique)
-        .Is<Immutable>(data.Immutable);
+        .Is<Immutable>(data.Immutable)
+        .Is<Draggable>(data.Draggable);
 
       if (data.Accelerated)
       {
