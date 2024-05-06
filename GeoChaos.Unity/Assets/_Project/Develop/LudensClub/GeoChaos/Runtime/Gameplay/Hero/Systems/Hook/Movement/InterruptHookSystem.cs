@@ -14,6 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
   {
     private readonly ISpeedForceFactory _forceFactory;
     private readonly ITimerFactory _timers;
+    private readonly IDragForceService _dragForceSvc;
     private readonly EcsWorld _game;
     private readonly EcsEntities _precastCommands;
     private readonly EcsEntities _pullCommands;
@@ -27,10 +28,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       PhysicsWorldWrapper physicsWorldWrapper,
       ISpeedForceFactory forceFactory,
       ITimerFactory timers,
-      IConfigProvider configProvider)
+      IConfigProvider configProvider,
+      IDragForceService dragForceSvc)
     {
       _forceFactory = forceFactory;
       _timers = timers;
+      _dragForceSvc = dragForceSvc;
       _game = gameWorldWrapper.World;
       _physics = physicsWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
@@ -96,8 +99,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             .Del<Hooked>()
             .Add((ref Releasing releasing) => releasing.TimeLeft = _timers.Create(_config.RingReleasingTime));
         }
-        
-        DisableDragForce(pull.Pack());
+
+
+        _dragForceSvc.GetDragForce(pull.Pack())
+          .Has<Enabled>(false)
+          .Has<DragForceDelay>(false);
       }
 
       foreach (EcsEntity land in _landCommands)
@@ -110,17 +116,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Del<HookFalling>()
           .Has<Controlling>(false);
 
-        DisableDragForce(land.Pack());
-      }
-    }
-
-    private void DisableDragForce(EcsPackedEntity packedEntity)
-    {
-      foreach (EcsEntity drag in _drags
-        .Where<Owner>(x => x.Entity.EqualsTo(packedEntity)))
-      {
-        drag.Has<DragForceDelay>(false)
-          .Has<Enabled>(false);
+        _dragForceSvc.GetDragForce(land.Pack())
+          .Has<Enabled>(false)
+          .Has<DragForceDelay>(false);
       }
     }
   }

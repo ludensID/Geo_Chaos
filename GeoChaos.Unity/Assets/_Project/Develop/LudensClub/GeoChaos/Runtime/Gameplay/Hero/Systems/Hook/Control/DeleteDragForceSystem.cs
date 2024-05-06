@@ -9,15 +9,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
   public class DeleteDragForceSystem : IEcsRunSystem
   {
+    private readonly IDragForceService _dragForceSvc;
     private readonly EcsWorld _game;
     private readonly SpeedForceLoop _forceLoop;
     private readonly EcsEntities _draggables;
     private readonly EcsWorld _physics;
-    private readonly EcsEntities _dragForces;
 
     public DeleteDragForceSystem(GameWorldWrapper gameWorldWrapper, PhysicsWorldWrapper physicsWorldWrapper,
-      ISpeedForceLoopService forceLoopSvc)
+      ISpeedForceLoopService forceLoopSvc, IDragForceService dragForceSvc)
     {
+      _dragForceSvc = dragForceSvc;
       _game = gameWorldWrapper.World;
       _physics = physicsWorldWrapper.World;
 
@@ -26,20 +27,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _draggables = _game
         .Filter<DragForceAvailable>()
         .Collect();
-
-      _dragForces = _physics
-        .Filter<DragForce>()
-        .Inc<Enabled>()
-        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity draggable in _draggables)
       {
-        ref MovementVector entityVector = ref draggable.Get<MovementVector>();
         bool fullControl = draggable.Has<OnGround>();
-
         if (!draggable.Has<HookPulling>())
         {
           foreach (EcsEntity force in _forceLoop
@@ -57,12 +51,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
         if (fullControl)
         {
-          foreach (EcsEntity drag in _dragForces
-            .Where<Owner>(x => x.Entity.EqualsTo(draggable.Pack())))
-          {
-            drag.Has<DragForceDelay>(false)
-              .Has<Enabled>(false);
-          }
+          _dragForceSvc.GetDragForce(draggable.Pack())
+            .Has<Enabled>(false);
         }
 
         // if (draggable.Is<Controlling>())

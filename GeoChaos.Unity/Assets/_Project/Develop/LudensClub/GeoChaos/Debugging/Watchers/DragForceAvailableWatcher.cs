@@ -40,7 +40,9 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
     {
       foreach (EcsEntity hero in _heroes)
       {
-        hero.Has<DragForceAvailable>(_dragForceAvailable);
+        hero
+          .Has<DragForceAvailable>(_dragForceAvailable)
+          .Add<InterruptHookCommand>();
       }
     }
   }
