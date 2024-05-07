@@ -40,10 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           foreach (EcsEntity force in _forceLoop
             .GetLoop(SpeedForceType.Hook, pulling.Pack()))
           {
-            ref Impact impact = ref force.Get<Impact>();
-            impact.Vector.y = 0;
-            if (!pulling.Has<DragForceAvailable>())
-              impact.Vector.x = 0;
+            force.Add<Instant>();
           }
 
           pulling.Add<StopHookPullingCommand>()

@@ -49,9 +49,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
     private bool IsGroundCasted(Vector3 position)
     {
-      var origin = new Vector2(position.x, position.y);
-      Vector2 direction = Vector2.zero;
-      RaycastHit2D raycastHit = Physics2D.CircleCast(origin, _physics.AcceptableGroundDistance, direction,
+      RaycastHit2D raycastHit = Physics2D.CircleCast(position, _physics.AcceptableGroundDistance, Vector2.zero,
         Mathf.Infinity, _physics.GroundMask);
       return raycastHit.collider != null;
     }

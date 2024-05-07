@@ -35,10 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<CalculateHeroMovementVectorSystem>());
       Add(systems.Create<TurnOnADControlSystem>());
       Add(systems.Create<Delete<MoveCommand, GameWorldWrapper>>());
-
-      Add(systems.Create<Delete<OnLanded, GameWorldWrapper>>());
-      Add(systems.Create<Delete<OnLeftGround, GameWorldWrapper>>());
-      Add(systems.Create<CheckForHeroOnGroundSystem>());
+      
       Add(systems.Create<FallHeroSystem>());
       Add(systems.Create<LandHeroSystem>());
 

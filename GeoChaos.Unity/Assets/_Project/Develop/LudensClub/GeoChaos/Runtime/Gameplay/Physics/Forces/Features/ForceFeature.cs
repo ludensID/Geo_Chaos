@@ -8,6 +8,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   {
     public ForceFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<CheckForHeroOnGroundSystem>());
+      
       Add(systems.Create<CreateDragForceSystem>());
       
       Add(systems.Create<ReadViewVelocitySystem>());
