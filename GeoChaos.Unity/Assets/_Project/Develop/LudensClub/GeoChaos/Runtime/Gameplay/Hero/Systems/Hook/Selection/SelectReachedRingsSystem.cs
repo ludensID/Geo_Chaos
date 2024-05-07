@@ -9,18 +9,18 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
-  public class SelectRingsInHeroViewSystem : IEcsRunSystem
+  public class SelectReachedRingsSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _heroes;
     private readonly EcsEntities _selectedRings;
-    private readonly HeroConfig _config;
+    private readonly PhysicsConfig _physics;
 
-    public SelectRingsInHeroViewSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
+    public SelectReachedRingsSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
       _game = gameWorldWrapper.World;
-      _config = configProvider.Get<HeroConfig>();
-
+      _physics = configProvider.Get<PhysicsConfig>();
+      
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<ViewRef>()
@@ -38,10 +38,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       foreach (EcsEntity hero in _heroes)
       foreach (EcsEntity ring in _selectedRings)
       {
-        Transform heroTransform = hero.Get<ViewRef>().View.transform;
+        Vector3 heroPosition = hero.Get<ViewRef>().View.transform.position;
         Vector3 ringPosition = ring.Get<ViewRef>().View.transform.position;
-        Vector3 ringVector = ringPosition - heroTransform.position;
-        if (Vector3.Angle(heroTransform.right, ringVector) > _config.RingViewAngle)
+        
+        Vector3 vector = ringPosition - heroPosition;
+        RaycastHit2D centerRaycast = Physics2D.Raycast(heroPosition, vector.normalized, vector.magnitude,
+          _physics.GroundMask);
+        RaycastHit2D topRaycast = Physics2D.Raycast(heroPosition + Vector3.up, vector.normalized,
+          vector.magnitude, _physics.GroundMask);
+        
+        if (centerRaycast.collider != null || topRaycast.collider != null)
           ring.Del<Selected>();
       }
     }

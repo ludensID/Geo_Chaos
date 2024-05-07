@@ -87,6 +87,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     public bool AllowHookInterruption;
     public float HookRadius;
+    [Range(0, 90)]
+    public float RingViewAngle = 90;
 
     [Range(1, 10)]
     [HideInInspector]
