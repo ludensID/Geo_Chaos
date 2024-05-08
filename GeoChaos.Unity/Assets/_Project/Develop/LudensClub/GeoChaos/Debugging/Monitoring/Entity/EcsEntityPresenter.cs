@@ -2,7 +2,6 @@
 using System.Linq;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using UnityEngine;
 
 namespace LudensClub.GeoChaos.Debugging.Monitoring
 {
@@ -78,10 +77,9 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
       for (int i = 0; i < _componentCount; i++)
       {
-        EcsComponentView componentView = View.Components[i];
         object component = _components[i];
-        if (componentView.Value == null || !componentView.Value.Equals(component))
-          componentView.Value = (IEcsComponent)component;
+        int index = View.Components.FindIndex(x => x.Value.GetType().Name == component.GetType().Name);
+        View.Components[index].Value = (IEcsComponent)component;
       }
     }
 
@@ -94,19 +92,25 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     private void Resize()
     {
-      int viewCount = View.Components.Count;
-      if (_componentCount < viewCount)
+      var components = new object[_componentCount];
+      if (_componentCount > 0)
+        Array.Copy(_components, components, _componentCount);
+
+      for (int i = 0; i < View.Components.Count; i++)
       {
-        View.Components.RemoveRange(_componentCount, viewCount - _componentCount);
+        if (components.All(x => x.GetType().Name != View.Components[i].Value.GetType().Name))
+          View.Components.RemoveAt(i--);
       }
-      else if (_componentCount > viewCount)
+
+      for (int i = 0; i < _componentCount; i++)
       {
-        for (int i = viewCount; i < _componentCount; i++)
-          View.Components.Add(new EcsComponentView());
+        if (View.Components.All(x => x.Value.GetType().Name != components[i].GetType().Name))
+          View.Components.Add(new EcsComponentView { Value = (IEcsComponent)components[i] });
       }
 
       if (View.Components.Count != _componentCount)
-        throw new IndexOutOfRangeException();
+        throw new IndexOutOfRangeException(
+          $"View component count ({View.Components.Count}) is not equal to component count ({_componentCount})");
     }
 
     public void SetActive(bool value)
