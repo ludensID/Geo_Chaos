@@ -57,7 +57,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     {
       Vector2 distance = ring - hero;
       Vector2 delta = distance * velocity;
-      return delta is { x: <= 0, y: <= 0 } || distance.sqrMagnitude <= 0.1;
+      return delta.x <= 0 || delta.y <= 0 || distance.sqrMagnitude <= 0.1;
     }
   }
 }
