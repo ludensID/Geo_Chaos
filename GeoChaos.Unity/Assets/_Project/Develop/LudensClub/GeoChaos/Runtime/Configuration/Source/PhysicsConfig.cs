@@ -7,5 +7,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
   {
     public LayerMask GroundMask;
     public float AcceptableGroundDistance;
+    public float GroundCheckTime;
   }
 }
