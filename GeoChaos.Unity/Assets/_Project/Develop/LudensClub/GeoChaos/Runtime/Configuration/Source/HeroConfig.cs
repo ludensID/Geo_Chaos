@@ -87,6 +87,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     public bool AllowHookInterruption;
     public float HookRadius;
+
     [Range(0, 90)]
     public float RingViewAngle = 90;
 
@@ -99,21 +100,20 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     public float HookVelocity;
 
-    [GroupNext(TriConstants.Names.HOOK_UPGRADES)]
+    [GroupNext(TriConstants.Names.DRAG_FORCE)]
     public bool UseGradient;
-    
-    public float StartDragForceCoefficient => UseGradient ? 1f / 3f : 1f / 2f;
 
-    [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("Drag Force")]
+    public float StartDragForceCoefficient => 1f / (UseGradient ? 3f : 2f);
     public bool EnableDragForce;
 
     public bool IsRelativeHookSpeed;
     public float DragForceMultiplier;
 
-    [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("AD Control")]
-    [EnableIf(nameof(EnableADControl))]
+    // [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("AD Control")]
+    [ShowIf(nameof(EnableADControl))]
     public bool EnableADControl;
 
+    [ShowIf(nameof(EnableADControl))]
     [Range(0, 1)]
     public float SpeedRatio = 1;
 

@@ -51,7 +51,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           .Has<HookAvailable>(_config.EnableHook)
           .Has<InterruptHookAvailable>(_config.AllowHookInterruption)
           .Has<DragForceAvailable>(_config.EnableDragForce)
-          .Has<Controllable>(_config.EnableADControl)
           .Add<ControlFactor>();
       }
     }

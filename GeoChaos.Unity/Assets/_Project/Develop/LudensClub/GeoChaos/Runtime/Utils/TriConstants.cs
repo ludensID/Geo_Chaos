@@ -14,6 +14,7 @@
       public const string JUMP = "Jump";
       public const string ATTACK_COLLIDERS = "Attack Colliders";
       public const string GRAPPLING_HOOK = "Grapling Hook";
+      public const string DRAG_FORCE = "Drag Force";
       public const string HOOK_UPGRADES = "Upgrades";
       public const string HOOK_UPGRADES_TYPES = HOOK_UPGRADES + "/" + "Types";
 
