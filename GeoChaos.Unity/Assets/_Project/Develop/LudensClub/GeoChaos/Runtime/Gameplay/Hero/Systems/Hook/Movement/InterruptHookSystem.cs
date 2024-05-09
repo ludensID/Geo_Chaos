@@ -13,30 +13,22 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
   public class InterruptHookSystem : IEcsRunSystem
   {
     private readonly ISpeedForceFactory _forceFactory;
-    private readonly ITimerFactory _timers;
     private readonly IDragForceService _dragForceSvc;
     private readonly EcsWorld _game;
     private readonly EcsEntities _precastCommands;
     private readonly EcsEntities _pullCommands;
     private readonly EcsEntities _landCommands;
-    private readonly EcsEntities _hookedRings;
-    private readonly HeroConfig _config;
-    private readonly EcsWorld _physics;
-    private readonly EcsEntities _drags;
+    private readonly EcsWorld _message;
 
     public InterruptHookSystem(GameWorldWrapper gameWorldWrapper,
-      PhysicsWorldWrapper physicsWorldWrapper,
+      MessageWorldWrapper messageWorldWrapper,      
       ISpeedForceFactory forceFactory,
-      ITimerFactory timers,
-      IConfigProvider configProvider,
       IDragForceService dragForceSvc)
     {
       _forceFactory = forceFactory;
-      _timers = timers;
       _dragForceSvc = dragForceSvc;
       _game = gameWorldWrapper.World;
-      _physics = physicsWorldWrapper.World;
-      _config = configProvider.Get<HeroConfig>();
+      _message = messageWorldWrapper.World;
 
       _precastCommands = _game
         .Filter<InterruptHookCommand>()
@@ -51,15 +43,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _landCommands = _game
         .Filter<InterruptHookCommand>()
         .Inc<HookFalling>()
-        .Collect();
-
-      _hookedRings = _game
-        .Filter<RingTag>()
-        .Inc<Hooked>()
-        .Collect();
-
-      _drags = _physics
-        .Filter<DragForce>()
         .Collect();
     }
 
@@ -93,13 +76,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             gravity.Override = true;
           });
 
-        foreach (EcsEntity ring in _hookedRings)
-        {
-          ring
-            .Del<Hooked>()
-            .Add((ref Releasing releasing) => releasing.TimeLeft = _timers.Create(_config.RingReleasingTime));
-        }
-
+        _message.CreateEntity()
+          .Add<ReleaseRingMessage>();
 
         _dragForceSvc.GetDragForce(pull.Pack())
           .Has<Enabled>(false)

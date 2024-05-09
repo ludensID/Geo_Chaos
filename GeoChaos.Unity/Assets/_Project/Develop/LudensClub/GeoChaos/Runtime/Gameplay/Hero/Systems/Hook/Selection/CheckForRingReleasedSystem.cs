@@ -5,12 +5,12 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
-  public class ReleaseRingsSystem : IEcsRunSystem
+  public class CheckForRingReleasedSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _releasings;
 
-    public ReleaseRingsSystem(GameWorldWrapper gameWorldWrapper)
+    public CheckForRingReleasedSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
