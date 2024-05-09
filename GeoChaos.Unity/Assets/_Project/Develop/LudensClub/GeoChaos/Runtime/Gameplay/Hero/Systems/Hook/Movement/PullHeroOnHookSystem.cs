@@ -72,7 +72,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         {
           Speed = length,
           Direction = direction,
-          Draggable = true
+          Draggable = true,
+          Valuable = true
         });
 
         precast.Add((ref HookTimer timer) => timer.TimeLeft = _timers.Create(time + _config.PullTimeOffset));

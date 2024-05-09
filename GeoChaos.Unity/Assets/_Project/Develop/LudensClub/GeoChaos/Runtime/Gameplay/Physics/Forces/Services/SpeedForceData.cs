@@ -18,6 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     public bool Unique;
     public bool Immutable;
     public bool Draggable;
+    public bool Valuable;
 
     public SpeedForceData(SpeedForceType type, EcsPackedEntity owner,  Vector2 impact = default(Vector2))
     {

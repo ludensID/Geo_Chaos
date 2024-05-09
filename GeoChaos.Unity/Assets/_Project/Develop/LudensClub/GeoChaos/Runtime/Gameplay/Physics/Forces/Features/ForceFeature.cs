@@ -20,6 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       
       Add(systems.Create<ConvertToSpeedForceSystem>());
       Add(systems.Create<DeleteNoImpactForcesSystem>());
+      Add(systems.Create<DeleteZeroForcesSystem>());
       
       Add(systems.Create<AccelerateSpeedsSystem>());
       Add(systems.Create<DragSpeedForcesSystem>());
