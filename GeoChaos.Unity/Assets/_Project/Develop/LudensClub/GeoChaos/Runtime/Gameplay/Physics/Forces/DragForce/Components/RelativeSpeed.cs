@@ -1,5 +1,6 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
@@ -12,6 +13,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   [Serializable]
   public struct RelativeSpeed : IEcsComponent
   {
-    public float Speed;
+    public Vector2 Speed;
   }
 }

@@ -31,8 +31,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         gradient.Value += drag.Get<GradientRate>().Rate * Time.fixedDeltaTime;
         gradient.Value = MathUtils.Clamp(gradient.Value, 0, 1);
         
-        float multiplier = gradient.Value * _config.DragForceMultiplier;
-        float forceValue = _config.IsRelativeHookSpeed
+        Vector2 multiplier = gradient.Value * _config.DragForceMultiplier;
+        Vector2 forceValue = _config.IsRelativeHookSpeed
           ? multiplier * drag.Get<RelativeSpeed>().Speed
           : multiplier;
         drag.Replace((ref DragForce force) => force.Force = forceValue);

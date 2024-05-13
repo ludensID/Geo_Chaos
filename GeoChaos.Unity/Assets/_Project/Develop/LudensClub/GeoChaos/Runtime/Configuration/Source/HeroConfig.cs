@@ -107,7 +107,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public bool EnableDragForce;
 
     public bool IsRelativeHookSpeed;
-    public float DragForceMultiplier;
+    public Vector2 DragForceMultiplier;
 
     // [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("AD Control")]
     [ShowIf(nameof(EnableADControl))]

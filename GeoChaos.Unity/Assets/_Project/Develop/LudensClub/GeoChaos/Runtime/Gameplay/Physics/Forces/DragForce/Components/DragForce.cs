@@ -1,5 +1,6 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
@@ -12,6 +13,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   [Serializable]
   public struct DragForce : IEcsComponent
   {
-    public float Force;
+    public Vector2 Force;
   }
 }

@@ -96,7 +96,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
           drag
             .Replace((ref GradientRate rate) => rate.Rate = 1 / controlTime)
-            .Replace((ref RelativeSpeed relative) => relative.Speed = Mathf.Abs(velocity.x));
+            .Replace((ref RelativeSpeed relative) =>
+              relative.Speed = new Vector2(Mathf.Abs(velocity.x), Mathf.Abs(velocity.y)));
         }
       }
     }

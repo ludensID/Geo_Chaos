@@ -42,7 +42,7 @@ MonoBehaviour:
   UseGradient: 1
   EnableDragForce: 1
   IsRelativeHookSpeed: 1
-  DragForceMultiplier: 2
+  DragForceMultiplier: {x: 1.5, y: 0.75}
   EnableADControl: 0
   SpeedRatio: 1
   PullTimeOffset: 1

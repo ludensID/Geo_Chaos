@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity drag in _drags)
       {
-        float force = drag.Get<DragForce>().Force;
+        Vector2 force = drag.Get<DragForce>().Force;
         foreach (EcsEntity draggable in _draggables
           .Where<Owner>(x => x.Entity.EqualsTo(drag.Get<Owner>().Entity)))
         {
@@ -39,7 +39,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           for (int i = 0; i < 2; i++)
           {
             vector.Speed[i] =
-              MathUtils.DecreaseToZeroValue(vector.Speed[i], impact.Vector[i] * force * Time.fixedDeltaTime);
+              MathUtils.DecreaseToZeroValue(vector.Speed[i], impact.Vector[i] * force[i] * Time.fixedDeltaTime);
           }
         }
       }
