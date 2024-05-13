@@ -14,6 +14,5 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   {
     public bool Enabled;
     public float Value;
-    public bool Override;
   }
 }

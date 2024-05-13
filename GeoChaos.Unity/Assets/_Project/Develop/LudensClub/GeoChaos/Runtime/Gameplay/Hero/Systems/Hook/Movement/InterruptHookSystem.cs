@@ -1,11 +1,9 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
@@ -70,11 +68,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Has<OnHookPullingStarted>(false)
           .Has<OnHookPullingFinished>(false)
           .Has<Controlling>(false)
-          .Replace((ref GravityScale gravity) =>
-          {
-            gravity.Enabled = true;
-            gravity.Override = true;
-          });
+          .Replace((ref GravityScale gravity) => gravity.Enabled = true);
 
         _message.CreateEntity()
           .Add<ReleaseRingMessage>();

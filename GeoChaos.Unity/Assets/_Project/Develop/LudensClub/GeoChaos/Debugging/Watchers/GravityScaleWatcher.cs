@@ -3,7 +3,6 @@ using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
-using Zenject;
 
 namespace LudensClub.GeoChaos.Debugging.Watchers
 {
@@ -11,7 +10,7 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
   {
     private readonly EcsWorld _game;
     private readonly HeroConfig _config;
-    private readonly EcsFilter _heroes;
+    private readonly EcsEntities _heroes;
     private float _gravityScale;
 
     public GravityScaleWatcher(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
@@ -23,7 +22,7 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<GravityScale>()
-        .End();
+        .Collect();
     }
 
     public bool IsDifferent()
@@ -41,11 +40,10 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
       if (!float.IsFinite(_gravityScale))
         return;
 
-      foreach (int hero in _heroes)
+      foreach (EcsEntity hero in _heroes)
       {
-        ref GravityScale gravityScale = ref _game.Get<GravityScale>(hero);
-        gravityScale.Value = _game.Has<Falling>(hero) ? _config.FallGravityScale : _config.GravityScale;
-        gravityScale.Override = true;
+        hero.Replace((ref GravityScale gravity) =>
+          gravity.Value = hero.Has<Falling>() ? _config.FallGravityScale : _config.GravityScale);
       }
     }
   }

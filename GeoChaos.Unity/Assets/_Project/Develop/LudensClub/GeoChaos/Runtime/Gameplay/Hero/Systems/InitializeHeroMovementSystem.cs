@@ -45,7 +45,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           {
             gravity.Enabled = true;
             gravity.Value = _config.GravityScale;
-            gravity.Override = true;
           })
           .Has<DashAvailable>(_config.EnableDash)
           .Has<AttackAvailable>(_config.EnableAttack)

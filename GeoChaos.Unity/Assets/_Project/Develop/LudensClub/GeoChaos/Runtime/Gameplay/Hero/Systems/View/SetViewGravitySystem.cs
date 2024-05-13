@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   public class SetViewGravitySystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _bodies;
+    private readonly EcsEntities _bodies;
 
     public SetViewGravitySystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -16,18 +16,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _bodies = _game
         .Filter<GravityScale>()
         .Inc<RigidbodyRef>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var body in _bodies
-        .Where<GravityScale>(x => x.Override))
+      foreach (EcsEntity body in _bodies)
       {
-        ref GravityScale gravityScale = ref _game.Get<GravityScale>(body);
-        ref RigidbodyRef rigidbodyRef = ref _game.Get<RigidbodyRef>(body);
-        rigidbodyRef.Rigidbody.gravityScale = gravityScale.Enabled ? gravityScale.Value : 0;
-        gravityScale.Override = false;
+        ref GravityScale gravity = ref body.Get<GravityScale>();
+        ref RigidbodyRef rigidbodyRef = ref body.Get<RigidbodyRef>();
+        rigidbodyRef.Rigidbody.gravityScale = gravity.Enabled ? gravity.Value : 0;
       }
     }
   }

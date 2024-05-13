@@ -29,12 +29,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       foreach (EcsEntity falling in _fallings
         .Where<MovementVector>(x => x.Direction.y >= 0))
       {
-        falling.Del<Falling>()
-          .Replace((ref GravityScale gravity) =>
-          {
-            gravity.Value = _config.GravityScale;
-            gravity.Override = true;
-          });
+        falling
+          .Del<Falling>()
+          .Replace((ref GravityScale gravity) => gravity.Value = _config.GravityScale);
       }
     }
   }

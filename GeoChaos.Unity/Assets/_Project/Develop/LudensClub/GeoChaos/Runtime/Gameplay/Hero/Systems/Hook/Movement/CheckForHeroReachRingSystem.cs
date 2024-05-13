@@ -52,12 +52,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
               .Add<Enabled>();
           }
 
-          pulling.Add<StopHookPullingCommand>()
-            .Replace((ref GravityScale gravity) =>
-            {
-              gravity.Enabled = true;
-              gravity.Override = true;
-            });
+          pulling
+            .Add<StopHookPullingCommand>()
+            .Replace((ref GravityScale gravity) => gravity.Enabled = true);
         }
       }
     }

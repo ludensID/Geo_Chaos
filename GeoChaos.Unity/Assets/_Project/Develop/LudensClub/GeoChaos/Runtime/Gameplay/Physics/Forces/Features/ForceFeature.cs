@@ -33,6 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       Add(systems.Create<CalculateVelocitySystem>());
       
       Add(systems.Create<SetViewVelocitySystem>());
+      Add(systems.Create<SetViewGravitySystem>());
     }
   }
 }

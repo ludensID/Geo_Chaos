@@ -32,12 +32,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         if (onGround.Has<Jumping>())
           onGround.Del<Jumping>();
         
-        onGround.Add<Falling>()
-          .Replace((ref GravityScale gravity) =>
-          {
-            gravity.Value = _config.FallGravityScale;
-            gravity.Override = true;
-          });
+        onGround
+          .Add<Falling>()
+          .Replace((ref GravityScale gravity) => gravity.Value = _config.FallGravityScale);
       }
     }
   }
