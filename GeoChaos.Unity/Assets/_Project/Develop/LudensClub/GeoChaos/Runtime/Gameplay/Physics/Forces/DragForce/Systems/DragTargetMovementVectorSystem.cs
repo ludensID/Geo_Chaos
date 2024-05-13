@@ -27,7 +27,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity drag in _drags)
       {
-        if (_game.UnpackEntity(drag.Get<Owner>().Entity, out EcsEntity draggable))
+        EcsEntity draggable = _game.UnpackEntity(drag.Get<Owner>().Entity);
+        if (draggable.IsAlive)
         {
           draggable.Replace((ref MovementVector vector) =>
           {

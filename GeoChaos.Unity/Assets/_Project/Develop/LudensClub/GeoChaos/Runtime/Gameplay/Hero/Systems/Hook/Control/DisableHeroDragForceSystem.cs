@@ -4,11 +4,10 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
-using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
-  public class DeleteDragForceSystem : IEcsRunSystem
+  public class DisableHeroDragForceSystem : IEcsRunSystem
   {
     private readonly IDragForceService _dragForceSvc;
     private readonly ISpeedForceFactory _forceFactory;
@@ -17,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     private readonly EcsEntities _draggables;
     private readonly EcsWorld _physics;
 
-    public DeleteDragForceSystem(GameWorldWrapper gameWorldWrapper, PhysicsWorldWrapper physicsWorldWrapper,
+    public DisableHeroDragForceSystem(GameWorldWrapper gameWorldWrapper, PhysicsWorldWrapper physicsWorldWrapper,
       ISpeedForceLoopService forceLoopSvc, IDragForceService dragForceSvc, ISpeedForceFactory forceFactory)
     {
       _dragForceSvc = dragForceSvc;

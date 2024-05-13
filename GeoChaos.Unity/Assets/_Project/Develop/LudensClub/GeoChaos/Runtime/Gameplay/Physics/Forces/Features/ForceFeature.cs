@@ -11,6 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       Add(systems.Create<CheckForHeroOnGroundSystem>());
       
       Add(systems.Create<CreateDragForceSystem>());
+      Add(systems.Create<DeleteDragForceSystem>());
       
       Add(systems.Create<ReadViewVelocitySystem>());
       
@@ -20,13 +21,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       
       Add(systems.Create<ConvertToSpeedForceSystem>());
       Add(systems.Create<DeleteNoImpactForcesSystem>());
-      Add(systems.Create<DeleteZeroForcesSystem>());
       
       Add(systems.Create<AccelerateSpeedsSystem>());
-      Add(systems.Create<DragSpeedForcesSystem>());
+      Add(systems.Create<SetInstantZeroForcesSystem>());
       
       Add(systems.Create<CalculateTargetMovementVectorSystem>());
       Add(systems.Create<DragTargetMovementVectorSystem>());
+      
+      Add(systems.Create<DragSpeedForcesSystem>());
       
       Add(systems.Create<CalculateVelocitySystem>());
       

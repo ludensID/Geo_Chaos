@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
 
       _dragForceAvailable = _config.EnableDragForce;
     }
-    
+
     public bool IsDifferent()
     {
       return _dragForceAvailable != _config.EnableDragForce;
@@ -40,9 +40,10 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
     {
       foreach (EcsEntity hero in _heroes)
       {
-        hero
-          .Has<DragForceAvailable>(_dragForceAvailable)
-          .Add<InterruptHookCommand>();
+        hero.Has<DragForceAvailable>(_dragForceAvailable);
+        
+        if (hero.Has<Hooking>())
+          hero.Add<InterruptHookCommand>();
       }
     }
   }

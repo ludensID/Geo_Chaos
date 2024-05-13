@@ -35,14 +35,14 @@ MonoBehaviour:
   EnableHook: 1
   AllowHookInterruption: 1
   HookRadius: 20
-  RingViewAngle: 80
+  RingViewAngle: 90
   RingHorizontalDistance: 1
   HookPrecastTime: 0.2
   HookVelocity: 30
   UseGradient: 1
   EnableDragForce: 1
   IsRelativeHookSpeed: 1
-  DragForceMultiplier: 1
+  DragForceMultiplier: 100
   EnableADControl: 0
   SpeedRatio: 1
   PullTimeOffset: 1

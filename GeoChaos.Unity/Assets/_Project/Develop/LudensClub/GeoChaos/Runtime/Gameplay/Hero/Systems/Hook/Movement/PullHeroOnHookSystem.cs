@@ -14,24 +14,23 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
   public class PullHeroOnHookSystem : IEcsRunSystem
   {
     private readonly ISpeedForceFactory _forceFactory;
+    private readonly IDragForceService _dragForceSvc;
     private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _finishedPrecasts;
     private readonly EcsEntities _hookedRings;
     private readonly HeroConfig _config;
-    private readonly EcsWorld _physics;
-    private readonly EcsEntities _drags;
 
     public PullHeroOnHookSystem(GameWorldWrapper gameWorldWrapper,
-      PhysicsWorldWrapper physicsWorldWrapper,
       ISpeedForceFactory forceFactory,
+      IDragForceService dragForceSvc,
       IConfigProvider configProvider,
       ITimerFactory timers)
     {
       _forceFactory = forceFactory;
+      _dragForceSvc = dragForceSvc;
       _timers = timers;
       _game = gameWorldWrapper.World;
-      _physics = physicsWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
       _finishedPrecasts = _game
@@ -46,10 +45,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         .Inc<Hooked>()
         .Inc<ViewRef>()
         .Inc<RingPoints>()
-        .Collect();
-
-      _drags = _physics
-        .Filter<DragForce>()
         .Collect();
     }
 
@@ -72,8 +67,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         {
           Speed = length,
           Direction = direction,
-          Draggable = true,
-          Valuable = true
+          Draggable = true
         });
 
         precast.Add((ref HookTimer timer) => timer.TimeLeft = _timers.Create(time + _config.PullTimeOffset));
@@ -84,7 +78,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Add((ref HookPulling pulling) =>
           {
             pulling.Velocity = velocity;
-            pulling.JumpTime = time * 2;
             pulling.Target = target;
           })
           .Replace((ref GravityScale gravity) =>
@@ -103,14 +96,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           float controlTime = time * 2 * (1 - _config.StartDragForceCoefficient * 2);
           controlTime = MathUtils.Clamp(controlTime, 0.0001f);
 
-          foreach (EcsEntity drag in _drags
-            .Where<Owner>(x => x.Entity.EqualsTo(precast.Pack())))
+          EcsEntity drag = _dragForceSvc.GetDragForce(precast.Pack());
+          if (_config.UseGradient)
           {
             drag.Add((ref DragForceDelay delay) =>
-                delay.TimeLeft = _timers.Create(time * 2 * _config.StartDragForceCoefficient + 1 / _config.HookVelocity))
-              .Replace((ref GradientRate rate) => rate.Rate = 1 / controlTime)
-              .Replace((ref RelativeSpeed relative) => relative.Speed = Mathf.Abs(velocity.x));
+              delay.TimeLeft = _timers.Create(time * 2 * _config.StartDragForceCoefficient));
           }
+
+          drag
+            .Replace((ref GradientRate rate) => rate.Rate = 1 / controlTime)
+            .Replace((ref RelativeSpeed relative) => relative.Speed = Mathf.Abs(velocity.x));
         }
       }
     }

@@ -21,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     private readonly EcsWorld _message;
 
     public InterruptHookSystem(GameWorldWrapper gameWorldWrapper,
-      MessageWorldWrapper messageWorldWrapper,      
+      MessageWorldWrapper messageWorldWrapper,
       ISpeedForceFactory forceFactory,
       IDragForceService dragForceSvc)
     {
@@ -79,9 +79,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         _message.CreateEntity()
           .Add<ReleaseRingMessage>();
 
-        _dragForceSvc.GetDragForce(pull.Pack())
-          .Has<Enabled>(false)
-          .Has<DragForceDelay>(false);
+        foreach (EcsEntity drag in _dragForceSvc.GetLoop(pull.Pack()))
+        {
+          drag
+            .Has<Enabled>(false)
+            .Has<DragForceDelay>(false);
+        }
       }
 
       foreach (EcsEntity land in _landCommands)
@@ -94,9 +97,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Del<HookFalling>()
           .Has<Controlling>(false);
 
-        _dragForceSvc.GetDragForce(land.Pack())
-          .Has<Enabled>(false)
-          .Has<DragForceDelay>(false);
+        foreach (EcsEntity drag in _dragForceSvc.GetLoop(land.Pack()))
+        {
+          drag
+            .Has<Enabled>(false)
+            .Has<DragForceDelay>(false);
+        }
       }
     }
   }

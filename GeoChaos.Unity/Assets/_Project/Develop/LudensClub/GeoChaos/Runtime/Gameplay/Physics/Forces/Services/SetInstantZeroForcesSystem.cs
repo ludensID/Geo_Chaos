@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
-  public class DeleteZeroForcesSystem : IEcsRunSystem
+  public class SetInstantZeroForcesSystem : IEcsRunSystem
   {
     private readonly EcsWorld _physics;
     private readonly EcsEntities _valuables;
 
-    public DeleteZeroForcesSystem(PhysicsWorldWrapper physicsWorldWrapper)
+    public SetInstantZeroForcesSystem(PhysicsWorldWrapper physicsWorldWrapper)
     {
       _physics = physicsWorldWrapper.World;
 
@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         ref MovementVector vector = ref valuable.Get<MovementVector>();
         ref Impact impact = ref valuable.Get<Impact>();
         if(impact.Vector * vector.Speed * vector.Direction == Vector2.zero)
-          valuable.Dispose();
+          valuable.Add<Instant>();
       }
     }
   }

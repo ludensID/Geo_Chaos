@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
@@ -11,15 +12,22 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
   public class CheckForHeroReachRingSystem : IEcsRunSystem
   {
+    private readonly ISpeedForceFactory _forceFactory;
+    private readonly IDragForceService _dragForceSvc;
     private readonly EcsWorld _game;
     private readonly EcsEntities _pullings;
-    private readonly SpeedForceLoop _forceLoop;
+    private readonly HeroConfig _config;
 
-    public CheckForHeroReachRingSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
+    public CheckForHeroReachRingSystem(GameWorldWrapper gameWorldWrapper,
+      ISpeedForceFactory forceFactory,
+      IConfigProvider configProvider,
+      IDragForceService dragForceSvc)
     {
+      _forceFactory = forceFactory;
+      _dragForceSvc = dragForceSvc;
       _game = gameWorldWrapper.World;
+      _config = configProvider.Get<HeroConfig>();
 
-      _forceLoop = forceLoopSvc.CreateLoop();
 
       _pullings = _game
         .Filter<HookPulling>()
@@ -37,10 +45,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         ref HookPulling hookPulling = ref pulling.Get<HookPulling>();
         if (IsHeroReachedRing(hookPulling.Target, heroTransform.position, hookPulling.Velocity))
         {
-          foreach (EcsEntity force in _forceLoop
-            .GetLoop(SpeedForceType.Hook, pulling.Pack()))
+          _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, pulling.Pack()));
+          if (pulling.Has<DragForceAvailable>() && !_config.UseGradient)
           {
-            force.Add<Instant>();
+            _dragForceSvc.GetDragForce(pulling.Pack())
+              .Add<Enabled>();
           }
 
           pulling.Add<StopHookPullingCommand>()

@@ -9,10 +9,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
     public HeroPhysicsFeature(IEcsSystemFactory systems)
     {
       // Add(systems.Create<IncreaseControlSystem>());
-      Add(systems.Create<UpdateControlSystem>());
+      // Add(systems.Create<UpdateControlSystem>());
       // Add(systems.Create<CheckForDragForceDelayExpiredSystem>());
-      Add(systems.Create<DeleteDragForceSystem>());
+      Add(systems.Create<DisableHeroDragForceSystem>());
       Add(systems.Create<CheckForHeroReachRingSystem>());
+      Add(systems.Create<CheckForZeroHookForceSystem>());
       Add(systems.Create<CheckForHookTimerSystem>());
       // Add(systems.Create<DirectHookVelocitySystem>());
     }
