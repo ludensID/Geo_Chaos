@@ -38,8 +38,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           ref MovementVector vector = ref draggable.Get<MovementVector>();
           for (int i = 0; i < 2; i++)
           {
-            vector.Speed[i] -= impact.Vector[i] * force * Time.fixedDeltaTime;
-            vector.Speed[i] = MathUtils.Clamp(vector.Speed[i], 0);
+            vector.Speed[i] =
+              MathUtils.DecreaseToZeroValue(vector.Speed[i], impact.Vector[i] * force * Time.fixedDeltaTime);
           }
         }
       }

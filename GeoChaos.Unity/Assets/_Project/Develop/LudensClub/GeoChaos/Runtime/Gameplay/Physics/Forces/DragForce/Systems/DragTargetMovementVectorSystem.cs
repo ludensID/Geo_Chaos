@@ -30,10 +30,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         EcsEntity draggable = _game.UnpackEntity(drag.Get<Owner>().Entity);
         if (draggable.IsAlive)
         {
+          float force = drag.Get<DragForce>().Force;
           draggable.Replace((ref MovementVector vector) =>
           {
-            vector.Speed.x -= drag.Get<DragForce>().Force * Time.fixedDeltaTime;
-            vector.Speed.x = MathUtils.Clamp(vector.Speed.x, 0);
+            vector.Speed.x = MathUtils.DecreaseToZeroValue(vector.Speed.x, force * Time.fixedDeltaTime);
+            if (vector.Direction.y > 0)
+              vector.Speed.y = MathUtils.DecreaseToZeroValue(vector.Speed.y, force * Time.fixedDeltaTime);
           });
         }
       }

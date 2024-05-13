@@ -8,5 +8,12 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     {
       return Mathf.Clamp(value, min, max);
     }
+    
+    public static float DecreaseToZeroValue(float value, float delta)
+    {
+      value -= delta;
+      value = Clamp(value, 0);
+      return value;
+    }
   }
 }
