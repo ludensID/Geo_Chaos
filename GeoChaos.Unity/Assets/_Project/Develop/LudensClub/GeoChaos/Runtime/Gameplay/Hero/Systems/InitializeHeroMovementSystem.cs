@@ -37,6 +37,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           .Add<Movable>()
           .Add((ref HorizontalSpeed speed) => speed.Value = _config.MovementSpeed)
           .Add((ref MovementVector vector) => vector.Direction.x = 1)
+          .Add<LastMovementVector>()
           .Add<Velocity>()
           .Add<Ground>()
           .Add((ref GroundCheckTimer timer) => timer.TimeLeft = 0)

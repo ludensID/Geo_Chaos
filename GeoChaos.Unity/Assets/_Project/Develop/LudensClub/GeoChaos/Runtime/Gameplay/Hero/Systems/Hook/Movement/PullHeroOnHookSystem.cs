@@ -62,12 +62,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         float time = vector.magnitude / _config.HookVelocity;
         Vector2 velocity = vector / time;
 
-        (Vector3 length, Vector3 direction) = MiscUtils.DecomposeVector(velocity);
+        (Vector3 length, Vector3 direction) = MathUtils.DecomposeVector(velocity);
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, precast.Pack(), Vector2.one)
         {
           Speed = length,
           Direction = direction,
-          Draggable = true
+          Draggable = true,
+          Residual = true
         });
 
         precast.Add((ref HookTimer timer) => timer.TimeLeft = _timers.Create(time + _config.PullTimeOffset));

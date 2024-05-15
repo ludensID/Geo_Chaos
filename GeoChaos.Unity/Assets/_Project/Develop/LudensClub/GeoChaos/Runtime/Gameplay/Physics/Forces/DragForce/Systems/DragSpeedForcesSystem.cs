@@ -39,7 +39,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           for (int i = 0; i < 2; i++)
           {
             vector.Speed[i] =
-              MathUtils.DecreaseToZeroValue(vector.Speed[i], impact.Vector[i] * force[i] * Time.fixedDeltaTime);
+              MathUtils.DecreaseToZero(vector.Speed[i], impact.Vector[i] * force[i] * Time.fixedDeltaTime);
           }
         }
       }

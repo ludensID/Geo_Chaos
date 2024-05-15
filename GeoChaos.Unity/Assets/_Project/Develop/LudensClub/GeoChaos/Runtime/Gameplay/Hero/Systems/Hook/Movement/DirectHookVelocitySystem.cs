@@ -37,7 +37,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           float magnitude = forceVector.Speed.magnitude;
           Vector2 targetVector = hookPulling.Target - pulling.Get<ViewRef>().View.transform.position;
           Vector2 velocity = targetVector.normalized * magnitude;
-          (Vector3 length, Vector3 direction) = MiscUtils.DecomposeVector(velocity);
+          (Vector3 length, Vector3 direction) = MathUtils.DecomposeVector(velocity);
           forceVector.Speed = length;
           forceVector.Direction = direction;
           hookPulling.Velocity = velocity;

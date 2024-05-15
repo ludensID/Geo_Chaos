@@ -33,9 +33,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           Vector2 force = drag.Get<DragForce>().Force;
           draggable.Replace((ref MovementVector vector) =>
           {
-            vector.Speed.x = MathUtils.DecreaseToZeroValue(vector.Speed.x, force.x * Time.fixedDeltaTime);
+            vector.Speed.x = MathUtils.DecreaseToZero(vector.Speed.x, force.x * Time.fixedDeltaTime);
             if (vector.Direction.y > 0)
-              vector.Speed.y = MathUtils.DecreaseToZeroValue(vector.Speed.y, force.y * Time.fixedDeltaTime);
+              vector.Speed.y = MathUtils.DecreaseToZero(vector.Speed.y, force.y * Time.fixedDeltaTime);
           });
         }
       }

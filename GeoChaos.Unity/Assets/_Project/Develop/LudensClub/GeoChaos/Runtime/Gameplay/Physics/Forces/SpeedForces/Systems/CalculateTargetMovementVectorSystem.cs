@@ -78,7 +78,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           movementVector.Immutable = force.Has<Immutable>();
         }
 
-        (Vector3 length, Vector3 direction) = MiscUtils.DecomposeVector(velocity);
+        (Vector3 length, Vector3 direction) = MathUtils.DecomposeVector(velocity);
         movementVector.Speed = length;
         if (movementVector.Speed.x != 0)
           movementVector.Direction.x = direction.x; 

@@ -29,7 +29,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         .Has<Unique>(data.Unique)
         .Has<Immutable>(data.Immutable)
         .Has<Draggable>(data.Draggable)
-        .Has<Valuable>(data.Valuable);
+        .Has<Valuable>(data.Valuable)
+        .Has<Residual>(data.Residual);
 
       if (data.Accelerated)
       {

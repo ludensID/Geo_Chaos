@@ -16,4 +16,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   AcceptableGroundDistance: 0.02
-  GroundCheckTime: 0.04
+  GroundCheckTime: 0.06

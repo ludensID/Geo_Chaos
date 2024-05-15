@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     private readonly EcsWorld _game;
     private readonly HeroConfig _config;
     private readonly EcsEntities _onGrounds;
-    private readonly EcsEntities _onNotGrounds;
+    private readonly EcsEntities _onLeftGrounds;
 
     public SetJumpHorizontalSpeedSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Inc<OnLanded>()
         .Collect();
 
-      _onNotGrounds = _game
+      _onLeftGrounds = _game
         .Filter<HorizontalSpeed>()
         .Inc<OnLeftGround>()
         .Collect();
@@ -35,7 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         SetHorizontalSpeed(onGround, _config.MovementSpeed);
       }
 
-      foreach (EcsEntity onNotGround in _onNotGrounds)
+      foreach (EcsEntity onNotGround in _onLeftGrounds)
       {
         SetHorizontalSpeed(onNotGround, _config.JumpHorizontalSpeed);
       }
