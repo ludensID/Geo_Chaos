@@ -13,9 +13,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       Add(systems.Create<CreateDragForceSystem>());
       Add(systems.Create<DeleteDragForceSystem>());
       
+      Add(systems.Create<CreateADControlSystem>());
+      Add(systems.Create<DeleteADControlSystem>());
+      
       Add(systems.Create<ReadViewVelocitySystem>());
       
-      Add(systems.Create<CheckForDragForceDelayExpiredSystem>());
+      Add(systems.Create<SubtractControlSpeedSystem>());
+      Add(systems.Create<CheckForDelayExpiredSystem>());
+      
+      Add(systems.Create<IncreaseGradientSystem>());
+      
       Add(systems.Create<IncreaseDragForceGradientSystem>());
       
       Add(systems.Create<ConvertToSpeedForceSystem>());
@@ -26,12 +33,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       Add(systems.Create<AccelerateSpeedsSystem>());
       Add(systems.Create<SetInstantZeroForcesSystem>());
       
+      Add(systems.Create<CalculateControlSpeedSystem>());
+      
       Add(systems.Create<CalculateTargetMovementVectorSystem>());
       Add(systems.Create<DragTargetMovementVectorSystem>());
+      Add(systems.Create<AssignLastMovementVectorSystem>());
+      
+      Add(systems.Create<AddControlSpeedSystem>());
       
       Add(systems.Create<DragSpeedForcesSystem>());
-
-      Add(systems.Create<AssignLastMovementVectorSystem>());
       
       Add(systems.Create<CalculateVelocitySystem>());
       

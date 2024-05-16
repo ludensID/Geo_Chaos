@@ -12,23 +12,26 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
   public class CheckForHeroReachRingSystem : IEcsRunSystem
   {
-    private readonly ISpeedForceFactory _forceFactory;
     private readonly IDragForceService _dragForceSvc;
+    private readonly IADControlService _controlSvc;
     private readonly EcsWorld _game;
     private readonly EcsEntities _pullings;
     private readonly HeroConfig _config;
+    private readonly SpeedForceLoop _forces;
 
     public CheckForHeroReachRingSystem(GameWorldWrapper gameWorldWrapper,
-      ISpeedForceFactory forceFactory,
+      ISpeedForceLoopService forceLoopSvc,
       IConfigProvider configProvider,
-      IDragForceService dragForceSvc)
+      IDragForceService dragForceSvc,
+      IADControlService controlSvc)
     {
-      _forceFactory = forceFactory;
       _dragForceSvc = dragForceSvc;
+      _controlSvc = controlSvc;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
-
+      _forces = forceLoopSvc.CreateLoop();
+      
       _pullings = _game
         .Filter<HookPulling>()
         .Inc<ViewRef>()
@@ -45,10 +48,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         ref HookPulling hookPulling = ref pulling.Get<HookPulling>();
         if (IsHeroReachedRing(hookPulling.Target, heroTransform.position, hookPulling.Velocity))
         {
-          _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, pulling.Pack()));
-          if (pulling.Has<DragForceAvailable>() && !_config.UseGradient)
+          _forces.GetForce(SpeedForceType.Hook, pulling.Pack())
+            .Replace((ref Impact impact) => impact.Vector.y = 0)
+            .Add<Valuable>();
+          if (pulling.Has<DragForceAvailable>() && !_config.UseDragForceGradient)
           {
             _dragForceSvc.GetDragForce(pulling.Pack())
+              .Add<Enabled>();
+          }
+          
+          if(pulling.Has<ADControllable>() && !_config.UseADControlGradient)
+          {
+            _controlSvc.GetADControl(pulling.Pack())
+              .Del<Prepared>()
               .Add<Enabled>();
           }
 

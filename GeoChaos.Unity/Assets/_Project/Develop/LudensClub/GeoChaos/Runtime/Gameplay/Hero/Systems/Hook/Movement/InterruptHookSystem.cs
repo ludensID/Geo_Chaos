@@ -12,6 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
   {
     private readonly ISpeedForceFactory _forceFactory;
     private readonly IDragForceService _dragForceSvc;
+    private readonly IADControlService _controlSvc;
     private readonly EcsWorld _game;
     private readonly EcsEntities _precastCommands;
     private readonly EcsEntities _pullCommands;
@@ -21,10 +22,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     public InterruptHookSystem(GameWorldWrapper gameWorldWrapper,
       MessageWorldWrapper messageWorldWrapper,
       ISpeedForceFactory forceFactory,
-      IDragForceService dragForceSvc)
+      IDragForceService dragForceSvc,
+      IADControlService controlSvc)
     {
       _forceFactory = forceFactory;
       _dragForceSvc = dragForceSvc;
+      _controlSvc = controlSvc;
       _game = gameWorldWrapper.World;
       _message = messageWorldWrapper.World;
 
@@ -67,7 +70,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Del<HookTimer>()
           .Has<OnHookPullingStarted>(false)
           .Has<OnHookPullingFinished>(false)
-          .Has<Controlling>(false)
           .Replace((ref GravityScale gravity) => gravity.Enabled = true);
 
         _message.CreateEntity()
@@ -77,7 +79,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         {
           drag
             .Has<Enabled>(false)
-            .Has<DragForceDelay>(false);
+            .Has<Delay>(false);
+        }
+
+        foreach (EcsEntity control in _controlSvc.GetLoop(pull.Pack()))
+        {
+          control
+            .Has<Enabled>(false)
+            .Has<Prepared>(false)
+            .Has<Delay>(false);
         }
       }
 
@@ -88,14 +98,21 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         land
           .Del<InterruptHookCommand>()
           .Add<OnHookInterrupted>()
-          .Del<HookFalling>()
-          .Has<Controlling>(false);
+          .Del<HookFalling>();
 
         foreach (EcsEntity drag in _dragForceSvc.GetLoop(land.Pack()))
         {
           drag
             .Has<Enabled>(false)
-            .Has<DragForceDelay>(false);
+            .Has<Delay>(false);
+        }
+        
+        foreach (EcsEntity control in _controlSvc.GetLoop(land.Pack()))
+        {
+          control
+            .Has<Enabled>(false)
+            .Has<Prepared>(false)
+            .Has<Delay>(false);
         }
       }
     }

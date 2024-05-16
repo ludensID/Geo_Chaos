@@ -97,25 +97,32 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Min(0.01f)]
     public float HookPrecastTime;
-
+    
+    [PropertySpace(SpaceAfter = 20)]
     public float HookVelocity;
 
-    [GroupNext(TriConstants.Names.DRAG_FORCE)]
-    public bool UseGradient;
-
-    public float StartDragForceCoefficient => 1f / (UseGradient ? 3f : 2f);
-    public bool EnableDragForce;
-
-    public bool IsRelativeHookSpeed;
+    [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("Drag Force")]
+    [LabelText("Enabled")]
+    public bool EnableDragForce; 
+    
+    [LabelText("UseGradient")]
+    public bool UseDragForceGradient;
+    public float StartDragForceCoefficient => 1f / (UseDragForceGradient ? 3f : 2f);
+    
+    public bool IsRelativeSpeed;
+    
+    [LabelText("Multiplier")]
     public Vector2 DragForceMultiplier;
 
-    // [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("AD Control")]
-    [ShowIf(nameof(EnableADControl))]
+    [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("AD Control")]
+    [LabelText("Enabled")]
     public bool EnableADControl;
 
-    [ShowIf(nameof(EnableADControl))]
-    [Range(0, 1)]
-    public float SpeedRatio = 1;
+    [LabelText("UseGradient")]
+    public bool UseADControlGradient;
+    
+    [LabelText("Speed")]
+    public float ADControlSpeed;
 
     [GroupNext(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
     public float PullTimeOffset;

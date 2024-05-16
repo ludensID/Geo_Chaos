@@ -31,18 +31,21 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         .Inc<Owner>()
         .Exc<Added>()
         .Exc<Unique>()
+        .Exc<Ignored>()
         .Collect();
 
       _addedForces = _physics
         .Filter<MovementVector>()
         .Inc<Owner>()
         .Inc<Added>()
+        .Exc<Ignored>()
         .Collect();
 
       _uniqueForces = _physics
         .Filter<MovementVector>()
         .Inc<Owner>()
         .Inc<Unique>()
+        .Exc<Ignored>()
         .Collect();
     }
 
@@ -78,11 +81,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           movementVector.Immutable = force.Has<Immutable>();
         }
 
-        (Vector3 length, Vector3 direction) = MathUtils.DecomposeVector(velocity);
-        movementVector.Speed = length;
-        if (movementVector.Speed.x != 0)
-          movementVector.Direction.x = direction.x; 
-        movementVector.Direction.y = direction.y;
+        movementVector.AssignVector(velocity, true);
       }
     }
 

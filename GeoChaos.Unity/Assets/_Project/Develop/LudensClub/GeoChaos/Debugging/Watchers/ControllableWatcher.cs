@@ -40,7 +40,10 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
     {
       foreach (EcsEntity hero in _heroes)
       {
-        hero.Has<Controllable>(_controllable);
+        hero.Has<ADControllable>(_controllable);
+        
+        if (hero.Has<Hooking>())
+          hero.Add<InterruptHookCommand>();
       }
     }
   }

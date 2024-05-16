@@ -74,8 +74,8 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     [HideInCallstack]
     public EcsEntity Replace<TComponent>(TComponent component) where TComponent : struct, IEcsComponent
     {
-      ref TComponent replacedComponent = ref World.Get<TComponent>(Entity);
-      replacedComponent = component;
+      ref TComponent refComponent = ref World.Get<TComponent>(Entity);
+      refComponent = component;
       return this;
     }
 

@@ -10,60 +10,40 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
   public class DisableHeroDragForceSystem : IEcsRunSystem
   {
     private readonly IDragForceService _dragForceSvc;
-    private readonly ISpeedForceFactory _forceFactory;
+    private readonly IADControlService _controlSvc;
     private readonly EcsWorld _game;
-    private readonly SpeedForceLoop _forceLoop;
-    private readonly EcsEntities _draggables;
-    private readonly EcsWorld _physics;
+    private readonly EcsEntities _onGrounds;
 
-    public DisableHeroDragForceSystem(GameWorldWrapper gameWorldWrapper, PhysicsWorldWrapper physicsWorldWrapper,
-      ISpeedForceLoopService forceLoopSvc, IDragForceService dragForceSvc, ISpeedForceFactory forceFactory)
+    public DisableHeroDragForceSystem(GameWorldWrapper gameWorldWrapper,
+      IDragForceService dragForceSvc,
+      IADControlService controlSvc)
     {
       _dragForceSvc = dragForceSvc;
-      _forceFactory = forceFactory;
+      _controlSvc = controlSvc;
       _game = gameWorldWrapper.World;
-      _physics = physicsWorldWrapper.World;
 
-      _forceLoop = forceLoopSvc.CreateLoop();
-
-      _draggables = _game
-        .Filter<DragForceAvailable>()
-        .Inc<HookFalling>()
+      _onGrounds = _game
+        .Filter<HookFalling>()
+        .Inc<OnGround>()
         .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity draggable in _draggables)
+      foreach (EcsEntity ground in _onGrounds)
       {
-        bool fullControl = draggable.Has<OnGround>();
-
-        if (fullControl)
+        // _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, draggable.Pack(), Vector2.right));
+        if (ground.Has<DragForceAvailable>())
         {
-          // _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, draggable.Pack(), Vector2.right));
-          _dragForceSvc.GetDragForce(draggable.Pack())
+          _dragForceSvc.GetDragForce(ground.Pack())
             .Has<Enabled>(false);
         }
 
-        // if (draggable.Is<Controlling>())
-        // {
-        //   bool fullControl = draggable.Is<OnGround>();
-        //   foreach (EcsEntity force in _forceLoop
-        //     .GetLoop(SpeedForceType.Move, draggable.Pack()))
-        //   {
-        //     ref MovementVector forceVector = ref force.Get<MovementVector>();
-        //     if (((draggable.Is<DragForceAvailable>() ||
-        //         draggable.Get<ControlFactor>().Factor >= 1) && !draggable.Is<DragForcing>()) ||
-        //       fullControl)
-        //     {
-        //       fullControl = true;
-        //       force.Del<Added>();
-        //     }
-        //   }
-        //
-        //   if (fullControl)
-        //     draggable.Del<Controlling>();
-        // }
+        if (ground.Has<ADControllable>())
+        {
+          _controlSvc.GetADControl(ground.Pack())
+            .Has<Enabled>(false);
+        }
       }
     }
   }

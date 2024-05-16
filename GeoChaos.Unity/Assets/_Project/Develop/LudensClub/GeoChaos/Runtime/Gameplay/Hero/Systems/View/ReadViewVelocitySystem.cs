@@ -28,14 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View
         .Where<MovementVector>(x => !x.Immutable))
       {
         Vector2 velocity = vector.Get<RigidbodyRef>().Rigidbody.velocity;
-        (Vector3 length, Vector3 direction) = MathUtils.DecomposeVector(velocity);
-        vector.Replace((ref MovementVector movementVector) =>
-        {
-          movementVector.Speed = length;
-          if (length.x != 0)
-            movementVector.Direction.x = direction.x;
-          movementVector.Direction.y = direction.y;
-        });
+        vector.Replace((ref MovementVector movementVector) => movementVector.AssignVector(velocity, true));
       }
     }
   }

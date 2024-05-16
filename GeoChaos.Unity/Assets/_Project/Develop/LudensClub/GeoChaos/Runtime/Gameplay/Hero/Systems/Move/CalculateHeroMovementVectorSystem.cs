@@ -31,22 +31,22 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
       _startCommands = _game
         .Filter<Movable>()
-        .Inc<MoveCommand>()
         .Inc<MovementVector>()
+        .Inc<MoveCommand>()
         .Exc<Moving>()
         .Collect();
         
       _commands = _game
         .Filter<Movable>()
-        .Inc<MoveCommand>()
         .Inc<MovementVector>()
+        .Inc<MoveCommand>()
         .Inc<Moving>()
         .Collect();
 
       _movings = _game
         .Filter<Movable>()
-        .Inc<Moving>()
         .Inc<MovementVector>()
+        .Inc<Moving>()
         .Exc<MoveCommand>()
         .Collect();
     }

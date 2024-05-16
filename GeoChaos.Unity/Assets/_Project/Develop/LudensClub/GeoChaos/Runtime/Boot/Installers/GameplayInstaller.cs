@@ -31,6 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindPhysicsWorldWrapper();
 
       BindDragForceService();
+      BindADControlService();
       BindSpeedForceLoopService();
       BindSpeedForceFactory();
       BindEcsSystemsFactory();
@@ -48,6 +49,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindDashCooldownPresenter();
       BindEnemyHealthView();
+    }
+
+    private void BindADControlService()
+    {
+      Container
+        .Bind<IADControlService>()
+        .To<ADControlService>()
+        .AsSingle();
     }
 
     private void BindDragForceService()

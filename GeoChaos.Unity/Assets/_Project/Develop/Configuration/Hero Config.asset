@@ -39,12 +39,13 @@ MonoBehaviour:
   RingHorizontalDistance: 1
   HookPrecastTime: 0.2
   HookVelocity: 30
-  UseGradient: 1
   EnableDragForce: 1
-  IsRelativeHookSpeed: 1
+  UseDragForceGradient: 1
+  IsRelativeSpeed: 1
   DragForceMultiplier: {x: 1.5, y: 0.75}
-  EnableADControl: 0
-  SpeedRatio: 1
+  EnableADControl: 1
+  UseADControlGradient: 1
+  ADControlSpeed: 4
   PullTimeOffset: 1
   HookInputCooldown: 0.1
   RingReleasingTime: 0.1
