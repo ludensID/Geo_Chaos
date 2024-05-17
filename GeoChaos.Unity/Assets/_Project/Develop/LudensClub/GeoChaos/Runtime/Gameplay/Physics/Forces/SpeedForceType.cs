@@ -6,6 +6,6 @@
     Jump = 2,
     Dash = 3,
     Hook = 4,
-    Control = 6
+    Attack = 6
   }
 }

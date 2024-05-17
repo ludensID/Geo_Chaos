@@ -8,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
 {
   public class CollisionFiller : ICollisionFiller
   {
-    private readonly List<OneSideCollision> _list = new();
+    private readonly List<OneSideCollision> _list = new List<OneSideCollision>();
 
     public void Fill(Collider2D sender, ColliderType senderType, EcsPackedEntity entity, Collider2D other)
     {
@@ -19,9 +19,9 @@ namespace LudensClub.GeoChaos.Runtime.Props
     {
       var selection = new List<OneSideCollision>(_list);
       var collisions = new List<TwoSideCollision>();
-      foreach (var collision in _list)
+      foreach (OneSideCollision collision in _list)
       {
-        var other = selection.Find(x => x.Sender.Collider == collision.Other);
+        OneSideCollision other = selection.Find(x => x.Sender.Collider == collision.Other);
         if (other.Other == null)
         {
           selection.Remove(collision);

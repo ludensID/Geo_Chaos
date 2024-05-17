@@ -8,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
   public class ResetComboCounterSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _timers;
+    private readonly EcsEntities _timers;
 
     public ResetComboCounterSystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -17,18 +17,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
       _timers = _game
         .Filter<ComboAttackTimer>()
         .Inc<ComboAttackCounter>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (int timer in _timers
+      foreach (EcsEntity timer in _timers
         .Where<ComboAttackTimer>(x => x.TimeLeft <= 0))
       {
-        ref ComboAttackCounter counter = ref _game.Get<ComboAttackCounter>(timer);
-        counter.Count = 0;
-        
-        _game.Del<ComboAttackTimer>(timer);
+        timer
+          .Replace((ref ComboAttackCounter counter) => counter.Count = 0)
+          .Del<ComboAttackTimer>();
       }
     }
   }

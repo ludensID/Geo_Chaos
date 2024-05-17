@@ -13,8 +13,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
   {
     private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
-    private readonly EcsFilter _heroes;
     private readonly HeroConfig _config;
+    private readonly EcsEntities _heroes;
 
     public StopHeroAttackSystem(GameWorldWrapper gameWorldWrapper, ITimerFactory timers, IConfigProvider configProvider)
     {
@@ -26,27 +26,29 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
         .Filter<HeroTag>()
         .Inc<HitTimer>()
         .Inc<Attacking>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes
+      foreach (EcsEntity hero in _heroes
         .Where<HitTimer>(x => x.TimeLeft <= 0))
       {
-        _game.Del<HitTimer>(hero);
-        _game.Del<Attacking>(hero);
-        _game.Add<OnAttackFinished>(hero);
-        _game.Add<UnlockMovementCommand>(hero);
+        hero
+          .Del<HitTimer>()
+          .Del<Attacking>()
+          .Add<OnAttackFinished>()
+          .Add<UnlockMovementCommand>();
 
-        ref ComboAttackCounter counter = ref _game.Get<ComboAttackCounter>(hero);
+        ref ComboAttackCounter counter = ref hero.Get<ComboAttackCounter>();
         counter.Count++;
         counter.Count %= 3;
 
         if (counter.Count != 0)
         {
-          ref ComboAttackTimer comboAttack = ref _game.Add<ComboAttackTimer>(hero);
-          comboAttack.TimeLeft = _timers.Create(_config.ComboAttackPeriods[counter.Count - 1]);
+          int count = counter.Count;
+          hero.Add((ref ComboAttackTimer timer) =>
+            timer.TimeLeft = _timers.Create(_config.ComboAttackPeriods[count - 1]));
         }
       }
     }

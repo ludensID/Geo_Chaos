@@ -7,19 +7,25 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
 {
   public class HeroAttackSystem : IEcsRunSystem
   {
     private readonly ITimerFactory _timers;
+    private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
-    private readonly EcsFilter _heroes;
     private readonly HeroConfig _config;
+    private readonly EcsEntities _heroes;
 
-    public HeroAttackSystem(GameWorldWrapper gameWorldWrapper, ITimerFactory timers, IConfigProvider configProvider)
+    public HeroAttackSystem(GameWorldWrapper gameWorldWrapper,
+      ITimerFactory timers,
+      IConfigProvider configProvider,
+      ISpeedForceFactory forceFactory)
     {
       _timers = timers;
+      _forceFactory = forceFactory;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
@@ -28,30 +34,25 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
         .Inc<AttackCommand>()
         .Inc<ComboAttackCounter>()
         .Inc<MovementVector>()
-        .End();
+        .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
+      foreach (EcsEntity hero in _heroes)
       {
-        if(_game.Has<ComboAttackTimer>(hero))
-          _game.Del<ComboAttackTimer>(hero);
+        int count = hero.Get<ComboAttackCounter>().Count;
+        hero.Has<ComboAttackTimer>(false)
+          .Add((ref HitTimer hitTimer) => hitTimer.TimeLeft = _timers.Create(_config.HitDurations[count]))
+          .Add<LockMovementCommand>()
+          .Add<OnAttackStarted>()
+          .Add<Attacking>()
+          .Del<AttackCommand>();
         
-        ref ComboAttackCounter counter = ref _game.Get<ComboAttackCounter>(hero);
-
-        ref HitTimer hitTimer = ref _game.Add<HitTimer>(hero);
-        hitTimer.TimeLeft = _timers.Create(_config.HitDurations[counter.Count]);
-
-        _game.Add<LockMovementCommand>(hero);
-
-        ref MovementVector vector = ref _game.Get<MovementVector>(hero);
-        vector.Speed.x = 0;
-        
-        _game.Add<OnAttackStarted>(hero);
-        _game.Add<Attacking>(hero);
-        
-        _game.Del<AttackCommand>(hero);
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Attack, hero.Pack(), Vector2.right)
+        {
+          Instant = true
+        });
       }
     }
   }

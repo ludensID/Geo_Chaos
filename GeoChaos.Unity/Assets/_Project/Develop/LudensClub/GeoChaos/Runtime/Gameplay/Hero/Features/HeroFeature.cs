@@ -60,7 +60,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<Delete<OnAttackStarted, GameWorldWrapper>>());
       Add(systems.Create<Delete<OnAttackFinished, GameWorldWrapper>>());
       Add(systems.Create<ReadAttackInputSystem>());
-      Add(systems.Create<CheckAttackSystem>());
       Add(systems.Create<ResetComboCounterSystem>());
       Add(systems.Create<HeroAttackSystem>());
       Add(systems.Create<StopHeroAttackSystem>());
