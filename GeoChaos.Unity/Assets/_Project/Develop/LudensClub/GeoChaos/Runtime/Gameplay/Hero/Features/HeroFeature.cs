@@ -43,7 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<ReadInputForHeroJumpSystem>());
       Add(systems.Create<InterruptHeroJumpSystem>());
       Add(systems.Create<JumpHeroSystem>());
-      Add(systems.Create<CheckForHeroJumpStopSystem>());
+      Add(systems.Create<SowJumpStopCommandSystem>());
       Add(systems.Create<StopHeroJumpSystem>());
 
       Add(systems.Create<Delete<DashCommand, GameWorldWrapper>>());

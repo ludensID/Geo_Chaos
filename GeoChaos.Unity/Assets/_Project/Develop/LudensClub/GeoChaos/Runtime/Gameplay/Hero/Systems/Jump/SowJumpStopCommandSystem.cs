@@ -1,33 +1,32 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
-  public class CheckForHeroJumpStopSystem : IEcsRunSystem
+  public class SowJumpStopCommandSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _heroes;
+    private readonly EcsEntities _heroes;
 
-    public CheckForHeroJumpStopSystem(GameWorldWrapper gameWorldWrapper)
+    public SowJumpStopCommandSystem(GameWorldWrapper gameWorldWrapper)
     {
       _world = gameWorldWrapper.World;
 
       _heroes = _world.Filter<HeroTag>()
         .Inc<JumpAvailable>()
         .Inc<StopJumpCommand>()
-        .Inc<Velocity>()
-        .End();
+        .Inc<MovementVector>()
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var hero in _heroes)
+      foreach (EcsEntity hero in _heroes
+        .Where<MovementVector>(x => x.Direction.y <= 0))
       {
-        ref var velocity = ref _world.Get<Velocity>(hero);
-
-        if (velocity.Value.y <= 0)
-          _world.Del<StopJumpCommand>(hero);
+        hero.Del<StopJumpCommand>();
       }
     }
   }
