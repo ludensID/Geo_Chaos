@@ -57,6 +57,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Has<OnHookPrecastStarted>(false)
           .Has<OnHookPrecastFinished>(false)
           .Add<OnHookInterrupted>();
+        
+        _message.CreateEntity()
+          .Add<ReleaseRingMessage>();
       }
 
       foreach (EcsEntity pull in _pullCommands)

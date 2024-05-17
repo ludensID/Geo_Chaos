@@ -1,4 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
@@ -7,6 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
   {
     public HeroLateFeature(IEcsSystemFactory systems) 
     {
+      Add(systems.Create<PrecastHookViewSystem>());
       Add(systems.Create<DrawHookViewSystem>());
     }
   }

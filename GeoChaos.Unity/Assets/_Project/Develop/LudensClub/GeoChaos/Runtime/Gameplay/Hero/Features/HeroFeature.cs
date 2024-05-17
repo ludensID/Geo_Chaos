@@ -108,7 +108,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<StopDashHeroViewSystem>());
 
       Add(systems.Create<SetHeroViewRotationSystem>());
-      Add(systems.Create<PrecastHookViewSystem>());
       
       Add(systems.Create<SetHeroSwordViewColorSystem>());
     }
