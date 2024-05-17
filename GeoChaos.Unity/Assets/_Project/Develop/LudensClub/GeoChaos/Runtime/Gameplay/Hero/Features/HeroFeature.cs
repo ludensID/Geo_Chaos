@@ -50,11 +50,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<Delete<StopDashCommand, GameWorldWrapper>>());
       Add(systems.Create<RemoveDashCooldownSystem>());
       Add(systems.Create<ReadDashInputSystem>());
-      Add(systems.Create<ConvertDelayedToCurrentDashInputSystem>());
+      Add(systems.Create<ConvertDelayedToDashCommandSystem>());
       Add(systems.Create<ReadDashDelayedInputSystem>());
-      Add(systems.Create<CheckForHeroDashSystem>());
+      Add(systems.Create<SowDashCommandSystem>());
       Add(systems.Create<DashHeroSystem>());
-      Add(systems.Create<CheckStopHeroDashSystem>());
+      Add(systems.Create<CheckForDashTimeExpiredSystem>());
       Add(systems.Create<StopHeroDashSystem>());
       
       Add(systems.Create<Delete<OnAttackStarted, GameWorldWrapper>>());

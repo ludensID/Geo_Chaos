@@ -4,28 +4,27 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 {
-  public class CheckStopHeroDashSystem : IEcsRunSystem
+  public class CheckForDashTimeExpiredSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _heroes;
+    private readonly EcsEntities _dashes;
 
-    public CheckStopHeroDashSystem(GameWorldWrapper gameWorldWrapper)
+    public CheckForDashTimeExpiredSystem(GameWorldWrapper gameWorldWrapper)
     {
       _world = gameWorldWrapper.World;
 
-      _heroes = _world
+      _dashes = _world
         .Filter<DashAvailable>()
         .Inc<Dashing>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var hero in _heroes)
+      foreach (EcsEntity dash in _dashes
+        .Where<Dashing>(x => x.TimeLeft <= 0))
       {
-        ref var isDashing = ref _world.Get<Dashing>(hero);
-        if (isDashing.TimeLeft <= 0)
-          _world.Add<StopDashCommand>(hero);
+        dash.Add<StopDashCommand>();
       }
     }
   }

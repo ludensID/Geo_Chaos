@@ -6,12 +6,12 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Dash
 {
-  public class ConvertDelayedToCurrentDashInputSystem : IEcsRunSystem
+  public class ConvertDelayedToDashCommandSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _delayedCommands;
 
-    public ConvertDelayedToCurrentDashInputSystem(GameWorldWrapper gameWorldWrapper)
+    public ConvertDelayedToDashCommandSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 

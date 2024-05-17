@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
   public class RemoveDashCooldownSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _cooldowns;
+    private readonly EcsEntities _cooldowns;
 
     public RemoveDashCooldownSystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -15,16 +15,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 
       _cooldowns = _game
         .Filter<DashCooldown>()
-        .End();
+        .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
-      foreach (int cooldown in _cooldowns)
+      foreach (EcsEntity cooldown in _cooldowns
+        .Where<DashCooldown>(x => x.TimeLeft <= 0))
       {
-        ref DashCooldown dashCooldown = ref _game.Get<DashCooldown>(cooldown);
-        if (dashCooldown.TimeLeft <= 0)
-          _game.Del<DashCooldown>(cooldown);
+        cooldown.Del<DashCooldown>();
       }
     }
   }

@@ -7,32 +7,26 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
   public class DashHeroViewSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _heroes;
+    private readonly EcsEntities _dashViews;
 
     public DashHeroViewSystem(GameWorldWrapper gameWorldWrapper)
     {
       _world = gameWorldWrapper.World;
 
-      _heroes = _world
+      _dashViews = _world
         .Filter<DashCommand>()
-        .Inc<RigidbodyRef>()
         .Inc<DashColliderRef>()
         .Inc<ColliderRef>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var hero in _heroes)
+      foreach (var view in _dashViews)
       {
-        ref var dashColliderRef = ref _world.Get<DashColliderRef>(hero);
-        dashColliderRef.Collider.enabled = true;
-
-        ref var colliderRef = ref _world.Get<ColliderRef>(hero);
-        colliderRef.Collider.enabled = false;
-
-        ref var rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
-        rigidbodyRef.Rigidbody.gravityScale = 0;
+        view
+          .Replace((ref DashColliderRef collider) => collider.Collider.enabled = true)
+          .Replace((ref ColliderRef collider) => collider.Collider.enabled = false);
       }
     }
   }

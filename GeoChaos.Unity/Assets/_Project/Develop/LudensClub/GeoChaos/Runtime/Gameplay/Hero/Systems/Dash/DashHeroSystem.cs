@@ -47,7 +47,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 
         hero
           .Add((ref Dashing dashing) => dashing.TimeLeft = _timers.Create(_config.DashTime))
-          .Add<LockMovementCommand>();
+          .Add<LockMovementCommand>()
+          .Replace((ref GravityScale gravity) => gravity.Enabled = false);
       }
     }
   }

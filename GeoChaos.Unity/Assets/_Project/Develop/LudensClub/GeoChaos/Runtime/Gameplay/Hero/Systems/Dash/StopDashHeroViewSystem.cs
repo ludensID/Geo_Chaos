@@ -1,5 +1,4 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
@@ -8,34 +7,26 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
   public class StopDashHeroViewSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _heroes;
-    private readonly HeroConfig _config;
+    private readonly EcsEntities _dashViews;
 
-    public StopDashHeroViewSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
+    public StopDashHeroViewSystem(GameWorldWrapper gameWorldWrapper)
     {
       _world = gameWorldWrapper.World;
-      _config = configProvider.Get<HeroConfig>();
 
-      _heroes = _world
+      _dashViews = _world
         .Filter<StopDashCommand>()
-        .Inc<RigidbodyRef>()
         .Inc<DashColliderRef>()
         .Inc<ColliderRef>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var hero in _heroes)
+      foreach (EcsEntity view in _dashViews)
       {
-        ref var dashColliderRef = ref _world.Get<DashColliderRef>(hero);
-        dashColliderRef.Collider.enabled = false;
-
-        ref var colliderRef = ref _world.Get<ColliderRef>(hero);
-        colliderRef.Collider.enabled = true;
-
-        ref var rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
-        rigidbodyRef.Rigidbody.gravityScale = _config.GravityScale;
+        view
+          .Replace((ref DashColliderRef collider) => collider.Collider.enabled = true)
+          .Replace((ref ColliderRef collider) => collider.Collider.enabled = false);
       }
     }
   }

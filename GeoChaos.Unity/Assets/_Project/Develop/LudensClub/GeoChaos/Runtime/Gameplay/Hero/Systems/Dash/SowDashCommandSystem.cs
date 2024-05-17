@@ -4,21 +4,15 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 {
-  public class CheckForHeroDashSystem : IEcsRunSystem
+  public class SowDashCommandSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _dashes;
     private readonly EcsFilter _cooldowns;
+    private readonly EcsEntities _dashes;
 
-    public CheckForHeroDashSystem(GameWorldWrapper gameWorldWrapper)
+    public SowDashCommandSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
-
-      _dashes = _game
-        .Filter<DashAvailable>()
-        .Inc<DashCommand>()
-        .Inc<Dashing>()
-        .End();
 
       _cooldowns = _game
         .Filter<DashAvailable>()
@@ -29,9 +23,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
     
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _dashes)
-        _game.Del<DashCommand>(hero);
-
       foreach (int cooldown in _cooldowns)
         _game.Del<DashCommand>(cooldown);
     }
