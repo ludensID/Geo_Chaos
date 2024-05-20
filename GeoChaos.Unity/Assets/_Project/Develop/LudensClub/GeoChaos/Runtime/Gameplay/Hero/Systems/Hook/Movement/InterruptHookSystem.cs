@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
@@ -53,18 +54,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       {
         precast
           .Del<InterruptHookCommand>()
+          .Add<OnHookInterrupted>()
           .Del<HookPrecast>()
           .Has<OnHookPrecastStarted>(false)
-          .Has<OnHookPrecastFinished>(false)
-          .Add<OnHookInterrupted>();
+          .Has<OnHookPrecastFinished>(false);
         
-        _message.CreateEntity()
-          .Add<ReleaseRingMessage>();
+        ReleaseRing();
       }
 
       foreach (EcsEntity pull in _pullCommands)
       {
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, pull.Pack()));
+        InterruptHookSpeed(pull);
 
         pull
           .Del<InterruptHookCommand>()
@@ -75,48 +75,52 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Has<OnHookPullingFinished>(false)
           .Replace((ref GravityScale gravity) => gravity.Enabled = true);
 
-        _message.CreateEntity()
-          .Add<ReleaseRingMessage>();
+        ReleaseRing();
 
-        foreach (EcsEntity drag in _dragForceSvc.GetLoop(pull.Pack()))
-        {
-          drag
-            .Has<Enabled>(false)
-            .Has<Delay>(false);
-        }
-
-        foreach (EcsEntity control in _controlSvc.GetLoop(pull.Pack()))
-        {
-          control
-            .Has<Enabled>(false)
-            .Has<Prepared>(false)
-            .Has<Delay>(false);
-        }
+        InterruptFallUpgrades(pull);
       }
 
       foreach (EcsEntity land in _landCommands)
       {
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, land.Pack()));
+        InterruptHookSpeed(land);
 
         land
           .Del<InterruptHookCommand>()
           .Add<OnHookInterrupted>()
           .Del<HookFalling>();
 
-        foreach (EcsEntity drag in _dragForceSvc.GetLoop(land.Pack()))
-        {
-          drag
-            .Has<Enabled>(false)
-            .Has<Delay>(false);
-        }
+        InterruptFallUpgrades(land);
+      }
+    }
+
+    private void InterruptHookSpeed(EcsEntity entity)
+    {
+      _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, entity.Pack()));
+    }
+
+    private void ReleaseRing()
+    {
+      _message.CreateEntity()
+        .Add<ReleaseRingMessage>();
+    }
+
+    private void InterruptFallUpgrades(EcsEntity owner)
+    {
+      foreach (EcsEntity drag in _dragForceSvc.GetLoop(owner.Pack()))
+      {
+        drag
+          .Has<Enabled>(false)
+          .Has<Delay>(false);
+      }
+
+      foreach (EcsEntity control in _controlSvc.GetLoop(owner.Pack()))
+      {
+        owner.Has<FreeRotating>(false);
         
-        foreach (EcsEntity control in _controlSvc.GetLoop(land.Pack()))
-        {
-          control
-            .Has<Enabled>(false)
-            .Has<Prepared>(false)
-            .Has<Delay>(false);
-        }
+        control
+          .Has<Enabled>(false)
+          .Has<Prepared>(false)
+          .Has<Delay>(false);
       }
     }
   }

@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
 
       _fixedUpdateSystems
         .Add(factory.Create<ForceFeature>())
-        .Add(factory.Create<HeroPhysicsFeature>());
+        .Add(factory.Create<HeroFixedFeature>());
 
       _updateSystems
         .Add(factory.Create<CreationFeature>())

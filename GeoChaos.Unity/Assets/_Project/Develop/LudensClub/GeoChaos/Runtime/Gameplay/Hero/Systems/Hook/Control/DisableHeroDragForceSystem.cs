@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
@@ -45,6 +46,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
         if (ground.Has<ADControllable>())
         {
+          ground.Del<FreeRotating>();
           _controlSvc.GetADControl(ground.Pack())
             .Has<Enabled>(false);
         }

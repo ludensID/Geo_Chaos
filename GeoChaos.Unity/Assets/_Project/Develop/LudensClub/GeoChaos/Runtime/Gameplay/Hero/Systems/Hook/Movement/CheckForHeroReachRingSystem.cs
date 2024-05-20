@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -57,11 +58,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
               .Add<Enabled>();
           }
           
-          if(pulling.Has<ADControllable>() && !_config.UseADControlGradient)
+          if(pulling.Has<ADControllable>())
           {
-            _controlSvc.GetADControl(pulling.Pack())
-              .Del<Prepared>()
-              .Add<Enabled>();
+            pulling.Add<FreeRotating>();
+            
+            if (!_config.UseADControlGradient)
+            {
+              _controlSvc.GetADControl(pulling.Pack())
+                .Del<Prepared>()
+                .Add<Enabled>();
+            }
           }
 
           pulling

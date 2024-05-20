@@ -30,10 +30,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<Delete<OnMovementUnlocked, GameWorldWrapper>>());
       Add(systems.Create<LockMovementSystem>());
 
+      Add(systems.Create<Delete<MoveCommand, GameWorldWrapper>>());
       Add(systems.Create<ReadMovementSystem>());
       Add(systems.Create<SowMoveCommandSystem>());
       Add(systems.Create<CalculateHeroMovementVectorSystem>());
-      Add(systems.Create<Delete<MoveCommand, GameWorldWrapper>>());
       
       Add(systems.Create<FallHeroSystem>());
       Add(systems.Create<LandHeroSystem>());
@@ -101,6 +101,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<FinishHookInterruptionSystem>());
       
       Add(systems.Create<Delete<HookCommand, GameWorldWrapper>>());
+      Add(systems.Create<SetViewDirectionSystem>());
       
       Add(systems.Create<HeroViewAttackSystem>());
       

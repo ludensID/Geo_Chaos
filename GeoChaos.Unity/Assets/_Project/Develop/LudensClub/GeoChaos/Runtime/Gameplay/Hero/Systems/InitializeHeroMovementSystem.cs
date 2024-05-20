@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Jump;
@@ -38,6 +39,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           .Add((ref HorizontalSpeed speed) => speed.Value = _config.MovementSpeed)
           .Add((ref MovementVector vector) => vector.Direction.x = 1)
           .Add<LastMovementVector>()
+          .Add<ViewDirection>()
           .Add<Velocity>()
           .Add<Ground>()
           .Add((ref GroundCheckTimer timer) => timer.TimeLeft = 0)
