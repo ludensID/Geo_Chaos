@@ -40,7 +40,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           .Add((ref MovementVector vector) => vector.Direction.x = 1)
           .Add<LastMovementVector>()
           .Add<ViewDirection>()
-          .Add<Velocity>()
           .Add<Ground>()
           .Add((ref GroundCheckTimer timer) => timer.TimeLeft = 0)
           .Add<JumpAvailable>()

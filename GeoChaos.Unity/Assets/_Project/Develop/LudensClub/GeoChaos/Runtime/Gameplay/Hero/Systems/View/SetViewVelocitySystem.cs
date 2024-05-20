@@ -1,6 +1,8 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
@@ -14,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _game = gameWorldWrapper.World;
       _heroes = _game
         .Filter<RigidbodyRef>()
-        .Inc<Velocity>()
+        .Inc<MovementVector>()
         .Collect();
     }
 
@@ -22,7 +24,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (EcsEntity hero in _heroes)
       {
-        hero.Replace((ref RigidbodyRef rigidbodyRef) => rigidbodyRef.Rigidbody.velocity = hero.Get<Velocity>().Value);
+        ref MovementVector vector = ref hero.Get<MovementVector>();
+        Vector2 velocity = vector.Direction * vector.Speed;
+        hero.Replace((ref RigidbodyRef rigidbodyRef) => rigidbodyRef.Rigidbody.velocity = velocity);
       }
     }
   }
