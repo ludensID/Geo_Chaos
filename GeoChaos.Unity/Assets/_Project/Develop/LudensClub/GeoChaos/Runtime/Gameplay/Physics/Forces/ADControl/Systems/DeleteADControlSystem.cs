@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
@@ -25,9 +26,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity control in _controls)
       {
-        EcsEntity owner = _game.UnpackEntity(control.Get<Owner>().Entity);
-        if(!owner.IsAlive || !owner.Has<ADControllable>())
+        if(!_game.TryUnpackEntity(control.Get<Owner>().Entity, out EcsEntity owner) || !owner.Has<ADControllable>())
+        {
+          owner.Has<FreeRotating>(false);
           control.Dispose();
+        }
       }
     }
   }

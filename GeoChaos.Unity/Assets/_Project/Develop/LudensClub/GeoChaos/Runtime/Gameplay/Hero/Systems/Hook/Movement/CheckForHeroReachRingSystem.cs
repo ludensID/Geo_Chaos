@@ -2,7 +2,6 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -13,23 +12,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
   public class CheckForHeroReachRingSystem : IEcsRunSystem
   {
-    private readonly IDragForceService _dragForceSvc;
-    private readonly IADControlService _controlSvc;
     private readonly EcsWorld _game;
     private readonly EcsEntities _pullings;
-    private readonly HeroConfig _config;
     private readonly SpeedForceLoop _forces;
 
-    public CheckForHeroReachRingSystem(GameWorldWrapper gameWorldWrapper,
-      ISpeedForceLoopService forceLoopSvc,
-      IConfigProvider configProvider,
-      IDragForceService dragForceSvc,
-      IADControlService controlSvc)
+    public CheckForHeroReachRingSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
     {
-      _dragForceSvc = dragForceSvc;
-      _controlSvc = controlSvc;
       _game = gameWorldWrapper.World;
-      _config = configProvider.Get<HeroConfig>();
 
       _forces = forceLoopSvc.CreateLoop();
       
@@ -52,25 +41,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           _forces.GetForce(SpeedForceType.Hook, pulling.Pack())
             .Replace((ref Impact impact) => impact.Vector.y = 0)
             .Add<Valuable>();
-          if (pulling.Has<DragForceAvailable>() && !_config.UseDragForceGradient)
-          {
-            _dragForceSvc.GetDragForce(pulling.Pack())
-              .Add<Enabled>();
-          }
           
-          if(pulling.Has<ADControllable>())
-          {
-            pulling.Add<FreeRotating>();
-            
-            if (!_config.UseADControlGradient)
-            {
-              _controlSvc.GetADControl(pulling.Pack())
-                .Del<Prepared>()
-                .Add<Enabled>();
-            }
-          }
-
           pulling
+            .Add<FallFreeCommand>()
             .Add<StopHookPullingCommand>()
             .Replace((ref GravityScale gravity) => gravity.Enabled = true);
         }

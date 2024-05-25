@@ -1,7 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
@@ -12,8 +11,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
   public class InterruptHookSystem : IEcsRunSystem
   {
     private readonly ISpeedForceFactory _forceFactory;
-    private readonly IDragForceService _dragForceSvc;
-    private readonly IADControlService _controlSvc;
     private readonly EcsWorld _game;
     private readonly EcsEntities _precastCommands;
     private readonly EcsEntities _pullCommands;
@@ -22,13 +19,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
     public InterruptHookSystem(GameWorldWrapper gameWorldWrapper,
       MessageWorldWrapper messageWorldWrapper,
-      ISpeedForceFactory forceFactory,
-      IDragForceService dragForceSvc,
-      IADControlService controlSvc)
+      ISpeedForceFactory forceFactory)
     {
       _forceFactory = forceFactory;
-      _dragForceSvc = dragForceSvc;
-      _controlSvc = controlSvc;
       _game = gameWorldWrapper.World;
       _message = messageWorldWrapper.World;
 
@@ -65,10 +58,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       foreach (EcsEntity pull in _pullCommands)
       {
         InterruptHookSpeed(pull);
-
         pull
           .Del<InterruptHookCommand>()
           .Add<OnHookInterrupted>()
+          .Add<StopFallFreeCommand>()
           .Del<HookPulling>()
           .Del<HookTimer>()
           .Has<OnHookPullingStarted>(false)
@@ -76,20 +69,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Replace((ref GravityScale gravity) => gravity.Enabled = true);
 
         ReleaseRing();
-
-        InterruptFallUpgrades(pull);
       }
 
       foreach (EcsEntity land in _landCommands)
       {
         InterruptHookSpeed(land);
-
         land
           .Del<InterruptHookCommand>()
           .Add<OnHookInterrupted>()
+          .Add<StopFallFreeCommand>()
           .Del<HookFalling>();
-
-        InterruptFallUpgrades(land);
       }
     }
 
@@ -102,26 +91,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     {
       _message.CreateEntity()
         .Add<ReleaseRingMessage>();
-    }
-
-    private void InterruptFallUpgrades(EcsEntity owner)
-    {
-      foreach (EcsEntity drag in _dragForceSvc.GetLoop(owner.Pack()))
-      {
-        drag
-          .Has<Enabled>(false)
-          .Has<Delay>(false);
-      }
-
-      foreach (EcsEntity control in _controlSvc.GetLoop(owner.Pack()))
-      {
-        owner.Has<FreeRotating>(false);
-        
-        control
-          .Has<Enabled>(false)
-          .Has<Prepared>(false)
-          .Has<Delay>(false);
-      }
     }
   }
 }

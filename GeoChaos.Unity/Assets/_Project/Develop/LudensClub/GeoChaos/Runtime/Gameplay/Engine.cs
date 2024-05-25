@@ -24,8 +24,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
       _lateUpdateSystems = systemsFactory.Create(); 
 
       _fixedUpdateSystems
-        .Add(factory.Create<ForceFeature>())
-        .Add(factory.Create<HeroFixedFeature>());
+        .Add(factory.Create<ViewReadFixedFeature>())
+        .Add(factory.Create<FreeFallFeature>())
+        .Add(factory.Create<SpeedForceFeature>())
+        .Add(factory.Create<ApplyFreeFallFeature>())
+        .Add(factory.Create<HeroFixedFeature>())
+        .Add(factory.Create<ViewFixedFeature>());
 
       _updateSystems
         .Add(factory.Create<CreationFeature>())

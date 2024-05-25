@@ -14,8 +14,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
   public class PullHeroOnHookSystem : IEcsRunSystem
   {
     private readonly ISpeedForceFactory _forceFactory;
-    private readonly IDragForceService _dragForceSvc;
-    private readonly IADControlService _controlSvc;
     private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _finishedPrecasts;
@@ -24,14 +22,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
     public PullHeroOnHookSystem(GameWorldWrapper gameWorldWrapper,
       ISpeedForceFactory forceFactory,
-      IDragForceService dragForceSvc,
-      IADControlService controlSvc,
       IConfigProvider configProvider,
       ITimerFactory timers)
     {
       _forceFactory = forceFactory;
-      _dragForceSvc = dragForceSvc;
-      _controlSvc = controlSvc;
       _timers = timers;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
@@ -46,7 +40,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _hookedRings = _game
         .Filter<RingTag>()
         .Inc<Hooked>()
-        .Inc<ViewRef>()
         .Inc<RingPoints>()
         .Collect();
     }
@@ -56,12 +49,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       foreach (EcsEntity ring in _hookedRings)
       foreach (EcsEntity precast in _finishedPrecasts)
       {
-        Transform heroTransform = precast.Get<ViewRef>().View.transform;
-        Transform targetTransform = ring.Get<RingPoints>().TargetPoint;
-        Vector3 heroPosition = heroTransform.position;
-        Vector3 target = targetTransform.position;
+        Vector3 precastPosition = precast.Get<ViewRef>().View.transform.position;
+        Vector3 target = ring.Get<RingPoints>().TargetPoint.position;
 
-        Vector3 vector = target - heroPosition;
+        Vector3 vector = target - precastPosition;
         float time = vector.magnitude / _config.HookVelocity;
         Vector2 velocity = vector / time;
 
@@ -74,48 +65,20 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           Residual = true
         });
 
-        precast.Add((ref HookTimer timer) => timer.TimeLeft = _timers.Create(time + _config.PullTimeOffset));
-
         precast
+          .Add((ref HookTimer timer) => timer.TimeLeft = _timers.Create(time + _config.PullTimeOffset))
           .Add<OnHookPullingStarted>()
           .Add((ref HookPulling pulling) =>
           {
             pulling.Velocity = velocity;
             pulling.Target = target;
           })
-          .Replace((ref GravityScale gravity) => gravity.Enabled = false);
-        
-        float controlTime = time * 2 * (1 - _config.StartDragForceCoefficient * 2);
-        controlTime = MathUtils.Clamp(controlTime, 0.0001f);
-
-        if (precast.Has<DragForceAvailable>())
-        {
-          EcsEntity drag = _dragForceSvc.GetDragForce(precast.Pack());
-          if (_config.UseDragForceGradient)
+          .Replace((ref GravityScale gravity) => gravity.Enabled = false)
+          .Add((ref PrepareFallFreeCommand prepare) =>
           {
-            drag.Add((ref Delay delay) =>
-              delay.TimeLeft = _timers.Create(time * 2 * _config.StartDragForceCoefficient));
-          }
-
-          drag
-            .Replace((ref GradientRate rate) => rate.Rate = 1 / controlTime)
-            .Replace((ref RelativeSpeed relative) =>
-              relative.Speed = new Vector2(Mathf.Abs(velocity.x), Mathf.Abs(velocity.y)));
-        }
-
-        if (precast.Has<ADControllable>())
-        {
-          EcsEntity control = _controlSvc.GetADControl(precast.Pack());
-          if (_config.UseADControlGradient)
-          {
-            control.Add((ref Delay delay) => 
-              delay.TimeLeft = _timers.Create(time * 2 * _config.StartDragForceCoefficient));
-          }
-
-          control.Replace((ref GradientRate rate) => rate.Rate = 1 / controlTime);
-          control.Replace((ref ControlSpeed speed) => speed.Speed = 0);
-          control.Add<Prepared>();
-        }
+            prepare.Time = time;
+            prepare.Velocity = velocity;
+          });
       }
     }
   }

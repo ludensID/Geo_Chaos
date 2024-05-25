@@ -10,8 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct AccelerationSpeed : IEcsComponent
+  public struct StopFallFreeCommand : IEcsComponent
   {
-    public float Acceleration;
   }
 }

@@ -10,7 +10,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 

@@ -43,12 +43,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           ref MovementVector forceVector = ref force.Get<MovementVector>();
           for (int i = 0; i < 2; i++)
           {
-            if (impact.Vector[i] == 0)
-              continue;
-
-            float temp = delta[i];
-            delta[i] = MathUtils.DecreaseToZero(delta[i], forceVector.Speed[i]);
-            forceVector.Speed[i] = MathUtils.DecreaseToZero(forceVector.Speed[i], temp);
+            if (impact.Vector[i] != 0)
+            {
+              float temp = delta[i];
+              delta[i] = MathUtils.DecreaseToZero(delta[i], forceVector.Speed[i]);
+              forceVector.Speed[i] = MathUtils.DecreaseToZero(forceVector.Speed[i], temp);
+            }
           }
         }
       }

@@ -31,38 +31,29 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity control in _controls)
       {
-        if (control.Has<Enabled>() || control.Has<Prepared>())
+        bool needCount = control.Has<Enabled>() || control.Has<Prepared>();
+        
+        float direction = 0;
+        foreach (EcsEntity move in _forces
+          .GetLoop(SpeedForceType.Move, control.Get<Owner>().Entity))
         {
-          float direction = 0;
-          foreach (var move in _forces
-            .GetLoop(SpeedForceType.Move, control.Get<Owner>().Entity))
-          {
-            move.Has<Ignored>(true);
-            direction = move.Get<MovementVector>().Direction.x;
-          }
-
-          float accelerate = control.Get<Gradient>().Value * _config.ADControlSpeed * direction;
-          control.Replace((ref AccelerationSpeed acceleration) => acceleration.Acceleration = accelerate);
-          ref ControlSpeed speed = ref control.Get<ControlSpeed>();
-          if (direction == 0)
-          {
-            speed.Speed = 0;
-          }
-          else
-          {
-              speed.Speed += accelerate * Time.fixedDeltaTime;
-              speed.Speed = MathUtils.Clamp(speed.Speed, -Mathf.Abs(accelerate), Mathf.Abs(accelerate));
-          }
+          move.Has<Ignored>(needCount);
+          direction = move.Get<MovementVector>().Direction.x;
         }
-        else
+        
+        if (needCount)
         {
-          foreach (var move in _forces
-            .GetLoop(SpeedForceType.Move, control.Get<Owner>().Entity))
-          {
-            move.Has<Ignored>(false);
-          }
+          float acceleration = control.Get<Gradient>().Value * _config.ADControlSpeed * direction;
+          control.Replace(
+            (ref ControlSpeed speed) => speed.Speed = CalculateSpeed(speed.Speed, acceleration, direction));
         }
       }
+    }
+
+    private float CalculateSpeed(float speed, float acceleration, float direction)
+    {
+      float abs = Mathf.Abs(acceleration);
+      return direction != 0 ? Mathf.Clamp(speed + acceleration * Time.fixedDeltaTime, -abs, abs) : 0;
     }
   }
 }

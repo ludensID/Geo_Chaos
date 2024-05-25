@@ -6,14 +6,14 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
-  public class SubtractControlSpeedSystem : IEcsRunSystem
+  public class DiscardADControlSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _vectors;
     private readonly EcsWorld _physics;
     private readonly EcsEntities _controls;
 
-    public SubtractControlSpeedSystem(GameWorldWrapper gameWorldWrapper,
+    public DiscardADControlSystem(GameWorldWrapper gameWorldWrapper,
       PhysicsWorldWrapper physicsWorldWrapper)
     {
       _game = gameWorldWrapper.World;

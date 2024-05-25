@@ -121,6 +121,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [LabelText("UseGradient")]
     public bool UseADControlGradient;
     
+    public float StartADControlCoefficient => 1f / (UseADControlGradient ? 3f : 2f);
+
+    
     [LabelText("Speed")]
     public float ADControlSpeed;
 

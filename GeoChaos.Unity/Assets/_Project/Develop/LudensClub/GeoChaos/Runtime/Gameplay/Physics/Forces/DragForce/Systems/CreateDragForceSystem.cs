@@ -11,7 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     private readonly EcsWorld _physics;
     private readonly EcsEntities _dragForces;
     private readonly EcsWorld _game;
-    private readonly EcsEntities _dragForcables;
+    private readonly EcsEntities _draggables;
 
     public CreateDragForceSystem(PhysicsWorldWrapper physicsWorldWrapper, GameWorldWrapper gameWorldWrapper, IDragForceService dragForceSvc)
     {
@@ -19,20 +19,21 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       _physics = physicsWorldWrapper.World;
       _game = gameWorldWrapper.World;
 
-      _dragForcables = _game
+      _draggables = _game
         .Filter<DragForceAvailable>()
         .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity forcable in _dragForcables)
+      foreach (EcsEntity draggable in _draggables)
       {
-        if (_dragForceSvc.GetDragForce(forcable.Pack()) == null)
+        if (_dragForceSvc.GetDragForce(draggable.Pack()) == null)
         {
           _physics.CreateEntity()
+            .Add<FreeFall>()
             .Add<DragForce>()
-            .Add((ref Owner owner) => owner.Entity = forcable.Pack())
+            .Add((ref Owner owner) => owner.Entity = draggable.Pack())
             .Add<Gradient>()
             .Add<GradientRate>()
             .Add<RelativeSpeed>();
