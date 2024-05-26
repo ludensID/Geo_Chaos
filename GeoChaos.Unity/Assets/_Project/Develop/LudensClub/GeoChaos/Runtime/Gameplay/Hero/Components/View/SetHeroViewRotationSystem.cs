@@ -4,7 +4,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.View
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.View
 {
   public class SetHeroViewRotationSystem : IEcsRunSystem
   {
@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.View
         view.Replace((ref ViewRef viewRef) =>
         {
           Vector3 rotation = viewRef.View.transform.eulerAngles;
-          rotation.y = view.Get<ViewDirection>().Direction >= 0 ? 0 : 180;
+          rotation.y = view.Get<ViewDirection>().Direction.x >= 0 ? 0 : 180;
           viewRef.View.transform.eulerAngles = rotation;
         });
       }

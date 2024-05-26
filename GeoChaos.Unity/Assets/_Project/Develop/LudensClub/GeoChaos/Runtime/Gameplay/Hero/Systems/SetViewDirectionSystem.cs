@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems
       {
         viewDir.Replace((ref ViewDirection view) =>
         {
-          view.Direction = viewDir.Has<FreeRotating>() && viewDir.Has<MoveCommand>()
+          view.Direction.x = viewDir.Has<FreeRotating>() && viewDir.Has<MoveCommand>()
             ? viewDir.Get<MoveCommand>().Direction
             : viewDir.Get<MovementVector>().Direction.x;
         });

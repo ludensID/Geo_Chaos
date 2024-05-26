@@ -10,6 +10,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -28,6 +29,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<Delete<OnMovementLocked, GameWorldWrapper>>());
       Add(systems.Create<Delete<OnMovementUnlocked, GameWorldWrapper>>());
       Add(systems.Create<LockMovementSystem>());
+      
+      Add(systems.Create<ReadVerticalMovementSystem>());
 
       Add(systems.Create<Delete<MoveCommand, GameWorldWrapper>>());
       Add(systems.Create<ReadMovementSystem>());

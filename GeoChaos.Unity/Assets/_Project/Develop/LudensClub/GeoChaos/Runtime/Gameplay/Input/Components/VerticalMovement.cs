@@ -1,8 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -11,8 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct ViewDirection : IEcsComponent
+  public struct VerticalMovement : IEcsComponent
   {
-    public Vector2 Direction;
+    public float Direction;
   }
 }

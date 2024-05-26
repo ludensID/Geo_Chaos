@@ -13,6 +13,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
   {
     [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
     public string HorizontalMovementAction;
+    
+    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
+    public string VerticalMovementAction;
 
     [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
     public string JumpAction;

@@ -8,6 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
   {
     private readonly IInputDataProvider _provider;
     private readonly InputAction _horizontalAction;
+    private readonly InputAction _verticalAction;
     private readonly InputAction _jumpAction;
     private readonly InputAction _dashAction;
     private readonly InputAction _attackAction;
@@ -19,6 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
       var actionMap = configProvider.Get<InputActionNameMap>();
       _horizontalAction = input.actions[actionMap.HorizontalMovementAction];
+      _verticalAction = input.actions[actionMap.VerticalMovementAction];
       _jumpAction = input.actions[actionMap.JumpAction];
       _dashAction = input.actions[actionMap.DashAction];
       _attackAction = input.actions[actionMap.AttackAction];
@@ -40,6 +42,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       InputData data = _provider.Data;
 
       data.HorizontalMovement = _horizontalAction.ReadValue<float>();
+      data.VerticalMovement = _verticalAction.ReadValue<float>();
 
       data.IsJumpStarted = _jumpAction.WasPerformedThisFrame();
       data.IsJumpCanceled = _jumpAction.WasReleasedThisFrame();

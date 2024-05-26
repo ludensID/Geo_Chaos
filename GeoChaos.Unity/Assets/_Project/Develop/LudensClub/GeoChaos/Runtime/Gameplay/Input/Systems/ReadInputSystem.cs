@@ -7,40 +7,28 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 {
   public class ReadInputSystem : IEcsRunSystem
   {
-    private readonly IInputDataProvider _input;
-    private readonly EcsWorld _world;
+    private readonly IInputDataProvider _inputProvider;
+    private readonly EcsWorld _input;
 
-    public ReadInputSystem(InputWorldWrapper inputWorldWrapper, IInputDataProvider input)
+    public ReadInputSystem(InputWorldWrapper inputWorldWrapper, IInputDataProvider inputProvider)
     {
-      _input = input;
-      _world = inputWorldWrapper.World;
+      _inputProvider = inputProvider;
+      _input = inputWorldWrapper.World;
     }
 
     public void Run(EcsSystems systems)
     {
-      int input = _world.NewEntity();
-      _world.Add<DelayedInput>(input);
-
-      ref HorizontalMovement movement = ref _world.Add<HorizontalMovement>(input);
-      movement.Direction = _input.Data.HorizontalMovement;
-
-      if (_input.Data.IsJumpStarted)
-        _world.Add<IsJumpStarted>(input);
-
-      if (_input.Data.IsJumpCanceled)
-        _world.Add<IsJumpCanceled>(input);
-
-      if (_input.Data.IsDash)
-        _world.Add<IsDash>(input);
-
-      if (_input.Data.IsAttack)
-        _world.Add<IsAttack>(input);
-
-      if (_input.Data.IsHook)
-        _world.Add<IsHook>(input);
-
-      ref ExpireTimer timer = ref _world.Add<ExpireTimer>(input);
-      timer.PassedTime = 0;
+      InputData data = _inputProvider.Data;
+      _input.CreateEntity()
+        .Add<DelayedInput>()
+        .Add((ref HorizontalMovement movement) => movement.Direction = data.HorizontalMovement)
+        .Add((ref VerticalMovement movement) => movement.Direction = data.VerticalMovement)
+        .Has<IsJumpStarted>(data.IsJumpStarted)
+        .Has<IsJumpCanceled>(data.IsJumpCanceled)
+        .Has<IsDash>(data.IsDash)
+        .Has<IsAttack>(data.IsAttack)
+        .Has<IsHook>(data.IsHook)
+        .Add((ref ExpireTimer timer) => timer.PassedTime = 0);
     }
   }
 }
