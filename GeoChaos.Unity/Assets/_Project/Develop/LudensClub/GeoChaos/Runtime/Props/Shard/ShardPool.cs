@@ -10,7 +10,6 @@ namespace LudensClub.GeoChaos.Runtime.Props.Shard
   public class ShardPool : IShardPool, IInitializable
   {
     private readonly DiContainer _container;
-    private readonly IPrefabProvider _prefabProvider;
     private readonly ShardPoolConfig _config;
     private readonly PrefabConfig _prefabs;
     private readonly List<PooledShard> _shards = new List<PooledShard>();
@@ -24,11 +23,6 @@ namespace LudensClub.GeoChaos.Runtime.Props.Shard
       _prefabs = configProvider.Get<PrefabConfig>();
     }
 
-    public bool HasId(EntityType id)
-    {
-      return id == EntityType.Shard;
-    }
-
     public void Initialize()
     {
       _parent = new GameObject("Shard Pool").transform;
@@ -40,6 +34,18 @@ namespace LudensClub.GeoChaos.Runtime.Props.Shard
         instance.gameObject.SetActive(false);
         _shards.Add(new PooledShard(instance));
       }
+    }
+
+    public bool HasId(EntityType id)
+    {
+      return id == EntityType.Shard;
+    }
+
+    public ShardView Pull()
+    {
+      PooledShard pooledShard = _shards.Find(x => x.IsPooled);
+      pooledShard.IsPooled = false;
+      return pooledShard.Shard;
     }
 
     public ShardView Pull(Vector3 position, Quaternion rotation, Transform parent = null)

@@ -3,6 +3,7 @@ using System.Linq;
 using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.Shard;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
@@ -42,6 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindSpawnPoints();
       BindRingViews();
       BindShardPool();
+      BindShardFactory();
 
 #if UNITY_EDITOR
       Debugging.DebugBridge.InstallGameplay(Container);
@@ -51,6 +53,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindDashCooldownPresenter();
       BindEnemyHealthView();
+    }
+
+    private void BindShardFactory()
+    {
+      Container
+        .Bind<IShardFactory>()
+        .To<ShardFactory>()
+        .AsSingle();
     }
 
     private void BindShardPool()
