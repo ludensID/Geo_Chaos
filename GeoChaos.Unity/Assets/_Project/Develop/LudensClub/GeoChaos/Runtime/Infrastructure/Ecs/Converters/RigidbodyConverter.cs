@@ -15,5 +15,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
       ref var rigidbodyRef = ref world.Add<RigidbodyRef>(entity);
       rigidbodyRef.Rigidbody = _rigidbody;
     }
+
+    private void Reset()
+    {
+      _rigidbody = GetComponent<Rigidbody2D>();
+    }
   }
 }

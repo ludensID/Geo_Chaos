@@ -15,5 +15,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
       ref var colliderRef = ref world.Add<ColliderRef>(entity);
       colliderRef.Collider = _collider;
     }
+    
+    private void Reset()
+    {
+      _collider = GetComponent<Collider2D>();
+    }
   }
 }

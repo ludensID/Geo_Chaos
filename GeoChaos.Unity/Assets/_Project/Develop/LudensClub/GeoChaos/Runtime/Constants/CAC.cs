@@ -1,4 +1,4 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Configuration
+﻿namespace LudensClub.GeoChaos.Runtime.Constants
 {
   /// <summary>
   /// Create Asset Menu constants

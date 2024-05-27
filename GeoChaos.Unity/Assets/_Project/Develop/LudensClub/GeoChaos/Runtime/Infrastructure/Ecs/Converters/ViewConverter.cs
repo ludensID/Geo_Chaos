@@ -14,5 +14,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
       viewRef.View = View;
       View.Entity = world.PackEntity(entity);
     }
+    
+    private void Reset()
+    {
+      View = GetComponent<View>();
+    }
   }
 }
