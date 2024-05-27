@@ -3,13 +3,13 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -103,6 +103,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<FinishHookInterruptionSystem>());
       
       Add(systems.Create<Delete<HookCommand, GameWorldWrapper>>());
+      
+      Add(systems.Create<ReadShotInputSystem>());
+      Add(systems.Create<ShootSystem>());
+      
       Add(systems.Create<SetViewDirectionSystem>());
       
       Add(systems.Create<HeroViewAttackSystem>());

@@ -49,6 +49,8 @@ MonoBehaviour:
   PullTimeOffset: 1
   HookInputCooldown: 0.1
   RingReleasingTime: 0.1
+  EnableShoot: 1
+  ShardVelocity: 10
   Health: 100
   DashDamage: 10
   HitDamages:

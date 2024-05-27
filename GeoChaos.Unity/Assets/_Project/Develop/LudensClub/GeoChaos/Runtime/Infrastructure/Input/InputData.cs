@@ -12,5 +12,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     public bool IsDash;
     public bool IsAttack;
     public bool IsHook;
+    public bool IsShoot;
   }
 }

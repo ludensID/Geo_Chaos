@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
       _input = inputWorldWrapper.World;
 
       _heroes = _game
-        .Filter<HeroTag>()
+        .Filter<Movable>()
         .Inc<ViewDirection>()
         .Collect();
 

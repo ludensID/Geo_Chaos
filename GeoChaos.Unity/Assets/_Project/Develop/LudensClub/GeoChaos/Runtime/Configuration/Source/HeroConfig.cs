@@ -135,6 +135,11 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float RingReleasingTime;
 
     [UnGroupNext]
+    [Title("Shoot")]
+    [LabelText("Enabled")]
+    public bool EnableShoot;
+    public float ShardVelocity;
+
     [Title("Characteristics")]
     public float Health;
 

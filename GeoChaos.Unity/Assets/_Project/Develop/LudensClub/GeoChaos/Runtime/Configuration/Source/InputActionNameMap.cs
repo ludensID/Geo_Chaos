@@ -29,6 +29,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     
     [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
     public string HookAction;
+    
+    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
+    public string ShootAction;
 
 #if UNITY_EDITOR
     private static IEnumerable<string> DropActionNames()

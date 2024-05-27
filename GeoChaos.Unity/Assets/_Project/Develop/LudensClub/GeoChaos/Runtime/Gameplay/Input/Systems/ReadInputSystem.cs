@@ -28,6 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
         .Has<IsDash>(data.IsDash)
         .Has<IsAttack>(data.IsAttack)
         .Has<IsHook>(data.IsHook)
+        .Has<IsShoot>(data.IsShoot)
         .Add((ref ExpireTimer timer) => timer.PassedTime = 0);
     }
   }

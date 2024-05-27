@@ -45,6 +45,8 @@ namespace LudensClub.GeoChaos.Runtime.Props.Shard
     {
       PooledShard pooledShard = _shards.Find(x => x.IsPooled);
       pooledShard.IsPooled = false;
+
+      pooledShard.Shard.gameObject.SetActive(true);
       return pooledShard.Shard;
     }
 

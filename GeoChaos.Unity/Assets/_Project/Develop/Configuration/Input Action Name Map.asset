@@ -18,3 +18,4 @@ MonoBehaviour:
   DashAction: Dash
   AttackAction: Attack
   HookAction: Hook
+  ShootAction: Shoot

@@ -6,6 +6,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Jump;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
@@ -54,7 +55,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           .Has<HookAvailable>(_config.EnableHook)
           .Has<InterruptHookAvailable>(_config.AllowHookInterruption)
           .Has<DragForceAvailable>(_config.EnableDragForce)
-          .Has<ADControllable>(_config.EnableADControl);
+          .Has<ADControllable>(_config.EnableADControl)
+          .Has<ShootAvailable>(_config.EnableShoot);
       }
     }
   }

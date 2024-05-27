@@ -8,9 +8,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   {
     private readonly EcsWorld _physics;
     private readonly EcsEntities _commands;
-    private readonly EcsEntities _forces;
+    private readonly SpeedForceLoop _forces;
 
-    public ConvertToSpeedForceSystem(PhysicsWorldWrapper physicsWorldWrapper)
+    public ConvertToSpeedForceSystem(PhysicsWorldWrapper physicsWorldWrapper, ISpeedForceLoopService forceLoopSvc)
     {
       _physics = physicsWorldWrapper.World;
 
@@ -18,18 +18,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         .Filter<SpeedForceCommand>()
         .Collect();
 
-      _forces = _physics
-        .Filter<SpeedForce>()
-        .Exc<SpeedForceCommand>()
-        .Collect();
+      _forces = forceLoopSvc.CreateLoop(x => x.Exc<SpeedForceCommand>());
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity command in _commands)
       {
         foreach (EcsEntity force in _forces
-          .Where<SpeedForce>(x => x.Type == command.Get<SpeedForce>().Type))
+          .GetLoop(command.Get<SpeedForce>().Type, command.Get<Owner>().Entity))
         {
           force.Dispose();
         }
