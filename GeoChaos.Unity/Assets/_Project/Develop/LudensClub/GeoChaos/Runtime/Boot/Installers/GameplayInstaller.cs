@@ -7,6 +7,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
 using LudensClub.GeoChaos.Runtime.Props.Ring;
+using LudensClub.GeoChaos.Runtime.Props.Shard;
 using LudensClub.GeoChaos.Runtime.UI;
 using UnityEngine;
 using Zenject;
@@ -40,6 +41,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindCollisionService();
       BindSpawnPoints();
       BindRingViews();
+      BindShardPool();
 
 #if UNITY_EDITOR
       Debugging.DebugBridge.InstallGameplay(Container);
@@ -49,6 +51,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindDashCooldownPresenter();
       BindEnemyHealthView();
+    }
+
+    private void BindShardPool()
+    {
+      Container
+        .BindInterfacesTo<ShardPool>()
+        .AsSingle();
     }
 
     private void BindADControlService()

@@ -3,7 +3,8 @@
   public enum EntityType
   {
     Hero = 1,
-    Enemy = 2,
-    Ring = 15
+    Enemy = Hero + 1,
+    Ring = 15,
+    Shard = Ring + 1
   }
 }
