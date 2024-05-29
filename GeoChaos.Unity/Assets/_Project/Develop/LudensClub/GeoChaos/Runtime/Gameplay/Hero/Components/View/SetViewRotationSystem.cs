@@ -6,18 +6,18 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.View
 {
-  public class SetHeroViewRotationSystem : IEcsRunSystem
+  public class SetViewRotationSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _views;
 
-    public SetHeroViewRotationSystem(GameWorldWrapper gameWorldWrapper)
+    public SetViewRotationSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
       _views = _game
         .Filter<ViewRef>()
-        .Inc<ViewDirection>()
+        .Inc<BodyDirection>()
         .Collect();
     }
     
@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.View
         view.Replace((ref ViewRef viewRef) =>
         {
           Vector3 rotation = viewRef.View.transform.eulerAngles;
-          rotation.y = view.Get<ViewDirection>().Direction.x >= 0 ? 0 : 180;
+          rotation.y = view.Get<BodyDirection>().Direction >= 0 ? 0 : 180;
           viewRef.View.transform.eulerAngles = rotation;
         });
       }

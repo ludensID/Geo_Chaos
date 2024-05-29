@@ -41,8 +41,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shot
         shard.Add((ref Owner owner) => owner.Entity = command.Pack());
         shard.Replace((ref ViewRef viewRef) =>
           viewRef.View.transform.position = command.Get<ViewRef>().View.transform.position);
+
+        Vector2 shootDirection = CalculateShootDirection(command.Get<ViewDirection>().Direction,
+          command.Get<BodyDirection>().Direction);
         (Vector3 length, Vector3 direction) =
-          MathUtils.DecomposeVector(command.Get<ViewDirection>().Direction * _config.ShardVelocity);
+          MathUtils.DecomposeVector(shootDirection * _config.ShardVelocity);
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, shard.Pack(), Vector2.one)
         {
           Speed = length,
@@ -51,6 +54,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shot
 
         command.Del<ShootCommand>();
       }
+    }
+
+    private Vector2 CalculateShootDirection(Vector2 viewDirection, float bodyDirection)
+    {
+      Vector2 shootDirection = viewDirection;
+      shootDirection.y = MathUtils.Clamp(shootDirection.y, 0);
+      
+      if (shootDirection == Vector2.zero)
+        shootDirection = Vector2.right * bodyDirection;
+      
+      return shootDirection;
     }
   }
 }

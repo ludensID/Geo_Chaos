@@ -3,17 +3,18 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
 {
-  public class ReadVerticalMovementSystem : IEcsRunSystem
+  public class ReadViewDirectionInputSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsWorld _input;
     private readonly EcsEntities _heroes;
     private readonly EcsEntities _inputs;
 
-    public ReadVerticalMovementSystem(GameWorldWrapper gameWorldWrapper, InputWorldWrapper inputWorldWrapper)
+    public ReadViewDirectionInputSystem(GameWorldWrapper gameWorldWrapper, InputWorldWrapper inputWorldWrapper)
     {
       _game = gameWorldWrapper.World;
       _input = inputWorldWrapper.World;
@@ -24,7 +25,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
         .Collect();
 
       _inputs = _input
-        .Filter<VerticalMovement>()
+        .Filter<HorizontalMovement>()
+        .Inc<VerticalMovement>()
         .Exc<Expired>()
         .Collect();
     }
@@ -34,7 +36,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
       foreach (EcsEntity input in _inputs)
       foreach (EcsEntity hero in _heroes)
       {
-        hero.Replace((ref ViewDirection viewDir) => viewDir.Direction.y = input.Get<VerticalMovement>().Direction);
+        var direction = new Vector2(input.Get<HorizontalMovement>().Direction,
+          input.Get<VerticalMovement>().Direction);
+        if (direction == Vector2.zero)
+          direction = Vector2.right * hero.Get<BodyDirection>().Direction;
+        
+        hero.Replace((ref ViewDirection viewDir) => viewDir.Direction = direction);
       }
     }
   }

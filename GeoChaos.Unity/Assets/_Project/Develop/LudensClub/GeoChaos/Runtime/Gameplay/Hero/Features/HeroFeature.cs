@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<Delete<OnMovementUnlocked, GameWorldWrapper>>());
       Add(systems.Create<LockMovementSystem>());
       
-      Add(systems.Create<ReadVerticalMovementSystem>());
+      Add(systems.Create<ReadViewDirectionInputSystem>());
 
       Add(systems.Create<Delete<MoveCommand, GameWorldWrapper>>());
       Add(systems.Create<ReadMovementSystem>());
@@ -107,14 +107,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<ReadShotInputSystem>());
       Add(systems.Create<ShootSystem>());
       
-      Add(systems.Create<SetViewDirectionSystem>());
+      Add(systems.Create<SetBodyDirectionSystem>());
       
       Add(systems.Create<HeroViewAttackSystem>());
       
       Add(systems.Create<DashHeroViewSystem>());
       Add(systems.Create<StopDashHeroViewSystem>());
 
-      Add(systems.Create<SetHeroViewRotationSystem>());
+      Add(systems.Create<SetViewRotationSystem>());
       
       Add(systems.Create<SetHeroSwordViewColorSystem>());
     }
