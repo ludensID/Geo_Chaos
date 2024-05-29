@@ -1,6 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Props;
-
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
+﻿namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public interface ICollisionService
   {

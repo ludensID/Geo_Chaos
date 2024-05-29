@@ -1,4 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 using Zenject;

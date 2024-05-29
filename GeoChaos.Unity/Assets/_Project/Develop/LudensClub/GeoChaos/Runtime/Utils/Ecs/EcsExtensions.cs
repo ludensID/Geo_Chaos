@@ -83,5 +83,13 @@ namespace LudensClub.GeoChaos.Runtime.Utils
       entity = new EcsEntity(world, ent);
       return packed;
     }
+    
+    [HideInCallstack]
+    public static bool TryUnpackEntity(this EcsPackedEntity packedEntity, EcsWorld world, out EcsEntity entity)
+    {
+      bool packed = packedEntity.Unpack(world, out int ent);
+      entity = new EcsEntity(world, ent);
+      return packed;
+    }
   }
 }

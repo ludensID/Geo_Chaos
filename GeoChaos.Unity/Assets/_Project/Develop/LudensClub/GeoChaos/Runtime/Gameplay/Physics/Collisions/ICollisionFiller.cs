@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Props
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public interface ICollisionFiller
   {

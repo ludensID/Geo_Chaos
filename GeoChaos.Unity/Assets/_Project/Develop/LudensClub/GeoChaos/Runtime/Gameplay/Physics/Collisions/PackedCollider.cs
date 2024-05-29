@@ -1,9 +1,8 @@
 ﻿using System;
 using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Props
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   [Serializable]
   public struct PackedCollider
