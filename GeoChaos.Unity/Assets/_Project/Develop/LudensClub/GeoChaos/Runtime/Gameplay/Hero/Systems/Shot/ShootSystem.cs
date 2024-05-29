@@ -37,13 +37,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shot
     {
       foreach (EcsEntity command in _commands)
       {
-        EcsEntity shard = _shardFactory.Create();
-        shard.Add((ref Owner owner) => owner.Entity = command.Pack());
-        shard.Replace((ref ViewRef viewRef) =>
-          viewRef.View.transform.position = command.Get<ViewRef>().View.transform.position);
-
         Vector2 shootDirection = CalculateShootDirection(command.Get<ViewDirection>().Direction,
           command.Get<BodyDirection>().Direction);
+        Vector3 position = command.Get<ViewRef>().View.transform.position + (Vector3) shootDirection; 
+
+        EcsEntity shard = _shardFactory.Create();
+        shard.Add((ref Owner owner) => owner.Entity = command.Pack());
+        shard.Replace((ref ViewRef viewRef) => viewRef.View.transform.position = position);
+        
         (Vector3 length, Vector3 direction) =
           MathUtils.DecomposeVector(shootDirection * _config.ShardVelocity);
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, shard.Pack(), Vector2.one)
