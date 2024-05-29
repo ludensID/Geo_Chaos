@@ -9,7 +9,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shot;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -106,6 +106,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       
       Add(systems.Create<ReadShotInputSystem>());
       Add(systems.Create<ShootSystem>());
+      Add(systems.Create<CheckForShardLifeTimeExpiredSystem>());
       
       Add(systems.Create<SetBodyDirectionSystem>());
       

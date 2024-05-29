@@ -17,6 +17,7 @@
       public const string DRAG_FORCE = "Drag Force";
       public const string HOOK_UPGRADES = "Upgrades";
       public const string HOOK_UPGRADES_TYPES = HOOK_UPGRADES + "/" + "Types";
+      public const string SHOOT = "Shoot";
 
       public static class Explicit
       {

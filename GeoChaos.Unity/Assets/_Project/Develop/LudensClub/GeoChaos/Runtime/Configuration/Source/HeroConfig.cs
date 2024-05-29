@@ -140,6 +140,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public bool EnableShoot;
     public float ShardVelocity;
 
+    [Group(TriConstants.TECH + TriConstants.Names.SHOOT)]
+    public float ShardLifeTime;
+
     [Title("Characteristics")]
     public float Health;
 

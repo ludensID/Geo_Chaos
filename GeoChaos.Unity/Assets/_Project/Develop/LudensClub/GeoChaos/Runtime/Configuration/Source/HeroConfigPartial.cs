@@ -15,6 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
   [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.JUMP, Title = TriConstants.TECH)]
   [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK, Title = TriConstants.TECH)]
   [DeclareTabGroup(TriConstants.Names.HOOK_UPGRADES_TYPES)]
+  [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.SHOOT, Title = TriConstants.TECH)]
   public partial class HeroConfig
   {
     public void OnJumpHorizontalSpeedMultiplierChanged()

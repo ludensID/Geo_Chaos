@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafdbe57c2be43288cb1c52da6607a3e, type: 3}
   m_Name: Shard Pool Config
   m_EditorClassIdentifier: 
-  InstanceCount: 20
+  InstanceCount: 30
   DistanceFromOrigin: -1000

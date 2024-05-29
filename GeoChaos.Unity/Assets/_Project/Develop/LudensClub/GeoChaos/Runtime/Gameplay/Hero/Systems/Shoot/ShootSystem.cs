@@ -8,12 +8,13 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shot
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
 {
   public class ShootSystem : IEcsRunSystem
   {
     private readonly IShardFactory _shardFactory;
     private readonly ISpeedForceFactory _forceFactory;
+    private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _commands;
     private readonly HeroConfig _config;
@@ -21,10 +22,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shot
     public ShootSystem(GameWorldWrapper gameWorldWrapper,
       IShardFactory shardFactory,
       ISpeedForceFactory forceFactory,
-      IConfigProvider configProvider)
+      IConfigProvider configProvider,
+      ITimerFactory timers)
     {
       _shardFactory = shardFactory;
       _forceFactory = forceFactory;
+      _timers = timers;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
@@ -32,19 +35,20 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shot
         .Filter<ShootCommand>()
         .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity command in _commands)
       {
         Vector2 shootDirection = CalculateShootDirection(command.Get<ViewDirection>().Direction,
           command.Get<BodyDirection>().Direction);
-        Vector3 position = command.Get<ViewRef>().View.transform.position + (Vector3) shootDirection; 
+        Vector3 position = command.Get<ViewRef>().View.transform.position + (Vector3)shootDirection;
 
-        EcsEntity shard = _shardFactory.Create();
-        shard.Add((ref Owner owner) => owner.Entity = command.Pack());
-        shard.Replace((ref ViewRef viewRef) => viewRef.View.transform.position = position);
-        
+        EcsEntity shard = _shardFactory.Create()
+          .Add((ref Owner owner) => owner.Entity = command.Pack())
+          .Add((ref LifeTime lifeTime) => lifeTime.TimeLeft = _timers.Create(_config.ShardLifeTime))
+          .Replace((ref ViewRef viewRef) => viewRef.View.transform.position = position);
+
         (Vector3 length, Vector3 direction) =
           MathUtils.DecomposeVector(shootDirection * _config.ShardVelocity);
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, shard.Pack(), Vector2.one)
@@ -61,10 +65,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shot
     {
       Vector2 shootDirection = viewDirection;
       shootDirection.y = MathUtils.Clamp(shootDirection.y, 0);
-      
+
       if (shootDirection == Vector2.zero)
         shootDirection = Vector2.right * bodyDirection;
-      
+
       return shootDirection;
     }
   }
