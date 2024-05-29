@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1875314491190187146}
   - component: {fileID: 8753319323664473164}
   - component: {fileID: 1557768226534831887}
+  - component: {fileID: 6515784426816343855}
   m_Layer: 0
   m_Name: Shard
   m_TagString: Untagged
@@ -206,4 +207,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b423ff1d2d2345b0a2e88615d6f2a047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 6336288800622775996}
+--- !u!114 &6515784426816343855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663963844746337942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348c620513bc41ab99a9deb828b54891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderType: 2
+  _view: {fileID: 3017524116730699385}
   _collider: {fileID: 6336288800622775996}
