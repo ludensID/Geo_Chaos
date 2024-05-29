@@ -5,7 +5,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Props;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public class DamageFromDashSystem : IEcsRunSystem
   {

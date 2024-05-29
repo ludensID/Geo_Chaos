@@ -2,7 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;

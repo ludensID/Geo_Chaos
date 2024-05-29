@@ -1,5 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Props;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
@@ -10,7 +12,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct CollisionMessage : IEcsComponent
+  public struct OneSideCollision : IEcsComponent
   {
+    public PackedCollider Sender;
+    public Collider2D Other;
+
+    public OneSideCollision(PackedCollider sender, Collider2D other)
+    {
+      Sender = sender;
+      Other = other;
+    }
   }
 }

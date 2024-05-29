@@ -1,10 +1,9 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Props;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public class FlushCollisionsSystem : IEcsRunSystem
   {
@@ -19,13 +18,37 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
 
     public void Run(EcsSystems systems)
     {
-      foreach (TwoSideCollision collision in _filler.Flush())
+      var collisions = _filler.Flush();
+      for (int i = 0; i < collisions.Count; i++)
       {
-        EcsEntity entity = _world.CreateEntity();
-        entity
-          .Add<CollisionMessage>()
-          .Add((ref TwoSideCollision twoSideCollision) => twoSideCollision = collision);
+        OneSideCollision other = collisions.Find(x => x.Sender.Collider == collisions[i].Other);
+        if (other.Other == null)
+        {
+          CreateOneSideCollisionMessage(collisions[i]);
+          continue;
+        }
+
+        CreateTwoSideCollisionMessage(new TwoSideCollision(collisions[i].Sender, other.Sender));
+        collisions.Remove(other);
       }
+    }
+
+    private EcsEntity CreateOneSideCollisionMessage(OneSideCollision collision)
+    {
+      EcsEntity entity = _world.CreateEntity();
+      entity
+        .Add<CollisionMessage>()
+        .Add((ref OneSideCollision oneSideCollision) => oneSideCollision = collision);
+      return entity;
+    }
+    
+    private EcsEntity CreateTwoSideCollisionMessage(TwoSideCollision collision)
+    {
+      EcsEntity entity = _world.CreateEntity();
+      entity
+        .Add<CollisionMessage>()
+        .Add((ref TwoSideCollision twoSideCollision) => twoSideCollision = collision);
+      return entity;
     }
   }
 }

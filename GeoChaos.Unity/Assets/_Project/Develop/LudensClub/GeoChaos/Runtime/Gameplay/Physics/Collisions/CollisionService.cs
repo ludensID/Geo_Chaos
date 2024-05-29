@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
 using LudensClub.GeoChaos.Runtime.Props;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public class CollisionService : ICollisionService
   {

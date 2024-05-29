@@ -1,7 +1,6 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Feature
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public class CollisionFeature : EcsFeature
   {

@@ -2,6 +2,7 @@
 using System.Linq;
 using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Shard;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;

@@ -1,8 +1,7 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public class DeleteCollisionSystem : IEcsRunSystem
   {

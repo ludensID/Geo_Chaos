@@ -4,7 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Feature;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Feature;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Feature;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using Zenject;

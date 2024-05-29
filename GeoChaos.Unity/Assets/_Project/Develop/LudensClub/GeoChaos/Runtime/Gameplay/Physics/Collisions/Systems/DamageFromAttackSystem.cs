@@ -7,7 +7,7 @@ using LudensClub.GeoChaos.Runtime.Props;
 using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Systems
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public class DamageFromAttackSystem : IEcsRunSystem
   {
