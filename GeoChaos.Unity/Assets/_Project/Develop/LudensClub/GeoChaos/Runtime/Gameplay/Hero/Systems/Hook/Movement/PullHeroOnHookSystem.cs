@@ -61,8 +61,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         {
           Speed = length,
           Direction = direction,
-          Draggable = true,
-          Residual = true
+          Draggable = true
         });
 
         precast

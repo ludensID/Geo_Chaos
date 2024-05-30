@@ -40,7 +40,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         {
           _forces.GetForce(SpeedForceType.Hook, pulling.Pack())
             .Replace((ref Impact impact) => impact.Vector.y = 0)
-            .Add<Valuable>();
+            .Add<Valuable>()
+            .Add<Residual>();
           
           pulling
             .Add<FallFreeCommand>()
