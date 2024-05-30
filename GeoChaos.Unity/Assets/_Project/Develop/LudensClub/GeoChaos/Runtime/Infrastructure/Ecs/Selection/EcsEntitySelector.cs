@@ -8,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
   {
     protected List<ISelectionAlgorithm> _algorithms = new List<ISelectionAlgorithm>();
     
-    public void Select(EcsEntities origins, EcsEntities targets, EcsEntities selections)
+    public virtual void Select(EcsEntities origins, EcsEntities targets, EcsEntities selections)
     {
       foreach (EcsEntity target in targets)
       {

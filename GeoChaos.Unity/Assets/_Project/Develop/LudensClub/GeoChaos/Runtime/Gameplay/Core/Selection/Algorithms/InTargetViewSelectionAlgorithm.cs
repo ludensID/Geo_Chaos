@@ -8,11 +8,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
 {
   public class InTargetViewSelectionAlgorithm : ISelectionAlgorithm
   {
-    private readonly float _viewAngle;
+    private readonly SelectionData _data;
 
-    public InTargetViewSelectionAlgorithm(float viewAngle)
+    public InTargetViewSelectionAlgorithm(SelectionData data)
     {
-      _viewAngle = viewAngle;
+      _data = data;
     }
     
     public void Select(EcsEntities origins, EcsEntities selections)
@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
         Transform originTransform = origin.Get<ViewRef>().View.transform;
         Vector3 selectionPosition = selection.Get<ViewRef>().View.transform.position;
         Vector3 selectionVector = selectionPosition - originTransform.position;
-        if (Vector3.Angle(originTransform.right, selectionVector) > _viewAngle)
+        if (Vector3.Angle(originTransform.right, selectionVector) > _data.ViewAngle)
           selection.Del<Selected>();
       }
     }

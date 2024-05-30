@@ -8,11 +8,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
 {
   public class InRadiusSelectionAlgorithm : ISelectionAlgorithm
   {
-    private readonly float _radius;
+    private readonly SelectionData _data;
 
-    public InRadiusSelectionAlgorithm(float radius)
+    public InRadiusSelectionAlgorithm(SelectionData data)
     {
-      _radius = radius;
+      _data = data;
     }
 
     public void Select(EcsEntities origins, EcsEntities selections)
@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
         Transform targetTransform = origin.Get<ViewRef>().View.transform;
         Transform selectionTransform = selection.Get<ViewRef>().View.transform;
         if (!selectionTransform.gameObject.activeInHierarchy
-          || Vector2.Distance(targetTransform.position, selectionTransform.position) > _radius)
+          || Vector2.Distance(targetTransform.position, selectionTransform.position) > _data.Radius)
           selection.Del<Selected>();
       }
     }
