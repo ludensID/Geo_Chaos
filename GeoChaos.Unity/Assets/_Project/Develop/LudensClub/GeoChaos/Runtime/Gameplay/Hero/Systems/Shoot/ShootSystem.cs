@@ -1,7 +1,9 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemy;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Shard;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -18,6 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
     private readonly EcsWorld _game;
     private readonly EcsEntities _commands;
     private readonly HeroConfig _config;
+    private readonly EcsEntities _enemies;
 
     public ShootSystem(GameWorldWrapper gameWorldWrapper,
       IShardFactory shardFactory,
@@ -34,6 +37,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
       _commands = _game
         .Filter<ShootCommand>()
         .Collect();
+
+      _enemies = _game
+        .Filter<EnemyTag>()
+        .Inc<Selected>()
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
@@ -42,6 +50,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
       {
         Vector2 shootDirection = CalculateShootDirection(command.Get<ViewDirection>().Direction,
           command.Get<BodyDirection>().Direction);
+        foreach (EcsEntity enemy in _enemies)
+        {
+          shootDirection = enemy.Get<ViewRef>().View.transform.position
+            - command.Get<ViewRef>().View.transform.position;
+        }
+        shootDirection.Normalize();
+        
         Vector3 position = command.Get<ViewRef>().View.transform.position + (Vector3)shootDirection;
 
         EcsEntity shard = _shardFactory.Create()

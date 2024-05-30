@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using LudensClub.GeoChaos.Runtime.Gameplay;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemy;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
@@ -22,9 +23,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     [SerializeField]
     private DashCooldownView _dashCooldownView;
 
-    [SerializeField]
-    private EnemyHealthView _enemyHealthView;
-
     public override void InstallBindings()
     {
       BindEcsDisposer();
@@ -36,6 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindSelectionAlgorithmFactory();
       BindRingSelector();
+      BindEnemySelector();
       
       BindDragForceService();
       BindADControlService();
@@ -57,7 +56,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEngine();
 
       BindDashCooldownPresenter();
-      BindEnemyHealthView();
+    }
+
+    private void BindEnemySelector()
+    {
+      Container
+        .BindInterfacesAndSelfTo<EnemySelector>()
+        .AsSingle();
     }
 
     private void BindRingSelector()
@@ -143,14 +148,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .Bind<List<RingView>>()
         .FromInstance(rings)
         .AsSingle();
-    }
-
-    private void BindEnemyHealthView()
-    {
-      Container
-        .BindInterfacesTo<EnemyHealthPresenter>()
-        .AsSingle()
-        .WithArguments(_enemyHealthView);
     }
 
     private void BindCollisionService()

@@ -6,9 +6,9 @@ using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 using Zenject;
 
-namespace LudensClub.GeoChaos.Debugging
+namespace LudensClub.GeoChaos.Runtime.Debugging
 { 
-  public class RingViewDebug : MonoBehaviour
+  public class RingHighlighter : MonoBehaviour
   {
     [SerializeField]
     private SpriteRenderer spriteRenderer;

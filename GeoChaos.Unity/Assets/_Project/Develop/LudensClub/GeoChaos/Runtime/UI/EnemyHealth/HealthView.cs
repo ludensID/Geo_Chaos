@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.UI
 {
-  public class EnemyHealthView : MonoBehaviour
+  public class HealthView : MonoBehaviour
   {
     [SerializeField] private TMP_Text _text;
 

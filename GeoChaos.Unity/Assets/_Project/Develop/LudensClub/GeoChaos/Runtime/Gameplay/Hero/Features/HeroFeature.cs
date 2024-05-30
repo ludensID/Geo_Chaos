@@ -1,5 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemy;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
@@ -100,6 +101,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<FinishHookInterruptionSystem>());
       
       Add(systems.Create<Delete<HookCommand, GameWorldWrapper>>());
+      
+      Add(systems.Create<SelectNearestEnemySystem>());
       
       Add(systems.Create<ReadShotInputSystem>());
       Add(systems.Create<ShootSystem>());

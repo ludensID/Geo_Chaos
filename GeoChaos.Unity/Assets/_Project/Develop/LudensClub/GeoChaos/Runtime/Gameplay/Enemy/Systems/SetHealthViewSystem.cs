@@ -1,0 +1,31 @@
+﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Characteristics.Components;
+using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
+using LudensClub.GeoChaos.Runtime.Utils;
+
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy
+{
+  public class SetHealthViewSystem : IEcsRunSystem
+  {
+    private readonly EcsWorld _game;
+    private readonly EcsEntities _enemies;
+
+    public SetHealthViewSystem(GameWorldWrapper gameWorldWrapper)
+    {
+      _game = gameWorldWrapper.World;
+
+      _enemies = _game
+        .Filter<EnemyTag>()
+        .Inc<HealthRef>()
+        .Collect();
+    }
+    
+    public void Run(EcsSystems systems)
+    {
+      foreach (EcsEntity enemy in _enemies)
+      {
+        enemy.Get<HealthRef>().View.SetText(enemy.Get<Health>().Value.ToString("####"));
+      }
+    }
+  }
+}

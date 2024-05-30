@@ -139,6 +139,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [LabelText("Enabled")]
     public bool EnableShoot;
     public float ShardVelocity;
+    public float ShootRadius;
+    public float EnemyViewAngle;
 
     [Group(TriConstants.TECH + TriConstants.Names.SHOOT)]
     public float ShardLifeTime;
@@ -147,6 +149,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float Health;
 
     public float DashDamage;
+    public float ShardDamage;
 
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
     public List<float> HitDamages = new List<float>(3) { 0, 0, 0 };

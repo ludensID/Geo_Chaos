@@ -10,7 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
       Add(systems.Create<FlushCollisionsSystem>());
       Add(systems.Create<DamageFromDashSystem>());
       Add(systems.Create<DamageFromAttackSystem>());
-      Add(systems.Create<DestroyShardSystem>());
+      Add(systems.Create<DamageFromShardSystem>());
+      
     }
   }
 }
