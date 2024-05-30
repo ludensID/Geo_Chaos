@@ -3,19 +3,17 @@ using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Props;
-using LudensClub.GeoChaos.Runtime.Utils;
-using UnityEngine;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public class DamageFromAttackSystem : IEcsRunSystem
   {
     private readonly ICollisionService _collisionSvc;
-    private readonly EcsFilter _collisions;
     private readonly EcsWorld _message;
     private readonly HeroConfig _config;
     private readonly EcsWorld _game;
+    private readonly EcsEntities _collisions;
 
     public DamageFromAttackSystem(MessageWorldWrapper messageWorldWrapper,
       GameWorldWrapper gameWorldWrapper,
@@ -29,27 +27,26 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 
       _collisions = _message
         .Filter<TwoSideCollision>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (int col in _collisions)
+      foreach (EcsEntity col in _collisions)
       {
-        ref TwoSideCollision collision = ref _message.Get<TwoSideCollision>(col);
+        ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
         if (_collisionSvc.TrySelectDamagerAndTarget(collision, ColliderType.Attack, ColliderType.Body,
           out PackedCollider damager, out PackedCollider target) && !damager.Entity.EqualsTo(target.Entity))
         {
-          if (damager.Entity.Unpack(_game, out int damagerEntity))
+          if (damager.Entity.TryUnpackEntity(_game, out EcsEntity damagerEntity))
           {
-            ref ComboAttackCounter counter = ref _game.Get<ComboAttackCounter>(damagerEntity);
-            
-            int message = _message.NewEntity();
-            ref DamageMessage damage = ref _message.Add<DamageMessage>(message);
-            damage.Damage = _config.HitDamages[counter.Count];
-            damage.Damager = damager.Entity;
-            damage.Target = target.Entity;
-            Debug.Log($"Take Damage {damage.Damage}");
+            _message.CreateEntity()
+              .Add((ref DamageMessage message) =>
+              {
+                message.Damage = _config.HitDamages[damagerEntity.Get<ComboAttackCounter>().Count];
+                message.Damager = damager.Entity;
+                message.Target = target.Entity;
+              });
           }
         }
       }

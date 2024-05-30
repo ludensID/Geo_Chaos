@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
-using LudensClub.GeoChaos.Runtime.Utils;
 using TriInspector;
 using UnityEngine;
 

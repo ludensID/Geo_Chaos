@@ -1,13 +1,13 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 {
   public class MarkExpiredEntitySystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _expireUps;
+    private readonly EcsEntities _expireUps;
 
     public MarkExpiredEntitySystem(InputWorldWrapper inputWorldWrapper)
     {
@@ -15,26 +15,25 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 
       _expireUps = _world
         .Filter<ExpireUp>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
       float maxTime = 0;
-      var expiredEntity = -1;
+      EcsEntity expiredEntity = null;
 
-      foreach (var expireUp in _expireUps)
+      foreach (EcsEntity expireUp in _expireUps)
       {
-        ref var timer = ref _world.Get<ExpireTimer>(expireUp);
-        if (timer.PassedTime > maxTime)
+        float time = expireUp.Get<ExpireTimer>().PassedTime;
+        if (time > maxTime)
         {
-          maxTime = timer.PassedTime;
+          maxTime = time;
           expiredEntity = expireUp;
         }
       }
 
-      if (expiredEntity != -1)
-        _world.Add<Expired>(expiredEntity);
+      expiredEntity?.Add<Expired>();
     }
   }
 }

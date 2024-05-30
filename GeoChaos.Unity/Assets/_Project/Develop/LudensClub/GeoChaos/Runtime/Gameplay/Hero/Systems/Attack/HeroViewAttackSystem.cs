@@ -1,15 +1,15 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
 {
   public class HeroViewAttackSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _onStartAttacks;
-    private readonly EcsFilter _onFinishAttacks;
+    private readonly EcsEntities _onStartAttacks;
+    private readonly EcsEntities _onFinishAttacks;
 
     public HeroViewAttackSystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -19,32 +19,30 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
         .Filter<OnAttackStarted>()
         .Inc<ComboAttackCounter>()
         .Inc<HeroAttackColliders>()
-        .End();
+        .Collect();
 
       _onFinishAttacks = _game
         .Filter<OnAttackFinished>()
         .Inc<ComboAttackCounter>()
         .Inc<HeroAttackColliders>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (int attack in _onStartAttacks)
+      foreach (EcsEntity attack in _onStartAttacks)
       {
-        ref ComboAttackCounter counter = ref _game.Get<ComboAttackCounter>(attack);
-        ref HeroAttackColliders colliders = ref _game.Get<HeroAttackColliders>(attack);
-        colliders.Colliders[counter.Count].enabled = true;
+        attack.Replace((ref HeroAttackColliders colliders) =>
+          colliders.Colliders[attack.Get<ComboAttackCounter>().Count].enabled = true);
       }
 
-      foreach (int attack in _onFinishAttacks)
+      foreach (EcsEntity attack in _onFinishAttacks)
       {
-        ref ComboAttackCounter counter = ref _game.Get<ComboAttackCounter>(attack);
-        ref HeroAttackColliders colliders = ref _game.Get<HeroAttackColliders>(attack);
-        int index = counter.Count - 1;
+        int index = attack.Get<ComboAttackCounter>().Count - 1;
         if (index < 0)
           index += 3;
-        colliders.Colliders[index].enabled = false;
+
+        attack.Replace((ref HeroAttackColliders colliders) => colliders.Colliders[index].enabled = false);
       }
     }
   }

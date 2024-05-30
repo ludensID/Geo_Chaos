@@ -1,9 +1,9 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Converters
 {
   public class GroundCheckConverter : MonoBehaviour, IEcsConverter
   {

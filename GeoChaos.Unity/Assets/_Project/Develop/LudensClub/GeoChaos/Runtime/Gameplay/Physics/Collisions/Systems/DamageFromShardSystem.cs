@@ -4,7 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {

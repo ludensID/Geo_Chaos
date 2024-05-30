@@ -2,7 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Characteristics.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   {
     private readonly EcsWorld _game;
     private readonly EcsWorld _message;
-    private readonly EcsFilter _commands;
+    private readonly EcsEntities _commands;
 
     public CreateHeroEntitySystem(GameWorldWrapper worldWrapper)
     {
@@ -19,21 +19,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _commands = _game
         .Filter<CreateCommand>()
         .Inc<EntityId>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var command in _commands
+      foreach (EcsEntity command in _commands
         .Where<EntityId>(x => x.Id == EntityType.Hero))
       {
-        _game.Add<HeroTag>(command);
-
-        ref var health = ref _game.Add<Health>(command);
-        health.Value = 100;
-
-        _game.Del<CreateCommand>(command);
-        _game.Add<InitializeCommand>(command);
+        command.Add<HeroTag>()
+          .Add((ref Health health) => health.Value = 100)
+          .Del<CreateCommand>()
+          .Add<InitializeCommand>();
       }
     }
   }

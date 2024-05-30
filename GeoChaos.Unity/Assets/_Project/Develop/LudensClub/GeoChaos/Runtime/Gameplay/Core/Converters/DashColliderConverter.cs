@@ -1,9 +1,10 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Converters
 {
   public class DashColliderConverter : MonoBehaviour, IEcsConverter
   {

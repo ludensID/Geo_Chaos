@@ -2,19 +2,26 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Debugging.Watchers
 {
   public class InputDelayWatcher : IWatcher
   {
-    private readonly EcsWorld _world;
+    private readonly EcsWorld _input;
     private readonly HeroConfig _config;
     private float _delay;
+    private readonly EcsEntities _inputs;
 
     public InputDelayWatcher(InputWorldWrapper inputWorldWrapper, IConfigProvider configProvider)
     {
-      _world = inputWorldWrapper.World;
+      _input = inputWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
+
+      _inputs = _input
+        .Filter<DelayedInput>()
+        .Collect();
+      
       _delay = _config.MovementResponseDelay;
     }
 
@@ -30,8 +37,8 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
 
     public void OnChanged()
     {
-      foreach (var input in _world.Filter<DelayedInput>().End())
-        _world.DelEntity(input);
+      foreach (EcsEntity input in _inputs)
+        input.Dispose();
     }
   }
 }

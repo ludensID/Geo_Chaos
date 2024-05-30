@@ -4,7 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
 {
@@ -12,8 +12,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
   {
     private readonly EcsWorld _game;
     private readonly EcsWorld _input;
-    private readonly EcsFilter _heroes;
-    private readonly EcsFilter _inputs;
+    private readonly EcsEntities _heroes;
+    private readonly EcsEntities _inputs;
 
     public ReadAttackInputSystem(GameWorldWrapper gameWorldWrapper, InputWorldWrapper inputWorldWrapper)
     {
@@ -24,19 +24,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
         .Filter<HeroTag>()
         .Inc<AttackAvailable>()
         .Exc<MovementLocked>()
-        .End();
+        .Collect();
 
       _inputs = _input
         .Filter<Expired>()
         .Inc<IsAttack>()
-        .End();
+        .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (int _ in _inputs)
-      foreach (int hero in _heroes)
-        _game.Add<AttackCommand>(hero);
+      foreach (EcsEntity _ in _inputs)
+      foreach (EcsEntity hero in _heroes)
+        hero.Add<AttackCommand>();
     }
   }
 }

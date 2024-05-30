@@ -1,8 +1,8 @@
 ﻿using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
-using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy

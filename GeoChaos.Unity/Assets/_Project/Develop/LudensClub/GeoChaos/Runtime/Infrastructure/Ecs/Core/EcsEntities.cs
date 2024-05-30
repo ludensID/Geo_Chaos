@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Utils
+namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public class EcsEntities : IEnumerable<EcsEntity>
   {

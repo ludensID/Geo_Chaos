@@ -2,8 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Characteristics.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
-using UnityEngine;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Systems
 {
@@ -11,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Systems
   {
     private readonly EcsWorld _message;
     private readonly EcsWorld _game;
-    private readonly EcsFilter _damages;
+    private readonly EcsEntities _damages;
 
     public GetDamageSystem(GameWorldWrapper gameWorldWrapper, MessageWorldWrapper messageWorldWrapper)
     {
@@ -20,19 +19,21 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Systems
 
       _damages = _message
         .Filter<DamageMessage>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (int damage in _damages)
+      foreach (EcsEntity damage in _damages)
       {
-        ref DamageMessage message = ref _message.Get<DamageMessage>(damage);
-        message.Target.Unpack(_game, out int target);
-        ref Health health = ref _game.Get<Health>(target);
-        health.Value -= message.Damage;
+        ref DamageMessage message = ref damage.Get<DamageMessage>();
+        if (message.Target.TryUnpackEntity(_game, out EcsEntity target))
+        {
+          ref Health health = ref target.Get<Health>();
+          health.Value -= message.Damage;
+        }
         
-        _message.DelEntity(damage);
+        damage.Dispose();
       }
     }
   }

@@ -1,12 +1,13 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 {
   public class DestroyExpiredEntitiesSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _expireds;
+    private readonly EcsEntities _expireds;
 
     public DestroyExpiredEntitiesSystem(InputWorldWrapper inputWorldWrapper)
     {
@@ -14,13 +15,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 
       _expireds = _world
         .Filter<Expired>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var expired in _expireds) 
-        _world.DelEntity(expired);
+      foreach (EcsEntity expired in _expireds) 
+        expired.Dispose();
     }
   }
 }

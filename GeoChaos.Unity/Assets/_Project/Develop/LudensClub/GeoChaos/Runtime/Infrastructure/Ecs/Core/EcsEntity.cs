@@ -1,9 +1,8 @@
 ﻿using System;
 using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Utils
+namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public delegate void ActionRef<TComponent>(ref TComponent component);
 

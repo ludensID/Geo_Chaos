@@ -2,17 +2,16 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Props;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public class DamageFromDashSystem : IEcsRunSystem
   {
     private readonly ICollisionService _collisionSvc;
-    private readonly EcsFilter _collisions;
     private readonly EcsWorld _message;
     private readonly HeroConfig _config;
+    private readonly EcsEntities _collisions;
 
     public DamageFromDashSystem(MessageWorldWrapper messageWorldWrapper,
       IConfigProvider configProvider,
@@ -24,22 +23,24 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 
       _collisions = _message
         .Filter<TwoSideCollision>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var col in _collisions)
+      foreach (EcsEntity col in _collisions)
       {
-        ref TwoSideCollision collision = ref _message.Get<TwoSideCollision>(col);
+        ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
         if (_collisionSvc.TrySelectDamagerAndTarget(collision, ColliderType.Dash, ColliderType.Body,
           out PackedCollider damager, out PackedCollider target) && !damager.Entity.EqualsTo(target.Entity))
         {
-          int message = _message.NewEntity();
-          ref DamageMessage damage = ref _message.Add<DamageMessage>(message);
-          damage.Damage = _config.DashDamage;
-          damage.Damager = damager.Entity;
-          damage.Target = target.Entity;
+          _message.CreateEntity()
+            .Add((ref DamageMessage damage) =>
+            {
+              damage.Damage = _config.DashDamage;
+              damage.Damager = damager.Entity;
+              damage.Target = target.Entity;
+            });
         }
       }
     }

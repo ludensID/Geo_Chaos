@@ -1,4 +1,4 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Utils
+﻿namespace LudensClub.GeoChaos.Runtime.Constants
 {
   public static class EcsConstants
   {

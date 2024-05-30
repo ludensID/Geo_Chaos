@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Utils
+namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public static class EcsExtensions
   {
@@ -32,16 +31,6 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     public static void Del<TComponent>(this EcsWorld world, int entity) where TComponent : struct, IEcsComponent
     {
       world.GetPool<TComponent>().Del(entity);
-    }
-
-    [HideInCallstack]
-    public static ref TComponent Assign<TComponent>(this ref TComponent component, Action<EcsShell<TComponent>> assigner)
-      where TComponent : struct, IEcsComponent
-    {
-      var shell = new EcsShell<TComponent>(component);
-      assigner.Invoke(shell);
-      component = shell.Value;
-      return ref component;
     }
 
     [HideInCallstack]

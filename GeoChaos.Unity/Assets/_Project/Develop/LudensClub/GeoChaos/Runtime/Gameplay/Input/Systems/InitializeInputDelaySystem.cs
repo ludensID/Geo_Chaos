@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 {
@@ -18,9 +18,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 
     public void Init(EcsSystems systems)
     {
-      var delay = _world.NewEntity();
-      ref var inputDelay = ref _world.Add<InputDelay>(delay);
-      inputDelay.Delay = _config.MovementResponseDelay;
+      _world.CreateEntity()
+        .Add((ref InputDelay delay) => delay.Delay = _config.MovementResponseDelay);
     }
   }
 }

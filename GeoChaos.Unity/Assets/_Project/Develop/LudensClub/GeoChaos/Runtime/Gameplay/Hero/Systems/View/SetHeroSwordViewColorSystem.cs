@@ -2,14 +2,15 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
   public class SetHeroSwordViewColorSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _heroes;
+    private readonly EcsEntities _heroes;
 
     public SetHeroSwordViewColorSystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -18,21 +19,24 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<HeroSwordViewRef>()
-        .End();
+        .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (int hero in _heroes)
+      foreach (EcsEntity hero in _heroes)
       {
-        ref HeroSwordViewRef swordRef = ref _game.Get<HeroSwordViewRef>(hero);
-        swordRef.View.SetColor(swordRef.View.DefaultColor);
+        hero.Replace((ref HeroSwordViewRef sword) =>
+        {
+          Color color = sword.View.DefaultColor;
+          if (hero.Has<Attacking>())
+            color = sword.View.AttackColor;
 
-        if (_game.Has<Attacking>(hero))
-          swordRef.View.SetColor(swordRef.View.AttackColor);
+          if (hero.Has<ComboAttackTimer>())
+            color = sword.View.ComboColor;
 
-        if (_game.Has<ComboAttackTimer>(hero))
-          swordRef.View.SetColor(swordRef.View.ComboColor);
+          sword.View.SetColor(color);
+        });
       }
     }
   }

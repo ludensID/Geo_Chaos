@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Worlds
 {

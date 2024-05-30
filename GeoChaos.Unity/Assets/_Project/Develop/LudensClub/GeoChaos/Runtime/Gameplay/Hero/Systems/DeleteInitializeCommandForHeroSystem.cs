@@ -1,14 +1,14 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
   public class DeleteInitializeCommandForHeroSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _heroes;
+    private readonly EcsEntities _heroes;
 
     public DeleteInitializeCommandForHeroSystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -17,12 +17,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<InitializeCommand>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var hero in _heroes) _game.Del<InitializeCommand>(hero);
+      foreach (EcsEntity hero in _heroes)
+        hero.Del<InitializeCommand>();
     }
   }
 }

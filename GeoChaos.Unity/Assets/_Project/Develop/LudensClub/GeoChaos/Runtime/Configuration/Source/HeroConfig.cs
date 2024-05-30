@@ -140,6 +140,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public bool EnableShoot;
     public float ShardVelocity;
     public float ShootRadius;
+    
+    [Range(0, 90)]
     public float EnemyViewAngle;
 
     [Group(TriConstants.TECH + TriConstants.Names.SHOOT)]

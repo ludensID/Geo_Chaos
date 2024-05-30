@@ -1,34 +1,33 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 {
   public class MarkExpireUpEntitiesSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _expirable;
     private readonly HeroConfig _config;
+    private readonly EcsEntities _expirables;
 
     public MarkExpireUpEntitiesSystem(InputWorldWrapper inputWorldWrapper, IConfigProvider configProvider)
     {
       _world = inputWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
-      _expirable = _world
+      _expirables = _world
         .Filter<ExpireTimer>()
         .Exc<ExpireUp>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var expirable in _expirable)
+      foreach (EcsEntity expirable in _expirables
+        .Where<ExpireTimer>(x => x.PassedTime >= _config.MovementResponseDelay))
       {
-        ref var timer = ref _world.Get<ExpireTimer>(expirable);
-        if (timer.PassedTime >= _config.MovementResponseDelay)
-          _world.Add<ExpireUp>(expirable);
+        expirable.Add<ExpireUp>();
       }
     }
   }

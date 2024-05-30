@@ -1,14 +1,14 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
   public class InitializeHeroRigidbodySystem : IEcsInitSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _heroes;
+    private readonly EcsEntities _heroes;
 
     public InitializeHeroRigidbodySystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -18,16 +18,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Filter<GravityScale>()
         .Inc<OnConverted>()
         .Inc<RigidbodyRef>()
-        .End();
+        .Collect();
     }
 
     public void Init(EcsSystems systems)
     {
-      foreach (var hero in _heroes)
+      foreach (EcsEntity hero in _heroes)
       {
-        ref var gravityScale = ref _world.Get<GravityScale>(hero);
-        ref var rigidbodyRef = ref _world.Get<RigidbodyRef>(hero);
-        rigidbodyRef.Rigidbody.gravityScale = gravityScale.Value;
+        hero.Replace((ref RigidbodyRef rigidbodyRef) =>
+          rigidbodyRef.Rigidbody.gravityScale = hero.Get<GravityScale>().Value);
       }
     }
   }

@@ -1,12 +1,13 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public class DeleteCollisionSystem : IEcsRunSystem
   {
     private readonly EcsWorld _message;
-    private readonly EcsFilter _collisions;
+    private readonly EcsEntities _collisions;
 
     public DeleteCollisionSystem(MessageWorldWrapper messageWorldWrapper)
     {
@@ -14,13 +15,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 
       _collisions = _message
         .Filter<CollisionMessage>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (int col in _collisions)
-        _message.DelEntity(col);
+      foreach (EcsEntity col in _collisions)
+        col.Dispose();
     }
   }
 }

@@ -1,9 +1,10 @@
-﻿using Leopotam.EcsLite;
+﻿using System.Linq;
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
-using UnityEngine;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.UI
@@ -12,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.UI
   {
     private readonly DashCooldownView _view;
     private readonly EcsWorld _game;
-    private readonly EcsFilter _heroCooldowns;
+    private readonly EcsEntities _heroCooldowns;
 
     public DashCooldownPresenter(DashCooldownView view, GameWorldWrapper gameWorldWrapper)
     {
@@ -22,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.UI
       _heroCooldowns = _game
         .Filter<HeroTag>()
         .Inc<DashCooldown>()
-        .End();
+        .Collect();
     }
 
     public void Initialize()
@@ -32,13 +33,12 @@ namespace LudensClub.GeoChaos.Runtime.UI
 
     public void Tick()
     {
-      if (_heroCooldowns.GetEntitiesCount() == 0)
+      if (!_heroCooldowns.Any())
         Reset();
 
-      foreach (int heroCooldown in _heroCooldowns)
+      foreach (EcsEntity heroCooldown in _heroCooldowns)
       {
-        ref DashCooldown cooldown = ref _game.Get<DashCooldown>(heroCooldown);
-        float viewTime = Mathf.Clamp(cooldown.TimeLeft.TimeLeft, 0, cooldown.TimeLeft.TimeLeft);
+        float viewTime = MathUtils.Clamp(heroCooldown.Get<DashCooldown>().TimeLeft.TimeLeft, 0);
         _view.SetText(viewTime.ToString("F"));
       }
     }

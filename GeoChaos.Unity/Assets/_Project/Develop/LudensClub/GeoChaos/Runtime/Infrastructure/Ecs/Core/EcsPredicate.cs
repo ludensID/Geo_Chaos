@@ -1,8 +1,7 @@
 ﻿using System;
 using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Utils
+namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public class EcsPredicate<TComponent> : IEcsPredicate where TComponent : struct, IEcsComponent
   {

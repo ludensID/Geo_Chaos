@@ -1,5 +1,5 @@
 using LudensClub.GeoChaos.Runtime.Constants;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Props.Shard

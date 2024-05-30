@@ -1,14 +1,13 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 {
   public class SowDashCommandSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _cooldowns;
-    private readonly EcsEntities _dashes;
+    private readonly EcsEntities _cooldowns;
 
     public SowDashCommandSystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -18,13 +17,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         .Filter<DashAvailable>()
         .Inc<DashCommand>()
         .Inc<DashCooldown>()
-        .End();
+        .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (int cooldown in _cooldowns)
-        _game.Del<DashCommand>(cooldown);
+      foreach (EcsEntity cooldown in _cooldowns)
+        cooldown.Del<DashCommand>();
     }
   }
 }

@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using LudensClub.GeoChaos.Runtime.UI;
-using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy

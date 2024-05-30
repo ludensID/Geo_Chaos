@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Infrastructure
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
   public class View : MonoBehaviour
   {

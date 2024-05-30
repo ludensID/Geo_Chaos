@@ -5,7 +5,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using LudensClub.GeoChaos.Runtime.Props;
-using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
 {
@@ -14,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
     private readonly IViewFactory _factory;
     private readonly IGameObjectConverter _converter;
     private readonly EcsWorld _game;
-    private readonly EcsFilter _creatables;
+    private readonly EcsEntities _creatables;
 
     public CreateViewByPrefabSystem(GameWorldWrapper gameWorldWrapper,
       IViewFactory factory,
@@ -27,16 +26,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
       _creatables = _game
         .Filter<ViewPrefab>()
         .Exc<ViewRef>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var creatable in _creatables)
+      foreach (EcsEntity creatable in _creatables)
       {
-        ref var prefab = ref _game.Get<ViewPrefab>(creatable);
-        _converter.Convert(_game, creatable, _factory.Create(prefab.Prefab));
-        _game.Add<OnConverted>(creatable);
+        _converter.Convert(_game, creatable.Entity, _factory.Create(creatable.Get<ViewPrefab>().Prefab));
+        creatable.Add<OnConverted>();
       }
     }
   }

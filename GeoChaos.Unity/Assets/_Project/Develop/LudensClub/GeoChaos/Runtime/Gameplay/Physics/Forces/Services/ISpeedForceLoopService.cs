@@ -1,6 +1,6 @@
 ﻿using System;
 using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {

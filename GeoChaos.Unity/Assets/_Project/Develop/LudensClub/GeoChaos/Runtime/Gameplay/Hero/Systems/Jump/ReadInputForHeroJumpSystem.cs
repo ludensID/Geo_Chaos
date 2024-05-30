@@ -2,17 +2,17 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
   public class ReadInputForHeroJumpSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _grounds;
-    private readonly EcsFilter _noStoppeds;
-    private readonly EcsFilter _jumpStartedInputs;
-    private readonly EcsFilter _jumpCanceledInputs;
+    private readonly EcsEntities _grounds;
+    private readonly EcsEntities _jumpStartedInputs;
+    private readonly EcsEntities _noStoppeds;
+    private readonly EcsEntities _jumpCanceledInputs;
 
     public ReadInputForHeroJumpSystem(GameWorldWrapper gameWorldWrapper, InputWorldWrapper inputWorldWrapper)
     {
@@ -23,34 +23,34 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Inc<JumpAvailable>()
         .Inc<OnGround>()
         .Exc<MovementLocked>()
-        .End();
+        .Collect();
 
       _jumpStartedInputs = inputWorld
         .Filter<Expired>()
         .Inc<IsJumpStarted>()
-        .End();
+        .Collect();
 
       _noStoppeds = _world.Filter<HeroTag>()
         .Inc<JumpAvailable>()
         .Inc<Jumping>()
         .Exc<MovementLocked>()
-        .End();
+        .Collect();
 
       _jumpCanceledInputs = inputWorld
         .Filter<Expired>()
         .Inc<IsJumpCanceled>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var _ in _jumpStartedInputs)
-      foreach (var hero in _grounds)
-        _world.Add<JumpCommand>(hero);
+      foreach (EcsEntity _ in _jumpStartedInputs)
+      foreach (EcsEntity hero in _grounds)
+        hero.Add<JumpCommand>();
 
-      foreach (var _ in _jumpCanceledInputs)
-      foreach (var noStopped in _noStoppeds)
-        _world.Add<StopJumpCommand>(noStopped);
+      foreach (EcsEntity _ in _jumpCanceledInputs)
+      foreach (EcsEntity noStopped in _noStoppeds)
+        noStopped.Add<StopJumpCommand>();
     }
   }
 }

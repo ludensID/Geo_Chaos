@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
@@ -8,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
   public class UpdateExpireTimeSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsFilter _timers;
+    private readonly EcsEntities _timers;
 
     public UpdateExpireTimeSystem(InputWorldWrapper inputWorldWrapper)
     {
@@ -16,15 +16,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 
       _timers = _world
         .Filter<ExpireTimer>()
-        .End();
+        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (var timer in _timers)
+      foreach (EcsEntity timer in _timers)
       {
-        ref var expireTimer = ref _world.Get<ExpireTimer>(timer);
-        expireTimer.PassedTime += Time.deltaTime;
+        timer.Replace((ref ExpireTimer expire) => expire.PassedTime += Time.deltaTime);
       }
     }
   }

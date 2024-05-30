@@ -1,4 +1,4 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Utils
+﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public interface IEcsPredicate
   {

@@ -2,14 +2,14 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump
 {
   public class InterruptHeroJumpSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsFilter _jumpings;
+    private readonly EcsEntities _jumpings;
 
     public InterruptHeroJumpSystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -18,13 +18,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump
       _jumpings = _game
         .Filter<Jumping>()
         .Inc<OnMovementLocked>()
-        .End();
+        .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (int jumping in _jumpings)
-        _game.Del<Jumping>(jumping);
+      foreach (EcsEntity jumping in _jumpings)
+        jumping.Del<Jumping>();
     }
   }
 }
