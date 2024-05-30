@@ -11,6 +11,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.View;
+using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -68,10 +69,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
 
       Add(systems.Create<ReleaseRingSystem>());
       Add(systems.Create<CheckForRingReleasedSystem>());
-      Add(systems.Create<ClearSelectedRingsSystem>());
-      Add(systems.Create<SelectRingsInHookRadiusSystem>());
-      Add(systems.Create<SelectReachedRingsSystem>());
-      Add(systems.Create<SelectRingsInHeroViewSystem>());
       Add(systems.Create<SelectNearestRingSystem>());
       
       Add(systems.Create<DeleteHookInputCooldownSystem>());

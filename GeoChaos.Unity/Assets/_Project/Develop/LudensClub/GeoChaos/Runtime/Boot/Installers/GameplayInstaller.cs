@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using LudensClub.GeoChaos.Runtime.Gameplay;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Shard;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 using LudensClub.GeoChaos.Runtime.Props;
 using LudensClub.GeoChaos.Runtime.Props.Ring;
 using LudensClub.GeoChaos.Runtime.Props.Shard;
@@ -33,6 +34,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindMessageWorldWrapper();
       BindPhysicsWorldWrapper();
 
+      BindSelectionAlgorithmFactory();
+      BindRingSelector();
+      
       BindDragForceService();
       BindADControlService();
       BindSpeedForceLoopService();
@@ -54,6 +58,21 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindDashCooldownPresenter();
       BindEnemyHealthView();
+    }
+
+    private void BindRingSelector()
+    {
+      Container
+        .BindInterfacesAndSelfTo<RingSelector>()
+        .AsSingle();
+    }
+
+    private void BindSelectionAlgorithmFactory()
+    {
+      Container
+        .Bind<ISelectionAlgorithmFactory>()
+        .To<SelectionAlgorithmFactory>()
+        .AsSingle();
     }
 
     private void BindShardFactory()

@@ -1,9 +1,8 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
 {
   public class CheckForRingReleasedSystem : IEcsRunSystem
   {
