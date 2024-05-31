@@ -7,13 +7,13 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
-  public class DisableHeroDragForceSystem : IEcsRunSystem
+  public class StopFreeFallOnGroundSystem : IEcsRunSystem
   {
     private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
     private readonly EcsEntities _onGrounds;
 
-    public DisableHeroDragForceSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceFactory forceFactory)
+    public StopFreeFallOnGroundSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceFactory forceFactory)
     {
       _forceFactory = forceFactory;
       _game = gameWorldWrapper.World;

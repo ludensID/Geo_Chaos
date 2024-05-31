@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
   {
     public HeroFixedFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<DisableHeroDragForceSystem>());
+      Add(systems.Create<StopFreeFallOnGroundSystem>());
       Add(systems.Create<CheckForHeroReachRingSystem>());
       Add(systems.Create<CheckForZeroHookForceSystem>());
       Add(systems.Create<CheckForHookTimerSystem>());
