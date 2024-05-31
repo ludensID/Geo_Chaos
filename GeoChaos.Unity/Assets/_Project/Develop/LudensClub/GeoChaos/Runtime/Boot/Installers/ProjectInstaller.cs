@@ -1,4 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;
@@ -7,6 +8,7 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Boot
 {
+  [AddComponentMenu(ACC.Names.PROJECT_INSTALLER)]
   public class ProjectInstaller : MonoInstaller
   {
     [SerializeField]

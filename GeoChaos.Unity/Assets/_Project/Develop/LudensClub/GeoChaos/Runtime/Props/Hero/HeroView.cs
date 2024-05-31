@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Props
 {
-  [AddComponentMenu(ACC.HERO_VIEW_MENU)]
+  [AddComponentMenu(ACC.Names.HERO_VIEW)]
   public class HeroView : View
   {
   }

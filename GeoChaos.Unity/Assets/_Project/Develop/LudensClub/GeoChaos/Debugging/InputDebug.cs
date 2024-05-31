@@ -7,6 +7,7 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Debugging
 {
+  [AddComponentMenu(ACC.Names.INPUT_DEBUG)]
   public class InputDebug : MonoBehaviour
   {
     private IInputDataProvider _inputProvider;

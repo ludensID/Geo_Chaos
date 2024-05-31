@@ -5,10 +5,11 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Debugging.Monitoring
 {
+  [AddComponentMenu(ACC.Names.ECS_ENTITY_VIEW)]
   public class EcsEntityView : MonoBehaviour
   {
-    public List<EcsComponentView> Components = new();
-    public List<EcsComponentView> ComponentPull = new();
+    public List<EcsComponentView> Components = new List<EcsComponentView>();
+    public List<EcsComponentView> ComponentPull = new List<EcsComponentView>();
     
     private IEcsEntityPresenter _presenter;
 

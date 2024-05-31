@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Props.Ring
 {
-  [AddComponentMenu(ACC.RING_VIEW_MENU)]
+  [AddComponentMenu(ACC.Names.RING_VIEW)]
   public class RingView : View
   {
   }

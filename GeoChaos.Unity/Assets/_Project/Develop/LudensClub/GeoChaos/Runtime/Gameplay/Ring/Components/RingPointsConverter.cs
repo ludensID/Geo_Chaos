@@ -1,9 +1,11 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Constants;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
 {
+  [AddComponentMenu(ACC.Names.RING_POINTS_CONVERTER)]
   public class RingPointsConverter : MonoBehaviour, IEcsConverter
   {
     public Transform TargetPoint;

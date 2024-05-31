@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
@@ -8,6 +9,7 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Props.Enemy
 {
+  [AddComponentMenu(ACC.Names.ENEMY_HIGHLIGHTER)]
   public class EnemyHighlighter : MonoBehaviour
   {
     [SerializeField]

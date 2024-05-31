@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using LudensClub.GeoChaos.Runtime.Constants;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.UI
 {
+  [AddComponentMenu(ACC.Names.HERO_SWORD_VIEW)]
   public class HeroSwordView : MonoBehaviour
   {
     public Color DefaultColor = Color.white;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Props.Shard
 {
-  [AddComponentMenu(ACC.SHARD_VIEW_MENU)]
+  [AddComponentMenu(ACC.Names.SHARD_VIEW)]
   public class ShardView : View
   {
   }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemy;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
@@ -19,6 +20,7 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Boot
 {
+  [AddComponentMenu(ACC.Names.GAMEPLAY_INSTALLER)]
   public class GameplayInstaller : MonoInstaller
   {
     [SerializeField]

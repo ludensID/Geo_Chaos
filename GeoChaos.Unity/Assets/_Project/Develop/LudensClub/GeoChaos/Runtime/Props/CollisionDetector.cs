@@ -1,10 +1,12 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+﻿using LudensClub.GeoChaos.Runtime.Constants;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using UnityEngine;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Props
 {
+  [AddComponentMenu(ACC.Names.COLLISION_DETECTOR)]
   public class CollisionDetector : MonoBehaviour
   {
     [SerializeField]

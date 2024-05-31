@@ -1,8 +1,10 @@
-﻿using TMPro;
+﻿using LudensClub.GeoChaos.Runtime.Constants;
+using TMPro;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.UI
 {
+  [AddComponentMenu(ACC.Names.DASH_COOLDOWN_VIEW)]
   public class DashCooldownView : MonoBehaviour
   {
     [SerializeField]

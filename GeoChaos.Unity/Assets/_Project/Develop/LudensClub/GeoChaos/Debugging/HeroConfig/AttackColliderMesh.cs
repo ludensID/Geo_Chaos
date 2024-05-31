@@ -4,6 +4,7 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Debugging
 {
   [ExecuteAlways]
+  [AddComponentMenu(ACC.Names.ATTACK_COLLIDER_MESH_MENU)]
   public class AttackColliderMesh : MonoBehaviour
   {
     public Color Color;
