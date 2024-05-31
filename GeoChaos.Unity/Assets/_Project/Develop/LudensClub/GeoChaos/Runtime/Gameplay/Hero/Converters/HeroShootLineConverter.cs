@@ -1,5 +1,4 @@
-﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;
@@ -10,10 +9,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Converters
   {
     public LineRenderer ShootLine;
     
-    public void Convert(EcsWorld world, int entity)
+    public void Convert(EcsEntity entity)
     {
-      ref ShootLineRef line = ref world.Add<ShootLineRef>(entity);
-      line.Line = ShootLine;
+      entity.Add((ref ShootLineRef lineRef) => lineRef.Line = ShootLine);
     }
   }
 }

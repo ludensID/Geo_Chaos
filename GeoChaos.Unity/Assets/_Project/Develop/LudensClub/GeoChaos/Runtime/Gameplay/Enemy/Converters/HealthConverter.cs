@@ -1,5 +1,4 @@
-﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using LudensClub.GeoChaos.Runtime.UI;
 using UnityEngine;
@@ -10,9 +9,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy
   {
     public HealthView View;
     
-    public void Convert(EcsWorld world, int entity)
+    public void Convert(EcsEntity entity)
     {
-      world.Add<HealthRef>(entity).View = View;
+      entity.Add((ref HealthRef healthRef) => healthRef.View = View);
     }
   }
 }

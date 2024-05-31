@@ -1,18 +1,18 @@
-﻿using Leopotam.EcsLite;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 {
   public class GameObjectConverter : IGameObjectConverter
   {
-    public void Convert(EcsWorld world, int entity, GameObject gameObject)
+    public void Convert(EcsEntity entity, GameObject gameObject)
     {
-      foreach (var converter in gameObject.GetComponents<IEcsConverter>()) converter.Convert(world, entity);
+      foreach (IEcsConverter converter in gameObject.GetComponents<IEcsConverter>()) 
+        converter.Convert(entity);
     }
 
-    public void Convert<TComponent>(EcsWorld world, int entity, TComponent component) where TComponent : Component
+    public void Convert<TComponent>(EcsEntity entity, TComponent component) where TComponent : Component
     {
-      Convert(world, entity, component.gameObject);
+      Convert(entity, component.gameObject);
     }
   }
 }

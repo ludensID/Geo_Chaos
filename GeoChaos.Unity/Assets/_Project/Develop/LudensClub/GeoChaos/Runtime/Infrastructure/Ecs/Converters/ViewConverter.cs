@@ -1,5 +1,4 @@
-﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
@@ -8,11 +7,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
   {
     public View View;
 
-    public void Convert(EcsWorld world, int entity)
+    public void Convert(EcsEntity entity)
     {
-      ref var viewRef = ref world.Add<ViewRef>(entity);
-      viewRef.View = View;
-      View.Entity = world.PackEntity(entity);
+      entity.Add((ref ViewRef viewRef) => viewRef.View = View);
+      View.Entity = entity.Pack();
     }
     
     private void Reset()

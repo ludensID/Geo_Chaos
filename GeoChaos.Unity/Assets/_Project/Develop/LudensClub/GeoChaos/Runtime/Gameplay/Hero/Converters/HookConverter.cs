@@ -1,5 +1,4 @@
-﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;
@@ -10,10 +9,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Converters
   {
     public LineRenderer Hook;
     
-    public void Convert(EcsWorld world, int entity)
+    public void Convert(EcsEntity entity)
     {
-      ref HookRef hookRef = ref world.Add<HookRef>(entity);
-      hookRef.Hook = Hook;
+      entity.Add((ref HookRef hookRef) => hookRef.Hook = Hook);
     }
   }
 }

@@ -31,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
           .Add<RingTag>()
           .Add((ref EntityId x) => x.Id = EntityType.Ring);
 
-        _converter.Convert(_game, ring.Entity, ringView);
+        _converter.Convert(ring, ringView);
       }
     }
   }

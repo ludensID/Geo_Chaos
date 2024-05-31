@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
     {
       foreach (EcsEntity creatable in _creatables)
       {
-        _converter.Convert(_game, creatable.Entity, _factory.Create(creatable.Get<ViewPrefab>().Prefab));
+        _converter.Convert(creatable, _factory.Create(creatable.Get<ViewPrefab>().Prefab));
         creatable.Add<OnConverted>();
       }
     }

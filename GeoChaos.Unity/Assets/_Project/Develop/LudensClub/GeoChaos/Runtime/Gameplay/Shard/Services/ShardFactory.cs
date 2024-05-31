@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Shard
         .Add<MovementVector>()
         .Add<ForceAvailable>()
         .Add<Poolable>();
-      _converter.Convert(_gameWorldWrapper.World, instance.Entity, _pool.Pull());
+      _converter.Convert(instance, _pool.Pull());
       return instance;
     }
   }

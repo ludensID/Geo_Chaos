@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
@@ -13,10 +12,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Converters
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
     public List<Collider2D> Colliders = new(3) { null, null, null };
 
-    public void Convert(EcsWorld world, int entity)
+    public void Convert(EcsEntity entity)
     {
-      ref HeroAttackColliders colliders = ref world.Add<HeroAttackColliders>(entity);
-      colliders.Colliders = Colliders.ToArray();
+      entity.Add((ref HeroAttackColliders colliders) => colliders.Colliders = Colliders.ToArray());
     }
   }
 }

@@ -1,6 +1,4 @@
-﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Utils;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
@@ -10,10 +8,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     [SerializeField]
     private Collider2D _collider;
 
-    public void Convert(EcsWorld world, int entity)
+    public void Convert(EcsEntity entity)
     {
-      ref var colliderRef = ref world.Add<ColliderRef>(entity);
-      colliderRef.Collider = _collider;
+      entity.Add((ref ColliderRef colliderRef) => colliderRef.Collider = _collider);
     }
     
     private void Reset()

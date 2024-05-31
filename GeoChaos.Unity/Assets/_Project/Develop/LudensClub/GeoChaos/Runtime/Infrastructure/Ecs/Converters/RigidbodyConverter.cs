@@ -1,6 +1,4 @@
-﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Utils;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
@@ -10,10 +8,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     [SerializeField]
     private Rigidbody2D _rigidbody;
 
-    public void Convert(EcsWorld world, int entity)
+    public void Convert(EcsEntity entity)
     {
-      ref var rigidbodyRef = ref world.Add<RigidbodyRef>(entity);
-      rigidbodyRef.Rigidbody = _rigidbody;
+      entity.Add((ref RigidbodyRef rigidbodyRef) => rigidbodyRef.Rigidbody = _rigidbody);
     }
 
     private void Reset()

@@ -1,5 +1,4 @@
-﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.View;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using LudensClub.GeoChaos.Runtime.UI;
@@ -11,10 +10,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Converters
   {
     public HeroSwordView View;
     
-    public void Convert(EcsWorld world, int entity)
+    public void Convert(EcsEntity entity)
     {
-      ref HeroSwordViewRef viewRef = ref world.Add<HeroSwordViewRef>(entity);
-      viewRef.View = View;
+      entity.Add((ref HeroSwordViewRef swordRef) => swordRef.View = View);
     }
   }
 }
