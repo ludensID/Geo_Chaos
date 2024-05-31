@@ -71,7 +71,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindEnemySelector()
     {
       Container
-        .BindInterfacesAndSelfTo<EnemySelector>()
+        .BindInterfacesAndSelfTo<DamagableEntitySelector>()
         .AsSingle();
     }
 

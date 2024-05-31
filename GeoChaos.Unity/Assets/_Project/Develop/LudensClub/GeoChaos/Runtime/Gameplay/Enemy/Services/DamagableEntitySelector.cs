@@ -5,12 +5,12 @@ using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy
 {
-  public class EnemySelector : EcsEntitySelector
+  public class DamagableEntitySelector : EcsEntitySelector
   {
     private readonly SelectionData _data = new SelectionData();
     private readonly HeroConfig _config;
 
-    public EnemySelector(ISelectionAlgorithmFactory factory, IConfigProvider configProvider)
+    public DamagableEntitySelector(ISelectionAlgorithmFactory factory, IConfigProvider configProvider)
     {
       _config = configProvider.Get<HeroConfig>();
       _algorithms.AddRange(new ISelectionAlgorithm[]

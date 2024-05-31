@@ -103,7 +103,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       
       Add(systems.Create<Delete<HookCommand, GameWorldWrapper>>());
       
-      Add(systems.Create<SelectNearestEnemySystem>());
+      Add(systems.Create<SelectNearestDamagableEntitySystem>());
 
       Add(systems.Create<Delete<OnAimStarted, GameWorldWrapper>>());
       Add(systems.Create<Delete<OnAimFinished, GameWorldWrapper>>());
