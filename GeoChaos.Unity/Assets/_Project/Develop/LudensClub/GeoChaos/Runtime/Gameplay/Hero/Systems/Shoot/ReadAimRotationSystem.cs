@@ -40,7 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
         Vector2 delta = input.Get<AimRotation>().Delta;
         aiming.Replace((ref ShootDirection direction) =>
         {
-          direction.Direction += delta * _config.ShootRotationSpeed * Time.deltaTime;
+          direction.Direction += delta * _config.AimRotationSpeed * Time.deltaTime;
           direction.Direction.Normalize();
         });
       }

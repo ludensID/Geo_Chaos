@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Converters;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 using TriInspector;
 using UnityEditor;
@@ -16,6 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
   [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK, Title = TriConstants.TECH)]
   [DeclareTabGroup(TriConstants.Names.HOOK_UPGRADES_TYPES)]
   [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.SHOOT, Title = TriConstants.TECH)]
+  [DeclareBoxGroup(TriConstants.Names.AIM, Title = TriConstants.Names.AIM)]
   public partial class HeroConfig
   {
     public void OnJumpHorizontalSpeedMultiplierChanged()

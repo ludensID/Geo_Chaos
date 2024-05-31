@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
       _input = inputWorldWrapper.World;
 
       _shootables = _game
-        .Filter<ShootAvailable>()
+        .Filter<AimAvailable>()
         .Collect();
 
       _inputs = _input

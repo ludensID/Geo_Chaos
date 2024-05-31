@@ -18,6 +18,7 @@
       public const string HOOK_UPGRADES = "Upgrades";
       public const string HOOK_UPGRADES_TYPES = HOOK_UPGRADES + "/" + "Types";
       public const string SHOOT = "Shoot";
+      public const string AIM = "Aim";
 
       public static class Explicit
       {

@@ -52,8 +52,9 @@ MonoBehaviour:
   EnableShoot: 1
   ShardVelocity: 40
   AutoShootRadius: 20
-  ShootRotationSpeed: 2
   EnemyViewAngle: 90
+  EnableAim: 1
+  AimRotationSpeed: 2
   ShardLifeTime: 3
   ShootMask:
     serializedVersion: 2
