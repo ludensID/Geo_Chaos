@@ -23,7 +23,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
       foreach (EcsEntity releasing in _releasings
         .Where<Releasing>(x => x.TimeLeft <= 0))
       {
-        releasing.Del<Releasing>();
+        releasing
+          .Del<Releasing>()
+          .Add<Selectable>();
       }
     }
   }

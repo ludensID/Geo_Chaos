@@ -33,6 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       {
         ring
           .Del<Selected>()
+          .Del<Selectable>()
           .Add<Hooked>();
       }
     }

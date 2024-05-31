@@ -3,7 +3,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
 {
@@ -28,15 +27,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
 
       _rings = _game
         .Filter<RingTag>()
-        .Exc<Hooked>()
-        .Exc<Releasing>()
+        .Inc<Selectable>()
         .Collect();
 
       _selectedRings = _game
         .Filter<RingTag>()
         .Inc<Selected>()
-        .Exc<Hooked>()
-        .Exc<Releasing>()
+        .Inc<Selectable>()
         .Collect();
     }
 

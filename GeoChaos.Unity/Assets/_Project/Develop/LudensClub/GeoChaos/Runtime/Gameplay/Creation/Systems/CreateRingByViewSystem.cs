@@ -29,6 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
       {
         EcsEntity ring = _game.CreateEntity()
           .Add<RingTag>()
+          .Add<Selectable>()
           .Add((ref EntityId x) => x.Id = EntityType.Ring);
 
         _converter.Convert(ring, ringView);
