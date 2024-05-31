@@ -12,10 +12,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
   {
     private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
-    private readonly EcsEntities _precastCommands;
-    private readonly EcsEntities _pullCommands;
-    private readonly EcsEntities _landCommands;
     private readonly EcsWorld _message;
+    private readonly EcsEntities _interruptCommands;
 
     public InterruptHookSystem(GameWorldWrapper gameWorldWrapper,
       MessageWorldWrapper messageWorldWrapper,
@@ -25,60 +23,51 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _game = gameWorldWrapper.World;
       _message = messageWorldWrapper.World;
 
-      _precastCommands = _game
+      _interruptCommands = _game
         .Filter<InterruptHookCommand>()
-        .Inc<HookPrecast>()
-        .Collect();
-
-      _pullCommands = _game
-        .Filter<InterruptHookCommand>()
-        .Inc<HookPulling>()
-        .Collect();
-
-      _landCommands = _game
-        .Filter<InterruptHookCommand>()
-        .Inc<HookFalling>()
         .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity precast in _precastCommands)
+      foreach (EcsEntity interrupt in _interruptCommands)
       {
-        precast
+        interrupt
           .Del<InterruptHookCommand>()
-          .Add<OnHookInterrupted>()
-          .Del<HookPrecast>()
-          .Has<OnHookPrecastStarted>(false)
-          .Has<OnHookPrecastFinished>(false);
-        
-        ReleaseRing();
-      }
+          .Add<OnHookInterrupted>();
 
-      foreach (EcsEntity pull in _pullCommands)
-      {
-        InterruptHookSpeed(pull);
-        pull
-          .Del<InterruptHookCommand>()
-          .Add<OnHookInterrupted>()
-          .Add<StopFallFreeCommand>()
-          .Del<HookPulling>()
-          .Del<HookTimer>()
-          .Has<OnHookPullingStarted>(false)
-          .Has<OnHookPullingFinished>(false)
-          .Replace((ref GravityScale gravity) => gravity.Enabled = true);
+        bool hasPrecast = interrupt.Has<HookPrecast>();
+        bool hasPulling = interrupt.Has<HookPulling>();
+        bool hasFalling = interrupt.Has<HookFalling>();
 
-        ReleaseRing();
-      }
+        if (hasPulling || hasFalling)
+          InterruptHookSpeed(interrupt);
 
-      foreach (EcsEntity land in _landCommands)
-      {
-        InterruptHookSpeed(land);
-        land
-          .Del<InterruptHookCommand>()
-          .Add<OnHookInterrupted>()
-          .Add<StopFallFreeCommand>()
-          .Del<HookFalling>();
+        if (hasPrecast)
+        {
+          interrupt.Del<HookPrecast>()
+            .Has<OnHookPrecastStarted>(false)
+            .Has<OnHookPrecastFinished>(false);
+        }
+        else if (hasPulling)
+        {
+          interrupt
+            .Add<StopFallFreeCommand>()
+            .Del<HookPulling>()
+            .Del<HookTimer>()
+            .Has<OnHookPullingStarted>(false)
+            .Has<OnHookPullingFinished>(false)
+            .Replace((ref GravityScale gravity) => gravity.Enabled = true);
+        }
+        else if (hasFalling)
+        {
+          interrupt
+            .Add<StopFallFreeCommand>()
+            .Del<HookFalling>();
+        }
+
+        if (hasPrecast || hasPulling)
+          ReleaseRing();
       }
     }
 
