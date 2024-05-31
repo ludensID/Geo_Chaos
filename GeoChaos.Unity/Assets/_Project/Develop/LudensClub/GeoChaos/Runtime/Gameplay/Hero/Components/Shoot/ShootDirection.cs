@@ -1,7 +1,8 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shot
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,7 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shot
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct ShootCommand : IEcsComponent
+  public struct ShootDirection : IEcsComponent
   {
+    public Vector2 Direction;
   }
 }

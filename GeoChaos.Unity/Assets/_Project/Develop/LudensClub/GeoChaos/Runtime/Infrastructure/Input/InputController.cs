@@ -1,4 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.Configuration;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
@@ -14,6 +15,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     private readonly InputAction _attackAction;
     private readonly InputAction _hookAction;
     private readonly InputAction _shootAction;
+    private readonly InputAction _aimAction;
+    private readonly InputAction _aimDirectionAction;
+    private readonly InputAction _aimRotationAction;
 
     public InputController(PlayerInput input, IConfigProvider configProvider, IInputDataProvider provider)
     {
@@ -27,6 +31,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       _attackAction = input.actions[actionMap.AttackAction];
       _hookAction = input.actions[actionMap.HookAction];
       _shootAction = input.actions[actionMap.ShootAction];
+      _aimAction = input.actions[actionMap.AimAction];
+      _aimDirectionAction = input.actions[actionMap.AimDirectionAction];
+      _aimRotationAction = input.actions[actionMap.AimRotationAction];
     }
 
     public void Tick()
@@ -53,6 +60,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       data.IsAttack = _attackAction.WasPerformedThisFrame();
       data.IsHook = _hookAction.WasPerformedThisFrame();
       data.IsShoot = _shootAction.WasPerformedThisFrame();
+
+      data.IsAim = _aimAction.ReadValue<float>() >= 1;
+      data.AimDirection = _aimDirectionAction.ReadValue<Vector2>();
+      data.AimRotation = _aimRotationAction.ReadValue<Vector2>();
 
       _provider.Data = data;
     }

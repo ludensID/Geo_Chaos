@@ -32,7 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy
 
     private void Update()
     {
-      _data.Radius = _config.ShootRadius;
+      _data.Radius = _config.AutoShootRadius;
       _data.ViewAngle = _config.EnemyViewAngle;
     }
   }

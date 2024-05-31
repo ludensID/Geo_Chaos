@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Enemy;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Dash;
@@ -103,8 +104,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<Delete<HookCommand, GameWorldWrapper>>());
       
       Add(systems.Create<SelectNearestEnemySystem>());
+
+      Add(systems.Create<Delete<OnAimStarted, GameWorldWrapper>>());
+      Add(systems.Create<Delete<OnAimFinished, GameWorldWrapper>>());
+      Add(systems.Create<ReadAimInputSystem>());
+      Add(systems.Create<SetAimDirectionToViewDirectionSystem>());
+      Add(systems.Create<ReadAimDirectionSystem>());
+      Add(systems.Create<ReadAimRotationSystem>());
       
-      Add(systems.Create<ReadShotInputSystem>());
+      Add(systems.Create<ReadShootInputSystem>());
       Add(systems.Create<ShootSystem>());
       Add(systems.Create<CheckForShardLifeTimeExpiredSystem>());
       

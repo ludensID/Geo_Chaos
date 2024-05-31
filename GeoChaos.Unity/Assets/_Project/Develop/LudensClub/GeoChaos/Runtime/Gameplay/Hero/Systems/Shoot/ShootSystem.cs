@@ -2,7 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemy;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shot;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Shard;
@@ -18,6 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
     private readonly IShardFactory _shardFactory;
     private readonly ISpeedForceFactory _forceFactory;
     private readonly ITimerFactory _timers;
+    private readonly IShootService _shootSvc;
     private readonly EcsWorld _game;
     private readonly EcsEntities _commands;
     private readonly HeroConfig _config;
@@ -27,11 +28,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
       IShardFactory shardFactory,
       ISpeedForceFactory forceFactory,
       IConfigProvider configProvider,
-      ITimerFactory timers)
+      ITimerFactory timers,
+      IShootService shootSvc)
     {
       _shardFactory = shardFactory;
       _forceFactory = forceFactory;
       _timers = timers;
+      _shootSvc = shootSvc;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
@@ -49,43 +52,53 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
     {
       foreach (EcsEntity command in _commands)
       {
-        Vector2 shootDirection = CalculateShootDirection(command.Get<ViewDirection>().Direction,
-          command.Get<BodyDirection>().Direction);
-        foreach (EcsEntity enemy in _enemies)
-        {
-          shootDirection = enemy.Get<ViewRef>().View.transform.position
-            - command.Get<ViewRef>().View.transform.position;
-        }
-        shootDirection.Normalize();
-        
+        Vector2 shootDirection = CalculateShootDirection(command);
         Vector3 position = command.Get<ViewRef>().View.transform.position + (Vector3)shootDirection;
 
-        EcsEntity shard = _shardFactory.Create()
-          .Add((ref Owner owner) => owner.Entity = command.Pack())
-          .Add((ref LifeTime lifeTime) => lifeTime.TimeLeft = _timers.Create(_config.ShardLifeTime))
-          .Replace((ref ViewRef viewRef) => viewRef.View.transform.position = position);
+        EcsEntity shard = CreateShard(command.Pack(), _config.ShardLifeTime, position);
 
-        (Vector3 length, Vector3 direction) =
-          MathUtils.DecomposeVector(shootDirection * _config.ShardVelocity);
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, shard.Pack(), Vector2.one)
-        {
-          Speed = length,
-          Direction = direction
-        });
+        SetVelocity(shootDirection, shard.Pack());
 
         command.Del<ShootCommand>();
       }
     }
 
-    private Vector2 CalculateShootDirection(Vector2 viewDirection, float bodyDirection)
+    private Vector2 CalculateShootDirection(EcsEntity command)
     {
-      Vector2 shootDirection = viewDirection;
-      shootDirection.y = MathUtils.Clamp(shootDirection.y, 0);
+      Vector2 shootDirection = _shootSvc.CalculateShootDirection(command.Get<ViewDirection>().Direction,
+        command.Get<BodyDirection>().Direction);
 
-      if (shootDirection == Vector2.zero)
-        shootDirection = Vector2.right * bodyDirection;
+      foreach (EcsEntity enemy in _enemies)
+      {
+        shootDirection = enemy.Get<ViewRef>().View.transform.position
+          - command.Get<ViewRef>().View.transform.position;
+      }
 
+      if (command.Has<Aiming>())
+        shootDirection = command.Get<ShootDirection>().Direction;
+
+      shootDirection.Normalize();
       return shootDirection;
+    }
+
+
+    private EcsEntity CreateShard(EcsPackedEntity owner, float lifeTime, Vector3 position)
+    {
+      return _shardFactory.Create()
+        .Add((ref Owner o) => o.Entity = owner)
+        .Add((ref LifeTime lt) => lt.TimeLeft = _timers.Create(lifeTime))
+        .Replace((ref ViewRef viewRef) => viewRef.View.transform.position = position);
+    }
+
+    private void SetVelocity(Vector2 shootDirection, EcsPackedEntity owner)
+    {
+      (Vector3 length, Vector3 direction) =
+        MathUtils.DecomposeVector(shootDirection * _config.ShardVelocity);
+      _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, owner, Vector2.one)
+      {
+        Speed = length,
+        Direction = direction
+      });
     }
   }
 }

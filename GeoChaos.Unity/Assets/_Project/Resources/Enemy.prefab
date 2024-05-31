@@ -297,7 +297,7 @@ PolygonCollider2D:
     m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 951
+    m_Bits: 1975
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295

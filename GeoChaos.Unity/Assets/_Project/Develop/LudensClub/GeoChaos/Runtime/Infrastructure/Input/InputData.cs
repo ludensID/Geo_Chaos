@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
@@ -13,5 +14,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     public bool IsAttack;
     public bool IsHook;
     public bool IsShoot;
+    public bool IsAim;
+    public Vector2 AimDirection;
+    public Vector2 AimRotation;
   }
 }

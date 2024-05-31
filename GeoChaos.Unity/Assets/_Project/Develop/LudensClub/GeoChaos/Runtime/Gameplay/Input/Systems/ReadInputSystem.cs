@@ -1,7 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 {
@@ -29,6 +28,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
         .Has<IsAttack>(data.IsAttack)
         .Has<IsHook>(data.IsHook)
         .Has<IsShoot>(data.IsShoot)
+        .Add((ref AimButton button) => button.Pressed = data.IsAim)
+        .Add((ref AimDirection direction) => direction.Direction = data.AimDirection)
+        .Add((ref AimRotation rotation) => rotation.Delta = data.AimRotation)
         .Add((ref ExpireTimer timer) => timer.PassedTime = 0);
     }
   }

@@ -2,6 +2,7 @@
 using System.Linq;
 using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemy;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
@@ -48,6 +49,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindRingViews();
       BindShardPool();
       BindShardFactory();
+      BindShootService();
 
 #if UNITY_EDITOR
       Debugging.DebugBridge.InstallGameplay(Container);
@@ -56,6 +58,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEngine();
 
       BindDashCooldownPresenter();
+    }
+
+    private void BindShootService()
+    {
+      Container
+        .Bind<IShootService>()
+        .To<ShootService>()
+        .AsSingle();
     }
 
     private void BindEnemySelector()

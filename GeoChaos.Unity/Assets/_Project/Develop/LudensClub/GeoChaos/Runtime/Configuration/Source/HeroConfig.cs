@@ -139,14 +139,17 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [LabelText("Enabled")]
     public bool EnableShoot;
     public float ShardVelocity;
-    public float ShootRadius;
+    public float AutoShootRadius;
+    public float ShootRotationSpeed;
     
     [Range(0, 90)]
     public float EnemyViewAngle;
 
-    [Group(TriConstants.TECH + TriConstants.Names.SHOOT)]
+    [GroupNext(TriConstants.TECH + TriConstants.Names.SHOOT)]
     public float ShardLifeTime;
-
+    public LayerMask ShootMask;
+    
+    [UnGroupNext]
     [Title("Characteristics")]
     public float Health;
 

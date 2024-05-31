@@ -1,4 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -10,6 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
     {
       Add(systems.Create<PrecastHookViewSystem>());
       Add(systems.Create<DrawHookViewSystem>());
+      
+      Add(systems.Create<DrawAimLineSystem>());
     }
   }
 }

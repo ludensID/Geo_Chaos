@@ -1,19 +1,19 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shot;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
 {
-  public class ReadShotInputSystem : IEcsRunSystem
+  public class ReadShootInputSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsWorld _input;
     private readonly EcsEntities _shootables;
     private readonly EcsEntities _inputs;
 
-    public ReadShotInputSystem(GameWorldWrapper gameWorldWrapper, InputWorldWrapper inputWorldWrapper)
+    public ReadShootInputSystem(GameWorldWrapper gameWorldWrapper, InputWorldWrapper inputWorldWrapper)
     {
       _game = gameWorldWrapper.World;
       _input = inputWorldWrapper.World;

@@ -19,3 +19,6 @@ MonoBehaviour:
   AttackAction: Attack
   HookAction: Hook
   ShootAction: Shoot
+  AimAction: Aim
+  AimDirectionAction: Aim Direction
+  AimRotationAction: Aim Rotation

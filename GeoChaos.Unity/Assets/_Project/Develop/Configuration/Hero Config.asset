@@ -51,9 +51,13 @@ MonoBehaviour:
   RingReleasingTime: 0.1
   EnableShoot: 1
   ShardVelocity: 40
-  ShootRadius: 20
+  AutoShootRadius: 20
+  ShootRotationSpeed: 2
   EnemyViewAngle: 90
   ShardLifeTime: 3
+  ShootMask:
+    serializedVersion: 2
+    m_Bits: 913
   Health: 100
   DashDamage: 10
   ShardDamage: 15
