@@ -25,12 +25,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems
     {
       foreach (EcsEntity bodyDir in _bodyDirections)
       {
-        float viewDirX = bodyDir.Get<ViewDirection>().Direction.x;
-        float direction = bodyDir.Has<FreeRotating>() && viewDirX != 0
-          ? viewDirX
-          : bodyDir.Get<MovementVector>().Direction.x;
+        float direction = CalculateBodyDirection(bodyDir);
         bodyDir.Replace((ref BodyDirection body) => body.Direction = direction);
       }
+    }
+
+    private static float CalculateBodyDirection(EcsEntity entity)
+    {
+      ref MovementVector vector = ref entity.Get<MovementVector>();
+      float viewDirX = entity.Get<ViewDirection>().Direction.x;
+      return (entity.Has<FreeRotating>() || vector.Direction.x * vector.Speed.x == 0) && viewDirX != 0
+        ? viewDirX
+        : vector.Direction.x;
     }
   }
 }

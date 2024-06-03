@@ -111,6 +111,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<SetAimDirectionToViewDirectionSystem>());
       Add(systems.Create<ReadAimDirectionSystem>());
       Add(systems.Create<ReadAimRotationSystem>());
+      Add(systems.Create<CheckForShootAndViewDirectionMatchingSystem>());
       
       Add(systems.Create<ReadShootInputSystem>());
       Add(systems.Create<ShootSystem>());
