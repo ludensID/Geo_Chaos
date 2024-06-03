@@ -60,8 +60,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
 
         SetVelocity(shootDirection, shard.Pack());
 
+        AddCooldown(command);
+
         command.Del<ShootCommand>();
       }
+    }
+
+    private void AddCooldown(EcsEntity command)
+    {
+      command.Add((ref ShootCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.ShootCooldown));
     }
 
     private Vector2 CalculateShootDirection(EcsEntity command)

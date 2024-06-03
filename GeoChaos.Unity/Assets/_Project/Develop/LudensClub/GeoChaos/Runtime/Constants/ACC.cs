@@ -24,6 +24,7 @@
       public const string DASH_COOLDOWN_VIEW = VIEW + "Dash Cooldown View";
       public const string HEALTH_VIEW = VIEW + "Health View";
       public const string HERO_SWORD_VIEW = VIEW + "Hero Sword View";
+      public const string SHOOT_COOLDOWN_VIEW = VIEW + "Shoot Cooldown View";
 
       public const string GAMEPLAY_INSTALLER = BOOT + "Gameplay Installer";
       public const string PROJECT_INSTALLER = BOOT + "Project Installer";

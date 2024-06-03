@@ -26,6 +26,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     [SerializeField]
     private DashCooldownView _dashCooldownView;
 
+    [SerializeField]
+    private ShootCooldownView _shootCooldownView;
+
     public override void InstallBindings()
     {
       BindEcsDisposer();
@@ -60,6 +63,15 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEngine();
 
       BindDashCooldownPresenter();
+      BindShootCooldownPresenter();
+    }
+
+    private void BindShootCooldownPresenter()
+    {
+      Container
+        .BindInterfacesTo<ShootCooldownPresenter>()
+        .AsSingle()
+        .WithArguments(_shootCooldownView);
     }
 
     private void BindShootService()

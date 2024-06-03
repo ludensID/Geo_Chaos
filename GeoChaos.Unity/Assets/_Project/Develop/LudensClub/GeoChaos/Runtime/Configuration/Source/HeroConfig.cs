@@ -140,6 +140,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public bool EnableShoot;
     public float ShardVelocity;
     public float AutoShootRadius;
+    public float ShootCooldown;
     
     [Range(0, 90)]
     public float EnemyViewAngle;

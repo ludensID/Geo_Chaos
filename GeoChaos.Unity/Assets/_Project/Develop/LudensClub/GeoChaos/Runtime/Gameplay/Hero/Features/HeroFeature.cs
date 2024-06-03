@@ -113,7 +113,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<ReadAimRotationSystem>());
       Add(systems.Create<CheckForShootAndViewDirectionMatchingSystem>());
       
+      Add(systems.Create<CheckForShootCooldownExpiredSystem>());
       Add(systems.Create<ReadShootInputSystem>());
+      Add(systems.Create<SowShootCommandSystem>());
       Add(systems.Create<ShootSystem>());
       Add(systems.Create<CheckForShardLifeTimeExpiredSystem>());
       
