@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
@@ -29,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
     {
       foreach (EcsEntity command in _startCommands)
       {
-        if (!command.Has<MovementLocked>())
+        if (!command.Has<MovementLocked>() && command.Has<OnGround>())
         {
           command
             .Add<OnAimStarted>()

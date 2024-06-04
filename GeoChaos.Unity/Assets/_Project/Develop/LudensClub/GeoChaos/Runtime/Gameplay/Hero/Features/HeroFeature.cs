@@ -109,6 +109,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<Delete<OnAimStarted, GameWorldWrapper>>());
       Add(systems.Create<Delete<OnAimFinished, GameWorldWrapper>>());
       Add(systems.Create<ReadAimInputSystem>());
+      Add(systems.Create<CheckForOnGroundToAimSystem>());
       Add(systems.Create<SwitchAimSystem>());
       Add(systems.Create<SwitchAimMovementLockingSystem>());
       Add(systems.Create<SetAimDirectionToViewDirectionSystem>());
