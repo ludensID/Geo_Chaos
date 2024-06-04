@@ -1,10 +1,10 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
 {
   public class ReadAimInputSystem : IEcsRunSystem
   {
@@ -39,14 +39,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
         switch (hasAiming, pressed)
         {
           case (false, true):
-            shootable.Add<OnAimStarted>();
+            shootable.Add<StartAimCommand>();
             break;
           case (true, false):
-            shootable.Add<OnAimFinished>();
+            shootable.Add<FinishAimCommand>();
             break;
         }
-
-        shootable.Has<Aiming>(pressed);
       }
     }
   }

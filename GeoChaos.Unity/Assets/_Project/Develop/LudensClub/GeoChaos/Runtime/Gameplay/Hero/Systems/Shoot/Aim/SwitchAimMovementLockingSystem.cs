@@ -1,18 +1,18 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
 {
-  public class SwitchMovementLockingSystem : IEcsRunSystem
+  public class SwitchAimMovementLockingSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _startedAimEvents;
     private readonly EcsEntities _finishedAimEvents;
 
-    public SwitchMovementLockingSystem(GameWorldWrapper gameWorldWrapper)
+    public SwitchAimMovementLockingSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 

@@ -1,5 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
