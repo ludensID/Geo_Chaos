@@ -55,7 +55,7 @@ MonoBehaviour:
   ShootCooldown: 1
   EnemyViewAngle: 90
   EnableAim: 1
-  AimRotationSpeed: 2
+  AimRotationSpeed: 1
   ShardLifeTime: 3
   ShootMask:
     serializedVersion: 2

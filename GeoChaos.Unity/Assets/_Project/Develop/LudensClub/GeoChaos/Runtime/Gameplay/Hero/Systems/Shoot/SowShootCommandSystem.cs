@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -25,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
     {
       foreach (EcsEntity command in _commands)
       {
-        if (command.Has<ShootCooldown>() || command.Has<MovementLocked>() && !command.Has<HookFalling>())
+        if (command.Has<ShootCooldown>() || command.Has<MovementLocked>() && !command.Has<HookFalling>() && !command.Has<Aiming>())
           command.Del<ShootCommand>();
       }
     }

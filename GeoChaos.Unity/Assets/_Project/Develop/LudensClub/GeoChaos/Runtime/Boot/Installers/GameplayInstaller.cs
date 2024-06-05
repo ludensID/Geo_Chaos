@@ -29,6 +29,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     [SerializeField]
     private ShootCooldownView _shootCooldownView;
 
+    [SerializeField]
+    private Camera _camera;
+
     public override void InstallBindings()
     {
       BindEcsDisposer();
@@ -55,6 +58,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindShardPool();
       BindShardFactory();
       BindShootService();
+      BindCameraService();
 
 #if UNITY_EDITOR
       Debugging.DebugBridge.InstallGameplay(Container);
@@ -64,6 +68,15 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindDashCooldownPresenter();
       BindShootCooldownPresenter();
+    }
+
+    private void BindCameraService()
+    {
+      Container
+        .Bind<ICameraService>()
+        .To<CameraService>()
+        .AsSingle()
+        .WithArguments(_camera);
     }
 
     private void BindShootCooldownPresenter()

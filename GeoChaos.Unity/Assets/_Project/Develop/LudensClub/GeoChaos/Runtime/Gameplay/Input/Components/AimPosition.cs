@@ -11,8 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct AimRotation : IEcsComponent
+  public struct AimPosition : IEcsComponent
   {
-    public Vector2 Rotation;
+    public Vector2 Position;
   }
 }

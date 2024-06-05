@@ -40,6 +40,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public string AimDirectionAction;
     
     [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
+    public string AimPositionAction;
+    
+    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
     public string AimRotationAction;
 
 #if UNITY_EDITOR

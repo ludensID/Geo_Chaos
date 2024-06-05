@@ -21,4 +21,5 @@ MonoBehaviour:
   ShootAction: Shoot
   AimAction: Aim
   AimDirectionAction: Aim Direction
+  AimPositionAction: Aim Position
   AimRotationAction: Aim Rotation

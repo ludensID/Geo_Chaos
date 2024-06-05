@@ -60,7 +60,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           .Has<ADControllable>(_config.EnableADControl)
           .Has<ShootAvailable>(_config.EnableShoot)
           .Has<AimAvailable>(_config.EnableAim)
-          .Add<ShootDirection>();
+          .Add<ShootDirection>()
+          .Add<ShootPosition>();
       }
     }
   }

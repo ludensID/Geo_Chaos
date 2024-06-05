@@ -2,7 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -11,8 +11,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct AimRotation : IEcsComponent
+  public struct ShootPosition : IEcsComponent
   {
-    public Vector2 Rotation;
+    public Vector2 Origin;
+    public Vector2 Position;
   }
 }

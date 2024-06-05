@@ -2810,6 +2810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dashCooldownView: {fileID: 1201761386}
   _shootCooldownView: {fileID: 721945297}
+  _camera: {fileID: 601438942}
 --- !u!114 &1970904370
 MonoBehaviour:
   m_ObjectHideFlags: 0

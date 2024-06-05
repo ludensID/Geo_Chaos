@@ -17,6 +17,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     private readonly InputAction _shootAction;
     private readonly InputAction _aimAction;
     private readonly InputAction _aimDirectionAction;
+    private readonly InputAction _aimPositionAction;
     private readonly InputAction _aimRotationAction;
 
     public InputController(PlayerInput input, IConfigProvider configProvider, IInputDataProvider provider)
@@ -33,6 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       _shootAction = input.actions[actionMap.ShootAction];
       _aimAction = input.actions[actionMap.AimAction];
       _aimDirectionAction = input.actions[actionMap.AimDirectionAction];
+      _aimPositionAction = input.actions[actionMap.AimPositionAction];
       _aimRotationAction = input.actions[actionMap.AimRotationAction];
     }
 
@@ -63,6 +65,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
       data.IsAim = _aimAction.ReadValue<float>() >= 1;
       data.AimDirection = _aimDirectionAction.ReadValue<Vector2>();
+      data.AimPosition = _aimPositionAction.ReadValue<Vector2>();
       data.AimRotation = _aimRotationAction.ReadValue<Vector2>();
 
       _provider.Data = data;
