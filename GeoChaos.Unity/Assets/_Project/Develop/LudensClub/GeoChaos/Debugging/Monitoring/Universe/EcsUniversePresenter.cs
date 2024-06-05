@@ -40,7 +40,12 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     {
       foreach (IEcsWorldPresenter child in _children) 
       {
-        child.Tick();
+#if UNITY_EDITOR
+        using (new Unity.Profiling.ProfilerMarker($"{child.View.gameObject.name}.Tick()").Auto())
+#endif
+        {
+          child.Tick();
+        }
       }
     }
   }

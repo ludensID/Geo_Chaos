@@ -49,18 +49,28 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     public void Tick()
     {
       var updatables = _children.Select(x => x.Entity).Except(_dirtyEntities);
-      
+
       if (updatables.Count() + _dirtyEntities.Count != _children.Count)
         throw new ArgumentException();
 
       foreach (int updatable in updatables)
       {
-        _children[updatable].UpdateView();
+#if UNITY_EDITOR
+        using (new Unity.Profiling.ProfilerMarker($"{_children[updatable].View.gameObject.name[..8]}.UpdateView()").Auto())
+#endif
+        {
+          _children[updatable].UpdateView();
+        }
       }
 
       foreach (int dirtyEntity in _dirtyEntities)
       {
-        _children[dirtyEntity].Tick();
+#if UNITY_EDITOR
+        using (new Unity.Profiling.ProfilerMarker($"{_children[dirtyEntity].View.gameObject.name[..8]}.Tick()").Auto())
+#endif
+        {
+          _children[dirtyEntity].Tick();
+        }
       }
 
       _dirtyEntities.Clear();

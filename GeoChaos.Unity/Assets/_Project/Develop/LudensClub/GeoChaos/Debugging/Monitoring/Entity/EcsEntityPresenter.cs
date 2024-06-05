@@ -69,17 +69,35 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     public void UpdateView()
     {
-      _componentCount = _wrapper.World.GetComponents(Entity, ref _components);
-      Resize();
+#if UNITY_EDITOR
+      using (new Unity.Profiling.ProfilerMarker("PrepareComponents()").Auto())
+#endif
+      {
+        _componentCount = _wrapper.World.GetComponentsCount(Entity);
+        Array.Resize(ref _components, _componentCount);
+        _componentCount = _wrapper.World.GetComponents(Entity, ref _components);
+      }
+#if UNITY_EDITOR
+      using (new Unity.Profiling.ProfilerMarker("Resize()").Auto())
+#endif
+      {
+        Resize();
+      }
 
       if (View.Components.Count != _componentCount)
         throw new IndexOutOfRangeException();
 
-      for (int i = 0; i < _componentCount; i++)
+#if UNITY_EDITOR
+      using (new Unity.Profiling.ProfilerMarker("Update View()").Auto())
+#endif
       {
-        object component = _components[i];
-        int index = View.Components.FindIndex(x => x.Value.GetType().Name == component.GetType().Name);
-        View.Components[index].Value = (IEcsComponent)component;
+        for (int i = 0; i < _componentCount; i++)
+        {
+          ref object component = ref _components[i];
+          string componentName = component.GetType().Name;
+          int index = View.Components.FindIndex(x => x.Name == componentName);
+          View.Components[index].Value = (IEcsComponent)component;
+        }
       }
     }
 
@@ -92,20 +110,18 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     private void Resize()
     {
-      var components = new object[_componentCount];
-      if (_componentCount > 0)
-        Array.Copy(_components, components, _componentCount);
-
       for (int i = 0; i < View.Components.Count; i++)
       {
-        if (components.All(x => x.GetType().Name != View.Components[i].Value.GetType().Name))
+        string viewComponentName = View.Components[i].Name;
+        if (_components.All(x => x.GetType().Name != viewComponentName))
           View.Components.RemoveAt(i--);
       }
 
       for (int i = 0; i < _componentCount; i++)
       {
-        if (View.Components.All(x => x.Value.GetType().Name != components[i].GetType().Name))
-          View.Components.Add(new EcsComponentView { Value = (IEcsComponent)components[i] });
+        string componentName = _components[i].GetType().Name;
+        if (View.Components.All(x => x.Name != componentName))
+          View.Components.Add(new EcsComponentView { Value = (IEcsComponent)_components[i], Name = componentName });
       }
 
       if (View.Components.Count != _componentCount)

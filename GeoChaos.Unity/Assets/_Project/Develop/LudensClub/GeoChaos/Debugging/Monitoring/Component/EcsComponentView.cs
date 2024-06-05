@@ -13,6 +13,9 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     [SerializeReference]
     public IEcsComponent Value;
 
+    [HideInInspector]
+    public string Name;
+
     private string ValueName => Value != null ? Value.GetType().Name : "[None]";
   }
 }

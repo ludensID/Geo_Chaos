@@ -6,7 +6,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public class EcsFeature : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem, IEcsPostDestroySystem
   {
-    private readonly List<IEcsSystem> _systems = new();
+    private readonly List<IEcsSystem> _systems = new List<IEcsSystem>();
 
     public void Add(IEcsSystem system)
     {
@@ -21,25 +21,37 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
     public void Init(EcsSystems systems)
     {
-      foreach (IEcsInitSystem system in _systems.OfType<IEcsInitSystem>()) 
+      foreach (IEcsInitSystem system in _systems.OfType<IEcsInitSystem>())
         system.Init(systems);
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (IEcsRunSystem system in _systems.OfType<IEcsRunSystem>()) 
-        system.Run(systems);
+#if UNITY_EDITOR
+      using (new Unity.Profiling.ProfilerMarker($"{GetType().Name}.Run()").Auto())
+#endif
+      {
+        foreach (IEcsRunSystem system in _systems.OfType<IEcsRunSystem>())
+        {
+#if UNITY_EDITOR
+          using (new Unity.Profiling.ProfilerMarker($"{system.GetType().Name}.Run()").Auto())
+#endif
+          {
+            system.Run(systems);
+          }
+        }
+      }
     }
 
     public void Destroy(EcsSystems systems)
     {
-      foreach (IEcsDestroySystem system in _systems.OfType<IEcsDestroySystem>()) 
+      foreach (IEcsDestroySystem system in _systems.OfType<IEcsDestroySystem>())
         system.Destroy(systems);
     }
 
     public void PostDestroy(EcsSystems systems)
     {
-      foreach (IEcsPostDestroySystem system in _systems.OfType<IEcsPostDestroySystem>()) 
+      foreach (IEcsPostDestroySystem system in _systems.OfType<IEcsPostDestroySystem>())
         system.PostDestroy(systems);
     }
   }
