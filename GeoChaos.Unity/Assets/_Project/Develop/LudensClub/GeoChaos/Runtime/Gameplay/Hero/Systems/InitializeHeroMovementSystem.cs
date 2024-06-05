@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         hero
           .Add<ForceAvailable>()
           .Add<Movable>()
-          .Add((ref HorizontalSpeed speed) => speed.Value = _config.MovementSpeed)
+          .Add((ref HorizontalSpeed speed) => speed.Speed = _config.MovementSpeed)
           .Add((ref MovementVector vector) => vector.Direction.x = 1)
           .Add<LastMovementVector>()
           .Add<ViewDirection>()

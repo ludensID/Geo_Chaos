@@ -12,6 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Serializable]
   public struct HorizontalSpeed : IEcsComponent
   {
-    public float Value;
+    public float Speed;
+    public float Direction;
   }
 }

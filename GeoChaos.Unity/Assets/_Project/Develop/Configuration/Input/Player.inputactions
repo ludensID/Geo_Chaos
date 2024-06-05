@@ -141,8 +141,30 @@
                 },
                 {
                     "name": "",
+                    "id": "5b7148d8-8a70-463a-85fc-4e57bdbba69d",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Horizontal Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9242f0f4-e5fb-440d-85e6-468d110220e9",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd1ddf1c-57df-4e5e-b47b-ba8a51826ff0",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -163,6 +185,17 @@
                 },
                 {
                     "name": "",
+                    "id": "96c06dcd-6a30-431a-9548-925651b6a9aa",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ee00cb19-7452-43ce-8144-cc2a7d1bdef1",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -174,8 +207,30 @@
                 },
                 {
                     "name": "",
+                    "id": "2647b672-a8bd-4aa3-9de7-c1df0621bd89",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f3c438da-4dba-4790-8062-acbef73fe184",
                     "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6938812-e237-4328-87a1-f2ed8d8c6d33",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -218,6 +273,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9c0492cb-ee5f-41b9-b7bc-7f9007170f1f",
+                    "path": "<Gamepad>/leftStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Vertical Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2b5fd58f-2f74-4947-9c0b-d85ea7e383df",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -229,8 +295,30 @@
                 },
                 {
                     "name": "",
+                    "id": "d2c7f41c-78e0-4804-b78a-7fa75e6b57b3",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7509b3c8-9196-4d0e-9357-33c278c2fd46",
                     "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c03c0d5-eb47-4982-afb3-3cffe2515ce9",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

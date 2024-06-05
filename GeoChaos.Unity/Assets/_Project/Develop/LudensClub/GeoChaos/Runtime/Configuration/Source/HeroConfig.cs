@@ -92,10 +92,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Range(0, 90)]
     public float RingViewAngle = 90;
 
-    [Range(1, 10)]
-    [HideInInspector]
-    public float RingHorizontalDistance = 1;
-
     [Min(0.01f)]
     public float HookPrecastTime;
     
@@ -145,11 +141,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Range(0, 90)]
     public float EnemyViewAngle;
 
-    [GroupNext(TriConstants.Names.AIM)]
-    [LabelText("Enabled")]
     public bool EnableAim;
-    
-    public float AimRotationSpeed;
 
     [GroupNext(TriConstants.TECH + TriConstants.Names.SHOOT)]
     public float ShardLifeTime;

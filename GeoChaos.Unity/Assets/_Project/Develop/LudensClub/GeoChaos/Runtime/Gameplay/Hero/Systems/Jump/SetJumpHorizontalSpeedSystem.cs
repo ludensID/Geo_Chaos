@@ -43,7 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
     private void SetHorizontalSpeed(EcsEntity entity, float value)
     {
-      entity.Replace((ref HorizontalSpeed speed) => speed.Value = value);
+      entity.Replace((ref HorizontalSpeed speed) => speed.Speed = value);
     }
   }
 }
