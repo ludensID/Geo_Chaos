@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
@@ -12,12 +13,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     private readonly EcsEntities _controls;
     private readonly HeroConfig _config;
     private readonly SpeedForceLoop _forces;
+    private readonly EcsWorld _game;
 
     public CalculateControlSpeedSystem(PhysicsWorldWrapper physicsWorldWrapper,
+      GameWorldWrapper gameWorldWrapper,
       IConfigProvider configProvider,
       ISpeedForceLoopService forceLoopSvc)
     {
       _physics = physicsWorldWrapper.World;
+      _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
       _forces = forceLoopSvc.CreateLoop();
@@ -32,15 +36,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       foreach (EcsEntity control in _controls)
       {
         bool needCount = control.Has<Enabled>() || control.Has<Prepared>();
-        
-        float direction = 0;
+        bool hasMove = false;
+
         foreach (EcsEntity move in _forces
           .GetLoop(SpeedForceType.Move, control.Get<Owner>().Entity))
         {
           move.Has<Ignored>(needCount);
-          direction = move.Get<MovementVector>().Direction.x;
+          hasMove = true;
         }
-        
+
+        float direction = 0;
+        if (hasMove && control.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity owner))
+          direction = owner.Get<MoveDirection>().Direction.x;
+
         if (needCount)
         {
           float acceleration = control.Get<Gradient>().Value * _config.ADControlSpeed * direction;

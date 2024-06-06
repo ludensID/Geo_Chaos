@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Move;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -59,6 +60,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         float normalizedDirection = direction != 0 ? Mathf.Sign(direction) : 0;
         float speed = command.Get<HorizontalSpeed>().Speed * direction;
         float acceleration = CalculateAcceleration(speed);
+
+        command.Replace((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
         
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)
         {
@@ -75,10 +78,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       {
         float direction = command.Get<MoveCommand>().Direction;
         float normalizedDirection = direction != 0 ? Mathf.Sign(direction) : 0;
-        ref HorizontalSpeed horizontalSpeed = ref command.Get<HorizontalSpeed>();
-        horizontalSpeed.Direction = direction;
-        float speed = horizontalSpeed.Speed * Mathf.Abs(direction);
+        float speed = command.Get<HorizontalSpeed>().Speed * Mathf.Abs(direction);
         float acceleration = CalculateAcceleration(speed);
+        
+        command.Replace((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
         
         foreach (EcsEntity force in _forces
           .GetLoop(SpeedForceType.Move, command.Pack()))
@@ -92,8 +95,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
       foreach (EcsEntity moving in _movings)
       {
-        ref HorizontalSpeed horizontalSpeed = ref moving.Get<HorizontalSpeed>();
-        float speed = horizontalSpeed.Speed * Mathf.Abs(horizontalSpeed.Direction);
+        float direction = moving.Get<MoveDirection>().Direction.x;
+        float speed = moving.Get<HorizontalSpeed>().Speed * Mathf.Abs(direction);
         float acceleration = CalculateAcceleration(speed);
         
         foreach (EcsEntity force in _forces

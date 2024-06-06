@@ -6,6 +6,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Jump;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
@@ -41,6 +42,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           .Add((ref HorizontalSpeed speed) => speed.Speed = _config.MovementSpeed)
           .Add((ref MovementVector vector) => vector.Direction.x = 1)
           .Add<LastMovementVector>()
+          .Add<MoveDirection>()
           .Add<ViewDirection>()
           .Add<BodyDirection>()
           .Add<Ground>()

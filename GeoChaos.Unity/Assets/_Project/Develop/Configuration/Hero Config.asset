@@ -36,7 +36,6 @@ MonoBehaviour:
   AllowHookInterruption: 1
   HookRadius: 20
   RingViewAngle: 85
-  RingHorizontalDistance: 1
   HookPrecastTime: 0.2
   HookVelocity: 30
   EnableDragForce: 1
@@ -55,7 +54,6 @@ MonoBehaviour:
   ShootCooldown: 1
   EnemyViewAngle: 90
   EnableAim: 1
-  AimRotationSpeed: 1
   ShardLifeTime: 3
   ShootMask:
     serializedVersion: 2
