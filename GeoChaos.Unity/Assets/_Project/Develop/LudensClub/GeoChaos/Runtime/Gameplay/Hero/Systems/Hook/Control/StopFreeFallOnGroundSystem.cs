@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
@@ -28,7 +29,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     {
       foreach (EcsEntity ground in _onGrounds)
       {
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, ground.Pack()));
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, ground.Pack(), Vector2.right)
+        {
+          Instant = true
+        });
+        
         ground.Add<StopFallFreeCommand>();
       }
     }
