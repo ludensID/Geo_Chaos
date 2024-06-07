@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
@@ -22,7 +23,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       
       Add(systems.Create<CalculateDragForceSystem>());
       Add(systems.Create<CalculateControlSpeedSystem>());
-      
+
+      Add(systems.Create<StopFreeFallOnGroundSystem>());
       Add(systems.Create<StopFallFreeSystem>());
     }
   }

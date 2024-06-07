@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
@@ -40,6 +41,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         }
 
         stop.Has<FreeRotating>(false);
+        stop.Has<FreeFalling>(false);
+
+        stop.Replace((ref MovementVector vector) => vector.Speed = Vector2.zero);
 
         stop.Del<StopFallFreeCommand>();
       }

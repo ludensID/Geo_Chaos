@@ -9,18 +9,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
 {
   public class SowMoveCommandSystem : IEcsRunSystem
   {
-    private readonly IADControlService _controlSvc;
     private readonly EcsWorld _game;
     private readonly EcsEntities _commands;
 
-    public SowMoveCommandSystem(GameWorldWrapper gameWorldWrapper, IADControlService controlSvc)
+    public SowMoveCommandSystem(GameWorldWrapper gameWorldWrapper)
     {
-      _controlSvc = controlSvc;
       _game = gameWorldWrapper.World;
 
       _commands = _game
         .Filter<MoveCommand>()
         .Inc<MovementLocked>()
+        .Exc<FreeFalling>()
         .Collect();
     }
 
@@ -28,9 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
     {
       foreach (EcsEntity command in _commands)
       {
-        EcsEntity control = _controlSvc.GetADControl(command.Pack());
-        if (control == null || !control.Has<Enabled>())
-          command.Del<MoveCommand>();
+        command.Del<MoveCommand>();
       }
     }
   }

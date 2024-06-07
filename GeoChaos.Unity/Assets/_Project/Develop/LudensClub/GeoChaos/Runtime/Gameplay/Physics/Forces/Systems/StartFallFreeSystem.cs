@@ -38,11 +38,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
             .Del<Prepared>()
             .Add<Enabled>()
             .Replace((ref Gradient gradient) => gradient.Value = 0);
-          
-          fall.Has<FreeRotating>(prepare.Has<ADControl>());
+
+          if (prepare.Has<ADControl>())
+            fall.Add<FreeRotating>();
         }
 
-        fall.Del<FallFreeCommand>();
+        fall
+          .Add<FreeFalling>()
+          .Del<FallFreeCommand>();
       }
     }
   }
