@@ -38,9 +38,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
         bool hasPrecast = interrupt.Has<HookPrecast>();
         bool hasPulling = interrupt.Has<HookPulling>();
-        bool hasFalling = interrupt.Has<HookFalling>();
 
-        if (hasPulling || hasFalling)
+        if (hasPulling)
           InterruptHookSpeed(interrupt);
 
         if (hasPrecast)
@@ -58,12 +57,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             .Has<OnHookPullingStarted>(false)
             .Has<OnHookPullingFinished>(false)
             .Replace((ref GravityScale gravity) => gravity.Enabled = true);
-        }
-        else if (hasFalling)
-        {
-          interrupt
-            .Add<StopFallFreeCommand>()
-            .Del<HookFalling>();
         }
 
         if (hasPrecast || hasPulling)

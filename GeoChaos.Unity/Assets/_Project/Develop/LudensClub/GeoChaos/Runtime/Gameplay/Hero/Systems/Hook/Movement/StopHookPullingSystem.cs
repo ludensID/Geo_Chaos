@@ -31,6 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Del<HookPulling>()
           .Del<HookTimer>()
           .Del<StopHookPullingCommand>()
+          .Add<StopHookCommand>()
           .Add<OnHookPullingFinished>();
 
         _message.CreateEntity()
