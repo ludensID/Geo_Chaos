@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         .Filter<Delay>()
         .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity delay in _delays
@@ -32,8 +32,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           .Add<Enabled>()
           .Replace((ref Gradient gradient) => gradient.Value = 0);
 
-        _game.UnpackEntity(delay.Get<Owner>().Entity)
-          .Has<FreeRotating>(delay.Has<ADControl>());
+        if (delay.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity owner))
+        {
+          owner.Has<FreeFalling>(true);
+          
+          if (delay.Has<ADControl>())
+            owner.Add<FreeRotating>();
+        }
       }
     }
   }

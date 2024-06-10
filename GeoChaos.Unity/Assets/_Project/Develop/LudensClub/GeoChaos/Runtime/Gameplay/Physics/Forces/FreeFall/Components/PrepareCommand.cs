@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct FallFreeCommand : IEcsComponent
+  public struct PrepareCommand : IEcsComponent
   {
   }
 }

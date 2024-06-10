@@ -1,10 +1,10 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
@@ -48,7 +48,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         hero
           .Add((ref Dashing dashing) => dashing.TimeLeft = _timers.Create(_config.DashTime))
           .Add<LockMovementCommand>()
-          .Replace((ref GravityScale gravity) => gravity.Enabled = false);
+          .Replace((ref GravityScale gravity) => gravity.Enabled = false)
+          .Add((ref OnActionStarted action) => action.IsEmpty = true);
       }
     }
   }

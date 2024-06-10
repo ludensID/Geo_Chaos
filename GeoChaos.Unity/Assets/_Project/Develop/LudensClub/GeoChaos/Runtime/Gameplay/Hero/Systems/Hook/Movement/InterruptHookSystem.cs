@@ -51,7 +51,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         else if (hasPulling)
         {
           interrupt
-            .Add<StopFallFreeCommand>()
+            .Add<OnActionFinished>()
             .Del<HookPulling>()
             .Del<HookTimer>()
             .Has<OnHookPullingStarted>(false)

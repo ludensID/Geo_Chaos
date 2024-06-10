@@ -26,7 +26,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       {
         hook
           .Add<UnlockMovementCommand>()
-          .Del<Hooking>();
+          .Del<Hooking>()
+          .Del<StopHookCommand>();
       }
     }
   }

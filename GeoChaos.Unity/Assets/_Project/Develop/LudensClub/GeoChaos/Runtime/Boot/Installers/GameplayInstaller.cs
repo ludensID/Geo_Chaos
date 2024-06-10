@@ -59,6 +59,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindShardFactory();
       BindShootService();
       BindCameraService();
+      BindFreeFallService();
 
 #if UNITY_EDITOR
       Debugging.DebugBridge.InstallGameplay(Container);
@@ -68,6 +69,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindDashCooldownPresenter();
       BindShootCooldownPresenter();
+    }
+
+    private void BindFreeFallService()
+    {
+      Container
+        .Bind<IFreeFallService>()
+        .To<FreeFallService>()
+        .AsSingle();
     }
 
     private void BindCameraService()

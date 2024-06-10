@@ -8,16 +8,27 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 {
   public class StopFreeFallOnGroundSystem : IEcsRunSystem
   {
+    private readonly IFreeFallService _freeFallSvc;
     private readonly EcsWorld _game;
     private readonly EcsEntities _onGrounds;
+    private readonly EcsWorld _physics;
+    private readonly EcsEntities _freeFalls;
 
-    public StopFreeFallOnGroundSystem(GameWorldWrapper gameWorldWrapper)
+    public StopFreeFallOnGroundSystem(GameWorldWrapper gameWorldWrapper,
+      PhysicsWorldWrapper physicsWorldWrapper,
+      IFreeFallService freeFallSvc)
     {
+      _freeFallSvc = freeFallSvc;
       _game = gameWorldWrapper.World;
+      _physics = physicsWorldWrapper.World;
 
       _onGrounds = _game
         .Filter<FreeFalling>()
         .Inc<OnGround>()
+        .Collect();
+      
+      _freeFalls = _physics
+        .Filter<FreeFall>()
         .Collect();
     }
 
@@ -25,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     {
       foreach (EcsEntity ground in _onGrounds)
       {
-        ground.Add<StopFallFreeCommand>();
+        _freeFallSvc.StopFreeFall(ground, _freeFalls);
       }
     }
   }
