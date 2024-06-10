@@ -33,6 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
         if (!command.Has<MovementLocked>() && command.Has<OnGround>())
         {
           command
+            .Add<LockMovementCommand>()
             .Add<OnAimStarted>()
             .Add<Aiming>();
         }
@@ -43,6 +44,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
       foreach (EcsEntity command in _finishCommands)
       {
         command
+          .Add<UnlockMovementCommand>()
           .Add<OnAimFinished>()
           .Del<Aiming>()
           .Del<FinishAimCommand>();
