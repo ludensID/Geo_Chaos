@@ -5,6 +5,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Feature;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemy;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;

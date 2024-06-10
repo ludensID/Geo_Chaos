@@ -1,7 +1,7 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics
 {
   public class ViewReadFixedFeature : EcsFeature
   {
