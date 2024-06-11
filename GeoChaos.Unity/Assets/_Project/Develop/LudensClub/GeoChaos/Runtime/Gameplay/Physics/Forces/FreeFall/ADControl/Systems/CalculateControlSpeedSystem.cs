@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿using System.Linq;
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
@@ -28,6 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 
       _controls = _physics
         .Filter<ADControl>()
+        .Inc<Enabled>()
         .Collect();
     }
 
@@ -35,26 +37,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity control in _controls)
       {
-        bool needCount = control.Has<Enabled>() || control.Has<Prepared>();
-        bool hasMove = false;
-
-        foreach (EcsEntity move in _forces
-          .GetLoop(SpeedForceType.Move, control.Get<Owner>().Entity))
-        {
-          move.Has<Ignored>(needCount);
-          hasMove = true;
-        }
+        EcsPackedEntity packedOwner = control.Get<Owner>().Entity;
+        bool hasMove = _forces.GetLoop(SpeedForceType.Move, packedOwner).Any();
 
         float direction = 0;
-        if (hasMove && control.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity owner))
+        if (hasMove && packedOwner.TryUnpackEntity(_game, out EcsEntity owner))
           direction = owner.Get<MoveDirection>().Direction.x;
 
-        if (needCount)
-        {
-          float acceleration = control.Get<Gradient>().Value * _config.ADControlSpeed * direction;
-          control.Replace(
-            (ref ControlSpeed speed) => speed.Speed = CalculateSpeed(speed.Speed, acceleration, direction));
-        }
+        float acceleration = control.Get<Gradient>().Value * _config.ADControlSpeed * direction;
+        control.Replace(
+          (ref ControlSpeed speed) => speed.Speed = CalculateSpeed(speed.Speed, acceleration, direction));
       }
     }
 
