@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 using Zenject;
+using PrefabProvider = LudensClub.GeoChaos.Runtime.Configuration.PrefabProvider;
 
 namespace LudensClub.GeoChaos.Runtime.Props.Shard
 {
@@ -11,7 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Props.Shard
   {
     private readonly DiContainer _container;
     private readonly ShardPoolConfig _config;
-    private readonly PrefabConfig _prefabs;
+    private readonly PrefabProvider _prefabs;
     private readonly List<PooledShard> _shards = new List<PooledShard>();
 
     private Transform _parent;
@@ -20,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Props.Shard
     {
       _container = container;
       _config = configProvider.Get<ShardPoolConfig>();
-      _prefabs = configProvider.Get<PrefabConfig>();
+      _prefabs = configProvider.Get<PrefabProvider>();
     }
 
     public void Initialize()

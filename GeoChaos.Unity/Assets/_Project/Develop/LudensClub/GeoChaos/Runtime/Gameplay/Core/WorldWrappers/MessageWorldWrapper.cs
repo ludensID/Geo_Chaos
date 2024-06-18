@@ -2,7 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Worlds
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
   public class MessageWorldWrapper : IEcsWorldWrapper
   {

@@ -2,13 +2,13 @@
 using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Worlds
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
-  public class GameWorldWrapper : IEcsWorldWrapper
+  public class PhysicsWorldWrapper : IEcsWorldWrapper
   {
     private readonly EcsWorld _world = new EcsWorld();
-
-    public string Name => EcsConstants.Worlds.GAME;
+    
+    public string Name => EcsConstants.Worlds.PHYSICS;
     public EcsWorld World => _world;
   }
 }

@@ -19,7 +19,7 @@
     public const string PHYSICS_FILE = "Physics Config";
     public const string PHYSICS_MENU = PROJECT_NAME + "Physics";
 
-    public const string PREFAB_FILE = "Prefab Config";
+    public const string PREFAB_FILE = "Prefab Provider";
     public const string PREFAB_MENU = PROJECT_NAME + "Prefabs";
     
     public const string SHARD_FILE = "Shard Pool Config";

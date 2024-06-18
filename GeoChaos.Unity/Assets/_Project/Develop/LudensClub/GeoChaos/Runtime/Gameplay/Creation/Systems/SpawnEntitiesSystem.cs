@@ -3,7 +3,6 @@ using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
-using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
 
@@ -13,14 +12,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
   {
     private readonly List<SpawnPoint> _spawns;
     private readonly EcsWorld _game;
-    private readonly PrefabConfig _prefabs;
+    private readonly PrefabProvider _prefabs;
 
     public SpawnEntitiesSystem(GameWorldWrapper gameWorldWrapper, List<SpawnPoint> spawns,
       IConfigProvider configProvider)
     {
       _spawns = spawns;
       _game = gameWorldWrapper.World;
-      _prefabs = configProvider.Get<PrefabConfig>();
+      _prefabs = configProvider.Get<PrefabProvider>();
     }
 
     public void Init(EcsSystems systems)

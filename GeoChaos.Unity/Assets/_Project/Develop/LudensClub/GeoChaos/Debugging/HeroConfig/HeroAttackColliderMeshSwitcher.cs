@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Debugging
 
       if (!isPrefab)
       {
-        var config = Misc.FindAsset<PrefabConfig>(nameof(PrefabConfig));
+        var config = Misc.FindAsset<PrefabProvider>(nameof(PrefabProvider));
         View hero = config.Get(EntityType.Hero);
         converter = hero.GetComponent<HeroAttackCollidersConverter>();
       }

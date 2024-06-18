@@ -2,7 +2,6 @@
 using System.Linq;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
-using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 

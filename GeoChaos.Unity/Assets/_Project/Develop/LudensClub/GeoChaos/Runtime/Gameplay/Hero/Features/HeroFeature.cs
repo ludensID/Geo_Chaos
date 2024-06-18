@@ -15,7 +15,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
-using LudensClub.GeoChaos.Runtime.Gameplay.Worlds;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
