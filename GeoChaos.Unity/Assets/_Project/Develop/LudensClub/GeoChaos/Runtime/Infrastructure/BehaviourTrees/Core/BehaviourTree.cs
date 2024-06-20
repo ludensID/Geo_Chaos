@@ -6,21 +6,20 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees
   [Serializable]
   public class BehaviourTree : Node
   {
-    public BehaviourTree(EcsPackedEntity entity)
+    public BehaviourTree(EcsPackedEntity entity) : base(entity)
     {
-      _entity = entity;
     }
     
     public override BehaviourStatus Run()
     {
-      foreach (Node child in Children)
+      for (int i = 0; i < Children.Count; i++)
       {
-        Status = child.Run();
-        if (Status != TRUE)
+        Status = Children[i].Run();
+        if (Status != FALSE)
           return Status;
       }
 
-      Status = TRUE;
+      Status = FALSE;
       return Status;
     }
   }

@@ -1,10 +1,12 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees
+﻿using Leopotam.EcsLite;
+
+namespace LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees
 {
   public class ActionNode : StrategyNode
   {
     private readonly IActionStrategy _strategy;
     
-    public ActionNode(IActionStrategy strategy) : base(strategy)
+    public ActionNode(IActionStrategy strategy, EcsPackedEntity entity) : base(strategy, entity)
     {
       _strategy = strategy;
     }

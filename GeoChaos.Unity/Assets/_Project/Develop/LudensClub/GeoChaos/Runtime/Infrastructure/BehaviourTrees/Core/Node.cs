@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Leopotam.EcsLite;
+using TriInspector;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees
 {
@@ -15,7 +16,18 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees
     protected EcsPackedEntity _entity;
     
     public EcsPackedEntity Entity => _entity;
+    
+    [ShowInInspector]
     public BehaviourStatus Status { get; set; }
+
+    public Node()
+    {
+    }
+
+    public Node(EcsPackedEntity entity)
+    {
+      _entity = entity;
+    }
 
     public void AddChild(Node child)
     {
