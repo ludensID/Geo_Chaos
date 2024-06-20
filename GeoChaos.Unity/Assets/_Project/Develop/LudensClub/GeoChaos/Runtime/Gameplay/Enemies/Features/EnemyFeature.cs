@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
 {
@@ -9,8 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
       Add(systems.Create<DeleteInitializeCommandForEnemySystem>());
       Add(systems.Create<CreateEnemySystem>());
       
-      Add(systems.Create<CreateBehaviourTreeSystem>());
-
+      Add(systems.Create<LamaFeature>());
+      
       Add(systems.Create<SetHealthViewSystem>());
     }
   }

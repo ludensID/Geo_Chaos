@@ -192,7 +192,14 @@ Preset:
     propertyPath: m_UseDelaunayMesh
     value: 0
     objectReference: {fileID: 0}
-  m_ExcludedProperties: []
+  m_ExcludedProperties:
+  - m_Points
+  - m_IsTrigger
+  - m_UsedByEffector
+  - m_AutoTiling
+  - m_CompositeOperation
+  - m_Offset
+  - m_UseDelaunayMesh
   m_CoupledType:
     m_NativeTypeID: 0
     m_ManagedTypePPtr: {fileID: 0}

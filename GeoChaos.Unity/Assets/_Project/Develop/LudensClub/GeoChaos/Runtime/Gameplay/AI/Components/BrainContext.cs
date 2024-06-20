@@ -1,8 +1,8 @@
 ﻿using System;
+using LudensClub.GeoChaos.Runtime.AI;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
+namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -11,8 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct Brain : IEcsComponent
+  public struct BrainContext : IEcsComponent
   {
-    public BehaviourTree Tree;
+    public IBrainContext Context;
   }
 }

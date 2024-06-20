@@ -35,5 +35,11 @@ namespace LudensClub.GeoChaos.Runtime.Props
     {
       _filler.Fill(_collider, _colliderType, _view.Entity, other);
     }
+
+    private void Reset()
+    {
+      _view = GetComponent<View>();
+      _collider = GetComponent<Collider2D>();
+    }
   }
 }

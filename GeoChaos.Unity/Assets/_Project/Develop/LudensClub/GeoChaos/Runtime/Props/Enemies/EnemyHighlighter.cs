@@ -6,7 +6,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 using Zenject;
 
-namespace LudensClub.GeoChaos.Runtime.Props.Enemy
+namespace LudensClub.GeoChaos.Runtime.Props.Enemies
 {
   [AddComponentMenu(ACC.Names.ENEMY_HIGHLIGHTER)]
   public class EnemyHighlighter : MonoBehaviour

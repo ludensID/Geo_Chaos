@@ -4,7 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
+namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 {
   public class CreateBehaviourTreeSystem : IEcsRunSystem
   {
@@ -18,8 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
       _game = gameWorldWrapper.World;
 
       _initializingEnemies = _game
-        .Filter<EnemyTag>()
-        .Inc<InitializeCommand>()
+        .Filter<InitializeCommand>()
         .Inc<Brain>()
         .Collect();
     }

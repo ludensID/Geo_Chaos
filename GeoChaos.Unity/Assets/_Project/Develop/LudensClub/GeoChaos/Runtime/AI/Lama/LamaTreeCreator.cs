@@ -20,7 +20,13 @@ namespace LudensClub.GeoChaos.Runtime.AI
       return _builder.Create(entity)
         .AddSequence()
         .ToChild()
-        .AddCondition<PlayerInAttackZoneCondition>()
+        .AddCondition<CheckForNeedLamaPatrollingStrategy>()
+        .AddAction<AddLamaPatrolCommandStrategy>()
+        .ToParent()
+        .AddSequence()
+        .ToChild()
+        .AddCondition<CheckLamaForLookingStrategy>()
+        .ToParent()
         .End();
     }
   }

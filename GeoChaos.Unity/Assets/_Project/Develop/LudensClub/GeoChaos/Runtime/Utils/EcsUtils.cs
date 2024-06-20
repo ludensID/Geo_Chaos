@@ -1,4 +1,7 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+﻿using LudensClub.GeoChaos.Runtime.AI;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Utils
@@ -12,6 +15,11 @@ namespace LudensClub.GeoChaos.Runtime.Utils
       if (!saveXDirection || obj.Speed.x != 0)
         obj.Direction.x = direction.x;
       obj.Direction.y = direction.y;
+    }
+    
+    public static TContext Cast<TContext>(this BrainContext ctx) where TContext : IBrainContext
+    {
+      return (TContext)ctx.Context;
     }
   }
 }

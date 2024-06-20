@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Feature;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Feature;
@@ -31,6 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<SpeedForceFeature>())
         .Add(factory.Create<ApplyFreeFallFeature>())
         .Add(factory.Create<HeroFixedFeature>())
+        .Add(factory.Create<EnemyFixedFeature>())
         .Add(factory.Create<ViewFixedFeature>());
 
       _updateSystems
@@ -38,6 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<CollisionFeature>())
         .Add(factory.Create<InputFeature>())
         .Add(factory.Create<AttackFeature>())
+        .Add(factory.Create<AiFeature>())
         .Add(factory.Create<EnemyFeature>())
         .Add(factory.Create<HeroFeature>())
         .Add(factory.Create<CleanupFeature>());
