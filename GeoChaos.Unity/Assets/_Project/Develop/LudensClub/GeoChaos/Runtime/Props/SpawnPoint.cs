@@ -12,7 +12,9 @@ namespace LudensClub.GeoChaos.Runtime.Props
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-      Gizmos.color = EntityId == EntityType.Hero ? Color.green : Color.red;
+      Color color = EntityId == EntityType.Hero ? Color.green : Color.red;
+      color.a = 0.5f;
+      Gizmos.color = color;
       Gizmos.DrawSphere(transform.position, 0.5f);
     }
 #endif
