@@ -1,7 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
-using NSubstitute;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
 {
   public class EnemyFeature : EcsFeature
   {
@@ -9,6 +8,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy
     {
       Add(systems.Create<DeleteInitializeCommandForEnemySystem>());
       Add(systems.Create<CreateEnemySystem>());
+      
+      Add(systems.Create<CreateBehaviourTreeSystem>());
+
       Add(systems.Create<SetHealthViewSystem>());
     }
   }

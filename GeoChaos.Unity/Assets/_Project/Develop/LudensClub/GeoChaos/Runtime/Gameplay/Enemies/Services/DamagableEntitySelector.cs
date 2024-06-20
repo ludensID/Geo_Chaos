@@ -3,7 +3,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
 {
   public class DamagableEntitySelector : EcsEntitySelector
   {

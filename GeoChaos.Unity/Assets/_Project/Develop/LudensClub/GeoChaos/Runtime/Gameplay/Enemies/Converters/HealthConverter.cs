@@ -4,7 +4,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using LudensClub.GeoChaos.Runtime.UI;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
 {
   [AddComponentMenu(ACC.Names.HEALTH_CONVERTER)]
   public class HealthConverter : MonoBehaviour, IEcsConverter

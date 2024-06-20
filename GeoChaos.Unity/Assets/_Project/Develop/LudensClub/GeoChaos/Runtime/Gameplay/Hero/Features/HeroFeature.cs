@@ -1,6 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemy;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;

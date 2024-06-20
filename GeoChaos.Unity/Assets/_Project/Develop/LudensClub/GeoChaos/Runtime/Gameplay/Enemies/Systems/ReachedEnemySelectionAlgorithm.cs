@@ -5,7 +5,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
 {
   public class ReachedEnemySelectionAlgorithm : ISelectionAlgorithm
   {

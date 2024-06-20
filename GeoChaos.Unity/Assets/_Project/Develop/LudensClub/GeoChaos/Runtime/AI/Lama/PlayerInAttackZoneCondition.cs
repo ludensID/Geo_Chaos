@@ -1,0 +1,23 @@
+﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
+
+namespace LudensClub.GeoChaos.Runtime.AI
+{
+  public class PlayerInAttackZoneCondition : IConditionStrategy
+  {
+    private readonly EcsWorld _game;
+    
+    public EcsPackedEntity Entity { get; set; }
+
+    public PlayerInAttackZoneCondition(GameWorldWrapper gameWorldWrapper)
+    {
+      _game = gameWorldWrapper.World;
+    }
+    
+    public bool Check()
+    {
+      return true;
+    }
+  }
+}

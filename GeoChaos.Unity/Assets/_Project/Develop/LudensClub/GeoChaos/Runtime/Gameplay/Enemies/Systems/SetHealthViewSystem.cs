@@ -3,7 +3,7 @@ using LudensClub.GeoChaos.Runtime.Characteristics.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemy
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
 {
   public class SetHealthViewSystem : IEcsRunSystem
   {

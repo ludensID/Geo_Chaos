@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LudensClub.GeoChaos.Runtime.AI;
 using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemy;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Shard;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 using LudensClub.GeoChaos.Runtime.Props;
 using LudensClub.GeoChaos.Runtime.Props.Ring;
@@ -34,6 +36,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
     public override void InstallBindings()
     {
+      BindNodeStrategyFactory();
+      BindBehaviourTreeBuilder();
+
+      BindEnemyTreeCreator();
+      BindLamaTreeCreator();
+
+      BindTreeCreatorService();
+      
       BindEcsDisposer();
       BindEcsSystemFactory();
       BindInputWorldWrapper();
@@ -69,6 +79,46 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindDashCooldownPresenter();
       BindShootCooldownPresenter();
+    }
+
+    private void BindTreeCreatorService()
+    {
+      Container
+        .Bind<ITreeCreatorService>()
+        .To<TreeCreatorService>()
+        .AsSingle();
+    }
+
+    private void BindLamaTreeCreator()
+    {
+      Container
+        .Bind<IBehaviourTreeCreator>()
+        .To<LamaTreeCreator>()
+        .AsSingle();
+    }
+
+    private void BindEnemyTreeCreator()
+    {
+      Container
+        .Bind<IBehaviourTreeCreator>()
+        .To<EnemyTreeCreator>()
+        .AsSingle();
+    }
+
+    private void BindBehaviourTreeBuilder()
+    {
+      Container
+        .Bind<IBehaviourTreeBuilder>()
+        .To<BehaviourTreeBuilder>()
+        .AsSingle();
+    }
+
+    private void BindNodeStrategyFactory()
+    {
+      Container
+        .Bind<INodeStrategyFactory>()
+        .To<NodeStrategyFactory>()
+        .AsSingle();
     }
 
     private void BindFreeFallService()
