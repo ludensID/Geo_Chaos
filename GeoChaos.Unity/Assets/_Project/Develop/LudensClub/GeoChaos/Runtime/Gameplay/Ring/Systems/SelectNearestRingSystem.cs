@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
 {
@@ -11,7 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
     private readonly EcsWorld _game;
     private readonly EcsEntities _rings;
     private readonly EcsEntities _heroes;
-    private readonly EcsEntities _selectedRings;
+    private readonly EcsEntities _markedRings;
 
     public SelectNearestRingSystem(GameWorldWrapper gameWorldWrapper, RingSelector selector)
     {
@@ -29,16 +30,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
         .Inc<Selectable>()
         .Collect();
 
-      _selectedRings = _game
+      _markedRings = _game
         .Filter<RingTag>()
-        .Inc<Selected>()
         .Inc<Selectable>()
+        .Inc<Marked>()
         .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      _selector.Select(_heroes, _rings, _selectedRings);
+      _selector.Select<Selected>(_heroes, _rings, _markedRings);
     }
   }
 }

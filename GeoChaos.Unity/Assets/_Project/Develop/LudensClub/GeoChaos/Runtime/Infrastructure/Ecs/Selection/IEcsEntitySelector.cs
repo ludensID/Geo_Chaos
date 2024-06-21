@@ -1,9 +1,7 @@
-﻿using LudensClub.GeoChaos.Runtime.Utils;
-
-namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
+﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
 {
   public interface IEcsEntitySelector
   {
-    void Select(EcsEntities origins, EcsEntities targets, EcsEntities selections);
+    void Select<TComponent>(EcsEntities origins, EcsEntities targets, EcsEntities selections) where TComponent : struct, IEcsComponent;
   }
 }

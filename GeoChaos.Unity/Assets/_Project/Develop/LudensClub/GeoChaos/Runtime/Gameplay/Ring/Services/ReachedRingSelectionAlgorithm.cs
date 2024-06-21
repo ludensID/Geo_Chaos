@@ -15,10 +15,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
       _physics = configProvider.Get<PhysicsConfig>();
     }
     
-    public void Select(EcsEntities origins, EcsEntities selections)
+    public void Select(EcsEntities origins, EcsEntities marks)
     {
       foreach (EcsEntity origin in origins)
-      foreach (EcsEntity selection in selections)
+      foreach (EcsEntity selection in marks)
       {
         Vector3 originPosition = origin.Get<ViewRef>().View.transform.position;
         Vector3 selectionPosition = selection.Get<ViewRef>().View.transform.position;
@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
           vector.magnitude, _physics.GroundMask);
         
         if (centerRaycast.collider != null || topRaycast.collider != null)
-          selection.Del<Selected>();
+          selection.Del<Marked>();
       }
     }
   }

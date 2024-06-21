@@ -9,5 +9,6 @@ namespace LudensClub.GeoChaos.Runtime.AI
     public float PatrolStep;
     public float PatrolAreaLength;
     public float LookingTime;
+    public float ViewRadius;
   }
 }

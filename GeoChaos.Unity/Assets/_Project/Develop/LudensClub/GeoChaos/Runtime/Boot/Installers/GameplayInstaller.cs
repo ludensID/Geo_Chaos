@@ -5,6 +5,7 @@ using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
@@ -54,6 +55,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindSelectionAlgorithmFactory();
       BindRingSelector();
       BindEnemySelector();
+      BindAimedLamaSelector();
       
       BindDragForceService();
       BindADControlService();
@@ -79,6 +81,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindDashCooldownPresenter();
       BindShootCooldownPresenter();
+    }
+
+    private void BindAimedLamaSelector()
+    {
+      Container
+        .BindInterfacesAndSelfTo<AimedLamaSelector>()
+        .AsSingle();
     }
 
     private void BindTreeCreatorService()

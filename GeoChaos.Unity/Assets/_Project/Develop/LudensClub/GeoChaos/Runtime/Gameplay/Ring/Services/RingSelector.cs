@@ -24,10 +24,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
       Update(); 
     }
 
-    public override void Select(EcsEntities origins, EcsEntities targets, EcsEntities selections)
+    public override void Select<TComponent>(EcsEntities origins, EcsEntities targets, EcsEntities marks)
     {
       Update();
-      base.Select(origins, targets, selections);
+      base.Select<TComponent>(origins, targets, marks);
     }
 
     private void Update()

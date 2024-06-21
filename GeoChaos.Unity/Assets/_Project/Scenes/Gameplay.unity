@@ -3240,6 +3240,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -2.65
       objectReference: {fileID: 0}
+    - target: {fileID: 7430734528306952036, guid: 7ca1271f42ebcb04aad3cbd839a55007,
+        type: 3}
+      propertyPath: _context.ViewRadius
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8846887779325430127, guid: 7ca1271f42ebcb04aad3cbd839a55007,
         type: 3}
       propertyPath: m_IsActive
@@ -3261,7 +3266,7 @@ PrefabInstance:
     - target: {fileID: 94561838279140776, guid: 37f0888d76a7e674f90e28dc41840cf9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.54
+      value: -1.95
       objectReference: {fileID: 0}
     - target: {fileID: 94561838279140776, guid: 37f0888d76a7e674f90e28dc41840cf9,
         type: 3}

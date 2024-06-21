@@ -3,6 +3,7 @@ using LudensClub.GeoChaos.Runtime.Characteristics.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
 {
@@ -12,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
     private readonly EcsWorld _game;
     private readonly EcsEntities _heroes;
     private readonly EcsEntities _damagables;
-    private readonly EcsEntities _selectedDamagables;
+    private readonly EcsEntities _markedDamagables;
 
     public SelectNearestDamagableEntitySystem(GameWorldWrapper gameWorldWrapper, DamagableEntitySelector selector)
     {
@@ -28,16 +29,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
         .Exc<HeroTag>()
         .Collect();
 
-      _selectedDamagables = _game
+      _markedDamagables = _game
         .Filter<Health>()
-        .Inc<Selected>()
+        .Inc<Marked>()
         .Exc<HeroTag>()
         .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      _selector.Select(_heroes, _damagables, _selectedDamagables);
+      _selector.Select<Selected>(_heroes, _damagables, _markedDamagables);
     }
   }
 }

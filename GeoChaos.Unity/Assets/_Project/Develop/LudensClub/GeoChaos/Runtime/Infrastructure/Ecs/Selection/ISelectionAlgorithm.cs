@@ -1,9 +1,7 @@
-﻿using LudensClub.GeoChaos.Runtime.Utils;
-
-namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
+﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
 {
   public interface ISelectionAlgorithm
   {
-    void Select(EcsEntities origins, EcsEntities selections);
+    void Select(EcsEntities origins, EcsEntities marks);
   }
 }

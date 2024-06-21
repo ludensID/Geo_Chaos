@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
-using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
 {
@@ -8,16 +6,25 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
   {
     protected List<ISelectionAlgorithm> _algorithms = new List<ISelectionAlgorithm>();
     
-    public virtual void Select(EcsEntities origins, EcsEntities targets, EcsEntities selections)
+    public virtual void Select<TComponent>(EcsEntities origins, EcsEntities targets, EcsEntities marks) where TComponent : struct, IEcsComponent
     {
       foreach (EcsEntity target in targets)
       {
-        target.Has<Selected>(true);
+        target
+          .Has<TComponent>(false)
+          .Add<Marked>();
       }
       
       foreach (ISelectionAlgorithm algorithm in _algorithms)
       {
-        algorithm.Select(origins, selections);
+        algorithm.Select(origins, marks);
+      }
+
+      foreach (EcsEntity mark in marks)
+      {
+        mark
+          .Del<Marked>()
+          .Add<TComponent>();
       }
     }
   }

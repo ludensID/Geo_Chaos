@@ -11,6 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
       
       Add(systems.Create<CalculateLamaBoundsSystem>());
       
+      Add(systems.Create<AimOnHeroSystem>());
+      
       Add(systems.Create<PatrolLamaSystem>());
       Add(systems.Create<DeleteLamaPatrolCommandSystem>());
     }
