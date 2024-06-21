@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
-using LudensClub.GeoChaos.Runtime.Props.Enemies.Lama;
-using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
 {
@@ -30,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
     {
       foreach (SpawnPoint spawn in _spawns)
       {
-        EcsEntity instance = _game.CreateEntity()
+        _game.CreateEntity()
           .Add<CreateCommand>()
           .Add((ref EntityId id) => id.Id = spawn.EntityId)
           .Add((ref ViewPrefab prefab) => prefab.Prefab = _prefabs.Get(spawn.EntityId))
@@ -38,10 +34,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
           {
             spawnAvailable.Position = spawn.transform.position;
             spawnAvailable.Rotation = spawn.transform.rotation;
-          });
-
-        if (spawn.EntityId.IsEnemy())
-          instance.Add((ref BrainContext ctx) => ctx.Context = spawn.GetComponent<BrainContextView>()?.Context);
+          })
+          .Add((ref SpawnPointRef spawnPoint) => spawnPoint.Spawn = spawn);
       }
     }
   }

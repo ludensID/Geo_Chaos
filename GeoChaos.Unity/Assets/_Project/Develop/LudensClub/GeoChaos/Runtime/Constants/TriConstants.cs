@@ -1,4 +1,4 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Utils
+﻿namespace LudensClub.GeoChaos.Runtime.Constants
 {
   public static class TriConstants
   {
@@ -7,6 +7,7 @@
     public const string DROP = "Drop";
     public const string FREE = "_free";
     public const string TECH = "Tech";
+    public const string CHECK = "Check";
 
     public static class Names
     {
@@ -19,10 +20,12 @@
       public const string HOOK_UPGRADES_TYPES = HOOK_UPGRADES + "/" + "Types";
       public const string SHOOT = "Shoot";
       public const string AIM = "Aim";
+      public const string BOUNDS = "Bounds";
 
       public static class Explicit
       {
         public const string DROP_ACTION_NAMES = DROP + ACTION_NAMES;
+        public const string CHECK_BOUNDS = CHECK + BOUNDS;
       }
     }
   }

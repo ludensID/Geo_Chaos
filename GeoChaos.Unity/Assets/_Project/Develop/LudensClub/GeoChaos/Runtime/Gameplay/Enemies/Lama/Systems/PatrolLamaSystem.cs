@@ -35,41 +35,47 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
       foreach (EcsEntity command in _commands)
       {
         var ctx = command.Get<BrainContext>().Cast<LamaContext>();
-        Vector3 startPosition = command.Get<StartTransform>().Position;
+        Vector2 bounds = command.Get<PatrolBounds>().Bounds;
         Vector3 position = command.Get<ViewRef>().View.transform.position;
 
-        float direction = CalculateDirection(startPosition.x, ctx.PatrolAreaLength / 2, position.x, ctx.PatrolStep);
+        float direction = CalculateDirection(position.x, ctx.PatrolStep, bounds);
 
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)
+        if (direction != 0)
         {
-          Speed = Vector2.right * ctx.MovementSpeed,
-          Direction = Vector2.right * direction
-        });
+          _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)
+          {
+            Speed = Vector2.right * ctx.MovementSpeed,
+            Direction = Vector2.right * direction
+          });
 
-        command
-          .Add<Patrolling>()
-          .Add((ref PatrollingTimer timer) => timer.TimeLeft = _timers.Create(ctx.PatrolStep / ctx.MovementSpeed));
+          command
+            .Add<Patrolling>()
+            .Add((ref PatrollingTimer timer) => timer.TimeLeft = _timers.Create(ctx.PatrolStep / ctx.MovementSpeed));
+        }
       }
     }
 
-    private static float CalculateDirection(float origin, float radius, float pos, float step)
+    private static float CalculateDirection(float position, float step, Vector2 bounds)
     {
-      float distance = origin - pos;
-
       int left = -1;
       int right = 1;
 
       if (OutOfBounds(right))
-        right = left;
+        right = 0;
 
       if (OutOfBounds(left))
-        left = right;
+        left = 0;
 
-      return Mathf.Sign(Random.Range(left, right));
+      // [-1, 1) = [-1, +0] (random)
+      // [-1, 0) = -1 (left)
+      // [0, 1) = +0 (right)
+      // [0, 0) = 0 (noting)
+      return right == 0 && left == 0 ? 0 : Mathf.Sign(Random.Range(left, right));
 
       bool OutOfBounds(float direction)
       {
-        return radius < Mathf.Abs(distance - step * direction);
+        float next = position + step * direction;
+        return next < bounds.x || next > bounds.y;
       }
     }
   }

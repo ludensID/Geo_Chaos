@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using LudensClub.GeoChaos.Runtime.Props.Enemies.Lama;
 using UnityEngine;
@@ -11,10 +12,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 
     public void Convert(EcsEntity entity)
     {
-      if (entity.Has<BrainContext>())
-        ContextView.Context = entity.Get<BrainContext>().Context;
-      else
-        entity.Add((ref BrainContext ctx) => ctx.Context = ContextView.Context);
+      if (entity.Has<SpawnPointRef>())
+        ContextView.Context = entity.Get<SpawnPointRef>().Spawn.GetComponent<BrainContextView>().Context;
+      
+      entity.Add((ref BrainContext ctx) => ctx.Context = ContextView.Context);
     }
 
     private void Reset()

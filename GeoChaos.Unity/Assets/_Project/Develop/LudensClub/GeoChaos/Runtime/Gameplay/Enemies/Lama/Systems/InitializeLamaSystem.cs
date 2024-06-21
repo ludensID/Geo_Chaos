@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
@@ -27,10 +28,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
       foreach (EcsEntity enemy in _initializedEnemies
         .Where<EntityId>(x => x.Id == EntityType.Lama))
       {
-        enemy.Add<LamaTag>()
+        enemy
+          .Add<LamaTag>()
           .Add<MovementVector>()
           .Add<BodyDirection>()
-          .Add<ForceAvailable>();
+          .Add<ForceAvailable>()
+          .Add<PhysicalBounds>()
+          .Add<PatrolBounds>()
+          .Add<ChasingBounds>();
       }
     }
   }

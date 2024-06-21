@@ -21,5 +21,10 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     {
       return (TContext)ctx.Context;
     }
+
+    public static Vector2 GetBounds(this BoundsRef obj)
+    {
+      return PhysicalBoundsConverter.GetBounds(obj.Left, obj.Right);
+    }
   }
 }
