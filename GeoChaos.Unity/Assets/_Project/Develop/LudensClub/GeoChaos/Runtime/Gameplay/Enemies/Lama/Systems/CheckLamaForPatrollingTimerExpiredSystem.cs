@@ -43,6 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
         timer
           .Del<PatrollingTimer>()
           .Del<Patrolling>()
+          .Add<OnPatrolled>()
           .Add((ref LookingTimer lookingTimer) => lookingTimer.TimeLeft = _timers.Create(ctx.LookingTime));
       }
     }

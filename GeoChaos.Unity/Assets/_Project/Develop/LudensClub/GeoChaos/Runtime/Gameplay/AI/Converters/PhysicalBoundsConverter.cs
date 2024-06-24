@@ -44,7 +44,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
     private void OnDrawGizmos()
     {
       Color color = Color.blue;
-      color.a = 0.5f;
+      color.a = 0.2f;
       Gizmos.color = color;
       
       var center = transform.position;

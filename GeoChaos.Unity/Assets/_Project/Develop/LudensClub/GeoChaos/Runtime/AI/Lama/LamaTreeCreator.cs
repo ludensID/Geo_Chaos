@@ -18,14 +18,15 @@ namespace LudensClub.GeoChaos.Runtime.AI
     public BehaviourTree Create(EcsPackedEntity entity)
     {
       return _builder.Create(entity)
+        .AddCondition<CheckLamaForAimedStrategy>()
         .AddSequence()
         .ToChild()
-        .AddCondition<CheckForNeedLamaPatrollingStrategy>()
         .AddAction<AddLamaPatrolCommandStrategy>()
         .ToParent()
         .AddSequence()
         .ToChild()
         .AddCondition<CheckLamaForLookingStrategy>()
+        .AddAction<LamaLookingStrategy>()
         .ToParent()
         .End();
     }

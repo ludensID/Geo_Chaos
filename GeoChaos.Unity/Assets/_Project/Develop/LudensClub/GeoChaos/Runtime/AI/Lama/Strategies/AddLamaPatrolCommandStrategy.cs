@@ -6,7 +6,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 
 namespace LudensClub.GeoChaos.Runtime.AI
 {
-  public class AddLamaPatrolCommandStrategy : IActionStrategy
+  public class AddLamaPatrolCommandStrategy : IActionStrategy, IResetStrategy
   {
     private readonly EcsWorld _game;
     public EcsPackedEntity Entity { get; set; }
@@ -15,16 +15,28 @@ namespace LudensClub.GeoChaos.Runtime.AI
     {
       _game = gameWorldWrapper.World;
     }
-    
+
     public BehaviourStatus Execute()
     {
-      if (Entity.TryUnpackEntity(_game, out EcsEntity lama))
+      if (Entity.TryUnpackEntity(_game, out EcsEntity lama) && !lama.Has<LookingTimer>())
       {
-        lama.Add<PatrolCommand>();
-        return Node.TRUE;
+        if (!lama.Has<Patrolling>())
+          lama.Add<PatrolCommand>();
+        return Node.CONTINUE;
       }
 
       return Node.FALSE;
+    }
+
+    public void Reset()
+    {
+      if (Entity.TryUnpackEntity(_game, out EcsEntity lama))
+      {
+        if (lama.Has<Patrolling>())
+          lama.Add<StopPatrollingCommand>();
+
+        lama.Has<LookingTimer>(false);
+      }
     }
   }
 }
