@@ -1,9 +1,7 @@
 ﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees
 {
-  public enum BehaviourStatus
+  public interface IResetStrategy : INodeStrategy
   {
-    Success = 1,
-    Failure = 2,
-    Running = 3,
+    void Reset();
   }
 }

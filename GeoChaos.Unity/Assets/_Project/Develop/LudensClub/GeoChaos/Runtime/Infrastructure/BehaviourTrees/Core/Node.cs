@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees
   {
     public const BehaviourStatus FALSE = BehaviourStatus.Failure;
     public const BehaviourStatus TRUE = BehaviourStatus.Success;
+    public const BehaviourStatus CONTINUE = BehaviourStatus.Running;
     
     public List<Node> Children = new List<Node>();
     
@@ -36,5 +37,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees
     }
 
     public abstract BehaviourStatus Run();
+
+    public virtual void Reset()
+    {
+      Status = default(BehaviourStatus);
+    }
   }
 }

@@ -16,5 +16,11 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees
       Status = _strategy.Execute();
       return Status;
     }
+
+    public override void Reset()
+    {
+      (_strategy as IResetStrategy)?.Reset();
+      base.Reset();
+    }
   }
 }
