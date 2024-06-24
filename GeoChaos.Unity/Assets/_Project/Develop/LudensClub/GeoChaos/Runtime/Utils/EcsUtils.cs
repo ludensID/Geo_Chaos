@@ -1,6 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using UnityEngine;
 
@@ -22,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Utils
       return (TContext)ctx.Context;
     }
 
-    public static Vector2 GetBounds(this BoundsRef obj)
+    public static Vector2 GetBounds(this PhysicalBoundsRef obj)
     {
       return PhysicalBoundsConverter.GetBounds(obj.Left, obj.Right);
     }

@@ -19,13 +19,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 
       float GetBound(Transform bound, float defaultValue)
       {
-        return bound && bound.gameObject.activeInHierarchy ? bound.position.x : defaultValue;
+        return bound ? bound.position.x : defaultValue;
       }
     }
 
     public void Convert(EcsEntity entity)
     {
-      entity.Add((ref BoundsRef bounds) =>
+      entity.Add((ref PhysicalBoundsRef bounds) =>
       {
         bounds.Left = LeftBound;
         bounds.Right = RightBound;
@@ -33,13 +33,24 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
     }
 
 #if UNITY_EDITOR
-
     [ShowInInspector]
     private Vector2 Bounds => GetBounds(LeftBound, RightBound);
 
     private bool CheckBounds()
     {
       return LeftBound && RightBound && LeftBound.position.x > RightBound.position.x;
+    }
+
+    private void OnDrawGizmos()
+    {
+      Color color = Color.blue;
+      color.a = 0.5f;
+      Gizmos.color = color;
+      
+      var center = transform.position;
+      center.x = (LeftBound.position.x + RightBound.position.x) / 2;
+      var size = new Vector3(RightBound.position.x - LeftBound.position.x, 3, 3);
+      Gizmos.DrawCube(center, size);
     }
 #endif
   }

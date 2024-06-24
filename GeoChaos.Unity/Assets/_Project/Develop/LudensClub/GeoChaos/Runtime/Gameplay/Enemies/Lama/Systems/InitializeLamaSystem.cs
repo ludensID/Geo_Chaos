@@ -33,9 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
           .Add<MovementVector>()
           .Add<BodyDirection>()
           .Add<ForceAvailable>()
-          .Add<PhysicalBounds>()
-          .Add<PatrolBounds>()
-          .Add<ChasingBounds>();
+          .Add<PatrolBounds>();
       }
     }
   }

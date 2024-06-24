@@ -15,7 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
       foreach (EcsEntity selection in marks)
       {
         Vector3 originPosition = origin.Get<ViewRef>().View.transform.position;
-        Vector2 bounds = selection.Get<ChasingBounds>().Bounds;
+        Vector2 bounds = selection.Get<PatrolBounds>().Bounds;
         if (originPosition.x < bounds.x || originPosition.x > bounds.y)
           selection.Del<Marked>();
       }

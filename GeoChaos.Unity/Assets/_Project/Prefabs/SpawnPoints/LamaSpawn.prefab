@@ -95,8 +95,8 @@ MonoBehaviour:
   _context:
     MovementSpeed: 5
     PatrolStep: 5
-    PatrolAreaLength: 13
     LookingTime: 1
+    ViewRadius: 9
 --- !u!114 &4103225239188409316
 MonoBehaviour:
   m_ObjectHideFlags: 0

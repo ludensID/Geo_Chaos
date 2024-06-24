@@ -11,8 +11,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct ChasingBounds : IEcsComponent
+  public struct PhysicalBoundsRef : IEcsComponent
   {
-    public Vector2 Bounds;
+    public Transform Left;
+    public Transform Right;
   }
 }
