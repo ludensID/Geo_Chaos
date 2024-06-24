@@ -8,6 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
     {
       Add(systems.Create<CheckLamaForPatrollingTimerExpiredSystem>());
       Add(systems.Create<CheckLamaForLookingTimerExpiredSystem>());
+      Add(systems.Create<KeepLamaInBoundsSystem>());
     }
   }
 }
