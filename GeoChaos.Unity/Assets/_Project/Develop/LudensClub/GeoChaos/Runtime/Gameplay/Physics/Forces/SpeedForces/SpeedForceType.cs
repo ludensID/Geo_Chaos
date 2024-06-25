@@ -6,6 +6,8 @@
     Jump = 2,
     Dash = 3,
     Hook = 4,
-    Attack = 6
+    Attack = 6,
+    Chase = Attack + 1,
+    Sneak = Chase + 1
   }
 }

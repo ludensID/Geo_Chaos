@@ -45,7 +45,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
           _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)
           {
             Speed = Vector2.right * ctx.MovementSpeed,
-            Direction = Vector2.right * direction
+            Direction = Vector2.right * direction,
+            Unique = true
           });
 
           command

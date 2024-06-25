@@ -15,6 +15,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
       Add(systems.Create<PatrolLamaSystem>());
       Add(systems.Create<DeleteLamaPatrolCommandSystem>());
       Add(systems.Create<StopPatrollingSystem>());
+      
+      Add(systems.Create<ChaseHeroByLamaSystem>());
+      Add(systems.Create<KeepLamaChasingSystem>());
+      Add(systems.Create<StopChaseHeroByLamaSystem>());
+      
+      Add(systems.Create<LamaSneakingSystem>());
+      Add(systems.Create<StopLamaSneakingSystem>());
     }
   }
 }

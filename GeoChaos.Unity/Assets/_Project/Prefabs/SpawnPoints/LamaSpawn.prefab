@@ -97,6 +97,7 @@ MonoBehaviour:
     PatrolStep: 5
     LookingTime: 1
     ViewRadius: 9
+    ListenTime: 5
 --- !u!114 &4103225239188409316
 MonoBehaviour:
   m_ObjectHideFlags: 0

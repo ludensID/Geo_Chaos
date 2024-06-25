@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct CalculateBoundsCommand : IEcsComponent
+  public struct ChaseCommand : IEcsComponent
   {
   }
 }
