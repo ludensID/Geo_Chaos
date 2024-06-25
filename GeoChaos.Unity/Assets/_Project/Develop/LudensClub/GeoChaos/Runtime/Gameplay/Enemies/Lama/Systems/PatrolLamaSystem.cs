@@ -38,7 +38,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
         Vector2 bounds = command.Get<PatrolBounds>().Bounds;
         Vector3 position = command.Get<ViewRef>().View.transform.position;
 
-        float direction = CalculateDirection(position.x, ctx.PatrolStep, bounds);
+        float step = Random.Range(ctx.PatrolStep.x, ctx.PatrolStep.y);
+        float direction = CalculateDirection(position.x, step, bounds);
 
         if (direction != 0)
         {
@@ -51,7 +52,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
 
           command
             .Add<Patrolling>()
-            .Add((ref PatrollingTimer timer) => timer.TimeLeft = _timers.Create(ctx.PatrolStep / ctx.MovementSpeed));
+            .Add((ref PatrollingTimer timer) => timer.TimeLeft = _timers.Create(step / ctx.MovementSpeed));
         }
       }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.AI
 {
@@ -6,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.AI
   public class LamaContext : IBrainContext
   {
     public float MovementSpeed;
-    public float PatrolStep;
+    public Vector2 PatrolStep;
     public float LookingTime;
     public float ViewRadius;
     public float ListenTime;

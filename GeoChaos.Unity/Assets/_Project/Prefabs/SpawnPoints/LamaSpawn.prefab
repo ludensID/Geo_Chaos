@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _context:
     MovementSpeed: 5
-    PatrolStep: 5
+    PatrolStep: {x: 4, y: 6}
     LookingTime: 1
     ViewRadius: 9
     ListenTime: 5
