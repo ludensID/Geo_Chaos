@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
         Transform selectionTransform = selection.Get<ViewRef>().View.transform;
         Vector3 originVector = originTransform.position - selectionTransform.position;
         float angle = Vector3.Angle(selectionTransform.right, originVector);
-        float bound = selection.Has<Chasing>() || selection.Has<Sneaking>() ? 180 : 90;
+        float bound = selection.Has<AimInRadius>() ? 180 : 90;
         if (angle > bound)
           selection.Del<Marked>();
       }

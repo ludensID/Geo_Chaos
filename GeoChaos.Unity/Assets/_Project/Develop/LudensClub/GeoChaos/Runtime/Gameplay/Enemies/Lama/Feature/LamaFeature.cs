@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
       Add(systems.Create<AddBoundsRefSystem>());
       
       Add(systems.Create<AimOnHeroSystem>());
+      Add(systems.Create<CheckHeroInLamaViewSystem>());
       
       Add(systems.Create<DeleteLamaOnPatrolledSystem>());
       Add(systems.Create<PatrolLamaSystem>());
