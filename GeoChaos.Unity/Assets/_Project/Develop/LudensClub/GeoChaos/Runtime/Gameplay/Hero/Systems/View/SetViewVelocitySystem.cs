@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 

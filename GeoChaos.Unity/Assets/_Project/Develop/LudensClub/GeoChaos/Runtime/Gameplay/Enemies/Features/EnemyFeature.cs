@@ -12,6 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
       
       Add(systems.Create<LamaFeature>());
       
+      Add(systems.Create<SetEnemyBodyDirectionSystem>());
       Add(systems.Create<SetHealthViewSystem>());
     }
   }

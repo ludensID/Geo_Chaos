@@ -13,7 +13,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -119,14 +118,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<ShootSystem>());
       Add(systems.Create<CheckForShardLifeTimeExpiredSystem>());
       
-      Add(systems.Create<SetBodyDirectionSystem>());
+      Add(systems.Create<SetHeroBodyDirectionSystem>());
       
       Add(systems.Create<HeroViewAttackSystem>());
       
       Add(systems.Create<DashHeroViewSystem>());
       Add(systems.Create<StopDashHeroViewSystem>());
-
-      Add(systems.Create<SetViewRotationSystem>());
       
       Add(systems.Create<SetHeroSwordViewColorSystem>());
     }

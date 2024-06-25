@@ -2,10 +2,10 @@
 using LudensClub.GeoChaos.Runtime.Constants;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
+namespace LudensClub.GeoChaos.Runtime.Props
 {
   [AddComponentMenu(ACC.Names.BASE_VIEW)]
-  public class View : MonoBehaviour
+  public class BaseView : MonoBehaviour
   {
     public EcsPackedEntity Entity;
   }

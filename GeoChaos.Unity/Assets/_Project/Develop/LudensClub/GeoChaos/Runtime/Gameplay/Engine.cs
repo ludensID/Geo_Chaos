@@ -9,6 +9,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using Zenject;
 
@@ -43,6 +44,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<HeroFeature>())
         .Add(factory.Create<AiFeature>())
         .Add(factory.Create<EnemyFeature>())
+        .Add(factory.Create<ViewFeature>())
         .Add(factory.Create<CleanupFeature>());
 
       _lateUpdateSystems

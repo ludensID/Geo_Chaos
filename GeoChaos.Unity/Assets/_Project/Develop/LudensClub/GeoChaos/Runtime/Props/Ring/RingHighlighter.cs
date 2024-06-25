@@ -15,13 +15,13 @@ namespace LudensClub.GeoChaos.Runtime.Props.Ring
     private SpriteRenderer _spriteRenderer;
     
     private EcsWorld _game;
-    private View _view;
+    private BaseView _view;
 
     [Inject]
     public void Construct(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
-      _view = GetComponent<View>();
+      _view = GetComponent<BaseView>();
     }
 
     private void Update()

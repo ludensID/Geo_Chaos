@@ -4,6 +4,7 @@ using System.Linq;
 using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Converters;
+using LudensClub.GeoChaos.Runtime.Props;
 using TriInspector;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -45,7 +46,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
       if (!isPrefab)
       {
         var config = FindAsset<PrefabProvider>(nameof(PrefabProvider));
-        View hero = config.Get(EntityType.Hero);
+        BaseView hero = config.Get(EntityType.Hero);
         converter = hero.GetComponent<HeroAttackCollidersConverter>();
       }
 

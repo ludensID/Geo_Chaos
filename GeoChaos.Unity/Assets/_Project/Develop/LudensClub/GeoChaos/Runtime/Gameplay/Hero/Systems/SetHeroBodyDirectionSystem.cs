@@ -2,21 +2,23 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems
 {
-  public class SetBodyDirectionSystem : IEcsRunSystem
+  public class SetHeroBodyDirectionSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _bodyDirections;
 
-    public SetBodyDirectionSystem(GameWorldWrapper gameWorldWrapper)
+    public SetHeroBodyDirectionSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
       _bodyDirections = _game
-        .Filter<BodyDirection>()
+        .Filter<HeroTag>()
+        .Inc<BodyDirection>()
         .Inc<ViewDirection>()
         .Collect();
     }

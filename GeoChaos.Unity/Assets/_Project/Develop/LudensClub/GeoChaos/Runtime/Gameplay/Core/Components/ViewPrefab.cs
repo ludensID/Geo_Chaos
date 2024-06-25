@@ -1,5 +1,6 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Props;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
@@ -12,6 +13,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Serializable]
   public struct ViewPrefab : IEcsComponent
   {
-    public View Prefab;
+    public BaseView Prefab;
   }
 }

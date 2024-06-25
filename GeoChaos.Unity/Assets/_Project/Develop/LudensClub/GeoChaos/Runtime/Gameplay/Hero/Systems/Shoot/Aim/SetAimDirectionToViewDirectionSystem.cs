@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim;
+using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 

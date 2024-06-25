@@ -1,5 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using Zenject;
+﻿using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Props
 {
@@ -12,9 +11,9 @@ namespace LudensClub.GeoChaos.Runtime.Props
       _instantiator = instantiator;
     }
 
-    public View Create(View prefab)
+    public BaseView Create(BaseView prefab)
     {
-      return _instantiator.InstantiatePrefabForComponent<View>(prefab);
+      return _instantiator.InstantiatePrefabForComponent<BaseView>(prefab);
     }
   }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero
+namespace LudensClub.GeoChaos.Runtime.Gameplay.View
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;

@@ -1,5 +1,4 @@
 ﻿using LudensClub.GeoChaos.Runtime.Constants;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using UnityEngine;
 using Zenject;
@@ -13,7 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
     private ColliderType _colliderType;
 
     [SerializeField]
-    private View _view;
+    private BaseView _view;
 
     [SerializeField]
     private Collider2D _collider;
@@ -38,7 +37,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
 
     private void Reset()
     {
-      _view = GetComponent<View>();
+      _view = GetComponent<BaseView>();
       _collider = GetComponent<Collider2D>();
     }
   }

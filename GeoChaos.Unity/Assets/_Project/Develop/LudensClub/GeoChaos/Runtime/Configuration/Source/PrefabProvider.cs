@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Props;
 using TriInspector;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [ListDrawerSettings(AlwaysExpanded = true)]
     public List<ViewPrefabTuple> Prefabs;
 
-    public View Get(EntityType id)
+    public BaseView Get(EntityType id)
     {
       return Prefabs.Find(x => x.Id == id).Prefab;
     }
@@ -29,6 +30,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Group(nameof(ViewPrefabTuple))]
     [HideLabel]
-    public View Prefab;
+    public BaseView Prefab;
   }
 }

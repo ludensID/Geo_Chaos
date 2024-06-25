@@ -2,7 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
+namespace LudensClub.GeoChaos.Runtime.Gameplay.View
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -11,8 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct ColliderRef : IEcsComponent
+  public struct RigidbodyRef : IEcsComponent
   {
-    public Collider2D Collider;
+    public Rigidbody2D Rigidbody;
   }
 }

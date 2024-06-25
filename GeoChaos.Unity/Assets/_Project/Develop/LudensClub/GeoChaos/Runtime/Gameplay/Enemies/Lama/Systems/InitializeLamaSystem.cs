@@ -2,8 +2,8 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
@@ -31,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
         enemy
           .Add<LamaTag>()
           .Add<MovementVector>()
-          .Add<BodyDirection>()
+          .Add((ref BodyDirection bodyDirection) => bodyDirection.Direction = 1)
           .Add<ForceAvailable>()
           .Add<PatrolBounds>();
       }
