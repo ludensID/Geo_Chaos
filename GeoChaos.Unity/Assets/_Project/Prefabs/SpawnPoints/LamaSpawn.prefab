@@ -98,6 +98,7 @@ MonoBehaviour:
     LookingTime: 1
     ViewRadius: 9
     ListenTime: 5
+    AttackDistance: 2
 --- !u!114 &4103225239188409316
 MonoBehaviour:
   m_ObjectHideFlags: 0

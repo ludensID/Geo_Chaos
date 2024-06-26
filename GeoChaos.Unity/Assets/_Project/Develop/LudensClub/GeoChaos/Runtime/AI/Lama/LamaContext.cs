@@ -11,5 +11,6 @@ namespace LudensClub.GeoChaos.Runtime.AI
     public float LookingTime;
     public float ViewRadius;
     public float ListenTime;
+    public float AttackDistance;
   }
 }
