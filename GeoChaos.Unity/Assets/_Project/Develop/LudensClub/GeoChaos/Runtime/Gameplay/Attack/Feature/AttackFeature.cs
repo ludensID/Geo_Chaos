@@ -1,7 +1,6 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Systems;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Feature
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
 {
   public class AttackFeature : EcsFeature
   {

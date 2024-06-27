@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
@@ -33,7 +34,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
           .Add<MovementVector>()
           .Add((ref BodyDirection bodyDirection) => bodyDirection.Direction = 1)
           .Add<ForceAvailable>()
-          .Add<PatrolBounds>();
+          .Add<PatrolBounds>()
+          .Add<ComboAttackCounter>();
       }
     }
   }

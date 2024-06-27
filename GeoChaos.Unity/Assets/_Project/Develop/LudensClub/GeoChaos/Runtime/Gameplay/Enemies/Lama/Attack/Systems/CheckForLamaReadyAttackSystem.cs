@@ -8,7 +8,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
 {
   public class CheckForLamaReadyAttackSystem : IEcsRunSystem
   {

@@ -2,7 +2,7 @@
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;

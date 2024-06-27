@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
+using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
@@ -42,7 +42,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
         if (DestroyShard(collision.Sender, collision.Other) || DestroyShard(collision.Other, collision.Sender))
         {
-          if (_collisionSvc.TrySelectDamagerAndTarget(collision, ColliderType.Shard, ColliderType.Body,
+          if (_collisionSvc.TrySelectDamagerAndTargetColliders(collision, ColliderType.Shard, ColliderType.Body,
               out PackedCollider damager, out PackedCollider target)
             && damager.Entity.TryUnpackEntity(_game, out EcsEntity shard)
             && !shard.Get<Owner>().Entity.EqualsTo(target.Entity))

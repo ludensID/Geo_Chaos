@@ -99,6 +99,12 @@ MonoBehaviour:
     ViewRadius: 9
     ListenTime: 5
     AttackDistance: 2
+    HitTime: 0.5
+    BiteTime: 1
+    HitCooldown: 1
+    ComboCooldown: 3
+    HitDamage: 12
+    BiteDamage: 24
 --- !u!114 &4103225239188409316
 MonoBehaviour:
   m_ObjectHideFlags: 0

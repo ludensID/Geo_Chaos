@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
+using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -31,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
       foreach (EcsEntity col in _collisions)
       {
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
-        if (_collisionSvc.TrySelectDamagerAndTarget(collision, ColliderType.Dash, ColliderType.Body,
+        if (_collisionSvc.TrySelectDamagerAndTargetColliders(collision, ColliderType.Dash, ColliderType.Body,
           out PackedCollider damager, out PackedCollider target) && !damager.Entity.EqualsTo(target.Entity))
         {
           _message.CreateEntity()

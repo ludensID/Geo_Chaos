@@ -1,6 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.AI;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using TriInspector;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 {
@@ -13,6 +14,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
   [Serializable]
   public struct BrainContext : IEcsComponent
   {
+    [ShowInInspector]
+    [HideReferencePicker]
+    [InlineProperty]
+    [HideLabel]
     public IBrainContext Context;
   }
 }

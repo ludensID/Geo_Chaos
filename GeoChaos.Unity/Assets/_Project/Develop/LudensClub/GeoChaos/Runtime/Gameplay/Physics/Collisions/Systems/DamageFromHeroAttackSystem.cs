@@ -1,13 +1,12 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
+using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
-  public class DamageFromAttackSystem : IEcsRunSystem
+  public class DamageFromHeroAttackSystem : IEcsRunSystem
   {
     private readonly ICollisionService _collisionSvc;
     private readonly EcsWorld _message;
@@ -15,7 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     private readonly EcsWorld _game;
     private readonly EcsEntities _collisions;
 
-    public DamageFromAttackSystem(MessageWorldWrapper messageWorldWrapper,
+    public DamageFromHeroAttackSystem(MessageWorldWrapper messageWorldWrapper,
       GameWorldWrapper gameWorldWrapper,
       IConfigProvider configProvider,
       ICollisionService collisionSvc)
@@ -35,10 +34,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
       foreach (EcsEntity col in _collisions)
       {
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
-        if (_collisionSvc.TrySelectDamagerAndTarget(collision, ColliderType.Attack, ColliderType.Body,
+        if (_collisionSvc.TrySelectDamagerAndTargetColliders(collision, ColliderType.Attack, ColliderType.Body,
           out PackedCollider damager, out PackedCollider target) && !damager.Entity.EqualsTo(target.Entity))
         {
-          if (damager.Entity.TryUnpackEntity(_game, out EcsEntity damagerEntity))
+          if (damager.Entity.TryUnpackEntity(_game, out EcsEntity damagerEntity) && damagerEntity.Has<HeroTag>())
           {
             _message.CreateEntity()
               .Add((ref DamageMessage message) =>

@@ -1,9 +1,11 @@
 ﻿using System;
+using TriInspector;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   [Serializable]
+  [InlineProperty]
   public class Timer : ITimerable, IComparable, IComparable<Timer>
   {
     public static implicit operator float(Timer obj)
@@ -17,6 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     }
 
     [SerializeField]
+    [HideLabel]
     private float _timeLeft;
 
     public float TimeLeft

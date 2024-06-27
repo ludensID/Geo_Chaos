@@ -1,10 +1,9 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Characteristics.Components;
-using LudensClub.GeoChaos.Runtime.Gameplay.Attack.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack.Systems
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
 {
   public class GetDamageSystem : IEcsRunSystem
   {

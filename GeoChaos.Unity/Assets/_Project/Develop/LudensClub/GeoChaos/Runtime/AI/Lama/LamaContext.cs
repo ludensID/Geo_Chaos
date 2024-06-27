@@ -12,5 +12,11 @@ namespace LudensClub.GeoChaos.Runtime.AI
     public float ViewRadius;
     public float ListenTime;
     public float AttackDistance;
+    public float HitTime;
+    public float BiteTime;
+    public float HitCooldown;
+    public float ComboCooldown;
+    public float HitDamage;
+    public float BiteDamage;
   }
 }

@@ -1,4 +1,6 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.View;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
 {
@@ -12,8 +14,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
       Add(systems.Create<AimOnHeroSystem>());
       Add(systems.Create<CheckHeroInLamaViewSystem>());
       
-      Add(systems.Create<CheckForLamaReadyAttackSystem>());
-      
       Add(systems.Create<DeleteLamaOnPatrolledSystem>());
       Add(systems.Create<PatrolLamaSystem>());
       Add(systems.Create<DeleteLamaPatrolCommandSystem>());
@@ -25,6 +25,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
       
       Add(systems.Create<LamaSneakingSystem>());
       Add(systems.Create<StopLamaSneakingSystem>());
+      
+      Add(systems.Create<LamaAttackFeature>());
+      
+      Add(systems.Create<LamaViewFeature>());
     }
   }
 }

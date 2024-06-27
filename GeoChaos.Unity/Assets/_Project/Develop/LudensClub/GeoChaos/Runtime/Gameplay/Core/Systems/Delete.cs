@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿using System;
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
@@ -9,15 +10,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     private readonly EcsWorld _world;
     private readonly EcsEntities _deletes;
 
-    public Delete(TWrapper wrapper)
+    protected Delete(TWrapper wrapper, Action<EcsWorld.Mask> clarifier = null)
     {
       _world = wrapper.World;
 
-      _deletes = _world
-        .Filter<TComponent>()
-        .Collect();
+      EcsWorld.Mask deleteMask = _world.Filter<TComponent>();
+      clarifier?.Invoke(deleteMask);
+      _deletes = deleteMask.Collect();
     }
-
+    
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity delete in _deletes)
