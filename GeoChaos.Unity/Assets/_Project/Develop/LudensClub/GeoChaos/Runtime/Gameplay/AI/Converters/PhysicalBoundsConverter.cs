@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Constants;
+﻿using System.Linq;
+using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using TriInspector;
@@ -43,13 +44,28 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 
     private void OnDrawGizmos()
     {
+      Transform active = UnityEditor.Selection.activeTransform;
+      if (!active || !active.IsChildOf(transform))
+        return;
+      
+      RaycastHit2D[] results = new RaycastHit2D[5];
+      var filter = new ContactFilter2D
+      {
+        layerMask = LayerMask.GetMask("Ground"),
+        useLayerMask = true,
+        useTriggers = false
+      };
+      int hitCounts = Physics2D.Raycast(transform.position, Vector2.down, filter, results, 3);
+      Vector3 origin = hitCounts > 0 ? results.First().point : transform.position;
+      
       Color color = Color.blue;
       color.a = 0.2f;
       Gizmos.color = color;
       
+      var size = new Vector3(RightBound.position.x - LeftBound.position.x, 3, 3);
       var center = transform.position;
       center.x = (LeftBound.position.x + RightBound.position.x) / 2;
-      var size = new Vector3(RightBound.position.x - LeftBound.position.x, 3, 3);
+      center.y = origin.y + size.y / 2;
       Gizmos.DrawCube(center, size);
     }
 #endif
