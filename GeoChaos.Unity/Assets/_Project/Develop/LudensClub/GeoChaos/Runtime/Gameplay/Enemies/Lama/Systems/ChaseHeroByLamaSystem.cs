@@ -1,10 +1,8 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.AI;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
@@ -14,11 +12,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
     private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
     private readonly EcsEntities _lamas;
+    private readonly LamaConfig _config;
 
-    public ChaseHeroByLamaSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceFactory forceFactory)
+    public ChaseHeroByLamaSystem(GameWorldWrapper gameWorldWrapper,
+      ISpeedForceFactory forceFactory,
+      IConfigProvider configProvider)
     {
       _forceFactory = forceFactory;
       _game = gameWorldWrapper.World;
+      _config = configProvider.Get<LamaConfig>();
 
       _lamas = _game
         .Filter<LamaTag>()
@@ -32,11 +34,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
       {
         if (!lama.Has<Chasing>())
         {
-          var ctx = lama.Get<BrainContext>().Cast<LamaContext>();
-
           _forceFactory.Create(new SpeedForceData(SpeedForceType.Chase, lama.Pack(), Vector2.right)
           {
-            Speed = new Vector2(ctx.MovementSpeed, 0),
+            Speed = new Vector2(_config.MovementSpeed, 0),
             Direction = Vector2.one,
             Unique = true
           });

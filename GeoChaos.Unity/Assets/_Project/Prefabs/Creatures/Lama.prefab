@@ -402,19 +402,18 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3141979229642547052}
-  - component: {fileID: 5597588377398842014}
   - component: {fileID: 4116368494250354007}
   - component: {fileID: 3779388907173813099}
   - component: {fileID: 7967303380725043438}
   - component: {fileID: 6409244748196718456}
   - component: {fileID: 7845106361426768446}
-  - component: {fileID: 6986686331252391730}
   - component: {fileID: 1512531934088391012}
   - component: {fileID: 1147502170941659205}
   - component: {fileID: 1374762424137855957}
   - component: {fileID: 3716216728190780692}
   - component: {fileID: 9033194687564035821}
   - component: {fileID: 2386890560109955856}
+  - component: {fileID: 8807814264450966915}
   m_Layer: 9
   m_Name: Lama
   m_TagString: Untagged
@@ -444,31 +443,6 @@ Transform:
   - {fileID: 1173009718330912500}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5597588377398842014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6039315081198379708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991a964848944fb8866d80b025ad70a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _context:
-    MovementSpeed: 5
-    PatrolStep: {x: 4, y: 6}
-    LookingTime: 1
-    ViewRadius: 9
-    ListenTime: 5
-    AttackDistance: 2
-    HitTime: 0.5
-    BiteTime: 1
-    HitCooldown: 1
-    ComboCooldown: 3
-    HitDamage: 12
-    BiteDamage: 24
 --- !u!50 &4116368494250354007
 Rigidbody2D:
   serializedVersion: 4
@@ -582,19 +556,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   View: {fileID: 6409244748196718456}
---- !u!114 &6986686331252391730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6039315081198379708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84093824435d4d42bc479371520d0d72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ContextView: {fileID: 5597588377398842014}
 --- !u!114 &1512531934088391012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +636,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1656292261594704339}
+--- !u!114 &8807814264450966915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039315081198379708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991a964848944fb8866d80b025ad70a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7934060327910776909
 GameObject:
   m_ObjectHideFlags: 0

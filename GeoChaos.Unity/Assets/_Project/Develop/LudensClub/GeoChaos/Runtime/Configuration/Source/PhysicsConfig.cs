@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Configuration
 {
-  [CreateAssetMenu(fileName = CAC.PHYSICS_FILE, menuName = CAC.PHYSICS_MENU)]
+  [CreateAssetMenu(fileName = CAC.Names.PHYSICS_FILE, menuName = CAC.Names.PHYSICS_MENU)]
   public class PhysicsConfig : ScriptableObject
   {
     public LayerMask GroundMask;

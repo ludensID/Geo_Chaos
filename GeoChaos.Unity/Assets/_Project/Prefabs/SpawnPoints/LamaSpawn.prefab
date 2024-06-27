@@ -41,8 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2491605805277018690}
   - component: {fileID: 2001038669317906806}
-  - component: {fileID: 7430734528306952036}
   - component: {fileID: 4103225239188409316}
+  - component: {fileID: 3861774524490263867}
   m_Layer: 0
   m_Name: LamaSpawn
   m_TagString: Untagged
@@ -80,34 +80,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityId: 3
---- !u!114 &7430734528306952036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6472711228792413092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991a964848944fb8866d80b025ad70a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _context:
-    MovementSpeed: 5
-    PatrolStep: {x: 4, y: 6}
-    LookingTime: 1
-    ViewRadius: 9
-    ListenTime: 5
-    AttackDistance: 2
-    HitTime: 0.5
-    BiteTime: 1
-    HitCooldown: 1
-    ComboCooldown: 3
-    HitDamage: 12
-    BiteDamage: 24
-  Vertices: []
-  Triangles: 
-  Origin: {x: 0, y: 0, z: 0}
 --- !u!114 &4103225239188409316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +94,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftBound: {fileID: 6835654677934399942}
   RightBound: {fileID: 2317721690676477700}
+--- !u!114 &3861774524490263867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472711228792413092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991a964848944fb8866d80b025ad70a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8846887779325430127
 GameObject:
   m_ObjectHideFlags: 0

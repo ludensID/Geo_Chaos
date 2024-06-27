@@ -22,6 +22,8 @@
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEBA835BCC98A49B7F7AD26BD13FAC9/Shortcut/@EntryValue">cref</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEBA835BCC98A49B7F7AD26BD13FAC9/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEBA835BCC98A49B7F7AD26BD13FAC9/Text/@EntryValue">(ref $TYPE$ $VARIABLE$) =&gt; $END$</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F73920CA22A40C438B3ECB21798DFDB8/Field/=VARIABLE/Expression/@EntryValue">typeName()</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F73920CA22A40C438B3ECB21798DFDB8/Text/@EntryValue">[UnityEngine.CreateAssetMenu(menuName = CAC.Names.$VARIABLE$_MENU, fileName = CAC.Names.$VARIABLE$_FILE)]</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FB9C2DC72096684EB5AB0FF88F33D546/Text/@EntryValue">$HEADER$namespace $NAMESPACE$
 {
 #if ENABLE_IL2CPP

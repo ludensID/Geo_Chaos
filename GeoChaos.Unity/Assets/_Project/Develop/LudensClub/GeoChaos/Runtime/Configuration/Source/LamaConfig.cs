@@ -1,16 +1,23 @@
-﻿using System;
+﻿using LudensClub.GeoChaos.Runtime.Constants;
+using TriInspector;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.AI
+namespace LudensClub.GeoChaos.Runtime.Configuration
 {
-  [Serializable]
-  public class LamaContext : IBrainContext
+  [CreateAssetMenu(menuName = CAC.Names.LAMA_MENU, fileName = CAC.Names.LAMA_FILE)]
+  public class LamaConfig : ScriptableObject
   {
     public float MovementSpeed;
+    
+    [Title("Patrol")]
     public Vector2 PatrolStep;
     public float LookingTime;
+    
+    [Title("Chase")]
     public float ViewRadius;
     public float ListenTime;
+    
+    [Title("Attack")]
     public float AttackDistance;
     public float HitTime;
     public float BiteTime;

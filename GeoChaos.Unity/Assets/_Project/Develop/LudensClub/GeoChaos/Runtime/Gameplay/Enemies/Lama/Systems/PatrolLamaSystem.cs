@@ -1,10 +1,9 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.AI;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
@@ -15,12 +14,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
     private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _commands;
+    private readonly LamaConfig _config;
 
-    public PatrolLamaSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceFactory forceFactory, ITimerFactory timers)
+    public PatrolLamaSystem(GameWorldWrapper gameWorldWrapper,
+      ISpeedForceFactory forceFactory,
+      ITimerFactory timers,
+      IConfigProvider configProvider)
     {
       _forceFactory = forceFactory;
       _timers = timers;
       _game = gameWorldWrapper.World;
+      _config = configProvider.Get<LamaConfig>();
 
       _commands = _game
         .Filter<LamaTag>()
@@ -34,25 +38,24 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
     {
       foreach (EcsEntity command in _commands)
       {
-        var ctx = command.Get<BrainContext>().Cast<LamaContext>();
         Vector2 bounds = command.Get<PatrolBounds>().Bounds;
         Vector3 position = command.Get<ViewRef>().View.transform.position;
 
-        float step = Random.Range(ctx.PatrolStep.x, ctx.PatrolStep.y);
+        float step = Random.Range(_config.PatrolStep.x, _config.PatrolStep.y);
         float direction = CalculateDirection(position.x, step, bounds);
 
         if (direction != 0)
         {
           _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)
           {
-            Speed = Vector2.right * ctx.MovementSpeed,
+            Speed = Vector2.right * _config.MovementSpeed,
             Direction = Vector2.right * direction,
             Unique = true
           });
 
           command
             .Add<Patrolling>()
-            .Add((ref PatrollingTimer timer) => timer.TimeLeft = _timers.Create(step / ctx.MovementSpeed));
+            .Add((ref PatrollingTimer timer) => timer.TimeLeft = _timers.Create(step / _config.MovementSpeed));
         }
       }
     }

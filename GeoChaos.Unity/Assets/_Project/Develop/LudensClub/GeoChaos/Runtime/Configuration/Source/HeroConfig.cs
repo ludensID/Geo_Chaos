@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using LudensClub.GeoChaos.Runtime.Constants;
-using LudensClub.GeoChaos.Runtime.Utils;
 using TriInspector;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Configuration
 {
-  [CreateAssetMenu(fileName = CAC.HERO_FILE, menuName = CAC.HERO_MENU)]
+  [CreateAssetMenu(fileName = CAC.Names.HERO_FILE, menuName = CAC.Names.HERO_MENU)]
   public partial class HeroConfig : ScriptableObject
   {
     [Range(0, 1)]

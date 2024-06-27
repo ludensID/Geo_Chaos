@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using LudensClub.GeoChaos.Runtime.Constants;
-using LudensClub.GeoChaos.Runtime.Utils;
 using TriInspector;
 using UnityEditor;
 using UnityEngine;
@@ -9,7 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace LudensClub.GeoChaos.Runtime.Configuration
 {
-  [CreateAssetMenu(fileName = CAC.INPUT_ACTION_NAME_FILE, menuName = CAC.INPUT_ACTION_NAME_MENU)]
+  [CreateAssetMenu(fileName = CAC.Names.INPUT_ACTION_NAME_FILE, menuName = CAC.Names.INPUT_ACTION_NAME_MENU)]
   public class InputActionNameMap : ScriptableObject
   {
     [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]

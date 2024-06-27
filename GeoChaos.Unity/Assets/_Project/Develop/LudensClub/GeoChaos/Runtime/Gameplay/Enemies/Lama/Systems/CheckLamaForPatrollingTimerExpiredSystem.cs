@@ -1,10 +1,8 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.AI;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
@@ -15,12 +13,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
     private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _patrollingTimers;
+    private readonly LamaConfig _config;
 
-    public CheckLamaForPatrollingTimerExpiredSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceFactory forceFactory, ITimerFactory timers)
+    public CheckLamaForPatrollingTimerExpiredSystem(GameWorldWrapper gameWorldWrapper,
+      ISpeedForceFactory forceFactory,
+      ITimerFactory timers,
+      IConfigProvider configProvider)
     {
       _forceFactory = forceFactory;
       _timers = timers;
       _game = gameWorldWrapper.World;
+      _config = configProvider.Get<LamaConfig>();
 
       _patrollingTimers = _game
         .Filter<PatrollingTimer>()
@@ -33,8 +36,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
       foreach (EcsEntity timer in _patrollingTimers
         .Where<PatrollingTimer>(x => x.TimeLeft <= 0))
       {
-        var ctx = timer.Get<BrainContext>().Cast<LamaContext>();
-
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, timer.Pack(), Vector2.right)
         {
           Instant = true
@@ -44,7 +45,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
           .Del<PatrollingTimer>()
           .Del<Patrolling>()
           .Add<OnPatrolled>()
-          .Add((ref LookingTimer lookingTimer) => lookingTimer.TimeLeft = _timers.Create(ctx.LookingTime));
+          .Add((ref LookingTimer lookingTimer) => lookingTimer.TimeLeft = _timers.Create(_config.LookingTime));
       }
     }
   }

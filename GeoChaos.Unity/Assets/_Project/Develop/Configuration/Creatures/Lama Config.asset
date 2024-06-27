@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f012a5d1d96945eb84e53c090c284b7f, type: 3}
+  m_Name: Lama Config
+  m_EditorClassIdentifier: 
+  MovementSpeed: 5
+  PatrolStep: {x: 4, y: 6}
+  LookingTime: 1
+  ViewRadius: 9
+  ListenTime: 5
+  AttackDistance: 2
+  HitTime: 0.5
+  BiteTime: 1
+  HitCooldown: 1
+  ComboCooldown: 3
+  HitDamage: 12
+  BiteDamage: 24

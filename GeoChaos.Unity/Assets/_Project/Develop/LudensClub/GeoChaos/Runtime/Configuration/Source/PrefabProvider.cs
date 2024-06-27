@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Configuration
 {
-  [CreateAssetMenu(fileName = CAC.PREFAB_FILE, menuName = CAC.PREFAB_MENU)]
+  [CreateAssetMenu(fileName = CAC.Names.PREFAB_FILE, menuName = CAC.Names.PREFAB_MENU)]
   public class PrefabProvider : ScriptableObject
   {
     [ListDrawerSettings(AlwaysExpanded = true)]

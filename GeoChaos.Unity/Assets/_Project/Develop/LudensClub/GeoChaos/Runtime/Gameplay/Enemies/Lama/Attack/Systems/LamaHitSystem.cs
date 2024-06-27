@@ -1,10 +1,8 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.AI;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
 {
@@ -13,11 +11,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
     private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _lamas;
+    private readonly LamaConfig _config;
 
-    public LamaHitSystem(GameWorldWrapper gameWorldWrapper, ITimerFactory timers)
+    public LamaHitSystem(GameWorldWrapper gameWorldWrapper, ITimerFactory timers, IConfigProvider configProvider)
     {
       _timers = timers;
       _game = gameWorldWrapper.World;
+      _config = configProvider.Get<LamaConfig>();
 
       _lamas = _game
         .Filter<LamaTag>()
@@ -31,11 +31,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
       {
         if(lama.Has<HitCooldownUp>() || lama.Has<BiteCommand>() || lama.Has<OnAttackStarted>())
         {
-          var ctx = lama.Get<BrainContext>().Cast<LamaContext>();
           ref ComboAttackCounter counter = ref lama.Get<ComboAttackCounter>();
 
           counter.Count++;
-          float attackTime = counter.Count == 3 ? ctx.BiteTime : ctx.HitTime;
+          float attackTime = counter.Count == 3 ? _config.BiteTime : _config.HitTime;
 
           lama
             .Add<OnHitStarted>()

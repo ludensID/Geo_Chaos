@@ -1,7 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
-using LudensClub.GeoChaos.Runtime.Props.Enemies.Lama;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.AI

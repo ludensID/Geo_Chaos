@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LudensClub.GeoChaos.Editor.General;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Debugging;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -28,7 +29,7 @@ namespace LudensClub.GeoChaos.Debugging
 
       if (!isPrefab)
       {
-        var config = Misc.FindAsset<PrefabProvider>(nameof(PrefabProvider));
+        var config = AssetFinder.FindAsset<PrefabProvider>();
         BaseView hero = config.Get(EntityType.Hero);
         converter = hero.GetComponent<HeroAttackCollidersConverter>();
       }

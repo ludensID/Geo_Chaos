@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Configuration
 {
-  [CreateAssetMenu(fileName = CAC.CONFIG_PROVIDER_FILE, menuName = CAC.CONFIG_PROVIDER_MENU, order = 0)]
+  [CreateAssetMenu(fileName = CAC.Names.CONFIG_PROVIDER_FILE, menuName = CAC.Names.CONFIG_PROVIDER_MENU, order = 0)]
   public class ConfigProvider : ScriptableObject, IConfigProvider
   {
     [SerializeField]
