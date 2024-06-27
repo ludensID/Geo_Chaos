@@ -37,7 +37,7 @@ namespace LudensClub.GeoChaos.Runtime.UI
 
       foreach (EcsEntity heroCooldown in _heroCooldowns)
       {
-        float viewTime = MathUtils.Clamp(heroCooldown.Get<DashCooldown>().TimeLeft.TimeLeft, 0);
+        float viewTime = MathUtils.Clamp(heroCooldown.Get<DashCooldown>().TimeLeft, 0);
         _view.SetText(viewTime.ToString("F"));
       }
     }
