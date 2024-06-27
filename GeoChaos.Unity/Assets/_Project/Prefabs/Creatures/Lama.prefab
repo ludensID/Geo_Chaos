@@ -413,6 +413,8 @@ GameObject:
   - component: {fileID: 1147502170941659205}
   - component: {fileID: 1374762424137855957}
   - component: {fileID: 3716216728190780692}
+  - component: {fileID: 9033194687564035821}
+  - component: {fileID: 2386890560109955856}
   m_Layer: 9
   m_Name: Lama
   m_TagString: Untagged
@@ -646,6 +648,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitCollider: {fileID: 2516825188234255995}
   _comboCollider: {fileID: 6570981928522396299}
+--- !u!114 &9033194687564035821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039315081198379708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ca4a9a983445faaf51638f4469dc97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitRenderer: {fileID: 1764955326398501569}
+  _biteRenderer: {fileID: 2813757645462512008}
+--- !u!114 &2386890560109955856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039315081198379708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5243aae03745dc87593e8fd8518fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 1656292261594704339}
 --- !u!1 &7934060327910776909
 GameObject:
   m_ObjectHideFlags: 0

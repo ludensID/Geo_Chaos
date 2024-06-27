@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Props.Enemies
     private void Update()
     {
       _spriteRenderer.color = _view.Entity.TryUnpackEntity(_game, out EcsEntity enemy) && enemy.Has<Selected>()
-        ? Color.red
+        ? new Color(1, 0.5f, 0)
         : Color.white;
     }
   }

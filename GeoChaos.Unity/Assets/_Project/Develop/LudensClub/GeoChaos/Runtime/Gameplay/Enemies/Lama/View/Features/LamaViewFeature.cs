@@ -8,6 +8,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.View
     {
       Add(systems.Create<EnableLamaAttackColliderSystem>());
       Add(systems.Create<DisableLamaAttackColliderSystem>());
+      
+      Add(systems.Create<SetColorToLamaAttackRenderersSystem>());
     }
   }
 }

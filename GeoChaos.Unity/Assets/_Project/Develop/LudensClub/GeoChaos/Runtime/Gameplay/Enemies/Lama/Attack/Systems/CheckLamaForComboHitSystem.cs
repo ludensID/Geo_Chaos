@@ -27,15 +27,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
       foreach (EcsEntity lama in _lamas)
       {
         int count = lama.Get<ComboAttackCounter>().Count;
-        if (count == 2)
-        {
-          float value = Random.value;
-          Debug.Log(value);
-          if (value <= 0.6f)
-          {
-            lama.Add<BiteCommand>();
-          }
-        }
+        if (count == 2 && Random.value <= 0.6f)
+          lama.Add<BiteCommand>();
       }
     }
   }
