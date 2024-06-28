@@ -41,7 +41,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<CollisionFeature>())
         .Add(factory.Create<InputFeature>())
         .Add(factory.Create<HeroFeature>())
-        .Add(factory.Create<AiFeature>())
+        .Add(factory.Create<AIFeature>())
         .Add(factory.Create<EnemyFeature>())
         .Add(factory.Create<ViewFeature>())
         .Add(factory.Create<AttackFeature>())

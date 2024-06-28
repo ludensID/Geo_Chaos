@@ -1,18 +1,17 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Patrol;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Watch;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 
 namespace LudensClub.GeoChaos.Runtime.AI
 {
-  public class AddLamaPatrolCommandStrategy : IActionStrategy, IResetStrategy
+  public class LamaWatchingStrategy : IActionStrategy, IResetStrategy
   {
     private readonly EcsWorld _game;
     public EcsPackedEntity Entity { get; set; }
 
-    public AddLamaPatrolCommandStrategy(GameWorldWrapper gameWorldWrapper)
+    public LamaWatchingStrategy(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
     }
@@ -21,8 +20,9 @@ namespace LudensClub.GeoChaos.Runtime.AI
     {
       if (Entity.TryUnpackEntity(_game, out EcsEntity lama))
       {
-        if (!lama.Has<Patrolling>())
-          lama.Add<PatrolCommand>();
+        if (!lama.Has<Watching>())
+          lama.Add<WatchCommand>();
+        
         return Node.CONTINUE;
       }
 
@@ -32,13 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.AI
     public void Reset()
     {
       if (Entity.TryUnpackEntity(_game, out EcsEntity lama))
-      {
-        if (lama.Has<Patrolling>())
-          lama.Add<StopPatrollingCommand>();
-
-        if (lama.Has<OnPatrollFinished>())
-          lama.Has<LookingTimer>(false);
-      }
+        lama.Add<StopWatchCommand>();
     }
   }
 }

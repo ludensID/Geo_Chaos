@@ -5,7 +5,7 @@ using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
