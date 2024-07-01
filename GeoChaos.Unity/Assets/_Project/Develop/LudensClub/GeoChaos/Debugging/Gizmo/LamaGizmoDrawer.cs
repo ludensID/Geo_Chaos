@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Debugging.Gizmo
 {
+  [AddComponentMenu(ACC.Names.LAMA_GIZMO_DRAWER)]
   public class LamaGizmoDrawer : MonoBehaviour
   {
     private static LamaConfig _config;

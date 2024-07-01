@@ -1,10 +1,12 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
+﻿using LudensClub.GeoChaos.Runtime.Constants;
+using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 {
+  [AddComponentMenu(ACC.Names.BRAIN_CONTEXT_CONVERTER)]
   public class BrainContextConverter : MonoBehaviour, IEcsConverter
   {
     public BrainContextView ContextView;

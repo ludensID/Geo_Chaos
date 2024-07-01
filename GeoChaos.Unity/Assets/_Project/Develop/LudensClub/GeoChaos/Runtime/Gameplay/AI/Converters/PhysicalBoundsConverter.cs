@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 {
+  [AddComponentMenu(ACC.Names.PHYSICAL_BOUNDS_CONVERTER)]
   public class PhysicalBoundsConverter : MonoBehaviour, IEcsConverter
   {
     [InfoBox("The left bound can not be more than the right one", TriMessageType.Error,

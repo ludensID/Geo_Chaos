@@ -25,9 +25,11 @@
       public const string HEALTH_VIEW = VIEW + "Health View";
       public const string HERO_SWORD_VIEW = VIEW + "Hero Sword View";
       public const string SHOOT_COOLDOWN_VIEW = VIEW + "Shoot Cooldown View";
+      public const string HERO_HEALTH_VIEW = VIEW + "Hero Health View";
 
       public const string GAMEPLAY_INSTALLER = BOOT + "Gameplay Installer";
       public const string PROJECT_INSTALLER = BOOT + "Project Installer";
+      
       public const string DASH_COLLIDER_CONVERTER = CONVERTERS + "Dash Collider Converter";
       public const string GROUND_CHECK_CONVERTER = CONVERTERS + "Ground Check Converter";
       public const string HEALTH_CONVERTER = CONVERTERS + "Health Converter";
@@ -39,6 +41,12 @@
       public const string COLLIDER_CONVERTER = CONVERTERS + "Collider Converter";
       public const string RIGIDBODY_CONVERTER = CONVERTERS + "Rigidbody Converter";
       public const string VIEW_CONVERTER = CONVERTERS + "View Converter";
+      public const string BRAIN_CONTEXT_CONVERTER = CONVERTERS + "Brain Context Converter";
+      public const string PHYSICAL_BOUNDS_CONVERTER = CONVERTERS + "Physical Bounds Converter";
+      public const string ATTACK_CHECKER_CONVERTER = CONVERTERS + "Attack Checker Converter";
+      public const string LAMA_ATTACK_COLLIDERS_CONVERTER = CONVERTERS + "Lama Attack Colliders Converter";
+      public const string LAMA_ATTACK_RENDERERS_CONVERTER = CONVERTERS + "Lama Attack Renderers Converter";
+      public const string MONO_GAME_OBJECT_CONVERTER = CONVERTERS + "Mono Game Object Converter";
 
       public const string COROUTINE_RUNNER = CORE + "Coroutine Runner";
       public const string COLLISION_DETECTOR = CORE + "Collision Detector";

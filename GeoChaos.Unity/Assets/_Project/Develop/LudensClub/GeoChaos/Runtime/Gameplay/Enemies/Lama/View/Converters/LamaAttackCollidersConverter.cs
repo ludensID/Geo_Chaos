@@ -1,9 +1,11 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Constants;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.View
 {
+  [AddComponentMenu(ACC.Names.LAMA_ATTACK_COLLIDERS_CONVERTER)]
   public class LamaAttackCollidersConverter : MonoBehaviour, IEcsConverter
   {
     [SerializeField]

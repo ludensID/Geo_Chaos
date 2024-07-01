@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
@@ -8,6 +9,7 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 {
+  [AddComponentMenu(ACC.Names.MONO_GAME_OBJECT_CONVERTER)]
   public class MonoGameObjectConverter : MonoBehaviour, IEcsConverter, IInjectable
   {
     public EntityType Id;

@@ -15,7 +15,6 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 using LudensClub.GeoChaos.Runtime.Props;
-using LudensClub.GeoChaos.Runtime.Props.Ring;
 using LudensClub.GeoChaos.Runtime.Props.Shard;
 using LudensClub.GeoChaos.Runtime.UI;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealth;
