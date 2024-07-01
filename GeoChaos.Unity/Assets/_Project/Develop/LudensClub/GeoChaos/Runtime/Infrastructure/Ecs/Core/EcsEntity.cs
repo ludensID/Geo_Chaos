@@ -8,15 +8,19 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
   public class EcsEntity : IDisposable
   {
-    public EcsWorld World { get; private set; }
-    public int Entity { get; private set; }
-    public bool IsAlive { get; private set; }
+    public EcsWorld World { get; set; }
+    public int Entity { get; set; }
+    public bool IsAlive => World != null && Entity != -1;
+
+    public EcsEntity()
+    {
+      Entity = -1;
+    }
 
     public EcsEntity(EcsWorld world, int entity)
     {
       World = world;
       Entity = entity;
-      IsAlive = world != null && entity != -1;
     }
 
     [HideInCallstack]
@@ -96,9 +100,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     public void Dispose()
     {
       World.DelEntity(Entity);
-      World = null;
       Entity = -1;
-      IsAlive = false;
     }
 
     public EcsPackedEntity Pack()

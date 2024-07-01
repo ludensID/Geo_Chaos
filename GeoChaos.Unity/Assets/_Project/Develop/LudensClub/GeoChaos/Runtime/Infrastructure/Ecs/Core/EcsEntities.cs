@@ -11,11 +11,13 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     private readonly List<IEcsPredicate> _predicates = new List<IEcsPredicate>();
     private readonly EcsFilter _filter;
     private readonly EcsWorld _world;
+    private readonly EcsEntity _cachedEntity;
 
     public EcsEntities(EcsFilter filter)
     {
       _filter = filter;
       _world = filter.GetWorld();
+      _cachedEntity = new EcsEntity { World = _world };
     }
 
     public IEnumerator<EcsEntity> GetEnumerator()
@@ -23,7 +25,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       foreach (int i in _filter)
       {
         if (_predicates.All(p => p.Invoke(i)))
-          yield return new EcsEntity(_world, i);
+        {
+          _cachedEntity.Entity = i;
+          yield return _cachedEntity;
+        }
       }
     }
 
@@ -31,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     {
       return GetEnumerator();
     }
-    
+
     public EcsEntities Where<TComponent>(Predicate<TComponent> predicate) where TComponent : struct, IEcsComponent
     {
       var entities = new EcsEntities(_filter);
