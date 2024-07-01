@@ -70,7 +70,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindCollisionFiller();
       BindCollisionService();
       BindSpawnPoints();
-      BindRingViews();
       BindShardPool();
       BindShardFactory();
       BindShootService();
@@ -256,15 +255,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     {
       Container
         .BindInterfacesTo<EcsDisposer>()
-        .AsSingle();
-    }
-
-    private void BindRingViews()
-    {
-      List<RingView> rings = FindObjectsByType<RingView>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).ToList();
-      Container
-        .Bind<List<RingView>>()
-        .FromInstance(rings)
         .AsSingle();
     }
 

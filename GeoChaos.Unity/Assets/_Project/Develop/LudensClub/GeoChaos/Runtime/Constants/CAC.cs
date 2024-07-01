@@ -30,6 +30,9 @@
       
       public const string LAMA_MENU = CONFIG_MENU + "Lama";
       public const string LAMA_FILE = "Lama Config";
+      
+      public const string SPIKE_MENU = CONFIG_MENU + "Spike";
+      public const string SPIKE_FILE = "Spike Config";
     }
   }
 }

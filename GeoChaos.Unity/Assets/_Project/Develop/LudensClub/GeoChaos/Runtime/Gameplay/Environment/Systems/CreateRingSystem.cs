@@ -4,7 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
 {
   public class CreateRingSystem : IEcsRunSystem
   {

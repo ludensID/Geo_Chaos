@@ -6,6 +6,7 @@
     Enemy = Hero + 1,
     Lama = Enemy + 1,
     Ring = 15,
-    Shard = Ring + 1
+    Shard = Ring + 1,
+    Spike = Shard + 1
   }
 }
