@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f012a5d1d96945eb84e53c090c284b7f, type: 3}
-  m_Name: Lama Config
+  m_Name: LamaConfig
   m_EditorClassIdentifier: 
   MovementSpeed: 5
   PatrolStep: {x: 4, y: 6}

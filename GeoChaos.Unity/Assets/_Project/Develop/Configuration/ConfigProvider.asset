@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27effd8ef4ae4308a0ea5f9135f0fe7e, type: 3}
-  m_Name: Config Provider
+  m_Name: ConfigProvider
   m_EditorClassIdentifier: 
   _configs:
   - {fileID: 11400000, guid: 14e8aedc2393a9c46b72eeef5ce6d3f6, type: 2}

@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bafdbe57c2be43288cb1c52da6607a3e, type: 3}
-  m_Name: Shard Pool Config
+  m_Script: {fileID: 11500000, guid: 933a9b3bb1a14b0db97dedd0ee8ac991, type: 3}
+  m_Name: SpikeConfig
   m_EditorClassIdentifier: 
-  InstanceCount: 30
-  DistanceFromOrigin: -1000
+  Damage: 4

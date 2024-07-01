@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f8a6465eacd45f18b247b9b0ce98322, type: 3}
-  m_Name: Hero Config
+  m_Name: HeroConfig
   m_EditorClassIdentifier: 
   MovementResponseDelay: 0
   MovementSpeed: 7
