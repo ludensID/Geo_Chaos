@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8019871321191253173}
   - component: {fileID: 362701955362848943}
   - component: {fileID: 3822621804148839295}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,6 +153,11 @@ MonoBehaviour:
   _colliderType: 2
   _view: {fileID: 8019871321191253173}
   _collider: {fileID: 6843983593631579416}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1
 --- !u!114 &8019871321191253173
 MonoBehaviour:
   m_ObjectHideFlags: 0

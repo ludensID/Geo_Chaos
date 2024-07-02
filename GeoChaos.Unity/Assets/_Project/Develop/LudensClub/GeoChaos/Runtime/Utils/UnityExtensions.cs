@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     public static int GetLayerIndex(this LayerMask obj)
     {
       var index = 0;
-      var layer = obj.value;
+      int layer = obj.value;
       while (layer > 1)
       {
         layer >>= 1;

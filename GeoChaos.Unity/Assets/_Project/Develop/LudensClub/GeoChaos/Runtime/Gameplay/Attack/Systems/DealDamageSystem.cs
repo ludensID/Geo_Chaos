@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
       foreach (EcsEntity message in _damages)
       {
         ref DamageMessage damage = ref message.Get<DamageMessage>();
-        if (damage.Target.TryUnpackEntity(_game, out EcsEntity target))
+        if (damage.Target.TryUnpackEntity(_game, out EcsEntity target) && !target.Has<Immune>())
         {
           ref Health health = ref target.Get<Health>();
           health.Value -= damage.Damage;
@@ -35,6 +35,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
           damageEvent.Damage = damage.Damage;
           damageEvent.Master = damage.Master;
           damageEvent.Target = damage.Target;
+
+          if (target.Has<ImmunityAvailable>())
+            target.Add<Immune>();
         }
 
         message.Dispose();

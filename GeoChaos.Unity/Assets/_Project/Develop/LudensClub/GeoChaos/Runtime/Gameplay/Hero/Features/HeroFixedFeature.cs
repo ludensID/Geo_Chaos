@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
@@ -10,6 +11,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<CheckForHeroReachRingSystem>());
       Add(systems.Create<CheckForZeroHookForceSystem>());
       Add(systems.Create<CheckForHookTimerSystem>());
+
+      Add(systems.Create<DisableImmunityColliderSystem>());
+      Add(systems.Create<EnableImmunityColliderSystem>());
     }
   }
 }

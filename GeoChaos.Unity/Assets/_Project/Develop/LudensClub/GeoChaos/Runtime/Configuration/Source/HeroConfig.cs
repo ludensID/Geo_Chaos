@@ -145,6 +145,16 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [GroupNext(TriConstants.TECH + TriConstants.Names.SHOOT)]
     public float ShardLifeTime;
     public LayerMask ShootMask;
+
+    [UnGroupNext]
+    [Title("Immunity")]
+    public float ImmunityTime;
+    
+    [Title("Push")]
+    [LabelText("Enabled")]
+    public bool EnablePush;
+
+    public Vector2 PushForce;
     
     [UnGroupNext]
     [Title("Characteristics")]

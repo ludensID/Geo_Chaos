@@ -181,6 +181,11 @@ MonoBehaviour:
   _colliderType: 2
   _view: {fileID: 6409244748196718456}
   _collider: {fileID: 6570981928522396299}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1
 --- !u!1 &4595169949170504422
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +280,11 @@ MonoBehaviour:
   _colliderType: 2
   _view: {fileID: 6409244748196718456}
   _collider: {fileID: 2516825188234255995}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1
 --- !u!1 &4668661370840666306
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +541,11 @@ MonoBehaviour:
   _colliderType: 1
   _view: {fileID: 6409244748196718456}
   _collider: {fileID: 3779388907173813099}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1
 --- !u!114 &6409244748196718456
 MonoBehaviour:
   m_ObjectHideFlags: 0

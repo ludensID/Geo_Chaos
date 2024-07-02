@@ -47,6 +47,7 @@
       public const string LAMA_ATTACK_COLLIDERS_CONVERTER = CONVERTERS + "Lama Attack Colliders Converter";
       public const string LAMA_ATTACK_RENDERERS_CONVERTER = CONVERTERS + "Lama Attack Renderers Converter";
       public const string MONO_GAME_OBJECT_CONVERTER = CONVERTERS + "Mono Game Object Converter";
+      public const string IMMUNITY_COLLIDER_CONVERTER = "Immunity Collider Converter";
 
       public const string COROUTINE_RUNNER = CORE + "Coroutine Runner";
       public const string COLLISION_DETECTOR = CORE + "Collision Detector";

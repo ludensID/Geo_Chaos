@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 
     private EcsWorld _message;
     private List<IEcsConverter> _converters;
-    
+
     public bool Injected { get; set; }
 
 
@@ -25,8 +25,26 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     {
       _message = messageWorldWrapper.World;
       _converters = GetComponents<IEcsConverter>().ToList();
+      for (int i = 0; i < transform.childCount; i++)
+      {
+        GetConverters(transform.GetChild(i), _converters);
+      }
+
       _converters.Remove(this);
       Injected = true;
+    }
+
+    public static void GetConverters(Transform t, List<IEcsConverter> converters)
+    {
+      IEcsConverter[] list = t.GetComponents<IEcsConverter>();
+      if (list.Any(x => x is MonoGameObjectConverter))
+        return;
+
+      converters.AddRange(list);
+      for (int i = 0; i < t.childCount; i++)
+      {
+          GetConverters(t.GetChild(i), converters);
+      }
     }
 
     private void Start()

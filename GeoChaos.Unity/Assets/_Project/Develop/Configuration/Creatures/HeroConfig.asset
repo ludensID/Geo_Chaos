@@ -58,6 +58,9 @@ MonoBehaviour:
   ShootMask:
     serializedVersion: 2
     m_Bits: 913
+  ImmunityTime: 3
+  EnablePush: 0
+  PushForce: {x: 0, y: 0}
   Health: 100
   DashDamage: 10
   ShardDamage: 15

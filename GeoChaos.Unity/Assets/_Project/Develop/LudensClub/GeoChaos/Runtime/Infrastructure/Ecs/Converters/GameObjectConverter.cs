@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 {
@@ -6,7 +7,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
   {
     public void Convert(EcsEntity entity, GameObject gameObject)
     {
-      foreach (IEcsConverter converter in gameObject.GetComponents<IEcsConverter>()) 
+      var converters = new List<IEcsConverter>();
+      MonoGameObjectConverter.GetConverters(gameObject.transform, converters);
+      foreach (IEcsConverter converter in converters) 
         converter.Convert(entity);
     }
 

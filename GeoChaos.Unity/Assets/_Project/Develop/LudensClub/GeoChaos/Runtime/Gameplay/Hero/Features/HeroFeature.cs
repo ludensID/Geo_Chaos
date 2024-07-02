@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack;
@@ -117,6 +118,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<SowShootCommandSystem>());
       Add(systems.Create<ShootSystem>());
       Add(systems.Create<CheckForShardLifeTimeExpiredSystem>());
+      
+      Add(systems.Create<HeroImmunityFeature>());
       
       Add(systems.Create<SetHeroBodyDirectionSystem>());
       

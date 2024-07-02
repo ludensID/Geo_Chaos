@@ -221,6 +221,11 @@ MonoBehaviour:
   _colliderType: 100
   _view: {fileID: 3491215743248813858}
   _collider: {fileID: 4140852320947023786}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1
 --- !u!1 &717747512277366822
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +458,115 @@ MonoBehaviour:
   _colliderType: 2
   _view: {fileID: 3491215743248813858}
   _collider: {fileID: 5555864319276381091}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1
+--- !u!1 &3449754450393855929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2594805754886153478}
+  - component: {fileID: 3483244685588702031}
+  - component: {fileID: 5141212480110368949}
+  - component: {fileID: 1345644209424811251}
+  m_Layer: 3
+  m_Name: ImmunityCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2594805754886153478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449754450393855929}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7824088245799131774}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &3483244685588702031
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449754450393855929}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 8a52096240b6e6f4a980b592ed1068d2, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 511
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
+--- !u!114 &5141212480110368949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449754450393855929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348c620513bc41ab99a9deb828b54891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderType: 1
+  _view: {fileID: 3491215743248813858}
+  _collider: {fileID: 3483244685588702031}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1
+--- !u!114 &1345644209424811251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449754450393855929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131c55175eb8473f86efbf840a5bff1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _immunityCollider: {fileID: 3483244685588702031}
 --- !u!1 &4045553092761671660
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,6 +708,11 @@ MonoBehaviour:
   _colliderType: 1
   _view: {fileID: 3491215743248813858}
   _collider: {fileID: 4220543373771047474}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1
 --- !u!1 &4479722840739274266
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +759,7 @@ Transform:
   - {fileID: 8854585290346486561}
   - {fileID: 6551949410158147539}
   - {fileID: 4253783950375234249}
+  - {fileID: 2594805754886153478}
   - {fileID: 2043258854588187699}
   - {fileID: 4654287803805445653}
   - {fileID: 1999862687866674707}
@@ -902,6 +1022,11 @@ MonoBehaviour:
   _colliderType: 2
   _view: {fileID: 3491215743248813858}
   _collider: {fileID: 5078466869539451007}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1
 --- !u!1 &6442827593708626353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,3 +1261,8 @@ MonoBehaviour:
   _colliderType: 2
   _view: {fileID: 3491215743248813858}
   _collider: {fileID: 4289057686633456647}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1

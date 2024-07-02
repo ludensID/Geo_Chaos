@@ -1870,7 +1870,7 @@ PrefabInstance:
     - target: {fileID: 5377277249877848129, guid: f0a54c7fd1236984599d38bb0b909d23,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.96
+      value: -6.6
       objectReference: {fileID: 0}
     - target: {fileID: 5377277249877848129, guid: f0a54c7fd1236984599d38bb0b909d23,
         type: 3}
@@ -1921,6 +1921,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemySpawn (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075246520063434159, guid: f0a54c7fd1236984599d38bb0b909d23,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
