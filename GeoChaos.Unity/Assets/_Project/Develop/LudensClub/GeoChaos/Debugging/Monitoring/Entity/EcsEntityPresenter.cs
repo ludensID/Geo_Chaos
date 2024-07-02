@@ -69,7 +69,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     public void UpdateView()
     {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !DISABLE_PROFILING
       using (new Unity.Profiling.ProfilerMarker("PrepareComponents()").Auto())
 #endif
       {
@@ -77,7 +77,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
         Array.Resize(ref _components, _componentCount);
         _componentCount = _wrapper.World.GetComponents(Entity, ref _components);
       }
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !DISABLE_PROFILING
       using (new Unity.Profiling.ProfilerMarker("Resize()").Auto())
 #endif
       {
@@ -87,7 +87,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       if (View.Components.Count != _componentCount)
         throw new IndexOutOfRangeException();
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !DISABLE_PROFILING
       using (new Unity.Profiling.ProfilerMarker("Update View()").Auto())
 #endif
       {

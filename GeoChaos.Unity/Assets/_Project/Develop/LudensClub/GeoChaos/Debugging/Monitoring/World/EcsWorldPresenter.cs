@@ -55,7 +55,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
       foreach (int updatable in updatables)
       {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !DISABLE_PROFILING
         using (new Unity.Profiling.ProfilerMarker($"{_children[updatable].View.gameObject.name[..8]}.UpdateView()").Auto())
 #endif
         {
@@ -65,7 +65,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
       foreach (int dirtyEntity in _dirtyEntities)
       {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !DISABLE_PROFILING
         using (new Unity.Profiling.ProfilerMarker($"{_children[dirtyEntity].View.gameObject.name[..8]}.Tick()").Auto())
 #endif
         {

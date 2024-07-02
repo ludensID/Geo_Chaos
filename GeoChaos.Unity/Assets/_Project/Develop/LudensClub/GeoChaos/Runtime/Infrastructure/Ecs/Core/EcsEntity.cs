@@ -8,19 +8,53 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
   public class EcsEntity : IDisposable
   {
-    public EcsWorld World { get; set; }
-    public int Entity { get; set; }
-    public bool IsAlive => World != null && Entity != -1;
+    private int _entity;
+    private EcsWorld _world;
+
+    public EcsWorld World
+    {
+      get => _world;
+      set => _world = value;
+    }
+
+    public int Entity
+    {
+      get => _entity;
+      set
+      {
+        if (_entity == value)
+          return;
+
+        _entity = value;
+
+        if (_world != null && _entity != -1)
+          PackedEntity = _world.PackEntity(value);
+      }
+    }
+
+    public EcsPackedEntity PackedEntity { get; private set; }
+
+    public bool IsAlive => _world != null && PackedEntity.Unpack(_world, out _entity) && _entity != -1;
 
     public EcsEntity()
     {
-      Entity = -1;
+      _entity = -1;
     }
 
     public EcsEntity(EcsWorld world, int entity)
     {
+      SetWorld(world, entity);
+    }
+
+    public void SetWorld(EcsWorld world, int entity)
+    {
       World = world;
       Entity = entity;
+    }
+
+    public EcsEntity Clone()
+    {
+      return new EcsEntity(_world, _entity);
     }
 
     [HideInCallstack]
@@ -29,7 +63,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       World.Add<TComponent>(Entity);
       return this;
     }
-    
+
     [HideInCallstack]
     public EcsEntity Add<TComponent>(TComponent component) where TComponent : struct, IEcsComponent
     {
@@ -57,7 +91,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     {
       return World.Has<TComponent>(Entity);
     }
-    
+
     [HideInCallstack]
     public EcsEntity Has<TComponent>(bool value) where TComponent : struct, IEcsComponent
     {

@@ -27,13 +27,13 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
     public void Run(EcsSystems systems)
     {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !DISABLE_PROFILING
       using (new Unity.Profiling.ProfilerMarker($"{GetType().Name}.Run()").Auto())
 #endif
       {
         foreach (IEcsRunSystem system in _systems.OfType<IEcsRunSystem>())
         {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !DISABLE_PROFILING
           using (new Unity.Profiling.ProfilerMarker($"{system.GetType().Name}.Run()").Auto())
 #endif
           {
