@@ -36,22 +36,22 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
       foreach (EcsEntity col in _collisions)
       {
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
-        if (_collisionSvc.TrySelectDamagerAndTargetEntities(collision, ColliderType.Attack, ColliderType.Body,
-          out EcsPackedEntity packedDamager, out EcsPackedEntity packedTarget) && !packedDamager.EqualsTo(packedTarget))
+        DamageCollisionInfo info = _collisionSvc.Info;
+        _collisionSvc.AssignCollision(collision);
+        if (_collisionSvc.TryUnpackEntities(_game)
+          && _collisionSvc.TrySelectByEntities(x => x.Has<SpikeTag>(), x => x.Has<HeroTag>(), true)
+          && info.TargetCollider.Type == ColliderType.Body)
         {
-          if (packedDamager.TryUnpackEntity(_game, out EcsEntity damager)
-            && packedTarget.TryUnpackEntity(_game, out EcsEntity target)
-            && damager.Has<SpikeTag>() && target.Has<HeroTag>())
-          {
-            _message.CreateEntity()
-              .Add((ref DamageMessage message) =>
-              {
-                message.Damage = _config.Damage;
-                message.Damager = packedDamager;
-                message.Target = packedTarget;
-              });
-          }
+          _message.CreateEntity()
+            .Add((ref DamageMessage message) =>
+            {
+              message.Damage = _config.Damage;
+              message.Damager = info.PackedMaster;
+              message.Target = info.PackedTarget;
+            });
         }
+
+        _collisionSvc.Reset();
       }
     }
   }

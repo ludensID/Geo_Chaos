@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
       _twoCollisions = _message
         .Filter<TwoSideCollision>()
         .Collect();
-      
+
       _oneCollisions = _message
         .Filter<OneSideCollision>()
         .Collect();
@@ -39,37 +39,37 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     {
       foreach (EcsEntity col in _twoCollisions)
       {
-        ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
-        if (DestroyShard(collision.Sender, collision.Other) || DestroyShard(collision.Other, collision.Sender))
+        _collisionSvc.AssignCollision(col.Get<TwoSideCollision>());
+        DamageCollisionInfo info = _collisionSvc.Info;
+        if (DestroyShard(info) && info.TargetCollider.Type == ColliderType.Body)
         {
-          if (_collisionSvc.TrySelectDamagerAndTargetColliders(collision, ColliderType.Shard, ColliderType.Body,
-              out PackedCollider damager, out PackedCollider target)
-            && damager.Entity.TryUnpackEntity(_game, out EcsEntity shard)
-            && !shard.Get<Owner>().Entity.EqualsTo(target.Entity))
-          {
-            _message.CreateEntity()
-              .Add((ref DamageMessage damage) =>
-              {
-                damage.Damage = _config.ShardDamage;
-                damage.Damager = damager.Entity;
-                damage.Target = target.Entity;
-              });
-          }
+          _message.CreateEntity()
+            .Add((ref DamageMessage damage) =>
+            {
+              damage.Damage = _config.ShardDamage;
+              damage.Damager = info.PackedMaster;
+              damage.Target = info.PackedTarget;
+            });
         }
+        
+        _collisionSvc.Reset();
       }
-      
+
       foreach (EcsEntity collision in _oneCollisions)
       {
-        DestroyShard(collision.Get<OneSideCollision>().Sender);
+        _collisionSvc.AssignCollision(collision.Get<OneSideCollision>());
+        DestroyShard(_collisionSvc.Info);
+        _collisionSvc.Reset();
       }
     }
-    
-    private bool DestroyShard(PackedCollider collider, PackedCollider other = new PackedCollider())
+
+    private bool DestroyShard(DamageCollisionInfo info)
     {
-      if (collider.Type == ColliderType.Shard && collider.Entity.TryUnpackEntity(_game, out EcsEntity shard)
-        && (other.Collider == null || !shard.Get<Owner>().Entity.EqualsTo(other.Entity)))
+      if (_collisionSvc.TrySelectByMasterCollider(x => x.Type == ColliderType.Shard)
+        && _collisionSvc.TryUnpackEntities(_game)
+        && (!info.Target.IsAlive || !info.Master.Get<Owner>().Entity.EqualsTo(info.PackedTarget)))
       {
-        shard.Has<DestroyCommand>(true);
+        info.Master.Has<DestroyCommand>(true);
         return true;
       }
 

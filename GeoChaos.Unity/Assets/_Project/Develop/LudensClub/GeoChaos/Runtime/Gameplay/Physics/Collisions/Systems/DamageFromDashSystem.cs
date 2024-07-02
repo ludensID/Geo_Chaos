@@ -1,8 +1,10 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Characteristics.Components;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
@@ -12,13 +14,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     private readonly EcsWorld _message;
     private readonly HeroConfig _config;
     private readonly EcsEntities _collisions;
+    private readonly EcsWorld _game;
 
     public DamageFromDashSystem(MessageWorldWrapper messageWorldWrapper,
+      GameWorldWrapper gameWorldWrapper,
       IConfigProvider configProvider,
       ICollisionService collisionSvc)
     {
       _collisionSvc = collisionSvc;
       _message = messageWorldWrapper.World;
+      _game = gameWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
       _collisions = _message
@@ -31,17 +36,23 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
       foreach (EcsEntity col in _collisions)
       {
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
-        if (_collisionSvc.TrySelectDamagerAndTargetColliders(collision, ColliderType.Dash, ColliderType.Body,
-          out PackedCollider damager, out PackedCollider target) && !damager.Entity.EqualsTo(target.Entity))
+        DamageCollisionInfo info = _collisionSvc.Info;
+        _collisionSvc.AssignCollision(collision);
+        if (_collisionSvc.TrySelectByColliderTypes(ColliderType.Dash, ColliderType.Body)
+          && _collisionSvc.TryUnpackEntities(_game)
+          && !info.PackedMaster.EqualsTo(info.PackedTarget)
+          && info.Target.Has<Health>())
         {
           _message.CreateEntity()
             .Add((ref DamageMessage damage) =>
             {
               damage.Damage = _config.DashDamage;
-              damage.Damager = damager.Entity;
-              damage.Target = target.Entity;
+              damage.Damager = info.PackedMaster;
+              damage.Target = info.PackedTarget;
             });
         }
+        
+        _collisionSvc.Reset();
       }
     }
   }

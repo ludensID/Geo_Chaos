@@ -1,5 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using UnityEngine;
 
@@ -24,6 +25,11 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     public static Vector2 GetBounds(this PhysicalBoundsRef obj)
     {
       return PhysicalBoundsConverter.GetBounds(obj.Left, obj.Right);
+    }
+    
+    public static bool TrySelectByColliderTypes(this ICollisionService obj, ColliderType master, ColliderType target)
+    {
+      return obj.TrySelectByColliders(x => x.Type == master, x => x.Type == target);
     }
   }
 }

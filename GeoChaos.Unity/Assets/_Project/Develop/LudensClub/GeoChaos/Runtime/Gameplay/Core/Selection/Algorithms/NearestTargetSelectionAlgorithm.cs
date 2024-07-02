@@ -9,7 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
     public void Select(EcsEntities origins, EcsEntities marks)
     {
       var minDistance = float.MaxValue;
-      EcsEntity nearestRing = null;
+      EcsEntity nearestTarget = null;
       
       foreach (EcsEntity origin in origins)
       foreach (EcsEntity selection in marks)
@@ -20,13 +20,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
         if (distance < minDistance)
         {
           minDistance = distance;
-          nearestRing = selection;
+          nearestTarget = selection.Clone();
         }
 
         selection.Del<Marked>();
       }
 
-      nearestRing?.Add<Marked>();
+      nearestTarget?.Add<Marked>();
     }
   }
 }

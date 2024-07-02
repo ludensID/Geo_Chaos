@@ -3,6 +3,7 @@ using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
@@ -34,20 +35,23 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
       foreach (EcsEntity col in _collisions)
       {
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
-        if (_collisionSvc.TrySelectDamagerAndTargetColliders(collision, ColliderType.Attack, ColliderType.Body,
-          out PackedCollider damager, out PackedCollider target) && !damager.Entity.EqualsTo(target.Entity))
+        DamageCollisionInfo info = _collisionSvc.Info;
+        _collisionSvc.AssignCollision(collision);
+        if (_collisionSvc.TrySelectByColliderTypes(ColliderType.Attack, ColliderType.Body)
+          && _collisionSvc.TryUnpackEntities(_game)
+          && !info.PackedMaster.EqualsTo(info.PackedTarget)
+          && info.Master.Has<HeroTag>())
         {
-          if (damager.Entity.TryUnpackEntity(_game, out EcsEntity damagerEntity) && damagerEntity.Has<HeroTag>())
-          {
-            _message.CreateEntity()
-              .Add((ref DamageMessage message) =>
-              {
-                message.Damage = _config.HitDamages[damagerEntity.Get<ComboAttackCounter>().Count];
-                message.Damager = damager.Entity;
-                message.Target = target.Entity;
-              });
-          }
+          _message.CreateEntity()
+            .Add((ref DamageMessage message) =>
+            {
+              message.Damage = _config.HitDamages[info.Master.Get<ComboAttackCounter>().Count];
+              message.Damager = info.PackedMaster;
+              message.Target = info.PackedTarget;
+            });
         }
+
+        _collisionSvc.Reset();
       }
     }
   }
