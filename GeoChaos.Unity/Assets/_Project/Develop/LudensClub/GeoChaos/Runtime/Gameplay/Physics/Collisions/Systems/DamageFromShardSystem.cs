@@ -47,7 +47,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
             .Add((ref DamageMessage damage) =>
             {
               damage.Damage = _config.ShardDamage;
-              damage.Damager = info.PackedMaster;
+              damage.Master = info.PackedMaster;
               damage.Target = info.PackedTarget;
             });
         }

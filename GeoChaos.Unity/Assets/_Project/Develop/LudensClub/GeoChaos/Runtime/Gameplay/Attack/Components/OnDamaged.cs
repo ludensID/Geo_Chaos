@@ -11,10 +11,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct DamageMessage : IEcsComponent
+  public struct OnDamaged : IEcsComponent
   {
     public EcsPackedEntity Master;
     public EcsPackedEntity Target;
-    public float Damage;
+    public float Damage; 
   }
 }

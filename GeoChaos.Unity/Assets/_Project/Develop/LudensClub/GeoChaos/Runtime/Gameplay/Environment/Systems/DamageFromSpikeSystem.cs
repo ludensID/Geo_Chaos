@@ -46,7 +46,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
             .Add((ref DamageMessage message) =>
             {
               message.Damage = _config.Damage;
-              message.Damager = info.PackedMaster;
+              message.Master = info.PackedMaster;
               message.Target = info.PackedTarget;
             });
         }

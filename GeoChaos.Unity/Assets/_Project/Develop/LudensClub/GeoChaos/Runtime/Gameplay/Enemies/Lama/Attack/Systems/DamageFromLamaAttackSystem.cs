@@ -48,7 +48,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
             .Add((ref DamageMessage message) =>
             {
               message.Damage = damage;
-              message.Damager = info.PackedMaster;
+              message.Master = info.PackedMaster;
               message.Target = info.PackedTarget;
             });
         }

@@ -5,13 +5,13 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
 {
-  public class GetDamageSystem : IEcsRunSystem
+  public class DealDamageSystem : IEcsRunSystem
   {
     private readonly EcsWorld _message;
     private readonly EcsWorld _game;
     private readonly EcsEntities _damages;
 
-    public GetDamageSystem(GameWorldWrapper gameWorldWrapper, MessageWorldWrapper messageWorldWrapper)
+    public DealDamageSystem(GameWorldWrapper gameWorldWrapper, MessageWorldWrapper messageWorldWrapper)
     {
       _game = gameWorldWrapper.World;
       _message = messageWorldWrapper.World;
@@ -23,16 +23,21 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity damage in _damages)
+      foreach (EcsEntity message in _damages)
       {
-        ref DamageMessage message = ref damage.Get<DamageMessage>();
-        if (message.Target.TryUnpackEntity(_game, out EcsEntity target))
+        ref DamageMessage damage = ref message.Get<DamageMessage>();
+        if (damage.Target.TryUnpackEntity(_game, out EcsEntity target))
         {
           ref Health health = ref target.Get<Health>();
-          health.Value -= message.Damage;
+          health.Value -= damage.Damage;
+          
+          ref OnDamaged damageEvent = ref _message.CreateEntity().Add<OnDamaged>().Get<OnDamaged>();
+          damageEvent.Damage = damage.Damage;
+          damageEvent.Master = damage.Master;
+          damageEvent.Target = damage.Target;
         }
-        
-        damage.Dispose();
+
+        message.Dispose();
       }
     }
   }
