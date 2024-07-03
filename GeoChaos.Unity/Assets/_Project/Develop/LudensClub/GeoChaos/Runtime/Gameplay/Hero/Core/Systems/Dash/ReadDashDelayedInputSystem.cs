@@ -22,8 +22,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Dash
       
       _heroes = _game
         .Filter<DashAvailable>()
-        .Inc<Hooking>()
-        .Inc<InterruptHookAvailable>()
         .Exc<DashCooldown>()
         .Collect();
 
@@ -36,7 +34,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Dash
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity _ in _inputs)
-      foreach (EcsEntity hero in _heroes)
+      foreach (EcsEntity hero in _heroes
+        .Where<MovementLayout>(x => x.Layer == MovementLayer.Interrupt))
       {
         hero
           .Add<DelayDashCommand>()

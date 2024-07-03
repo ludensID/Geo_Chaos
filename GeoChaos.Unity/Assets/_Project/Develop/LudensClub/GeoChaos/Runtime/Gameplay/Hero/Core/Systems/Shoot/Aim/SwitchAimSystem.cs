@@ -1,6 +1,5 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -18,6 +17,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
 
       _startCommands = _game
         .Filter<StartAimCommand>()
+        .Inc<OnGround>()
         .Collect();
 
       _finishCommands = _game
@@ -27,26 +27,31 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity command in _startCommands)
+      foreach (EcsEntity command in _startCommands
+        .Where<MovementLayout>(x => (x.Layer & MovementLayer.Stay) > 0))
       {
-        if (!command.Has<MovementLocked>() && command.Has<OnGround>())
-        {
-          command
-            .Add<LockMovementCommand>()
-            .Add<OnAimStarted>()
-            .Add<Aiming>();
-        }
-
-        command.Del<StartAimCommand>();
+        command
+          .Replace((ref MovementLayout layout) =>
+          {
+            layout.Layer = MovementLayer.Shoot;
+            layout.Owner = MovementType.Aim;
+          })
+          .Add<OnAimStarted>()
+          .Add<Aiming>();
       }
 
       foreach (EcsEntity command in _finishCommands)
       {
         command
-          .Add<UnlockMovementCommand>()
           .Add<OnAimFinished>()
-          .Del<Aiming>()
-          .Del<FinishAimCommand>();
+          .Del<Aiming>();
+
+        ref MovementLayout layout = ref command.Get<MovementLayout>();
+        if (layout.Owner == MovementType.Aim)
+        {
+          layout.Layer = MovementLayer.All;
+          layout.Owner = MovementType.None;
+        }
       }
     }
   }

@@ -1,6 +1,5 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -17,14 +16,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
 
       _commands = _game
         .Filter<MoveCommand>()
-        .Inc<MovementLocked>()
         .Exc<FreeFalling>()
         .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity command in _commands)
+      foreach (EcsEntity command in _commands
+        .Where<MovementLayout>(x => x.Layer != MovementLayer.All))
       {
         command.Del<MoveCommand>();
       }

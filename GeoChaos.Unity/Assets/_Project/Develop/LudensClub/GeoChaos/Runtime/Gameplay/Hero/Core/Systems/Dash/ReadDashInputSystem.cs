@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -18,7 +18,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 
       _heroes = _world
         .Filter<DashAvailable>()
-        .Exc<MovementLocked>()
         .Collect();
 
       _inputs = inputWorld
@@ -30,8 +29,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity _ in _inputs)
-      foreach (EcsEntity hero in _heroes)
+      foreach (EcsEntity hero in _heroes
+        .Where<MovementLayout>(x => x.Layer == MovementLayer.All))
+      {
         hero.Add<DashCommand>();
+      }
     }
   }
 }

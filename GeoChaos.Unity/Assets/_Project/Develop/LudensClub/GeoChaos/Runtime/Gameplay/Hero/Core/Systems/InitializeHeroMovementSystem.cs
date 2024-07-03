@@ -40,6 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       {
         hero
           .Add<ForceAvailable>()
+          .Add((ref MovementLayout layout) => layout.Layer = MovementLayer.All)
           .Add<Movable>()
           .Add((ref HorizontalSpeed speed) => speed.Speed = _config.MovementSpeed)
           .Add<MovementVector>()

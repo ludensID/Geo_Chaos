@@ -1,7 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
@@ -19,7 +18,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _commands = _game
         .Filter<StopHookCommand>()
         .Inc<Hooking>()
-        .Inc<MovementLocked>()
         .Collect();
     }
 
@@ -29,8 +27,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       {
         command
           .Del<StopHookCommand>()
-          .Del<Hooking>()
-          .Add<UnlockMovementCommand>();
+          .Del<Hooking>();
+        
+        ref MovementLayout layout = ref command.Get<MovementLayout>();
+        if (layout.Owner == MovementType.Hook)
+        {
+          layout.Layer = MovementLayer.All;
+          layout.Owner = MovementType.None;
+        }
       }
     }
   }

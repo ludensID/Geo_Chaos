@@ -1,9 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
@@ -44,9 +43,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         
         command
           .Del<Dashing>()
-          .Add<UnlockMovementCommand>()
           .Add((ref DashCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.DashCooldown))
           .Replace((ref GravityScale gravity) => gravity.Enabled = true);
+          
+        ref MovementLayout layout = ref command.Get<MovementLayout>();
+        if (layout.Owner == MovementType.Dash)
+        {
+          layout.Layer = MovementLayer.All;
+          layout.Owner = MovementType.None;
+        }
       }
     }
   }

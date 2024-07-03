@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -21,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _grounds = _world.Filter<HeroTag>()
         .Inc<JumpAvailable>()
         .Inc<OnGround>()
-        .Exc<MovementLocked>()
+        .Inc<MovementLayout>()
         .Collect();
 
       _jumpStartedInputs = inputWorld
@@ -32,7 +32,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _noStoppeds = _world.Filter<HeroTag>()
         .Inc<JumpAvailable>()
         .Inc<Jumping>()
-        .Exc<MovementLocked>()
         .Collect();
 
       _jumpCanceledInputs = inputWorld
@@ -44,12 +43,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity _ in _jumpStartedInputs)
-      foreach (EcsEntity hero in _grounds)
-        hero.Add<JumpCommand>();
+      foreach (EcsEntity ground in _grounds
+        .Where<MovementLayout>(x => x.Layer == MovementLayer.All))
+      {
+        ground.Add<JumpCommand>();
+      }
 
       foreach (EcsEntity _ in _jumpCanceledInputs)
-      foreach (EcsEntity noStopped in _noStoppeds)
+      foreach (EcsEntity noStopped in _noStoppeds
+        .Where<MovementLayout>(x => x.Layer == MovementLayer.All))
+      {
         noStopped.Add<StopJumpCommand>();
+      }
     }
   }
 }

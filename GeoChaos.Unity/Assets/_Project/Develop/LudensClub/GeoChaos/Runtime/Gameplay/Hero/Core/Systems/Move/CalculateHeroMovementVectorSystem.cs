@@ -97,12 +97,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         float direction = moving.Get<MoveDirection>().Direction.x;
         float speed = moving.Get<HorizontalSpeed>().Speed * Mathf.Abs(direction);
         float acceleration = CalculateAcceleration(speed);
-        bool hasForces = false;
         
         foreach (EcsEntity force in _forces
           .GetLoop(SpeedForceType.Move, moving.Pack()))
         {
-          hasForces = true;
           force
             .Replace((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed)
             .Replace((ref Acceleration a) => a.Value.x = -acceleration);
@@ -113,9 +111,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
             moving.Del<Moving>();
           }
         }
-
-        if (!hasForces)
-          moving.Del<Moving>();
       }
     }
     

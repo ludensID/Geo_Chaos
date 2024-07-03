@@ -1,8 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
@@ -25,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
     {
       foreach (EcsEntity command in _commands)
       {
-        if (command.Has<ShootCooldown>() || command.Has<MovementLocked>() && !command.Has<Aiming>())
+        if (command.Has<ShootCooldown>() || (command.Get<MovementLayout>().Layer & MovementLayer.Shoot) <= 0)
           command.Del<ShootCommand>();
       }
     }

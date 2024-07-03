@@ -1,8 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
@@ -39,14 +39,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Dash, hero.Pack(), Vector2.one)
         {
           Speed = new Vector2(_config.DashVelocity, 0),
-          Direction = hero.Get<MovementVector>().Direction,
+          Direction = Vector2.right * hero.Get<BodyDirection>().Direction,
           Unique = true,
           Immutable = true
         });
 
         hero
           .Add((ref Dashing dashing) => dashing.TimeLeft = _timers.Create(_config.DashTime))
-          .Add<LockMovementCommand>()
+          .Replace((ref MovementLayout layout) =>
+          {
+            layout.Layer = MovementLayer.None;
+            layout.Owner = MovementType.Dash;
+          })
           .Replace((ref GravityScale gravity) => gravity.Enabled = false)
           .Add((ref OnActionStarted action) => action.IsEmpty = true);
       }

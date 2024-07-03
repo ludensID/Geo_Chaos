@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
       _inputs = _input
         .Filter<HorizontalMovement>()
         .Inc<VerticalMovement>()
-        .Exc<Expired>()
+        .Inc<Expired>()
         .Collect();
     }
 
@@ -40,7 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
           input.Get<VerticalMovement>().Direction);
         if (direction == Vector2.zero)
           direction = Vector2.right * hero.Get<BodyDirection>().Direction;
-        
+
         hero.Replace((ref ViewDirection viewDir) => viewDir.Direction = direction);
       }
     }

@@ -2,7 +2,6 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
@@ -31,7 +30,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       {
         command
           .Add<Hooking>()
-          .Add<LockMovementCommand>()
+          .Replace((ref MovementLayout layout) =>
+          {
+            layout.Layer = command.Has<InterruptHookAvailable>() ? MovementLayer.Interrupt : MovementLayer.None;
+            layout.Owner = MovementType.Hook;
+          })
           .Add((ref HookInputCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.HookInputCooldown));
       }
     }

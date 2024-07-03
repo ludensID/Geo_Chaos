@@ -1,6 +1,5 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump
@@ -16,13 +15,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump
 
       _jumpings = _game
         .Filter<Jumping>()
-        .Inc<OnMovementLocked>()
         .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity jumping in _jumpings)
+      foreach (EcsEntity jumping in _jumpings
+        .Where<MovementLayout>(x => x.Layer != MovementLayer.All))
         jumping.Del<Jumping>();
     }
   }

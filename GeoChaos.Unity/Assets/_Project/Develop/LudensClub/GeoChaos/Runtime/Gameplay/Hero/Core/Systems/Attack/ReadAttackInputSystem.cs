@@ -2,7 +2,6 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -23,7 +22,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<AttackAvailable>()
-        .Exc<MovementLocked>()
         .Collect();
 
       _inputs = _input
@@ -35,8 +33,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity _ in _inputs)
-      foreach (EcsEntity hero in _heroes)
+      foreach (EcsEntity hero in _heroes
+        .Where<MovementLayout>(x => (x.Layer & MovementLayer.Stay) > 0))
+      {
         hero.Add<AttackCommand>();
+      }
     }
   }
 }

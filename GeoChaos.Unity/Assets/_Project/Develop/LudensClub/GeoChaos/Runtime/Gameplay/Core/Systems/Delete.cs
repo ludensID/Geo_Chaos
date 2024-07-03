@@ -25,4 +25,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         delete.Del<TComponent>();
     }
   }
+  
+  public class Delete<TComponent> : Delete<TComponent, GameWorldWrapper> where TComponent : struct, IEcsComponent
+  {
+    protected Delete(GameWorldWrapper gameWorldWrapper, Action<EcsWorld.Mask> clarifier = null) 
+      : base(gameWorldWrapper, clarifier)
+    {
+    }
+  }
 }

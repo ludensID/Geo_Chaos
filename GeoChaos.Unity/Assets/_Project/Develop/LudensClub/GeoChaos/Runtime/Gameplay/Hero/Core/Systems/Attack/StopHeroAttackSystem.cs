@@ -3,7 +3,6 @@ using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
@@ -36,8 +35,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
         hero
           .Del<HitTimer>()
           .Del<Attacking>()
-          .Add<OnAttackFinished>()
-          .Add<UnlockMovementCommand>();
+          .Add<OnAttackFinished>();
+        
+        ref MovementLayout layout = ref hero.Get<MovementLayout>();
+        if (layout.Owner == MovementType.Attack)
+        {
+          layout.Layer = MovementLayer.All;
+          layout.Owner = MovementType.None;
+        }
 
         ref ComboAttackCounter counter = ref hero.Get<ComboAttackCounter>();
         counter.Count++;

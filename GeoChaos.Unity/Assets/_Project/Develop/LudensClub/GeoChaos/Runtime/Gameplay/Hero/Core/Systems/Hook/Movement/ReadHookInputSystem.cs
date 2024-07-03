@@ -1,7 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -22,7 +21,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<HookAvailable>()
-        .Exc<MovementLocked>()
         .Exc<HookInputCooldown>()
         .Exc<DelayHookCommand>()
         .Collect();
@@ -36,8 +34,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity _ in _inputs)
-      foreach (EcsEntity hero in _heroes)
+      foreach (EcsEntity hero in _heroes
+        .Where<MovementLayout>(x => x.Layer == MovementLayer.All))
+      {
         hero.Add<HookCommand>();
+      }
     }
   }
 }

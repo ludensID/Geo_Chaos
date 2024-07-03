@@ -4,7 +4,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems;
@@ -29,16 +28,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
 
       Add(systems.Create<InitializeHeroMovementSystem>());
       Add(systems.Create<InitializeHeroRigidbodySystem>());
-
-      Add(systems.Create<Delete<OnMovementLocked, GameWorldWrapper>>());
-      Add(systems.Create<Delete<OnMovementUnlocked, GameWorldWrapper>>());
-      Add(systems.Create<LockMovementSystem>());
       
+      Add(systems.Create<HeroBumpFeature>());
+
       Add(systems.Create<ReadViewDirectionInputSystem>());
 
       Add(systems.Create<Delete<MoveCommand, GameWorldWrapper>>());
       Add(systems.Create<ReadMovementSystem>());
       Add(systems.Create<SowMoveCommandSystem>());
+      Add(systems.Create<InterruptMovementSystem>());
       Add(systems.Create<CalculateHeroMovementVectorSystem>());
       
       Add(systems.Create<FallHeroSystem>());
@@ -94,21 +92,24 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<PullHeroOnHookSystem>());
       Add(systems.Create<StopHookPullingSystem>());
       
-      Add(systems.Create<Delete<OnHookInterrupted, GameWorldWrapper>>());
+      Add(systems.Create<Delete<OnHookInterrupted>>());
       Add(systems.Create<InterruptHookSystem>());
       Add(systems.Create<FinishHookInterruptionSystem>());
       
       Add(systems.Create<StopHookSystem>());
       
-      Add(systems.Create<Delete<HookCommand, GameWorldWrapper>>());
+      Add(systems.Create<Delete<HookCommand>>());
       
       Add(systems.Create<SelectNearestDamagableEntitySystem>());
 
-      Add(systems.Create<Delete<OnAimStarted, GameWorldWrapper>>());
-      Add(systems.Create<Delete<OnAimFinished, GameWorldWrapper>>());
+      Add(systems.Create<Delete<OnAimStarted>>());
+      Add(systems.Create<Delete<OnAimFinished>>());
       Add(systems.Create<ReadAimInputSystem>());
       Add(systems.Create<CheckForOnGroundToAimSystem>());
       Add(systems.Create<SwitchAimSystem>());
+      Add(systems.Create<Delete<StartAimCommand>>());
+      Add(systems.Create<Delete<FinishAimCommand>>());
+      
       Add(systems.Create<SetAimDirectionToViewDirectionSystem>());
       Add(systems.Create<ReadAimPositionSystem>());
       Add(systems.Create<ReadAimDirectionSystem>());
@@ -121,7 +122,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<CheckForShardLifeTimeExpiredSystem>());
       
       Add(systems.Create<HeroImmunityFeature>());
-      Add(systems.Create<HeroBumpFeature>());
       
       Add(systems.Create<SetHeroBodyDirectionSystem>());
       
