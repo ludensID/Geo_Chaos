@@ -20,6 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems
         .Filter<HeroTag>()
         .Inc<BodyDirection>()
         .Inc<ViewDirection>()
+        .Exc<BodyFreezing>()
         .Collect();
     }
     

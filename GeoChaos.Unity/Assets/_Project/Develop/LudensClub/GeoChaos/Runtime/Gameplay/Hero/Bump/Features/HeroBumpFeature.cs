@@ -7,6 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump
     public HeroBumpFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<HeroBumpSystem>());
+      Add(systems.Create<StopFreezeBodySystem>());
       Add(systems.Create<StopHeroBumpSystem>());
     } 
   }

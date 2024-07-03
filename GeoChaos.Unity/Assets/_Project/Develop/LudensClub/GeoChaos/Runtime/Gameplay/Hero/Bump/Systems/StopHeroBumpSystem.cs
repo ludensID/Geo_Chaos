@@ -24,7 +24,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump
       foreach (EcsEntity hero in _bumpedHeroes
         .Where<BumpTimer>(x => x.TimeLeft <= 0))
       {
-        hero.Del<BumpTimer>();
+        hero
+          .Del<Bumping>()
+          .Del<BumpTimer>();
+        
         ref MovementLayout layout = ref hero.Get<MovementLayout>();
         if (layout.Owner == MovementType.Bump)
         {

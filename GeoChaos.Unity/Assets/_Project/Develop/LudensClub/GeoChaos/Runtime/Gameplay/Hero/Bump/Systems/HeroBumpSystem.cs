@@ -42,7 +42,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump
         .Inc<SpeedForce>()
         .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity damage in _damageEvents)
@@ -70,12 +70,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump
             Instant = true
           });
 
-          hero.Replace((ref MovementLayout layout) =>
-          {
-            layout.Layer = MovementLayer.Shoot;
-            layout.Owner = MovementType.Bump;
-          })
-          .Add((ref BumpTimer timer) => timer.TimeLeft = _timers.Create(_config.BumpFreezeDuration));
+          hero
+            .Add<Bumping>()
+            .Add<BodyFreezing>()
+            .Replace((ref MovementLayout layout) =>
+            {
+              layout.Layer = MovementLayer.Shoot;
+              layout.Owner = MovementType.Bump;
+            })
+            .Add((ref BumpTimer timer) => timer.TimeLeft = _timers.Create(_config.BumpFreezeDuration));
         }
       }
     }
