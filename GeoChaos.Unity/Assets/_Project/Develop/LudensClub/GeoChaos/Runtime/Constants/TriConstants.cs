@@ -16,8 +16,7 @@
       public const string ATTACK_COLLIDERS = "Attack Colliders";
       public const string GRAPPLING_HOOK = "Grapling Hook";
       public const string DRAG_FORCE = "Drag Force";
-      public const string HOOK_UPGRADES = "Upgrades";
-      public const string HOOK_UPGRADES_TYPES = HOOK_UPGRADES + "/" + "Types";
+      public const string FREE_FALLING = "Free Falling";
       public const string SHOOT = "Shoot";
       public const string AIM = "Aim";
       public const string BOUNDS = "Bounds";
@@ -26,6 +25,7 @@
       {
         public const string DROP_ACTION_NAMES = DROP + ACTION_NAMES;
         public const string CHECK_BOUNDS = CHECK + BOUNDS;
+        public const string FREE_FALLING_TABS = FREE_FALLING + "/Tabs";
       }
     }
   }

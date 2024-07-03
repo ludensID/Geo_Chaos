@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Jump;
@@ -65,7 +66,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           .Has<AimAvailable>(_config.EnableAim)
           .Add<ShootDirection>()
           .Add<ShootPosition>()
-          .Add<ImmunityAvailable>();
+          .Add<ImmunityAvailable>()
+          .Has<BumpAvailable>(_config.EnableBump);
       }
     }
   }

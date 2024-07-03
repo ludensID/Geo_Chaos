@@ -8,14 +8,41 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
   [CreateAssetMenu(fileName = CAC.Names.HERO_FILE, menuName = CAC.Names.HERO_MENU)]
   public partial class HeroConfig : ScriptableObject
   {
+    [PropertySpace(SpaceAfter = 20)]
     [Range(0, 1)]
     public float MovementResponseDelay;
+    
+    [GroupNext(TriConstants.Names.Explicit.FREE_FALLING_TABS), Tab("Drag Force")]
+    [LabelText("Enabled")]
+    public bool EnableDragForce; 
+    
+    [LabelText("UseGradient")]
+    public bool UseDragForceGradient;
+    public float StartDragForceCoefficient => 1f / (UseDragForceGradient ? 3f : 2f);
+    
+    public bool IsRelativeSpeed;
+    
+    [LabelText("Multiplier")]
+    public Vector2 DragForceMultiplier;
 
+    [GroupNext(TriConstants.Names.Explicit.FREE_FALLING_TABS), Tab("AD Control")]
+    [LabelText("Enabled")]
+    public bool EnableADControl;
+
+    [LabelText("UseGradient")]
+    public bool UseADControlGradient;
+    
+    public float StartADControlCoefficient => 1f / (UseADControlGradient ? 3f : 2f);
+    
+    [LabelText("Speed")]
+    public float ADControlSpeed;
+
+    [UnGroupNext]
     [Title("Movement")]
     public float MovementSpeed;
 
     public float AccelerationTime;
-
+    
     [Title(TriConstants.Names.JUMP)]
     public float JumpTime;
 
@@ -32,32 +59,37 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float JumpLength;
 
     [ShowInInspector]
-    [PropertyOrder(8)]
+    [PropertyOrder(15)]
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float Gravity => -2 * JumpHeight * Mathf.Pow(1 + 1 / FallVelocityMultiplier, 2) / (JumpTime * JumpTime);
-
-    public float PositiveGravity => Mathf.Abs(Gravity);
-
+    
     [ShowInInspector]
+    [PropertyOrder(16)]
+     
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float GravityScale => Gravity / Physics2D.gravity.y;
 
     [ShowInInspector]
+    [PropertyOrder(17)]
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float FallGravityScale => Mathf.Pow(FallVelocityMultiplier, 2) * GravityScale;
 
-    public float FallGravity => Physics.gravity.y * FallGravityScale;
-
-    public float PositiveFallGravity => Mathf.Abs(FallGravity);
-
     [ShowInInspector]
+    [PropertyOrder(18)]
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float JumpForce => (1 + 1 / FallVelocityMultiplier) * 2 * JumpHeight / JumpTime;
 
     [ShowInInspector]
+    [PropertyOrder(19)]
     [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float JumpHorizontalSpeed => MovementSpeed * JumpHorizontalSpeedMultiplier;
 
+    public float PositiveGravity => Mathf.Abs(Gravity);
+
+    public float FallGravity => Physics.gravity.y * FallGravityScale;
+
+    public float PositiveFallGravity => Mathf.Abs(FallGravity);
+      
     [Title("Dash")]
     [LabelText("Enabled")]
     public bool EnableDash;
@@ -66,7 +98,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float DashTime;
 
     [ShowInInspector]
-    [PropertyOrder(12)]
+    [PropertyOrder(20)]
     public float DashDistance => DashVelocity * DashTime;
 
     public float DashCooldown;
@@ -94,34 +126,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Min(0.01f)]
     public float HookPrecastTime;
     
-    [PropertySpace(SpaceAfter = 20)]
     public float HookVelocity;
-
-    [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("Drag Force")]
-    [LabelText("Enabled")]
-    public bool EnableDragForce; 
-    
-    [LabelText("UseGradient")]
-    public bool UseDragForceGradient;
-    public float StartDragForceCoefficient => 1f / (UseDragForceGradient ? 3f : 2f);
-    
-    public bool IsRelativeSpeed;
-    
-    [LabelText("Multiplier")]
-    public Vector2 DragForceMultiplier;
-
-    [GroupNext(TriConstants.Names.HOOK_UPGRADES_TYPES), Tab("AD Control")]
-    [LabelText("Enabled")]
-    public bool EnableADControl;
-
-    [LabelText("UseGradient")]
-    public bool UseADControlGradient;
-    
-    public float StartADControlCoefficient => 1f / (UseADControlGradient ? 3f : 2f);
-
-    
-    [LabelText("Speed")]
-    public float ADControlSpeed;
 
     [GroupNext(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
     public float PullTimeOffset;
@@ -150,11 +155,11 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title("Immunity")]
     public float ImmunityTime;
     
-    [Title("Push")]
+    [Title("Bump")]
     [LabelText("Enabled")]
-    public bool EnablePush;
+    public bool EnableBump;
 
-    public Vector2 PushForce;
+    public Vector2 BumpForce;
     
     [UnGroupNext]
     [Title("Characteristics")]

@@ -139,7 +139,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
     public EcsPackedEntity Pack()
     {
-      return World.PackEntity(Entity);
+      return PackedEntity;
     }
 
     public EcsPackedEntityWithWorld PackWithWorld()

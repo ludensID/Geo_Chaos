@@ -7,7 +7,8 @@
     Dash = 3,
     Hook = 4,
     Attack = 6,
-    Chase = Attack + 1,
+    Bump = Attack + 1,
+    Chase = Bump + 1,
     Sneak = Chase + 1
   }
 }

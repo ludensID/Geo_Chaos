@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Lock;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity;
@@ -120,6 +121,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<CheckForShardLifeTimeExpiredSystem>());
       
       Add(systems.Create<HeroImmunityFeature>());
+      Add(systems.Create<HeroBumpFeature>());
       
       Add(systems.Create<SetHeroBodyDirectionSystem>());
       

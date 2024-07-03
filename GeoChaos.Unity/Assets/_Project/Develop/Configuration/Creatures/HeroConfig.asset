@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: HeroConfig
   m_EditorClassIdentifier: 
   MovementResponseDelay: 0
+  EnableDragForce: 1
+  UseDragForceGradient: 1
+  IsRelativeSpeed: 1
+  DragForceMultiplier: {x: 1.5, y: 0.75}
+  EnableADControl: 1
+  UseADControlGradient: 1
+  ADControlSpeed: 4
   MovementSpeed: 7
   AccelerationTime: 0.15
   JumpTime: 0.66
@@ -38,13 +45,6 @@ MonoBehaviour:
   RingViewAngle: 90
   HookPrecastTime: 0.2
   HookVelocity: 30
-  EnableDragForce: 1
-  UseDragForceGradient: 1
-  IsRelativeSpeed: 1
-  DragForceMultiplier: {x: 1.5, y: 0.75}
-  EnableADControl: 1
-  UseADControlGradient: 1
-  ADControlSpeed: 4
   PullTimeOffset: 1
   HookInputCooldown: 0.1
   RingReleasingTime: 0.1
@@ -59,8 +59,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 913
   ImmunityTime: 3
-  EnablePush: 0
-  PushForce: {x: 0, y: 0}
+  EnableBump: 1
+  BumpForce: {x: 5, y: 15}
   Health: 100
   DashDamage: 10
   ShardDamage: 15

@@ -14,7 +14,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 {
   [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.JUMP, Title = TriConstants.TECH)]
   [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK, Title = TriConstants.TECH)]
-  [DeclareTabGroup(TriConstants.Names.HOOK_UPGRADES_TYPES)]
+  [DeclareFoldoutGroup(TriConstants.Names.FREE_FALLING, Expanded = true)]
+  [DeclareTabGroup(TriConstants.Names.Explicit.FREE_FALLING_TABS)]
   [DeclareFoldoutGroup(TriConstants.TECH + TriConstants.Names.SHOOT, Title = TriConstants.TECH)]
   [DeclareBoxGroup(TriConstants.Names.AIM, Title = TriConstants.Names.AIM)]
   public partial class HeroConfig
@@ -25,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     }
 
     [PropertySpace(SpaceBefore = 20)]
-    [PropertyOrder(15)]
+    [PropertyOrder(22)]
     [Range(0.01f, 5)]
     [EnableInEditMode]
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
@@ -33,7 +34,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [LabelText("$" + nameof(HitColliderSizesEditModeName))]
     public List<float> HitColliderSizes = new(3) { 1, 1, 1 };
 
-    public string HitColliderSizesEditModeName => nameof(HitColliderSizes) + (EditorApplication.isPlaying ? " (Only In Edit Mode)" : "");
+    public string HitColliderSizesEditModeName =>
+      nameof(HitColliderSizes) + (EditorApplication.isPlaying ? " (Only In Edit Mode)" : "");
 
     public void OnHitColliderSizesChanged()
     {

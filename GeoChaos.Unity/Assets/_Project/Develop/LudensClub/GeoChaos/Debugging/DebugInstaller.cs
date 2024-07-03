@@ -43,6 +43,7 @@ namespace LudensClub.GeoChaos.Debugging
       BindControllableWatcher();
       BindShootAvailableWatcher();
       BindAimAvailableWatcher();
+      BindBumpAvailableWatcher();
 
       BindGlobalWatcher();
 
@@ -52,6 +53,13 @@ namespace LudensClub.GeoChaos.Debugging
       BindEcsEntityPresenterFactory();
       BindEcsEntityViewFactory();
       BindEcsUniversePresenter();
+    }
+
+    private static void BindBumpAvailableWatcher()
+    {
+      Container
+        .BindInterfacesTo<BumpAvailableWatcher>()
+        .AsSingle();
     }
 
     private static void BindAimAvailableWatcher()
