@@ -11,6 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump
   public class HeroBumpSystem : IEcsRunSystem
   {
     private readonly ISpeedForceFactory _forceFactory;
+    private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsWorld _message;
     private readonly EcsWorld _physics;
@@ -22,9 +23,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump
       MessageWorldWrapper messageWorldWrapper,
       PhysicsWorldWrapper physicsWorldWrapper,
       ISpeedForceFactory forceFactory,
-      IConfigProvider configProvider)
+      IConfigProvider configProvider,
+      ITimerFactory timers)
     {
       _forceFactory = forceFactory;
+      _timers = timers;
       _game = gameWorldWrapper.World;
       _message = messageWorldWrapper.World;
       _physics = physicsWorldWrapper.World;
@@ -66,6 +69,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump
             Direction = direction,
             Instant = true
           });
+
+          hero.Replace((ref MovementLayout layout) =>
+          {
+            layout.Layer = MovementLayer.Shoot;
+            layout.Owner = MovementType.Bump;
+          })
+          .Add((ref BumpTimer timer) => timer.TimeLeft = _timers.Create(_config.BumpFreezeDuration));
         }
       }
     }

@@ -160,6 +160,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public bool EnableBump;
 
     public Vector2 BumpForce;
+    public float BumpFreezeDuration;
     
     [UnGroupNext]
     [Title("Characteristics")]

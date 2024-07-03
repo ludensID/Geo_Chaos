@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿using System.Linq;
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
@@ -35,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Inc<MoveCommand>()
         .Exc<Moving>()
         .Collect();
-        
+
       _commands = _game
         .Filter<Movable>()
         .Inc<MovementVector>()
@@ -61,7 +62,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         float acceleration = CalculateAcceleration(speed);
 
         command.Replace((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
-        
+
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)
         {
           Direction = new Vector2(normalizedDirection, 0),
@@ -69,42 +70,51 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
           MaxSpeed = speed,
           Acceleration = new Vector2(acceleration, 0)
         });
-        
+
         command.Add<Moving>();
       }
-      
+
       foreach (EcsEntity command in _commands)
       {
         float direction = command.Get<MoveCommand>().Direction;
         float normalizedDirection = direction != 0 ? Mathf.Sign(direction) : 0;
         float speed = command.Get<HorizontalSpeed>().Speed * Mathf.Abs(direction);
         float acceleration = CalculateAcceleration(speed);
-        
+
         command.Replace((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
-        
-        foreach (EcsEntity force in _forces
-          .GetLoop(SpeedForceType.Move, command.Pack()))
+
+        EcsEntities forces = _forces.GetLoop(SpeedForceType.Move, command.Pack());
+        foreach (EcsEntity force in forces)
         {
           force
             .Replace((ref MovementVector vector) => vector.Direction.x = normalizedDirection)
             .Replace((ref Acceleration a) => a.Value.x = acceleration)
             .Replace((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed);
         }
+
+        if (!forces.Any())
+          command.Del<Moving>();
       }
 
       foreach (EcsEntity moving in _movings)
       {
+        EcsEntities forces = _forces.GetLoop(SpeedForceType.Move, moving.Pack());
+        if (!forces.Any())
+        {
+          moving.Del<Moving>();
+          continue;
+        }
+
         float direction = moving.Get<MoveDirection>().Direction.x;
         float speed = moving.Get<HorizontalSpeed>().Speed * Mathf.Abs(direction);
         float acceleration = CalculateAcceleration(speed);
-        
-        foreach (EcsEntity force in _forces
-          .GetLoop(SpeedForceType.Move, moving.Pack()))
+
+        foreach (EcsEntity force in forces)
         {
           force
             .Replace((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed)
             .Replace((ref Acceleration a) => a.Value.x = -acceleration);
-          
+
           if (force.Get<MovementVector>().Speed.x <= 0)
           {
             force.Replace((ref Impact impact) => impact.Vector.x = 0);
@@ -113,7 +123,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         }
       }
     }
-    
+
     private float CalculateAcceleration(float speed)
     {
       return _config.AccelerationTime == 0

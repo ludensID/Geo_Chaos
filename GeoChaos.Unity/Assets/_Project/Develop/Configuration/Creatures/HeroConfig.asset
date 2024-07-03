@@ -61,6 +61,7 @@ MonoBehaviour:
   ImmunityTime: 3
   EnableBump: 1
   BumpForce: {x: 5, y: 15}
+  BumpFreezeDuration: 0
   Health: 100
   DashDamage: 10
   ShardDamage: 15
