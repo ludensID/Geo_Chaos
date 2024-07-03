@@ -1,56 +1,50 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LudensClub.GeoChaos.Runtime.Constants;
+using LudensClub.GeoChaos.Runtime.Debugging;
 using TriInspector;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace LudensClub.GeoChaos.Runtime.Configuration
 {
   [CreateAssetMenu(fileName = CAC.Names.INPUT_ACTION_NAME_FILE, menuName = CAC.Names.INPUT_ACTION_NAME_MENU)]
   public class InputActionNameMap : ScriptableObject
   {
-    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
-    public string HorizontalMovementAction;
-    
-    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
-    public string VerticalMovementAction;
+    public ActionTuple HorizontalMovementAction;
+    public ActionTuple VerticalMovementAction;
+    public ActionTuple JumpAction;
+    public ActionTuple DashAction;
+    public ActionTuple AttackAction;
+    public ActionTuple HookAction;
+    public ActionTuple ShootAction;
+    public ActionTuple AimAction;
+    public ActionTuple AimDirectionAction;
+    public ActionTuple AimPositionAction;
+    public ActionTuple AimRotationAction;
+  }
 
-    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
-    public string JumpAction;
+  [Serializable]
+  [InlineProperty]
+  public struct ActionTuple
+  {
+    [HideInInspector]
+    [HideLabel]
+    public string Id;
 
+    [HideLabel]
     [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
-    public string DashAction;
-    
-    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
-    public string AttackAction;
-    
-    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
-    public string HookAction;
-    
-    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
-    public string ShootAction;
-    
-    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
-    public string AimAction;
-    
-    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
-    public string AimDirectionAction;
-    
-    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
-    public string AimPositionAction;
-    
-    [Dropdown(TriConstants.Names.Explicit.DROP_ACTION_NAMES)]
-    public string AimRotationAction;
+    public string Name;
+
+    public static implicit operator string(ActionTuple obj)
+    {
+      return obj.Name;
+    }
 
 #if UNITY_EDITOR
     private static IEnumerable<string> DropActionNames()
     {
-      string[] assets = AssetDatabase.FindAssets($"t:{nameof(InputActionAsset)}");
-      var asset = AssetDatabase.LoadAssetAtPath<InputActionAsset>(AssetDatabase.GUIDToAssetPath(assets[0]));
-      InputActionMap map = asset.FindActionMap("Player");
-      return map.actions.Select(x => x.name);
+      return EditorContext.Container.Map.actions.Select(x => x.name);
     }
 #endif
   }
