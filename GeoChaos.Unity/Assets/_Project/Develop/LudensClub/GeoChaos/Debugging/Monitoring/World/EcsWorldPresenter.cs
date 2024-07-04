@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
-using UnityEngine;
+using Unity.Profiling;
 
 namespace LudensClub.GeoChaos.Debugging.Monitoring
 {
@@ -15,8 +13,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private readonly IEcsWorldViewFactory _viewFactory;
     private readonly IEcsEntityPresenterFactory _entityFactory;
     private readonly IEcsUniversePresenter _parent;
-    private readonly List<IEcsEntityPresenter> _children = new();
-    private readonly HashSet<int> _dirtyEntities = new();
+    private readonly List<IEcsEntityPresenter> _children = new List<IEcsEntityPresenter>();
+    private readonly HashSet<int> _dirtyEntities = new HashSet<int>();
     private Type[] _typesCache;
     private int[] _entities;
 
@@ -48,15 +46,31 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     public void Tick()
     {
-      var updatables = _children.Select(x => x.Entity).Except(_dirtyEntities);
+      // var updatables = _children.Select(x => x.Entity).Except(_dirtyEntities);
+      var updatables = new int[_children.Count - _dirtyEntities.Count];
 
-      if (updatables.Count() + _dirtyEntities.Count != _children.Count)
-        throw new ArgumentException();
+      int k = 0;
+      for (int i = 0; i < _children.Count; i++)
+      {
+        var entity = _children[i].Entity;
+        bool add = true;
+        for (int j = 0; j < _dirtyEntities.Count; j++)
+        {
+          if (_dirtyEntities.Contains(entity))
+          {
+            add = false;
+            break;
+          }
+        }
+
+        if (add)
+          updatables[k++] = entity;
+      }
 
       foreach (int updatable in updatables)
       {
-#if UNITY_EDITOR && !DISABLE_PROFILING
-        using (new Unity.Profiling.ProfilerMarker($"{_children[updatable].View.gameObject.name[..8]}.UpdateView()").Auto())
+#if !DISABLE_PROFILING
+        using (new ProfilerMarker($"{_children[updatable].View.gameObject.name[..8]}.UpdateView()").Auto())
 #endif
         {
           _children[updatable].UpdateView();
@@ -65,8 +79,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
       foreach (int dirtyEntity in _dirtyEntities)
       {
-#if UNITY_EDITOR && !DISABLE_PROFILING
-        using (new Unity.Profiling.ProfilerMarker($"{_children[dirtyEntity].View.gameObject.name[..8]}.Tick()").Auto())
+#if !DISABLE_PROFILING
+        using (new ProfilerMarker($"{_children[dirtyEntity].View.gameObject.name[..8]}.Tick()").Auto())
 #endif
         {
           _children[dirtyEntity].Tick();

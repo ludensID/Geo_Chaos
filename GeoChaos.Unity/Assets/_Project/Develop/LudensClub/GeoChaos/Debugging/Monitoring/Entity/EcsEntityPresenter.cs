@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Debugging;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using Unity.Profiling;
 
 namespace LudensClub.GeoChaos.Debugging.Monitoring
 {
@@ -17,6 +20,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private int _componentCount;
     private IEcsPool[] _pools;
     private IEcsPool[] _valuePools;
+    private StringBuilder _builder = new StringBuilder();
 
     public int Entity { get; }
     public EcsEntityView View { get; private set; }
@@ -43,7 +47,12 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       var entityName = Entity.ToString(ENTITY_FORMAT);
       if (_wrapper.World.GetEntityGen(Entity) > 0)
       {
-        entityName = UpdateName(entityName);
+#if !DISABLE_PROFILING
+        using (new ProfilerMarker(nameof(UpdateName) + "()").Auto())
+#endif
+        {
+          entityName = UpdateName(entityName);
+        }
 
         UpdateView();
       }
@@ -59,17 +68,18 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private string UpdateName(string entityName)
     {
       int typeCount = _wrapper.World.GetComponentTypes(Entity, ref _typesCache);
+      _builder.Clear().Append(entityName);
       for (var i = 0; i < typeCount; i++)
       {
-        entityName = $"{entityName}:{EcsMonitoring.GetCleanGenericTypeName(_typesCache[i])}";
+        _builder.Append($":{EcsMonitoring.GetCleanGenericTypeName(_typesCache[i])}");
       }
 
-      return entityName;
+      return _builder.ToString();
     }
 
     public void UpdateView()
     {
-#if UNITY_EDITOR && !DISABLE_PROFILING
+#if !DISABLE_PROFILING
       using (new Unity.Profiling.ProfilerMarker("PrepareComponents()").Auto())
 #endif
       {
@@ -93,10 +103,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       {
         for (int i = 0; i < _componentCount; i++)
         {
-          ref object component = ref _components[i];
-          string componentName = component.GetType().Name;
-          int index = View.Components.FindIndex(x => x.Name == componentName);
-          View.Components[index].Value = (IEcsComponent)component;
+          int index = View.Components.FindIndex(x => x.Name == EditorContext.GetPrettyName(_components[i]));
+          View.Components[index].Value = (IEcsComponent)_components[i];
         }
       }
     }
@@ -110,18 +118,46 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     private void Resize()
     {
-      for (int i = 0; i < View.Components.Count; i++)
+#if !DISABLE_PROFILING
+      using (new ProfilerMarker("Remove()").Auto())
+#endif
       {
-        string viewComponentName = View.Components[i].Name;
-        if (_components.All(x => x.GetType().Name != viewComponentName))
-          View.Components.RemoveAt(i--);
+        for (int i = 0; i < View.Components.Count; i++)
+        {
+          string viewComponentName = View.Components[i].Name;
+          bool remove = true;
+          for (int j = 0; j < _componentCount; j++)
+          {
+            if (EditorContext.GetPrettyName(_components[j]) == viewComponentName)
+            {
+              remove = false;
+              break;
+            }
+          }
+          if (remove)
+            View.Components.RemoveAt(i--);
+        }
       }
 
-      for (int i = 0; i < _componentCount; i++)
+#if !DISABLE_PROFILING
+      using (new ProfilerMarker("Add()").Auto())
+#endif
       {
-        string componentName = _components[i].GetType().Name;
-        if (View.Components.All(x => x.Name != componentName))
-          View.Components.Add(new EcsComponentView { Value = (IEcsComponent)_components[i], Name = componentName });
+        for (int i = 0; i < _componentCount; i++)
+        {
+          string componentName = EditorContext.GetPrettyName(_components[i]);
+          bool add = true;
+          for (int j = 0; j < View.Components.Count; j++)
+          {
+            if (View.Components[j].Name == componentName)
+            {
+              add = false;
+              break;
+            }
+          }
+          if (add)
+            View.Components.Add(new EcsComponentView { Value = (IEcsComponent)_components[i], Name = componentName });
+        }
       }
 
       if (View.Components.Count != _componentCount)

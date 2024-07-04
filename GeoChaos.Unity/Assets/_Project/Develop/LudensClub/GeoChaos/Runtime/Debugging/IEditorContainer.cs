@@ -9,6 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Debugging
     InputActionAsset InputAsset { get; set; }
     InputActionMap Map { get; }
     InputActionNameMap NameMap { get; set; }
+    IProfilerService ProfilerService { get; set; }
   }
 }
 #endif

@@ -17,7 +17,8 @@ namespace LudensClub.GeoChaos.Editor
       var nameMap = AssetFinder.FindAsset<InputActionNameMap>();
       container.InputAsset = inputAsset;
       container.NameMap = nameMap;
-      
+      container.ProfilerService = new ProfilerService();
+        
       InputMapUpdater.Construct();
     }
   }

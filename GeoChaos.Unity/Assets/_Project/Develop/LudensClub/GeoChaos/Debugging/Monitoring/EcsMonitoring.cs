@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       int genericIndex = type.Name.LastIndexOf("`", StringComparison.Ordinal);
       string typeName = genericIndex == -1
         ? type.Name
-        : type.Name.Substring(0, genericIndex);
+        : type.Name[..genericIndex];
       return $"{typeName}<{constraints}>";
     }
   }

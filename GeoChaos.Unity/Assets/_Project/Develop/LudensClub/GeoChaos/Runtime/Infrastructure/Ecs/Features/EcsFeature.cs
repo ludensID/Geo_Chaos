@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Debugging;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
@@ -28,13 +29,13 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     public void Run(EcsSystems systems)
     {
 #if UNITY_EDITOR && !DISABLE_PROFILING
-      using (new Unity.Profiling.ProfilerMarker($"{GetType().Name}.Run()").Auto())
+      using (new Unity.Profiling.ProfilerMarker(EditorContext.GetPrettyName(this, nameof(Run))).Auto())
 #endif
       {
         foreach (IEcsRunSystem system in _systems.OfType<IEcsRunSystem>())
         {
 #if UNITY_EDITOR && !DISABLE_PROFILING
-          using (new Unity.Profiling.ProfilerMarker($"{system.GetType().Name}.Run()").Auto())
+          using (new Unity.Profiling.ProfilerMarker(EditorContext.GetPrettyName(system, "Run")).Auto())
 #endif
           {
             system.Run(systems);
