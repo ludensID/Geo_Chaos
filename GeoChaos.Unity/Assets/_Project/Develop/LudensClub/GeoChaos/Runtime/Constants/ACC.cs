@@ -26,10 +26,11 @@
       public const string HERO_SWORD_VIEW = VIEW + "Hero Sword View";
       public const string SHOOT_COOLDOWN_VIEW = VIEW + "Shoot Cooldown View";
       public const string HERO_HEALTH_VIEW = VIEW + "Hero Health View";
+      public const string IMMUNITY_DURATION_VIEW = VIEW + "Immunity Duration View";
 
       public const string GAMEPLAY_INSTALLER = BOOT + "Gameplay Installer";
       public const string PROJECT_INSTALLER = BOOT + "Project Installer";
-      
+
       public const string DASH_COLLIDER_CONVERTER = CONVERTERS + "Dash Collider Converter";
       public const string GROUND_CHECK_CONVERTER = CONVERTERS + "Ground Check Converter";
       public const string HEALTH_CONVERTER = CONVERTERS + "Health Converter";

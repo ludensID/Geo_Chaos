@@ -45,7 +45,7 @@ MonoBehaviour:
   RingViewAngle: 90
   HookPrecastTime: 0.2
   HookVelocity: 30
-  BumpOnHookReaction: 1
+  BumpOnHookReaction: 0
   PullTimeOffset: 1
   HookInputCooldown: 0.1
   RingReleasingTime: 0.1
