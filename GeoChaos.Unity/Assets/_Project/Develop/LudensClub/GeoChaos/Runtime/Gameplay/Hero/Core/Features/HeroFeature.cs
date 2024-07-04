@@ -92,6 +92,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<PullHeroOnHookSystem>());
       Add(systems.Create<StopHookPullingSystem>());
       
+      Add(systems.Create<InterruptHookWhenHeroBumpSystem>());
+      
       Add(systems.Create<Delete<OnHookInterrupted>>());
       Add(systems.Create<InterruptHookSystem>());
       Add(systems.Create<FinishHookInterruptionSystem>());
