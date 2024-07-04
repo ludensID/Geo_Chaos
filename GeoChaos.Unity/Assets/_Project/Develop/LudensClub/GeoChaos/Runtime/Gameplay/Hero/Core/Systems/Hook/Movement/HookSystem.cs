@@ -32,7 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       {
         command
           .Add<Hooking>()
-          .Replace((ref MovementLayout layout) =>
+          .Change((ref MovementLayout layout) =>
           {
             layout.Layer = command.Has<InterruptHookAvailable>() ? MovementLayer.Interrupt : MovementLayer.None;
             layout.Owner = MovementType.Hook;
@@ -41,7 +41,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
         if (_config.BumpOnHookReaction == BumpOnHookReactionType.Immunity)
         {
-          command.Has<Immune>(true);
           command.Replace((ref Immune immune) => immune.Owner = MovementType.Hook);
         }
       }

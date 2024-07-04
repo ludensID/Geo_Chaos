@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity drag in _drags)
       {
-        drag.Replace((ref DragForce force) => force.Force = GetForce(drag));
+        drag.Change((ref DragForce force) => force.Force = GetForce(drag));
       }
     }
 

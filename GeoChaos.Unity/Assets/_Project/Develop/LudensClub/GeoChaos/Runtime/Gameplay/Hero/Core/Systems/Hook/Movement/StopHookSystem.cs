@@ -40,7 +40,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         {
           command
             .Del<Immune>()
-            .Has<ImmunityTimer>(false)
             .Add<OnImmunityFinished>();
         }
         

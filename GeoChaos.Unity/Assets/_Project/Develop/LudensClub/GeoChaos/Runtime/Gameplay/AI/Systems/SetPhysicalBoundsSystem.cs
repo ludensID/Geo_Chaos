@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
       foreach (EcsEntity bound in _bounds)
       {
         Vector2 bounds = bound.Get<PhysicalBoundsRef>().GetBounds();
-        bound.Replace((ref PatrolBounds patrolBounds) => patrolBounds.Bounds = bounds);
+        bound.Change((ref PatrolBounds patrolBounds) => patrolBounds.Bounds = bounds);
       }
     }
   }

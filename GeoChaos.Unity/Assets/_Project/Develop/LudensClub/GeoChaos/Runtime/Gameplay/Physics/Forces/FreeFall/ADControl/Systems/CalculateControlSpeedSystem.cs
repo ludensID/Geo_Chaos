@@ -45,7 +45,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           direction = owner.Get<MoveDirection>().Direction.x;
 
         float acceleration = control.Get<Gradient>().Value * _config.ADControlSpeed * direction;
-        control.Replace(
+        control.Change(
           (ref ControlSpeed speed) => speed.Speed = CalculateSpeed(speed.Speed, acceleration, direction));
       }
     }

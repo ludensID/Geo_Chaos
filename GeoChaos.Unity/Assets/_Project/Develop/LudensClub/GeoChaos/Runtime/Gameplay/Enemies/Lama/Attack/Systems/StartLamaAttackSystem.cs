@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
         if (!lama.Has<Attacking>())
         {
           lama
-            .Replace((ref ComboAttackCounter counter) => counter.Count = 0)
+            .Change((ref ComboAttackCounter counter) => counter.Count = 0)
             .Add<Attacking>()
             .Add<OnAttackStarted>();
         }

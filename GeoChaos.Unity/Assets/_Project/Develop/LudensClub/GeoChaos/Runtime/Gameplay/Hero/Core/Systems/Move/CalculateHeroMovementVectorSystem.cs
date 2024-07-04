@@ -61,7 +61,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         float speed = command.Get<HorizontalSpeed>().Speed * direction;
         float acceleration = CalculateAcceleration(speed);
 
-        command.Replace((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
+        command.Change((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
 
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)
         {
@@ -81,15 +81,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         float speed = command.Get<HorizontalSpeed>().Speed * Mathf.Abs(direction);
         float acceleration = CalculateAcceleration(speed);
 
-        command.Replace((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
+        command.Change((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
 
         EcsEntities forces = _forces.GetLoop(SpeedForceType.Move, command.Pack());
         foreach (EcsEntity force in forces)
         {
           force
-            .Replace((ref MovementVector vector) => vector.Direction.x = normalizedDirection)
-            .Replace((ref Acceleration a) => a.Value.x = acceleration)
-            .Replace((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed);
+            .Change((ref MovementVector vector) => vector.Direction.x = normalizedDirection)
+            .Change((ref Acceleration a) => a.Value.x = acceleration)
+            .Change((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed);
         }
 
         if (!forces.Any())
@@ -112,12 +112,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         foreach (EcsEntity force in forces)
         {
           force
-            .Replace((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed)
-            .Replace((ref Acceleration a) => a.Value.x = -acceleration);
+            .Change((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed)
+            .Change((ref Acceleration a) => a.Value.x = -acceleration);
 
           if (force.Get<MovementVector>().Speed.x <= 0)
           {
-            force.Replace((ref Impact impact) => impact.Vector.x = 0);
+            force.Change((ref Impact impact) => impact.Vector.x = 0);
             moving.Del<Moving>();
           }
         }

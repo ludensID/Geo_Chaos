@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems
       foreach (EcsEntity bodyDir in _bodyDirections)
       {
         float direction = CalculateBodyDirection(bodyDir);
-        bodyDir.Replace((ref BodyDirection body) => body.Direction = direction);
+        bodyDir.Change((ref BodyDirection body) => body.Direction = direction);
       }
     }
 

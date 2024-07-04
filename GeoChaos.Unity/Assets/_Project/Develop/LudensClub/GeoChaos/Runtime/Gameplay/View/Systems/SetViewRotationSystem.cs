@@ -24,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.View
     {
       foreach (EcsEntity view in _views)
       {
-        view.Replace((ref ViewRef viewRef) =>
+        view.Change((ref ViewRef viewRef) =>
         {
           Vector3 rotation = viewRef.View.transform.eulerAngles;
           rotation.y = view.Get<BodyDirection>().Direction >= 0 ? 0 : 180;

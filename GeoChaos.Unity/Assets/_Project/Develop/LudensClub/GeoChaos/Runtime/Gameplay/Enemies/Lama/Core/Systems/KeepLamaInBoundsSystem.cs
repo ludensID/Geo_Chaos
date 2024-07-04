@@ -37,7 +37,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
           position.x = bounds[index];
           rb.MovePosition(position);
 
-          lama.Replace((ref MovementVector vector) => vector.Speed.x = 0);
+          lama.Change((ref MovementVector vector) => vector.Speed.x = 0);
         }
       }
     }

@@ -41,7 +41,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
         if (direction == Vector2.zero)
           direction = Vector2.right * hero.Get<BodyDirection>().Direction;
 
-        hero.Replace((ref ViewDirection viewDir) => viewDir.Direction = direction);
+        hero.Change((ref ViewDirection viewDir) => viewDir.Direction = direction);
       }
     }
   }

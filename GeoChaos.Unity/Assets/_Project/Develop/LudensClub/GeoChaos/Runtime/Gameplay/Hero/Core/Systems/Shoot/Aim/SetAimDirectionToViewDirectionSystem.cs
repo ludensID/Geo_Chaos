@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
       {
         Vector2 direction =
           _shootSvc.CalculateShootDirection(aim.Get<ViewDirection>().Direction, aim.Get<BodyDirection>().Direction);
-        aim.Replace((ref ShootDirection shootDirection) => shootDirection.Direction = direction);
+        aim.Change((ref ShootDirection shootDirection) => shootDirection.Direction = direction);
       }
     }
   }

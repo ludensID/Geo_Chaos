@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       owner.Has<FreeRotating>(false);
       owner.Has<FreeFalling>(false);
 
-      owner.Replace((ref MovementVector vector) => vector.Speed = Vector2.zero);
+      owner.Change((ref MovementVector vector) => vector.Speed = Vector2.zero);
     }
 
     public void PrepareFreeFall(EcsEntity freeFall, float time, float coefficient, bool useGradient)
@@ -46,7 +46,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       freeFall
         .Del<PrepareCommand>()
         .Add<Prepared>()
-        .Replace((ref GradientRate rate) => rate.Rate = 1 / gradientTime);
+        .Change((ref GradientRate rate) => rate.Rate = 1 / gradientTime);
     }
   }
 }

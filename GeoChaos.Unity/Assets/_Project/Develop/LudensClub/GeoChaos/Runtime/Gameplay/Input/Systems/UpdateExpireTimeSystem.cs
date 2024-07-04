@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
     {
       foreach (EcsEntity timer in _timers)
       {
-        timer.Replace((ref ExpireTimer expire) => expire.PassedTime += Time.deltaTime);
+        timer.Change((ref ExpireTimer expire) => expire.PassedTime += Time.deltaTime);
       }
     }
   }

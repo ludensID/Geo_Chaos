@@ -25,8 +25,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
       foreach (var view in _dashViews)
       {
         view
-          .Replace((ref DashColliderRef collider) => collider.Collider.enabled = true)
-          .Replace((ref ColliderRef collider) => collider.Collider.enabled = false);
+          .Change((ref DashColliderRef collider) => collider.Collider.enabled = true)
+          .Change((ref ColliderRef collider) => collider.Collider.enabled = false);
       }
     }
   }

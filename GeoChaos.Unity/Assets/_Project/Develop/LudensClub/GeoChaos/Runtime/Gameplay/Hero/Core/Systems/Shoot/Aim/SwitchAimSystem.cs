@@ -31,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
         .Where<MovementLayout>(x => (x.Layer & MovementLayer.Stay) > 0))
       {
         command
-          .Replace((ref MovementLayout layout) =>
+          .Change((ref MovementLayout layout) =>
           {
             layout.Layer = MovementLayer.Shoot;
             layout.Owner = MovementType.Aim;

@@ -54,7 +54,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 
         if (onGround != isGroundCasted)
         {
-          ground.Replace((ref GroundCheckTimer timer) => timer.TimeLeft = _timers.Create(_physics.GroundCheckTime));
+          ground.Change((ref GroundCheckTimer timer) => timer.TimeLeft = _timers.Create(_physics.GroundCheckTime));
         }
       }
     }

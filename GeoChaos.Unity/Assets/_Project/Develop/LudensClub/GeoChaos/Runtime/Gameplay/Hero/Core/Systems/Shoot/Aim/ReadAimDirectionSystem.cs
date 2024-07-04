@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
         Vector2 direction = input.Get<AimDirection>().Direction;
         if (direction != Vector2.zero)
         {
-          aiming.Replace((ref ShootDirection shootDirection) => shootDirection.Direction = direction);
+          aiming.Change((ref ShootDirection shootDirection) => shootDirection.Direction = direction);
         }
       }
     }

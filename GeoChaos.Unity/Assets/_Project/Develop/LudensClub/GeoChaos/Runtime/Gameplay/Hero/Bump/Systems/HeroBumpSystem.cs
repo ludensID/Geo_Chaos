@@ -73,7 +73,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump
           hero
             .Add<Bumping>()
             .Add<BodyFreezing>()
-            .Replace((ref MovementLayout layout) =>
+            .Change((ref MovementLayout layout) =>
             {
               layout.Layer = MovementLayer.Shoot;
               layout.Owner = MovementType.Bump;

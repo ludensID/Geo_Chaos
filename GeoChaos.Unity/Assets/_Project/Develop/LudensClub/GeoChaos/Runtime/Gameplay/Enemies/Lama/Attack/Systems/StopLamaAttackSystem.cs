@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
         {
           lama
             .Del<Attacking>()
-            .Replace((ref ComboAttackCounter counter) => counter.Count = 0)
+            .Change((ref ComboAttackCounter counter) => counter.Count = 0)
             .Has<HitCooldown>(false)
             .Has<ComboCooldown>(false)
             .Has<OnAttackStarted>(false)

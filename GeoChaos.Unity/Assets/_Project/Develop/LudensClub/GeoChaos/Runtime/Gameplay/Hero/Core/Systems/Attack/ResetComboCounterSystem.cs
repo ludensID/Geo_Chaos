@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
         .Where<ComboAttackTimer>(x => x.TimeLeft <= 0))
       {
         timer
-          .Replace((ref ComboAttackCounter counter) => counter.Count = 0)
+          .Change((ref ComboAttackCounter counter) => counter.Count = 0)
           .Del<ComboAttackTimer>();
       }
     }

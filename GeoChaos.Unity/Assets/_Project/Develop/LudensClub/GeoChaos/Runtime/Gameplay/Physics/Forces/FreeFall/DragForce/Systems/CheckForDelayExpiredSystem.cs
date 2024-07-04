@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           .Del<Delay>()
           .Del<Prepared>()
           .Add<Enabled>()
-          .Replace((ref Gradient gradient) => gradient.Value = 0);
+          .Change((ref Gradient gradient) => gradient.Value = 0);
 
         if (delay.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity owner))
         {

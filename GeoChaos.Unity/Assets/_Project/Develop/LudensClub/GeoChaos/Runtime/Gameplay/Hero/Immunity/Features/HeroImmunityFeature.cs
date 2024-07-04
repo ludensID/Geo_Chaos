@@ -7,6 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity
     public HeroImmunityFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<TakeHeroImmunitySystem>());
+      Add(systems.Create<CheckHeroForImmunityWhileTimerSystem>());
       Add(systems.Create<DepriveHeroOfImmunitySystem>());
     }
   }

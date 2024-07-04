@@ -42,7 +42,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
         int count = hero.Get<ComboAttackCounter>().Count;
         hero.Has<ComboAttackTimer>(false)
           .Add((ref HitTimer hitTimer) => hitTimer.TimeLeft = _timers.Create(_config.HitDurations[count]))
-          .Replace((ref MovementLayout layout) =>
+          .Change((ref MovementLayout layout) =>
           {
             layout.Layer = MovementLayer.None;
             layout.Owner = MovementType.Attack;

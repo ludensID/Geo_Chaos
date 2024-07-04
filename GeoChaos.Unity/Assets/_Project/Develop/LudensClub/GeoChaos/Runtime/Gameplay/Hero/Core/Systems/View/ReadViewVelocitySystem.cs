@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View
         .Where<MovementVector>(x => !x.Immutable))
       {
         Vector2 velocity = vector.Get<RigidbodyRef>().Rigidbody.velocity;
-        vector.Replace((ref MovementVector movementVector) => movementVector.AssignVector(velocity, true));
+        vector.Change((ref MovementVector movementVector) => movementVector.AssignVector(velocity, true));
       }
     }
   }

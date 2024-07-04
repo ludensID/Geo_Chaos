@@ -24,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity
       foreach (EcsEntity cast in _castedColliderEvents)
       {
         cast
-          .Replace((ref ImmunityColliderRef collider) => collider.Collider.enabled = false)
+          .Change((ref ImmunityColliderRef collider) => collider.Collider.enabled = false)
           .Del<OnImmunityColliderCasted>();
       }
     }

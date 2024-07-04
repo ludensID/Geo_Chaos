@@ -49,7 +49,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           _freeFallSvc.PrepareFreeFall(control, startedAction.Time, _config.StartADControlCoefficient,
             _config.UseADControlGradient);
 
-          control.Replace((ref ControlSpeed speed) => speed.Speed = 0);
+          control.Change((ref ControlSpeed speed) => speed.Speed = 0);
         }
       }
     }

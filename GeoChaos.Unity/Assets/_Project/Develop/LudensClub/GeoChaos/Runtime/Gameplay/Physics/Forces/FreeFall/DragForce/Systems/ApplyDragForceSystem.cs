@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
             vector.Speed.y = MathUtils.DecreaseToZero(vector.Speed.y, deltaForce.y);
 
           Vector2 finalSpeed = vector.Speed;
-          draggable.Replace((ref LastMovementVector last) => last.Speed = finalSpeed);
+          draggable.Change((ref LastMovementVector last) => last.Speed = finalSpeed);
         }
       }
     }

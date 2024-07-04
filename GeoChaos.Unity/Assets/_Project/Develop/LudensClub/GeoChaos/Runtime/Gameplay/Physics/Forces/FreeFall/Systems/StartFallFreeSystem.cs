@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           prepare
             .Del<Prepared>()
             .Add<Enabled>()
-            .Replace((ref Gradient gradient) => gradient.Value = 0);
+            .Change((ref Gradient gradient) => gradient.Value = 0);
 
           if (prepare.Has<ADControl>())
             action.Add<FreeRotating>();

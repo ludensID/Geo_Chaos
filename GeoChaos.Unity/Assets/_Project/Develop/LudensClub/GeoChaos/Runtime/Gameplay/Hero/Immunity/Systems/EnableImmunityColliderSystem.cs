@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity
         if (immunity.Get<ColliderRef>().Collider.enabled)
         {
           immunity
-            .Replace((ref ImmunityColliderRef collider) => collider.Collider.enabled = true)
+            .Change((ref ImmunityColliderRef collider) => collider.Collider.enabled = true)
             .Add<OnImmunityColliderCasted>();
         }
 

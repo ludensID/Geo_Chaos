@@ -79,6 +79,37 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       assigner.Invoke(ref component);
       return this;
     }
+    
+    [HideInCallstack]
+    public ref TComponent AddOrGet<TComponent>() where TComponent : struct, IEcsComponent
+    {
+      return ref World.Has<TComponent>(Entity) 
+        ? ref World.Get<TComponent>(Entity) 
+        : ref World.Add<TComponent>(Entity);
+    }
+    
+    [HideInCallstack]
+    public EcsEntity Change<TComponent>(TComponent component) where TComponent : struct, IEcsComponent
+    {
+      ref TComponent refComponent = ref World.Get<TComponent>(Entity);
+      refComponent = component;
+      return this;
+    }
+
+    [HideInCallstack]
+    public EcsEntity Change<TComponent>(ActionRef<TComponent> replacer) where TComponent : struct, IEcsComponent
+    {
+      ref TComponent component = ref World.Get<TComponent>(Entity);
+      replacer.Invoke(ref component);
+      return this;
+    }
+
+    [HideInCallstack]
+    public EcsEntity Del<TComponent>() where TComponent : struct, IEcsComponent
+    {
+      World.Del<TComponent>(Entity);
+      return this;
+    }
 
     [HideInCallstack]
     public ref TComponent Get<TComponent>() where TComponent : struct, IEcsComponent
@@ -107,11 +138,11 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
       return this;
     }
-
+    
     [HideInCallstack]
     public EcsEntity Replace<TComponent>(TComponent component) where TComponent : struct, IEcsComponent
     {
-      ref TComponent refComponent = ref World.Get<TComponent>(Entity);
+      ref TComponent refComponent = ref AddOrGet<TComponent>();
       refComponent = component;
       return this;
     }
@@ -119,15 +150,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     [HideInCallstack]
     public EcsEntity Replace<TComponent>(ActionRef<TComponent> replacer) where TComponent : struct, IEcsComponent
     {
-      ref TComponent component = ref World.Get<TComponent>(Entity);
+      ref TComponent component = ref AddOrGet<TComponent>();
       replacer.Invoke(ref component);
-      return this;
-    }
-
-    [HideInCallstack]
-    public EcsEntity Del<TComponent>() where TComponent : struct, IEcsComponent
-    {
-      World.Del<TComponent>(Entity);
       return this;
     }
 

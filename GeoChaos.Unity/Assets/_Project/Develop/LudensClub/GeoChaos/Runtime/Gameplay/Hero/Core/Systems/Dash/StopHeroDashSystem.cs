@@ -44,7 +44,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
         command
           .Del<Dashing>()
           .Add((ref DashCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.DashCooldown))
-          .Replace((ref GravityScale gravity) => gravity.Enabled = true);
+          .Change((ref GravityScale gravity) => gravity.Enabled = true);
           
         ref MovementLayout layout = ref command.Get<MovementLayout>();
         if (layout.Owner == MovementType.Dash)

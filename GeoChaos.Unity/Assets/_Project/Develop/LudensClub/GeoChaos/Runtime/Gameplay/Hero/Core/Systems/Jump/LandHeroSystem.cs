@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       {
         falling
           .Del<Falling>()
-          .Replace((ref GravityScale gravity) => gravity.Value = _config.GravityScale);
+          .Change((ref GravityScale gravity) => gravity.Value = _config.GravityScale);
       }
     }
   }

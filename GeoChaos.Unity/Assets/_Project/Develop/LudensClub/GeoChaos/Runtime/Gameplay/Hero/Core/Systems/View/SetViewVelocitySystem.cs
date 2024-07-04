@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       {
         ref MovementVector vector = ref hero.Get<MovementVector>();
         Vector2 velocity = vector.Direction * vector.Speed;
-        hero.Replace((ref RigidbodyRef rigidbodyRef) => rigidbodyRef.Rigidbody.velocity = velocity);
+        hero.Change((ref RigidbodyRef rigidbodyRef) => rigidbodyRef.Rigidbody.velocity = velocity);
       }
     }
   }

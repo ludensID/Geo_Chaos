@@ -41,7 +41,7 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
 
       foreach (EcsEntity hero in _heroes)
       {
-        hero.Replace((ref GravityScale gravity) =>
+        hero.Change((ref GravityScale gravity) =>
           gravity.Value = hero.Has<Falling>() ? _config.FallGravityScale : _config.GravityScale);
       }
     }

@@ -51,7 +51,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
             _config.UseDragForceGradient);
 
           Vector2 velocity = startedAction.Velocity;
-          drag.Replace((ref RelativeSpeed relative) =>
+          drag.Change((ref RelativeSpeed relative) =>
               relative.Speed = new Vector2(Mathf.Abs(velocity.x), Mathf.Abs(velocity.y)));
         }
       }

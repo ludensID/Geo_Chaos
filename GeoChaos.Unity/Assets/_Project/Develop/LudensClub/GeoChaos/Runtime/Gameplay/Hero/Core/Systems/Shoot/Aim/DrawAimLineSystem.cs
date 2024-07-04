@@ -54,7 +54,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
 
       foreach (EcsEntity aiming in _finishedAimings)
       {
-        aiming.Replace((ref ShootLineRef lineRef) => lineRef.Line.positionCount = 0);
+        aiming.Change((ref ShootLineRef lineRef) => lineRef.Line.positionCount = 0);
       }
     }
   }

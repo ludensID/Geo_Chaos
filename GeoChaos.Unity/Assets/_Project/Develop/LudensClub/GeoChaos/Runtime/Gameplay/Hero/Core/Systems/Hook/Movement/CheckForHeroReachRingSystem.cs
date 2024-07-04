@@ -36,14 +36,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
         if (IsHeroReachedRing(hookPulling.Target, heroTransform.position, hookPulling.Velocity))
         {
           _forces.GetForce(SpeedForceType.Hook, pulling.Pack())
-            .Replace((ref Impact impact) => impact.Vector.y = 0)
+            .Change((ref Impact impact) => impact.Vector.y = 0)
             .Add<Valuable>()
             .Add<Residual>();
           
           pulling
             .Add<OnActionFinished>()
             .Add<StopHookPullingCommand>()
-            .Replace((ref GravityScale gravity) => gravity.Enabled = true);
+            .Change((ref GravityScale gravity) => gravity.Enabled = true);
         }
       }
     }

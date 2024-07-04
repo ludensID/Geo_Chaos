@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (EcsEntity hero in _heroes)
       {
-        hero.Replace((ref RigidbodyRef rigidbodyRef) =>
+        hero.Change((ref RigidbodyRef rigidbodyRef) =>
           rigidbodyRef.Rigidbody.gravityScale = hero.Get<GravityScale>().Value);
       }
     }

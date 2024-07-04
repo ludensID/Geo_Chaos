@@ -46,12 +46,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
 
         hero
           .Add((ref Dashing dashing) => dashing.TimeLeft = _timers.Create(_config.DashTime))
-          .Replace((ref MovementLayout layout) =>
+          .Change((ref MovementLayout layout) =>
           {
             layout.Layer = MovementLayer.None;
             layout.Owner = MovementType.Dash;
           })
-          .Replace((ref GravityScale gravity) => gravity.Enabled = false)
+          .Change((ref GravityScale gravity) => gravity.Enabled = false)
           .Add((ref OnActionStarted action) => action.IsEmpty = true);
       }
     }

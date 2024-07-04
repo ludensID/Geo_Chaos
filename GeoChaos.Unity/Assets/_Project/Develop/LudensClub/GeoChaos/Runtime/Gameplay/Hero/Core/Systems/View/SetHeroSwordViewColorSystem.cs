@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (EcsEntity hero in _heroes)
       {
-        hero.Replace((ref HeroSwordViewRef sword) =>
+        hero.Change((ref HeroSwordViewRef sword) =>
         {
           Color color = sword.View.DefaultColor;
           if (hero.Has<Attacking>())
