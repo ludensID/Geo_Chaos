@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Characteristics.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
@@ -37,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
           damageEvent.Target = damage.Target;
 
           if (target.Has<ImmunityAvailable>())
-            target.Add<Immune>();
+            target.Add((ref Immune immune) => immune.Owner = MovementType.Bump);
         }
 
         message.Dispose();

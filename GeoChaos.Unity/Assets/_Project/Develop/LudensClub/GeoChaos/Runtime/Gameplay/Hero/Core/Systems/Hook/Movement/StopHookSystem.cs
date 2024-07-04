@@ -35,8 +35,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
           .Del<StopHookCommand>()
           .Del<Hooking>();
 
-        if (_config.BumpOnHookReaction == BumpOnHookReactionType.Immunity && !command.Has<ImmunityTimer>())
-          command.Has<Immune>(false);
+        if (_config.BumpOnHookReaction == BumpOnHookReactionType.Immunity && command.Has<Immune>()
+          && command.Get<Immune>().Owner == MovementType.Hook)
+        {
+          command
+            .Del<Immune>()
+            .Has<ImmunityTimer>(false)
+            .Add<OnImmunityFinished>();
+        }
         
         ref MovementLayout layout = ref command.Get<MovementLayout>();
         if (layout.Owner == MovementType.Hook)

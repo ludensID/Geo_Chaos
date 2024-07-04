@@ -1,4 +1,5 @@
 ﻿using System;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
@@ -12,5 +13,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
   [Serializable]
   public struct Immune : IEcsComponent
   {
+    public MovementType Owner;
   }
 }

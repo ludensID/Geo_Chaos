@@ -4,7 +4,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Hook;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
@@ -42,9 +41,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
 
         if (_config.BumpOnHookReaction == BumpOnHookReactionType.Immunity)
         {
-          command
-            .Has<ImmunityTimer>(false)
-            .Has<Immune>(true);
+          command.Has<Immune>(true);
+          command.Replace((ref Immune immune) => immune.Owner = MovementType.Hook);
         }
       }
     }

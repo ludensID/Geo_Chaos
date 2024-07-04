@@ -25,10 +25,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity
       foreach (EcsEntity hero in _immuneHeroes
         .Where<ImmunityTimer>(x => x.TimeLeft <= 0))
       {
-        hero
-          .Del<ImmunityTimer>()
-          .Del<Immune>()
-          .Add<OnImmunityFinished>();
+        hero.Del<ImmunityTimer>();
+
+        if (hero.Has<Immune>() && hero.Get<Immune>().Owner == MovementType.Bump)
+        {
+          hero
+            .Del<Immune>()
+            .Add<OnImmunityFinished>();
+        }
       }
     }
   }
