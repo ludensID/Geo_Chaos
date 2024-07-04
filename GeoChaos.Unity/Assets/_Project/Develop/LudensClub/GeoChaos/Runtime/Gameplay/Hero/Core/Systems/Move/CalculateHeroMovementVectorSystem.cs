@@ -57,19 +57,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       foreach (EcsEntity command in _startCommands)
       {
         float direction = command.Get<MoveCommand>().Direction;
-        float normalizedDirection = direction != 0 ? Mathf.Sign(direction) : 0;
-        float speed = command.Get<HorizontalSpeed>().Speed * direction;
-        float acceleration = CalculateAcceleration(speed);
+        (float normalized, float speed, float acceleration) = GetSpeedForceValues(command, direction);
 
         command.Change((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
 
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)
-        {
-          Direction = new Vector2(normalizedDirection, 0),
-          Accelerated = true,
-          MaxSpeed = speed,
-          Acceleration = new Vector2(acceleration, 0)
-        });
+        CreateMoveSpeedForce(command.Pack(), normalized, speed, acceleration);
 
         command.Add<Moving>();
       }
@@ -77,20 +69,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       foreach (EcsEntity command in _commands)
       {
         float direction = command.Get<MoveCommand>().Direction;
-        float normalizedDirection = direction != 0 ? Mathf.Sign(direction) : 0;
-        float speed = command.Get<HorizontalSpeed>().Speed * Mathf.Abs(direction);
-        float acceleration = CalculateAcceleration(speed);
+        (float normalized, float speed, float acceleration) = GetSpeedForceValues(command, direction);
 
         command.Change((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
 
         EcsEntities forces = _forces.GetLoop(SpeedForceType.Move, command.Pack());
-        foreach (EcsEntity force in forces)
-        {
-          force
-            .Change((ref MovementVector vector) => vector.Direction.x = normalizedDirection)
-            .Change((ref Acceleration a) => a.Value.x = acceleration)
-            .Change((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed);
-        }
+        ChangeMoveSpeedForce(forces, normalized, acceleration, speed);
 
         if (!forces.Any())
           command.Del<Moving>();
@@ -109,19 +93,52 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         float speed = moving.Get<HorizontalSpeed>().Speed * Mathf.Abs(direction);
         float acceleration = CalculateAcceleration(speed);
 
-        foreach (EcsEntity force in forces)
-        {
-          force
-            .Change((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed)
-            .Change((ref Acceleration a) => a.Value.x = -acceleration);
-
-          if (force.Get<MovementVector>().Speed.x <= 0)
-          {
-            force.Change((ref Impact impact) => impact.Vector.x = 0);
-            moving.Del<Moving>();
-          }
-        }
+        DecreaseMoveSpeedForce(forces, speed, acceleration);
       }
+    }
+
+    private void DecreaseMoveSpeedForce(EcsEntities forces, float speed, float acceleration)
+    {
+      foreach (EcsEntity force in forces)
+      {
+        force
+          .Change((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed)
+          .Change((ref Acceleration a) => a.Value.x = -acceleration);
+
+        if (force.Get<MovementVector>().Speed.x <= 0)
+          force.Change((ref Impact impact) => impact.Vector.x = 0);
+      }
+    }
+
+    private void ChangeMoveSpeedForce(EcsEntities forces, float normalized, float acceleration, float speed)
+    {
+      foreach (EcsEntity force in forces)
+      {
+        force
+          .Change((ref MovementVector vector) => vector.Direction.x = normalized)
+          .Change((ref Acceleration a) => a.Value.x = acceleration)
+          .Change((ref MaxSpeed maxSpeed) => maxSpeed.Speed = speed);
+      }
+    }
+
+    private (float normalized, float speed, float acceleration) GetSpeedForceValues(EcsEntity entity,
+      float direction)
+    {
+      float normalized = direction != 0 ? Mathf.Sign(direction) : 0;
+      float speed = entity.Get<HorizontalSpeed>().Speed * Mathf.Abs(direction);
+      float acceleration = CalculateAcceleration(speed);
+      return (normalized, speed, acceleration);
+    }
+
+    private void CreateMoveSpeedForce(EcsPackedEntity owner, float normalizedDirection, float speed, float acceleration)
+    {
+      _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, owner, Vector2.right)
+      {
+        Direction = new Vector2(normalizedDirection, 0),
+        Accelerated = true,
+        MaxSpeed = speed,
+        Acceleration = new Vector2(acceleration, 0)
+      });
     }
 
     private float CalculateAcceleration(float speed)
