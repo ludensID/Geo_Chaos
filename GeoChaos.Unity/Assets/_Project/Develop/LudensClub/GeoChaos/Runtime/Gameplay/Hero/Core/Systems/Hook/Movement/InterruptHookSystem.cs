@@ -1,6 +1,10 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -13,14 +17,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     private readonly EcsWorld _game;
     private readonly EcsWorld _message;
     private readonly EcsEntities _interruptCommands;
+    private readonly HeroConfig _config;
 
     public InterruptHookSystem(GameWorldWrapper gameWorldWrapper,
       MessageWorldWrapper messageWorldWrapper,
-      ISpeedForceFactory forceFactory)
+      ISpeedForceFactory forceFactory,
+      IConfigProvider configProvider)
     {
       _forceFactory = forceFactory;
       _game = gameWorldWrapper.World;
       _message = messageWorldWrapper.World;
+      _config = configProvider.Get<HeroConfig>();
 
       _interruptCommands = _game
         .Filter<InterruptHookCommand>()
@@ -57,6 +64,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             .Has<OnHookPullingFinished>(false)
             .Replace((ref GravityScale gravity) => gravity.Enabled = true);
         }
+        
+        if (_config.BumpOnHookReaction == BumpOnHookReactionType.Immunity && !interrupt.Has<ImmunityTimer>())
+          interrupt.Has<Immune>(false);
 
         if (hasPrecast || hasPulling)
           ReleaseRing();

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using LudensClub.GeoChaos.Runtime.Constants;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Hook;
 using TriInspector;
 using UnityEngine;
 
@@ -127,6 +128,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float HookPrecastTime;
     
     public float HookVelocity;
+
+    [EnumToggleButtons]
+    public BumpOnHookReactionType BumpOnHookReaction;
 
     [GroupNext(TriConstants.TECH + TriConstants.Names.GRAPPLING_HOOK)]
     public float PullTimeOffset;

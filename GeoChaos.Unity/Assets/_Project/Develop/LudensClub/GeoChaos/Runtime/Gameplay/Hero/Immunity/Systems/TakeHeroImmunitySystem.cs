@@ -10,27 +10,32 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity
   {
     private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
-    private readonly EcsEntities _immuneHeroes;
+    private readonly EcsWorld _message;
     private readonly HeroConfig _config;
+    private readonly EcsEntities _damagedEvents;
 
-    public TakeHeroImmunitySystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider, ITimerFactory timers)
+    public TakeHeroImmunitySystem(GameWorldWrapper gameWorldWrapper,
+      MessageWorldWrapper messageWorldWrapper,
+      IConfigProvider configProvider,
+      ITimerFactory timers)
     {
       _timers = timers;
       _game = gameWorldWrapper.World;
+      _message = messageWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
-      _immuneHeroes = _game
-        .Filter<HeroTag>()
-        .Inc<Immune>()
-        .Exc<ImmunityTimer>()
+      _damagedEvents = _message
+        .Filter<OnDamaged>()
         .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity hero in _immuneHeroes)
+      foreach (EcsEntity damaged in _damagedEvents)
       {
-        hero.Add((ref ImmunityTimer timer) => timer.TimeLeft = _timers.Create(_config.ImmunityTime));
+        ref OnDamaged onDamaged = ref damaged.Get<OnDamaged>();
+        if(onDamaged.Target.TryUnpackEntity(_game, out EcsEntity hero)  && hero.Has<HeroTag>() && hero.Has<Immune>())
+          hero.Add((ref ImmunityTimer timer) => timer.TimeLeft = _timers.Create(_config.ImmunityTime));
       }
     }
   }

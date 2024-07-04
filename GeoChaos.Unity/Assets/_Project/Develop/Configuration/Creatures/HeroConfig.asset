@@ -45,6 +45,7 @@ MonoBehaviour:
   RingViewAngle: 90
   HookPrecastTime: 0.2
   HookVelocity: 30
+  BumpOnHookReaction: 0
   PullTimeOffset: 1
   HookInputCooldown: 0.1
   RingReleasingTime: 0.1
@@ -61,7 +62,7 @@ MonoBehaviour:
   ImmunityTime: 3
   EnableBump: 1
   BumpForce: {x: 5, y: 15}
-  BumpFreezeDuration: 0
+  BumpFreezeDuration: 0.3
   Health: 100
   DashDamage: 10
   ShardDamage: 15

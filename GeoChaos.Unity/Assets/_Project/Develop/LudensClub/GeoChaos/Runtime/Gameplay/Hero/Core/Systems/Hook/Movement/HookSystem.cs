@@ -1,7 +1,10 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
@@ -36,6 +39,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
             layout.Owner = MovementType.Hook;
           })
           .Add((ref HookInputCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.HookInputCooldown));
+
+        if (_config.BumpOnHookReaction == BumpOnHookReactionType.Immunity)
+        {
+          command
+            .Has<ImmunityTimer>(false)
+            .Has<Immune>(true);
+        }
       }
     }
   }
