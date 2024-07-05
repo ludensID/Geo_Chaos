@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
@@ -12,26 +12,29 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     private readonly EcsFilter _filter;
     private readonly EcsWorld _world;
     private readonly EcsEntity _cachedEntity;
+    private readonly PredicateInvoker _invoker;
 
     public EcsEntities(EcsFilter filter)
     {
       _filter = filter;
       _world = filter.GetWorld();
       _cachedEntity = new EcsEntity { World = _world };
+      _invoker = new PredicateInvoker();
     }
 
     public IEnumerator<EcsEntity> GetEnumerator()
     {
       foreach (int i in _filter)
       {
-        if (_predicates.All(p => p.Invoke(i)))
+        _invoker.I = i;
+        if (_predicates.AllNonAlloc(_invoker))
         {
           _cachedEntity.Entity = i;
           yield return _cachedEntity;
         }
       }
     }
-
+    
     IEnumerator IEnumerable.GetEnumerator()
     {
       return GetEnumerator();
@@ -43,6 +46,16 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       entities._predicates.AddRange(_predicates);
       entities._predicates.Add(new EcsPredicate<TComponent>(predicate, _world.GetPool<TComponent>()));
       return entities;
+    }
+
+    private class PredicateInvoker : IPredicate<IEcsPredicate>
+    {
+      public int I;
+      
+      public bool Predicate(IEcsPredicate p)
+      {
+        return p.Invoke(I);
+      }
     }
   }
 }
