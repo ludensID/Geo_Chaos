@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2491605805277018690}
   - component: {fileID: 2001038669317906806}
   - component: {fileID: 4103225239188409316}
-  - component: {fileID: 3861774524490263867}
+  - component: {fileID: 3644206570988927311}
   m_Layer: 0
   m_Name: LamaSpawn
   m_TagString: Untagged
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftBound: {fileID: 6835654677934399942}
   RightBound: {fileID: 2317721690676477700}
---- !u!114 &3861774524490263867
+--- !u!114 &3644206570988927311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6472711228792413092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991a964848944fb8866d80b025ad70a8, type: 3}
+  m_Script: {fileID: 11500000, guid: e133e543e22d48c5a0cd205916811088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8846887779325430127

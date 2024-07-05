@@ -80,7 +80,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindFreeFallService();
 
 #if UNITY_EDITOR
-      Debugging.DebugBridge.InstallGameplay(Container);
+      DebugBridge.InstallGameplay(Container);
 #endif
 
       BindEngine();

@@ -2,7 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using UnityEngine.InputSystem;
 
-namespace LudensClub.GeoChaos.Runtime.Debugging
+namespace LudensClub.GeoChaos.Runtime
 {
   public interface IEditorContainer
   {

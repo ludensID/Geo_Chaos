@@ -1,18 +1,18 @@
 ﻿using LudensClub.GeoChaos.Editor.General;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Props.Lama;
 using UnityEditor;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Debugging.Gizmo
 {
-  [AddComponentMenu(ACC.Names.LAMA_GIZMO_DRAWER)]
-  public class LamaGizmoDrawer : MonoBehaviour
+  public static class LamaGizmoDrawer
   {
     private static LamaConfig _config;
     private static PhysicsConfig _physics;
 
-    [DrawGizmo(GizmoType.Selected | GizmoType.NonSelected, typeof(LamaGizmoDrawer))]
-    private static void DrawGizmo(LamaGizmoDrawer scr, GizmoType gizmo)
+    [DrawGizmo(GizmoType.Selected | GizmoType.NonSelected, typeof(LamaGizmo))]
+    private static void DrawGizmo(LamaGizmo scr, GizmoType gizmo)
     {
       if (!SelectionHelper.IsSelectionOrChild(scr.transform))
         return;

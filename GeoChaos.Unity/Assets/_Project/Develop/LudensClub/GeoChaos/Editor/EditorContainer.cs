@@ -1,5 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Debugging;
+﻿using LudensClub.GeoChaos.Runtime;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using UnityEngine.InputSystem;
 
 namespace LudensClub.GeoChaos.Editor

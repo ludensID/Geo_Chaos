@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Debugging;
+using LudensClub.GeoChaos.Runtime;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using Unity.Profiling;
 

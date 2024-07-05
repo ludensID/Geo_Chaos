@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LudensClub.GeoChaos.Runtime.Debugging;
+using LudensClub.GeoChaos.Runtime;
 using Unity.Profiling;
 
 namespace LudensClub.GeoChaos.Editor.General

@@ -2,7 +2,7 @@
 using System;
 using Zenject;
 
-namespace LudensClub.GeoChaos.Runtime.Debugging
+namespace LudensClub.GeoChaos.Runtime
 {
   public static class DebugBridge
   {

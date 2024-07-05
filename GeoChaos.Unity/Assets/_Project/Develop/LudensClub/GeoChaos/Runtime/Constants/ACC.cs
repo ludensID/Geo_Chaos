@@ -58,6 +58,7 @@
 
       public const string PLAYER_SPAWN = PROPS + "Player Spawn";
       public const string SPAWN_POINT = PROPS + "Spawn Point";
+      public const string LAMA_GIZMO = PROPS + "Lama Gizmo";
     }
   }
 }

@@ -1,5 +1,5 @@
 ﻿#if UNITY_EDITOR
-namespace LudensClub.GeoChaos.Runtime.Debugging
+namespace LudensClub.GeoChaos.Runtime
 {
   public static class EditorContext
   {

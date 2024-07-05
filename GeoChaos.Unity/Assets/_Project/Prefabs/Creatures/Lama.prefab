@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 3716216728190780692}
   - component: {fileID: 9033194687564035821}
   - component: {fileID: 2386890560109955856}
-  - component: {fileID: 8807814264450966915}
+  - component: {fileID: 3168435382535265225}
   m_Layer: 9
   m_Name: Lama
   m_TagString: Untagged
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1656292261594704339}
---- !u!114 &8807814264450966915
+--- !u!114 &3168435382535265225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -660,7 +660,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6039315081198379708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991a964848944fb8866d80b025ad70a8, type: 3}
+  m_Script: {fileID: 11500000, guid: e133e543e22d48c5a0cd205916811088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7934060327910776909

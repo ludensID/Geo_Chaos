@@ -15,7 +15,6 @@
       public const string ECS_UNIVERSE_VIEW = DEBUG_MENU + "Ecs Universe View";
       public const string ECS_WORLD_VIEW = DEBUG_MENU + "Ecs World View";
       public const string INPUT_DEBUG = DEBUG_MENU + "Input Debug";
-      public const string LAMA_GIZMO_DRAWER = DEBUG_MENU + "Lama Gizmo Drawer";  
     }
   }
 }

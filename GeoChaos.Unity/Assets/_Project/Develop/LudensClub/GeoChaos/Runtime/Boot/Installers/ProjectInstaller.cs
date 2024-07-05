@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindGameObjectConverter();
 
 #if UNITY_EDITOR
-      Debugging.DebugBridge.InstallProject(Container);
+      DebugBridge.InstallProject(Container);
 #endif
     }
 
