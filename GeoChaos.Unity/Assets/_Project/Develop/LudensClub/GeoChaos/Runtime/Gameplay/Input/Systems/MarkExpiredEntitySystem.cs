@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
         if (time > maxTime)
         {
           maxTime = time;
-          expiredEntity = expireUp;
+          expiredEntity = expireUp.Clone();
         }
       }
 

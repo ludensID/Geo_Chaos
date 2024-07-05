@@ -7,7 +7,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Watch
     public LamaWatchingFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<LamaWatchingSystem>());
-      Add(systems.Create<StopLamaWatchingSystem>());      
+      Add(systems.Create<DeleteLamaWatchCommandSystem>());
+      Add(systems.Create<StopLamaWatchingSystem>());     
+      Add(systems.Create<DeleteLamaStopWatchCommandSystem>());
     }
   }
 }

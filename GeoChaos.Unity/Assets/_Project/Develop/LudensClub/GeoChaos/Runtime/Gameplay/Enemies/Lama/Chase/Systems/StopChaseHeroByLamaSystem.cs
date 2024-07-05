@@ -20,23 +20,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Chase
       _lamas = _game
         .Filter<LamaTag>()
         .Inc<StopChaseCommand>()
+        .Inc<Chasing>()
         .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity lama in _lamas)
       {
-        if (lama.Has<Chasing>())
+        lama.Del<Chasing>();
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Chase, lama.Pack(), Vector2.right)
         {
-          lama.Del<Chasing>();
-          _forceFactory.Create(new SpeedForceData(SpeedForceType.Chase, lama.Pack(), Vector2.right)
-          {
-            Instant = true
-          });
-        }
-
-        lama.Del<StopChaseCommand>();
+          Instant = true
+        });
       }
     }
   }

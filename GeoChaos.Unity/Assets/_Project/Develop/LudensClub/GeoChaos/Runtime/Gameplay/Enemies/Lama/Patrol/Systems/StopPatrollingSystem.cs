@@ -31,7 +31,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Patrol
 
         if (command.Has<Patrolling>())
         {
-          command.Del<Patrolling>()
+          command
+            .Del<Patrolling>()
             .Del<PatrollingTimer>();
 
           _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)

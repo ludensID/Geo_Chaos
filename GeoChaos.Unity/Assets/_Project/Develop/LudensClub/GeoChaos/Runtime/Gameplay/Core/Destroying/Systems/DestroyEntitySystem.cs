@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
+using LudensClub.GeoChaos.Runtime.Props;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying
@@ -27,10 +27,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying
       {
         if (destroying.Has<ViewRef>())
         {
+          BaseView view = destroying.Get<ViewRef>().View;
           if (destroying.Has<Poolable>())
-            _pushables.Find(x => x.HasId(destroying.Get<EntityId>().Id)).Push(destroying.Get<ViewRef>().View);
+            _pushables.Find(x => x.HasId(destroying.Get<EntityId>().Id)).Push(view);
           else
-            Object.Destroy(destroying.Get<ViewRef>().View);
+            Object.Destroy(view);
         }
 
         destroying.Dispose();

@@ -20,26 +20,22 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Watch
       _lamas = _game
         .Filter<LamaTag>()
         .Inc<StopWatchCommand>()
+        .Inc<Watching>()
         .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity lama in _lamas)
       {
-        if (lama.Has<Watching>())
+        lama
+          .Del<Watching>()
+          .Has<WatchingTimer>(false);
+
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Sneak, lama.Pack(), Vector2.right)
         {
-          lama
-            .Del<Watching>()
-            .Has<WatchingTimer>(false);
-
-          _forceFactory.Create(new SpeedForceData(SpeedForceType.Sneak, lama.Pack(), Vector2.right)
-          {
-            Instant = true
-          });
-        }
-
-        lama.Del<StopWatchCommand>();
+          Instant = true
+        });
       }
     }
   }

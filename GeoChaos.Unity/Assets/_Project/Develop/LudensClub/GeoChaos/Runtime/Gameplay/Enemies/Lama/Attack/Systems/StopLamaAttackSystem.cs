@@ -17,31 +17,27 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
       _lamas = _game
         .Filter<LamaTag>()
         .Inc<StopAttackCommand>()
+        .Inc<Attacking>()
         .Collect();
     }
-      
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity lama in _lamas)
       {
-        if(lama.Has<Attacking>())
-        {
-          lama
-            .Del<Attacking>()
-            .Change((ref ComboAttackCounter counter) => counter.Count = 0)
-            .Has<HitCooldown>(false)
-            .Has<ComboCooldown>(false)
-            .Has<OnAttackStarted>(false)
-            .Has<ComboCooldownUp>(false)
-            .Has<HitCooldownUp>(false)
-            .Has<BiteCommand>(false)
-            .Has<OnHitStarted>(false);
+        lama
+          .Del<Attacking>()
+          .Change((ref ComboAttackCounter counter) => counter.Count = 0)
+          .Has<HitCooldown>(false)
+          .Has<ComboCooldown>(false)
+          .Has<OnAttackStarted>(false)
+          .Has<ComboCooldownUp>(false)
+          .Has<HitCooldownUp>(false)
+          .Has<BiteCommand>(false)
+          .Has<OnHitStarted>(false);
 
-          lama.Has<OnHitFinished>(lama.Has<HitTimer>());
-          lama.Has<HitTimer>(false);
-        }
-
-        lama.Del<StopAttackCommand>();
+        lama.Has<OnHitFinished>(lama.Has<HitTimer>());
+        lama.Has<HitTimer>(false);
       }
     }
   }

@@ -1,28 +1,12 @@
-﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
-  public class DeleteInitializeCommandForHeroSystem : IEcsRunSystem
+  public class DeleteInitializeCommandForHeroSystem : Delete<InitializeCommand, GameWorldWrapper>
   {
-    private readonly EcsWorld _game;
-    private readonly EcsEntities _heroes;
-
-    public DeleteInitializeCommandForHeroSystem(GameWorldWrapper gameWorldWrapper)
+    public DeleteInitializeCommandForHeroSystem(GameWorldWrapper gameWorldWrapper) 
+    : base(gameWorldWrapper, x => x.Inc<HeroTag>())
     {
-      _game = gameWorldWrapper.World;
-
-      _heroes = _game
-        .Filter<HeroTag>()
-        .Inc<InitializeCommand>()
-        .Collect();
-    }
-
-    public void Run(EcsSystems systems)
-    {
-      foreach (EcsEntity hero in _heroes)
-        hero.Del<InitializeCommand>();
     }
   }
 }

@@ -1,28 +1,12 @@
-﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Patrol
 {
-  public class DeleteLamaOnPatrolledSystem : IEcsRunSystem
+  public class DeleteLamaOnPatrolledSystem : Delete<OnPatrollFinished, GameWorldWrapper>
   {
-    private readonly EcsWorld _game;
-    private readonly EcsEntities _lamaPatrolledEvents;
-
     public DeleteLamaOnPatrolledSystem(GameWorldWrapper gameWorldWrapper)
+    : base(gameWorldWrapper, x => x.Inc<LamaTag>())
     {
-      _game = gameWorldWrapper.World;
-
-      _lamaPatrolledEvents = _game
-        .Filter<LamaTag>()
-        .Inc<OnPatrollFinished>()
-        .Collect();
-    }
-    
-    public void Run(EcsSystems systems)
-    {
-      foreach (EcsEntity patrolled in _lamaPatrolledEvents)
-        patrolled.Del<OnPatrollFinished>();
     }
   }
 }

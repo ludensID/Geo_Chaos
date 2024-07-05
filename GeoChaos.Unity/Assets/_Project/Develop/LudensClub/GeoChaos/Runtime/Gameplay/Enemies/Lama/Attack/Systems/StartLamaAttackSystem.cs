@@ -17,22 +17,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
       _lamas = _game
         .Filter<LamaTag>()
         .Inc<AttackCommand>()
+        .Exc<Attacking>()
         .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity lama in _lamas)
       {
-        if (!lama.Has<Attacking>())
-        {
-          lama
-            .Change((ref ComboAttackCounter counter) => counter.Count = 0)
-            .Add<Attacking>()
-            .Add<OnAttackStarted>();
-        }
-
-        lama.Del<AttackCommand>();
+        lama
+          .Change((ref ComboAttackCounter counter) => counter.Count = 0)
+          .Add<Attacking>()
+          .Add<OnAttackStarted>();
       }
     }
   }

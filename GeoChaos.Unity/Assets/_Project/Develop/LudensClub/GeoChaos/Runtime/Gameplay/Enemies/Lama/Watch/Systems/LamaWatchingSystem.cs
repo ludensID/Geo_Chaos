@@ -22,34 +22,30 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Watch
       _timers = timers;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<LamaConfig>();
-      
-      _forceLoop = forceLoopSvc.CreateLoop(x => 
+
+      _forceLoop = forceLoopSvc.CreateLoop(x =>
         x.Exc<SpeedForceCommand>());
 
       _lamas = _game
         .Filter<LamaTag>()
         .Inc<WatchCommand>()
+        .Exc<Watching>()
         .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity lama in _lamas)
       {
-        if (!lama.Has<Watching>())
+        lama
+          .Add<Watching>()
+          .Add((ref WatchingTimer timer) => timer.TimeLeft = _timers.Create(_config.ListenTime));
+
+        foreach (EcsEntity force in _forceLoop
+          .GetLoop(SpeedForceType.Chase, lama.Pack()))
         {
-          lama
-            .Add<Watching>()
-            .Add((ref WatchingTimer timer) => timer.TimeLeft = _timers.Create(_config.ListenTime));
-
-          foreach (EcsEntity force in _forceLoop
-            .GetLoop(SpeedForceType.Chase, lama.Pack()))
-          {
-            force.Change((ref SpeedForce speedForce) => speedForce.Type = SpeedForceType.Sneak);
-          }
+          force.Change((ref SpeedForce speedForce) => speedForce.Type = SpeedForceType.Sneak);
         }
-
-        lama.Del<WatchCommand>();
       }
     }
   }

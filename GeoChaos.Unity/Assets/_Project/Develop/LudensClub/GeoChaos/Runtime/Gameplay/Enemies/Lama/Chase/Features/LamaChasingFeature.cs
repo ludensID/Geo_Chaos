@@ -7,8 +7,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Chase
     public LamaChasingFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<ChaseHeroByLamaSystem>());
+      Add(systems.Create<DeleteLamaChaseCommandSystem>());
       Add(systems.Create<KeepLamaChasingSystem>());
       Add(systems.Create<StopChaseHeroByLamaSystem>());
+      Add(systems.Create<DeleteLamaStopChaseCommandSystem>());
     }
   }
 }

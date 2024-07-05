@@ -25,6 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Chase
       _lamas = _game
         .Filter<LamaTag>()
         .Inc<ChaseCommand>()
+        .Exc<Chasing>()
         .Collect();
     }
 
@@ -32,19 +33,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Chase
     {
       foreach (EcsEntity lama in _lamas)
       {
-        if (!lama.Has<Chasing>())
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Chase, lama.Pack(), Vector2.right)
         {
-          _forceFactory.Create(new SpeedForceData(SpeedForceType.Chase, lama.Pack(), Vector2.right)
-          {
-            Speed = new Vector2(_config.MovementSpeed, 0),
-            Direction = Vector2.one,
-            Unique = true
-          });
+          Speed = new Vector2(_config.MovementSpeed, 0),
+          Direction = Vector2.one,
+          Unique = true
+        });
 
-          lama.Add<Chasing>();
-        }
-
-        lama.Del<ChaseCommand>();
+        lama.Add<Chasing>();
       }
     }
   }

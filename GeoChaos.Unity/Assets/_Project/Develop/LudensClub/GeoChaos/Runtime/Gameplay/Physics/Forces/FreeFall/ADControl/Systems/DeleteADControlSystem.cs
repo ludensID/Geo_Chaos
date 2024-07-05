@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity control in _controls)
       {
-        if(!_game.TryUnpackEntity(control.Get<Owner>().Entity, out EcsEntity owner) || !owner.Has<ADControllable>())
+        if(!control.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity owner) || !owner.Has<ADControllable>())
         {
           owner.Has<FreeRotating>(false);
           control.Dispose();
