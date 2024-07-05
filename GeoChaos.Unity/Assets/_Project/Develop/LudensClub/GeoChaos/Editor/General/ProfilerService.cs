@@ -11,6 +11,7 @@ namespace LudensClub.GeoChaos.Editor.General
     private const string METHOD_NAME = nameof(ProfilerService) + "." + nameof(GetPrettyMethod) + "()";
     private const string DOUBLE_NAME = nameof(ProfilerService) + "." + nameof(GetPrettyName) + "(object, string)";
     private const string NAME = nameof(ProfilerService) + "." + nameof(GetPrettyName) + "(object)";
+    private const string TYPE_NAME = nameof(ProfilerService) + "." + nameof(GetPrettyName) + "(Type)";
     private static readonly Dictionary<Type, string> _cachedNames = new Dictionary<Type, string>();
     private static readonly Dictionary<string, string> _cachedMethods = new Dictionary<string, string>();
     private static readonly Dictionary<(string, string), string> _cachedNameMethods = new Dictionary<(string, string), string>();
@@ -59,7 +60,14 @@ namespace LudensClub.GeoChaos.Editor.General
     {
       using (new ProfilerMarker(NAME).Auto())
       {
-        var type = context.GetType();
+        return GetPrettyName(context.GetType());
+      }
+    }
+    
+    public string GetPrettyName(Type type)
+    {
+      using (new ProfilerMarker(TYPE_NAME).Auto())
+      {
         if (!_cachedNames.TryGetValue(type, out string name))
         {
           name = type.Name;

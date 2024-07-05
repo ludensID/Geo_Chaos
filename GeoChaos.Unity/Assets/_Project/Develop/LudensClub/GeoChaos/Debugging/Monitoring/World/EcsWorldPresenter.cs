@@ -15,6 +15,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private readonly IEcsUniversePresenter _parent;
     private readonly List<IEcsEntityPresenter> _children = new List<IEcsEntityPresenter>();
     private readonly HashSet<int> _dirtyEntities = new HashSet<int>();
+    private readonly List<int> _updatables = new List<int>();
     private Type[] _typesCache;
     private int[] _entities;
 
@@ -46,31 +47,20 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     public void Tick()
     {
-      // var updatables = _children.Select(x => x.Entity).Except(_dirtyEntities);
-      var updatables = new int[_children.Count - _dirtyEntities.Count];
+      _updatables.Clear();
+      _updatables.Capacity = _children.Count - _dirtyEntities.Count;
 
-      int k = 0;
       for (int i = 0; i < _children.Count; i++)
       {
-        var entity = _children[i].Entity;
-        bool add = true;
-        for (int j = 0; j < _dirtyEntities.Count; j++)
-        {
-          if (_dirtyEntities.Contains(entity))
-          {
-            add = false;
-            break;
-          }
-        }
-
-        if (add)
-          updatables[k++] = entity;
+        int entity = _children[i].Entity;
+        if (!_dirtyEntities.Contains(entity))
+          _updatables.Add(entity);
       }
 
-      foreach (int updatable in updatables)
+      foreach (int updatable in _updatables)
       {
 #if !DISABLE_PROFILING
-        using (new ProfilerMarker($"{_children[updatable].View.gameObject.name[..8]}.UpdateView()").Auto())
+        using (new ProfilerMarker($"{updatable:D8}.UpdateView()").Auto())
 #endif
         {
           _children[updatable].UpdateView();
@@ -80,7 +70,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       foreach (int dirtyEntity in _dirtyEntities)
       {
 #if !DISABLE_PROFILING
-        using (new ProfilerMarker($"{_children[dirtyEntity].View.gameObject.name[..8]}.Tick()").Auto())
+        using (new ProfilerMarker($"{dirtyEntity:D8}.Tick()").Auto())
 #endif
         {
           _children[dirtyEntity].Tick();

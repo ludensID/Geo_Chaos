@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Utils
 {
@@ -12,19 +11,41 @@ namespace LudensClub.GeoChaos.Runtime.Utils
         if (!predicate.Predicate(p))
           return false;
       }
-
+    
       return true;
     }
     
-    public static bool AllNonAlloc<T>(T[] obj, IPredicate<T> predicate)
+    public static bool AllNonAlloc<T>(this T[] obj, IPredicate<T> predicate)
     {
       foreach (T p in obj)
       {
         if (!predicate.Predicate(p))
           return false;
       }
-
+    
       return true;
+    }
+    
+    public static bool AnyNonAlloc<T>(this List<T> obj, IPredicate<T> predicate)
+    {
+      foreach (T p in obj)
+      {
+        if (predicate.Predicate(p))
+          return true;
+      }
+
+      return false;
+    }
+    
+    public static bool AnyNonAlloc<T>(this T[] obj, IPredicate<T> predicate)
+    {
+      foreach (T p in obj)
+      {
+        if (predicate.Predicate(p))
+          return true;
+      }
+
+      return false;
     }
   }
 }

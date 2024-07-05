@@ -4,6 +4,7 @@ using System.Text;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 using Unity.Profiling;
 
 namespace LudensClub.GeoChaos.Debugging.Monitoring
@@ -15,12 +16,14 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private readonly IEcsWorldWrapper _wrapper;
     private readonly IEcsEntityViewFactory _viewFactory;
     private readonly IEcsWorldPresenter _parent;
+    private readonly EcsComponentNameComparer _ecsComparer = new EcsComponentNameComparer();
+    private readonly EcsComponentViewComparer _viewComparer = new EcsComponentViewComparer();
+    private readonly StringBuilder _builder = new StringBuilder();
     private Type[] _typesCache;
     private object[] _components;
     private int _componentCount;
     private IEcsPool[] _pools;
     private IEcsPool[] _valuePools;
-    private StringBuilder _builder = new StringBuilder();
 
     public int Entity { get; }
     public EcsEntityView View { get; private set; }
@@ -71,7 +74,9 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       _builder.Clear().Append(entityName);
       for (var i = 0; i < typeCount; i++)
       {
-        _builder.Append($":{EcsMonitoring.GetCleanGenericTypeName(_typesCache[i])}");
+        _builder
+          .Append(":")
+          .Append(EditorContext.GetPrettyName(_typesCache[i]));
       }
 
       return _builder.ToString();
@@ -80,15 +85,15 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     public void UpdateView()
     {
 #if !DISABLE_PROFILING
-      using (new Unity.Profiling.ProfilerMarker("PrepareComponents()").Auto())
+      using (new ProfilerMarker("PrepareComponents()").Auto())
 #endif
       {
         _componentCount = _wrapper.World.GetComponentsCount(Entity);
         Array.Resize(ref _components, _componentCount);
         _componentCount = _wrapper.World.GetComponents(Entity, ref _components);
       }
-#if UNITY_EDITOR && !DISABLE_PROFILING
-      using (new Unity.Profiling.ProfilerMarker("Resize()").Auto())
+#if !DISABLE_PROFILING
+      using (new ProfilerMarker("Resize()").Auto())
 #endif
       {
         Resize();
@@ -97,8 +102,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       if (View.Components.Count != _componentCount)
         throw new IndexOutOfRangeException();
 
-#if UNITY_EDITOR && !DISABLE_PROFILING
-      using (new Unity.Profiling.ProfilerMarker("Update View()").Auto())
+#if !DISABLE_PROFILING
+      using (new ProfilerMarker("Update View()").Auto())
 #endif
       {
         for (int i = 0; i < _componentCount; i++)
@@ -124,17 +129,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       {
         for (int i = 0; i < View.Components.Count; i++)
         {
-          string viewComponentName = View.Components[i].Name;
-          bool remove = true;
-          for (int j = 0; j < _componentCount; j++)
-          {
-            if (EditorContext.GetPrettyName(_components[j]) == viewComponentName)
-            {
-              remove = false;
-              break;
-            }
-          }
-          if (remove)
+          _ecsComparer.Obj = View.Components[i].Name;
+          if (_components.AllNonAlloc(_ecsComparer))
             View.Components.RemoveAt(i--);
         }
       }
@@ -146,16 +142,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
         for (int i = 0; i < _componentCount; i++)
         {
           string componentName = EditorContext.GetPrettyName(_components[i]);
-          bool add = true;
-          for (int j = 0; j < View.Components.Count; j++)
-          {
-            if (View.Components[j].Name == componentName)
-            {
-              add = false;
-              break;
-            }
-          }
-          if (add)
+          _viewComparer.Obj = componentName;
+          if (View.Components.AllNonAlloc(_viewComparer))
             View.Components.Add(new EcsComponentView { Value = (IEcsComponent)_components[i], Name = componentName });
         }
       }
@@ -192,6 +180,26 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
         IEcsPool pool = _valuePools.First(x => x.GetComponentType().Name == component.Value.GetType().Name);
         if (pool.Has(Entity))
           pool.Del(Entity);
+      }
+    }
+
+    private class EcsComponentNameComparer : IPredicate<object>
+    {
+      public string Obj; 
+        
+      public bool Predicate(object obj)
+      {
+        return EditorContext.GetPrettyName(obj) != Obj;
+      }
+    }
+    
+    private class EcsComponentViewComparer : IPredicate<EcsComponentView>
+    {
+      public string Obj; 
+        
+      public bool Predicate(EcsComponentView obj)
+      {
+        return obj.Name != Obj;
       }
     }
   }
