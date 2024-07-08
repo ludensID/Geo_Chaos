@@ -71,14 +71,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump
           });
 
           hero
-            .Add<Bumping>()
-            .Add<BodyFreezing>()
+            .Has<Bumping>(true)
+            .Has<BodyFreezing>(true)
             .Change((ref MovementLayout layout) =>
             {
               layout.Layer = MovementLayer.Shoot;
               layout.Owner = MovementType.Bump;
             })
-            .Add((ref BumpTimer timer) => timer.TimeLeft = _timers.Create(_config.BumpFreezeDuration));
+            .Replace((ref BumpTimer timer) => timer.TimeLeft = _timers.Create(_config.BumpFreezeDuration));
         }
       }
     }
