@@ -1,0 +1,12 @@
+bushhhh.png
+size:450,193
+filter:Linear,Linear
+pma:true
+Layer 1 copy
+bounds:213,2,120,189
+Layer 1 copy 2
+bounds:335,23,168,113
+rotate:90
+Layer 2
+bounds:2,14,177,209
+rotate:90
