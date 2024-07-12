@@ -1,5 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Constants;
-using TriInspector;
+﻿using TriInspector;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Configuration

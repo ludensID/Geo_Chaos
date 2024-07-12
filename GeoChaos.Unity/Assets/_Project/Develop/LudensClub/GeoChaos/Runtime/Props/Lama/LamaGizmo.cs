@@ -1,5 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Constants;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Props.Lama
 {

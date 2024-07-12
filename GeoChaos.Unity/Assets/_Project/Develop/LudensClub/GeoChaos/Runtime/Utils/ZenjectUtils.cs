@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Utils
   {
 #if UNITY_EDITOR
     // Call when prefab is dragged and dropped on scene 
-    public static void EnsureInjection(this IInjectable obj)
+    public static bool EnsureInjection(this IInjectable obj)
     {
       if (obj is MonoBehaviour mono && !obj.Injected)
       {
@@ -15,7 +15,10 @@ namespace LudensClub.GeoChaos.Runtime.Utils
         if (ctx == null)
           ctx = Object.FindAnyObjectByType<SceneContext>();
         ctx.Container.InjectGameObject(mono.gameObject);
+        return false;
       }
+
+      return true;
     }
 #endif
   }

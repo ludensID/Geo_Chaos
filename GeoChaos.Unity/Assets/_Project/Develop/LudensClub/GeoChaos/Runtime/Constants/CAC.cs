@@ -1,4 +1,4 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Constants
+﻿namespace LudensClub.GeoChaos.Runtime
 {
   /// <summary>
   /// Create Asset Menu constants
@@ -33,6 +33,9 @@
       
       public const string SPIKE_MENU = CONFIG_MENU + "Spike";
       public const string SPIKE_FILE = "SpikeConfig";
+      
+      public const string BUSH_ANIMATOR_MENU = CONFIG_MENU + "Bush Animator";
+      public const string BUSH_ANIMATOR_FILE = "Bush Animator";
     }
   }
 }
