@@ -55,9 +55,15 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
         return;
       // UnityEngine.Debug.Log($"{_enumName} Change to {Current.Animation.Name}");
       if (Current.Animation.Asset)
-        Skeleton.state.SetAnimation(Id, Current.Animation.Asset, Current.Animation.IsLoop);
+      {
+        TrackEntry track = Skeleton.state.SetAnimation(Id, Current.Animation.Asset, Current.Animation.IsLoop);
+        track.TimeScale = Current.Animation.Speed;
+      }
       else
-        Skeleton.state.SetEmptyAnimation(Id, 0);
+      {
+        TrackEntry track = Skeleton.state.SetEmptyAnimation(Id, 0);
+        track.TimeScale = 1;
+      }
     }
 
     public void ChangeAnimation(SpineAnimationTransition<TAnimationEnum> transition)

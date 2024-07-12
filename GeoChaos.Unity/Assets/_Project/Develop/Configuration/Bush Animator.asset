@@ -23,9 +23,11 @@ MonoBehaviour:
     Animations:
     - Name: 1
       Asset: {fileID: 11400000, guid: 1339bac9ab55dfa4096b6b53d3844403, type: 2}
+      Speed: 1
       IsLoop: 1
     - Name: 2
       Asset: {fileID: 11400000, guid: 01fbfc9e96d913046909136e4989a97c, type: 2}
+      Speed: 1
       IsLoop: 0
   Transitions:
   - _from: 01000000
