@@ -18,9 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     private SpineVariableType _variableType;
 
     [SerializeReference]
-    [HideLabel]
-    [HideReferencePicker]
-    [InlineProperty]
+    [HideInInspector]
     private ISpineVariable _variable;
 
     [SerializeField]

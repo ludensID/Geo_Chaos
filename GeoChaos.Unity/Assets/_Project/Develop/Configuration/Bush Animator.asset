@@ -33,7 +33,7 @@ MonoBehaviour:
     _conditions:
     - Parameter: 0
       Processor:
-        rid: 674097669985796249
+        rid: 674097670484656298
     _isHold: 0
   - _from: 02000000
     _to: 1
@@ -47,7 +47,7 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         _value: 0
-    - rid: 674097669985796249
+    - rid: 674097670484656298
       type: {class: SpineTriggerProcessor, ns: LudensClub.GeoChaos.Runtime.Infrastructure.Spine,
         asm: GeoChaos.Runtime}
       data: 

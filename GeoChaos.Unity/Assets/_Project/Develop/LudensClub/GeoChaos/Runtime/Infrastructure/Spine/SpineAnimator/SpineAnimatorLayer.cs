@@ -10,8 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
   [Serializable]
   public class SpineAnimatorLayer<TAnimationEnum> where TAnimationEnum : Enum
   {
-    private static string _enumName = typeof(TAnimationEnum).Name;
-    
+    [HideInInspector]
     public readonly SkeletonAnimation Skeleton;
     [HideInInspector]
     public readonly List<SpineAnimationState<TAnimationEnum>> States = new List<SpineAnimationState<TAnimationEnum>>();

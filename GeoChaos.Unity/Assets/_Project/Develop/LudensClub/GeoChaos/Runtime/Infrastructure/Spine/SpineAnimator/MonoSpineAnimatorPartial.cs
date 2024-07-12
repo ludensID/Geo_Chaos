@@ -13,7 +13,17 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     [SerializeField]
     [ListDrawerSettings(Draggable = false, HideRemoveButton = true, HideAddButton = true)]
     [PropertyOrder(2)]
+    [LabelText("Parameters")]
+    [EnableInPlayMode]
     private List<VariableTuple> _showParameters = new List<VariableTuple>();
+
+    [Button("Recreate Animator")]
+    [PropertyOrder(0)]
+    [EnableInPlayMode]
+    private void RecreateAnimator()
+    {
+      CreateAnimator();
+    }
 
     private void CheckParameters()
     {

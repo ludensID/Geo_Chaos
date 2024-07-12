@@ -13,7 +13,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     where TParameterEnum : Enum where TAnimationEnum : Enum
   {
     public SkeletonAnimation Skeleton;
-    public SpineAnimatorAsset<TParameterEnum, TAnimationEnum> SharedAsset;
+    [LabelText("Animator Data")]
+    public SpineAnimatorAsset<TParameterEnum, TAnimationEnum> SharedAnimatorData;
 
     [SerializeField]
     [ReadOnly]
@@ -43,8 +44,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 
     private void CreateAnimator()
     {
-      _sharedAssetId = SharedAsset.GetInstanceID();
-      _asset = Instantiate(SharedAsset);
+      _sharedAssetId = SharedAnimatorData.GetInstanceID();
+      _asset = Instantiate(SharedAnimatorData);
       _animator = new SpineAnimator<TAnimationEnum>(Skeleton, _asset.Layers);
       foreach (SpineTransition<TParameterEnum, TAnimationEnum> transition in _asset.Transitions)
       {
@@ -78,7 +79,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       }
 
       _animator.StartAnimate();
-      Debug.Log("Initialize");
       _delayInitialize = false;
     }
 
@@ -99,7 +99,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
         return;
       }
 
-      if (_sharedAssetId != SharedAsset.GetInstanceID())
+      if (_sharedAssetId != SharedAnimatorData.GetInstanceID())
         CreateAnimator();
 
 #if UNITY_EDITOR

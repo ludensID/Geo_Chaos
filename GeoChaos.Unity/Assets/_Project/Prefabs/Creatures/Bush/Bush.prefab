@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Skeleton: {fileID: 376463382468597028}
-  SharedAsset: {fileID: 11400000, guid: b3ec6a8991851924c9ba91b0dd4cd31d, type: 2}
+  SharedAnimatorData: {fileID: 11400000, guid: b3ec6a8991851924c9ba91b0dd4cd31d, type: 2}
   _animator:
     _layers: []
   _showParameters: []
