@@ -8,16 +8,22 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
   [Serializable]
-  public class SpineAnimator<TAnimationEnum> where TAnimationEnum : Enum
+  public class SpineAnimator<TAnimationEnum> : IDisposable where TAnimationEnum : Enum
   {
-    private readonly List<SpineAnimationState<TAnimationEnum>> _states = new List<SpineAnimationState<TAnimationEnum>>();
-    
+    private readonly SkeletonAnimation _skeleton;
+
+    private readonly List<SpineAnimationState<TAnimationEnum>>
+      _states = new List<SpineAnimationState<TAnimationEnum>>();
+
     [SerializeField]
     [ListDrawerSettings(Draggable = false, HideAddButton = true, HideRemoveButton = true)]
     private List<SpineAnimatorLayer<TAnimationEnum>> _layers = new List<SpineAnimatorLayer<TAnimationEnum>>();
 
+    public List<SpineAnimatorLayer<TAnimationEnum>> Layers => _layers;
+
     public SpineAnimator(SkeletonAnimation skeleton, List<SpineLayer<TAnimationEnum>> layers)
     {
+      _skeleton = skeleton;
       for (int i = 0; i < layers.Count; i++)
       {
         _layers.Add(new SpineAnimatorLayer<TAnimationEnum>(i, skeleton));
@@ -47,7 +53,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       TAnimationEnum start = default(TAnimationEnum),
       params SpineAnimationState<TAnimationEnum>[] anims)
     {
-      var layer = GetLayer(index);
+      SpineAnimatorLayer<TAnimationEnum> layer = Layers[index];
       layer.Start ??= GetState(start);
       layer.States.AddRange(anims);
 
@@ -61,7 +67,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       return AddAnimationsToLayer(index, start, _states.Where(x => anims.Contains(x.Animation)).ToArray());
     }
 
-    public SpineAnimator<TAnimationEnum> AddAnimationsToLayer(int index, TAnimationEnum start = default(TAnimationEnum), params TAnimationEnum[] names)
+    public SpineAnimator<TAnimationEnum> AddAnimationsToLayer(int index, TAnimationEnum start = default(TAnimationEnum),
+      params TAnimationEnum[] names)
     {
       return AddAnimationsToLayer(index, start, names.Select(GetState).ToArray());
     }
@@ -83,8 +90,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       return this;
     }
 
-    public SpineAnimatorLayer<TAnimationEnum> GetLayer(int index) => _layers[index];
-
     public SpineAnimationState<TAnimationEnum> GetState(TAnimationEnum type) =>
       _states.Single(x => x.Animation.Name.Equals(type));
 
@@ -105,6 +110,12 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     {
       foreach (SpineAnimatorLayer<TAnimationEnum> layer in _layers)
         layer.CheckTransition();
+    }
+
+    public void Dispose()
+    {
+      foreach (SpineAnimatorLayer<TAnimationEnum> layer in Layers)
+        layer.Dispose();
     }
   }
 }

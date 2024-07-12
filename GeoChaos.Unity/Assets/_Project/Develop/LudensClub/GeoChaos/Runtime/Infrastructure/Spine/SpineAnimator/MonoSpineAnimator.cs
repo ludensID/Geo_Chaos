@@ -42,34 +42,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       Injected = true;
     }
 
-    private void CreateAnimator()
-    {
-      _sharedAssetId = SharedAnimatorData.GetInstanceID();
-      _asset = Instantiate(SharedAnimatorData);
-      _animator = new SpineAnimator<TAnimationEnum>(Skeleton, _asset.Layers);
-      foreach (SpineTransition<TParameterEnum, TAnimationEnum> transition in _asset.Transitions)
-      {
-        _animator.AddTransition(transition);
-        foreach (ISpineCondition condition in transition.Conditions)
-        {
-          var id = condition.GetParameterId<TParameterEnum>();
-          condition.Variable = _asset.Parameters.Find(x => x.Id.Equals(id)).Variable;
-        }
-      }
-      
-#if UNITY_EDITOR
-      _showParameters.Clear();
-      _showParameters.AddRange(_asset.Parameters.Select(x => new VariableTuple(x.Id, x.Variable)));
-      
-      _parameters.Clear();
-      foreach (VariableTuple tuple in _showParameters)
-        _parameters.Add(tuple.Id, tuple.Variable.GetValue());
-#endif
-
-      if (_started)
-        Initialize();
-    }
-
     public void Initialize()
     {
       if (Skeleton.state == null)
@@ -103,15 +75,18 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
         CreateAnimator();
 
 #if UNITY_EDITOR
-      CheckParameters();
+      CheckUserParameters();
 #endif
 
       if (_needCheck)
       {
         _animator.CheckTransition();
-        ClearTriggers();
         _needCheck = false;
       }
+
+#if UNITY_EDITOR
+      SyncUserParameters();
+#endif
     }
 
     public virtual void SetVariable<TVariable>(TParameterEnum id, TVariable value)
@@ -128,12 +103,52 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       }
     }
 
-    protected virtual void ClearTriggers()
+    private void CreateAnimator()
     {
-      foreach (SpineParameter<TParameterEnum> parameter in _asset.Parameters.Where(x => x.IsTrigger))
+      _animator?.Dispose();
+
+      _sharedAssetId = SharedAnimatorData.GetInstanceID();
+      _asset = Instantiate(SharedAnimatorData);
+      _animator = new SpineAnimator<TAnimationEnum>(Skeleton, _asset.Layers);
+      foreach (SpineAnimatorLayer<TAnimationEnum> layer in _animator.Layers)
+        layer.OnTransitionPerformed += ResetTriggers;
+      
+      foreach (SpineTransition<TParameterEnum, TAnimationEnum> transition in _asset.Transitions)
       {
-        parameter.Variable.SetValue(false);
+        _animator.AddTransition(transition);
+        foreach (ISpineCondition condition in transition.Conditions)
+        {
+          var id = condition.GetParameterId<TParameterEnum>();
+          condition.Variable = _asset.Parameters.Find(x => x.Id.Equals(id)).Variable;
+        }
       }
+      
+#if UNITY_EDITOR
+      _showParameters.Clear();
+      _showParameters.AddRange(_asset.Parameters.Select(x => new VariableTuple(x.Id, x.Variable)));
+      
+      _parameters.Clear();
+      foreach (VariableTuple tuple in _showParameters)
+        _parameters.Add(tuple.Id, tuple.Variable.GetValue());
+#endif
+
+      if (_started)
+        Initialize();
+    }
+
+    private void ResetTriggers(SpineAnimationTransition<TAnimationEnum> transition)
+    {
+      foreach (ISpineCondition condition in transition.Data.Conditions)
+      {
+        var id = condition.GetParameterId<TParameterEnum>();
+        SpineParameter<TParameterEnum> parameter = _asset.Parameters.Find(x => x.Id.Equals(id));
+        if(parameter.IsTrigger)
+          parameter.Variable.SetValue(false);
+      }
+
+#if UNITY_EDITOR
+      _dirty = true;
+#endif
     }
   }
 }

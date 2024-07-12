@@ -8,10 +8,11 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
   [Serializable]
-  public class SpineAnimatorLayer<TAnimationEnum> where TAnimationEnum : Enum
+  public class SpineAnimatorLayer<TAnimationEnum> : IDisposable where TAnimationEnum : Enum
   {
     [HideInInspector]
     public readonly SkeletonAnimation Skeleton;
+
     [HideInInspector]
     public readonly List<SpineAnimationState<TAnimationEnum>> States = new List<SpineAnimationState<TAnimationEnum>>();
 
@@ -24,15 +25,22 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     public SpineAnimationState<TAnimationEnum> Current;
 
     [NonSerialized]
-    public SpineAnimationState<TAnimationEnum> Next;
+    public SpineAnimationTransition<TAnimationEnum> NextTransition;
+
+    [NonSerialized]
+    public bool Hold;
 
     [ShowInInspector]
     [LabelText(nameof(Current))]
     public TAnimationEnum CurrentAnimation => Current != null ? Current.Animation.Name : default(TAnimationEnum);
 
     [ShowInInspector]
-    [LabelText(nameof(Next))]
-    public TAnimationEnum NextAnimation => Next != null ? Next.Animation.Name : default(TAnimationEnum);
+    [LabelText("Next")]
+    public TAnimationEnum NextAnimation => Hold && NextTransition.Destination != null
+      ? NextTransition.Destination.Animation.Name
+      : default(TAnimationEnum);
+
+    public event Action<SpineAnimationTransition<TAnimationEnum>> OnTransitionPerformed;
 
     public SpineAnimatorLayer(int id, SkeletonAnimation skeleton)
     {
@@ -43,13 +51,19 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     public void ChangeAnimation(SpineAnimationState<TAnimationEnum> to)
     {
       Current = to;
-      if (CheckTransition()) 
+      if (CheckTransition())
         return;
       // UnityEngine.Debug.Log($"{_enumName} Change to {Current.Animation.Name}");
       if (Current.Animation.Asset)
         Skeleton.state.SetAnimation(Id, Current.Animation.Asset, Current.Animation.IsLoop);
       else
         Skeleton.state.SetEmptyAnimation(Id, 0);
+    }
+
+    public void ChangeAnimation(SpineAnimationTransition<TAnimationEnum> transition)
+    {
+      OnTransitionPerformed?.Invoke(transition);
+      ChangeAnimation(transition.Destination);
     }
 
     public bool CheckTransition()
@@ -64,29 +78,31 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       {
         // UnityEngine.Debug.Log($"{_enumName} Transition now {Current.Animation.Name}");
         // UnityEngine.Debug.Log($"{_enumName} Transition hold from {transition.Destination.Animation.Name}");
-        DelayAnimation(transition.Destination);
+        DelayAnimation(transition);
         return false;
       }
 
       // UnityEngine.Debug.Log($"{_enumName} Transition change {transition.Destination.Animation.Name}");
-      ChangeAnimation(transition.Destination);
+      ChangeAnimation(transition);
       return true;
     }
 
     public void ClearNext()
     {
-      if (Next != null)
+      if (Hold)
       {
         Skeleton.state.Complete -= OnAnimationCompleted;
-        Next = null;
+        Hold = false;
+        NextTransition = null;
       }
     }
 
-    public void DelayAnimation(SpineAnimationState<TAnimationEnum> to)
+    public void DelayAnimation(SpineAnimationTransition<TAnimationEnum> transition)
     {
       // UnityEngine.Debug.Log($"{_enumName} Delay from {Skeleton.state.Tracks.Items[0].Animation.Name}");
       // UnityEngine.Debug.Log($"{_enumName} Delay to {to.Animation.Name}");
-      Next = to;
+      Hold = true;
+      NextTransition = transition;
       Skeleton.state.Complete += OnAnimationCompleted;
     }
 
@@ -96,8 +112,13 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 
       // UnityEngine.Debug.Log($"{_enumName} Complete {trackEntry.Animation.Name}");
       // UnityEngine.Debug.Log($"{_enumName} Transit to {Next.Animation.Name}");
-      ChangeAnimation(Next);
-      Skeleton.state.Complete -= OnAnimationCompleted;
+      ChangeAnimation(NextTransition);
+    }
+
+    public void Dispose()
+    {
+      if (Skeleton.state != null)
+        ClearNext();
     }
   }
 }

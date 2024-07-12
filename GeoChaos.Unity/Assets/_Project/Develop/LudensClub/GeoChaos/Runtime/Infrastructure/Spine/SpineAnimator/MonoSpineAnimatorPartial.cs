@@ -17,6 +17,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     [EnableInPlayMode]
     private List<VariableTuple> _showParameters = new List<VariableTuple>();
 
+    private bool _dirty;
+
     [Button("Recreate Animator")]
     [PropertyOrder(0)]
     [EnableInPlayMode]
@@ -25,26 +27,28 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       CreateAnimator();
     }
 
-    private void CheckParameters()
+    private void CheckUserParameters()
     {
-      bool dirty = false;
       foreach (KeyValuePair<TParameterEnum, object> pair in _parameters)
       {
         ISpineVariable variable = _showParameters.Find(x => x.Id.Equals(pair.Key)).Variable;
         object value = variable.GetValue();
         if (!value.Equals(pair.Value))
         {
-          dirty = true;
+          _dirty = true;
           _needCheck = true;
         }
       }
+    }
 
-      if (dirty)
+    private void SyncUserParameters()
+    {
+      if (_dirty)
       {
         foreach (VariableTuple tuple in _showParameters)
-        {
           _parameters[tuple.Id] = tuple.Variable.GetValue();
-        }
+
+        _dirty = false;
       }
     }
 
