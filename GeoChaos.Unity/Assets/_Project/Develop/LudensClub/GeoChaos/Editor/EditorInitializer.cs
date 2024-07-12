@@ -3,6 +3,7 @@ using LudensClub.GeoChaos.Runtime;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using UnityEditor;
 using UnityEngine.InputSystem;
+using TypeCache = LudensClub.GeoChaos.Editor.General.TypeCache;
 
 namespace LudensClub.GeoChaos.Editor
 {
@@ -18,6 +19,7 @@ namespace LudensClub.GeoChaos.Editor
       container.InputAsset = inputAsset;
       container.NameMap = nameMap;
       container.ProfilerService = new ProfilerService();
+      container.TypeCache = new TypeCache();
         
       InputMapUpdater.Construct();
     }

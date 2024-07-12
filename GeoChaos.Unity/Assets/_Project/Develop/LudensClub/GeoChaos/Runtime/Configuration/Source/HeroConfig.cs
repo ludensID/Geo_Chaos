@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using LudensClub.GeoChaos.Runtime.Constants;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Hook;
 using TriInspector;
 using UnityEngine;

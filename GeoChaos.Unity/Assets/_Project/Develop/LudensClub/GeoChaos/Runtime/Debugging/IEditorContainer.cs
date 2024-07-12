@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime
     InputActionMap Map { get; }
     InputActionNameMap NameMap { get; set; }
     IProfilerService ProfilerService { get; set; }
+    ITypeCache TypeCache { get; set; }
   }
 }
 #endif

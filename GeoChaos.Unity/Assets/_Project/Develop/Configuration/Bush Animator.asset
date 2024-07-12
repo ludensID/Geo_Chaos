@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a9e03443674e13a80bed5d118f9f1f, type: 3}
+  m_Name: Bush Animator
+  m_EditorClassIdentifier: 
+  Parameters:
+  - _id: 0
+    _variableType: 0
+    _variable:
+      rid: 674097669985796246
+    _isTrigger: 1
+  Layers:
+  - StartAnimation: 1
+    Animations:
+    - Name: 1
+      Asset: {fileID: 11400000, guid: 1339bac9ab55dfa4096b6b53d3844403, type: 2}
+      IsLoop: 1
+    - Name: 2
+      Asset: {fileID: 11400000, guid: 01fbfc9e96d913046909136e4989a97c, type: 2}
+      IsLoop: 0
+  Transitions:
+  - _from: 01000000
+    _to: 2
+    _conditions:
+    - Parameter: 0
+      Processor:
+        rid: 674097669985796249
+    _isHold: 0
+  - _from: 02000000
+    _to: 1
+    _conditions: []
+    _isHold: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 674097669985796246
+      type: {class: 'SpineVariable`1[[System.Boolean, mscorlib]]', ns: LudensClub.GeoChaos.Runtime.Infrastructure.Spine,
+        asm: GeoChaos.Runtime}
+      data:
+        _value: 0
+    - rid: 674097669985796249
+      type: {class: SpineTriggerProcessor, ns: LudensClub.GeoChaos.Runtime.Infrastructure.Spine,
+        asm: GeoChaos.Runtime}
+      data: 

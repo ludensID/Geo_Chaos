@@ -1,5 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Constants;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.UI.ImmunityDuration

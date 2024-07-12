@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using LudensClub.GeoChaos.Runtime.Constants;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure

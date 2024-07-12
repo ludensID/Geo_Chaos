@@ -1,4 +1,4 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Constants
+﻿namespace LudensClub.GeoChaos.Runtime
 {
   public static class TriConstants
   {

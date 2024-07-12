@@ -1,5 +1,4 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Constants;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
