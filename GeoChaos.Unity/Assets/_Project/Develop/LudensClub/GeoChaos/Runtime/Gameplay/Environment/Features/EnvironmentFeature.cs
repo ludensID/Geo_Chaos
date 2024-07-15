@@ -7,7 +7,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
     public EnvironmentFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<CreateRingSystem>());
-      Add(systems.Create<CreateSpikeSystem>());
       
       Add(systems.Create<DamageFromSpikeSystem>());
     }

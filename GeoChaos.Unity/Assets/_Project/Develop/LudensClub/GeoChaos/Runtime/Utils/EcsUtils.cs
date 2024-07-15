@@ -1,4 +1,7 @@
-﻿using LudensClub.GeoChaos.Runtime.AI;
+﻿using System;
+using System.Reflection;
+using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
@@ -8,6 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Utils
 {
   public static class EcsUtils
   {
+    private static readonly MethodInfo _getPoolMethod = typeof(EcsWorld).GetMethod("GetPool");  
+    
     public static void AssignVector(this ref MovementVector obj, Vector2 vector, bool saveXDirection = false)
     {
       (Vector2 length, Vector2 direction) = MathUtils.DecomposeVector(vector);
@@ -30,6 +35,12 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     public static bool TrySelectByColliderTypes(this ICollisionService obj, ColliderType master, ColliderType target)
     {
       return obj.TrySelectByColliders(x => x.Type == master, x => x.Type == target);
+    }
+
+    public static IEcsPool GetPoolEnsure(this EcsWorld world, Type type)
+    {
+      return world.GetPoolByType(type)
+        ?? (IEcsPool)_getPoolMethod.MakeGenericMethod(type).Invoke(world, Array.Empty<object>());
     }
   }
 }

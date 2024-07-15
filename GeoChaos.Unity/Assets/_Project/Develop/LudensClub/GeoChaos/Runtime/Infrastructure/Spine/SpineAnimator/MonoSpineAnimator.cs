@@ -28,6 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     protected int _sharedAssetId;
     protected bool _delayInitialize;
     protected bool _started;
+    private TickableManager _ticker;
 
     public bool Injected { get; set; }
 
@@ -36,7 +37,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     {
       if (!_started)
         initializer.Add(this);
-      ticker.Add(this);
+
+      _ticker = ticker;
+      _ticker.Add(this);
       CreateAnimator();
 
       Injected = true;
@@ -54,14 +57,14 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       _delayInitialize = false;
     }
 
+#if UNITY_EDITOR
     protected virtual void Start()
     {
-#if UNITY_EDITOR
       _started = true;
       if (!this.EnsureInjection())
         Initialize();
-#endif
     }
+#endif
 
     public void Tick()
     {
@@ -87,6 +90,11 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 #if UNITY_EDITOR
       SyncUserParameters();
 #endif
+    }
+
+    private void OnDestroy()
+    {
+      _ticker.Remove(this);
     }
 
     public virtual void SetVariable<TVariable>(TParameterEnum id, TVariable value)

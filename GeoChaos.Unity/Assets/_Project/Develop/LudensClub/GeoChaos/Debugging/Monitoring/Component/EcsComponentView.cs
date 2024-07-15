@@ -1,6 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using TriInspector;
+using UnityEditor;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Debugging.Monitoring
@@ -16,6 +17,6 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     [HideInInspector]
     public string Name;
 
-    private string ValueName => Value != null ? Value.GetType().Name : "[None]";
+    private string ValueName => ObjectNames.NicifyVariableName(Value?.GetType().Name ?? "[None]");
   }
 }

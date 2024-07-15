@@ -7,6 +7,7 @@
   {
     public const string PROJECT_MENU = "GeoChaos/";
     public const string CONFIG_MENU = PROJECT_MENU + "Configs/";
+    public const string ECS_MENU = PROJECT_MENU + "Ecs/";
 
     public static class Names
     {
@@ -27,15 +28,18 @@
 
       public const string SHARD_POOL_MENU = CONFIG_MENU + "Shard Pool";
       public const string SHARD_POOL_FILE = "ShardPoolConfig";
-      
+
       public const string LAMA_MENU = CONFIG_MENU + "Lama";
       public const string LAMA_FILE = "LamaConfig";
-      
+
       public const string SPIKE_MENU = CONFIG_MENU + "Spike";
       public const string SPIKE_FILE = "SpikeConfig";
-      
+
       public const string BUSH_ANIMATOR_MENU = CONFIG_MENU + "Bush Animator";
       public const string BUSH_ANIMATOR_FILE = "Bush Animator";
+      
+      public const string ECS_CONVERTER_ASSET_MENU = ECS_MENU + "Converter";
+      public const string ECS_CONVERTER_ASSET_FILE = "New Entity Converter";
     }
   }
 }

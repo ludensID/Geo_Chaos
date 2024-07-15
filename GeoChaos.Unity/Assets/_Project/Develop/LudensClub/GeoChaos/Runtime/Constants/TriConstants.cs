@@ -2,6 +2,7 @@
 {
   public static class TriConstants
   {
+    public const string NONE = "[None]";
     public const string ON = "On";
     public const string CHANGED = "Changed";
     public const string DROP = "Drop";

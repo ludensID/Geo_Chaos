@@ -27,10 +27,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation
       foreach (EcsEntity message in _creationMessages)
       {
         MonoGameObjectConverter converter = message.Get<CreateMonoEntityMessage>().Converter;
-        EcsEntity instance = _game.CreateEntity()
-          .Add((ref EntityId id) => id.Id = converter.Id)
-          .Add<CreateCommand>();
-
+        EcsEntity instance = _game.CreateEntity();
+        
         converter.Convert(instance);
         instance.Add<OnConverted>();
 

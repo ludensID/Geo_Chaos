@@ -195,4 +195,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc7f384b43d4a218aed0e82fd56407b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _converters:
+  - _serializedConverter:
+      rid: -2
+    _components:
+      Components: []
+    _scriptableConverter: {fileID: 11400000, guid: 5c2fd9a1d4b7fe946ad12671ea65666a,
+      type: 2}
   Id: 17
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
