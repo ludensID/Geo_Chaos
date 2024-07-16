@@ -21,7 +21,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     public bool ShouldCreateEntity { get; set; } = true;
 
     [Inject]
-    public void Construct(IInitializingPhase phase, InitializableManager initializer, MessageWorldWrapper messageWorldWrapper)
+    public void Construct(IInitializingPhase phase, InitializableManager initializer,
+      MessageWorldWrapper messageWorldWrapper)
     {
       _message = messageWorldWrapper.World;
       GetConvertersInChildren();
@@ -57,10 +58,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 
     private void Start()
     {
-      if(!_wasInitialized)
+      if (!_wasInitialized)
         Initialize();
     }
-    
+
     public void Initialize()
     {
       if (ShouldCreateEntity)
@@ -68,6 +69,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
         _message.CreateEntity()
           .Add((ref CreateMonoEntityMessage message) => message.Converter = this);
       }
+
+      _wasInitialized = true;
     }
 
     public void CreateEntity(EcsEntity entity)
