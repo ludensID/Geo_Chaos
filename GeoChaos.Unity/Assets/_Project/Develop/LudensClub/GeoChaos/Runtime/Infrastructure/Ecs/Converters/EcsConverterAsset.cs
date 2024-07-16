@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 {
-  [CreateAssetMenu(menuName = CAC.Names.ECS_CONVERTER_ASSET_MENU, fileName = CAC.Names.ECS_CONVERTER_ASSET_FILE)]
+  [CreateAssetMenu(menuName = CAC.Names.ECS_CONVERTER_MENU, fileName = CAC.Names.ECS_CONVERTER_FILE)]
   [HideMonoScript]
   public class EcsConverterAsset : ScriptableObject, IEcsConverter
   {

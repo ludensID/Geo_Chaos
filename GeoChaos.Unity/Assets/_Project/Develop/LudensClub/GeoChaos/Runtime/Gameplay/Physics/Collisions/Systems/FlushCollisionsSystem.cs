@@ -34,20 +34,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 
     private EcsEntity CreateOneSideCollisionMessage(OneSideCollision collision)
     {
-      EcsEntity entity = _world.CreateEntity();
-      entity
+      return _world.CreateEntity()
         .Add<CollisionMessage>()
         .Add((ref OneSideCollision oneSideCollision) => oneSideCollision = collision);
-      return entity;
     }
     
     private EcsEntity CreateTwoSideCollisionMessage(TwoSideCollision collision)
     {
-      EcsEntity entity = _world.CreateEntity();
-      entity
+      return _world.CreateEntity()
         .Add<CollisionMessage>()
         .Add((ref TwoSideCollision twoSideCollision) => twoSideCollision = collision);
-      return entity;
     }
   }
 }

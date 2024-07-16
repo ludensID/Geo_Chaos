@@ -13,6 +13,7 @@
     public const string CONVERTERS = PROJECT + "Converters/";
     public const string HIGHLIGHTERS = PROJECT + "Highlighters/";
     public const string PROPS = PROJECT + "Props/";
+    public const string ANIMATORS = PROJECT + "Animators/";
 
     public static class Names
     {
@@ -30,6 +31,7 @@
 
       public const string GAMEPLAY_INSTALLER = BOOT + "Gameplay Installer";
       public const string PROJECT_INSTALLER = BOOT + "Project Installer";
+      public const string MONO_INJECTOR = BOOT + "Injector";
 
       public const string DASH_COLLIDER_CONVERTER = CONVERTERS + "Dash Collider Converter";
       public const string GROUND_CHECK_CONVERTER = CONVERTERS + "Ground Check Converter";
@@ -48,17 +50,19 @@
       public const string LAMA_ATTACK_COLLIDERS_CONVERTER = CONVERTERS + "Lama Attack Colliders Converter";
       public const string LAMA_ATTACK_RENDERERS_CONVERTER = CONVERTERS + "Lama Attack Renderers Converter";
       public const string MONO_GAME_OBJECT_CONVERTER = CONVERTERS + "Mono Game Object Converter";
-      public const string IMMUNITY_COLLIDER_CONVERTER = "Immunity Collider Converter";
+      public const string IMMUNITY_COLLIDER_CONVERTER = CONVERTERS + "Immunity Collider Converter";
 
       public const string COROUTINE_RUNNER = CORE + "Coroutine Runner";
       public const string COLLISION_DETECTOR = CORE + "Collision Detector";
 
       public const string ENEMY_HIGHLIGHTER = HIGHLIGHTERS + "Enemy Highlighter";
       public const string RING_HIGHLIGHTER = HIGHLIGHTERS + "Ring Highlighter";
+      public const string PLATFORM_FADE = HIGHLIGHTERS + "Platform Fade";
 
       public const string PLAYER_SPAWN = PROPS + "Player Spawn";
       public const string SPAWN_POINT = PROPS + "Spawn Point";
       public const string LAMA_GIZMO = PROPS + "Lama Gizmo";
+      public const string BUSH_ANIMATOR = ANIMATORS + "Bush Animator";
     }
   }
 }

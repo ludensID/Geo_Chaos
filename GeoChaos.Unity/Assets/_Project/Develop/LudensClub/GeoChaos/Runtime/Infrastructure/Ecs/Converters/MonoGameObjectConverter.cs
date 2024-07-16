@@ -2,14 +2,14 @@
 using System.Linq;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 {
+  [RequireComponent(typeof(MonoInjector))]
   [AddComponentMenu(ACC.Names.MONO_GAME_OBJECT_CONVERTER)]
-  public class MonoGameObjectConverter : MonoBehaviour, IInitializable, IEcsConverter, IInjectable, IStartable
+  public class MonoGameObjectConverter : MonoBehaviour, IInitializable, IEcsConverter
   {
     [SerializeField]
     private List<EcsConverterValue> _converters;
@@ -17,17 +17,17 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     private EcsWorld _message;
     private List<IEcsConverter> _cachedConverters;
 
-    public bool Injected { get; set; }
-    public bool Started { get; set; }
-
-
     [Inject]
-    public void Construct(InitializableManager initializer, MessageWorldWrapper messageWorldWrapper)
+    public void Construct(IInitializingPhase phase, MessageWorldWrapper messageWorldWrapper)
     {
-      if(!Started)
-        initializer.Add(this);
-      
       _message = messageWorldWrapper.World;
+      GetConvertersInChildren();
+
+      phase.EnsureInitializing(this);
+    }
+
+    private void GetConvertersInChildren()
+    {
       _cachedConverters = GetComponents<IEcsConverter>().ToList();
       for (int i = 0; i < transform.childCount; i++)
       {
@@ -35,7 +35,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
       }
 
       _cachedConverters.Remove(this);
-      Injected = true;
     }
 
     public static void GetConverters(Transform t, List<IEcsConverter> converters)
@@ -51,15 +50,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
       }
     }
 
-#if UNITY_EDITOR
-    private void Start()
-    {
-      Started = true;
-      if (!this.EnsureInjection())
-        Initialize();
-    }
-#endif
-    
     public void Initialize()
     {
       _message.CreateEntity()

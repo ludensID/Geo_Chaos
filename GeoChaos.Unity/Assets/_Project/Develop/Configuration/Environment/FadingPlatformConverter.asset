@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 133c2ae489ef48fc81c331d6cf2618a2, type: 3}
-  m_Name: Spike Converter
+  m_Name: FadingPlatformConverter
   m_EditorClassIdentifier: 
   Converters:
   - _serializedConverter:
@@ -18,20 +18,20 @@ MonoBehaviour:
     _components:
       Components:
       - Value:
-          rid: 674097736093007991
+          rid: 674097754882703445
       - Value:
-          rid: 674097736093007992
+          rid: 674097754882703446
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 674097736093007991
-      type: {class: SpikeTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Components,
+    - rid: 674097754882703445
+      type: {class: FadingPlatformTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform,
         asm: GeoChaos.Runtime}
       data: 
-    - rid: 674097736093007992
+    - rid: 674097754882703446
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
-        Id: 17
+        Id: 18

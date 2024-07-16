@@ -43,6 +43,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
     public override void InstallBindings()
     {
+      BindInitializingPhase();
+
       BindNodeStrategyFactory();
       BindBehaviourTreeBuilder();
 
@@ -88,6 +90,15 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindShootCooldownPresenter();
       BindHeroHealthPresenter();
       BindImmunityDurationPresenter();
+    }
+
+    private void BindInitializingPhase()
+    {
+      Container
+        .Bind<IInitializingPhase>()
+        .To<InitializingPhase>()
+        .AsSingle()
+        .NonLazy();
     }
 
     private void BindImmunityDurationPresenter()

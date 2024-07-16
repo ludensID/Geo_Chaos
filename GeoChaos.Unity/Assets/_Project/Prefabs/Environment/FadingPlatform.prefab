@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2902463514745988737
+--- !u!1 &108041063072602138
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2868631106726145315}
-  - component: {fileID: 7540876859921081206}
-  - component: {fileID: 6843983593631579416}
-  - component: {fileID: 2467545019400747411}
-  - component: {fileID: 3822621804148839295}
-  - component: {fileID: 2298018948425916439}
-  - component: {fileID: 8019871321191253173}
-  - component: {fileID: 362701955362848943}
-  m_Layer: 11
-  m_Name: Spike
+  - component: {fileID: 78428902422502777}
+  - component: {fileID: 3076636914697301117}
+  - component: {fileID: 1681269006231497030}
+  - component: {fileID: 9064862785131347522}
+  - component: {fileID: 2605467027714976169}
+  - component: {fileID: 4638190675155789914}
+  - component: {fileID: 3717619827423303099}
+  - component: {fileID: 206019112391293453}
+  - component: {fileID: 5699620863388952473}
+  - component: {fileID: 2258619265617088720}
+  m_Layer: 8
+  m_Name: FadingPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2868631106726145315
+--- !u!4 &78428902422502777
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2902463514745988737}
+  m_GameObject: {fileID: 108041063072602138}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 4.278909, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7540876859921081206
+--- !u!212 &3076636914697301117
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2902463514745988737}
+  m_GameObject: {fileID: 108041063072602138}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -81,29 +83,29 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa,
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
     type: 3}
-  m_Color: {r: 0.03066039, g: 0.5, b: 0.20140728, a: 1}
+  m_Color: {r: 0.7568628, g: 0.27058825, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6843983593631579416
+--- !u!61 &1681269006231497030
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2902463514745988737}
+  m_GameObject: {fileID: 108041063072602138}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8a52096240b6e6f4a980b592ed1068d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -116,7 +118,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 439
+    m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -131,33 +133,33 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.5}
-    newSize: {x: 1, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2467545019400747411
+--- !u!114 &9064862785131347522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2902463514745988737}
+  m_GameObject: {fileID: 108041063072602138}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bad22c7d76847f782cd2f9cbf909800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3822621804148839295
+--- !u!114 &2605467027714976169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2902463514745988737}
+  m_GameObject: {fileID: 108041063072602138}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddc7f384b43d4a218aed0e82fd56407b, type: 3}
@@ -168,55 +170,83 @@ MonoBehaviour:
       rid: -2
     _components:
       Components: []
-    _scriptableConverter: {fileID: 11400000, guid: 5c2fd9a1d4b7fe946ad12671ea65666a,
+    _scriptableConverter: {fileID: 11400000, guid: 7039c983843d68b498706c9cfaebc1ad,
       type: 2}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
---- !u!114 &2298018948425916439
+--- !u!114 &4638190675155789914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2902463514745988737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 348c620513bc41ab99a9deb828b54891, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colliderType: 2
-  _view: {fileID: 8019871321191253173}
-  _collider: {fileID: 6843983593631579416}
-  WhenEnter: 1
-  WhenStay: 0
-  WhenExit: 0
-  WhenTrigger: 1
-  WhenCollider: 1
---- !u!114 &8019871321191253173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2902463514745988737}
+  m_GameObject: {fileID: 108041063072602138}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a14799b18fe844ffa08fe1482bd17b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &362701955362848943
+--- !u!114 &3717619827423303099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2902463514745988737}
+  m_GameObject: {fileID: 108041063072602138}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6412848474748d3a83f2337726299a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  View: {fileID: 8019871321191253173}
+  View: {fileID: 4638190675155789914}
+--- !u!114 &206019112391293453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108041063072602138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b423ff1d2d2345b0a2e88615d6f2a047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 1681269006231497030}
+--- !u!114 &5699620863388952473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108041063072602138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348c620513bc41ab99a9deb828b54891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderType: 102
+  _view: {fileID: 4638190675155789914}
+  _collider: {fileID: 1681269006231497030}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1
+--- !u!114 &2258619265617088720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108041063072602138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6deae2ab25424ce98dfe751646053bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultColor: {r: 0.7568628, g: 0.27058825, b: 1, a: 1}
+  _beforeFadeColor: {r: 0.27058825, g: 0.6117647, b: 1, a: 1}
+  _fadeColor: {r: 0.27058825, g: 0.6117647, b: 1, a: 0.4745098}

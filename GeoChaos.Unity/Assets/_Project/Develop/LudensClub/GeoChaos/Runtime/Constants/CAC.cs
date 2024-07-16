@@ -36,10 +36,13 @@
       public const string SPIKE_FILE = "SpikeConfig";
 
       public const string BUSH_ANIMATOR_MENU = CONFIG_MENU + "Bush Animator";
-      public const string BUSH_ANIMATOR_FILE = "Bush Animator";
+      public const string BUSH_ANIMATOR_FILE = "BushAnimator";
       
-      public const string ECS_CONVERTER_ASSET_MENU = ECS_MENU + "Converter";
-      public const string ECS_CONVERTER_ASSET_FILE = "New Entity Converter";
+      public const string FADING_PLATFORM_MENU = CONFIG_MENU + "Fading Platform";
+      public const string FADING_PLATFORM_FILE = "FadingPlatform";
+      
+      public const string ECS_CONVERTER_MENU = ECS_MENU + "Converter";
+      public const string ECS_CONVERTER_FILE = "NewEntityConverter";
     }
   }
 }
