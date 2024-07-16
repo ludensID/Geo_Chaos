@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct CreateMonoEntityMessage : IEcsComponent
+  public struct ConverterRef : IEcsComponent
   {
     public IGameObjectConverter Converter;
   }

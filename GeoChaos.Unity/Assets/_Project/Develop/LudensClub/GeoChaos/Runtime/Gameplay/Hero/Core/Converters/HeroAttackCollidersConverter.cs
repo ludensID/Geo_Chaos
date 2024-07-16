@@ -13,9 +13,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Converters
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
     public List<Collider2D> Colliders = new(3) { null, null, null };
 
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
-      entity.Add((ref HeroAttackColliders colliders) => colliders.Colliders = Colliders.ToArray());
+      entity.Add((ref HeroAttackCollidersRef colliders) => colliders.Colliders = Colliders.ToArray());
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<HeroAttackCollidersRef>();
     }
   }
 }

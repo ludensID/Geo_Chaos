@@ -10,13 +10,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.Systems
   public class CreateViewByPrefabSystem : IEcsRunSystem
   {
     private readonly IViewFactory _factory;
-    private readonly IGameObjectConverter _converter;
+    private readonly IGameObjectConverterService _converter;
     private readonly EcsWorld _game;
     private readonly EcsEntities _creatables;
 
     public CreateViewByPrefabSystem(GameWorldWrapper gameWorldWrapper,
       IViewFactory factory,
-      IGameObjectConverter converter)
+      IGameObjectConverterService converter)
     {
       _factory = factory;
       _converter = converter;

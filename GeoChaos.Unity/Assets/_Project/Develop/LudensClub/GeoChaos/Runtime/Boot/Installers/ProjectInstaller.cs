@@ -42,8 +42,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindGameObjectConverter()
     {
       Container
-        .Bind<IGameObjectConverter>()
-        .To<GameObjectConverter>()
+        .Bind<IGameObjectConverterService>()
+        .To<GameObjectConverterService>()
         .AsSingle();
     }
 

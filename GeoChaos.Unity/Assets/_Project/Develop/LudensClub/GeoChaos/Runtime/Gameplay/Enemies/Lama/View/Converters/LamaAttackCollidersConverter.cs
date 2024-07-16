@@ -13,13 +13,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.View
     [SerializeField]
     private Collider2D _comboCollider;
     
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref LamaAttackCollidersRef colliders) =>
       {
         colliders.HitCollider = _hitCollider;
         colliders.ComboCollider = _comboCollider;
       });
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<LamaAttackCollidersRef>();
     }
   }
 }

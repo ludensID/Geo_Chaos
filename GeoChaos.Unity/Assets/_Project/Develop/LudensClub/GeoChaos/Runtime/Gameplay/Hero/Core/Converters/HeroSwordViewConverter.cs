@@ -11,9 +11,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Converters
   {
     public HeroSwordView View;
     
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref HeroSwordViewRef swordRef) => swordRef.View = View);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<HeroSwordViewRef>();
     }
   }
 }

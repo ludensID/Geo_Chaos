@@ -9,9 +9,14 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     [SerializeField]
     private Rigidbody2D _rigidbody;
 
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref RigidbodyRef rigidbodyRef) => rigidbodyRef.Rigidbody = _rigidbody);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<RigidbodyRef>();
     }
 
     private void Reset()

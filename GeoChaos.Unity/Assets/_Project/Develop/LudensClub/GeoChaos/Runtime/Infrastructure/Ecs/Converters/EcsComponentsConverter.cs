@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
   {
     public List<EcsComponentValue> Components;
 
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       EcsWorld world = entity.World;
       foreach (EcsComponentValue componentValue in Components)
@@ -18,6 +18,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
         IEcsPool pool = world.GetPoolEnsure(componentValue.Type);
         pool.AddRaw(entity.Entity, componentValue.Value);
       }
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
     }
   }
 }

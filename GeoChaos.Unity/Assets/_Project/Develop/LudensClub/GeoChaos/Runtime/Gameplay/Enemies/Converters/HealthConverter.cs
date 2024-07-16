@@ -10,9 +10,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
   {
     public HealthView View;
     
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref HealthRef healthRef) => healthRef.View = View);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<HealthRef>();
     }
   }
 }

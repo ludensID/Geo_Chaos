@@ -9,11 +9,16 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     [SerializeField]
     private Collider2D _collider;
 
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref ColliderRef colliderRef) => colliderRef.Collider = _collider);
     }
-    
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<ColliderRef>();
+    }
+
     private void Reset()
     {
       _collider = GetComponent<Collider2D>();

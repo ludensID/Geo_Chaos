@@ -10,9 +10,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Converters
   {
     public LineRenderer Hook;
     
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref HookRef hookRef) => hookRef.Hook = Hook);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<HookRef>();
     }
   }
 }

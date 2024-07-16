@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
     {
       foreach (EcsEntity lama in _initializedLamas)
       {
-        lama.Get<SpawnPointRef>().Spawn.GetComponent<PhysicalBoundsConverter>().Convert(lama);
+        lama.Get<SpawnPointRef>().Spawn.GetComponent<PhysicalBoundsConverter>().ConvertTo(lama);
       }
     }
   }

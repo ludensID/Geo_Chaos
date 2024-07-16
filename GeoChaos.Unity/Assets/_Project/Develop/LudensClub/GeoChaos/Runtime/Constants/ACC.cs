@@ -49,7 +49,7 @@
       public const string ATTACK_CHECKER_CONVERTER = CONVERTERS + "Attack Checker Converter";
       public const string LAMA_ATTACK_COLLIDERS_CONVERTER = CONVERTERS + "Lama Attack Colliders Converter";
       public const string LAMA_ATTACK_RENDERERS_CONVERTER = CONVERTERS + "Lama Attack Renderers Converter";
-      public const string MONO_GAME_OBJECT_CONVERTER = CONVERTERS + "Mono Game Object Converter";
+      public const string GAME_OBJECT_CONVERTER = CONVERTERS + "Game Object Converter";
       public const string IMMUNITY_COLLIDER_CONVERTER = CONVERTERS + "Immunity Collider Converter";
 
       public const string COROUTINE_RUNNER = CORE + "Coroutine Runner";

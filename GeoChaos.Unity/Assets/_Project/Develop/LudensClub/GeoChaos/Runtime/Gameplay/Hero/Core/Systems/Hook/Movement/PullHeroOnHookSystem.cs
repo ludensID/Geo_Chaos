@@ -39,7 +39,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       _hookedRings = _game
         .Filter<RingTag>()
         .Inc<Hooked>()
-        .Inc<RingPoints>()
+        .Inc<RingPointsRef>()
         .Collect();
     }
 
@@ -49,7 +49,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
       foreach (EcsEntity precast in _finishedPrecasts)
       {
         Vector3 precastPosition = precast.Get<ViewRef>().View.transform.position;
-        Vector3 target = ring.Get<RingPoints>().TargetPoint.position;
+        Vector3 target = ring.Get<RingPointsRef>().TargetPoint.position;
 
         Vector3 vector = target - precastPosition;
         float time = vector.magnitude / _config.HookVelocity;

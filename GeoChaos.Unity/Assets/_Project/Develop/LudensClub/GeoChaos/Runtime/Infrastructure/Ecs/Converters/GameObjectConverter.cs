@@ -1,21 +1,103 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using UnityEngine;
+using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 {
-  public class GameObjectConverter : IGameObjectConverter
+  [RequireComponent(typeof(MonoInjector))]
+  [AddComponentMenu(ACC.Names.GAME_OBJECT_CONVERTER)]
+  public class GameObjectConverter : MonoBehaviour, IGameObjectConverter, IInitializable
   {
-    public void Convert(EcsEntity entity, GameObject gameObject)
+    [SerializeField]
+    private List<EcsConverterValue> _converters;
+
+    private EcsWorld _message;
+    private List<IEcsConverter> _viewConverters;
+    private bool _wasInitialized;
+
+    public bool ShouldCreateEntity { get; set; } = true;
+
+    [Inject]
+    public void Construct(IInitializingPhase phase, InitializableManager initializer, MessageWorldWrapper messageWorldWrapper)
     {
-      var converters = new List<IEcsConverter>();
-      MonoGameObjectConverter.GetConverters(gameObject.transform, converters);
-      foreach (IEcsConverter converter in converters) 
-        converter.Convert(entity);
+      _message = messageWorldWrapper.World;
+      GetConvertersInChildren();
+
+      _wasInitialized = phase.WasInitialized;
+      if (!_wasInitialized)
+        initializer.Add(this);
     }
 
-    public void Convert<TComponent>(EcsEntity entity, TComponent component) where TComponent : Component
+    private void GetConvertersInChildren()
     {
-      Convert(entity, component.gameObject);
+      _viewConverters = GetComponents<IEcsConverter>().ToList();
+      for (int i = 0; i < transform.childCount; i++)
+      {
+        GetConverters(transform.GetChild(i), _viewConverters);
+      }
+
+      _viewConverters.Remove(this);
+    }
+
+    public static void GetConverters(Transform t, List<IEcsConverter> converters)
+    {
+      IEcsConverter[] list = t.GetComponents<IEcsConverter>();
+      if (list.Any(x => x is GameObjectConverter))
+        return;
+
+      converters.AddRange(list);
+      for (int i = 0; i < t.childCount; i++)
+      {
+        GetConverters(t.GetChild(i), converters);
+      }
+    }
+
+    private void Start()
+    {
+      if(!_wasInitialized)
+        Initialize();
+    }
+    
+    public void Initialize()
+    {
+      if (ShouldCreateEntity)
+      {
+        _message.CreateEntity()
+          .Add((ref CreateMonoEntityMessage message) => message.Converter = this);
+      }
+    }
+
+    public void CreateEntity(EcsEntity entity)
+    {
+      foreach (EcsConverterValue converter in _converters)
+        converter.ConvertTo(entity);
+
+      ConvertTo(entity);
+    }
+
+    public void ConvertBackAndDestroy(EcsEntity entity)
+    {
+      ConvertBack(entity);
+      Destroy(gameObject);
+    }
+
+    public void ConvertTo(EcsEntity entity)
+    {
+      foreach (IEcsConverter converter in _viewConverters)
+        converter.ConvertTo(entity);
+
+      entity.Add((ref ConverterRef converterRef) => converterRef.Converter = this);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      foreach (IEcsConverter converter in _viewConverters)
+        converter.ConvertBack(entity);
+
+      entity.Del<ConverterRef>();
     }
   }
 }

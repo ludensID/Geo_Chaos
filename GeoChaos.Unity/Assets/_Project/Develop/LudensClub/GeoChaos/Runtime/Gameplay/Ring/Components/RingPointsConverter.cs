@@ -9,9 +9,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
   {
     public Transform TargetPoint;
     
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
-      entity.Add((ref RingPoints points) => points.TargetPoint = TargetPoint);
+      entity.Add((ref RingPointsRef points) => points.TargetPoint = TargetPoint);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<RingPointsRef>();
     }
   }
 }

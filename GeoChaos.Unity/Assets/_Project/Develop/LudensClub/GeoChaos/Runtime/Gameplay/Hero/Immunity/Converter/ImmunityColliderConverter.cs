@@ -10,9 +10,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity
     [SerializeField]
     private Collider2D _immunityCollider;
       
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref ImmunityColliderRef colliderRef) => colliderRef.Collider = _immunityCollider);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<ImmunityColliderRef>();
     }
   }
 }

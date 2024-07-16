@@ -10,9 +10,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Shard
   {
     private readonly GameWorldWrapper _gameWorldWrapper;
     private readonly IShardPool _pool;
-    private readonly IGameObjectConverter _converter;
+    private readonly IGameObjectConverterService _converter;
 
-    public ShardFactory(GameWorldWrapper gameWorldWrapper, IShardPool pool, IGameObjectConverter converter)
+    public ShardFactory(GameWorldWrapper gameWorldWrapper, IShardPool pool, IGameObjectConverterService converter)
     {
       _gameWorldWrapper = gameWorldWrapper;
       _pool = pool;

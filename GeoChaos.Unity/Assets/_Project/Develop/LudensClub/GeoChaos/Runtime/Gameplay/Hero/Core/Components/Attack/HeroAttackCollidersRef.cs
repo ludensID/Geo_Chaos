@@ -11,7 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Attack
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct HeroAttackColliders : IEcsComponent
+  public struct HeroAttackCollidersRef : IEcsComponent
   {
     public Collider2D[] Colliders;
   }

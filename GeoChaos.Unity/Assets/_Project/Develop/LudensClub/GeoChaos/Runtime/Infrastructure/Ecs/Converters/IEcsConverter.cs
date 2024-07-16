@@ -2,6 +2,7 @@
 {
   public interface IEcsConverter
   {
-    public void Convert(EcsEntity entity);
+    public void ConvertTo(EcsEntity entity);
+    public void ConvertBack(EcsEntity entity);
   }
 }

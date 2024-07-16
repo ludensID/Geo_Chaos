@@ -10,12 +10,16 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
   {
     public List<EcsConverterValue> Converters;
       
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       foreach (EcsConverterValue converter in Converters)
       {
-        converter.Convert(entity);
+        converter.ConvertTo(entity);
       }
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
     }
   }
 }

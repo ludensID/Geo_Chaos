@@ -10,9 +10,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Converters
   {
     public LineRenderer ShootLine;
     
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref ShootLineRef lineRef) => lineRef.Line = ShootLine);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<ShootLineRef>();
     }
   }
 }

@@ -1,10 +1,9 @@
-﻿using UnityEngine;
-
-namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
+﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 {
-  public interface IGameObjectConverter
+  public interface IGameObjectConverter : IEcsConverter
   {
-    void Convert(EcsEntity entity, GameObject gameObject);
-    void Convert<TComponent>(EcsEntity entity, TComponent component) where TComponent : Component;
+    bool ShouldCreateEntity { get; set; }
+    void CreateEntity(EcsEntity entity);
+    void ConvertBackAndDestroy(EcsEntity entity);
   }
 }

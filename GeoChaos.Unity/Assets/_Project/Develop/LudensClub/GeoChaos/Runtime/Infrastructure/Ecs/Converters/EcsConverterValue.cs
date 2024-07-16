@@ -42,10 +42,14 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
       return null;
     }
 
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       IEcsConverter value = GetValue();
-      value?.Convert(entity);
+      value?.ConvertTo(entity);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
     }
 
 #if UNITY_EDITOR

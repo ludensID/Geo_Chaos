@@ -11,10 +11,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Converters
     [SerializeField]
     private Collider2D _collider;
 
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref DashColliderRef colliderRef) => colliderRef.Collider = _collider);
       _collider.enabled = false;
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<DashColliderRef>();
     }
   }
 }

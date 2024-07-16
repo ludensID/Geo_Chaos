@@ -9,12 +9,17 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
   {
     public BaseView View;
 
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref ViewRef viewRef) => viewRef.View = View);
       View.Entity = entity.Pack();
     }
-    
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<ViewRef>();
+    }
+
     private void Reset()
     {
       View = GetComponent<BaseView>();

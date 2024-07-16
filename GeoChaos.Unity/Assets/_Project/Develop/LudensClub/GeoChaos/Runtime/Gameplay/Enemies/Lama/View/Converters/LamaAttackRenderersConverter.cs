@@ -13,13 +13,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.View
     [SerializeField]
     private SpriteRenderer _biteRenderer;
 
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref LamaAttackRenderersRef sprites) =>
       {
         sprites.HitRenderer = _hitRenderer;
         sprites.BiteRenderer = _biteRenderer;
       });
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<LamaAttackRenderersRef>();
     }
   }
 }

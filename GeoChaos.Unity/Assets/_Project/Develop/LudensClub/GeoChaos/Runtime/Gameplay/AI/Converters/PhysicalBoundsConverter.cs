@@ -24,13 +24,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
       }
     }
 
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref PhysicalBoundsRef bounds) =>
       {
         bounds.Left = LeftBound;
         bounds.Right = RightBound;
       });
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<PhysicalBoundsRef>();
     }
 
 #if UNITY_EDITOR

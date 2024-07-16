@@ -10,9 +10,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
     [SerializeField]
     private Transform AttackChecker;
     
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref AttackCheckerRef checker) => checker.AttackChecker = AttackChecker);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<AttackCheckerRef>();
     }
   }
 }

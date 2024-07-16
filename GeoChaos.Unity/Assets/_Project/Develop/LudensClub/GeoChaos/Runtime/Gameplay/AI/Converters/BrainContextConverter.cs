@@ -10,12 +10,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
   {
     public BrainContextView ContextView;
 
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       if (entity.Has<SpawnPointRef>())
         ContextView.Context = entity.Get<SpawnPointRef>().Spawn.GetComponent<BrainContextView>().Context;
       
       entity.Add((ref BrainContext ctx) => ctx.Context = ContextView.Context);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
     }
 
     private void Reset()

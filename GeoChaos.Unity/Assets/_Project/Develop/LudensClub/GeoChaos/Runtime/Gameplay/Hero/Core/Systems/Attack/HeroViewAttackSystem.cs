@@ -19,13 +19,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
       _onStartAttacks = _game
         .Filter<OnAttackStarted>()
         .Inc<ComboAttackCounter>()
-        .Inc<HeroAttackColliders>()
+        .Inc<HeroAttackCollidersRef>()
         .Collect();
 
       _onFinishAttacks = _game
         .Filter<OnAttackFinished>()
         .Inc<ComboAttackCounter>()
-        .Inc<HeroAttackColliders>()
+        .Inc<HeroAttackCollidersRef>()
         .Collect();
     }
 
@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
     {
       foreach (EcsEntity attack in _onStartAttacks)
       {
-        attack.Change((ref HeroAttackColliders colliders) =>
+        attack.Change((ref HeroAttackCollidersRef colliders) =>
           colliders.Colliders[attack.Get<ComboAttackCounter>().Count].enabled = true);
       }
 
@@ -43,7 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
         if (index < 0)
           index += 3;
 
-        attack.Change((ref HeroAttackColliders colliders) => colliders.Colliders[index].enabled = false);
+        attack.Change((ref HeroAttackCollidersRef colliders) => colliders.Colliders[index].enabled = false);
       }
     }
   }

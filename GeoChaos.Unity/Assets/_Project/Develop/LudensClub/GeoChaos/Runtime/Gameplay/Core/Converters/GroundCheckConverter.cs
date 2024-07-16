@@ -9,9 +9,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Converters
   {
     public Transform Bottom;
 
-    public void Convert(EcsEntity entity)
+    public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref GroundCheckRef groundRef) => groundRef.Bottom = Bottom);
+    }
+
+    public void ConvertBack(EcsEntity entity)
+    {
+      entity.Del<GroundCheckRef>();
     }
   }
 }
