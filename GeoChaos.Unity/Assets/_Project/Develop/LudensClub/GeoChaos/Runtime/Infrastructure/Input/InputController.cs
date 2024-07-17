@@ -19,6 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     private readonly InputAction _aimDirectionAction;
     private readonly InputAction _aimPositionAction;
     private readonly InputAction _aimRotationAction;
+    private readonly InputAction _interactAction;
 
     public InputController(PlayerInput input, IConfigProvider configProvider, IInputDataProvider provider)
     {
@@ -36,6 +37,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       _aimDirectionAction = input.actions[actionMap.AimDirectionAction];
       _aimPositionAction = input.actions[actionMap.AimPositionAction];
       _aimRotationAction = input.actions[actionMap.AimRotationAction];
+      _interactAction = input.actions[actionMap.InteractAction];
     }
 
     public void Tick()
@@ -67,6 +69,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       data.AimDirection = _aimDirectionAction.ReadValue<Vector2>();
       data.AimPosition = _aimPositionAction.ReadValue<Vector2>();
       data.AimRotation = _aimRotationAction.ReadValue<Vector2>();
+
+      data.IsInteraction = _interactAction.WasPerformedThisFrame();
 
       _provider.Data = data;
     }

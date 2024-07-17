@@ -45,3 +45,6 @@ MonoBehaviour:
   AimRotationAction:
     Id: 02fcc98b-4f91-487f-b5c5-d27ae4d95b64
     Name: Aim Rotation
+  InteractAction:
+    Id: 51f0def8-0ee4-4753-999e-fe1149c8a441
+    Name: Interact

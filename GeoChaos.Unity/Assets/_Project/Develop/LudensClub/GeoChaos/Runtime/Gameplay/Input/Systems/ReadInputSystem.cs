@@ -32,7 +32,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
         .Add((ref AimDirection direction) => direction.Direction = data.AimDirection)
         .Add((ref AimPosition position) => position.Position = data.AimPosition)
         .Add((ref AimRotation rotation) => rotation.Rotation = data.AimRotation)
-        .Add((ref ExpireTimer timer) => timer.PassedTime = 0);
+        .Add((ref ExpireTimer timer) => timer.PassedTime = 0)
+        .Has<IsInteraction>(data.IsInteraction);
     }
   }
 }

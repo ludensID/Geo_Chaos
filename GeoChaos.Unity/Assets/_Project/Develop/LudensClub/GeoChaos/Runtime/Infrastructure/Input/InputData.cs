@@ -18,5 +18,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     public Vector2 AimDirection;
     public Vector2 AimPosition;
     public Vector2 AimRotation;
+    public bool IsInteraction;
   }
 }

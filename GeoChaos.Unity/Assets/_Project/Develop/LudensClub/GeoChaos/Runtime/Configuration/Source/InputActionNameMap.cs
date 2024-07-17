@@ -20,6 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public ActionTuple AimDirectionAction;
     public ActionTuple AimPositionAction;
     public ActionTuple AimRotationAction;
+    public ActionTuple InteractAction;
   }
 
   [Serializable]
