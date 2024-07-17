@@ -1,20 +1,19 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.DoorKey
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
 {
-  public class TakeKeyByHeroSystem : IEcsRunSystem
+  public class DetectHeroNearDoorSystem : IEcsRunSystem
   {
     private readonly ICollisionService _collisionSvc;
     private readonly EcsWorld _message;
     private readonly EcsWorld _game;
     private readonly EcsEntities _collisions;
 
-    public TakeKeyByHeroSystem(MessageWorldWrapper messageWorldWrapper,
+    public DetectHeroNearDoorSystem(MessageWorldWrapper messageWorldWrapper,
       GameWorldWrapper gameWorldWrapper,
       ICollisionService collisionSvc)
     {
@@ -35,12 +34,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.DoorKey
         DamageCollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackEntities(_game)
-          && _collisionSvc.TrySelectByEntitiesTag<KeyTag, HeroTag>()
+          && _collisionSvc.TrySelectByEntitiesTag<DoorTag, HeroTag>()
           && info.MasterCollider.Type == ColliderType.Action
-          && info.TargetCollider.Type is ColliderType.Body or ColliderType.Dash)
+          && info.TargetCollider.Type == ColliderType.Body
+          && info.Master.Has<Closed>())
         {
-          info.Master.Add((ref Owner owner) => owner.Entity = info.PackedTarget);
-          info.Master.SetActive(false);
+          info.Master.Has<CanInteract>(collision.Type == CollisionType.Enter);
         }
 
         _collisionSvc.Reset();

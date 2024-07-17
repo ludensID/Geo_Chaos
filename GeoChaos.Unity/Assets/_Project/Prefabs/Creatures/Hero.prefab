@@ -710,7 +710,7 @@ MonoBehaviour:
   _collider: {fileID: 4220543373771047474}
   WhenEnter: 1
   WhenStay: 0
-  WhenExit: 0
+  WhenExit: 1
   WhenTrigger: 1
   WhenCollider: 1
 --- !u!1 &4479722840739274266

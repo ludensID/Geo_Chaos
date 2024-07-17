@@ -67,6 +67,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     {
       if (_collisionSvc.TryUnpackEntities(_game)
         && _collisionSvc.TrySelectByMasterCollider(x => x.Type == ColliderType.Shard)
+        && info.TargetCollider.Type != ColliderType.Action
         && (!info.Target.IsAlive || !info.Master.Get<Owner>().Entity.EqualsTo(info.PackedTarget)))
       {
         info.Master.Has<DestroyCommand>(true);

@@ -8,9 +8,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
   {
     private readonly List<OneSideCollision> _collisions = new List<OneSideCollision>();
 
-    public void Fill(Collider2D sender, ColliderType senderType, EcsPackedEntity entity, Collider2D other)
+    public void Fill(CollisionType type, Collider2D sender, ColliderType senderType, EcsPackedEntity entity, Collider2D other)
     {
-      _collisions.Add(new OneSideCollision(new PackedCollider(sender, senderType, entity), other));
+      _collisions.Add(new OneSideCollision(type, new PackedCollider(sender, senderType, entity), other));
     }
 
     public List<OneSideCollision> Flush()

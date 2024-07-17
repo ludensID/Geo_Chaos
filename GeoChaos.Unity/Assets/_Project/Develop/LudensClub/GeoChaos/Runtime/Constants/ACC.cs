@@ -51,6 +51,7 @@
       public const string LAMA_ATTACK_RENDERERS_CONVERTER = CONVERTERS + "Lama Attack Renderers Converter";
       public const string GAME_OBJECT_CONVERTER = CONVERTERS + "Game Object Converter";
       public const string IMMUNITY_COLLIDER_CONVERTER = CONVERTERS + "Immunity Collider Converter";
+      public const string MATCHED_KEY_CONVERTER = CONVERTERS + "Matched Key Converter";
 
       public const string COROUTINE_RUNNER = CORE + "Coroutine Runner";
       public const string COLLISION_DETECTOR = CORE + "Collision Detector";
@@ -62,6 +63,7 @@
       public const string PLAYER_SPAWN = PROPS + "Player Spawn";
       public const string SPAWN_POINT = PROPS + "Spawn Point";
       public const string LAMA_GIZMO = PROPS + "Lama Gizmo";
+      
       public const string BUSH_ANIMATOR = ANIMATORS + "Bush Animator";
     }
   }

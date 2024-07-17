@@ -37,13 +37,11 @@ namespace LudensClub.GeoChaos.Runtime.Props
     private bool WhenCollider = true;
 
     private ICollisionFiller _filler;
-    private EcsWorld _game;
 
     [Inject]
-    public void Construct(ICollisionFiller filler, GameWorldWrapper gameWorldWrapper)
+    public void Construct(ICollisionFiller filler)
     {
       _filler = filler;
-      _game = gameWorldWrapper.World;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -51,7 +49,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
       if (!WhenEnter || !WhenCollider)
         return;
 
-      SendCollision(collision);
+      SendCollision(CollisionType.Enter, collision);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -59,7 +57,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
       if (!WhenEnter || !WhenTrigger)
         return;
 
-      SendCollision(other);
+      SendCollision(CollisionType.Enter, other);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -67,7 +65,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
       if (!WhenStay || !WhenCollider)
         return;
 
-      SendCollision(collision);
+      SendCollision(CollisionType.Stay, collision);
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -75,7 +73,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
       if (!WhenStay || !WhenTrigger)
         return;
 
-      SendCollision(other);
+      SendCollision(CollisionType.Stay, other);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -83,7 +81,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
       if (!WhenExit || !WhenCollider)
         return;
 
-      SendCollision(collision);
+      SendCollision(CollisionType.Exit, collision);
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -91,18 +89,18 @@ namespace LudensClub.GeoChaos.Runtime.Props
       if (!WhenExit || !WhenTrigger)
         return;
 
-      SendCollision(other);
+      SendCollision(CollisionType.Exit, other);
     }
 
-    private void SendCollision(Collision2D collision)
+    private void SendCollision(CollisionType type, Collision2D collision)
     {
       Collider2D other = _collider == collision.collider ? collision.otherCollider : collision.collider;
-      _filler.Fill(_collider, _colliderType, _view.Entity, other);
+      _filler.Fill(type, _collider, _colliderType, _view.Entity, other);
     }
 
-    private void SendCollision(Collider2D other)
+    private void SendCollision(CollisionType type, Collider2D other)
     {
-      _filler.Fill(_collider, _colliderType, _view.Entity, other);
+      _filler.Fill(type, _collider, _colliderType, _view.Entity, other);
     }
 
     private void Reset()

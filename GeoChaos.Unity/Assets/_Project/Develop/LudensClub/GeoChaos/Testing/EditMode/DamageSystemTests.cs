@@ -21,7 +21,7 @@ namespace LudensClub.GeoChaos.Testing.EditMode
       DamageCollisionInfo info = collisionSvc.Info;
       var sender = new PackedCollider(null, ColliderType.Shard, master.Pack());
       var other = new PackedCollider(null, ColliderType.Body, target.Pack());
-      collisionSvc.AssignCollision(new TwoSideCollision(other, sender));
+      collisionSvc.AssignCollision(new TwoSideCollision(CollisionType.Enter, other, sender));
       collisionSvc.TryUnpackEntities(world);
 
       // Act.

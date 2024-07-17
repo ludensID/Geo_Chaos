@@ -1,6 +1,5 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Props;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
@@ -13,11 +12,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
   [Serializable]
   public struct TwoSideCollision : IEcsComponent
   {
+    public CollisionType Type;
     public PackedCollider Sender;
     public PackedCollider Other;
 
-    public TwoSideCollision(PackedCollider sender, PackedCollider other)
+    public TwoSideCollision(CollisionType type, PackedCollider sender, PackedCollider other)
     {
+      Type = type;
       Sender = sender;
       Other = other;
     }
