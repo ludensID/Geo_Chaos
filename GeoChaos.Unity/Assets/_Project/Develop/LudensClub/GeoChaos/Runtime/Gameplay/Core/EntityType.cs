@@ -9,6 +9,7 @@
     Ring = 15,
     Shard = Ring + 1,
     Spike = Shard + 1,
-    FadingPlatform = Spike + 1
+    FadingPlatform = Spike + 1,
+    Key = FadingPlatform + 1,
   }
 }

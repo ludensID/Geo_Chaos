@@ -5,6 +5,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
 {
@@ -39,7 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
         DamageCollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackEntities(_game)
-          && _collisionSvc.TrySelectByEntities(x => x.Has<SpikeTag>(), x => x.Has<HeroTag>(), true)
+          && _collisionSvc.TrySelectByEntitiesTag<SpikeTag, HeroTag>()
           && info.TargetCollider.Type == ColliderType.Body)
         {
           _message.CreateEntity()

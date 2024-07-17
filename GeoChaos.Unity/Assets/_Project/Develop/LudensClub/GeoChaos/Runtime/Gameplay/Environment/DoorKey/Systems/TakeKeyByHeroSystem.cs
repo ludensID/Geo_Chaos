@@ -1,19 +1,20 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.DoorKey
 {
-  public class DetectHeroOnFadingPlatformSystem : IEcsRunSystem
+  public class TakeKeyByHeroSystem : IEcsRunSystem
   {
     private readonly ICollisionService _collisionSvc;
     private readonly EcsWorld _message;
     private readonly EcsWorld _game;
     private readonly EcsEntities _collisions;
 
-    public DetectHeroOnFadingPlatformSystem(MessageWorldWrapper messageWorldWrapper,
+    public TakeKeyByHeroSystem(MessageWorldWrapper messageWorldWrapper,
       GameWorldWrapper gameWorldWrapper,
       ICollisionService collisionSvc)
     {
@@ -34,11 +35,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform
         DamageCollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackEntities(_game)
-          && _collisionSvc.TrySelectByEntitiesTag<FadingPlatformTag, HeroTag>()
+          && _collisionSvc.TrySelectByEntitiesTag<KeyTag, HeroTag>()
           && info.MasterCollider.Type == ColliderType.Action
-          && info.TargetCollider.Type == ColliderType.Body)
+          && info.TargetCollider.Type is ColliderType.Body or ColliderType.Dash)
         {
-          info.Master.Add<StartFadeCommand>();
+          info.Master.Add((ref Owner owner) => owner.Entity = info.PackedTarget);
+          info.Master.Get<ConverterRef>().Converter.ConvertBackAndDestroy(info.Master);
         }
 
         _collisionSvc.Reset();

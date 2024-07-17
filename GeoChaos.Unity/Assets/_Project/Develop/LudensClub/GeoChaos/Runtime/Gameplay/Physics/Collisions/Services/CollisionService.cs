@@ -21,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
       Info.TargetCollider.Collider = collision.Other;
     }
 
-    public bool TrySelectByMasterCollider(Predicate<PackedCollider> selector, bool sync = false)
+    public bool TrySelectByMasterCollider(Predicate<PackedCollider> selector, bool sync = true)
     {
       var selection = new List<PackedCollider> { Info.MasterCollider, Info.TargetCollider };
       return TrySelect(() => SelectByMaster(() => selection.FindIndex(selector)),
@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
         sync, () => SyncEntitiesWithColliders());
     }
 
-    public bool TrySelectByTargetCollider(Predicate<PackedCollider> selector, bool sync = false)
+    public bool TrySelectByTargetCollider(Predicate<PackedCollider> selector, bool sync = true)
     {
       var selection = new List<PackedCollider> { Info.MasterCollider, Info.TargetCollider };
       return TrySelect(() => SelectByTarget(() => selection.FindIndex(selector)),
@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     }
 
     public bool TrySelectByColliders(Predicate<PackedCollider> masterSelector, Predicate<PackedCollider> targetSelector,
-      bool sync = false)
+      bool sync = true)
     {
       var selection = new List<PackedCollider> { Info.MasterCollider, Info.TargetCollider };
       return TrySelect(
@@ -47,7 +47,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
         sync, () => SyncEntitiesWithColliders());
     }
 
-    public bool TrySelectByMasterEntity(Predicate<EcsEntity> selector, bool sync = false)
+    public bool TrySelectByMasterEntity(Predicate<EcsEntity> selector, bool sync = true)
     {
       var selection = new List<EcsEntity> { Info.Master, Info.Target };
       return TrySelect(() => SelectByMaster(() => selection.FindIndex(selector)),
@@ -55,7 +55,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
         sync, () => SyncCollidersWithEntities());
     }
 
-    public bool TrySelectByTargetEntity(Predicate<EcsEntity> selector, bool sync = false)
+    public bool TrySelectByTargetEntity(Predicate<EcsEntity> selector, bool sync = true)
     {
       var selection = new List<EcsEntity> { Info.Master, Info.Target };
       return TrySelect(() => SelectByTarget(() => selection.FindIndex(selector)),
@@ -64,7 +64,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     }
 
     public bool TrySelectByEntities(Predicate<EcsEntity> masterSelector, Predicate<EcsEntity> targetSelector,
-      bool sync = false)
+      bool sync = true)
     {
       var selection = new List<EcsEntity> { Info.Master, Info.Target };
       return TrySelect(
@@ -76,13 +76,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     public bool SyncCollidersWithEntities()
     {
       return TrySelectByColliders(x => x.Entity.EqualsTo(Info.Master.Pack()),
-        x => x.Entity.EqualsTo(Info.Target.Pack()));
+        x => x.Entity.EqualsTo(Info.Target.Pack()), false);
     }
 
     public bool SyncEntitiesWithColliders()
     {
       return TrySelectByEntities(x => Info.MasterCollider.Entity.EqualsTo(x.Pack()),
-        x => Info.TargetCollider.Entity.EqualsTo(x.Pack()));
+        x => Info.TargetCollider.Entity.EqualsTo(x.Pack()), false);
     }
 
     public bool TryUnpackEntities(EcsWorld world)

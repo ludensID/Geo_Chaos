@@ -37,8 +37,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
         DamageCollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
-        if (_collisionSvc.TrySelectByColliderTypes(ColliderType.Attack, ColliderType.Body)
-          && _collisionSvc.TryUnpackEntities(_game)
+        if (_collisionSvc.TryUnpackEntities(_game)
+          && _collisionSvc.TrySelectByColliderTypes(ColliderType.Attack, ColliderType.Body)
           && !info.PackedMaster.EqualsTo(info.PackedTarget)
           && info.Master.Has<HeroTag>())
         {
