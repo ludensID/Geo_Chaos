@@ -7,6 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.View
     public ViewFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<SetViewRotationSystem>());
+      Add(systems.Create<SetActiveViewSystem>());
     }
   }
 }

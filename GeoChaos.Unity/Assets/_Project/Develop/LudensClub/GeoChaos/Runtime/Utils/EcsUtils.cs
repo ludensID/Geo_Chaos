@@ -3,6 +3,7 @@ using System.Reflection;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -26,6 +27,13 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     public static TContext Cast<TContext>(this BrainContext ctx) where TContext : IBrainContext
     {
       return (TContext)ctx.Context;
+    }
+
+    public static EcsEntity SetActive(this EcsEntity entity, bool value)
+    {
+      return entity
+        .Has<Enabled>(value)
+        .Has<Inactive>(!value);
     }
 
     public static Vector2 GetBounds(this PhysicalBoundsRef obj)
