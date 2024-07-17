@@ -66,6 +66,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 
     public void Initialize()
     {
+      if (!isActiveAndEnabled)
+        return;
+      
       _initialized = true;
       if (ShouldCreateEntity)
       {

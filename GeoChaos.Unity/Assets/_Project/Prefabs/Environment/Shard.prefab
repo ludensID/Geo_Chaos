@@ -223,3 +223,8 @@ MonoBehaviour:
   _colliderType: 101
   _view: {fileID: 3017524116730699385}
   _collider: {fileID: 6336288800622775996}
+  WhenEnter: 1
+  WhenStay: 0
+  WhenExit: 0
+  WhenTrigger: 1
+  WhenCollider: 1

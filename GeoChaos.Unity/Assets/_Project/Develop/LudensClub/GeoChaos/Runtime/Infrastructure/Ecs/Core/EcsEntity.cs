@@ -8,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
   public class EcsEntity : IDisposable
   {
-    private int _entity;
+    private int _entity = -1;
     private EcsWorld _world;
 
     public EcsWorld World
