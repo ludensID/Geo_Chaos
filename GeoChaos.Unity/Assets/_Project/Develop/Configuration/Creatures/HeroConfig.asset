@@ -64,6 +64,7 @@ MonoBehaviour:
   BumpForce: {x: 5, y: 15}
   BumpFreezeDuration: 0.3
   Health: 100
+  HealthShardPoint: 20
   DashDamage: 10
   ShardDamage: 15
   HitDamages:

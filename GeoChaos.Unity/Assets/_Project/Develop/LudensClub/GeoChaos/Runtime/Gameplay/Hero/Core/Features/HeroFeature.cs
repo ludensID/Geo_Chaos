@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Components.Hook;
+using LudensClub.GeoChaos.Runtime.Gameplay.Hero.HealthShard;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Interaction;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot.Aim;
@@ -127,6 +128,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features
       Add(systems.Create<HeroImmunityFeature>());
 
       Add(systems.Create<HeroInteractionFeature>());
+      
+      Add(systems.Create<HeroHealthShardFeature>());
       
       Add(systems.Create<SetHeroBodyDirectionSystem>());
       

@@ -1,4 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Characteristics.Components;
+﻿using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using Zenject;
@@ -27,7 +27,9 @@ namespace LudensClub.GeoChaos.Runtime.UI.HeroHealth
     {
       foreach (EcsEntity hero in _heroes)
       {
-        _view.SetText(hero.Get<Health>().Value.ToString("###0"));
+        float currentHealth = hero.Get<CurrentHealth>().Health;
+        float maxHealth = hero.Get<MaxCurrentHealth>().Health;
+        _view.SetText($"{currentHealth:###0}/{maxHealth:###0}");
       }
     }
 

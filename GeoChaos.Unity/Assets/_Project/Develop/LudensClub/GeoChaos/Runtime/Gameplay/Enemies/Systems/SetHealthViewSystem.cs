@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Characteristics.Components;
+using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -24,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
     {
       foreach (EcsEntity enemy in _enemies)
       {
-        enemy.Get<HealthRef>().View.SetText(enemy.Get<Health>().Value.ToString("####"));
+        enemy.Get<HealthRef>().View.SetText(enemy.Get<CurrentHealth>().Health.ToString("###0"));
       }
     }
   }

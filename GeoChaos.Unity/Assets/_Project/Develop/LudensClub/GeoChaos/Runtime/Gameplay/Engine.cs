@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -41,11 +42,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<CreationFeature>())
         .Add(factory.Create<CollisionFeature>())
         .Add(factory.Create<InputFeature>())
+        .Add(factory.Create<CharacteristicPreparingFeature>())
         .Add(factory.Create<EnvironmentFeature>())
         .Add(factory.Create<HeroFeature>())
         .Add(factory.Create<AIFeature>())
         .Add(factory.Create<EnemyFeature>())
         .Add(factory.Create<AttackFeature>())
+        .Add(factory.Create<CharacteristicBoundingFeature>())
         .Add(factory.Create<ViewFeature>())
         .Add(factory.Create<CleanupFeature>());
 

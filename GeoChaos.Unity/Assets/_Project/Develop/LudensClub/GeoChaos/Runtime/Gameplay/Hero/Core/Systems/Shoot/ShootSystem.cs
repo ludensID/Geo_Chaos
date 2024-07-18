@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Characteristics.Components;
+using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
@@ -44,7 +44,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
         .Collect();
 
       _enemies = _game
-        .Filter<Health>()
+        .Filter<CurrentHealth>()
         .Inc<Selected>()
         .Exc<HeroTag>()
         .Collect();

@@ -169,6 +169,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title("Characteristics")]
     public float Health;
 
+    public float HealthShardPoint;
+
     public float DashDamage;
     public float ShardDamage;
 

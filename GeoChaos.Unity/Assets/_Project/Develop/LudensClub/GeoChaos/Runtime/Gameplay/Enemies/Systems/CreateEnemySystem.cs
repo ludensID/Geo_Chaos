@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Characteristics.Components;
+using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
       {
         enemy
           .Add<EnemyTag>()
-          .Add((ref Health x) => x.Value = 100)
+          .Add((ref CurrentHealth x) => x.Health = 100)
           .Del<CreateCommand>()
           .Add<InitializeCommand>()
           .Add<Brain>();

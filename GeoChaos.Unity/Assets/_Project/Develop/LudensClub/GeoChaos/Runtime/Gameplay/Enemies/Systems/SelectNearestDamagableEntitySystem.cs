@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Characteristics.Components;
+using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -25,12 +25,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
         .Collect();
 
       _damagables = _game
-        .Filter<Health>()
+        .Filter<CurrentHealth>()
         .Exc<HeroTag>()
         .Collect();
 
       _markedDamagables = _game
-        .Filter<Health>()
+        .Filter<CurrentHealth>()
         .Inc<Marked>()
         .Exc<HeroTag>()
         .Collect();

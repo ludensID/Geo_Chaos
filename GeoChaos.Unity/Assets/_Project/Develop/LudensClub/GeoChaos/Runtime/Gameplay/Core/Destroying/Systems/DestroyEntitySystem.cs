@@ -31,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying
           if (destroying.Has<Poolable>())
             _pushables.Find(x => x.HasId(destroying.Get<EntityId>().Id)).Push(view);
           else
-            Object.Destroy(view);
+            Object.Destroy(view.gameObject);
         }
 
         destroying.Dispose();

@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Characteristics.Components;
+using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -41,7 +41,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
         if (_collisionSvc.TryUnpackEntities(_game)
           && _collisionSvc.TrySelectByColliderTypes(ColliderType.Dash, ColliderType.Body)
           && !info.PackedMaster.EqualsTo(info.PackedTarget)
-          && info.Target.Has<Health>())
+          && info.Target.Has<CurrentHealth>())
         {
           _message.CreateEntity()
             .Add((ref DamageMessage damage) =>

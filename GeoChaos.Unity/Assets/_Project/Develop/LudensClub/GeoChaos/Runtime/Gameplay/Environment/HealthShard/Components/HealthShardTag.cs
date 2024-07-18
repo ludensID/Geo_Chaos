@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Characteristics.Components
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.HealthShard
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,8 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Characteristics.Components
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct Health : IEcsComponent
+  public struct HealthShardTag : IEcsComponent
   {
-    public float Value;
   }
 }
