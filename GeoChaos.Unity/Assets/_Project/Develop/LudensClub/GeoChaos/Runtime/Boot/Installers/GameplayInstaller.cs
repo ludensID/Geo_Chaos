@@ -17,6 +17,7 @@ using LudensClub.GeoChaos.Runtime.Props;
 using LudensClub.GeoChaos.Runtime.Props.Shard;
 using LudensClub.GeoChaos.Runtime.UI;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealth;
+using LudensClub.GeoChaos.Runtime.UI.HeroHealthShard;
 using LudensClub.GeoChaos.Runtime.UI.ImmunityDuration;
 using LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow;
 using UnityEngine;
@@ -38,6 +39,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
     [SerializeField]
     private ImmunityDurationView _immunityDurationView;
+
+    [SerializeField]
+    private HeroHealthShardView _healthShardView;
 
     [SerializeField]
     private Camera _camera;
@@ -93,6 +97,15 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindShootCooldownPresenter();
       BindHeroHealthPresenter();
       BindImmunityDurationPresenter();
+      BindHeroHealthShardPresenter();
+    }
+
+    private void BindHeroHealthShardPresenter()
+    {
+      Container
+        .BindInterfacesTo<HeroHealthShardPresenter>()
+        .AsSingle()
+        .WithArguments(_healthShardView);
     }
 
     private void BindNothingHappensPresenter()

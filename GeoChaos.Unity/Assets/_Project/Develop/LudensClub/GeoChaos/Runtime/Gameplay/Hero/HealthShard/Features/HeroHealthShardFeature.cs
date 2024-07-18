@@ -1,5 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.HealthShard
 {
@@ -9,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.HealthShard
     {
       Add(systems.Create<CheckHealthShardCountSystem>());
       Add(systems.Create<CalculateHeroHealthSystem>());
-      Add(systems.Create<Delete<OnHealthShardTaken>>());
+      Add(systems.Create<DeleteOnHealthShardTakenOnHeroSystem>());
     }
   }
 }
