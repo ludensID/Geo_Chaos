@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.View
 {
@@ -8,6 +9,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.View
     {
       Add(systems.Create<SetViewRotationSystem>());
       Add(systems.Create<SetActiveViewSystem>());
+      
+      Add(systems.Create<ShowNothingHappensWindowSystem>());
+      Add(systems.Create<Delete<NothingHappensMessage, MessageWorldWrapper>>());
     }
   }
 }

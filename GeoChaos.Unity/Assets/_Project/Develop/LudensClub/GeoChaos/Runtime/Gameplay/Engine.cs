@@ -45,8 +45,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<HeroFeature>())
         .Add(factory.Create<AIFeature>())
         .Add(factory.Create<EnemyFeature>())
-        .Add(factory.Create<ViewFeature>())
         .Add(factory.Create<AttackFeature>())
+        .Add(factory.Create<ViewFeature>())
         .Add(factory.Create<CleanupFeature>());
 
       _lateUpdateSystems

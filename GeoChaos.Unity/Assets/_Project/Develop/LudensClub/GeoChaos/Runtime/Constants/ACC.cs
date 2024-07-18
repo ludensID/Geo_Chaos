@@ -29,6 +29,7 @@
       public const string HERO_HEALTH_VIEW = VIEW + "Hero Health View";
       public const string IMMUNITY_DURATION_VIEW = VIEW + "Immunity Duration View";
       public const string KEY_VIEW = VIEW + "Key View";
+      public const string NOTHING_HAPPENS_VIEW = VIEW + "Nothing Happens View";
 
       public const string GAMEPLAY_INSTALLER = BOOT + "Gameplay Installer";
       public const string PROJECT_INSTALLER = BOOT + "Project Installer";

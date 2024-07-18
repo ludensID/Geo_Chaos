@@ -18,6 +18,7 @@ using LudensClub.GeoChaos.Runtime.Props.Shard;
 using LudensClub.GeoChaos.Runtime.UI;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealth;
 using LudensClub.GeoChaos.Runtime.UI.ImmunityDuration;
+using LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow;
 using UnityEngine;
 using Zenject;
 
@@ -86,10 +87,19 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindEngine();
 
+      BindNothingHappensPresenter();
+      
       BindDashCooldownPresenter();
       BindShootCooldownPresenter();
       BindHeroHealthPresenter();
       BindImmunityDurationPresenter();
+    }
+
+    private void BindNothingHappensPresenter()
+    {
+      Container
+        .BindInterfacesTo<NothingHappensPresenter>()
+        .AsSingle();
     }
 
     private void BindInitializingPhase()
