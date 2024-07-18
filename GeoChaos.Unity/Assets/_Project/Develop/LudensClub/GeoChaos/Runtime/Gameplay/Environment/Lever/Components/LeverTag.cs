@@ -1,8 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Props;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Lever
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -11,8 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct KeyViewRef : IEcsComponent
+  public struct LeverTag : IEcsComponent
   {
-    public BaseView Key;
   }
 }

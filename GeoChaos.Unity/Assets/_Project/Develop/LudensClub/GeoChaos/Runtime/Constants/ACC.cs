@@ -30,6 +30,7 @@
       public const string IMMUNITY_DURATION_VIEW = VIEW + "Immunity Duration View";
       public const string KEY_VIEW = VIEW + "Key View";
       public const string NOTHING_HAPPENS_VIEW = VIEW + "Nothing Happens View";
+      public const string DOOR_VIEW = VIEW + "Door View";
 
       public const string GAMEPLAY_INSTALLER = BOOT + "Gameplay Installer";
       public const string PROJECT_INSTALLER = BOOT + "Project Installer";
@@ -54,6 +55,7 @@
       public const string GAME_OBJECT_CONVERTER = CONVERTERS + "Game Object Converter";
       public const string IMMUNITY_COLLIDER_CONVERTER = CONVERTERS + "Immunity Collider Converter";
       public const string MATCHED_KEY_CONVERTER = CONVERTERS + "Matched Key Converter";
+      public const string MATCHED_DOOR_CONVERTER = CONVERTERS + "Matched Door Converter";
 
       public const string COROUTINE_RUNNER = CORE + "Coroutine Runner";
       public const string COLLISION_DETECTOR = CORE + "Collision Detector";
@@ -62,6 +64,7 @@
       public const string RING_HIGHLIGHTER = HIGHLIGHTERS + "Ring Highlighter";
       public const string PLATFORM_FADE = HIGHLIGHTERS + "Platform Fade";
       public const string DOOR_FADE = HIGHLIGHTERS + "Door Fade";
+      public const string LEVER_SWITCHER = HIGHLIGHTERS + "Lever Switcher";
 
       public const string PLAYER_SPAWN = PROPS + "Player Spawn";
       public const string SPAWN_POINT = PROPS + "Spawn Point";

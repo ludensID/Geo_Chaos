@@ -4,16 +4,16 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Lever
 {
-  public class DetectHeroNearDoorSystem : IEcsRunSystem
+  public class DetectHeroNearLeverSystem : IEcsRunSystem
   {
     private readonly ICollisionService _collisionSvc;
     private readonly EcsWorld _message;
     private readonly EcsWorld _game;
     private readonly EcsEntities _collisions;
 
-    public DetectHeroNearDoorSystem(MessageWorldWrapper messageWorldWrapper,
+    public DetectHeroNearLeverSystem(MessageWorldWrapper messageWorldWrapper,
       GameWorldWrapper gameWorldWrapper,
       ICollisionService collisionSvc)
     {
@@ -34,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
         DamageCollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackEntities(_game)
-          && _collisionSvc.TrySelectByEntitiesTag<DoorTag, HeroTag>()
+          && _collisionSvc.TrySelectByEntitiesTag<LeverTag, HeroTag>()
           && info.MasterCollider.Type == ColliderType.Action
           && info.TargetCollider.Type == ColliderType.Body
           && info.Master.Has<Interactable>())

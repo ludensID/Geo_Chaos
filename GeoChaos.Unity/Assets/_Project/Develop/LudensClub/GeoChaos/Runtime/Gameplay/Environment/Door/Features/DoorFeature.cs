@@ -11,6 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
       Add(systems.Create<FindMatchedKeySystem>());
       Add(systems.Create<OpenDoorSystem>());
       Add(systems.Create<SendBlankDoorInteractionSystem>());
+      
+      Add(systems.Create<OpenDoorFromOutsideSystem>());
 
       Add(systems.Create<OpenDoorViewSystem>());
     }

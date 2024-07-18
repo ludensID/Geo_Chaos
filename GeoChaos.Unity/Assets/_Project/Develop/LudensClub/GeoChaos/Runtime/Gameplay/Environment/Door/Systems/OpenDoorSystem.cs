@@ -30,6 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
           door
             .Del<OnInteracted>()
             .Del<CanInteract>()
+            .Del<Interactable>()
             .Del<Closed>()
             .Add<Opened>();
 

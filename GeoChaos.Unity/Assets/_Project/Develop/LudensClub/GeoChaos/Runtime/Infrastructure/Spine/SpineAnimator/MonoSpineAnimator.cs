@@ -31,8 +31,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     private TickableManager _ticker;
     private IInitializingPhase _phase;
 
-    public bool Injected { get; set; }
-
     [Inject]
     public void Construct(IInitializingPhase phase, TickableManager ticker)
     {
@@ -42,8 +40,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       _ticker = ticker;
       _ticker.Add(this);
       CreateAnimator();
-
-      Injected = true;
     }
 
     public void Initialize()

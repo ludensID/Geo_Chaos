@@ -1,6 +1,5 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Environment.DoorKey;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props;
@@ -11,7 +10,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _interactedDoors;
-    private readonly EcsEntities _ownedKeys;
 
     public FindMatchedKeySystem(GameWorldWrapper gameWorldWrapper)
     {
@@ -21,26 +19,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
         .Filter<DoorTag>()
         .Inc<OnInteracted>()
         .Collect();
-
-      _ownedKeys = _game
-        .Filter<KeyTag>()
-        .Inc<Owner>()
-        .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity door in _interactedDoors)
       {
-        BaseView keyView = door.Get<KeyViewRef>().Key;
-        foreach (EcsEntity key in _ownedKeys)
+        BaseView keyView = door.Get<MatchedKeyRef>().Key;
+        if (keyView && keyView.Entity.TryUnpackEntity(_game, out EcsEntity key)
+          && key.Has<Owner>()
+          && key.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity hero)
+          && hero.Has<HeroTag>())
         {
-          if (key.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity hero)
-            && hero.Has<HeroTag>()
-            && keyView == key.Get<ViewRef>().View)
-          {
-            key.Add((ref MatchedDoor matchedDoor) => matchedDoor.Door = door.Pack());
-          }
+          key.Add((ref MatchedDoor matchedDoor) => matchedDoor.Door = door.Pack());
         }
       }
     }

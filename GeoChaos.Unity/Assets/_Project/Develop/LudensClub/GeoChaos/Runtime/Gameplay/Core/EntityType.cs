@@ -11,6 +11,7 @@
     Spike = Shard + 1,
     FadingPlatform = Spike + 1,
     Key = FadingPlatform + 1,
-    Door = Key + 1
+    Door = Key + 1,
+    Lever = Door + 1
   }
 }

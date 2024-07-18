@@ -12,12 +12,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
       
     public void ConvertTo(EcsEntity entity)
     {
-      entity.Add((ref KeyViewRef keyRef) => keyRef.Key = MatchedKey);
+      entity.Add((ref MatchedKeyRef keyRef) => keyRef.Key = MatchedKey);
     }
 
     public void ConvertBack(EcsEntity entity)
     {
-      entity.Del<KeyViewRef>();
+      entity.Del<MatchedKeyRef>();
     }
   }
 }
