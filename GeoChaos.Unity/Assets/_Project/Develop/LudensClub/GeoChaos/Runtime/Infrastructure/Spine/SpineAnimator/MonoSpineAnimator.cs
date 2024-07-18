@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using LudensClub.GeoChaos.Runtime.Utils;
 using Spine.Unity;
 using TriInspector;
 using UnityEngine;
@@ -8,8 +7,8 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
-  public abstract partial class MonoSpineAnimator<TParameterEnum, TAnimationEnum> : MonoBehaviour, IInjectable,
-    IInitializable, ITickable
+  [RequireComponent(typeof(MonoInjector))]
+  public abstract partial class MonoSpineAnimator<TParameterEnum, TAnimationEnum> : MonoBehaviour, IInitializable, ITickable
     where TParameterEnum : Enum where TAnimationEnum : Enum
   {
     public SkeletonAnimation Skeleton;
@@ -27,16 +26,18 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     protected SpineAnimatorAsset<TParameterEnum, TAnimationEnum> _asset;
     protected int _sharedAssetId;
     protected bool _delayInitialize;
-    protected bool _started;
+    
+    private bool _initialized;
     private TickableManager _ticker;
+    private IInitializingPhase _phase;
 
     public bool Injected { get; set; }
 
     [Inject]
-    public void Construct(InitializableManager initializer, TickableManager ticker)
+    public void Construct(IInitializingPhase phase, TickableManager ticker)
     {
-      if (!_started)
-        initializer.Add(this);
+      _phase = phase;
+      _phase.Add(this);
 
       _ticker = ticker;
       _ticker.Add(this);
@@ -47,6 +48,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 
     public void Initialize()
     {
+      _initialized = true;
+      
       if (Skeleton.state == null)
       {
         _delayInitialize = true;
@@ -57,14 +60,11 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       _delayInitialize = false;
     }
 
-#if UNITY_EDITOR
     protected virtual void Start()
     {
-      _started = true;
-      if (!this.EnsureInjection())
+      if(_phase.WasInitialized && !_initialized)
         Initialize();
     }
-#endif
 
     public void Tick()
     {
@@ -140,7 +140,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
         _parameters.Add(tuple.Id, tuple.Variable.GetValue());
 #endif
 
-      if (_started)
+      if (_initialized)
         Initialize();
     }
 

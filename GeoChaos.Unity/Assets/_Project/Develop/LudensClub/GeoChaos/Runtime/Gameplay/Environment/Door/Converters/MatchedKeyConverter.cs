@@ -1,6 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
-using LudensClub.GeoChaos.Runtime.Props;
+using LudensClub.GeoChaos.Runtime.Props.Environment.Key;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
@@ -8,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
   [AddComponentMenu(ACC.Names.MATCHED_KEY_CONVERTER)]
   public class MatchedKeyConverter : MonoBehaviour, IEcsConverter
   {
-    public BaseView MatchedKey;
+    public KeyView MatchedKey;
       
     public void ConvertTo(EcsEntity entity)
     {

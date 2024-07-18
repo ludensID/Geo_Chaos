@@ -18,6 +18,14 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       WasInitialized = true;
     }
 
+    public bool Add(IInitializable initializable)
+    {
+      if (!WasInitialized)
+        _initializer.Add(initializable);
+
+      return !WasInitialized;
+    }
+
     public void EnsureInitializing(IInitializable initializable)
     {
       if(WasInitialized)

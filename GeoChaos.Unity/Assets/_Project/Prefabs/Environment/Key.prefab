@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 49079428501274268}
   - component: {fileID: 5034814115009565721}
   - component: {fileID: 3625532499278139764}
-  - component: {fileID: 1213001724492878012}
+  - component: {fileID: 2916818382183125006}
   - component: {fileID: 533508146809183323}
   - component: {fileID: 4326474534450112944}
   - component: {fileID: 7365492778547917817}
@@ -568,7 +568,7 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
---- !u!114 &1213001724492878012
+--- !u!114 &2916818382183125006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8732296179130818552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a14799b18fe844ffa08fe1482bd17b36, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a7f687dfda14863b2528989689f3acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &533508146809183323
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6412848474748d3a83f2337726299a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  View: {fileID: 1213001724492878012}
+  View: {fileID: 2916818382183125006}
 --- !u!61 &4326474534450112944
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -652,7 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colliderType: 102
-  _view: {fileID: 1213001724492878012}
+  _view: {fileID: 2916818382183125006}
   _collider: {fileID: 4326474534450112944}
   WhenEnter: 1
   WhenStay: 0

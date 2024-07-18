@@ -23,12 +23,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     public bool ShouldCreateEntity { get; set; } = true;
 
     [Inject]
-    public void Construct(IInitializingPhase phase, InitializableManager initializer,
-      MessageWorldWrapper messageWorldWrapper)
+    public void Construct(IInitializingPhase phase, MessageWorldWrapper messageWorldWrapper)
     {
       _phase = phase;
-      if (!phase.WasInitialized)
-        initializer.Add(this);
+      phase.Add(this);
         
       _message = messageWorldWrapper.World;
       GetConvertersInChildren();

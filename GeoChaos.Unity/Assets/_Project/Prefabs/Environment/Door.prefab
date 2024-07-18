@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4105828036003725180}
   - component: {fileID: 7676113196508075887}
   - component: {fileID: 6805150386754859230}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: InteractionArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,11 +112,12 @@ GameObject:
   - component: {fileID: 6556014443383030698}
   - component: {fileID: 2679952622501436569}
   - component: {fileID: 4168253013171636395}
-  - component: {fileID: 7182681143501941757}
+  - component: {fileID: 573238134126576359}
   - component: {fileID: 3417463652388733298}
   - component: {fileID: 6050042297932362168}
   - component: {fileID: 7581888454373348978}
-  m_Layer: 7
+  - component: {fileID: 8791255498874098342}
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +277,7 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
---- !u!114 &7182681143501941757
+--- !u!114 &573238134126576359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -327,3 +328,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 6556014443383030698}
+--- !u!114 &8791255498874098342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7722620700547565573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b4414a146d4ff8b13e3bc5b3d99bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

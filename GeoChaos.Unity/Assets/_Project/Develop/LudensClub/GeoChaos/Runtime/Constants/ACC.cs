@@ -28,6 +28,7 @@
       public const string SHOOT_COOLDOWN_VIEW = VIEW + "Shoot Cooldown View";
       public const string HERO_HEALTH_VIEW = VIEW + "Hero Health View";
       public const string IMMUNITY_DURATION_VIEW = VIEW + "Immunity Duration View";
+      public const string KEY_VIEW = VIEW + "Key View";
 
       public const string GAMEPLAY_INSTALLER = BOOT + "Gameplay Installer";
       public const string PROJECT_INSTALLER = BOOT + "Project Installer";
@@ -59,11 +60,12 @@
       public const string ENEMY_HIGHLIGHTER = HIGHLIGHTERS + "Enemy Highlighter";
       public const string RING_HIGHLIGHTER = HIGHLIGHTERS + "Ring Highlighter";
       public const string PLATFORM_FADE = HIGHLIGHTERS + "Platform Fade";
+      public const string DOOR_FADE = HIGHLIGHTERS + "Door Fade";
 
       public const string PLAYER_SPAWN = PROPS + "Player Spawn";
       public const string SPAWN_POINT = PROPS + "Spawn Point";
       public const string LAMA_GIZMO = PROPS + "Lama Gizmo";
-      
+
       public const string BUSH_ANIMATOR = ANIMATORS + "Bush Animator";
     }
   }

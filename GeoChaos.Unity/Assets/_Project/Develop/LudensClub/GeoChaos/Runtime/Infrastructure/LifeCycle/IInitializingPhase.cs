@@ -6,5 +6,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
   {
     bool WasInitialized { get; }
     void EnsureInitializing(IInitializable initializable);
+    bool Add(IInitializable initializable);
   }
 }
