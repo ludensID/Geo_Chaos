@@ -26,7 +26,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
         door
           .Del<OpenCommand>()
           .Del<Closed>()
-          .Add<Opened>();
+          .Add<Opened>()
+          .Add<OnOpened>();
       }
     }
   }

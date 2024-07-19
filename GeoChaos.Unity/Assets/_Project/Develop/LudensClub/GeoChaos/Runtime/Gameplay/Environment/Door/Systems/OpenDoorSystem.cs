@@ -31,7 +31,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
           .Del<Interactable>()
           .Del<OpenCommand>()
           .Del<Closed>()
-          .Add<Opened>();
+          .Add<Opened>()
+          .Add<OnOpened>();
 
         if (door.Get<MatchedKeyRef>().Key.Entity.TryUnpackEntity(_game, out EcsEntity key))
           key.Add<DestroyCommand>();

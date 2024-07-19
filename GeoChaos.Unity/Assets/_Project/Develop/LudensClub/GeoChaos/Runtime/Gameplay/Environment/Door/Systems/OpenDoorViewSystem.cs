@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
       
       _openedDoors = _game
         .Filter<DoorTag>()
-        .Inc<Opened>()
+        .Inc<OnOpened>()
         .Inc<ColliderRef>()
         .Collect();
     }

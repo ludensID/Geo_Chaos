@@ -7,7 +7,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
     public DoorFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<DetectHeroNearDoorSystem>());
-      
+
+      Add(systems.Create<DeleteOnDoorOpenedSystem>());
       Add(systems.Create<FindMatchedKeySystem>());
       Add(systems.Create<OpenDoorSystem>());
       Add(systems.Create<SendBlankDoorInteractionSystem>());
