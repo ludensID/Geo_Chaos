@@ -4,7 +4,7 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   [Serializable]
-  public struct InputData
+  public class InputData
   {
     public bool IsJumpStarted;
     public bool IsJumpCanceled;
@@ -19,5 +19,22 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     public Vector2 AimPosition;
     public Vector2 AimRotation;
     public bool IsInteraction;
+
+    public void Clear()
+    {
+      IsJumpStarted = false;
+      IsJumpCanceled = false;
+      HorizontalMovement = 0;
+      VerticalMovement = 0;
+      IsDash = false;
+      IsAttack = false;
+      IsHook = false;
+      IsShoot = false;
+      IsAim = false;
+      AimDirection = Vector2.zero;
+      AimPosition = Vector2.zero;
+      AimRotation = Vector2.zero;
+      IsInteraction = false;
+    }
   }
 }

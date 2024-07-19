@@ -15,11 +15,6 @@ namespace LudensClub.GeoChaos.Testing
       return Substitute.For<IConfigProvider>();
     }
 
-    public static IInputDataProvider InputDataProvider()
-    {
-      return Substitute.For<IInputDataProvider>();
-    }
-
     public static ITimerService TimerService()
     {
       return Substitute.For<ITimerService>();

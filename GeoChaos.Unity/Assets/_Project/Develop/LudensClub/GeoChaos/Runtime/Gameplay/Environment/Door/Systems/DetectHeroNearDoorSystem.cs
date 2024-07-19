@@ -41,8 +41,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
         {
           info.Master.Has<CanInteract>(collision.Type == CollisionType.Enter);
         }
-
-        _collisionSvc.Reset();
       }
     }
   }

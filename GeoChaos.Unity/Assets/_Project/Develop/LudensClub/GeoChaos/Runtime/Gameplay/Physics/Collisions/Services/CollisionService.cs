@@ -11,12 +11,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 
     public void AssignCollision(TwoSideCollision collision)
     {
+      Reset();
       Info.MasterCollider = collision.Sender;
       Info.TargetCollider = collision.Other;
     }
 
     public void AssignCollision(OneSideCollision collision)
     {
+      Reset();
       Info.MasterCollider = collision.Sender;
       Info.TargetCollider.Collider = collision.Other;
     }
@@ -89,6 +91,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     {
       return Info.MasterCollider.Entity.TryUnpackEntity(world, out Info.Master)
         && Info.TargetCollider.Entity.TryUnpackEntity(world, out Info.Target);
+    }
+
+    public bool UnpackEntities(EcsWorld world)
+    {
+      Info.MasterCollider.Entity.TryUnpackEntity(world, out Info.Master);
+      Info.TargetCollider.Entity.TryUnpackEntity(world, out Info.Target);
+      return true;
     }
 
     public void Reset()

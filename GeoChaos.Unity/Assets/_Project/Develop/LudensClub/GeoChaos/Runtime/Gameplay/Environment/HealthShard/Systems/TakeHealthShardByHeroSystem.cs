@@ -46,8 +46,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.HealthShard
           
           info.Master.Add<DestroyCommand>();
         }
-
-        _collisionSvc.Reset();
       }
     }
   }

@@ -40,8 +40,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform
         {
           info.Master.Add<StartFadeCommand>();
         }
-
-        _collisionSvc.Reset();
       }
     }
   }

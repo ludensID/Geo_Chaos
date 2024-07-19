@@ -19,7 +19,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     public override void InstallBindings()
     {
       BindConfigProvider();
+      BindInputConfig();
       BindInputDataProvider();
+      BindInputSwitcher();  
       BindInputController();
       BindTimerService();
       BindTimerFactory();
@@ -29,6 +31,21 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 #if UNITY_EDITOR
       DebugBridge.InstallProject(Container);
 #endif
+    }
+
+    private void BindInputSwitcher()
+    {
+      Container
+        .Bind<IInputSwitcher>()
+        .To<InputSwitcher>()
+        .AsSingle();
+    }
+
+    private void BindInputConfig()
+    {
+      Container
+        .BindInterfacesAndSelfTo<InputConfig>()
+        .AsSingle();
     }
 
     private void BindTimerFactory()
@@ -58,8 +75,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindInputDataProvider()
     {
       Container
-        .Bind<IInputDataProvider>()
-        .To<InputDataProvider>()
+        .Bind<InputData>()
         .AsSingle();
     }
 

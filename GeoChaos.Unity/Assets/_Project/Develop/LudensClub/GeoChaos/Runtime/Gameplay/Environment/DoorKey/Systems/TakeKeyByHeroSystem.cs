@@ -42,8 +42,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.DoorKey
           info.Master.Add((ref Owner owner) => owner.Entity = info.PackedTarget);
           info.Master.SetActive(false);
         }
-
-        _collisionSvc.Reset();
       }
     }
   }

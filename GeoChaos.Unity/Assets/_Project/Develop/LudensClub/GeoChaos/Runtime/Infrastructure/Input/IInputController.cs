@@ -4,6 +4,5 @@
   {
     void Clear();
     void HandleInput();
-    void EnableGameplayMap(bool enable);
   }
 }

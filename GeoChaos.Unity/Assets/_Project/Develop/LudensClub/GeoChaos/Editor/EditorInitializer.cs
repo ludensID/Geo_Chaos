@@ -1,6 +1,5 @@
 ﻿using LudensClub.GeoChaos.Editor.General;
 using LudensClub.GeoChaos.Runtime;
-using LudensClub.GeoChaos.Runtime.Configuration;
 using UnityEditor;
 using UnityEngine.InputSystem;
 using TypeCache = LudensClub.GeoChaos.Editor.General.TypeCache;
@@ -15,13 +14,9 @@ namespace LudensClub.GeoChaos.Editor
       var container = new EditorContainer();
       EditorContext.Container = container;
       var inputAsset = AssetFinder.FindAsset<InputActionAsset>();
-      var nameMap = AssetFinder.FindAsset<InputActionNameMap>();
       container.InputAsset = inputAsset;
-      container.NameMap = nameMap;
       container.ProfilerService = new ProfilerService();
       container.TypeCache = new TypeCache();
-        
-      InputMapUpdater.Construct();
     }
   }
 }

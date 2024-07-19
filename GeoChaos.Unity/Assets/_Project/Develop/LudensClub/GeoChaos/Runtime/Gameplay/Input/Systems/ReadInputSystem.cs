@@ -6,34 +6,33 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 {
   public class ReadInputSystem : IEcsRunSystem
   {
-    private readonly IInputDataProvider _inputProvider;
+    private readonly InputData _data;
     private readonly EcsWorld _input;
 
-    public ReadInputSystem(InputWorldWrapper inputWorldWrapper, IInputDataProvider inputProvider)
+    public ReadInputSystem(InputWorldWrapper inputWorldWrapper, InputData data)
     {
-      _inputProvider = inputProvider;
+      _data = data;
       _input = inputWorldWrapper.World;
     }
 
     public void Run(EcsSystems systems)
     {
-      InputData data = _inputProvider.Data;
       _input.CreateEntity()
         .Add<DelayedInput>()
-        .Add((ref HorizontalMovement movement) => movement.Direction = data.HorizontalMovement)
-        .Add((ref VerticalMovement movement) => movement.Direction = data.VerticalMovement)
-        .Has<IsJumpStarted>(data.IsJumpStarted)
-        .Has<IsJumpCanceled>(data.IsJumpCanceled)
-        .Has<IsDash>(data.IsDash)
-        .Has<IsAttack>(data.IsAttack)
-        .Has<IsHook>(data.IsHook)
-        .Has<IsShoot>(data.IsShoot)
-        .Add((ref AimButton button) => button.Pressed = data.IsAim)
-        .Add((ref AimDirection direction) => direction.Direction = data.AimDirection)
-        .Add((ref AimPosition position) => position.Position = data.AimPosition)
-        .Add((ref AimRotation rotation) => rotation.Rotation = data.AimRotation)
+        .Add((ref HorizontalMovement movement) => movement.Direction = _data.HorizontalMovement)
+        .Add((ref VerticalMovement movement) => movement.Direction = _data.VerticalMovement)
+        .Has<IsJumpStarted>(_data.IsJumpStarted)
+        .Has<IsJumpCanceled>(_data.IsJumpCanceled)
+        .Has<IsDash>(_data.IsDash)
+        .Has<IsAttack>(_data.IsAttack)
+        .Has<IsHook>(_data.IsHook)
+        .Has<IsShoot>(_data.IsShoot)
+        .Add((ref AimButton button) => button.Pressed = _data.IsAim)
+        .Add((ref AimDirection direction) => direction.Direction = _data.AimDirection)
+        .Add((ref AimPosition position) => position.Position = _data.AimPosition)
+        .Add((ref AimRotation rotation) => rotation.Rotation = _data.AimRotation)
         .Add((ref ExpireTimer timer) => timer.PassedTime = 0)
-        .Has<IsInteraction>(data.IsInteraction);
+        .Has<IsInteraction>(_data.IsInteraction);
     }
   }
 }

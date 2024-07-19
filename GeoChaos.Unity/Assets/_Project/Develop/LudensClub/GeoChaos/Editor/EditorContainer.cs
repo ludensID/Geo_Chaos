@@ -1,5 +1,4 @@
 ﻿using LudensClub.GeoChaos.Runtime;
-using LudensClub.GeoChaos.Runtime.Configuration;
 using UnityEngine.InputSystem;
 
 namespace LudensClub.GeoChaos.Editor
@@ -8,7 +7,6 @@ namespace LudensClub.GeoChaos.Editor
   {
     public InputActionAsset InputAsset { get; set; }
     public InputActionMap Map => InputAsset ? InputAsset.FindActionMap("Gameplay") : null;
-    public InputActionNameMap NameMap { get; set; }
     public IProfilerService ProfilerService { get; set; }
     public ITypeCache TypeCache { get; set; }
   }

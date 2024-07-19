@@ -51,8 +51,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
               damage.Target = info.PackedTarget;
             });
         }
-        
-        _collisionSvc.Reset();
       }
     }
   }

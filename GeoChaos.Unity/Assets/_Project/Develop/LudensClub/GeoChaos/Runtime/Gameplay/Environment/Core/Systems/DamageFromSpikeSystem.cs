@@ -51,8 +51,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
               message.Target = info.PackedTarget;
             });
         }
-
-        _collisionSvc.Reset();
       }
     }
   }

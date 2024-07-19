@@ -41,7 +41,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
       {
         _collisionSvc.AssignCollision(col.Get<TwoSideCollision>());
         DamageCollisionInfo info = _collisionSvc.Info;
-        if (DestroyShard(info) && info.TargetCollider.Type == ColliderType.Body)
+        if (DestroyShard(info)
+          && info.Target.IsAlive
+          && info.TargetCollider.Type == ColliderType.Body)
         {
           _message.CreateEntity()
             .Add((ref DamageMessage damage) =>
@@ -51,21 +53,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
               damage.Target = info.PackedTarget;
             });
         }
-        
-        _collisionSvc.Reset();
       }
 
       foreach (EcsEntity collision in _oneCollisions)
       {
         _collisionSvc.AssignCollision(collision.Get<OneSideCollision>());
         DestroyShard(_collisionSvc.Info);
-        _collisionSvc.Reset();
       }
     }
 
     private bool DestroyShard(DamageCollisionInfo info)
     {
-      if (_collisionSvc.TryUnpackEntities(_game)
+      if (_collisionSvc.UnpackEntities(_game)
         && _collisionSvc.TrySelectByMasterCollider(x => x.Type == ColliderType.Shard)
         && info.TargetCollider.Type != ColliderType.Action
         && (!info.Target.IsAlive || !info.Master.Get<Owner>().Entity.EqualsTo(info.PackedTarget)))

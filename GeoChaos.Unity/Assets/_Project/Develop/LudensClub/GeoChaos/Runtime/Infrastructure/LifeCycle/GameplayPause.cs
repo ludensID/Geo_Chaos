@@ -4,9 +4,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public class GameplayPause : IGameplayPause
   {
-    private readonly IInputController _input;
+    private readonly IInputSwitcher _input;
 
-    public GameplayPause(IInputController input)
+    public GameplayPause(IInputSwitcher input)
     {
       _input = input;
     }
