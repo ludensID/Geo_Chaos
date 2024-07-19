@@ -31,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
           && key.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity hero)
           && hero.Has<HeroTag>())
         {
-          key.Add((ref MatchedDoor matchedDoor) => matchedDoor.Door = door.Pack());
+          door.Add<OpenCommand>();
         }
       }
     }

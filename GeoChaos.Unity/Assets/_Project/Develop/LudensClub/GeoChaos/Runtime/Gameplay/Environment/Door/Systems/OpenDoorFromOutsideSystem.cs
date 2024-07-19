@@ -25,7 +25,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
       {
         door
           .Del<OpenCommand>()
-          .Has<CanInteract>(false)
           .Del<Closed>()
           .Add<Opened>();
       }
