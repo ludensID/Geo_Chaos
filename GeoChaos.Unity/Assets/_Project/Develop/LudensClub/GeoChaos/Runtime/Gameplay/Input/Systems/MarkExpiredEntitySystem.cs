@@ -6,22 +6,25 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 {
   public class MarkExpiredEntitySystem : IEcsRunSystem
   {
-    private readonly EcsWorld _world;
+    private readonly EcsWorld _input;
     private readonly EcsEntities _expireUps;
+    private readonly EcsEntity _expiredInput;
 
     public MarkExpiredEntitySystem(InputWorldWrapper inputWorldWrapper)
     {
-      _world = inputWorldWrapper.World;
+      _input = inputWorldWrapper.World;
 
-      _expireUps = _world
+      _expireUps = _input
         .Filter<ExpireUp>()
         .Collect();
+
+      _expiredInput = new EcsEntity(_input, -1);
     }
 
     public void Run(EcsSystems systems)
     {
       float maxTime = 0;
-      EcsEntity expiredEntity = null;
+      _expiredInput.Entity = -1;
 
       foreach (EcsEntity expireUp in _expireUps)
       {
@@ -29,11 +32,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
         if (time > maxTime)
         {
           maxTime = time;
-          expiredEntity = expireUp.Clone();
+          _expiredInput.Entity = expireUp.Entity;
         }
       }
 
-      expiredEntity?.Add<Expired>();
+      if (_expiredInput.IsAlive)
+        _expiredInput.Add<Expired>();
     }
   }
 }

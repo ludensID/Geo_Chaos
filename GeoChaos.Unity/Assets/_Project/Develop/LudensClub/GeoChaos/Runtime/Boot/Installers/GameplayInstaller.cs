@@ -48,6 +48,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
     public override void InstallBindings()
     {
+      BindGameplayPause();
       BindInitializingPhase();
 
       BindNodeStrategyFactory();
@@ -98,6 +99,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthPresenter();
       BindImmunityDurationPresenter();
       BindHeroHealthShardPresenter();
+    }
+
+    private void BindGameplayPause()
+    {
+      Container
+        .Bind<IGameplayPause>()
+        .To<GameplayPause>()
+        .AsSingle();
     }
 
     private void BindHeroHealthShardPresenter()

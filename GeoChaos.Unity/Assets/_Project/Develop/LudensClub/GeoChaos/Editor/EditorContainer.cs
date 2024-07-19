@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Editor
   public class EditorContainer : IEditorContainer
   {
     public InputActionAsset InputAsset { get; set; }
-    public InputActionMap Map => InputAsset ? InputAsset.FindActionMap("Player") : null;
+    public InputActionMap Map => InputAsset ? InputAsset.FindActionMap("Gameplay") : null;
     public InputActionNameMap NameMap { get; set; }
     public IProfilerService ProfilerService { get; set; }
     public ITypeCache TypeCache { get; set; }

@@ -25,6 +25,9 @@ namespace LudensClub.GeoChaos.Editor
       {
         _map = newMap;
         InputActionNameMap nameMap = EditorContext.Container.NameMap;
+        if (_map == null || nameMap == null)
+          return;
+        
         ReadOnlyArray<InputAction> actions = _map.actions;
 
         FieldInfo[] fields = typeof(InputActionNameMap).GetFields()

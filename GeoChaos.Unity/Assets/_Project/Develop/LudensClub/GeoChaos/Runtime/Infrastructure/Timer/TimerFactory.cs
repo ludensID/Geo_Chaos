@@ -9,10 +9,10 @@
       _timerSvc = timerSvc;
     }
 
-    public Timer Create(float time) 
+    public Timer Create(float time, bool unscaled = false)
     {
-      Timer instance = time; 
-      _timerSvc.AddTimer(instance);
+      Timer instance = time;
+      _timerSvc.AddTimer(instance, unscaled);
       return instance;
     }
   }

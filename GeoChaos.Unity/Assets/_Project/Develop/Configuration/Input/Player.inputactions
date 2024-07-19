@@ -2,7 +2,7 @@
     "name": "Player",
     "maps": [
         {
-            "name": "Player",
+            "name": "Gameplay",
             "id": "1393d809-0382-4259-9d74-4cf486def07b",
             "actions": [
                 {

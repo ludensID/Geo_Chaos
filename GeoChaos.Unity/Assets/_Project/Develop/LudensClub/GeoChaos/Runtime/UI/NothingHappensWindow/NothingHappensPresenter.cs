@@ -1,12 +1,19 @@
-﻿using Zenject;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow
 {
   public class NothingHappensPresenter : INothingHappensPresenter, IInitializable
   {
+    private readonly IGameplayPause _pause;
     private NothingHappensView _view;
 
     public bool IsShown { get; private set; }
+
+    public NothingHappensPresenter(IGameplayPause pause)
+    {
+      _pause = pause;
+    }
 
     public void Initialize()
     {
@@ -23,6 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow
     {
       if (!IsShown)
       {
+        _pause.SetPause(true);
         _view.gameObject.SetActive(true);
         IsShown = true;
       }
@@ -33,6 +41,7 @@ namespace LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow
       if(IsShown)
       {
         _view.gameObject.SetActive(false);
+        _pause.SetPause(false);
         IsShown = false;
       }
     }

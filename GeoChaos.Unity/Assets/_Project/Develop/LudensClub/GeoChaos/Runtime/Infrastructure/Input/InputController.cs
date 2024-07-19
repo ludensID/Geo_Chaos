@@ -7,6 +7,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public class InputController : IInputController, ITickable
   {
+    private readonly PlayerInput _input;
+    private readonly InputActionMap _gameplayMap;
     private readonly IInputDataProvider _provider;
     private readonly InputAction _horizontalAction;
     private readonly InputAction _verticalAction;
@@ -23,6 +25,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
     public InputController(PlayerInput input, IConfigProvider configProvider, IInputDataProvider provider)
     {
+      _input = input;
+      _gameplayMap = _input.actions.FindActionMap("Gameplay");
       _provider = provider;
 
       var actionMap = configProvider.Get<InputActionNameMap>();
@@ -38,6 +42,14 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       _aimPositionAction = input.actions[actionMap.AimPositionAction];
       _aimRotationAction = input.actions[actionMap.AimRotationAction];
       _interactAction = input.actions[actionMap.InteractAction];
+    }
+
+    public void EnableGameplayMap(bool enable)
+    {
+      if (enable)
+        _gameplayMap.Enable();
+      else 
+        _gameplayMap.Disable();
     }
 
     public void Tick()
