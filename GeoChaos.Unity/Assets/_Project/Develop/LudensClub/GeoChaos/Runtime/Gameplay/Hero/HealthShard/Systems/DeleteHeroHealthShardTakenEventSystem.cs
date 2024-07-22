@@ -2,9 +2,9 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.HealthShard
 {
-  public class DeleteOnHealthShardTakenOnHeroSystem : Delete<OnHealthShardTaken>
+  public class DeleteHeroHealthShardTakenEventSystem : Delete<OnHealthShardTaken>
   {
-    protected DeleteOnHealthShardTakenOnHeroSystem(GameWorldWrapper gameWorldWrapper) 
+    protected DeleteHeroHealthShardTakenEventSystem(GameWorldWrapper gameWorldWrapper) 
       : base(gameWorldWrapper, x => x.Inc<HeroTag>())
     {
     }

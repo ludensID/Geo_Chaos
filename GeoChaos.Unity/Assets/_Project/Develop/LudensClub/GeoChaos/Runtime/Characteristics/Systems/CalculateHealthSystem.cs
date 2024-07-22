@@ -26,9 +26,8 @@ namespace LudensClub.GeoChaos.Runtime.Characteristics
       {
         command
           .Del<CalculateHealthCommand>()
-          .Add<OnHealthCalculated>();
-
-        command.Change((ref MaxCurrentHealth maxHealth) => maxHealth.Health = command.Get<DefaultHealth>().Health);
+          .Add<OnHealthCalculated>()
+          .Change((ref MaxCurrentHealth maxHealth) => maxHealth.Health = command.Get<DefaultHealth>().Health);
       }
     }
   }

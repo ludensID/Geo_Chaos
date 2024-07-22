@@ -14,9 +14,6 @@
       public const string HERO_MENU = CONFIG_MENU + "Hero";
       public const string HERO_FILE = "HeroConfig";
 
-      public const string INPUT_ACTION_NAME_MENU = CONFIG_MENU + "Input Action Name Map";
-      public const string INPUT_ACTION_NAME_FILE = "InputActionNameMap";
-
       public const string CONFIG_PROVIDER_MENU = CONFIG_MENU + "Config Provider";
       public const string CONFIG_PROVIDER_FILE = "ConfigProvider";
 
@@ -39,7 +36,7 @@
       public const string BUSH_ANIMATOR_FILE = "BushAnimator";
       
       public const string FADING_PLATFORM_MENU = CONFIG_MENU + "Fading Platform";
-      public const string FADING_PLATFORM_FILE = "FadingPlatform";
+      public const string FADING_PLATFORM_FILE = "FadingPlatformConfig";
       
       public const string ECS_CONVERTER_MENU = ECS_MENU + "Converter";
       public const string ECS_CONVERTER_FILE = "NewEntityConverter";

@@ -21,7 +21,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     bool SyncCollidersWithEntities();
     bool SyncEntitiesWithColliders();
     bool TryUnpackEntities(EcsWorld world);
-    void Reset();
     bool UnpackEntities(EcsWorld world);
   }
 }

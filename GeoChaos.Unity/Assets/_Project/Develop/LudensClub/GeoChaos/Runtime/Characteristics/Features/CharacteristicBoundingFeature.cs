@@ -6,8 +6,8 @@ namespace LudensClub.GeoChaos.Runtime.Characteristics
   {
     public CharacteristicBoundingFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<BoundCurrentHealthByMaxSystem>());
       Add(systems.Create<BoundCurrentHealthByMinSystem>());
+      Add(systems.Create<BoundCurrentHealthByMaxSystem>());
     }
   }
 }

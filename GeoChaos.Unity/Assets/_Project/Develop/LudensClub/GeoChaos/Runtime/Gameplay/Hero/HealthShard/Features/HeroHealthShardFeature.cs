@@ -8,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.HealthShard
     {
       Add(systems.Create<CheckHealthShardCountSystem>());
       Add(systems.Create<CalculateHeroHealthSystem>());
-      Add(systems.Create<DeleteOnHealthShardTakenOnHeroSystem>());
+      Add(systems.Create<DeleteHeroHealthShardTakenEventSystem>());
     }
   }
 }
