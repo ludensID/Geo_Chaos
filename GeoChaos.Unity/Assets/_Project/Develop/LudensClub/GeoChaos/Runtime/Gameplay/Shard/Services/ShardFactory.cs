@@ -22,6 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Shard
     public EcsEntity Create()
     {
       EcsEntity instance = _gameWorldWrapper.World.CreateEntity()
+        .Add<ShardTag>()
         .Add((ref EntityId id) => id.Id = EntityType.Shard)
         .Add<MovementVector>()
         .Add<ForceAvailable>()

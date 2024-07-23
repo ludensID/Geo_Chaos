@@ -35,7 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackEntities(_game)
           && _collisionSvc.TrySelectByEntitiesTag<FadingPlatformTag, HeroTag>()
-          && info.MasterCollider.Type == ColliderType.Action
+          && info.MasterCollider.Type == ColliderType.Body
           && info.TargetCollider.Type == ColliderType.Body)
         {
           info.Master.Add<StartFadeCommand>();

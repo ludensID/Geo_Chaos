@@ -6,7 +6,6 @@
     Body = 1,
     Attack = 2,
     Dash = 100,
-    Shard = Dash + 1,
-    Action = Shard + 1
+    Action = Dash + 1
   }
 }

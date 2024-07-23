@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348c620513bc41ab99a9deb828b54891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colliderType: 102
+  _colliderType: 1
   _view: {fileID: 4638190675155789914}
   _collider: {fileID: 1681269006231497030}
   WhenEnter: 1

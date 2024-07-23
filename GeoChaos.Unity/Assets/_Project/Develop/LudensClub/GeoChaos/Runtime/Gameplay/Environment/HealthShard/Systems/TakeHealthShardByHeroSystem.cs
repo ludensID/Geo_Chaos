@@ -42,7 +42,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.HealthShard
         {
           info.Target
             .Change((ref HealthShardCounter counter) => counter.Count++)
-            .Add<OnHealthShardTaken>();
+            .Has<OnHealthShardTaken>(true);
           
           info.Master.Add<DestroyCommand>();
         }

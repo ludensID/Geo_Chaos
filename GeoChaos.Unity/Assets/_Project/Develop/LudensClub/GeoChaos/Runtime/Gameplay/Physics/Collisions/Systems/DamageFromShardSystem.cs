@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.Shard;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
@@ -65,7 +66,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     private bool DestroyShard(DamageCollisionInfo info)
     {
       if (_collisionSvc.UnpackEntities(_game)
-        && _collisionSvc.TrySelectByMasterCollider(x => x.Type == ColliderType.Shard)
+        && _collisionSvc.TrySelectByMasterCollider(x => x.Type == ColliderType.Attack)
+        && info.Master.Has<ShardTag>()
         && info.TargetCollider.Type != ColliderType.Action
         && (!info.Target.IsAlive || !info.Master.Get<Owner>().Entity.EqualsTo(info.PackedTarget)))
       {
