@@ -25,10 +25,10 @@ namespace LudensClub.GeoChaos.Runtime.Props
         return;
       
       EntityType id = converters.Where(x => x.ShowComponents)
-        .Select(x => ((EcsComponentsConverter)x.GetValue()).Components.Select(y => y.Value)
+        .Select(x => (x.GetValue() as EcsComponentsConverter)?.Components.Select(y => y.Value)
           .OfType<SpawnedEntityId>()
           .FirstOrDefault()
-          .Id).FirstOrDefault();
+          .Id ?? EntityType.None).FirstOrDefault();
 
       if (id == EntityType.None)
         return;

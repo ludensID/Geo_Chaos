@@ -10,14 +10,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
   {
     private readonly ITreeCreatorService _creator;
     private readonly EcsWorld _game;
-    private readonly EcsEntities _initializingEnemies;
+    private readonly EcsEntities _convertedBrains;
 
     public CreateBehaviourTreeSystem(GameWorldWrapper gameWorldWrapper, ITreeCreatorService creator)
     {
       _creator = creator;
       _game = gameWorldWrapper.World;
 
-      _initializingEnemies = _game
+      _convertedBrains = _game
         .Filter<OnConverted>()
         .Inc<Brain>()
         .Collect();
@@ -25,9 +25,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity enemy in _initializingEnemies)
+      foreach (EcsEntity brain in _convertedBrains)
       {
-        enemy.Change((ref Brain brain) => brain.Tree = _creator.Create(enemy.Get<EntityId>().Id, enemy.Pack()));
+        brain.Change((ref Brain b) => b.Tree = _creator.Create(brain.Get<EntityId>().Id, brain.Pack()));
       }
     }
   }

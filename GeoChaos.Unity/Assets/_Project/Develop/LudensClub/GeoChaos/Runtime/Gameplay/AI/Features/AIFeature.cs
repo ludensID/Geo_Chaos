@@ -7,6 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
     public AIFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<CreateBehaviourTreeSystem>());
+      Add(systems.Create<AddBoundsRefSystem>());
       Add(systems.Create<SetStartPositionSystem>());
       
       Add(systems.Create<SetPhysicalBoundsSystem>());

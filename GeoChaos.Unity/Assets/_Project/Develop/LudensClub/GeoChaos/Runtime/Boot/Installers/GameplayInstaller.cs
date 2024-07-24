@@ -57,6 +57,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindEnemyTreeCreator();
       BindLamaTreeCreator();
+      BindLeafySpiritTreeCreator();
 
       BindTreeCreatorService();
       
@@ -101,6 +102,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthPresenter();
       BindImmunityDurationPresenter();
       BindHeroHealthShardPresenter();
+    }
+
+    private void BindLeafySpiritTreeCreator()
+    {
+      Container
+        .Bind<IBehaviourTreeCreator>()
+        .To<LeafySpiritTreeCreator>()
+        .AsSingle();
     }
 
     private void BindLeafPool()
