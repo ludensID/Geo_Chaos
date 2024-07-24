@@ -14,6 +14,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 using LudensClub.GeoChaos.Runtime.Props;
+using LudensClub.GeoChaos.Runtime.Props.Leaf;
 using LudensClub.GeoChaos.Runtime.Props.Shard;
 using LudensClub.GeoChaos.Runtime.UI;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealth;
@@ -81,6 +82,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindCollisionService();
       BindSpawnPoints();
       BindShardPool();
+      BindLeafPool();
       BindShardFactory();
       BindShootService();
       BindCameraService();
@@ -99,6 +101,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthPresenter();
       BindImmunityDurationPresenter();
       BindHeroHealthShardPresenter();
+    }
+
+    private void BindLeafPool()
+    {
+      Container
+        .BindInterfacesAndSelfTo<LeafPool>()
+        .AsSingle();
     }
 
     private void BindGameplayPause()
@@ -262,7 +271,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindShardPool()
     {
       Container
-        .BindInterfacesTo<ShardPool>()
+        .BindInterfacesAndSelfTo<ShardPool>()
         .AsSingle();
     }
 

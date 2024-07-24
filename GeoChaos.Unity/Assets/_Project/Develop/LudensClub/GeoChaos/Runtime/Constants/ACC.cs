@@ -32,6 +32,7 @@
       public const string NOTHING_HAPPENS_VIEW = VIEW + "Nothing Happens View";
       public const string DOOR_VIEW = VIEW + "Door View";
       public const string HERO_HEALTH_SHARD_VIEW = VIEW + "Hero Health Shard View";
+      public const string LEAF_VIEW = VIEW + "Leaf View";
 
       public const string GAMEPLAY_INSTALLER = BOOT + "Gameplay Installer";
       public const string PROJECT_INSTALLER = BOOT + "Project Installer";

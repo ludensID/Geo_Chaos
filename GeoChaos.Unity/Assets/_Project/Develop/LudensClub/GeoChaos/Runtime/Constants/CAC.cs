@@ -25,6 +25,9 @@
 
       public const string SHARD_POOL_MENU = CONFIG_MENU + "Shard Pool";
       public const string SHARD_POOL_FILE = "ShardPoolConfig";
+      
+      public const string LEAF_POOL_MENU = CONFIG_MENU + "Leaf Pool";
+      public const string LEAF_POOL_FILE = "LeafPoolConfig";
 
       public const string LAMA_MENU = CONFIG_MENU + "Lama";
       public const string LAMA_FILE = "LamaConfig";
@@ -34,10 +37,10 @@
 
       public const string BUSH_ANIMATOR_MENU = CONFIG_MENU + "Bush Animator";
       public const string BUSH_ANIMATOR_FILE = "BushAnimator";
-      
+
       public const string FADING_PLATFORM_MENU = CONFIG_MENU + "Fading Platform";
       public const string FADING_PLATFORM_FILE = "FadingPlatformConfig";
-      
+
       public const string ECS_CONVERTER_MENU = ECS_MENU + "Converter";
       public const string ECS_CONVERTER_FILE = "NewEntityConverter";
     }

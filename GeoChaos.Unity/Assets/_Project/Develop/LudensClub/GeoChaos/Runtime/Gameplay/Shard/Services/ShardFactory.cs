@@ -7,10 +7,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Shard
   public class ShardFactory : IShardFactory
   {
     private readonly GameWorldWrapper _gameWorldWrapper;
-    private readonly IShardPool _pool;
+    private readonly ShardPool _pool;
     private readonly EcsEntity _createdShard;
 
-    public ShardFactory(GameWorldWrapper gameWorldWrapper, IShardPool pool)
+    public ShardFactory(GameWorldWrapper gameWorldWrapper, ShardPool pool)
     {
       _gameWorldWrapper = gameWorldWrapper;
       _pool = pool;

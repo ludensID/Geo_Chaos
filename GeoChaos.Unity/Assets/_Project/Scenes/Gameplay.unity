@@ -4692,10 +4692,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2939572642366715555, guid: ef968f9249e71dd478d06348d6c8b373,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3564219412600826120, guid: ef968f9249e71dd478d06348d6c8b373,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022368840161987282, guid: ef968f9249e71dd478d06348d6c8b373,
+        type: 3}
+      propertyPath: m_Name
+      value: LamaSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 8512590471344837630, guid: ef968f9249e71dd478d06348d6c8b373,
         type: 3}
@@ -4746,16 +4756,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6022368840161987282, guid: ef968f9249e71dd478d06348d6c8b373,
-        type: 3}
-      propertyPath: m_Name
-      value: LamaSpawn
-      objectReference: {fileID: 0}
-    - target: {fileID: 2939572642366715555, guid: ef968f9249e71dd478d06348d6c8b373,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.8
       objectReference: {fileID: 0}
     - target: {fileID: 7430734528306952036, guid: 7ca1271f42ebcb04aad3cbd839a55007,
         type: 3}
