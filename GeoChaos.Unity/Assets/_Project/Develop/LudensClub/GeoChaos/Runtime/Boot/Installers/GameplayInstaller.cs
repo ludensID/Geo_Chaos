@@ -346,9 +346,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
     private void BindSpawnPoints()
     {
-      var spawns = FindObjectsByType<SpawnPoint>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).ToList();
+      var spawns = FindObjectsByType<SpawnPointGizmo>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).ToList();
       Container
-        .Bind<List<SpawnPoint>>()
+        .Bind<List<SpawnPointGizmo>>()
         .FromInstance(spawns)
         .AsSingle();
     }

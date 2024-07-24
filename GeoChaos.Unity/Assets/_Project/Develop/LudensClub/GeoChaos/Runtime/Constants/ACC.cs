@@ -67,8 +67,7 @@
       public const string DOOR_FADE = HIGHLIGHTERS + "Door Fade";
       public const string LEVER_SWITCHER = HIGHLIGHTERS + "Lever Switcher";
 
-      public const string PLAYER_SPAWN = PROPS + "Player Spawn";
-      public const string SPAWN_POINT = PROPS + "Spawn Point";
+      public const string SPAWN_GIZMO = PROPS + "Spawn Gizmo";
       public const string LAMA_GIZMO = PROPS + "Lama Gizmo";
 
       public const string BUSH_ANIMATOR = ANIMATORS + "Bush Animator";

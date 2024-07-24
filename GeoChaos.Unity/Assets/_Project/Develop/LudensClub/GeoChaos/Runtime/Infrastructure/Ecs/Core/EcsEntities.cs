@@ -14,11 +14,13 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     private readonly EcsEntity _cachedEntity;
     private readonly PredicateInvoker _invoker;
 
+    public EcsWorld World => _world;
+
     public EcsEntities(EcsFilter filter)
     {
       _filter = filter;
       _world = filter.GetWorld();
-      _cachedEntity = new EcsEntity { World = _world };
+      _cachedEntity = new EcsEntity { World = World };
       _invoker = new PredicateInvoker();
     }
 
@@ -44,7 +46,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     {
       var entities = new EcsEntities(_filter);
       entities._predicates.AddRange(_predicates);
-      entities._predicates.Add(new EcsPredicate<TComponent>(predicate, _world.GetPool<TComponent>()));
+      entities._predicates.Add(new EcsPredicate<TComponent>(predicate, World.GetPool<TComponent>()));
       return entities;
     }
 

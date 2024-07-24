@@ -1,9 +1,12 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
+﻿using Leopotam.EcsLite;
+
+namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 {
   public interface IGameObjectConverter : IEcsConverter
   {
     bool ShouldCreateEntity { get; set; }
     void CreateEntity(EcsEntity entity);
     void ConvertBackAndDestroy(EcsEntity entity);
+    void SetEntity(EcsWorld world, int entity);
   }
 }

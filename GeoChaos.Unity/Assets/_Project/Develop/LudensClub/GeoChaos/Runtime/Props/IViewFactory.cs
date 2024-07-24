@@ -1,7 +1,11 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Props
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using UnityEngine;
+
+namespace LudensClub.GeoChaos.Runtime.Props
 {
   public interface IViewFactory
   {
-    BaseView Create(BaseView prefab);
+    TComponent Create<TComponent>(EntityType id) where TComponent : Component;
+    TComponent Create<TComponent>(Component prefab) where TComponent : Component;
   }
 }

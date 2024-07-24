@@ -52,11 +52,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       Entity = entity;
     }
 
-    public EcsEntity Clone()
-    {
-      return new EcsEntity(_world, _entity);
-    }
-
     [HideInCallstack]
     public EcsEntity Add<TComponent>() where TComponent : struct, IEcsComponent
     {

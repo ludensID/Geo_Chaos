@@ -7,9 +7,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
   {
     public EnemyFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<DeleteInitializeCommandForEnemySystem>());
-      Add(systems.Create<CreateEnemySystem>());
-      
       Add(systems.Create<LamaFeature>());
       
       Add(systems.Create<SetEnemyBodyDirectionSystem>());

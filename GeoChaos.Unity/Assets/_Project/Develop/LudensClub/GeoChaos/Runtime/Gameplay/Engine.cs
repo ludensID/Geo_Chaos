@@ -3,7 +3,7 @@ using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Feature;
+using LudensClub.GeoChaos.Runtime.Gameplay.Creation;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features;

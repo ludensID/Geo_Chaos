@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity drag in _dragForces)
       {
-        if (!_game.TryUnpackEntity(drag.Get<Owner>().Entity, out EcsEntity owner) || !owner.Has<DragForceAvailable>())
+        if (!drag.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity owner) || !owner.Has<DragForceAvailable>())
           drag.Dispose();
       }
     }

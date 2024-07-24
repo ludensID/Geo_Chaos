@@ -32,7 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     public static EcsEntity SetActive(this EcsEntity entity, bool value)
     {
       return entity
-        .Has<Enabled>(value)
+        .Has<Active>(value)
         .Has<Inactive>(!value);
     }
 

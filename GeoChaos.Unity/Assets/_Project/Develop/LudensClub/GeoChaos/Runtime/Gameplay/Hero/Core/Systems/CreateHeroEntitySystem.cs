@@ -1,8 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.HealthShard;
+using LudensClub.GeoChaos.Runtime.Gameplay.Creation;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
@@ -20,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
       _config = configProvider.Get<HeroConfig>();
 
       _commands = _game
-        .Filter<CreateCommand>()
+        .Filter<OnConverted>()
         .Inc<EntityId>()
         .Collect();
     }
@@ -31,13 +30,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
         .Where<EntityId>(x => x.Id == EntityType.Hero))
       {
         command
-          .Add<HeroTag>()
-          .Add((ref CurrentHealth health) => health.Health = _config.Health)
-          .Add((ref MaxCurrentHealth maxHealth) => maxHealth.Health = _config.Health)
-          .Add((ref DefaultHealth defaultHealth) => defaultHealth.Health = _config.Health)
-          .Add<HealthShardCounter>()
-          .Del<CreateCommand>()
-          .Add<InitializeCommand>();
+          .Change((ref CurrentHealth health) => health.Health = _config.Health)
+          .Change((ref MaxCurrentHealth maxHealth) => maxHealth.Health = _config.Health)
+          .Change((ref DefaultHealth defaultHealth) => defaultHealth.Health = _config.Health);
       }
     }
   }

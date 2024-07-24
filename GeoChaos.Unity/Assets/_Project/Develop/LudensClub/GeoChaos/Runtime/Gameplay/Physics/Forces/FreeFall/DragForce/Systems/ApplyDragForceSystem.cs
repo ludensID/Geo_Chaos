@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity drag in _drags)
       {
-        if (_game.TryUnpackEntity(drag.Get<Owner>().Entity, out EcsEntity draggable))
+        if (drag.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity draggable))
         {
           Vector2 deltaForce = drag.Get<DragForce>().Force * Time.fixedDeltaTime;
           

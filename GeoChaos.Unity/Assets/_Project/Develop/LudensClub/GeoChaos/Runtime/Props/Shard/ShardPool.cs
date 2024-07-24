@@ -3,24 +3,21 @@ using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using UnityEngine;
 using Zenject;
-using PrefabProvider = LudensClub.GeoChaos.Runtime.Configuration.PrefabProvider;
 
 namespace LudensClub.GeoChaos.Runtime.Props.Shard
 {
   public class ShardPool : IShardPool, IInitializable
   {
-    private readonly DiContainer _container;
+    private readonly IViewFactory _factory;
     private readonly ShardPoolConfig _config;
-    private readonly PrefabProvider _prefabs;
     private readonly List<PooledShard> _shards = new List<PooledShard>();
 
     private Transform _parent;
 
-    public ShardPool(DiContainer container, IConfigProvider configProvider)
+    public ShardPool(IConfigProvider configProvider, IViewFactory factory)
     {
-      _container = container;
+      _factory = factory;
       _config = configProvider.Get<ShardPoolConfig>();
-      _prefabs = configProvider.Get<PrefabProvider>();
     }
 
     public void Initialize()
@@ -30,7 +27,8 @@ namespace LudensClub.GeoChaos.Runtime.Props.Shard
       
       for (int i = 0; i < _config.InstanceCount; i++)
       {
-        var instance = _container.InstantiatePrefabForComponent<ShardView>(_prefabs.Get(EntityType.Shard), _parent);
+        var instance = _factory.Create<ShardView>(EntityType.Shard);
+        instance.transform.SetParent(_parent);
         instance.gameObject.SetActive(false);
         _shards.Add(new PooledShard(instance));
       }

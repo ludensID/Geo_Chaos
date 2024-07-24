@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Creation.Components;
+using LudensClub.GeoChaos.Runtime.Gameplay.Creation;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
@@ -17,15 +17,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
 
       _initializedLamas = _game
         .Filter<LamaTag>()
-        .Inc<InitializeCommand>()
+        .Inc<OnConverted>()
         .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity lama in _initializedLamas)
       {
-        lama.Get<SpawnPointRef>().Spawn.GetComponent<PhysicalBoundsConverter>().ConvertTo(lama);
+        ref Spawned spawned = ref lama.Get<Spawned>();
+        if (spawned.Spawn.TryUnpackEntity(_game, out EcsEntity spawn))
+          spawn.Get<ViewRef>().View.GetComponent<PhysicalBoundsConverter>().ConvertTo(lama);
       }
     }
   }

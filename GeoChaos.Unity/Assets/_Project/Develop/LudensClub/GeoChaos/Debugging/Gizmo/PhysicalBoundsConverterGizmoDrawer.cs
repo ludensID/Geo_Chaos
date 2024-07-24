@@ -16,6 +16,9 @@ namespace LudensClub.GeoChaos.Debugging.Gizmo
       if (!SelectionHelper.IsSelectionOrChild(scr.transform))
         return;
       
+      if (!scr.RightBound || !scr.LeftBound)
+        return;
+      
       if (!_physics)
         _physics = AssetFinder.FindAsset<PhysicsConfig>();
 

@@ -12,7 +12,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
   {
     public LamaFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<InitializeLamaSystem>());
       Add(systems.Create<AddBoundsRefSystem>());
       
       Add(systems.Create<LamaDetectionFeature>());

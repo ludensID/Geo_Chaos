@@ -21,7 +21,7 @@
       public const string PHYSICS_FILE = "PhysicsConfig";
 
       public const string PREFAB_MENU = CONFIG_MENU + "Prefabs";
-      public const string PREFAB_FILE = "PrefabProvider";
+      public const string PREFAB_FILE = "PrefabConfig";
 
       public const string SHARD_POOL_MENU = CONFIG_MENU + "Shard Pool";
       public const string SHARD_POOL_FILE = "ShardPoolConfig";
