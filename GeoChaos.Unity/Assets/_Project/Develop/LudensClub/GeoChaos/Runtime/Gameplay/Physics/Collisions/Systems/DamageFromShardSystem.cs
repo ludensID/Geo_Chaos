@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -43,8 +44,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
         _collisionSvc.AssignCollision(col.Get<TwoSideCollision>());
         DamageCollisionInfo info = _collisionSvc.Info;
         if (DestroyShard(info)
-          && info.Target.IsAlive
-          && info.TargetCollider.Type == ColliderType.Body)
+          && info.TargetCollider.Type == ColliderType.Body
+          && info.Target.IsAlive()
+          && info.Target.Has<CurrentHealth>())
         {
           _message.CreateEntity()
             .Add((ref DamageMessage damage) =>
@@ -69,7 +71,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
         && _collisionSvc.TrySelectByMasterCollider(x => x.Type == ColliderType.Attack)
         && info.Master.Has<ShardTag>()
         && info.TargetCollider.Type != ColliderType.Action
-        && (!info.Target.IsAlive || !info.Master.Get<Owner>().Entity.EqualsTo(info.PackedTarget)))
+        && (!info.Target.IsAlive() || !info.Master.Get<Owner>().Entity.EqualsTo(info.PackedTarget)))
       {
         info.Master.Has<DestroyCommand>(true);
         return true;

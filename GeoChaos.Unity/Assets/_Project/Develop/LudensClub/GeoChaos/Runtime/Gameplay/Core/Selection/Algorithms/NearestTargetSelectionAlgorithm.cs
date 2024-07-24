@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
         selection.Del<Marked>();
       }
 
-      if (nearestTarget.IsAlive)
+      if (nearestTarget.IsAlive())
         nearestTarget.Add<Marked>();
     }
   }

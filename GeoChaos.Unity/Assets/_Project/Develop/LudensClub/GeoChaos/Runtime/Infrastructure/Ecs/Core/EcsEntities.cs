@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     {
       _filter = filter;
       _world = filter.GetWorld();
-      _cachedEntity = new EcsEntity { World = World };
+      _cachedEntity = new EcsEntity(_world);
       _invoker = new PredicateInvoker();
     }
 

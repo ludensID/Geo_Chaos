@@ -136,7 +136,7 @@ MonoBehaviour:
       type: {class: BodyDirection, ns: LudensClub.GeoChaos.Runtime.Gameplay.View,
         asm: GeoChaos.Runtime}
       data:
-        Direction: 0
+        Direction: 1
     - rid: 674097938592170107
       type: {class: Ground, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data: 

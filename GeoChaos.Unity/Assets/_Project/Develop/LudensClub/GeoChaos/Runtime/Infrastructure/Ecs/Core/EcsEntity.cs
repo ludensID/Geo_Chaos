@@ -11,44 +11,45 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     private int _entity = -1;
     private EcsWorld _world;
 
-    public EcsWorld World
-    {
-      get => _world;
-      set => _world = value;
-    }
+    public EcsWorld World => _world;
 
     public int Entity
     {
       get => _entity;
       set
       {
-        if (_entity == value)
-          return;
-
         _entity = value;
 
-        if (_world != null && _entity != -1)
-          PackedEntity = _world.PackEntity(value);
+        PackedEntity = _world != null && _entity != -1
+          ? _world.PackEntity(_entity)
+          : new EcsPackedEntity();
       }
     }
 
     public EcsPackedEntity PackedEntity { get; private set; }
 
-    public bool IsAlive => _world != null && PackedEntity.Unpack(_world, out _entity) && _entity != -1;
-
     public EcsEntity()
     {
-      _entity = -1;
     }
 
-    public EcsEntity(EcsWorld world, int entity)
+    public EcsEntity(EcsWorld world, int entity = -1)
     {
       SetWorld(world, entity);
     }
 
-    public void SetWorld(EcsWorld world, int entity)
+    public void Copy(EcsEntity from)
     {
-      World = world;
+      SetWorld(from.World, from.Entity);
+    }
+
+    public bool IsAlive()
+    {
+      return _world != null && PackedEntity.Unpack(_world, out int entity) && (Entity = entity) != -1;
+    }
+
+    public void SetWorld(EcsWorld world, int entity = -1)
+    {
+      _world = world;
       Entity = entity;
     }
 
@@ -74,15 +75,15 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       assigner.Invoke(ref component);
       return this;
     }
-    
+
     [HideInCallstack]
     public ref TComponent AddOrGet<TComponent>() where TComponent : struct, IEcsComponent
     {
-      return ref World.Has<TComponent>(Entity) 
-        ? ref World.Get<TComponent>(Entity) 
+      return ref World.Has<TComponent>(Entity)
+        ? ref World.Get<TComponent>(Entity)
         : ref World.Add<TComponent>(Entity);
     }
-    
+
     [HideInCallstack]
     public EcsEntity Change<TComponent>(TComponent component) where TComponent : struct, IEcsComponent
     {
@@ -133,7 +134,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
       return this;
     }
-    
+
     [HideInCallstack]
     public EcsEntity Replace<TComponent>(TComponent component) where TComponent : struct, IEcsComponent
     {

@@ -24,6 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
     private readonly EcsEntities _commands;
     private readonly HeroConfig _config;
     private readonly EcsEntities _enemies;
+    private readonly EcsEntity _createdShard;
 
     public ShootSystem(GameWorldWrapper gameWorldWrapper,
       IShardFactory shardFactory,
@@ -48,6 +49,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
         .Inc<Selected>()
         .Exc<HeroTag>()
         .Collect();
+
+      _createdShard = new EcsEntity(_game);
     }
 
     public void Run(EcsSystems systems)
@@ -55,11 +58,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
       foreach (EcsEntity command in _commands)
       {
         Vector2 shootDirection = CalculateShootDirection(command);
-        Vector3 position = command.Get<ViewRef>().View.transform.position + (Vector3)shootDirection;
+        Vector3 position = command.Get<ViewRef>().View.transform.position;
 
-        EcsEntity shard = CreateShard(command.Pack(), _config.ShardLifeTime, position);
-
-        SetVelocity(shootDirection, shard.Pack());
+        _createdShard.Entity = CreateShard(command.PackedEntity, _config.ShardLifeTime, position).Entity;
+        
+        SetVelocity(shootDirection, _createdShard.PackedEntity);
 
         AddCooldown(command);
 

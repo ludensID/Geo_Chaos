@@ -28,6 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Props.Shard
       for (int i = 0; i < _config.InstanceCount; i++)
       {
         var instance = _factory.Create<ShardView>(EntityType.Shard);
+        instance.Converter.ShouldCreateEntity = false;
         instance.transform.SetParent(_parent);
         instance.gameObject.SetActive(false);
         _shards.Add(new PooledShard(instance));

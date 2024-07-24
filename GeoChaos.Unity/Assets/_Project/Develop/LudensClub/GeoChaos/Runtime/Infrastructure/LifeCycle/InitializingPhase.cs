@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     public InitializingPhase(InitializableManager initializer)
     {
       _initializer = initializer;
-      _initializer.Add(this, 9999);
+      _initializer.Add(this, -9999);
     }
       
     public void Initialize()

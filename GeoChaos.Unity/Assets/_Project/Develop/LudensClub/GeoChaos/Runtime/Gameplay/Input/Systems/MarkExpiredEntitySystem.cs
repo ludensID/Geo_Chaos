@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
         }
       }
 
-      if (_expiredInput.IsAlive)
+      if (_expiredInput.IsAlive())
         _expiredInput.Add<Expired>();
     }
   }

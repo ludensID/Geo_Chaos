@@ -72,7 +72,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
       _initialized = true;
       if (ShouldCreateEntity)
       {
-        EcsEntity message = _message.CreateEntity()
+        _message.CreateEntity()
           .Add((ref CreateEntityMessage createMessage) =>
           {
             createMessage.Entity = _entity.PackedEntity;
@@ -83,11 +83,11 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 
     public void CreateEntity(EcsEntity entity)
     {
-      _entity.SetWorld(entity.World, entity.Entity);
+      _entity.Copy(entity);
       foreach (EcsConverterValue converter in _converters)
-        converter.ConvertTo(entity);
+        converter.ConvertTo(_entity);
 
-      ConvertTo(entity);
+      ConvertTo(_entity);
     }
 
     public void ConvertBackAndDestroy(EcsEntity entity)

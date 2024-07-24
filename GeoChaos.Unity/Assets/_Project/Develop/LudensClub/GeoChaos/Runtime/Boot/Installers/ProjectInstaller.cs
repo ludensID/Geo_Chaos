@@ -26,7 +26,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindTimerService();
       BindTimerFactory();
       BindCoroutineRunner();
-      BindGameObjectConverter();
 
 #if UNITY_EDITOR
       DebugBridge.InstallProject(Container);
@@ -53,14 +52,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       Container
         .Bind<ITimerFactory>()
         .To<TimerFactory>()
-        .AsSingle();
-    }
-
-    private void BindGameObjectConverter()
-    {
-      Container
-        .Bind<IGameObjectConverterService>()
-        .To<GameObjectConverterService>()
         .AsSingle();
     }
 
