@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity timer in _hookTimers
-        .Where<HookTimer>(timer => timer.TimeLeft <= 0))
+        .Check<HookTimer>(timer => timer.TimeLeft <= 0))
       {
         timer.Add<InterruptHookCommand>();
       }

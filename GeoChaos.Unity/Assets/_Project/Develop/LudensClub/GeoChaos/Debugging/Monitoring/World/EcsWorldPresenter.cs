@@ -50,9 +50,9 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       _updatables.Clear();
       _updatables.Capacity = _children.Count - _dirtyEntities.Count;
 
-      for (int i = 0; i < _children.Count; i++)
+      foreach (IEcsEntityPresenter presenter in _children)
       {
-        int entity = _children[i].Entity;
+        int entity = presenter.Entity;
         if (!_dirtyEntities.Contains(entity))
           _updatables.Add(entity);
       }

@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿using System.Collections.Generic;
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Shoot;
@@ -15,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
     private readonly EcsEntities _finishedAimings;
     private readonly HeroConfig _config;
     private readonly ContactFilter2D _filter;
-    private RaycastHit2D[] _hits;
+    private readonly List<RaycastHit2D> _hits;
 
     public DrawAimLineSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
@@ -31,7 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
         .Filter<OnAimFinished>()
         .Collect();
 
-      _hits = new RaycastHit2D[1];
+      _hits = new List<RaycastHit2D>(1);
       _filter = new ContactFilter2D
       {
         useTriggers = false,
@@ -48,6 +49,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
         var direction = (Vector3)aiming.Get<ShootDirection>().Direction; 
         
         Vector3 target = origin + direction * 100;
+        _hits.Clear();
         int count = Physics2D.Raycast(origin, direction, _filter, _hits);
         if (count > 0)
           target = _hits[0].point;

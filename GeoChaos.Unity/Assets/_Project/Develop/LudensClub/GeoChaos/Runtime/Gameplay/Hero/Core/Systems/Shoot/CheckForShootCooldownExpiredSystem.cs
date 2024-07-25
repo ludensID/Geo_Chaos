@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity timer in _timers
-        .Where<ShootCooldown>(x =>x.TimeLeft <= 0))
+        .Check<ShootCooldown>(x =>x.TimeLeft <= 0))
       {
         timer.Del<ShootCooldown>();
       }

@@ -24,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity delay in _delays
-        .Where<Delay>(x => x.TimeLeft <= 0))
+        .Check<Delay>(x => x.TimeLeft <= 0))
       {
         delay
           .Del<Delay>()

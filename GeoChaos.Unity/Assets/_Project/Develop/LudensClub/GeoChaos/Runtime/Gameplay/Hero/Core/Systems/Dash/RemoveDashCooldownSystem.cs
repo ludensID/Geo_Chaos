@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity cooldown in _cooldowns
-        .Where<DashCooldown>(x => x.TimeLeft <= 0))
+        .Check<DashCooldown>(x => x.TimeLeft <= 0))
       {
         cooldown.Del<DashCooldown>();
       }

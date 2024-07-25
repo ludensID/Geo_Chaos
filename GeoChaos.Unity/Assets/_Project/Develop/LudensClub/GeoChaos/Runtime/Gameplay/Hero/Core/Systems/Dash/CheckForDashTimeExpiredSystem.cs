@@ -21,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity dash in _dashes
-        .Where<Dashing>(x => x.TimeLeft <= 0))
+        .Check<Dashing>(x => x.TimeLeft <= 0))
       {
         dash.Add<StopDashCommand>();
       }

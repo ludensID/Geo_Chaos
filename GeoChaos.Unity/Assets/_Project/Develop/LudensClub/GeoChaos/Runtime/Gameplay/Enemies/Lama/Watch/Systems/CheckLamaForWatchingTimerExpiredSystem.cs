@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Watch
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity timer in _expiredTimers
-        .Where<WatchingTimer>(x => x.TimeLeft <= 0))
+        .Check<WatchingTimer>(x => x.TimeLeft <= 0))
       {
         timer.Del<WatchingTimer>();
       }

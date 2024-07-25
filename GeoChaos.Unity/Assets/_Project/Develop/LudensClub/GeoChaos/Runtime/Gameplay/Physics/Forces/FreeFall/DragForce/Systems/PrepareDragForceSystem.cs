@@ -45,7 +45,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         ref OnActionStarted startedAction = ref action.Get<OnActionStarted>();
 
         foreach (EcsEntity drag in _dragForces
-          .Where<Owner>(owner => owner.Entity.EqualsTo(action.Pack())))
+          .Check<Owner>(owner => owner.Entity.EqualsTo(action.Pack())))
         {
           _freeFallSvc.PrepareFreeFall(drag, startedAction.Time, _config.StartDragForceCoefficient,
             _config.UseDragForceGradient);

@@ -21,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity releasing in _releasings
-        .Where<Releasing>(x => x.TimeLeft <= 0))
+        .Check<Releasing>(x => x.TimeLeft <= 0))
       {
         releasing
           .Del<Releasing>()

@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity hero in _heroes
-        .Where<MovementVector>(x => x.Direction.y <= 0))
+        .Check<MovementVector>(x => x.Direction.y <= 0))
       {
         hero.Del<StopJumpCommand>();
       }

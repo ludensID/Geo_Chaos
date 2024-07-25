@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity lama in _lamas
-        .Where<HitTimer>(x => x.TimeLeft <= 0))
+        .Check<HitTimer>(x => x.TimeLeft <= 0))
       {
         lama
           .Del<HitTimer>()

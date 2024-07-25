@@ -35,7 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying
         {
           bool isGame = ownedPair.Key == _game;
           foreach (EcsEntity owned in ownedPair.Value
-            .Where<Owner>(x => x.Entity.EqualsTo(command.Pack())))
+            .Check<Owner>(x => x.Entity.EqualsTo(command.Pack())))
           {
             if (isGame)
             {

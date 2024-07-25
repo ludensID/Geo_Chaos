@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Wait
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity spirit in _waitingSpirits
-        .Where<WaitingTimer>(x => x.TimeLeft <= 0))
+        .Check<WaitingTimer>(x => x.TimeLeft <= 0))
       {
         spirit.Del<WaitingTimer>();
       }

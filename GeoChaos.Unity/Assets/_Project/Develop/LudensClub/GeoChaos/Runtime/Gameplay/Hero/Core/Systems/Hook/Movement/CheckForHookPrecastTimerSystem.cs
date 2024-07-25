@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity timer in _timers
-        .Where<HookPrecast>(x => x.TimeLeft <= 0))
+        .Check<HookPrecast>(x => x.TimeLeft <= 0))
       {
         timer
           .Del<HookPrecast>()

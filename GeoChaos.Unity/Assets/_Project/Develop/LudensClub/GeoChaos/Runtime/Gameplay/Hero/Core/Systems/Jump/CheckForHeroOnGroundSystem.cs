@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity ground in _grounds
-        .Where<GroundCheckTimer>(x => x.TimeLeft <= 0))
+        .Check<GroundCheckTimer>(x => x.TimeLeft <= 0))
       {
         ref GroundCheckRef checkRef = ref ground.Get<GroundCheckRef>();
         bool onGround = ground.Has<OnGround>();

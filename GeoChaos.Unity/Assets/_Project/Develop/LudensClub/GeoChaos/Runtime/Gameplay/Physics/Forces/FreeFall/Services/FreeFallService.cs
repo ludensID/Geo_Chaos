@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     public void StopFreeFall(EcsEntity owner, EcsEntities freeFalls)
     {
       foreach (EcsEntity freeFall in freeFalls
-        .Where<Owner>(x => x.Entity.EqualsTo(owner.Pack())))
+        .Check<Owner>(x => x.Entity.EqualsTo(owner.Pack())))
       {
         freeFall
           .Has<Enabled>(false)

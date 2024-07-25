@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity force in _noImpactForces
-        .Where<Impact>(x => x.Vector == Vector2.zero))
+        .Check<Impact>(x => x.Vector == Vector2.zero))
       {
         force.Dispose();
       }

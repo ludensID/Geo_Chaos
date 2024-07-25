@@ -33,14 +33,14 @@ namespace LudensClub.GeoChaos.Testing.EditMode
         .Add((ref B b) => b.Value = bValue);
       
       // Act.
-      var selectedEntities = entities
+      var selectedEntities = entities.Clone()
         .Where<A>(x => x.Value == aValue)
         .Where<B>(x => x.Value == bValue);
       
       // Assert.
       entity.Get<A>().Value.Should().NotBe(aValue);
       entity.Get<B>().Value.Should().Be(bValue);
-      selectedEntities.Should().NotContain(x => x.Entity == entity.Entity);
+      selectedEntities.ToEnumerable().Should().NotContain(x => x.Entity == entity.Entity);
     } 
   }
 }

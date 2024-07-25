@@ -21,8 +21,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Jump
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity jumping in _jumpings
-        .Where<MovementLayout>(x => x.Layer != MovementLayer.All))
+        .Check<MovementLayout>(x => x.Layer != MovementLayer.All))
+      {
         jumping.Del<Jumping>();
+      }
     }
   }
 }

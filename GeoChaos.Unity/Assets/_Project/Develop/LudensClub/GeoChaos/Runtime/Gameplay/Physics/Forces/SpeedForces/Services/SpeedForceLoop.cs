@@ -20,12 +20,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 
     public EcsEntity GetForce(SpeedForceType type, EcsPackedEntity owner)
     {
-      return GetLoop(type, owner).FirstOrDefault();
+      return GetLoop(type, owner).ToEnumerable().FirstOrDefault();
     }
 
     public EcsEntities GetLoop(SpeedForceType type, EcsPackedEntity owner)
     {
-      return _entities
+      return _entities.Clone()
         .Where<SpeedForce>(x => x.Type == type)
         .Where<Owner>(x => x.Entity.EqualsTo(owner));
     }

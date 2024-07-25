@@ -34,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
     {
       foreach (EcsEntity _ in _inputs)
       foreach (EcsEntity hero in _heroes
-        .Where<MovementLayout>(x => (x.Layer & MovementLayer.Stay) > 0))
+        .Check<MovementLayout>(x => (x.Layer & MovementLayer.Stay) > 0))
       {
         hero.Add<AttackCommand>();
       }

@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Hook
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity cooldown in _cooldowns
-        .Where<HookInputCooldown>(x => x.TimeLeft <= 0))
+        .Check<HookInputCooldown>(x => x.TimeLeft <= 0))
       {
         cooldown.Del<HookInputCooldown>();
       }

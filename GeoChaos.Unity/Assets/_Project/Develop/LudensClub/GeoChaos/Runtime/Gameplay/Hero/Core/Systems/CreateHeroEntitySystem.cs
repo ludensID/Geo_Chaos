@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity command in _commands
-        .Where<EntityId>(x => x.Id == EntityType.Hero))
+        .Check<EntityId>(x => x.Id == EntityType.Hero))
       {
         command
           .Change((ref CurrentHealth health) => health.Health = _config.Health)

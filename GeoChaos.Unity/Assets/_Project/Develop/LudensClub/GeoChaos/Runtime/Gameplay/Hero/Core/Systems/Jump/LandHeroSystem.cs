@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity falling in _fallings
-        .Where<MovementVector>(x => x.Direction.y >= 0))
+        .Check<MovementVector>(x => x.Direction.y >= 0))
       {
         falling
           .Del<Falling>()

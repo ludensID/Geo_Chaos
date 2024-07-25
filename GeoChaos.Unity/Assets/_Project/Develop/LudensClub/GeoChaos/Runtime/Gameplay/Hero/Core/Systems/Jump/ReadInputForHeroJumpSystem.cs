@@ -44,14 +44,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
     {
       foreach (EcsEntity _ in _jumpStartedInputs)
       foreach (EcsEntity ground in _grounds
-        .Where<MovementLayout>(x => x.Layer == MovementLayer.All))
+        .Check<MovementLayout>(x => x.Layer == MovementLayer.All))
       {
         ground.Add<JumpCommand>();
       }
 
       foreach (EcsEntity _ in _jumpCanceledInputs)
       foreach (EcsEntity noStopped in _noStoppeds
-        .Where<MovementLayout>(x => x.Layer == MovementLayer.All))
+        .Check<MovementLayout>(x => x.Layer == MovementLayer.All))
       {
         noStopped.Add<StopJumpCommand>();
       }

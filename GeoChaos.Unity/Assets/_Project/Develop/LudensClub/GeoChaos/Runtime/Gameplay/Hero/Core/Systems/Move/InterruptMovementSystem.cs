@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Move
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity moving in _movings
-        .Where<MovementLayout>(x => x.Layer != MovementLayer.All))
+        .Check<MovementLayout>(x => x.Layer != MovementLayer.All))
       {
         moving.Del<Moving>();
       }

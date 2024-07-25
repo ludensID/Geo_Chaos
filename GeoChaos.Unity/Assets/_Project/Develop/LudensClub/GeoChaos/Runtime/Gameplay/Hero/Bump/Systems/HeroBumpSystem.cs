@@ -58,7 +58,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump
           var direction = new Vector3(Mathf.Sign(heroPosition.x - masterPosition.x), 1);
 
           foreach (EcsEntity force in _forces
-            .Where<Owner>(x => x.Entity.EqualsTo(hero.Pack())))
+            .Check<Owner>(x => x.Entity.EqualsTo(hero.Pack())))
           {
             force.Dispose();
           }

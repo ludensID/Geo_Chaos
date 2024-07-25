@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Configuration;
+﻿using System.Collections.Generic;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
@@ -9,14 +10,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
   public class TargetReachedAlgorithm : ISelectionAlgorithm
   {
     private readonly PhysicsConfig _physics;
-    private readonly RaycastHit2D[] _hits;
+    private readonly List<RaycastHit2D> _hits;
     private readonly ContactFilter2D _filter;
 
     public TargetReachedAlgorithm(IConfigProvider configProvider)
     {
       _physics = configProvider.Get<PhysicsConfig>();
       
-      _hits = new RaycastHit2D[1];
+      _hits = new List<RaycastHit2D>(1);
       _filter = new ContactFilter2D
       {
         useTriggers = false,
@@ -34,6 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
         Vector3 selectionPosition = mark.Get<ViewRef>().View.transform.position;
 
         Vector3 vector = selectionPosition - originPosition;
+        _hits.Clear();
         bool hasCenterHit = 0 < Physics2D.Raycast(originPosition, vector.normalized, _filter, _hits, vector.magnitude);
 
         if (hasCenterHit)

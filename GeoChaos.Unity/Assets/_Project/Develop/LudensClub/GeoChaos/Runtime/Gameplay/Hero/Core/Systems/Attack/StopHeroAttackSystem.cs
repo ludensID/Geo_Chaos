@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity hero in _heroes
-        .Where<HitTimer>(x => x.TimeLeft <= 0))
+        .Check<HitTimer>(x => x.TimeLeft <= 0))
       {
         hero
           .Del<HitTimer>()

@@ -44,7 +44,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         ref OnActionStarted startedAction = ref action.Get<OnActionStarted>();
 
         foreach (EcsEntity control in _controls
-          .Where<Owner>(owner => owner.Entity.EqualsTo(action.Pack())))
+          .Check<Owner>(owner => owner.Entity.EqualsTo(action.Pack())))
         {
           _freeFallSvc.PrepareFreeFall(control, startedAction.Time, _config.StartADControlCoefficient,
             _config.UseADControlGradient);

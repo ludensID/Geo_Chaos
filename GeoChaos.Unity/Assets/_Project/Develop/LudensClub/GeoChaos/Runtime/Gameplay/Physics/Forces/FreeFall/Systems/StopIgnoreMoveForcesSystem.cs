@@ -24,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity move in _moves
-        .Where<SpeedForce>(x => x.Type == SpeedForceType.Move))
+        .Check<SpeedForce>(x => x.Type == SpeedForceType.Move))
       {
         if (move.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity owner) && !owner.Has<FreeFalling>())
           move.Del<Ignored>();

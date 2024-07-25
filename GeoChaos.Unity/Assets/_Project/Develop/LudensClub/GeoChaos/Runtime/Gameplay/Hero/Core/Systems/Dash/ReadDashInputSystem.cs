@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash
     {
       foreach (EcsEntity _ in _inputs)
       foreach (EcsEntity hero in _heroes
-        .Where<MovementLayout>(x => x.Layer == MovementLayer.All))
+        .Check<MovementLayout>(x => x.Layer == MovementLayer.All))
       {
         hero.Add<DashCommand>();
       }

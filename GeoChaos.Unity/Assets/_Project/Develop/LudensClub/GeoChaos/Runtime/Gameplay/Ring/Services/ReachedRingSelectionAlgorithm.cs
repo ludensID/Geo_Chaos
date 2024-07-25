@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Configuration;
+﻿using System.Collections.Generic;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
@@ -9,14 +10,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
   public class ReachedRingSelectionAlgorithm : ISelectionAlgorithm
   {
     private readonly PhysicsConfig _physics;
-    private readonly RaycastHit2D[] _hits;
+    private readonly List<RaycastHit2D> _hits;
     private readonly ContactFilter2D _filter;
 
     public ReachedRingSelectionAlgorithm(IConfigProvider configProvider)
     {
       _physics = configProvider.Get<PhysicsConfig>();
 
-      _hits = new RaycastHit2D[1];
+      _hits = new List<RaycastHit2D>(1);
       _filter = new ContactFilter2D
       {
         useTriggers = false,
@@ -34,7 +35,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Ring
         Vector3 selectionPosition = selection.Get<ViewRef>().View.transform.position;
         
         Vector3 vector = selectionPosition - originPosition;
+        _hits.Clear();
         bool hasCenterHit = 0 < Physics2D.Raycast(originPosition, vector.normalized, _filter, _hits, vector.magnitude);
+        _hits.Clear();
         bool hasTopHit = 0 < Physics2D.Raycast(originPosition + Vector3.up, vector.normalized,
           _filter, _hits, vector.magnitude);
         

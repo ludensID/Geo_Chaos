@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       {
         Vector2 force = drag.Get<DragForce>().Force;
         foreach (EcsEntity draggable in _draggables
-          .Where<Owner>(x => x.Entity.EqualsTo(drag.Get<Owner>().Entity)))
+          .Check<Owner>(x => x.Entity.EqualsTo(drag.Get<Owner>().Entity)))
         {
           ref Impact impact = ref draggable.Get<Impact>();
           ref MovementVector vector = ref draggable.Get<MovementVector>();

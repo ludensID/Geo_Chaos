@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity hero in _immuneHeroes
-        .Where<ImmunityTimer>(x => x.TimeLeft <= 0))
+        .Check<ImmunityTimer>(x => x.TimeLeft <= 0))
       {
         hero.Del<ImmunityTimer>();
 

@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot.Aim
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity command in _startCommands
-        .Where<MovementLayout>(x => (x.Layer & MovementLayer.Stay) > 0))
+        .Check<MovementLayout>(x => (x.Layer & MovementLayer.Stay) > 0))
       {
         command
           .Change((ref MovementLayout layout) =>

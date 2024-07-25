@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Rise
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity spirit in _risingSpirits
-        .Where<RiseTimer>(x => x.TimeLeft <= 0))
+        .Check<RiseTimer>(x => x.TimeLeft <= 0))
       {
         spirit
           .Del<RiseTimer>()

@@ -24,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Attack
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity timer in _timers
-        .Where<ComboAttackTimer>(x => x.TimeLeft <= 0))
+        .Check<ComboAttackTimer>(x => x.TimeLeft <= 0))
       {
         timer
           .Change((ref ComboAttackCounter counter) => counter.Count = 0)

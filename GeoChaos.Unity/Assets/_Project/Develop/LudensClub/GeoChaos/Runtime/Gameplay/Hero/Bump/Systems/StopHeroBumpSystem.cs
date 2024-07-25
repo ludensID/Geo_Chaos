@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity hero in _bumpedHeroes
-        .Where<BumpTimer>(x => x.TimeLeft <= 0))
+        .Check<BumpTimer>(x => x.TimeLeft <= 0))
       {
         hero
           .Del<Bumping>()

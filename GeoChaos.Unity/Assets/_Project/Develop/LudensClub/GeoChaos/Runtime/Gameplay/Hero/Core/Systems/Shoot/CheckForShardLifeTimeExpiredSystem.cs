@@ -24,8 +24,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.Shoot
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity shard in _expiredShards
-        .Where<EntityId>(x => x.Id == EntityType.Shard)
-        .Where<LifeTime>(x => x.TimeLeft <= 0))
+        .Check<EntityId>(x => x.Id == EntityType.Shard)
+        .Check<LifeTime>(x => x.TimeLeft <= 0))
       {
         shard.Add<DestroyCommand>();
       }

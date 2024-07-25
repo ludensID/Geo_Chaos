@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity fade in _fadeTimers
-        .Where<FadeTimer>(x => x.TimeLeft <= 0))
+        .Check<FadeTimer>(x => x.TimeLeft <= 0))
       {
         fade
           .Del<FadeTimer>()

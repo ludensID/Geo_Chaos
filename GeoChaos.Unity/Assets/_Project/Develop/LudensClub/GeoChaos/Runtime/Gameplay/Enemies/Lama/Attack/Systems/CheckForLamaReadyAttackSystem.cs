@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -14,6 +15,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
     private readonly EcsEntities _lamas;
     private readonly EcsEntities _heroes;
     private readonly LamaConfig _config;
+    private readonly ContactFilter2D _filter;
+    private readonly List<RaycastHit2D> _hits;
 
     public CheckForLamaReadyAttackSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
@@ -29,6 +32,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
         .Filter<HeroTag>()
         .Inc<ViewRef>()
         .Collect();
+      
+      _hits = new List<RaycastHit2D>(10);
+      _filter = new ContactFilter2D { useTriggers = false };
     }
 
     public void Run(EcsSystems systems)
@@ -42,10 +48,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
           float bodyDirection = lama.Get<BodyDirection>().Direction;
           Vector3 direction = Vector3.right * bodyDirection;
 
-          var filter = new ContactFilter2D { useTriggers = false };
-          RaycastHit2D[] hits = new RaycastHit2D[10];
-          Physics2D.Raycast(origin, direction, filter, hits, _config.AttackDistance);
-          lama.Has<ReadyAttack>(hits.Any(x => x.collider == collider));
+          _hits.Clear();
+          Physics2D.Raycast(origin, direction, _filter, _hits, _config.AttackDistance);
+          lama.Has<ReadyAttack>(_hits.Any(x => x.collider == collider));
         }
       }
     }

@@ -21,12 +21,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 
     public EcsEntity GetDragForce(EcsPackedEntity owner)
     {
-      return GetLoop(owner).FirstOrDefault();
+      return GetLoop(owner).ToEnumerable().FirstOrDefault();
     }
 
     public EcsEntities GetLoop(EcsPackedEntity owner)
     {
-      return _drags.Where<Owner>(x => x.Entity.EqualsTo(owner));
+      return _drags.Clone().Where<Owner>(x => x.Entity.EqualsTo(owner));
     }
   }
 }

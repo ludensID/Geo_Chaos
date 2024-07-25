@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Attack
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity lama in _lamas
-        .Where<ComboCooldown>(x => x.TimeLeft <= 0))
+        .Check<ComboCooldown>(x => x.TimeLeft <= 0))
       {
         lama
           .Del<ComboCooldown>()

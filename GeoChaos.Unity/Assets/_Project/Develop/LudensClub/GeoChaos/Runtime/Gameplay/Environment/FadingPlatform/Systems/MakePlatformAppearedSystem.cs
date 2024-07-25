@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity cooldown in _appearCooldowns
-        .Where<AppearCooldown>(x => x.TimeLeft <= 0))
+        .Check<AppearCooldown>(x => x.TimeLeft <= 0))
       {
         cooldown.Del<AppearCooldown>();
       }
