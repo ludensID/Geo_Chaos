@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Wait
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,8 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct LookingTimer : IEcsComponent
+  public struct WaitCommand : IEcsComponent
   {
-    public Timer TimeLeft;
   }
 }

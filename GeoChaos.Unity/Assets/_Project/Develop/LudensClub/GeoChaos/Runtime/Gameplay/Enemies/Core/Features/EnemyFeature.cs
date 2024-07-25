@@ -1,4 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
@@ -8,6 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
     public EnemyFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<LamaFeature>());
+      Add(systems.Create<LeafySpiritFeature>());
       
       Add(systems.Create<SetEnemyBodyDirectionSystem>());
       Add(systems.Create<SetHealthViewSystem>());

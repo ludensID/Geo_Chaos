@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -30,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Patrol
         .Filter<LamaTag>()
         .Inc<PatrolCommand>()
         .Exc<Patrolling>()
-        .Exc<LookingTimer>()
+        .Exc<WaitingTimer>()
         .Collect();
     }
 

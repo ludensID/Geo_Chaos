@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -14,7 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
       _game = gameWorldWrapper.World;
 
       _lookingTimers = _game
-        .Filter<LookingTimer>()
+        .Filter<WaitingTimer>()
         .Inc<LamaTag>()
         .Collect();
     }
@@ -22,9 +23,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity timer in _lookingTimers
-        .Where<LookingTimer>(x => x.TimeLeft <= 0))
+        .Where<WaitingTimer>(x => x.TimeLeft <= 0))
       {
-        timer.Del<LookingTimer>();
+        timer.Del<WaitingTimer>();
       }
     }
   }

@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -45,7 +46,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Patrol
           .Del<PatrollingTimer>()
           .Del<Patrolling>()
           .Add<OnPatrollFinished>()
-          .Add((ref LookingTimer lookingTimer) => lookingTimer.TimeLeft = _timers.Create(_config.LookingTime));
+          .Add((ref WaitingTimer lookingTimer) => lookingTimer.TimeLeft = _timers.Create(_config.LookingTime));
       }
     }
   }

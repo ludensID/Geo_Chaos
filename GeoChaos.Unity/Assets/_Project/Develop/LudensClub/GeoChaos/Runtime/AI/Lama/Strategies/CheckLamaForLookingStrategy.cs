@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 
@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.AI
     
     public bool Check()
     {
-      return Entity.TryUnpackEntity(_game, out EcsEntity lama) && lama.Has<LookingTimer>();
+      return Entity.TryUnpackEntity(_game, out EcsEntity lama) && lama.Has<WaitingTimer>();
     }
   }
 }

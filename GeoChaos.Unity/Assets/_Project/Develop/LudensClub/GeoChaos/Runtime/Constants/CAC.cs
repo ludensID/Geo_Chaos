@@ -43,6 +43,9 @@
 
       public const string ECS_CONVERTER_MENU = ECS_MENU + "Converter";
       public const string ECS_CONVERTER_FILE = "NewEntityConverter";
+      
+      public const string LEAFY_SPIRIT_MENU = CONFIG_MENU + "Leafy Spirit";
+      public const string LEAFY_SPIRIT_FILE = "LeafySpiritConfig";
     }
   }
 }

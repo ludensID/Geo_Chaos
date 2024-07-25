@@ -1,25 +1,29 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Wait;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 
 namespace LudensClub.GeoChaos.Runtime.AI
 {
-  public class LamaLookingStrategy : IActionStrategy, IResetStrategy
+  public class LeafySpiritWaitingStrategy : IActionStrategy, IResetStrategy
   {
     private readonly EcsWorld _game;
     public EcsPackedEntity Entity { get; set; }
 
-    public LamaLookingStrategy(GameWorldWrapper gameWorldWrapper)
+    public LeafySpiritWaitingStrategy(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
     }
 
     public BehaviourStatus Execute()
     {
-      if (Entity.TryUnpackEntity(_game, out _))
-      { 
+      if (Entity.TryUnpackEntity(_game, out EcsEntity spirit))
+      {
+        if (!spirit.Has<WaitingTimer>())
+          spirit.Add<WaitCommand>();
+
         return Node.CONTINUE;
       }
 
@@ -28,9 +32,10 @@ namespace LudensClub.GeoChaos.Runtime.AI
 
     public void Reset()
     {
-      if (Entity.TryUnpackEntity(_game, out EcsEntity lama))
+      if (Entity.TryUnpackEntity(_game, out EcsEntity spirit))
       {
-        lama.Del<WaitingTimer>();
+        if (spirit.Has<WaitingTimer>())
+          spirit.Add<StopWaitCommand>();
       }
     }
   }
