@@ -32,10 +32,10 @@ namespace LudensClub.GeoChaos.Runtime.AI
 
     public void Reset()
     {
-      if (Entity.TryUnpackEntity(_game, out EcsEntity spirit))
+      if (Entity.TryUnpackEntity(_game, out EcsEntity spirit) 
+        && spirit.Has<WaitingTimer>())
       {
-        if (spirit.Has<WaitingTimer>())
-          spirit.Add<StopWaitCommand>();
+        spirit.Add<StopWaitCommand>();
       }
     }
   }

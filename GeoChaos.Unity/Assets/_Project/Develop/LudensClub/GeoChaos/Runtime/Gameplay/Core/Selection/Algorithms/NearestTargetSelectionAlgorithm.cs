@@ -6,10 +6,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
 {
   public class NearestTargetSelectionAlgorithm : ISelectionAlgorithm
   {
+    private readonly EcsEntity _nearestTarget = new EcsEntity();
+
     public void Select(EcsEntities origins, EcsEntities marks)
     {
       var minDistance = float.MaxValue;
-      var nearestTarget = new EcsEntity(origins.World, -1);
+      _nearestTarget.SetWorld(origins.World);
 
       foreach (EcsEntity origin in origins)
       foreach (EcsEntity selection in marks)
@@ -20,14 +22,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
         if (distance < minDistance)
         {
           minDistance = distance;
-          nearestTarget.Entity = selection.Entity;
+          _nearestTarget.Entity = selection.Entity;
         }
 
         selection.Del<Marked>();
       }
 
-      if (nearestTarget.IsAlive())
-        nearestTarget.Add<Marked>();
+      if (_nearestTarget.IsAlive())
+        _nearestTarget.Add<Marked>();
     }
   }
 }

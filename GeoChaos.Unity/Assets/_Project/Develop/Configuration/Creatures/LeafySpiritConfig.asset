@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: LeafySpiritConfig
   m_EditorClassIdentifier: 
   WaitingTime: 3
+  PrecastLeapTime: 1
+  LeapTime: 2
+  MinLeapDistance: 1
