@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Detection;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Correction;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Leap;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Rise;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Wait;
@@ -14,6 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit
       Add(systems.Create<LeafySpiritWaitFeature>());
       Add(systems.Create<LeafySpiritLeapFeature>());
       Add(systems.Create<LeafySpiritRisingFeature>());
+      Add(systems.Create<LeafySpiritCorrectionFeature>());
     }
   }
 }

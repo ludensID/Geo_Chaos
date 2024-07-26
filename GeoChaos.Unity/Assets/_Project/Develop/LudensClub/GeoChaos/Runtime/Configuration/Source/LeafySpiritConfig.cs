@@ -17,7 +17,10 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title("Detection")]
     public float MaxVerticalDistance;
 
-    [Title("Rising")]
+    [Title("Rise")]
     public float RisingTime;
+
+    [Title("Correction")]
+    public float AttackDistance;
   }
 }
