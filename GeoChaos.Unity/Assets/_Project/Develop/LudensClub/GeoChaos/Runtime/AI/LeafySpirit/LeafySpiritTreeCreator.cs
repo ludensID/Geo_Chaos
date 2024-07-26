@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.AI.Rise;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 
@@ -21,6 +22,11 @@ namespace LudensClub.GeoChaos.Runtime.AI
         .ToChild()
         .AddCondition<CheckLeafySpiritForLeapStrategy>()
         .AddAction<LeafySpiritLeapStrategy>()
+        .ToParent()
+        .AddSequence()
+        .ToChild()
+        .AddCondition<CheckLeafySpiritForRiseStrategy>()
+        .AddAction<LeafySpiritRisingStrategy>()
         .ToParent()
         .AddSequence()
         .ToChild()

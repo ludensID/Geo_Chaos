@@ -16,10 +16,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 
     private Type _type;
 
-    public Type Type => _type ??= Value.GetType();
+    public Type Type => _type ??= Value?.GetType();
 
 #if UNITY_EDITOR
-    private string Name => Value?.GetType().Name ?? "[None]";
+    private string Name => Type?.Name ?? "[None]";
     
     private void OnValueChanged()
     {

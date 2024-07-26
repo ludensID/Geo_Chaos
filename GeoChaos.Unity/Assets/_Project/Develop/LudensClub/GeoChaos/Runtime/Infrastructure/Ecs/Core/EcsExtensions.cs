@@ -58,14 +58,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       return new EcsEntity(world, world.NewEntity());
     }
 
-    [HideInCallstack]
-    public static EcsEntity UnpackEntity(this EcsWorld world, EcsPackedEntity packedEntity)
-    {
-      packedEntity.Unpack(world, out int ent);
-      return new EcsEntity(world, ent);
-    }
-
-    [HideInCallstack]
     public static bool TryUnpackEntity(this EcsPackedEntity packedEntity, EcsWorld world, out EcsEntity entity)
     {
       bool packed = packedEntity.Unpack(world, out int ent);
@@ -73,7 +65,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       return packed;
     }
 
-    [HideInCallstack]
     public static bool TryUnpackEntity(this EcsPackedEntity packedEntity, EcsWorld world, EcsEntity entity)
     {
       bool packed = packedEntity.Unpack(world, out int ent);

@@ -16,5 +16,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Detection")]
     public float MaxVerticalDistance;
+
+    [Title("Rising")]
+    public float RisingTime;
   }
 }

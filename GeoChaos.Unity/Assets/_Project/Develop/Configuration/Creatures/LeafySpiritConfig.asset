@@ -17,3 +17,4 @@ MonoBehaviour:
   LeapTime: 2
   MinLeapDistance: 1
   MaxVerticalDistance: 3
+  RisingTime: 1
