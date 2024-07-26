@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
 {
-  public class ReachedEnemySelectionAlgorithm : ISelectionAlgorithm
+  public class TargetReachedAlgorithm : ISelectionAlgorithm
   {
     private readonly PhysicsConfig _physics;
     private readonly RaycastHit2D[] _hits;
     private readonly ContactFilter2D _filter;
 
-    public ReachedEnemySelectionAlgorithm(IConfigProvider configProvider)
+    public TargetReachedAlgorithm(IConfigProvider configProvider)
     {
       _physics = configProvider.Get<PhysicsConfig>();
       
@@ -28,16 +28,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
     public void Select(EcsEntities origins, EcsEntities marks)
     {
       foreach (EcsEntity origin in origins)
-      foreach (EcsEntity selection in marks)
+      foreach (EcsEntity mark in marks)
       {
         Vector3 originPosition = origin.Get<ViewRef>().View.transform.position;
-        Vector3 selectionPosition = selection.Get<ViewRef>().View.transform.position;
+        Vector3 selectionPosition = mark.Get<ViewRef>().View.transform.position;
 
         Vector3 vector = selectionPosition - originPosition;
         bool hasCenterHit = 0 < Physics2D.Raycast(originPosition, vector.normalized, _filter, _hits, vector.magnitude);
 
         if (hasCenterHit)
-          selection.Del<Marked>();
+          mark.Del<Marked>();
       }
     }
   }

@@ -13,5 +13,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float PrecastLeapTime;
     public float LeapTime;
     public float MinLeapDistance;
+
+    [Title("Detection")]
+    public float MaxVerticalDistance;
   }
 }

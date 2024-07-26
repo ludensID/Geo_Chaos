@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1757867776547716250}
   - component: {fileID: 1232315140855407645}
   - component: {fileID: 2427890404552322640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Heap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,8 +139,8 @@ PolygonCollider2D:
       - {x: -0.29296875, y: 0.40234375}
       - {x: -0.40234375, y: 0.29296875}
       - {x: -0.47265625, y: 0.15234375}
-      - {x: -0.5, y: 0}
-      - {x: 0.49848738, y: -0.0055409754}
+      - {x: -0.5, y: -0.021550221}
+      - {x: 0.5, y: -0.02155022}
       - {x: 0.4790603, y: 0.14665577}
       - {x: 0.39879346, y: 0.29588342}
       - {x: 0.27866066, y: 0.41090274}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 6701962471985989074}
   - component: {fileID: 7346000463539755782}
   - component: {fileID: 2885600673240556467}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeafySpirit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4,10 +4,9 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Detection
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
 {
-  public class LamaTargetInBoundsAlgorithm : ISelectionAlgorithm
-
+  public class TargetInBoundsAlgorithm : ISelectionAlgorithm
   {
     public void Select(EcsEntities origins, EcsEntities marks)
     {

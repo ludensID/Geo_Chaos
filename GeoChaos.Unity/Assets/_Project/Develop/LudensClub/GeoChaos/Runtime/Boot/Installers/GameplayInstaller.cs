@@ -5,6 +5,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Detection;
+using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
@@ -72,6 +73,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindRingSelector();
       BindEnemySelector();
       BindAimedLamaSelector();
+      BindAimedLeafySpiritSelector();
       
       BindDragForceService();
       BindADControlService();
@@ -102,6 +104,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthPresenter();
       BindImmunityDurationPresenter();
       BindHeroHealthShardPresenter();
+    }
+
+    private void BindAimedLeafySpiritSelector()
+    {
+      Container
+        .BindInterfacesAndSelfTo<AimedLeafySpiritSelector>()
+        .AsSingle();
     }
 
     private void BindLeafySpiritTreeCreator()

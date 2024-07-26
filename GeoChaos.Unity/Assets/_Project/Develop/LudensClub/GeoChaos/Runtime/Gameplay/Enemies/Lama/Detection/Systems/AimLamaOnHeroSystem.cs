@@ -5,7 +5,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Detection
 {
-  public class AimOnHeroSystem : IEcsRunSystem
+  public class AimLamaOnHeroSystem : IEcsRunSystem
   {
     private readonly AimedLamaSelector _selector;
     private readonly EcsWorld _game;
@@ -13,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Detection
     private readonly EcsEntities _lamas;
     private readonly EcsEntities _markedLamas;
 
-    public AimOnHeroSystem(GameWorldWrapper gameWorldWrapper, AimedLamaSelector selector)
+    public AimLamaOnHeroSystem(GameWorldWrapper gameWorldWrapper, AimedLamaSelector selector)
     {
       _selector = selector;
       _game = gameWorldWrapper.World;

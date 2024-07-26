@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies
       _algorithms.AddRange(new ISelectionAlgorithm[]
       {
         factory.Create<InRadiusSelectionAlgorithm>(_data),
-        factory.Create<ReachedEnemySelectionAlgorithm>(),
+        factory.Create<TargetReachedAlgorithm>(),
         factory.Create<InTargetViewSelectionAlgorithm>(_data),
         factory.Create<NearestTargetSelectionAlgorithm>()
       });

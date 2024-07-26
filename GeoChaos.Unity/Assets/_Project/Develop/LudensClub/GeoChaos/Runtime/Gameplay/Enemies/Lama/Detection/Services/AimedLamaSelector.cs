@@ -10,8 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Detection
       {
         factory.Create<LamaTargetInRadiusAlgorithm>(),
         factory.Create<LamaTargetInViewAlgorithm>(),
-        factory.Create<ReachedEnemySelectionAlgorithm>(),
-        factory.Create<LamaTargetInBoundsAlgorithm>()
+        factory.Create<TargetReachedAlgorithm>(),
+        factory.Create<TargetInBoundsAlgorithm>()
       });
     }    
   }

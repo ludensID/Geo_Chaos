@@ -4,16 +4,16 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
 {
   public class SelectionAlgorithmFactory : ISelectionAlgorithmFactory
   {
-    private readonly DiContainer _container;
+    private readonly IInstantiator _instantiator;
 
-    public SelectionAlgorithmFactory(DiContainer container)
+    public SelectionAlgorithmFactory(IInstantiator instantiator)
     {
-      _container = container;
+      _instantiator = instantiator;
     }
 
     public TAlgorithm Create<TAlgorithm>(params object[] parameters) where TAlgorithm : ISelectionAlgorithm
     {
-      return _container.Instantiate<TAlgorithm>(parameters);
+      return _instantiator.Instantiate<TAlgorithm>(parameters);
     }
   }
 }
