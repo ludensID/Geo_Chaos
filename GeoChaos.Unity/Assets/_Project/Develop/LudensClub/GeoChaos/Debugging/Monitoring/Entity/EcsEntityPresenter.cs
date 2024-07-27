@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Cysharp.Text;
 using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Editor.General;
 using LudensClub.GeoChaos.Runtime;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
@@ -13,14 +14,16 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
   public class EcsEntityPresenter : IEcsEntityPresenter
   {
     private const string ENTITY_FORMAT = "D8";
+    private const string UPDATE_VIEW = nameof(UpdateName) + "()";
 
     private readonly IEcsWorldWrapper _wrapper;
     private readonly IEcsEntityViewFactory _viewFactory;
     private readonly IEcsWorldPresenter _parent;
-    private readonly EcsComponentNameComparer _ecsComparer = new EcsComponentNameComparer();
+    private readonly EcsComponentNameNegativeComparer _ecsNegativeComparer = new EcsComponentNameNegativeComparer();
+    private readonly EcsComponentViewNegativeComparer _viewNegativeComparer = new EcsComponentViewNegativeComparer();
     private readonly EcsComponentViewComparer _viewComparer = new EcsComponentViewComparer();
-    private readonly StringBuilder _builder = new StringBuilder();
-    private readonly List<string> _componentNames = new List<string>(); 
+    private readonly List<string> _componentNames = new List<string>();
+    private EcsUniverseConfig _config;
     private Type[] _typesCache;
     private object[] _components;
     private int _componentCount;
@@ -29,6 +32,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private string _name;
 
     public int Entity { get; }
+    public string EntityString { get; }
     public EcsEntityView View { get; private set; }
 
     public EcsEntityPresenter(int entity,
@@ -40,6 +44,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       _viewFactory = viewFactory;
       _parent = parent;
       Entity = entity;
+      EntityString = Entity.ToString(ENTITY_FORMAT);
     }
 
     public void Initialize()
@@ -50,17 +55,17 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     public void Tick()
     {
-      var entityName = Entity.ToString(ENTITY_FORMAT);
+      string entityName = EntityString;
       if (_wrapper.World.GetEntityGen(Entity) > 0)
       {
+        UpdateView();
+
 #if !DISABLE_PROFILING
-        using (new ProfilerMarker(nameof(UpdateName) + "()").Auto())
+        using (new ProfilerMarker(UPDATE_VIEW).Auto())
 #endif
         {
-          entityName = UpdateName(entityName);
+          entityName = UpdateName();
         }
-
-        UpdateView();
       }
       else
       {
@@ -71,18 +76,20 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       View.gameObject.name = entityName;
     }
 
-    private string UpdateName(string entityName)
+    private string UpdateName()
     {
-      int typeCount = _wrapper.World.GetComponentTypes(Entity, ref _typesCache);
-      _builder.Clear().Append(entityName);
-      for (var i = 0; i < typeCount; i++)
+      using Utf16ValueStringBuilder builder = ZString.CreateStringBuilder();
+      builder.Append(EntityString);
+      if (View.Components.Count > 0)
       {
-        _builder
-          .Append(":")
-          .Append(EditorContext.GetPrettyName(_typesCache[i]));
+        builder.Append(":");
+        builder.Append(View.Components[0]);
       }
 
-      return _builder.ToString();
+#if !DISABLE_PROFILING
+      using ProfilerMarker.AutoScope marker = new ProfilerMarker(nameof(ToString)).Auto();
+#endif
+      return builder.ToString();
     }
 
     public void UpdateView()
@@ -93,7 +100,14 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       {
         _componentCount = _wrapper.World.GetComponentsCount(Entity);
         Array.Resize(ref _components, _componentCount);
-        _componentCount = _wrapper.World.GetComponents(Entity, ref _components);
+
+#if !DISABLE_PROFILING
+        using (new ProfilerMarker("GetComponents()").Auto())
+#endif
+        {
+          _componentCount = _wrapper.World.GetComponents(Entity, ref _components);
+        }
+
         _componentNames.Clear();
         _componentNames.Capacity = _componentCount;
         foreach (object component in _components)
@@ -115,17 +129,17 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       {
         for (int i = 0; i < _componentCount; i++)
         {
-          int index = View.Components.FindIndex(x => x.Name == _componentNames[i]);
+          _viewComparer.Obj = _componentNames[i];
+          int index = View.Components.FindIndexNonAlloc(_viewComparer);
           View.Components[index].Value = (IEcsComponent)_components[i];
+          View.Components[index].Name = _componentNames[i];
         }
       }
-    }
 
-    private void UpdatePools()
-    {
-      int count = _wrapper.World.GetAllPools(ref _pools);
-      _valuePools = new IEcsPool[count];
-      Array.Copy(_pools, _valuePools, count);
+      if (!_config)
+        _config = AssetFinder.FindAsset<EcsUniverseConfig>();
+      if (_config)
+        View.Components.Sort(_config.Comparer);
     }
 
     private void Resize()
@@ -136,8 +150,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       {
         for (int i = 0; i < View.Components.Count; i++)
         {
-          _ecsComparer.Obj = View.Components[i].Name;
-          if (_componentNames.AllNonAlloc(_ecsComparer))
+          _ecsNegativeComparer.Obj = View.Components[i].Name;
+          if (_componentNames.AllNonAlloc(_ecsNegativeComparer))
             View.Components.RemoveAt(i--);
         }
       }
@@ -148,10 +162,10 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       {
         for (int i = 0; i < _componentCount; i++)
         {
-          string componentName = EditorContext.GetPrettyName(_components[i]);
-          _viewComparer.Obj = componentName;
-          if (View.Components.AllNonAlloc(_viewComparer))
-            View.Components.Add(new EcsComponentView { Value = (IEcsComponent)_components[i], Name = componentName });
+          _viewNegativeComparer.Obj = _componentNames[i];
+          if (View.Components.AllNonAlloc(_viewNegativeComparer))
+            View.Components.Add(new EcsComponentView
+              { Value = (IEcsComponent)_components[i], Name = _componentNames[i] });
         }
       }
 
@@ -164,6 +178,11 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     {
       if (View)
         View.gameObject.SetActive(value);
+    }
+
+    private void UpdatePools()
+    {
+      _wrapper.World.GetAllPools(ref _pools);
     }
 
     public void AddComponents()
@@ -192,23 +211,33 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       }
     }
 
-    private class EcsComponentNameComparer : IPredicate<string>
+    private class EcsComponentNameNegativeComparer : IPredicate<string>
     {
-      public string Obj; 
-        
+      public string Obj;
+
       public bool Predicate(string obj)
       {
         return obj != Obj;
       }
     }
-    
-    private class EcsComponentViewComparer : IPredicate<EcsComponentView>
+
+    private class EcsComponentViewNegativeComparer : IPredicate<EcsComponentView>
     {
-      public string Obj; 
-        
+      public string Obj;
+
       public bool Predicate(EcsComponentView obj)
       {
         return obj.Name != Obj;
+      }
+    }
+
+    private class EcsComponentViewComparer : IPredicate<EcsComponentView>
+    {
+      public string Obj;
+
+      public bool Predicate(EcsComponentView obj)
+      {
+        return obj.Name == Obj;
       }
     }
   }

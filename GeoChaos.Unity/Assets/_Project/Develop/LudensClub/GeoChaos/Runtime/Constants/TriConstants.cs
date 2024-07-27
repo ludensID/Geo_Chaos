@@ -9,6 +9,7 @@
     public const string FREE = "_free";
     public const string TECH = "Tech";
     public const string CHECK = "Check";
+    public const string VALIDATE = "Validate";
 
     public static class Names
     {

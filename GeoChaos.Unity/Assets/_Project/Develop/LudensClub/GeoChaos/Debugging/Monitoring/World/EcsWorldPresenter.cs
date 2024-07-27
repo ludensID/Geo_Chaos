@@ -60,7 +60,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       foreach (int updatable in _updatables)
       {
 #if !DISABLE_PROFILING
-        using (new ProfilerMarker($"{updatable:D8}.UpdateView()").Auto())
+        using (new ProfilerMarker(EntityDictionary.GetString(updatable, EntityMethodType.UpdateView)).Auto())
 #endif
         {
           _children[updatable].UpdateView();
@@ -70,7 +70,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       foreach (int dirtyEntity in _dirtyEntities)
       {
 #if !DISABLE_PROFILING
-        using (new ProfilerMarker($"{dirtyEntity:D8}.Tick()").Auto())
+        using (new ProfilerMarker(EntityDictionary.GetString(dirtyEntity, EntityMethodType.Tick)).Auto())
 #endif
         {
           _children[dirtyEntity].Tick();

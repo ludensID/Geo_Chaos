@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="7.0.0-alpha.3" />
     <PackageReference Include="NSubstitute" Version="5.1.0" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

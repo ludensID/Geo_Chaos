@@ -1,0 +1,756 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f96e0f1a1f4a64a17da36ff1d032a0, type: 3}
+  m_Name: EcsUniverseConfig
+  m_EditorClassIdentifier: 
+  ComponentOrder:
+  - Name: HealthShardTag
+    Index: 0
+    Config: {fileID: 11400000}
+  - Name: FadingPlatformTag
+    Index: 1
+    Config: {fileID: 11400000}
+  - Name: DoorTag
+    Index: 2
+    Config: {fileID: 11400000}
+  - Name: KeyTag
+    Index: 3
+    Config: {fileID: 11400000}
+  - Name: HeroTag
+    Index: 4
+    Config: {fileID: 11400000}
+  - Name: LamaTag
+    Index: 5
+    Config: {fileID: 11400000}
+  - Name: LeafySpiritTag
+    Index: 6
+    Config: {fileID: 11400000}
+  - Name: LeverTag
+    Index: 7
+    Config: {fileID: 11400000}
+  - Name: RingTag
+    Index: 8
+    Config: {fileID: 11400000}
+  - Name: ShardTag
+    Index: 9
+    Config: {fileID: 11400000}
+  - Name: SpawnPointTag
+    Index: 10
+    Config: {fileID: 11400000}
+  - Name: SpikeTag
+    Index: 11
+    Config: {fileID: 11400000}
+  - Name: EnemyTag
+    Index: 12
+    Config: {fileID: 11400000}
+  - Name: ViewRef
+    Index: 13
+    Config: {fileID: 11400000}
+  - Name: Acceleration
+    Index: 14
+    Config: {fileID: 11400000}
+  - Name: Active
+    Index: 15
+    Config: {fileID: 11400000}
+  - Name: ADControl
+    Index: 16
+    Config: {fileID: 11400000}
+  - Name: ADControllable
+    Index: 17
+    Config: {fileID: 11400000}
+  - Name: Added
+    Index: 18
+    Config: {fileID: 11400000}
+  - Name: AimAvailable
+    Index: 19
+    Config: {fileID: 11400000}
+  - Name: AimButton
+    Index: 20
+    Config: {fileID: 11400000}
+  - Name: AimDirection
+    Index: 21
+    Config: {fileID: 11400000}
+  - Name: Aimed
+    Index: 22
+    Config: {fileID: 11400000}
+  - Name: Aiming
+    Index: 23
+    Config: {fileID: 11400000}
+  - Name: AimInRadius
+    Index: 24
+    Config: {fileID: 11400000}
+  - Name: AimPosition
+    Index: 25
+    Config: {fileID: 11400000}
+  - Name: AimRotation
+    Index: 26
+    Config: {fileID: 11400000}
+  - Name: AppearCooldown
+    Index: 27
+    Config: {fileID: 11400000}
+  - Name: AttackAvailable
+    Index: 28
+    Config: {fileID: 11400000}
+  - Name: AttackCheckerRef
+    Index: 29
+    Config: {fileID: 11400000}
+  - Name: AttackCommand
+    Index: 30
+    Config: {fileID: 11400000}
+  - Name: Attacking
+    Index: 31
+    Config: {fileID: 11400000}
+  - Name: BiteCommand
+    Index: 32
+    Config: {fileID: 11400000}
+  - Name: BodyDirection
+    Index: 33
+    Config: {fileID: 11400000}
+  - Name: BodyFreezing
+    Index: 34
+    Config: {fileID: 11400000}
+  - Name: Brain
+    Index: 35
+    Config: {fileID: 11400000}
+  - Name: BrainContext
+    Index: 36
+    Config: {fileID: 11400000}
+  - Name: BumpAvailable
+    Index: 37
+    Config: {fileID: 11400000}
+  - Name: Bumping
+    Index: 38
+    Config: {fileID: 11400000}
+  - Name: BumpTimer
+    Index: 39
+    Config: {fileID: 11400000}
+  - Name: CalculateHealthCommand
+    Index: 40
+    Config: {fileID: 11400000}
+  - Name: CalmColliderRef
+    Index: 41
+    Config: {fileID: 11400000}
+  - Name: CanInteract
+    Index: 42
+    Config: {fileID: 11400000}
+  - Name: ChaseCommand
+    Index: 43
+    Config: {fileID: 11400000}
+  - Name: Chasing
+    Index: 44
+    Config: {fileID: 11400000}
+  - Name: Closed
+    Index: 45
+    Config: {fileID: 11400000}
+  - Name: ColliderRef
+    Index: 46
+    Config: {fileID: 11400000}
+  - Name: CollisionMessage
+    Index: 47
+    Config: {fileID: 11400000}
+  - Name: ComboAttackCounter
+    Index: 48
+    Config: {fileID: 11400000}
+  - Name: ComboAttackTimer
+    Index: 49
+    Config: {fileID: 11400000}
+  - Name: ComboCooldown
+    Index: 50
+    Config: {fileID: 11400000}
+  - Name: ComboCooldownUp
+    Index: 51
+    Config: {fileID: 11400000}
+  - Name: ControlFactor
+    Index: 52
+    Config: {fileID: 11400000}
+  - Name: Controlling
+    Index: 53
+    Config: {fileID: 11400000}
+  - Name: ControlSpeed
+    Index: 54
+    Config: {fileID: 11400000}
+  - Name: ConverterRef
+    Index: 55
+    Config: {fileID: 11400000}
+  - Name: CorrectCommand
+    Index: 56
+    Config: {fileID: 11400000}
+  - Name: CreateEntityMessage
+    Index: 57
+    Config: {fileID: 11400000}
+  - Name: CurrentHealth
+    Index: 58
+    Config: {fileID: 11400000}
+  - Name: DamageMessage
+    Index: 59
+    Config: {fileID: 11400000}
+  - Name: DashAvailable
+    Index: 60
+    Config: {fileID: 11400000}
+  - Name: DashColliderRef
+    Index: 61
+    Config: {fileID: 11400000}
+  - Name: DashCommand
+    Index: 62
+    Config: {fileID: 11400000}
+  - Name: DashCooldown
+    Index: 63
+    Config: {fileID: 11400000}
+  - Name: Dashing
+    Index: 64
+    Config: {fileID: 11400000}
+  - Name: DefaultHealth
+    Index: 65
+    Config: {fileID: 11400000}
+  - Name: Delay
+    Index: 66
+    Config: {fileID: 11400000}
+  - Name: DelayDashCommand
+    Index: 67
+    Config: {fileID: 11400000}
+  - Name: DelayedInput
+    Index: 68
+    Config: {fileID: 11400000}
+  - Name: DelayHookCommand
+    Index: 69
+    Config: {fileID: 11400000}
+  - Name: DelayJumpCommand
+    Index: 70
+    Config: {fileID: 11400000}
+  - Name: DestroyCommand
+    Index: 71
+    Config: {fileID: 11400000}
+  - Name: Destroying
+    Index: 72
+    Config: {fileID: 11400000}
+  - Name: DestroyInputCommand
+    Index: 73
+    Config: {fileID: 11400000}
+  - Name: DragForce
+    Index: 74
+    Config: {fileID: 11400000}
+  - Name: DragForceAvailable
+    Index: 75
+    Config: {fileID: 11400000}
+  - Name: Draggable
+    Index: 76
+    Config: {fileID: 11400000}
+  - Name: Enabled
+    Index: 77
+    Config: {fileID: 11400000}
+  - Name: EntityId
+    Index: 78
+    Config: {fileID: 11400000}
+  - Name: Expired
+    Index: 79
+    Config: {fileID: 11400000}
+  - Name: ExpireTimer
+    Index: 80
+    Config: {fileID: 11400000}
+  - Name: ExpireUp
+    Index: 81
+    Config: {fileID: 11400000}
+  - Name: FadeTimer
+    Index: 82
+    Config: {fileID: 11400000}
+  - Name: Falling
+    Index: 83
+    Config: {fileID: 11400000}
+  - Name: FinishAimCommand
+    Index: 84
+    Config: {fileID: 11400000}
+  - Name: ForceAvailable
+    Index: 85
+    Config: {fileID: 11400000}
+  - Name: FreeFall
+    Index: 86
+    Config: {fileID: 11400000}
+  - Name: FreeFalling
+    Index: 87
+    Config: {fileID: 11400000}
+  - Name: FreeRotating
+    Index: 88
+    Config: {fileID: 11400000}
+  - Name: Gradient
+    Index: 89
+    Config: {fileID: 11400000}
+  - Name: GradientRate
+    Index: 90
+    Config: {fileID: 11400000}
+  - Name: GravityScale
+    Index: 91
+    Config: {fileID: 11400000}
+  - Name: Ground
+    Index: 92
+    Config: {fileID: 11400000}
+  - Name: GroundCheckRef
+    Index: 93
+    Config: {fileID: 11400000}
+  - Name: GroundCheckTimer
+    Index: 94
+    Config: {fileID: 11400000}
+  - Name: HealthRef
+    Index: 95
+    Config: {fileID: 11400000}
+  - Name: HealthShardCounter
+    Index: 96
+    Config: {fileID: 11400000}
+  - Name: HeroAttackCollidersRef
+    Index: 97
+    Config: {fileID: 11400000}
+  - Name: HeroSwordViewRef
+    Index: 98
+    Config: {fileID: 11400000}
+  - Name: HitCooldown
+    Index: 99
+    Config: {fileID: 11400000}
+  - Name: HitCooldownUp
+    Index: 100
+    Config: {fileID: 11400000}
+  - Name: HitTimer
+    Index: 101
+    Config: {fileID: 11400000}
+  - Name: HookAvailable
+    Index: 102
+    Config: {fileID: 11400000}
+  - Name: HookCommand
+    Index: 103
+    Config: {fileID: 11400000}
+  - Name: Hooked
+    Index: 104
+    Config: {fileID: 11400000}
+  - Name: Hooking
+    Index: 105
+    Config: {fileID: 11400000}
+  - Name: HookInputCooldown
+    Index: 106
+    Config: {fileID: 11400000}
+  - Name: HookPrecast
+    Index: 107
+    Config: {fileID: 11400000}
+  - Name: HookPulling
+    Index: 108
+    Config: {fileID: 11400000}
+  - Name: HookRef
+    Index: 109
+    Config: {fileID: 11400000}
+  - Name: HookTimer
+    Index: 110
+    Config: {fileID: 11400000}
+  - Name: HorizontalMovement
+    Index: 111
+    Config: {fileID: 11400000}
+  - Name: HorizontalSpeed
+    Index: 112
+    Config: {fileID: 11400000}
+  - Name: Ignored
+    Index: 113
+    Config: {fileID: 11400000}
+  - Name: Immune
+    Index: 114
+    Config: {fileID: 11400000}
+  - Name: ImmunityAvailable
+    Index: 115
+    Config: {fileID: 11400000}
+  - Name: ImmunityColliderRef
+    Index: 116
+    Config: {fileID: 11400000}
+  - Name: ImmunityTimer
+    Index: 117
+    Config: {fileID: 11400000}
+  - Name: Immutable
+    Index: 118
+    Config: {fileID: 11400000}
+  - Name: Impact
+    Index: 119
+    Config: {fileID: 11400000}
+  - Name: Inactive
+    Index: 120
+    Config: {fileID: 11400000}
+  - Name: InputDelay
+    Index: 121
+    Config: {fileID: 11400000}
+  - Name: Instant
+    Index: 122
+    Config: {fileID: 11400000}
+  - Name: Interactable
+    Index: 123
+    Config: {fileID: 11400000}
+  - Name: InteractCommand
+    Index: 124
+    Config: {fileID: 11400000}
+  - Name: InterruptHookAvailable
+    Index: 125
+    Config: {fileID: 11400000}
+  - Name: InterruptHookCommand
+    Index: 126
+    Config: {fileID: 11400000}
+  - Name: IsAttack
+    Index: 127
+    Config: {fileID: 11400000}
+  - Name: IsDash
+    Index: 128
+    Config: {fileID: 11400000}
+  - Name: IsHook
+    Index: 129
+    Config: {fileID: 11400000}
+  - Name: IsInteraction
+    Index: 130
+    Config: {fileID: 11400000}
+  - Name: IsJumpCanceled
+    Index: 131
+    Config: {fileID: 11400000}
+  - Name: IsJumpStarted
+    Index: 132
+    Config: {fileID: 11400000}
+  - Name: IsShoot
+    Index: 133
+    Config: {fileID: 11400000}
+  - Name: JumpAvailable
+    Index: 134
+    Config: {fileID: 11400000}
+  - Name: JumpCommand
+    Index: 135
+    Config: {fileID: 11400000}
+  - Name: Jumping
+    Index: 136
+    Config: {fileID: 11400000}
+  - Name: LamaAttackCollidersRef
+    Index: 137
+    Config: {fileID: 11400000}
+  - Name: LamaAttackRenderersRef
+    Index: 138
+    Config: {fileID: 11400000}
+  - Name: LastMovementVector
+    Index: 139
+    Config: {fileID: 11400000}
+  - Name: LeapCommand
+    Index: 140
+    Config: {fileID: 11400000}
+  - Name: Leaping
+    Index: 141
+    Config: {fileID: 11400000}
+  - Name: LeapTimer
+    Index: 142
+    Config: {fileID: 11400000}
+  - Name: LifeTime
+    Index: 143
+    Config: {fileID: 11400000}
+  - Name: Marked
+    Index: 144
+    Config: {fileID: 11400000}
+  - Name: MatchedDoorRef
+    Index: 145
+    Config: {fileID: 11400000}
+  - Name: MatchedKeyRef
+    Index: 146
+    Config: {fileID: 11400000}
+  - Name: MaxCurrentHealth
+    Index: 147
+    Config: {fileID: 11400000}
+  - Name: MaxSpeed
+    Index: 148
+    Config: {fileID: 11400000}
+  - Name: Movable
+    Index: 149
+    Config: {fileID: 11400000}
+  - Name: MoveCommand
+    Index: 150
+    Config: {fileID: 11400000}
+  - Name: MoveDirection
+    Index: 151
+    Config: {fileID: 11400000}
+  - Name: MovementLayout
+    Index: 152
+    Config: {fileID: 11400000}
+  - Name: MovementVector
+    Index: 153
+    Config: {fileID: 11400000}
+  - Name: Moving
+    Index: 154
+    Config: {fileID: 11400000}
+  - Name: NothingHappensMessage
+    Index: 155
+    Config: {fileID: 11400000}
+  - Name: OnActionFinished
+    Index: 156
+    Config: {fileID: 11400000}
+  - Name: OnActionStarted
+    Index: 157
+    Config: {fileID: 11400000}
+  - Name: OnAimFinished
+    Index: 158
+    Config: {fileID: 11400000}
+  - Name: OnAimStarted
+    Index: 159
+    Config: {fileID: 11400000}
+  - Name: OnAttackFinished
+    Index: 160
+    Config: {fileID: 11400000}
+  - Name: OnAttackStarted
+    Index: 161
+    Config: {fileID: 11400000}
+  - Name: OnConverted
+    Index: 162
+    Config: {fileID: 11400000}
+  - Name: OnDamaged
+    Index: 163
+    Config: {fileID: 11400000}
+  - Name: OneSideCollision
+    Index: 164
+    Config: {fileID: 11400000}
+  - Name: OnFallFinished
+    Index: 165
+    Config: {fileID: 11400000}
+  - Name: OnFallStarted
+    Index: 166
+    Config: {fileID: 11400000}
+  - Name: OnGround
+    Index: 167
+    Config: {fileID: 11400000}
+  - Name: OnHealthCalculated
+    Index: 168
+    Config: {fileID: 11400000}
+  - Name: OnHealthShardTaken
+    Index: 169
+    Config: {fileID: 11400000}
+  - Name: OnHitFinished
+    Index: 170
+    Config: {fileID: 11400000}
+  - Name: OnHitStarted
+    Index: 171
+    Config: {fileID: 11400000}
+  - Name: OnHookInterrupted
+    Index: 172
+    Config: {fileID: 11400000}
+  - Name: OnHookPrecastFinished
+    Index: 173
+    Config: {fileID: 11400000}
+  - Name: OnHookPrecastStarted
+    Index: 174
+    Config: {fileID: 11400000}
+  - Name: OnHookPullingFinished
+    Index: 175
+    Config: {fileID: 11400000}
+  - Name: OnHookPullingStarted
+    Index: 176
+    Config: {fileID: 11400000}
+  - Name: OnImmunityColliderCasted
+    Index: 177
+    Config: {fileID: 11400000}
+  - Name: OnImmunityFinished
+    Index: 178
+    Config: {fileID: 11400000}
+  - Name: OnInteracted
+    Index: 179
+    Config: {fileID: 11400000}
+  - Name: OnLanded
+    Index: 180
+    Config: {fileID: 11400000}
+  - Name: OnLeapFinished
+    Index: 181
+    Config: {fileID: 11400000}
+  - Name: OnLeftGround
+    Index: 182
+    Config: {fileID: 11400000}
+  - Name: OnOpened
+    Index: 183
+    Config: {fileID: 11400000}
+  - Name: OnPatrollFinished
+    Index: 184
+    Config: {fileID: 11400000}
+  - Name: OnRiseStarted
+    Index: 185
+    Config: {fileID: 11400000}
+  - Name: OpenCommand
+    Index: 186
+    Config: {fileID: 11400000}
+  - Name: Opened
+    Index: 187
+    Config: {fileID: 11400000}
+  - Name: Owner
+    Index: 188
+    Config: {fileID: 11400000}
+  - Name: PatrolBounds
+    Index: 189
+    Config: {fileID: 11400000}
+  - Name: PatrolCommand
+    Index: 190
+    Config: {fileID: 11400000}
+  - Name: Patrolling
+    Index: 191
+    Config: {fileID: 11400000}
+  - Name: PatrollingTimer
+    Index: 192
+    Config: {fileID: 11400000}
+  - Name: PhysicalBoundsRef
+    Index: 193
+    Config: {fileID: 11400000}
+  - Name: Poolable
+    Index: 194
+    Config: {fileID: 11400000}
+  - Name: PrecastLeapTimer
+    Index: 195
+    Config: {fileID: 11400000}
+  - Name: PrepareCommand
+    Index: 196
+    Config: {fileID: 11400000}
+  - Name: Prepared
+    Index: 197
+    Config: {fileID: 11400000}
+  - Name: ReadyAttack
+    Index: 198
+    Config: {fileID: 11400000}
+  - Name: RelativeSpeed
+    Index: 199
+    Config: {fileID: 11400000}
+  - Name: ReleaseRingMessage
+    Index: 200
+    Config: {fileID: 11400000}
+  - Name: Releasing
+    Index: 201
+    Config: {fileID: 11400000}
+  - Name: Residual
+    Index: 202
+    Config: {fileID: 11400000}
+  - Name: RigidbodyRef
+    Index: 203
+    Config: {fileID: 11400000}
+  - Name: RingPointsRef
+    Index: 204
+    Config: {fileID: 11400000}
+  - Name: RiseCommand
+    Index: 205
+    Config: {fileID: 11400000}
+  - Name: Risen
+    Index: 206
+    Config: {fileID: 11400000}
+  - Name: RiseTimer
+    Index: 207
+    Config: {fileID: 11400000}
+  - Name: Rising
+    Index: 208
+    Config: {fileID: 11400000}
+  - Name: Selectable
+    Index: 209
+    Config: {fileID: 11400000}
+  - Name: Selected
+    Index: 210
+    Config: {fileID: 11400000}
+  - Name: ShootAvailable
+    Index: 211
+    Config: {fileID: 11400000}
+  - Name: ShootCommand
+    Index: 212
+    Config: {fileID: 11400000}
+  - Name: ShootCooldown
+    Index: 213
+    Config: {fileID: 11400000}
+  - Name: ShootDirection
+    Index: 214
+    Config: {fileID: 11400000}
+  - Name: ShootLineRef
+    Index: 215
+    Config: {fileID: 11400000}
+  - Name: ShootPosition
+    Index: 216
+    Config: {fileID: 11400000}
+  - Name: ShouldAttackCommand
+    Index: 217
+    Config: {fileID: 11400000}
+  - Name: ShouldMoveCommand
+    Index: 218
+    Config: {fileID: 11400000}
+  - Name: Spawnable
+    Index: 219
+    Config: {fileID: 11400000}
+  - Name: Spawned
+    Index: 220
+    Config: {fileID: 11400000}
+  - Name: SpawnedEntityId
+    Index: 221
+    Config: {fileID: 11400000}
+  - Name: SpeedForce
+    Index: 222
+    Config: {fileID: 11400000}
+  - Name: SpeedForceCommand
+    Index: 223
+    Config: {fileID: 11400000}
+  - Name: StartAimCommand
+    Index: 224
+    Config: {fileID: 11400000}
+  - Name: StartFadeCommand
+    Index: 225
+    Config: {fileID: 11400000}
+  - Name: StartTransform
+    Index: 226
+    Config: {fileID: 11400000}
+  - Name: StopAttackCommand
+    Index: 227
+    Config: {fileID: 11400000}
+  - Name: StopChaseCommand
+    Index: 228
+    Config: {fileID: 11400000}
+  - Name: StopDashCommand
+    Index: 229
+    Config: {fileID: 11400000}
+  - Name: StopHookCommand
+    Index: 230
+    Config: {fileID: 11400000}
+  - Name: StopHookPullingCommand
+    Index: 231
+    Config: {fileID: 11400000}
+  - Name: StopJumpCommand
+    Index: 232
+    Config: {fileID: 11400000}
+  - Name: StopLeapCommand
+    Index: 233
+    Config: {fileID: 11400000}
+  - Name: StopPatrollingCommand
+    Index: 234
+    Config: {fileID: 11400000}
+  - Name: StopWaitCommand
+    Index: 235
+    Config: {fileID: 11400000}
+  - Name: StopWatchCommand
+    Index: 236
+    Config: {fileID: 11400000}
+  - Name: TwoSideCollision
+    Index: 237
+    Config: {fileID: 11400000}
+  - Name: Unique
+    Index: 238
+    Config: {fileID: 11400000}
+  - Name: Valuable
+    Index: 239
+    Config: {fileID: 11400000}
+  - Name: VerticalMovement
+    Index: 240
+    Config: {fileID: 11400000}
+  - Name: ViewDirection
+    Index: 241
+    Config: {fileID: 11400000}
+  - Name: WaitCommand
+    Index: 242
+    Config: {fileID: 11400000}
+  - Name: WaitingTimer
+    Index: 243
+    Config: {fileID: 11400000}
+  - Name: WatchCommand
+    Index: 244
+    Config: {fileID: 11400000}
+  - Name: Watching
+    Index: 245
+    Config: {fileID: 11400000}
+  - Name: WatchingTimer
+    Index: 246
+    Config: {fileID: 11400000}

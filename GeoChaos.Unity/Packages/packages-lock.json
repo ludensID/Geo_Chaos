@@ -9,6 +9,13 @@
       },
       "hash": "0c5b8f4480f55bf4fdd21c8e6da9620571c3ff43"
     },
+    "com.cysharp.zstring": {
+      "version": "https://github.com/Cysharp/ZString.git?path=src/ZString.Unity/Assets/Scripts/ZString",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "6e4e0f035cc3d5973f31fe8c524990780dbc65dd"
+    },
     "com.esotericsoftware.spine.spine-csharp": {
       "version": "https://github.com/EsotericSoftware/spine-runtimes.git?path=spine-csharp/src#4.2",
       "depth": 0,

@@ -46,6 +46,9 @@
       
       public const string LEAFY_SPIRIT_MENU = CONFIG_MENU + "Leafy Spirit";
       public const string LEAFY_SPIRIT_FILE = "LeafySpiritConfig";
+      
+      public const string ECS_UNIVERSE_CONFIG_MENU = CONFIG_MENU + "Ecs Universe Config";
+      public const string ECS_UNIVERSE_CONFIG_FILE = "EcsUniverseConfig";
     }
   }
 }

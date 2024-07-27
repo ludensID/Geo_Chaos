@@ -55,5 +55,16 @@ namespace LudensClub.GeoChaos.Runtime.Utils
 
       return false;
     }
+    
+    public static int FindIndexNonAlloc<T>(this List<T> obj, IPredicate<T> predicate)
+    {
+      for (int i = 0; i < obj.Count; i++)
+      {
+        if (predicate.Predicate(obj[i]))
+          return i;
+      }
+
+      return -1;
+    }
   }
 }
