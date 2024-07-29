@@ -2,11 +2,11 @@
 using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Features;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;

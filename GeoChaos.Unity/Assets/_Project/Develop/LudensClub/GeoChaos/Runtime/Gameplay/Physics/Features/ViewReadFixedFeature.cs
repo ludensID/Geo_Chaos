@@ -1,4 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Systems.View;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics

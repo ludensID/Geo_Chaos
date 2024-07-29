@@ -1,5 +1,5 @@
 ﻿using System;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack

@@ -2,11 +2,11 @@
 using System.Linq;
 using LudensClub.GeoChaos.Runtime.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Detection;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Detection;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemies;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Detection;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.LeafySpirit.Detection;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Ring;

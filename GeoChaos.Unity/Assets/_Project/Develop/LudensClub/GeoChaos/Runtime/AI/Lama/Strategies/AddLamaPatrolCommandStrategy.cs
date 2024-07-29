@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Enemies.Lama.Patrol;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 

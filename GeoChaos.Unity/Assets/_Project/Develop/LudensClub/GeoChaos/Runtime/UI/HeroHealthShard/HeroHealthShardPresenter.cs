@@ -1,5 +1,6 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.HealthShard;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.HealthShard;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using Zenject;
 

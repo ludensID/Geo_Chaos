@@ -1,4 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core.Dash;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;

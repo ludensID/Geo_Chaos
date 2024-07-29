@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Move;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;

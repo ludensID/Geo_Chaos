@@ -1,7 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Bump;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Debugging.Watchers

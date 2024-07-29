@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Immunity;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero;
-using LudensClub.GeoChaos.Runtime.Gameplay.Hero.Immunity;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 using Zenject;

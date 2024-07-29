@@ -1,5 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
