@@ -52,7 +52,7 @@ MonoBehaviour:
       - Value:
           rid: 674098060372213854
       - Value:
-          rid: 674098060372213855
+          rid: 674098072352456864
       - Value:
           rid: 674098060372213856
       - Value:
@@ -157,11 +157,6 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         Count: 0
-    - rid: 674098060372213855
-      type: {class: MoveDirection, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move,
-        asm: GeoChaos.Runtime}
-      data:
-        Direction: {x: 0, y: 0}
     - rid: 674098060372213856
       type: {class: MovementLayout, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero,
         asm: GeoChaos.Runtime}
@@ -184,3 +179,8 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         Direction: {x: 1, y: 0}
+    - rid: 674098072352456864
+      type: {class: HeroMoveDirection, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move,
+        asm: GeoChaos.Runtime}
+      data:
+        Direction: {x: 0, y: 0}

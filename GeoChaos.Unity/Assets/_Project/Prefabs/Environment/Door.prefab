@@ -171,6 +171,8 @@ MonoBehaviour:
       Components: []
     _scriptableConverter: {fileID: 11400000, guid: 5071cd9818539ae4fbb4461afd198c00,
       type: 2}
+  _createEntityOnStart: 1
+  _createEntityOnEnable: 0
   references:
     version: 2
     RefIds:
@@ -188,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b76ed805a54716ac65c23090d6a577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Converter: {fileID: 0}
 --- !u!114 &6050042297932362168
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -11,8 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct MoveDirection : IEcsComponent
+  public struct StartMovePosition : IEcsComponent
   {
-    public Vector2 Direction;
+    public Vector3 Position;
   }
 }

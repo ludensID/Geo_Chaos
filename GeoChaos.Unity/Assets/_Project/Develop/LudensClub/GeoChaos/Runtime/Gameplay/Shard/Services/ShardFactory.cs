@@ -1,6 +1,7 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props.Shard;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Shard
 {
@@ -17,10 +18,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Shard
       _createdShard = new EcsEntity(_gameWorldWrapper.World);
     }
 
-    public EcsEntity Create()
+    public EcsEntity Create(Vector3 position)
     {
       _createdShard.Entity = _gameWorldWrapper.World.NewEntity();
-      ShardView view = _pool.Pull();
+      ShardView view = _pool.Pop();
+      view.transform.position = position;
       view.Converter.CreateEntity(_createdShard);
       return _createdShard;
     }

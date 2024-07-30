@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -42,7 +41,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 
         float direction = 0;
         if (hasMove && packedOwner.TryUnpackEntity(_game, out EcsEntity owner))
-          direction = owner.Get<MoveDirection>().Direction.x;
+          direction = owner.Get<HeroMoveDirection>().Direction.x;
 
         float acceleration = control.Get<Gradient>().Value * _config.ADControlSpeed * direction;
         control.Change(

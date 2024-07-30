@@ -486,6 +486,8 @@ MonoBehaviour:
       Components: []
     _scriptableConverter: {fileID: 11400000, guid: daff16003aa61294e9aba6398c8d3768,
       type: 2}
+  _createEntityOnStart: 1
+  _createEntityOnEnable: 0
   references:
     version: 2
     RefIds:

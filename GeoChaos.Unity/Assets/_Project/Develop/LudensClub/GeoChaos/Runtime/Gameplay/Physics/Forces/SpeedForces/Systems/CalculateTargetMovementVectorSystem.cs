@@ -88,7 +88,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 
     private Vector2 AssignVelocityByImpact(EcsEntity force, Vector2 velocity)
     {
-      return ChangeVelocityByImpact(force, velocity, (v, s, d) => s * d);
+      return ChangeVelocityByImpact(force, velocity, (_, s, d) => s * d);
     }
 
     private Vector2 AddVelocityByImpact(EcsEntity force, Vector2 velocity)
@@ -96,14 +96,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       return ChangeVelocityByImpact(force, velocity, (v, s, d) => v + s * d);
     }
 
-    private Vector2 ChangeVelocityByImpact(EcsEntity force, Vector2 velocity, Func<float, float, float, float> @operator)
+    private Vector2 ChangeVelocityByImpact(EcsEntity force, Vector2 velocity, Func<float, float, float, float> vectorOperator)
     {
       ref Impact impact = ref force.Get<Impact>();
       ref MovementVector vector = ref force.Get<MovementVector>();
       for (int i = 0; i < 2; i++)
       {
         if (impact.Vector[i] > 0)
-          velocity[i] = @operator.Invoke(velocity[i], vector.Speed[i], vector.Direction[i]);
+          velocity[i] = vectorOperator.Invoke(velocity[i], vector.Speed[i], vector.Direction[i]);
       }
 
       return velocity;

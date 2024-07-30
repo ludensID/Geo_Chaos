@@ -96,10 +96,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Shoot
 
     private EcsEntity CreateShard(EcsPackedEntity owner, float lifeTime, Vector3 position)
     {
-      return _shardFactory.Create()
+      return _shardFactory.Create(position)
         .Add((ref Owner o) => o.Entity = owner)
-        .Add((ref LifeTime lt) => lt.TimeLeft = _timers.Create(lifeTime))
-        .Change((ref ViewRef viewRef) => viewRef.View.transform.position = position);
+        .Add((ref LifeTime lt) => lt.TimeLeft = _timers.Create(lifeTime));
     }
 
     private void SetVelocity(Vector2 shootDirection, EcsPackedEntity owner)

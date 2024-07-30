@@ -58,7 +58,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Move
         float direction = command.Get<MoveHeroCommand>().Direction;
         (float normalized, float speed, float acceleration) = GetSpeedForceValues(command, direction);
 
-        command.Change((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
+        command.Change((ref HeroMoveDirection moveDirection) => moveDirection.Direction.x = direction);
 
         CreateMoveSpeedForce(command.Pack(), normalized, speed, acceleration);
 
@@ -70,7 +70,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Move
         float direction = command.Get<MoveHeroCommand>().Direction;
         (float normalized, float speed, float acceleration) = GetSpeedForceValues(command, direction);
 
-        command.Change((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
+        command.Change((ref HeroMoveDirection moveDirection) => moveDirection.Direction.x = direction);
 
         EcsEntities forces = _forces.GetLoop(SpeedForceType.Move, command.Pack());
         ChangeMoveSpeedForce(forces, normalized, acceleration, speed);
@@ -88,7 +88,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Move
           continue;
         }
 
-        float direction = moving.Get<MoveDirection>().Direction.x;
+        float direction = moving.Get<HeroMoveDirection>().Direction.x;
         float speed = moving.Get<HorizontalSpeed>().Speed * Mathf.Abs(direction);
         float acceleration = CalculateAcceleration(speed);
 

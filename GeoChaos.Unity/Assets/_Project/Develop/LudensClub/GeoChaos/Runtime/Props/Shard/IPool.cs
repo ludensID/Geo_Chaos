@@ -5,7 +5,7 @@ namespace LudensClub.GeoChaos.Runtime.Props.Shard
 {
   public interface IPool<TView> : IPushable where TView : BaseView
   {
-    TView Pull();
-    TView Pull(Vector3 position, Quaternion rotation, Transform parent = null);
+    TView Pop();
+    TView Pop(Vector3 position, Quaternion rotation, Transform parent = null);
   }
 }

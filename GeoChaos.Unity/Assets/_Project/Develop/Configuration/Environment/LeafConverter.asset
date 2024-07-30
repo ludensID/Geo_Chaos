@@ -16,7 +16,15 @@ MonoBehaviour:
   - _serializedConverter:
       rid: -2
     _components:
+      Components: []
+    _scriptableConverter: {fileID: 11400000, guid: e834491bf5eda944d96292f4193e5242,
+      type: 2}
+  - _serializedConverter:
+      rid: -2
+    _components:
       Components:
+      - Value:
+          rid: 674098072352456835
       - Value:
           rid: 674097946472480856
     _scriptableConverter: {fileID: 0}
@@ -29,3 +37,7 @@ MonoBehaviour:
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
         Id: 23
+    - rid: 674098072352456835
+      type: {class: LeafTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf,
+        asm: GeoChaos.Runtime}
+      data: 

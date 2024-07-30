@@ -43,7 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
       return id == Id;
     }
 
-    public TView Pull()
+    public TView Pop()
     {
       PooledView pooledView = _views.Find(x => x.IsPooled);
       pooledView.IsPooled = false;
@@ -52,7 +52,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
       return pooledView.View;
     }
 
-    public TView Pull(Vector3 position, Quaternion rotation, Transform parent = null)
+    public TView Pop(Vector3 position, Quaternion rotation, Transform parent = null)
     {
       PooledView pooledView = _views.Find(x => x.IsPooled);
       pooledView.IsPooled = false;
