@@ -22,17 +22,19 @@ MonoBehaviour:
   - _serializedConverter:
       rid: -2
     _components:
+      Components: []
+    _scriptableConverter: {fileID: 11400000, guid: e834491bf5eda944d96292f4193e5242,
+      type: 2}
+  - _serializedConverter:
+      rid: -2
+    _components:
       Components:
       - Value:
           rid: 674098060372213845
       - Value:
           rid: 674097938592170123
       - Value:
-          rid: 674097938592170088
-      - Value:
           rid: 674097938592170089
-      - Value:
-          rid: 674097938592170090
       - Value:
           rid: 674097938592170091
       - Value:
@@ -43,22 +45,11 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 674097938592170088
-      type: {class: MovementVector, ns: LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces,
-        asm: GeoChaos.Runtime}
-      data:
-        Immutable: 0
-        Speed: {x: 0, y: 0}
-        Direction: {x: 0, y: 0}
     - rid: 674097938592170089
       type: {class: BodyDirection, ns: LudensClub.GeoChaos.Runtime.Gameplay.View,
         asm: GeoChaos.Runtime}
       data:
         Direction: 1
-    - rid: 674097938592170090
-      type: {class: ForceAvailable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces,
-        asm: GeoChaos.Runtime}
-      data: 
     - rid: 674097938592170091
       type: {class: PatrolBounds, ns: LudensClub.GeoChaos.Runtime.Gameplay.AI, asm: GeoChaos.Runtime}
       data:

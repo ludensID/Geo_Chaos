@@ -22,6 +22,12 @@ MonoBehaviour:
   - _serializedConverter:
       rid: -2
     _components:
+      Components: []
+    _scriptableConverter: {fileID: 11400000, guid: e834491bf5eda944d96292f4193e5242,
+      type: 2}
+  - _serializedConverter:
+      rid: -2
+    _components:
       Components:
       - Value:
           rid: 674098060372213844
@@ -29,6 +35,8 @@ MonoBehaviour:
           rid: 674097947670741308
       - Value:
           rid: 674097960360607822
+      - Value:
+          rid: 674098063239020634
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
@@ -47,3 +55,8 @@ MonoBehaviour:
       type: {class: LeafySpiritTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit,
         asm: GeoChaos.Runtime}
       data: 
+    - rid: 674098063239020634
+      type: {class: BodyDirection, ns: LudensClub.GeoChaos.Runtime.Gameplay.View,
+        asm: GeoChaos.Runtime}
+      data:
+        Direction: 0

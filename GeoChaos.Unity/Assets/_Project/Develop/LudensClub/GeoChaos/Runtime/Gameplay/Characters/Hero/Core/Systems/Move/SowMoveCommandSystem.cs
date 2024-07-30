@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Move
       _game = gameWorldWrapper.World;
 
       _commands = _game
-        .Filter<MoveCommand>()
+        .Filter<MoveHeroCommand>()
         .Exc<FreeFalling>()
         .Collect();
     }
@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Move
       foreach (EcsEntity command in _commands
         .Check<MovementLayout>(x => x.Layer != MovementLayer.All))
       {
-        command.Del<MoveCommand>();
+        command.Del<MoveHeroCommand>();
       }
     }
   }

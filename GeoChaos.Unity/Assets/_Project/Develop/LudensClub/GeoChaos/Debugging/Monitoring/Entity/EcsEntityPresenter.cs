@@ -83,7 +83,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       if (View.Components.Count > 0)
       {
         builder.Append(":");
-        builder.Append(View.Components[0]);
+        builder.Append(View.Components[0].Name);
       }
 
 #if !DISABLE_PROFILING

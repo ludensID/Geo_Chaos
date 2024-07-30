@@ -32,14 +32,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Move
       _startCommands = _game
         .Filter<Movable>()
         .Inc<MovementVector>()
-        .Inc<MoveCommand>()
+        .Inc<MoveHeroCommand>()
         .Exc<Moving>()
         .Collect();
 
       _commands = _game
         .Filter<Movable>()
         .Inc<MovementVector>()
-        .Inc<MoveCommand>()
+        .Inc<MoveHeroCommand>()
         .Inc<Moving>()
         .Collect();
 
@@ -47,7 +47,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Move
         .Filter<Movable>()
         .Inc<MovementVector>()
         .Inc<Moving>()
-        .Exc<MoveCommand>()
+        .Exc<MoveHeroCommand>()
         .Collect();
     }
 
@@ -55,7 +55,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Move
     {
       foreach (EcsEntity command in _startCommands)
       {
-        float direction = command.Get<MoveCommand>().Direction;
+        float direction = command.Get<MoveHeroCommand>().Direction;
         (float normalized, float speed, float acceleration) = GetSpeedForceValues(command, direction);
 
         command.Change((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);
@@ -67,7 +67,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Move
 
       foreach (EcsEntity command in _commands)
       {
-        float direction = command.Get<MoveCommand>().Direction;
+        float direction = command.Get<MoveHeroCommand>().Direction;
         (float normalized, float speed, float acceleration) = GetSpeedForceValues(command, direction);
 
         command.Change((ref MoveDirection moveDirection) => moveDirection.Direction.x = direction);

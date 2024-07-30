@@ -18,4 +18,5 @@ MonoBehaviour:
   MinLeapDistance: 1
   MaxVerticalDistance: 3
   RisingTime: 1
-  AttackDistance: 3
+  AttackDistance: 2
+  Speed: 4

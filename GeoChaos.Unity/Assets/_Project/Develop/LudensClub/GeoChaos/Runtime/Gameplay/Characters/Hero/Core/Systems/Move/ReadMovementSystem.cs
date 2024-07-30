@@ -35,7 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Move
       {
         float direction = input.Get<HorizontalMovement>().Direction;
         if (direction != 0)
-          movable.Add((ref MoveCommand command) => command.Direction = direction);
+          movable.Add((ref MoveHeroCommand command) => command.Direction = direction);
       }
     }
   }

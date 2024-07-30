@@ -22,5 +22,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Correction")]
     public float AttackDistance;
+
+    [Title("Movement")]
+    public float Speed;
   }
 }

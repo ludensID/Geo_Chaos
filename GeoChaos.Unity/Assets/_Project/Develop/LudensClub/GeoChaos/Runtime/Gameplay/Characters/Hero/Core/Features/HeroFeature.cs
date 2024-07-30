@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features
 
       Add(systems.Create<ReadViewDirectionInputSystem>());
 
-      Add(systems.Create<Delete<MoveCommand, GameWorldWrapper>>());
+      Add(systems.Create<Delete<MoveHeroCommand, GameWorldWrapper>>());
       Add(systems.Create<ReadMovementSystem>());
       Add(systems.Create<SowMoveCommandSystem>());
       Add(systems.Create<InterruptMovementSystem>());

@@ -8,28 +8,29 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama
 {
-  public class KeepLamaInBoundsSystem : IEcsRunSystem
+  public class KeepInBoundsSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsEntities _lamas;
+    private readonly EcsEntities _boundeds;
 
-    public KeepLamaInBoundsSystem(GameWorldWrapper gameWorldWrapper)
+    public KeepInBoundsSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
-      _lamas = _game
-        .Filter<LamaTag>()
+      _boundeds = _game
+        .Filter<MovementVector>()
+        .Inc<PatrolBounds>()
         .Inc<ViewRef>()
         .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity lama in _lamas)
+      foreach (EcsEntity bounded in _boundeds)
       {
-        Vector2 bounds = lama.Get<PatrolBounds>().Bounds;
-        Rigidbody2D rb = lama.Get<RigidbodyRef>().Rigidbody;
-        float direction = lama.Get<MovementVector>().Direction.x;
+        Vector2 bounds = bounded.Get<PatrolBounds>().Bounds;
+        Rigidbody2D rb = bounded.Get<RigidbodyRef>().Rigidbody;
+        float direction = bounded.Get<MovementVector>().Direction.x;
         int index = GetBoundIndex(rb.position.x, direction, bounds);
         if (index >= 0)
         {
@@ -37,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama
           position.x = bounds[index];
           rb.MovePosition(position);
 
-          lama.Change((ref MovementVector vector) => vector.Speed.x = 0);
+          bounded.Change((ref MovementVector vector) => vector.Speed.x = 0);
         }
       }
     }
