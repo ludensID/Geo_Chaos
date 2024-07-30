@@ -7,5 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
   {
     public float Speed;
     public float Distance;
+
+    public AnimationCurve SpeedCurve;
   }
 }
