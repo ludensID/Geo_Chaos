@@ -1,5 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.HealthShard;
@@ -64,8 +63,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features
       Add(systems.Create<CheckForDashTimeExpiredSystem>());
       Add(systems.Create<StopHeroDashSystem>());
       
-      Add(systems.Create<Delete<OnAttackStarted, GameWorldWrapper>>());
-      Add(systems.Create<Delete<OnAttackFinished, GameWorldWrapper>>());
+      Add(systems.Create<DeleteHeroAttackStartedEventSystem>());
+      Add(systems.Create<DeleteHeroAttackFinishedEventSystem>());
       Add(systems.Create<ReadAttackInputSystem>());
       Add(systems.Create<ResetComboCounterSystem>());
       Add(systems.Create<HeroAttackSystem>());

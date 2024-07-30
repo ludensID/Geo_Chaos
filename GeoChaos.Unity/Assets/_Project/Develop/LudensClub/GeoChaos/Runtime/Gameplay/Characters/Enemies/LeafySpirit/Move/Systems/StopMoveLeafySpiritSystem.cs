@@ -20,7 +20,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Mo
       
       _movingSpirits = _game
         .Filter<LeafySpiritTag>()
-        .Inc<Moving>()
         .Inc<StopMoveCommand>()
         .Collect();
     }
@@ -29,15 +28,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Mo
     {
       foreach (EcsEntity spirit in _movingSpirits)
       {
-        spirit
-          .Del<StopMoveCommand>()
-          .Del<Moving>()
-          .Has<ShouldAttackCommand>(false);
+        spirit.Del<StopMoveCommand>();
 
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, spirit.PackedEntity, Vector2.right)
+        if (spirit.Has<Moving>())
         {
-          Instant = true
-        });
+          spirit.Del<Moving>();
+          
+          _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, spirit.PackedEntity, Vector2.right)
+          {
+            Instant = true
+          });
+        }
       }
     }
   }

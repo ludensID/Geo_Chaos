@@ -27,8 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.At
         spirit
           .Del<StopAttackCommand>()
           .Has<Attacking>(false)
-          .Has<HitCooldown>(false)
-          .Has<OnAttackFinished>(false);
+          .Has<HitCooldown>(false);
       }
     }
   }

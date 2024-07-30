@@ -1,4 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Attack;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Bide;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Correction;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Leap;
@@ -20,6 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit
       Add(systems.Create<LeafySpiritCorrectionFeature>());
       Add(systems.Create<LeafySpiritMovingFeature>());
       Add(systems.Create<LeafySpiritAttackFeature>());
+      Add(systems.Create<LeafySpiritBidingFeature>());
     }
   }
 }

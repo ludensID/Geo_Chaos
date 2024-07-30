@@ -35,6 +35,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [ListDrawerSettings(HideRemoveButton = true, HideAddButton = true)]
     public List<float> Cooldowns = new List<float>();
 
+    [Title("Wait After Attack")]
+    public float WaitAfterAttackTime;
+      
 
 #if UNITY_EDITOR
     private void Reset()
