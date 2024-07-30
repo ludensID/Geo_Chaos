@@ -1,4 +1,5 @@
-﻿using TriInspector;
+﻿using System.Collections.Generic;
+using TriInspector;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Configuration
@@ -11,6 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Leap")]
     public float PrecastLeapTime;
+
     public float LeapTime;
     public float MinLeapDistance;
 
@@ -25,5 +27,40 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Movement")]
     public float Speed;
+
+    [Title("Attack")]
+    [OnValueChanged(TriConstants.ON + nameof(NumberOfLeaves) + TriConstants.CHANGED)]
+    public int NumberOfLeaves;
+
+    [ListDrawerSettings(HideRemoveButton = true, HideAddButton = true)]
+    public List<float> Cooldowns = new List<float>();
+
+
+#if UNITY_EDITOR
+    private void Reset()
+    {
+      Cooldowns = new List<float>(NumberOfLeaves);
+    }
+
+    private void OnNumberOfLeavesChanged()
+    {
+      int cooldownCount = NumberOfLeaves - 1;
+      if (Cooldowns.Count != cooldownCount)
+      {
+        if (cooldownCount <= 0)
+        {
+          Cooldowns.Clear();
+          return;
+        }
+
+        var cooldowns = new List<float>(cooldownCount);
+        for (int i = 0; i < cooldownCount; i++)
+          cooldowns.Add(i < Cooldowns.Count ? Cooldowns[i] : 0);
+
+        Cooldowns.Clear();
+        Cooldowns.AddRange(cooldowns);
+      }
+    }
+#endif
   }
 }

@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Attack
 {

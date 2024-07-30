@@ -24,6 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
         .Filter<LeafTag>()
         .Inc<MoveCommand>()
         .Inc<MoveDirection2>()
+        .Inc<ViewRef>()
         .Collect();
     }
       
@@ -40,7 +41,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
         leaf
           .Del<MoveCommand>()
           .Del<MoveDirection2>()
-          .Add<Moving>();
+          .Add<Moving>()
+          .Change((ref StartMovePosition position) => position.Position = leaf.Get<ViewRef>().View.transform.position);
       }
     }
   }

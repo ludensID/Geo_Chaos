@@ -27,6 +27,10 @@ MonoBehaviour:
           rid: 674098072352456835
       - Value:
           rid: 674097946472480856
+      - Value:
+          rid: 674098072352456882
+      - Value:
+          rid: 674098072352456891
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
@@ -41,3 +45,11 @@ MonoBehaviour:
       type: {class: LeafTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf,
         asm: GeoChaos.Runtime}
       data: 
+    - rid: 674098072352456882
+      type: {class: Poolable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
+      data: 
+    - rid: 674098072352456891
+      type: {class: StartMovePosition, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf,
+        asm: GeoChaos.Runtime}
+      data:
+        Position: {x: 0, y: 0, z: 0}

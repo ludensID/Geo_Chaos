@@ -5,17 +5,18 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Shoot
 {
-  public class CheckForShootCooldownExpiredSystem : IEcsRunSystem
+  public class CheckForHeroShootCooldownExpiredSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _timers;
 
-    public CheckForShootCooldownExpiredSystem(GameWorldWrapper gameWorldWrapper)
+    public CheckForHeroShootCooldownExpiredSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
       _timers = _game
-        .Filter<ShootCooldown>()
+        .Filter<HeroTag>()
+        .Inc<ShootCooldown>()
         .Collect();
     }
     

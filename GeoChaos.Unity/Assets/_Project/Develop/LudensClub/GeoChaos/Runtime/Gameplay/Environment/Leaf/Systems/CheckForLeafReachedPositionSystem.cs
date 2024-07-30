@@ -12,7 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
     private readonly EcsEntities _movingLeaves;
     private readonly LeafConfig _config;
 
-    public CheckForLeafReachedPositionSystem(GameWorldWrapper gameWorldWrapper, ConfigProvider configProvider)
+    public CheckForLeafReachedPositionSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
     {
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<LeafConfig>();

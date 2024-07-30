@@ -37,6 +37,8 @@ MonoBehaviour:
           rid: 674097960360607822
       - Value:
           rid: 674098063239020634
+      - Value:
+          rid: 674098072352456889
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
@@ -60,3 +62,8 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         Direction: 0
+    - rid: 674098072352456889
+      type: {class: ComboAttackCounter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Attack,
+        asm: GeoChaos.Runtime}
+      data:
+        Count: 0

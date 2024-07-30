@@ -49,424 +49,424 @@ MonoBehaviour:
   - Name: SpikeTag
     Index: 11
     Config: {fileID: 11400000}
-  - Name: EnemyTag
+  - Name: LeafTag
     Index: 12
     Config: {fileID: 11400000}
-  - Name: ViewRef
+  - Name: EnemyTag
     Index: 13
     Config: {fileID: 11400000}
-  - Name: Acceleration
+  - Name: ViewRef
     Index: 14
     Config: {fileID: 11400000}
-  - Name: Active
+  - Name: Acceleration
     Index: 15
     Config: {fileID: 11400000}
-  - Name: ADControl
+  - Name: Active
     Index: 16
     Config: {fileID: 11400000}
-  - Name: ADControllable
+  - Name: ADControl
     Index: 17
     Config: {fileID: 11400000}
-  - Name: Added
+  - Name: ADControllable
     Index: 18
     Config: {fileID: 11400000}
-  - Name: AimAvailable
+  - Name: Added
     Index: 19
     Config: {fileID: 11400000}
-  - Name: AimButton
+  - Name: AimAvailable
     Index: 20
     Config: {fileID: 11400000}
-  - Name: AimDirection
+  - Name: AimButton
     Index: 21
     Config: {fileID: 11400000}
-  - Name: Aimed
+  - Name: AimDirection
     Index: 22
     Config: {fileID: 11400000}
-  - Name: Aiming
+  - Name: Aimed
     Index: 23
     Config: {fileID: 11400000}
-  - Name: AimInRadius
+  - Name: Aiming
     Index: 24
     Config: {fileID: 11400000}
-  - Name: AimPosition
+  - Name: AimInRadius
     Index: 25
     Config: {fileID: 11400000}
-  - Name: AimRotation
+  - Name: AimPosition
     Index: 26
     Config: {fileID: 11400000}
-  - Name: AppearCooldown
+  - Name: AimRotation
     Index: 27
     Config: {fileID: 11400000}
-  - Name: AttackAvailable
+  - Name: AppearCooldown
     Index: 28
     Config: {fileID: 11400000}
-  - Name: AttackCheckerRef
+  - Name: AttackAvailable
     Index: 29
     Config: {fileID: 11400000}
-  - Name: AttackCommand
+  - Name: AttackCheckerRef
     Index: 30
     Config: {fileID: 11400000}
-  - Name: Attacking
+  - Name: AttackCommand
     Index: 31
     Config: {fileID: 11400000}
-  - Name: BiteCommand
+  - Name: Attacking
     Index: 32
     Config: {fileID: 11400000}
-  - Name: BodyDirection
+  - Name: BiteCommand
     Index: 33
     Config: {fileID: 11400000}
-  - Name: BodyFreezing
+  - Name: BodyDirection
     Index: 34
     Config: {fileID: 11400000}
-  - Name: Brain
+  - Name: BodyFreezing
     Index: 35
     Config: {fileID: 11400000}
-  - Name: BrainContext
+  - Name: Brain
     Index: 36
     Config: {fileID: 11400000}
-  - Name: BumpAvailable
+  - Name: BrainContext
     Index: 37
     Config: {fileID: 11400000}
-  - Name: Bumping
+  - Name: BumpAvailable
     Index: 38
     Config: {fileID: 11400000}
-  - Name: BumpTimer
+  - Name: Bumping
     Index: 39
     Config: {fileID: 11400000}
-  - Name: CalculateHealthCommand
+  - Name: BumpTimer
     Index: 40
     Config: {fileID: 11400000}
-  - Name: CalmColliderRef
+  - Name: CalculateHealthCommand
     Index: 41
     Config: {fileID: 11400000}
-  - Name: CanInteract
+  - Name: CalmColliderRef
     Index: 42
     Config: {fileID: 11400000}
-  - Name: ChaseCommand
+  - Name: CanInteract
     Index: 43
     Config: {fileID: 11400000}
-  - Name: Chasing
+  - Name: ChaseCommand
     Index: 44
     Config: {fileID: 11400000}
-  - Name: Closed
+  - Name: Chasing
     Index: 45
     Config: {fileID: 11400000}
-  - Name: ColliderRef
+  - Name: Closed
     Index: 46
     Config: {fileID: 11400000}
-  - Name: CollisionMessage
+  - Name: ColliderRef
     Index: 47
     Config: {fileID: 11400000}
-  - Name: ComboAttackCounter
+  - Name: CollisionMessage
     Index: 48
     Config: {fileID: 11400000}
-  - Name: ComboAttackTimer
+  - Name: ComboAttackCounter
     Index: 49
     Config: {fileID: 11400000}
-  - Name: ComboCooldown
+  - Name: ComboAttackTimer
     Index: 50
     Config: {fileID: 11400000}
-  - Name: ComboCooldownUp
+  - Name: ComboCooldown
     Index: 51
     Config: {fileID: 11400000}
-  - Name: ControlFactor
+  - Name: ComboCooldownUp
     Index: 52
     Config: {fileID: 11400000}
-  - Name: Controlling
+  - Name: ControlFactor
     Index: 53
     Config: {fileID: 11400000}
-  - Name: ControlSpeed
+  - Name: Controlling
     Index: 54
     Config: {fileID: 11400000}
-  - Name: ConverterRef
+  - Name: ControlSpeed
     Index: 55
     Config: {fileID: 11400000}
-  - Name: CorrectCommand
+  - Name: ConverterRef
     Index: 56
     Config: {fileID: 11400000}
-  - Name: CreateEntityMessage
+  - Name: CorrectCommand
     Index: 57
     Config: {fileID: 11400000}
-  - Name: CurrentHealth
+  - Name: CreateEntityMessage
     Index: 58
     Config: {fileID: 11400000}
-  - Name: DamageMessage
+  - Name: CurrentHealth
     Index: 59
     Config: {fileID: 11400000}
-  - Name: DashAvailable
+  - Name: DamageMessage
     Index: 60
     Config: {fileID: 11400000}
-  - Name: DashColliderRef
+  - Name: DashAvailable
     Index: 61
     Config: {fileID: 11400000}
-  - Name: DashCommand
+  - Name: DashColliderRef
     Index: 62
     Config: {fileID: 11400000}
-  - Name: DashCooldown
+  - Name: DashCommand
     Index: 63
     Config: {fileID: 11400000}
-  - Name: Dashing
+  - Name: DashCooldown
     Index: 64
     Config: {fileID: 11400000}
-  - Name: DefaultHealth
+  - Name: Dashing
     Index: 65
     Config: {fileID: 11400000}
-  - Name: Delay
+  - Name: DefaultHealth
     Index: 66
     Config: {fileID: 11400000}
-  - Name: DelayDashCommand
+  - Name: Delay
     Index: 67
     Config: {fileID: 11400000}
-  - Name: DelayedInput
+  - Name: DelayDashCommand
     Index: 68
     Config: {fileID: 11400000}
-  - Name: DelayHookCommand
+  - Name: DelayedInput
     Index: 69
     Config: {fileID: 11400000}
-  - Name: DelayJumpCommand
+  - Name: DelayHookCommand
     Index: 70
     Config: {fileID: 11400000}
-  - Name: DestroyCommand
+  - Name: DelayJumpCommand
     Index: 71
     Config: {fileID: 11400000}
-  - Name: Destroying
+  - Name: DestroyCommand
     Index: 72
     Config: {fileID: 11400000}
-  - Name: DestroyInputCommand
+  - Name: Destroying
     Index: 73
     Config: {fileID: 11400000}
-  - Name: DragForce
+  - Name: DestroyInputCommand
     Index: 74
     Config: {fileID: 11400000}
-  - Name: DragForceAvailable
+  - Name: DragForce
     Index: 75
     Config: {fileID: 11400000}
-  - Name: Draggable
+  - Name: DragForceAvailable
     Index: 76
     Config: {fileID: 11400000}
-  - Name: Enabled
+  - Name: Draggable
     Index: 77
     Config: {fileID: 11400000}
-  - Name: EntityId
+  - Name: Enabled
     Index: 78
     Config: {fileID: 11400000}
-  - Name: Expired
+  - Name: EntityId
     Index: 79
     Config: {fileID: 11400000}
-  - Name: ExpireTimer
+  - Name: Expired
     Index: 80
     Config: {fileID: 11400000}
-  - Name: ExpireUp
+  - Name: ExpireTimer
     Index: 81
     Config: {fileID: 11400000}
-  - Name: FadeTimer
+  - Name: ExpireUp
     Index: 82
     Config: {fileID: 11400000}
-  - Name: Falling
+  - Name: FadeTimer
     Index: 83
     Config: {fileID: 11400000}
-  - Name: FinishAimCommand
+  - Name: Falling
     Index: 84
     Config: {fileID: 11400000}
-  - Name: ForceAvailable
+  - Name: FinishAimCommand
     Index: 85
     Config: {fileID: 11400000}
-  - Name: FreeFall
+  - Name: ForceAvailable
     Index: 86
     Config: {fileID: 11400000}
-  - Name: FreeFalling
+  - Name: FreeFall
     Index: 87
     Config: {fileID: 11400000}
-  - Name: FreeRotating
+  - Name: FreeFalling
     Index: 88
     Config: {fileID: 11400000}
-  - Name: Gradient
+  - Name: FreeRotating
     Index: 89
     Config: {fileID: 11400000}
-  - Name: GradientRate
+  - Name: Gradient
     Index: 90
     Config: {fileID: 11400000}
-  - Name: GravityScale
+  - Name: GradientRate
     Index: 91
     Config: {fileID: 11400000}
-  - Name: Ground
+  - Name: GravityScale
     Index: 92
     Config: {fileID: 11400000}
-  - Name: GroundCheckRef
+  - Name: Ground
     Index: 93
     Config: {fileID: 11400000}
-  - Name: GroundCheckTimer
+  - Name: GroundCheckRef
     Index: 94
     Config: {fileID: 11400000}
-  - Name: HealthRef
+  - Name: GroundCheckTimer
     Index: 95
     Config: {fileID: 11400000}
-  - Name: HealthShardCounter
+  - Name: HealthRef
     Index: 96
     Config: {fileID: 11400000}
-  - Name: HeroAttackCollidersRef
+  - Name: HealthShardCounter
     Index: 97
     Config: {fileID: 11400000}
-  - Name: HeroSwordViewRef
+  - Name: HeroAttackCollidersRef
     Index: 98
     Config: {fileID: 11400000}
-  - Name: HitCooldown
+  - Name: HeroSwordViewRef
     Index: 99
     Config: {fileID: 11400000}
-  - Name: HitCooldownUp
+  - Name: HitCooldown
     Index: 100
     Config: {fileID: 11400000}
-  - Name: HitTimer
+  - Name: HitCooldownUp
     Index: 101
     Config: {fileID: 11400000}
-  - Name: HookAvailable
+  - Name: HitTimer
     Index: 102
     Config: {fileID: 11400000}
-  - Name: HookCommand
+  - Name: HookAvailable
     Index: 103
     Config: {fileID: 11400000}
-  - Name: Hooked
+  - Name: HookCommand
     Index: 104
     Config: {fileID: 11400000}
-  - Name: Hooking
+  - Name: Hooked
     Index: 105
     Config: {fileID: 11400000}
-  - Name: HookInputCooldown
+  - Name: Hooking
     Index: 106
     Config: {fileID: 11400000}
-  - Name: HookPrecast
+  - Name: HookInputCooldown
     Index: 107
     Config: {fileID: 11400000}
-  - Name: HookPulling
+  - Name: HookPrecast
     Index: 108
     Config: {fileID: 11400000}
-  - Name: HookRef
+  - Name: HookPulling
     Index: 109
     Config: {fileID: 11400000}
-  - Name: HookTimer
+  - Name: HookRef
     Index: 110
     Config: {fileID: 11400000}
-  - Name: HorizontalMovement
+  - Name: HookTimer
     Index: 111
     Config: {fileID: 11400000}
-  - Name: HorizontalSpeed
+  - Name: HorizontalMovement
     Index: 112
     Config: {fileID: 11400000}
-  - Name: Ignored
+  - Name: HorizontalSpeed
     Index: 113
     Config: {fileID: 11400000}
-  - Name: Immune
+  - Name: Ignored
     Index: 114
     Config: {fileID: 11400000}
-  - Name: ImmunityAvailable
+  - Name: Immune
     Index: 115
     Config: {fileID: 11400000}
-  - Name: ImmunityColliderRef
+  - Name: ImmunityAvailable
     Index: 116
     Config: {fileID: 11400000}
-  - Name: ImmunityTimer
+  - Name: ImmunityColliderRef
     Index: 117
     Config: {fileID: 11400000}
-  - Name: Immutable
+  - Name: ImmunityTimer
     Index: 118
     Config: {fileID: 11400000}
-  - Name: Impact
+  - Name: Immutable
     Index: 119
     Config: {fileID: 11400000}
-  - Name: Inactive
+  - Name: Impact
     Index: 120
     Config: {fileID: 11400000}
-  - Name: InputDelay
+  - Name: Inactive
     Index: 121
     Config: {fileID: 11400000}
-  - Name: Instant
+  - Name: InputDelay
     Index: 122
     Config: {fileID: 11400000}
-  - Name: Interactable
+  - Name: Instant
     Index: 123
     Config: {fileID: 11400000}
-  - Name: InteractCommand
+  - Name: Interactable
     Index: 124
     Config: {fileID: 11400000}
-  - Name: InterruptHookAvailable
+  - Name: InteractCommand
     Index: 125
     Config: {fileID: 11400000}
-  - Name: InterruptHookCommand
+  - Name: InterruptHookAvailable
     Index: 126
     Config: {fileID: 11400000}
-  - Name: IsAttack
+  - Name: InterruptHookCommand
     Index: 127
     Config: {fileID: 11400000}
-  - Name: IsDash
+  - Name: IsAttack
     Index: 128
     Config: {fileID: 11400000}
-  - Name: IsHook
+  - Name: IsDash
     Index: 129
     Config: {fileID: 11400000}
-  - Name: IsInteraction
+  - Name: IsHook
     Index: 130
     Config: {fileID: 11400000}
-  - Name: IsJumpCanceled
+  - Name: IsInteraction
     Index: 131
     Config: {fileID: 11400000}
-  - Name: IsJumpStarted
+  - Name: IsJumpCanceled
     Index: 132
     Config: {fileID: 11400000}
-  - Name: IsShoot
+  - Name: IsJumpStarted
     Index: 133
     Config: {fileID: 11400000}
-  - Name: JumpAvailable
+  - Name: IsShoot
     Index: 134
     Config: {fileID: 11400000}
-  - Name: JumpCommand
+  - Name: JumpAvailable
     Index: 135
     Config: {fileID: 11400000}
-  - Name: Jumping
+  - Name: JumpCommand
     Index: 136
     Config: {fileID: 11400000}
-  - Name: LamaAttackCollidersRef
+  - Name: Jumping
     Index: 137
     Config: {fileID: 11400000}
-  - Name: LamaAttackRenderersRef
+  - Name: LamaAttackCollidersRef
     Index: 138
     Config: {fileID: 11400000}
-  - Name: LastMovementVector
+  - Name: LamaAttackRenderersRef
     Index: 139
     Config: {fileID: 11400000}
-  - Name: LeapCommand
+  - Name: LastMovementVector
     Index: 140
     Config: {fileID: 11400000}
-  - Name: Leaping
+  - Name: LeapCommand
     Index: 141
     Config: {fileID: 11400000}
-  - Name: LeapTimer
+  - Name: Leaping
     Index: 142
     Config: {fileID: 11400000}
-  - Name: LifeTime
+  - Name: LeapTimer
     Index: 143
     Config: {fileID: 11400000}
-  - Name: Marked
+  - Name: LifeTime
     Index: 144
     Config: {fileID: 11400000}
-  - Name: MatchedDoorRef
+  - Name: Marked
     Index: 145
     Config: {fileID: 11400000}
-  - Name: MatchedKeyRef
+  - Name: MatchedDoorRef
     Index: 146
     Config: {fileID: 11400000}
-  - Name: MaxCurrentHealth
+  - Name: MatchedKeyRef
     Index: 147
     Config: {fileID: 11400000}
-  - Name: MaxSpeed
+  - Name: MaxCurrentHealth
     Index: 148
     Config: {fileID: 11400000}
-  - Name: Movable
+  - Name: MaxSpeed
     Index: 149
     Config: {fileID: 11400000}
-  - Name: MoveCommand
+  - Name: Movable
     Index: 150
     Config: {fileID: 11400000}
-  - Name: MoveDirection
+  - Name: MoveCommand
     Index: 151
     Config: {fileID: 11400000}
   - Name: MovementLayout
@@ -753,4 +753,25 @@ MonoBehaviour:
     Config: {fileID: 11400000}
   - Name: WatchingTimer
     Index: 246
+    Config: {fileID: 11400000}
+  - Name: FinishAttackCommand
+    Index: 247
+    Config: {fileID: 11400000}
+  - Name: FinishMoveCommand
+    Index: 248
+    Config: {fileID: 11400000}
+  - Name: HeroMoveDirection
+    Index: 249
+    Config: {fileID: 11400000}
+  - Name: MoveDirection2
+    Index: 250
+    Config: {fileID: 11400000}
+  - Name: MoveHeroCommand
+    Index: 251
+    Config: {fileID: 11400000}
+  - Name: StartMovePosition
+    Index: 252
+    Config: {fileID: 11400000}
+  - Name: StopMoveCommand
+    Index: 253
     Config: {fileID: 11400000}
