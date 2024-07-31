@@ -20,10 +20,12 @@ MonoBehaviour:
   RisingTime: 1
   AttackDistance: 6
   Speed: 4
+  AttackDistanceMultiplier: 0.85
   NumberOfLeaves: 5
   Cooldowns:
   - 1
   - 0.5
   - 0.25
   - 0.125
-  WaitAfterAttackTime: 5
+  WaitAfterAttackTime: 2
+  WatchingTimer: 5

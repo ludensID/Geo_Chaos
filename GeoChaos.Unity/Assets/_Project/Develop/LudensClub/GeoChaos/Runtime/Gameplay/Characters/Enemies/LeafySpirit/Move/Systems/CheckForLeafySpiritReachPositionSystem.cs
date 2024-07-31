@@ -44,7 +44,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Mo
         Vector3 spiritPosition = spirit.Get<ViewRef>().View.transform.position;
 
         float distance = Mathf.Abs(heroPosition.x - spiritPosition.x);
-        if (distance < _config.AttackDistance * 0.8f)
+        if (distance < _config.AttackDistance * _config.AttackDistanceMultiplier)
         {
           spirit.Add<FinishMoveCommand>();
 

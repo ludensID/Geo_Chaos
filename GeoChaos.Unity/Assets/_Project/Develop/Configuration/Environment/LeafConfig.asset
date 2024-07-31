@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LeafConfig
   m_EditorClassIdentifier: 
   MoveSpeed: 8
-  Distance: 5
+  Distance: 9
   MoveSpeedCurve:
     serializedVersion: 2
     m_Curve:

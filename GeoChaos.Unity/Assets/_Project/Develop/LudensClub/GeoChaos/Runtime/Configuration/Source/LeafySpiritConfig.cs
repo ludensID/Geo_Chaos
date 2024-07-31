@@ -28,6 +28,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title("Movement")]
     public float Speed;
 
+    public float AttackDistanceMultiplier = 1;
+
     [Title("Attack")]
     [OnValueChanged(TriConstants.ON + nameof(NumberOfLeaves) + TriConstants.CHANGED)]
     public int NumberOfLeaves;

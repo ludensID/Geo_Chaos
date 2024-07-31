@@ -4,7 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 
-namespace LudensClub.GeoChaos.Runtime.AI.Destroy
+namespace LudensClub.GeoChaos.Runtime.AI
 {
   public class LeafySpiritDestroyLeavesStrategy : IActionStrategy
   {
