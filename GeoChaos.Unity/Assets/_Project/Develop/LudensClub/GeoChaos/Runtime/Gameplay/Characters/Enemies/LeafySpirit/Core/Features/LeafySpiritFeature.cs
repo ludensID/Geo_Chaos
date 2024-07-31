@@ -7,6 +7,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Retraction;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Rise;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Wait;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Watch;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit
@@ -16,6 +17,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit
     public LeafySpiritFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<LeafySpiritDetectionFeature>());
+      Add(systems.Create<LeafySpiritWatchFeature>());
+      
       Add(systems.Create<LeafySpiritWaitFeature>());
       Add(systems.Create<LeafySpiritLeapFeature>());
       Add(systems.Create<LeafySpiritRisingFeature>());

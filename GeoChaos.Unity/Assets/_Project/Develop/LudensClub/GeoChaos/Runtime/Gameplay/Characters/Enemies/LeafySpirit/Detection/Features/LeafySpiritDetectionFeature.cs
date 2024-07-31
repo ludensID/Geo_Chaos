@@ -6,6 +6,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.De
   {
     public LeafySpiritDetectionFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<DeleteLeafySpiritWasAimedSystem>());
+      Add(systems.Create<RememberAimedLeafySpiritSystem>());
       Add(systems.Create<AimLeafySpiritOnHeroSystem>());
     }
   }

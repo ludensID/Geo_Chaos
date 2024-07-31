@@ -37,6 +37,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Wait After Attack")]
     public float WaitAfterAttackTime;
+
+    [Title("Watching")]
+    public float WatchingTimer;
       
 
 #if UNITY_EDITOR
