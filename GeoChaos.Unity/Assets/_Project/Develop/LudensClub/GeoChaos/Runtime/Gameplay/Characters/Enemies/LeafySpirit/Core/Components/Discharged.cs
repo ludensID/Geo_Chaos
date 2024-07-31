@@ -1,8 +1,7 @@
 ﻿using System;
-using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -11,8 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct Owner : IEcsComponent
+  public struct Discharged : IEcsComponent
   {
-    public EcsPackedEntity Entity;
   }
 }

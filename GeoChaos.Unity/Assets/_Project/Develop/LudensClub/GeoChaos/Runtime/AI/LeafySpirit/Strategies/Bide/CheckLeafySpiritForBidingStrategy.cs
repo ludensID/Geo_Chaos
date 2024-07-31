@@ -20,8 +20,8 @@ namespace LudensClub.GeoChaos.Runtime.AI
       
     public bool Check()
     {
-      return Entity.TryUnpackEntity(_game, out EcsEntity spirit) && spirit.Has<Aimed>()
-        && (spirit.Has<OnAttackFinished>() || spirit.Has<Biding>());
+      return Entity.TryUnpackEntity(_game, out EcsEntity spirit) && 
+        (spirit.Has<Aimed>() && spirit.Has<OnAttackFinished>() || spirit.Has<Biding>());
     }
   }
 }

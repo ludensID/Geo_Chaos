@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.AI.Destroy;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 
@@ -41,6 +42,11 @@ namespace LudensClub.GeoChaos.Runtime.AI
         .ToChild()
         .AddCondition<CheckLeafySpiritForBidingStrategy>()
         .AddAction<LeafySpiritBidingStrategy>()
+        .ToParent()
+        .AddSequence()
+        .ToChild()
+        .AddCondition<CheckLeafySpiritForDestroyLeavesStrategy>()
+        .AddAction<LeafySpiritDestroyLeavesStrategy>()
         .ToParent()
         .AddSequence()
         .ToChild()
