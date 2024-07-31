@@ -2,7 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Move
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;

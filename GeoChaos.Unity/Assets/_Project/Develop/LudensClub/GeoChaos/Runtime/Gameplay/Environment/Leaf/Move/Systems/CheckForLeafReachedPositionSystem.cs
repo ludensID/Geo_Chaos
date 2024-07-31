@@ -5,7 +5,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Move
 {
   public class CheckForLeafReachedPositionSystem : IEcsRunSystem
   {
@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
         .Inc<ViewRef>()
         .Collect();
     }
-      
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity leaf in _movingLeaves)
@@ -36,14 +36,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
         Vector3 start = leaf.Get<StartMovePosition>().Position;
         Vector3 position = leaf.Get<ViewRef>().View.transform.position;
 
-        float distance = (position - start).magnitude;
+        float distance = ((Vector2)(position - start)).magnitude;
+        float speed = _config.MoveSpeedCurve.Evaluate(distance / _config.Distance) * _config.MoveSpeed;
         foreach (EcsEntity force in _forceLoop
           .GetLoop(SpeedForceType.Move, leaf.PackedEntity))
         {
-          force.Change((ref MovementVector vector) =>
-            vector.Speed.x = _config.SpeedCurve.Evaluate(distance / _config.Distance) * _config.Speed);
+          force.Change((ref MovementVector vector) => vector.Speed = vector.Speed.normalized * speed);
         }
-          
+
         if (distance >= _config.Distance)
           leaf.Add<StopMoveCommand>();
       }

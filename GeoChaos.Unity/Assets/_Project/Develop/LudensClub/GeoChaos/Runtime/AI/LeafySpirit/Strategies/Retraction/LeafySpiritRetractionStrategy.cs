@@ -1,17 +1,17 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Rise;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Retraction;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
 
 namespace LudensClub.GeoChaos.Runtime.AI
 {
-  public class LeafySpiritRiseStrategy : IActionStrategy
+  public class LeafySpiritRetractionStrategy : IActionStrategy, IResetStrategy
   {
     private readonly EcsWorld _game;
     public EcsPackedEntity Entity { get; set; }
 
-    public LeafySpiritRiseStrategy(GameWorldWrapper gameWorldWrapper)
+    public LeafySpiritRetractionStrategy(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
     }
@@ -20,13 +20,22 @@ namespace LudensClub.GeoChaos.Runtime.AI
     {
       if (Entity.TryUnpackEntity(_game, out EcsEntity spirit))
       {
-        if (!spirit.Has<Rising>())
-          spirit.Add<RiseCommand>();
-
+        if (!spirit.Has<Retracting>())
+          spirit.Add<RetractCommand>();
+            
         return Node.CONTINUE;
       }
 
       return Node.FALSE;
+    }
+
+    public void Reset()
+    {
+      if (Entity.TryUnpackEntity(_game, out EcsEntity spirit)
+        && spirit.Has<Retracting>())
+      {
+        spirit.Add<StopRetractCommand>();
+      }
     }
   }
 }

@@ -1,30 +1,26 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Move
 {
-  public class MoveLeafSystem : IEcsRunSystem
+  public class StopMoveLeafSystem : IEcsRunSystem
   {
     private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
     private readonly EcsEntities _movingLeaves;
-    private readonly LeafConfig _config;
 
-    public MoveLeafSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceFactory forceFactory, IConfigProvider configProvider)
+    public StopMoveLeafSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceFactory forceFactory)
     {
       _forceFactory = forceFactory;
       _game = gameWorldWrapper.World;
-      _config = configProvider.Get<LeafConfig>();
 
       _movingLeaves = _game
         .Filter<LeafTag>()
-        .Inc<MoveCommand>()
-        .Inc<MoveDirection2>()
-        .Inc<ViewRef>()
+        .Inc<Moving>()
+        .Inc<StopMoveCommand>()
         .Collect();
     }
       
@@ -34,15 +30,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
       {
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, leaf.PackedEntity, Vector2.one)
         {
-          Speed = Vector2.one * _config.Speed,
-          Direction = leaf.Get<MoveDirection2>().Direction
+          Instant = true
         });
 
         leaf
-          .Del<MoveCommand>()
-          .Del<MoveDirection2>()
-          .Add<Moving>()
-          .Change((ref StartMovePosition position) => position.Position = leaf.Get<ViewRef>().View.transform.position);
+          .Del<StopMoveCommand>()
+          .Del<Moving>();
       }
     }
   }

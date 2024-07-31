@@ -3,7 +3,6 @@ using System.Linq;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying
 {
@@ -35,11 +34,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying
         {
           bool isGame = ownedPair.Key == _game;
           foreach (EcsEntity owned in ownedPair.Value
-            .Check<Owner>(x => x.Entity.EqualsTo(command.Pack())))
+            .Check<Owner>(x => x.Entity.EqualsTo(command.PackedEntity)))
           {
             if (isGame)
             {
-              owned.Add<DestroyCommand>();
+              owned.Has<DestroyCommand>(true);
               isOwner = true;
             }
             else
