@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Ri
 
       _risingSpirits = _game
         .Filter<LeafySpiritTag>()
-        .Inc<OnRiseStarted>()
+        .Inc<OnRiseFinished>()
         .Collect();
     }
     

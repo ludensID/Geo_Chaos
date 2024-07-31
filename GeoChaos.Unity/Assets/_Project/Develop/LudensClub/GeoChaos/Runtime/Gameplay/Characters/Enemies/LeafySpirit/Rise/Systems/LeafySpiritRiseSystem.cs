@@ -30,7 +30,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Ri
       {
         spirit
           .Del<RiseCommand>()
-          .Add<OnRiseStarted>()
           .Add<Rising>()
           .Add((ref RiseTimer timer) => timer.TimeLeft = _timers.Create(_config.RisingTime));
       }

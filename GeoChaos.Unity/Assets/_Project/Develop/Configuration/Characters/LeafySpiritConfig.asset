@@ -16,7 +16,7 @@ MonoBehaviour:
   PrecastLeapTime: 1
   LeapTime: 2
   MinLeapDistance: 1
-  MaxVerticalDistance: 3
+  MaxVerticalDistance: 5
   RisingTime: 1
   AttackDistance: 6
   Speed: 4

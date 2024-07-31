@@ -6,8 +6,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Ri
   {
     public LeafySpiritRisingFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<DeleteLeafySpiritRiseStartedEventSystem>());
       Add(systems.Create<LeafySpiritRiseSystem>());
+      Add(systems.Create<DeleteLeafySpiritRiseFinishedEventSystem>());
       Add(systems.Create<CheckForLeafySpiritRiseTimerExpiredSystem>());
 
       Add(systems.Create<EnableLeafySpiritBodyColliderSystem>());

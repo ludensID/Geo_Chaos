@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5410f94c5ff48538fe812de903f5cd1, type: 3}
   m_Name: LeafConfig
   m_EditorClassIdentifier: 
-  Speed: 4
+  MoveSpeed: 8
   Distance: 5
-  SpeedCurve:
+  MoveSpeedCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -47,3 +47,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  RetractionSpeed: 16

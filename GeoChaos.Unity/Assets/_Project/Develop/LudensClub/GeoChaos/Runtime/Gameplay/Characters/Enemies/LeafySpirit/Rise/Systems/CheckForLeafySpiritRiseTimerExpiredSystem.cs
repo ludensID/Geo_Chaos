@@ -27,7 +27,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Ri
         spirit
           .Del<RiseTimer>()
           .Del<Rising>()
-          .Add<Risen>();
+          .Add<Risen>()
+          .Add<OnRiseFinished>();
       }
     }
   }

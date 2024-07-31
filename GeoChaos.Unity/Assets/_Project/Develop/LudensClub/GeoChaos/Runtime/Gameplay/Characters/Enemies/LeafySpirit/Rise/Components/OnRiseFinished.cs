@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Ri
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct OnRiseStarted : IEcsComponent
+  public struct OnRiseFinished : IEcsComponent
   {
   }
 }
