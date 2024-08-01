@@ -31,6 +31,10 @@ MonoBehaviour:
           rid: 674098072352456882
       - Value:
           rid: 674098098997559378
+      - Value:
+          rid: 2072450807949951744
+      - Value:
+          rid: 2072450811591918054
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
@@ -53,3 +57,11 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         Position: {x: 0, y: 0, z: 0}
+    - rid: 2072450807949951744
+      type: {class: CurrentEndurance, ns: LudensClub.GeoChaos.Runtime.Characteristics.Endurance,
+        asm: GeoChaos.Runtime}
+      data:
+        Endurance: 1
+    - rid: 2072450811591918054
+      type: {class: Damageable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Attack, asm: GeoChaos.Runtime}
+      data: 

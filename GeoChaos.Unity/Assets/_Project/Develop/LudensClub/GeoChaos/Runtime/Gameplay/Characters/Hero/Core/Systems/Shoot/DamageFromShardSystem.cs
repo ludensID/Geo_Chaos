@@ -1,14 +1,13 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Shard;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Shoot
 {
   public class DamageFromShardSystem : IEcsRunSystem
   {
@@ -46,7 +45,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
         if (DestroyShard(info)
           && info.TargetCollider.Type == ColliderType.Body
           && info.Target.IsAlive()
-          && info.Target.Has<CurrentHealth>())
+          && info.Target.Has<Damageable>())
         {
           _message.CreateEntity()
             .Add((ref DamageMessage damage) =>

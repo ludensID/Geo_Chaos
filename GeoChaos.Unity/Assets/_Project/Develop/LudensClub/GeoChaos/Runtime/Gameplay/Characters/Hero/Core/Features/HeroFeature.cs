@@ -62,6 +62,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features
       Add(systems.Create<DashHeroSystem>());
       Add(systems.Create<CheckForDashTimeExpiredSystem>());
       Add(systems.Create<StopHeroDashSystem>());
+      Add(systems.Create<DamageFromDashSystem>());
+      
       
       Add(systems.Create<DeleteHeroAttackStartedEventSystem>());
       Add(systems.Create<DeleteHeroAttackFinishedEventSystem>());
@@ -69,6 +71,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features
       Add(systems.Create<ResetComboCounterSystem>());
       Add(systems.Create<HeroAttackSystem>());
       Add(systems.Create<StopHeroAttackSystem>());
+      Add(systems.Create<DamageFromHeroAttackSystem>());
 
       Add(systems.Create<ReleaseRingSystem>());
       Add(systems.Create<CheckForRingReleasedSystem>());
@@ -123,6 +126,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features
       Add(systems.Create<ReadShootInputSystem>());
       Add(systems.Create<SowShootCommandSystem>());
       Add(systems.Create<ShootSystem>());
+      Add(systems.Create<DamageFromShardSystem>());
       Add(systems.Create<CheckForShardLifeTimeExpiredSystem>());
       
       Add(systems.Create<HeroImmunityFeature>());

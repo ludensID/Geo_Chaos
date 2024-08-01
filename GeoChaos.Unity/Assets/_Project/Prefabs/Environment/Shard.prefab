@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8753319323664473164}
   - component: {fileID: 1557768226534831887}
   - component: {fileID: 6515784426816343855}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

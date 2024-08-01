@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Characteristics
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Die
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,8 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Characteristics
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct CurrentHealth : IEcsComponent
+  public struct Immortal : IEcsComponent
   {
-    public float Health;
   }
 }

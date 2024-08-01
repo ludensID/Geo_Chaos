@@ -3,7 +3,6 @@ using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props.Leaf;
 using UnityEngine;
@@ -65,8 +64,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.At
         ref ComboAttackCounter counter = ref spirit.Get<ComboAttackCounter>();
         counter.Count++;
         int count = counter.Count;
-        if (count < _config.NumberOfLeaves - 1)
-          spirit.Add((ref HitCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.Cooldowns[count]));
+        if (count < _config.NumberOfLeaves)
+          spirit.Add((ref HitCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.Cooldowns[count - 1]));
         else
           spirit.Add<FinishAttackCommand>();
       }

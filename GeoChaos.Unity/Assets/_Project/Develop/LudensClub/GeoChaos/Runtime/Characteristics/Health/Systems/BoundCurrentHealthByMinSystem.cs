@@ -3,20 +3,19 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Characteristics
+namespace LudensClub.GeoChaos.Runtime.Characteristics.Health
 {
-  public class BoundCurrentHealthByMaxSystem : IEcsRunSystem
+  public class BoundCurrentHealthByMinSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _healthEntities;
 
-    public BoundCurrentHealthByMaxSystem(GameWorldWrapper gameWorldWrapper)
+    public BoundCurrentHealthByMinSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
       _healthEntities = _game
         .Filter<CurrentHealth>()
-        .Inc<MaxCurrentHealth>()
         .Collect();
     }
 
@@ -24,8 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Characteristics
     {
       foreach (EcsEntity entity in _healthEntities)
       {
-        entity.Change((ref CurrentHealth health) =>
-          health.Health = MathUtils.Clamp(health.Health, max: entity.Get<MaxCurrentHealth>().Health));
+        entity.Change((ref CurrentHealth health) => health.Health = MathUtils.Clamp(health.Health, 0));
       }
     }
   }

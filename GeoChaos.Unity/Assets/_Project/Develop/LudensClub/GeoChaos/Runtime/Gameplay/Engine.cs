@@ -6,6 +6,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation;
+using LudensClub.GeoChaos.Runtime.Gameplay.Die;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
@@ -50,6 +51,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<EnemyFeature>())
         .Add(factory.Create<AttackFeature>())
         .Add(factory.Create<CharacteristicBoundingFeature>())
+        .Add(factory.Create<DieFeature>())
         .Add(factory.Create<ViewFeature>())
         .Add(factory.Create<CleanupFeature>());
 

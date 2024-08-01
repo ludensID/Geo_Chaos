@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Characteristics;
+using LudensClub.GeoChaos.Runtime.Characteristics.Endurance;
+using LudensClub.GeoChaos.Runtime.Characteristics.Health;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -29,11 +30,22 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
         ref DamageMessage damage = ref message.Get<DamageMessage>();
         if (damage.Target.TryUnpackEntity(_game, out EcsEntity target) && !target.Has<Immune>())
         {
-          ref CurrentHealth health = ref target.Get<CurrentHealth>();
-          health.Health -= damage.Damage;
+          bool hasEndurance = target.Has<CurrentEndurance>();
+          bool hasHealth = target.Has<CurrentHealth>();
+
+          if (hasHealth)
+          {
+            ref CurrentHealth health = ref target.Get<CurrentHealth>();
+            health.Health -= damage.Damage;
+          }
+
+          if (hasEndurance)
+          {
+            target.Change((ref CurrentEndurance endurance) => endurance.Endurance--);
+          }
           
-          ref OnDamaged damageEvent = ref _message.CreateEntity().Add<OnDamaged>().Get<OnDamaged>();
-          damageEvent.Damage = damage.Damage;
+          ref OnDamaged damageEvent = ref _message.CreateEntity().AddOrGet<OnDamaged>();
+          damageEvent.Damage = hasHealth ? damage.Damage : 0;
           damageEvent.Master = damage.Master;
           damageEvent.Target = damage.Target;
 
