@@ -21,7 +21,9 @@ namespace LudensClub.GeoChaos.Debugging
 
     private List<string> _componentNames;
 
-    private void OnEnable()
+    [Button("Update")]
+    [PropertyOrder(0)]
+    private void Update()
     {
       Comparer.Config = this;
       GetComponentNames();
@@ -31,6 +33,22 @@ namespace LudensClub.GeoChaos.Debugging
 
       if (ComponentOrder.Count != _componentNames.Count)
         throw new IndexOutOfRangeException();
+    }
+    
+    [Button("Sort")]
+    [PropertyOrder(0)]
+    private void Sort()
+    {
+      List<StringTuple> sortedList = ComponentOrder.Where(x => !x.Locked).OrderBy(x => x.Name).ToList();
+      List<StringTuple> lockedList = ComponentOrder.Where(x => x.Locked).ToList();
+      ComponentOrder.Clear();
+      ComponentOrder = lockedList.Concat(sortedList).ToList();
+      Synchronize();
+    }
+
+    private void OnEnable()
+    {
+      Update();
     }
 
     private void GetComponentNames()
@@ -88,7 +106,7 @@ namespace LudensClub.GeoChaos.Debugging
 
     [Serializable]
     [InlineProperty]
-    [DeclareHorizontalGroup(nameof(StringTuple))]
+    [DeclareHorizontalGroup(nameof(StringTuple), Sizes = new float[] { 0, 50 })]
     [DeclareHorizontalGroup(nameof(StringTuple) + "/Buttons")]
     public class StringTuple
     {
@@ -104,6 +122,9 @@ namespace LudensClub.GeoChaos.Debugging
       public int Index;
 
       [HideInInspector]
+      public bool Locked;
+
+      [HideInInspector]
       public EcsUniverseConfig Config;
 
       public bool CanMoveNext => Index != (Config ? Config.ComponentOrder.Count : 0) - 1;
@@ -114,7 +135,15 @@ namespace LudensClub.GeoChaos.Debugging
         return Config._componentNames;
       }
 
+      public string LockedButtonName => Locked ? "\u25cf" : "\u21bb";
+
       [GroupNext(nameof(StringTuple) + "/Buttons")]
+      [Button(ButtonSizes.Small, "$" + nameof(LockedButtonName))]
+      private void Lock()
+      {
+        Locked = !Locked;
+      }
+
       [Button("\u2193")]
       [EnableIf(nameof(CanMoveNext))]
       private void MoveNext()
@@ -131,14 +160,14 @@ namespace LudensClub.GeoChaos.Debugging
         OnIndexChanged();
       }
 
-      [Button("\u2193" + "\u2193")]
+      [Button("\u25bc")]
       private void MoveLast()
       {
         Index = Config.ComponentOrder.Count - 1;
         OnIndexChanged();
       }
 
-      [Button("\u2191" + "\u2191")]
+      [Button("\u25b2")]
       private void MoveFirst()
       {
         Index = 0;
