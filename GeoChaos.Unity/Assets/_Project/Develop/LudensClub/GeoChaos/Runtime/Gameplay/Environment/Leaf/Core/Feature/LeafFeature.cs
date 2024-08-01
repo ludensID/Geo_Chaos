@@ -10,6 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
     {
       Add(systems.Create<LeafMovingFeature>());
       Add(systems.Create<LeafRetractionFeature>());
+
+      Add(systems.Create<DamageFromLeafSystem>());
     }
   }
 }

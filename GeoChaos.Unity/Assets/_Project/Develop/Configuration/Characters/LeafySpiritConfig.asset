@@ -27,6 +27,7 @@ MonoBehaviour:
   - 0.5
   - 0.25
   - 0.125
+  DamageByLeaf: 8
   WaitAfterAttackTime: 2
   WatchingTimer: 10
   RelaxationTime: 1

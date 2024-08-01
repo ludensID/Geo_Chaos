@@ -33,9 +33,11 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title("Attack")]
     [OnValueChanged(TriConstants.ON + nameof(NumberOfLeaves) + TriConstants.CHANGED)]
     public int NumberOfLeaves;
-
+    
     [ListDrawerSettings(HideRemoveButton = true, HideAddButton = true)]
     public List<float> Cooldowns = new List<float>();
+    
+    public float DamageByLeaf;
 
     [Title("Wait After Attack")]
     public float WaitAfterAttackTime;
