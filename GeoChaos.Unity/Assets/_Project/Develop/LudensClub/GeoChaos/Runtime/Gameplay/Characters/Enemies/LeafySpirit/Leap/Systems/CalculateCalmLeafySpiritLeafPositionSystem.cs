@@ -41,14 +41,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Le
       float direction = Mathf.Sign(Random.Range(-1, 1));
 
       float center = (bounds.y - bounds.x) / 2;
+      float centerPoint = bounds.x + center;
       float distance = Random.Range(_config.MinLeapDistance, center);
 
       float nextPoint = point + direction * distance;
       if (nextPoint < bounds.x || nextPoint > bounds.y)
       {
-        nextPoint = point.ApproximatelyEqual(center)
+        nextPoint = point.ApproximatelyEqual(centerPoint)
           ? MathUtils.Clamp(nextPoint, bounds.x, bounds.y)
-          : center;
+          : centerPoint;
       }
 
       return nextPoint;

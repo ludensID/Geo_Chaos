@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -6,13 +7,13 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Detection
 {
-  public class CheckHeroInLamaViewSystem : IEcsRunSystem
+  public class FindLamaTargetInViewSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _lamas;
     private readonly EcsEntities _heroes;
 
-    public CheckHeroInLamaViewSystem(GameWorldWrapper gameWorldWrapper)
+    public FindLamaTargetInViewSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 

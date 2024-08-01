@@ -28,5 +28,5 @@ MonoBehaviour:
   - 0.25
   - 0.125
   WaitAfterAttackTime: 2
-  WatchingTimer: 5
+  WatchingTimer: 10
   RelaxationTime: 1

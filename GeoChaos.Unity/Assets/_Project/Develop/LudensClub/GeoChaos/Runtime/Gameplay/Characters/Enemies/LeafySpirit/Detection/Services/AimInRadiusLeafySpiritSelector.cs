@@ -2,13 +2,13 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Detection
 {
-  public class AimedLeafySpiritSelector : EcsEntitySelector
+  public class AimInRadiusLeafySpiritSelector : EcsEntitySelector
   {
-    public AimedLeafySpiritSelector(ISelectionAlgorithmFactory factory)
+    public AimInRadiusLeafySpiritSelector(ISelectionAlgorithmFactory factory)
     {
       _algorithms.AddRange(new ISelectionAlgorithm[]
       {
-        factory.Create<TargetInBoundsAlgorithm>(),
+        factory.Create<TargetInAttackBoundsAlgorithm>(),
         factory.Create<LeafySpiritTargetNearByVerticalAlgorithm>(),
         factory.Create<TargetReachedAlgorithm>()
       });

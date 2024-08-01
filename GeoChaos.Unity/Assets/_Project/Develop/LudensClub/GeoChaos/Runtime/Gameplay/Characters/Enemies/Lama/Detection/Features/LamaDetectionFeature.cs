@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Detection
     public LamaDetectionFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<AimLamaOnHeroSystem>());
-      Add(systems.Create<CheckHeroInLamaViewSystem>());
+      Add(systems.Create<FindLamaTargetInViewSystem>());
     }
   }
 }

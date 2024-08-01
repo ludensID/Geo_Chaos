@@ -1,9 +1,11 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Move
@@ -40,11 +42,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Mo
       foreach (EcsEntity hero in _heroes)
       foreach (EcsEntity spirit in _movingSpirits)
       {
-        Vector3 heroPosition = hero.Get<ViewRef>().View.transform.position;
-        Vector3 spiritPosition = spirit.Get<ViewRef>().View.transform.position;
+        float heroPoint = hero.Get<ViewRef>().View.transform.position.x;
+        float spiritPoint = spirit.Get<ViewRef>().View.transform.position.x;
+        Vector2 bounds = spirit.Get<PatrolBounds>().Bounds;
 
-        float distance = Mathf.Abs(heroPosition.x - spiritPosition.x);
-        if (distance < _config.AttackDistance * _config.AttackDistanceMultiplier)
+        float distance = Mathf.Abs(heroPoint - spiritPoint);
+        if (distance < _config.AttackDistance * _config.AttackDistanceMultiplier
+          || spiritPoint.ApproximatelyEqual(bounds.x) || spiritPoint.ApproximatelyEqual(bounds.y))
         {
           spirit.Add<FinishMoveCommand>();
 

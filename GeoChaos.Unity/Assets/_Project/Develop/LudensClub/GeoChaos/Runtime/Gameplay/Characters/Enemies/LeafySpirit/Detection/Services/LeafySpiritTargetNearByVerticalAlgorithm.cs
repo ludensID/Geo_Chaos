@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Detection
 {
-  public class LeafySpiritTargetInRadiusAlgorithm : ISelectionAlgorithm
+  public class LeafySpiritTargetNearByVerticalAlgorithm : ISelectionAlgorithm
   {
     private readonly LeafySpiritConfig _config;
 
-    public LeafySpiritTargetInRadiusAlgorithm(IConfigProvider configProvider)
+    public LeafySpiritTargetNearByVerticalAlgorithm(IConfigProvider configProvider)
     {
      _config = configProvider.Get<LeafySpiritConfig>();
     }

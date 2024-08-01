@@ -74,6 +74,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEnemySelector();
       BindAimedLamaSelector();
       BindAimedLeafySpiritSelector();
+      BindAimInRadiusLeafySpiritSelector();
       
       BindDragForceService();
       BindADControlService();
@@ -104,6 +105,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthPresenter();
       BindImmunityDurationPresenter();
       BindHeroHealthShardPresenter();
+    }
+
+    private void BindAimInRadiusLeafySpiritSelector()
+    {
+      Container
+        .BindInterfacesAndSelfTo<AimInRadiusLeafySpiritSelector>()
+        .AsSingle();
     }
 
     private void BindAimedLeafySpiritSelector()
