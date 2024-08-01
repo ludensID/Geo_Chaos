@@ -3,13 +3,14 @@ using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit
 {
-  public class DamageFromLeafSystem : IEcsRunSystem
+  public class DamageFromLeafySpiritSystem : IEcsRunSystem
   {
     private readonly ICollisionService _collisionSvc;
     private readonly EcsWorld _message;
@@ -17,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
     private readonly EcsEntities _collisions;
     private readonly LeafySpiritConfig _config;
 
-    public DamageFromLeafSystem(MessageWorldWrapper messageWorldWrapper,
+    public DamageFromLeafySpiritSystem(MessageWorldWrapper messageWorldWrapper,
       GameWorldWrapper gameWorldWrapper,
       ICollisionService collisionSvc,
       IConfigProvider configProvider)
@@ -40,15 +41,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf
         DamageCollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackEntities(_game)
-          && _collisionSvc.TrySelectByEntitiesTag<LeafTag, HeroTag>()
-          && info.TargetCollider.Type == ColliderType.Body
-          && info.Master.Has<Owner>()
-          && info.Master.Get<Owner>().Entity.TryUnpackEntity(_game, out _))
+          && _collisionSvc.TrySelectByEntitiesTag<LeafySpiritTag, HeroTag>()
+          && info.MasterCollider.Type == ColliderType.Body
+          && info.TargetCollider.Type == ColliderType.Body)
         {
           _message.CreateEntity()
             .Add((ref DamageMessage message) =>
             {
-              message.Damage = _config.DamageFromLeaf;
+              message.Damage = _config.DamageFromBody;
               message.Master = info.PackedMaster;
               message.Target = info.PackedTarget;
             });

@@ -37,7 +37,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [ListDrawerSettings(HideRemoveButton = true, HideAddButton = true)]
     public List<float> Cooldowns = new List<float>();
     
-    public float DamageByLeaf;
+    public float DamageFromLeaf;
+    public float DamageFromBody;
 
     [Title("Wait After Attack")]
     public float WaitAfterAttackTime;
