@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Leap;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Relaxation;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Rise;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -22,7 +23,8 @@ namespace LudensClub.GeoChaos.Runtime.AI
     public bool Check()
     {
       return Entity.TryUnpackEntity(_game, out EcsEntity spirit)
-        && (!spirit.Has<OnLeapFinished>() && !spirit.Has<WaitingTimer>() && !spirit.Has<Risen>() && !spirit.Has<Aimed>()
+        && (!spirit.Has<Risen>() && !spirit.Has<OnLeapFinished>() 
+          && (!spirit.Has<Aimed>() && !spirit.Has<WaitingTimer>() || spirit.Has<OnRelaxationFinished>()) 
           || spirit.Has<Leaping>());
     }
   }

@@ -42,7 +42,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Watching")]
     public float WatchingTimer;
-      
+
+    [Title("Relaxation")]
+    public float RelaxationTime;
 
 #if UNITY_EDITOR
     private void Reset()
