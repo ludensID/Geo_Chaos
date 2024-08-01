@@ -1,11 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Leap
 {
@@ -26,42 +23,23 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Le
 
       _leapingSpirits = _game
         .Filter<LeafySpiritTag>()
-        .Inc<PrecastLeapTimer>()
+        .Inc<LeapPoint>()
         .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity spirit in _leapingSpirits
-        .Check<PrecastLeapTimer>(x => x.TimeLeft <= 0))
+      foreach (EcsEntity spirit in _leapingSpirits)
       {
-        spirit.Del<PrecastLeapTimer>();
-
         Transform transform = spirit.Get<ViewRef>().View.transform;
-        ref PatrolBounds bounds = ref spirit.Get<PatrolBounds>();
-        transform.position = CalculateNextPosition(transform.position, bounds.Bounds);
+        Vector3 nextPosition = transform.position;
+        nextPosition.x = spirit.Get<LeapPoint>().Point;
+        transform.position = nextPosition;
 
-        spirit.Add((ref LeapTimer timer) => timer.TimeLeft = _timers.Create(_config.LeapTime));
+        spirit
+          .Del<LeapPoint>()
+          .Add((ref LeapTimer timer) => timer.TimeLeft = _timers.Create(_config.LeapTime));
       }
-    }
-
-    private Vector3 CalculateNextPosition(Vector3 position, Vector2 bounds)
-    {
-      float direction = Mathf.Sign(Random.Range(-1, 1));
-
-      float center = (bounds.y - bounds.x) / 2;
-      float distance = Random.Range(_config.MinLeapDistance, center);
-
-      float nextPosition = position.x + direction * distance;
-      if (nextPosition < bounds.x || nextPosition > bounds.y)
-      {
-        nextPosition = position.x.ApproximatelyEqual(center)
-          ? MathUtils.Clamp(nextPosition, bounds.x, bounds.y)
-          : center;
-      }
-
-      position.x = nextPosition;
-      return position;
     }
   }
 }
