@@ -6,7 +6,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Move
   {
     public LeafMovingFixedFeature(IEcsSystemFactory systems)
     {
+      
       Add(systems.Create<CheckForLeafReachedPositionSystem>());
+      Add(systems.Create<CheckForMovedLeafCollidedWithGroundSystem>());
       Add(systems.Create<StopMoveLeafSystem>());
     } 
   }

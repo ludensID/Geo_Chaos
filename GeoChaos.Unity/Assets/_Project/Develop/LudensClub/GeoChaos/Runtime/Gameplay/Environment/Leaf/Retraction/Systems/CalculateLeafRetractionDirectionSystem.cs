@@ -14,7 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Retraction
     private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
     private readonly LeafConfig _config;
-    private readonly EcsEntities _retractingLeaves;
+    private readonly EcsEntities _retractedLeaves;
     private readonly EcsEntity _cachedSpirit;
 
     public CalculateLeafRetractionDirectionSystem(GameWorldWrapper gameWorldWrapper,
@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Retraction
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<LeafConfig>();
 
-      _retractingLeaves = _game
+      _retractedLeaves = _game
         .Filter<LeafTag>()
         .Inc<Retracting>()
         .Inc<Owner>()
@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Retraction
     
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity leaf in _retractingLeaves)
+      foreach (EcsEntity leaf in _retractedLeaves)
       {
         if (leaf.Get<Owner>().Entity.TryUnpackEntity(_game, _cachedSpirit))
         {

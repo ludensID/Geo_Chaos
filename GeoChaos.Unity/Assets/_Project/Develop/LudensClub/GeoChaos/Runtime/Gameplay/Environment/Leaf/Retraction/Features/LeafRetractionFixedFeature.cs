@@ -8,6 +8,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Retraction
     {
       Add(systems.Create<CalculateLeafRetractionDirectionSystem>());
       Add(systems.Create<CheckForLeafRetractedSystem>());
+      // Add(systems.Create<CheckForRetractedLeafCollidedWithGroundSystem>());
+      Add(systems.Create<StopRetractLeafSystem>());
     }
   }
 }
