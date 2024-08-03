@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.AI
     public bool Check()
     {
       return Entity.TryUnpackEntity(_game, out EcsEntity spirit)
-        && (!spirit.Has<Risen>() && !spirit.Has<OnLeapFinished>() 
+        && (!spirit.Has<Risen>() && !spirit.Has<Rising>() && !spirit.Has<OnLeapFinished>() 
           && (!spirit.Has<Aimed>() && !spirit.Has<WaitingTimer>() || spirit.Has<OnRelaxationFinished>()) 
           || spirit.Has<Leaping>());
     }

@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
       _message = messageWorldWrapper.World;
 
       _damages = _message
-        .Filter<DamageMessage>()
+        .Filter<DealDamageMessage>()
         .Collect();
     }
 
@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
     {
       foreach (EcsEntity message in _damages)
       {
-        ref DamageMessage damage = ref message.Get<DamageMessage>();
+        ref DealDamageMessage damage = ref message.Get<DealDamageMessage>();
         if (damage.Target.TryUnpackEntity(_game, out EcsEntity target) && !target.Has<Immune>())
         {
           bool hasEndurance = target.Has<CurrentEndurance>();

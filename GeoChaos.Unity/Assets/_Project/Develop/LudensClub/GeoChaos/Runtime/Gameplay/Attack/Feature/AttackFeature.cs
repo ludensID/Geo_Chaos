@@ -9,6 +9,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
     {
       Add(systems.Create<Delete<OnDamaged, MessageWorldWrapper>>());
       Add(systems.Create<DealDamageSystem>());
+      
+      Add(systems.Create<ConvertDamageMessageToDealDamageMessageSystem>());
     }
   }
 }

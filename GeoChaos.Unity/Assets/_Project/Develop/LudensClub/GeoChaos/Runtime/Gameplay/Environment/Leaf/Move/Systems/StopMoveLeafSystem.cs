@@ -28,10 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Move
     {
       foreach (EcsEntity leaf in _movingLeaves)
       {
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, leaf.PackedEntity, Vector2.one)
-        {
-          Instant = true
-        });
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, leaf.PackedEntity, Vector2.one));
 
         leaf
           .Del<StopMoveCommand>()

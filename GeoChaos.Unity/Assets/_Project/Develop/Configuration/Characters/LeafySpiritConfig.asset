@@ -32,3 +32,4 @@ MonoBehaviour:
   WaitAfterAttackTime: 2
   WatchingTimer: 10
   RelaxationTime: 1
+  DampingDamageByDistance: 0.2

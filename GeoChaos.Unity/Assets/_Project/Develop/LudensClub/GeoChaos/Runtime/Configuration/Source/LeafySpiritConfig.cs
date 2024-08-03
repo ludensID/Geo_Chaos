@@ -49,6 +49,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title("Relaxation")]
     public float RelaxationTime;
 
+    public float DampingDamageByDistance;
+
 #if UNITY_EDITOR
     private void Reset()
     {
