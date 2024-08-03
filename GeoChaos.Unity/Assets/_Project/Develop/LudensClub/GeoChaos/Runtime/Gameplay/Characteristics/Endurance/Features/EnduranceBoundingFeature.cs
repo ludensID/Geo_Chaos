@@ -1,6 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Characteristics.Endurance
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Endurance
 {
   public class EnduranceBoundingFeature : EcsFeature
   {

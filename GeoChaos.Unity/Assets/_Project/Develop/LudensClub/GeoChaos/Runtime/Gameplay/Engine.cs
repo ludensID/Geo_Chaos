@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Characteristics;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characteristics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;

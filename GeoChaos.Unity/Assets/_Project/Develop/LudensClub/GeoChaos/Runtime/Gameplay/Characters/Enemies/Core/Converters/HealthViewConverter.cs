@@ -6,7 +6,7 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies
 {
   [AddComponentMenu(ACC.Names.HEALTH_CONVERTER)]
-  public class HealthConverter : MonoBehaviour, IEcsConverter
+  public class HealthViewConverter : MonoBehaviour, IEcsConverter
   {
     public HealthView View;
     

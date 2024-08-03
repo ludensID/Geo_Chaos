@@ -22,12 +22,6 @@ MonoBehaviour:
       - Value:
           rid: 674097938592170094
       - Value:
-          rid: 674097938592170095
-      - Value:
-          rid: 674097938592170096
-      - Value:
-          rid: 674097938592170097
-      - Value:
           rid: 674098060372213848
       - Value:
           rid: 674097938592170099
@@ -68,6 +62,11 @@ MonoBehaviour:
       - Value:
           rid: 2072450811591918056
     _scriptableConverter: {fileID: 0}
+  - _serializedConverter:
+      rid: 2072450849916059856
+    _components:
+      Components: []
+    _scriptableConverter: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -77,21 +76,6 @@ MonoBehaviour:
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
         Id: 1
-    - rid: 674097938592170095
-      type: {class: CurrentHealth, ns: LudensClub.GeoChaos.Runtime.Characteristics.Health,
-        asm: GeoChaos.Runtime}
-      data:
-        Health: 100
-    - rid: 674097938592170096
-      type: {class: MaxCurrentHealth, ns: LudensClub.GeoChaos.Runtime.Characteristics.Health,
-        asm: GeoChaos.Runtime}
-      data:
-        Health: 100
-    - rid: 674097938592170097
-      type: {class: DefaultHealth, ns: LudensClub.GeoChaos.Runtime.Characteristics.Health,
-        asm: GeoChaos.Runtime}
-      data:
-        Health: 100
     - rid: 674097938592170099
       type: {class: ForceAvailable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces,
         asm: GeoChaos.Runtime}
@@ -194,3 +178,8 @@ MonoBehaviour:
     - rid: 2072450811591918056
       type: {class: Damageable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Attack, asm: GeoChaos.Runtime}
       data: 
+    - rid: 2072450849916059856
+      type: {class: HealthConverter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Health,
+        asm: GeoChaos.Runtime}
+      data:
+        Health: 100

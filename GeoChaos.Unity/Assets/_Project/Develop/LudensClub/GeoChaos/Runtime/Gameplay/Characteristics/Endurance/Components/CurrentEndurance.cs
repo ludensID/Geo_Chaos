@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Characteristics.Health
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Endurance
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,7 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Characteristics.Health
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct OnHealthCalculated : IEcsComponent
+  public struct CurrentEndurance : IEcsComponent
   {
+    public int Endurance;
   }
 }

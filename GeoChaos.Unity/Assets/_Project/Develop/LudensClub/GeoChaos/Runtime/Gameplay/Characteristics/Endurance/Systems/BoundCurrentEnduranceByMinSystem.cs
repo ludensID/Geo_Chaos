@@ -3,7 +3,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Characteristics.Endurance
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Endurance
 {
   public class BoundCurrentEnduranceByMinSystem : IEcsRunSystem
   {
