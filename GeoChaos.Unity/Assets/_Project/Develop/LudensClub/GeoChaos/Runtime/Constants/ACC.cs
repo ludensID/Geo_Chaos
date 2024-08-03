@@ -71,6 +71,7 @@
 
       public const string SPAWN_GIZMO = PROPS + "Spawn Gizmo";
       public const string LAMA_GIZMO = PROPS + "Lama Gizmo";
+      public const string LEAFY_SPIRIT_GIZMO = PROPS + "Leafy Spirit Gizmo";
 
       public const string BUSH_ANIMATOR = ANIMATORS + "Bush Animator";
     }

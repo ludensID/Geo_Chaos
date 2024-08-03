@@ -23,7 +23,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Attack
       _heroes = _game
         .Filter<HeroTag>()
         .Inc<HitTimer>()
-        .Inc<Attacking>()
         .Collect();
     }
 
@@ -32,11 +31,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Attack
       foreach (EcsEntity hero in _heroes
         .Check<HitTimer>(x => x.TimeLeft <= 0))
       {
-        hero
-          .Del<HitTimer>()
-          .Del<Attacking>()
+        hero.Del<HitTimer>();
+        if (!hero.Has<Attacking>())
+          continue;
+          
+        hero.Del<Attacking>()
           .Add<OnAttackFinished>();
-        
+
         ref MovementLayout layout = ref hero.Get<MovementLayout>();
         if (layout.Owner == MovementType.Attack)
         {

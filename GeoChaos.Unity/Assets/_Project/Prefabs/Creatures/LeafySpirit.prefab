@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 2885600673240556467}
   - component: {fileID: 7167701751560938282}
   - component: {fileID: 141613402903131859}
+  - component: {fileID: 7041412701525938157}
   m_Layer: 9
   m_Name: LeafySpirit
   m_TagString: Untagged
@@ -472,3 +473,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 2325310376286713489}
+--- !u!114 &7041412701525938157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5149545261104238476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d7a06ab4d440539fd2d33072b8a937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

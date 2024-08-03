@@ -32,6 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Attack
         .Inc<AttackCommand>()
         .Inc<ComboAttackCounter>()
         .Inc<MovementVector>()
+        .Exc<HitTimer>()
         .Collect();
     }
     

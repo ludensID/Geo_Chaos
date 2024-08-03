@@ -12,9 +12,9 @@ namespace LudensClub.GeoChaos.Debugging.Gizmo
     private static PhysicsConfig _physics;
 
     [DrawGizmo(GizmoType.Selected | GizmoType.NonSelected, typeof(LamaGizmo))]
-    private static void DrawGizmo(LamaGizmo scr, GizmoType gizmo)
+    private static void DrawGizmo(LamaGizmo src, GizmoType gizmo)
     {
-      if (!SelectionHelper.IsSelectionOrChild(scr.transform))
+      if (!SelectionHelper.IsSelectionOrChild(src.transform))
         return;
       
       if (!_config)
@@ -22,8 +22,8 @@ namespace LudensClub.GeoChaos.Debugging.Gizmo
       if (!_physics)
         _physics = AssetFinder.FindAsset<PhysicsConfig>();
       
-      RaycastHit2D hit = Physics2D.Raycast(scr.transform.position, Vector2.down, 3, _physics.GroundMask);
-      Vector3 origin = hit.collider ? hit.point : scr.transform.position;
+      RaycastHit2D hit = Physics2D.Raycast(src.transform.position, Vector2.down, 3, _physics.GroundMask);
+      Vector3 origin = hit.collider ? hit.point : src.transform.position;
       var mesh = new Mesh();
       int count = 9;
       float step = Mathf.PI / 2f / (count - 1);
@@ -32,7 +32,7 @@ namespace LudensClub.GeoChaos.Debugging.Gizmo
       int i = 0;
       int k = 0;
       vertices[i++] = Vector3.zero;
-      var scale = Mathf.Sign(scr.transform.right.x);
+      var scale = Mathf.Sign(src.transform.right.x);
       for (float alpha = 0; alpha <= Mathf.PI / 2; alpha += step, i++)
       {
         var direction = new Vector3(Mathf.Cos(alpha), Mathf.Sin(alpha));
