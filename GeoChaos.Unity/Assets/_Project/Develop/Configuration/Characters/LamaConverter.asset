@@ -40,6 +40,11 @@ MonoBehaviour:
       - Value:
           rid: 674097938592170092
     _scriptableConverter: {fileID: 0}
+  - _serializedConverter:
+      rid: 2072450851691037169
+    _components:
+      Components: []
+    _scriptableConverter: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -67,3 +72,8 @@ MonoBehaviour:
       type: {class: LamaTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama,
         asm: GeoChaos.Runtime}
       data: 
+    - rid: 2072450851691037169
+      type: {class: HealthConverter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Health,
+        asm: GeoChaos.Runtime}
+      data:
+        Health: 100
