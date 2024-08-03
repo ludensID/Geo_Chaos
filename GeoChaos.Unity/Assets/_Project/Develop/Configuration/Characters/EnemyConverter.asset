@@ -26,6 +26,11 @@ MonoBehaviour:
       - Value:
           rid: 674097938592170085
     _scriptableConverter: {fileID: 0}
+  - _serializedConverter:
+      rid: 2072450851691037194
+    _components:
+      Components: []
+    _scriptableConverter: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -35,3 +40,8 @@ MonoBehaviour:
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
         Id: 2
+    - rid: 2072450851691037194
+      type: {class: HealthConverter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Health,
+        asm: GeoChaos.Runtime}
+      data:
+        Health: 100

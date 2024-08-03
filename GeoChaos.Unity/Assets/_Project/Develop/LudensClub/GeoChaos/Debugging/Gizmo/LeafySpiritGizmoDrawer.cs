@@ -1,6 +1,9 @@
 ﻿using LudensClub.GeoChaos.Editor.General;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using LudensClub.GeoChaos.Runtime.Props.LeafySpirit;
 using UnityEditor;
 using UnityEngine;
@@ -23,21 +26,48 @@ namespace LudensClub.GeoChaos.Debugging.Gizmo
       if (!_physics)
         _physics = AssetFinder.FindAsset<PhysicsConfig>();
       
-      var bounds = src.GetComponentInParent<PhysicalBoundsConverter>();
-      if (!bounds)
+      if (!TryGetPhysicalBounds(src, out PhysicalBoundsRef bounds))
         return;
       
       RaycastHit2D hit = Physics2D.Raycast(src.transform.position, Vector2.down, 3, _physics.GroundMask);
       Vector3 origin = hit.collider ? hit.point : src.transform.position;
-      var leftBottom = new Vector3(bounds.LeftBound.position.x - _config.AttackDistance, origin.y,
+      var leftBottom = new Vector3(bounds.Left.position.x - _config.AttackDistance, origin.y,
         src.transform.position.z);
-      var rightTop = new Vector3(bounds.RightBound.position.x + _config.AttackDistance,
+      var rightTop = new Vector3(bounds.Right.position.x + _config.AttackDistance,
         origin.y + _config.MaxVerticalDistance, src.transform.position.z);
       
       Color color = Color.green;
       color.a = 0.5f;
       Gizmos.color = color;
       Gizmos.DrawCube((rightTop + leftBottom) / 2, rightTop - leftBottom);
+    }
+
+    private static bool TryGetPhysicalBounds(LeafySpiritGizmo src, out PhysicalBoundsRef bounds)
+    {
+      bounds = new PhysicalBoundsRef();
+      var converter = src.GetComponent<PhysicalBoundsConverter>();
+      if (converter)
+      {
+        bounds.Left = converter.LeftBound;
+        bounds.Right = converter.RightBound;
+        return true;
+      }
+
+      if (EditorApplication.isPlaying)
+      {
+        var goConverter = src.GetComponent<GameObjectConverter>();
+        if (goConverter && goConverter.Entity.IsAlive())
+        {
+          if (goConverter.Entity.Get<Spawned>().Spawn.TryUnpackEntity(goConverter.Entity.World, out EcsEntity spawn))
+          {
+            PhysicalBoundsConverterGizmoDrawer.DrawGizmoImplicit(spawn.Get<ViewRef>().View.GetComponent<PhysicalBoundsConverter>());
+          }
+          bounds = goConverter.Entity.Get<PhysicalBoundsRef>();
+          return true;
+        }
+      }
+
+      return false;
     }
   }
 }

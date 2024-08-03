@@ -55,6 +55,17 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 #if UNITY_EDITOR
     private string _serializedConverterName => UnityEditor.ObjectNames.NicifyVariableName(_serializedConverter?.GetType().Name ?? TriConstants.NONE);
     private string _scriptableConverterName => UnityEditor.ObjectNames.NicifyVariableName(_scriptableConverter ? _scriptableConverter.name : "None");
+
+    private bool ShowOnlyComponents => !IsEmpty && ShowComponents;
+    
+    [Button("Clear")]
+    [GUIColor(1f, 0f, 0)]
+    [PropertyOrder(0)]
+    [ShowIf("$" + nameof(ShowOnlyComponents))]
+    private void Clear()
+    {
+      _components.Components.Clear();
+    }
 #endif
   }
 }

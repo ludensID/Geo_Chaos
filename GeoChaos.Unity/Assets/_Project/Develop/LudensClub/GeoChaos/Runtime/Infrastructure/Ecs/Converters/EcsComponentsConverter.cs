@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Utils;
-using TriInspector;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 {
@@ -24,15 +23,5 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     public void ConvertBack(EcsEntity entity)
     {
     }
-
-#if UNITY_EDITOR
-    [Button("Clear")]
-    [GUIColor(1f, 0f, 0)]
-    [PropertyOrder(0)]
-    private void Clear()
-    {
-      Components.Clear();
-    }
-#endif
   }
 }

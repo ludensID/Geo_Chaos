@@ -26,8 +26,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features
   {
     public HeroFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<CreateHeroEntitySystem>());
-
       Add(systems.Create<InitializeHeroMovementSystem>());
       Add(systems.Create<InitializeHeroRigidbodySystem>());
       
