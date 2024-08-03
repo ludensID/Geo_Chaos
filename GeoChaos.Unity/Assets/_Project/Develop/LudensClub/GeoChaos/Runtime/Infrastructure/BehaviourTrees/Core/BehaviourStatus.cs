@@ -1,9 +1,0 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees
-{
-  public enum BehaviourStatus
-  {
-    Success = 1,
-    Failure = 2,
-    Running = 3,
-  }
-}

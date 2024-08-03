@@ -1,4 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.AI;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure

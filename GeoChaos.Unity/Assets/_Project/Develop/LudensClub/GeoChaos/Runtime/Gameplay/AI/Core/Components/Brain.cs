@@ -1,6 +1,6 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Infrastructure.BehaviourTrees;
+using LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 {
