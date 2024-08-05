@@ -11,7 +11,7 @@ namespace LudensClub.GeoChaos.Debugging
   {
     private EcsWorld _world;
 
-    [ShowInInspector]
+    [field: SerializeField]
     [InlineProperty]
     [HideLabel]
     public InputData Data { get; private set; }

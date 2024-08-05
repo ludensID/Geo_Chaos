@@ -91,6 +91,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .Bind<ICoroutineRunner>()
         .To<CoroutineRunner>()
         .FromNewComponentOnNewGameObject()
+        .WithGameObjectName("CoroutineRunner")
+        .UnderTransform(transform)
         .AsSingle();
     }
   }

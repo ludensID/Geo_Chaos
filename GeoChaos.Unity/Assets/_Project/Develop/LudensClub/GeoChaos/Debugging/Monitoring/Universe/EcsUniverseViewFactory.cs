@@ -15,6 +15,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     public EcsUniverseView Create()
     {
       var instance = _instantiator.InstantiateComponentOnNewGameObject<EcsUniverseView>("[ECS-UNIVERSE]");
+      instance.transform.SetParent(null);
       Object.DontDestroyOnLoad(instance);
       return instance;
     }

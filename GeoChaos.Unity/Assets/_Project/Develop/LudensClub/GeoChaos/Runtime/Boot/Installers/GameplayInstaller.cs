@@ -52,6 +52,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
     public override void InstallBindings()
     {
+      BindCoroutineRunner();
+      
       BindGameplayPause();
       BindInitializingPhase();
 
@@ -86,7 +88,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindViewFactory();
       BindCollisionFiller();
       BindCollisionService();
-      BindSpawnPoints();
       BindShardPool();
       BindLeafPool();
       BindShardFactory();
@@ -107,6 +108,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthPresenter();
       BindImmunityDurationPresenter();
       BindHeroHealthShardPresenter();
+      
+      Container.DefaultParent = new GameObject("Runtime").transform;
     }
 
     private void BindAimInRadiusLeafySpiritSelector()
@@ -381,15 +384,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .AsSingle();
     }
 
-    private void BindSpawnPoints()
-    {
-      var spawns = FindObjectsByType<SpawnPointGizmo>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).ToList();
-      Container
-        .Bind<List<SpawnPointGizmo>>()
-        .FromInstance(spawns)
-        .AsSingle();
-    }
-
     private void BindMessageWorldWrapper()
     {
       Container
@@ -431,6 +425,17 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     {
       Container
         .BindInterfacesTo<Engine>()
+        .AsSingle();
+    }
+    
+    private void BindCoroutineRunner()
+    {
+      Container
+        .Bind<ICoroutineRunner>()
+        .To<CoroutineRunner>()
+        .FromNewComponentOnNewGameObject()
+        .WithGameObjectName("CoroutineRunner")
+        .UnderTransform(transform)
         .AsSingle();
     }
   }
