@@ -60,7 +60,7 @@ MonoBehaviour:
       data:
         Bounds: {x: 0, y: 0}
     - rid: 674097938592170092
-      type: {class: ComboAttackCounter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Attack,
+      type: {class: ComboAttackCounter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage,
         asm: GeoChaos.Runtime}
       data:
         Count: 0

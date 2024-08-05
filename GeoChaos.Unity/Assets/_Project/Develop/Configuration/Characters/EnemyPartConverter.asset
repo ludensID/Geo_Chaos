@@ -37,5 +37,5 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data: 
     - rid: 2072450811591918055
-      type: {class: Damageable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Attack, asm: GeoChaos.Runtime}
+      type: {class: Damageable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage, asm: GeoChaos.Runtime}
       data: 

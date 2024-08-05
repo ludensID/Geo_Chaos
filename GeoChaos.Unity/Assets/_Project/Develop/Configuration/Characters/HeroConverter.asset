@@ -99,12 +99,12 @@ MonoBehaviour:
       data:
         Direction: 1
     - rid: 674097938592170111
-      type: {class: ComboAttackCounter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Attack,
+      type: {class: ComboAttackCounter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage,
         asm: GeoChaos.Runtime}
       data:
         Count: 0
     - rid: 674097938592170114
-      type: {class: ImmunityAvailable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Attack,
+      type: {class: ImmunityAvailable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage,
         asm: GeoChaos.Runtime}
       data: 
     - rid: 674098060372213846
@@ -176,7 +176,7 @@ MonoBehaviour:
       type: {class: Immortal, ns: LudensClub.GeoChaos.Runtime.Gameplay.Die, asm: GeoChaos.Runtime}
       data: 
     - rid: 2072450811591918056
-      type: {class: Damageable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Attack, asm: GeoChaos.Runtime}
+      type: {class: Damageable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage, asm: GeoChaos.Runtime}
       data: 
     - rid: 2072450849916059856
       type: {class: HealthConverter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Health,

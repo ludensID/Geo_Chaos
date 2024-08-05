@@ -68,7 +68,7 @@ MonoBehaviour:
       data:
         Direction: 0
     - rid: 674098072352456889
-      type: {class: ComboAttackCounter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Attack,
+      type: {class: ComboAttackCounter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage,
         asm: GeoChaos.Runtime}
       data:
         Count: 0
