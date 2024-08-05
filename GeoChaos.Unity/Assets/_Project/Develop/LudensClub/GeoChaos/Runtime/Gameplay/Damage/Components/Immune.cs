@@ -1,7 +1,8 @@
 ﻿using System;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Damage
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,7 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct FinishAttackCommand : IEcsComponent
+  public struct Immune : IEcsComponent
   {
+    public MovementType Owner;
   }
 }

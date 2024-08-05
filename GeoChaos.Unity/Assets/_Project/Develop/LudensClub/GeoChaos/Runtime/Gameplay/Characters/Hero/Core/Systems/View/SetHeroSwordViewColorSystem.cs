@@ -1,8 +1,8 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 

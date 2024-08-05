@@ -1,11 +1,11 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Attack
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Damage
 {
-  public class AttackFeature : EcsFeature
+  public class DamageFeature : EcsFeature
   {
-    public AttackFeature(IEcsSystemFactory systems)
+    public DamageFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<Delete<OnDamaged, MessageWorldWrapper>>());
       Add(systems.Create<DealDamageSystem>());
