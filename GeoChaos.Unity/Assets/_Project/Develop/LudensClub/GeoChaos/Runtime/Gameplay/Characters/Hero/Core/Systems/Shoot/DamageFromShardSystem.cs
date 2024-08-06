@@ -6,6 +6,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Shard;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Shoot
 {
@@ -18,7 +19,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Shoot
     private readonly HeroConfig _config;
     private readonly EcsEntities _oneCollisions;
 
-    public DamageFromShardSystem(MessageWorldWrapper messageWorldWrapper, GameWorldWrapper gameWorldWrapper,
+    public DamageFromShardSystem(MessageWorldWrapper messageWorldWrapper, 
+      GameWorldWrapper gameWorldWrapper,
       IConfigProvider configProvider,
       ICollisionService collisionSvc)
     {
@@ -72,6 +74,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Shoot
         && info.TargetCollider.Type != ColliderType.Action
         && (!info.Target.IsAlive() || !info.Master.Get<Owner>().Entity.EqualsTo(info.PackedTarget)))
       {
+        info.Master.SetActive(false);
         info.Master.Has<DestroyCommand>(true);
         return true;
       }
