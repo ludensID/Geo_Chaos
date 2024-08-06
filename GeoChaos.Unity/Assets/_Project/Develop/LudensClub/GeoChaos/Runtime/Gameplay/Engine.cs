@@ -31,6 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
       _lateUpdateSystems = systemsFactory.Create(); 
 
       _fixedUpdateSystems
+        .Add(factory.Create<CollisionFixedFeature>())
         .Add(factory.Create<ViewReadFixedFeature>())
         .Add(factory.Create<FreeFallFeature>())
         .Add(factory.Create<SpeedForceFeature>())

@@ -2,12 +2,12 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
-  public class CollisionFeature : EcsFeature
+  public class CollisionFixedFeature : EcsFeature
   {
-    public CollisionFeature(IEcsSystemFactory systems)
+    public CollisionFixedFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<DeleteCollisionSystem>());
-      Add(systems.Create<PackCollisionsSystem>());
+      Add(systems.Create<PackFixedCollisionsSystem>());
     }
   }
 }

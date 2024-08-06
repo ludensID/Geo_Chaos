@@ -87,6 +87,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEcsSystemsFactory();
       BindViewFactory();
       BindCollisionFiller();
+      BindCollisionPacker();
       BindCollisionService();
       BindShardPool();
       BindLeafPool();
@@ -110,6 +111,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
       
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindCollisionPacker()
+    {
+      Container
+        .Bind<ICollisionPacker>()
+        .To<CollisionPacker>()
+        .AsSingle();
     }
 
     private void BindAimInRadiusLeafySpiritSelector()

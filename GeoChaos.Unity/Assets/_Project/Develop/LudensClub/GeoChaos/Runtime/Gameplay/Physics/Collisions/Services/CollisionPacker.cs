@@ -1,23 +1,28 @@
-﻿using Leopotam.EcsLite;
+﻿using System.Collections.Generic;
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
-  public class FlushCollisionsSystem : IEcsRunSystem
+  public class CollisionPacker : ICollisionPacker
   {
     private readonly ICollisionFiller _filler;
     private readonly EcsWorld _message;
 
-    public FlushCollisionsSystem(MessageWorldWrapper messageWorldWrapper, ICollisionFiller filler)
+    public CollisionPacker(MessageWorldWrapper messageWorldWrapper, ICollisionFiller filler)
     {
       _filler = filler;
       _message = messageWorldWrapper.World;
     }
 
-    public void Run(EcsSystems systems)
+    public void Pack(bool isFixed = false)
     {
-      var collisions = _filler.Flush();
+      PackImplicit(isFixed ? _filler.FlushFixed() : _filler.Flush());
+    }
+
+    public void PackImplicit(List<OneSideCollision> collisions)
+    {
       for (int i = 0; i < collisions.Count; i++)
       {
         OneSideCollision other = collisions.Find(x => x.Type == collisions[i].Type && x.Sender.Collider == collisions[i].Other);
@@ -31,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
         collisions.Remove(other);
       }
     }
-
+    
     private EcsEntity CreateOneSideCollisionMessage(OneSideCollision collision)
     {
       return _message.CreateEntity()
