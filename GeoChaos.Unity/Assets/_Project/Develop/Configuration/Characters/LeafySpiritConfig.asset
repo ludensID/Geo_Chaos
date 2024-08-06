@@ -30,6 +30,6 @@ MonoBehaviour:
   DamageFromLeaf: 8
   DamageFromBody: 5
   WaitAfterAttackTime: 2
-  WatchingTimer: 10
+  WatchingTime: 10
   RelaxationTime: 1
   DampingDamageByDistance: 0.2

@@ -31,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Wa
     {
       foreach (EcsEntity spirit in _aimedSpirits)
       {
-        spirit.Add((ref WatchingTimer timer) => timer.TimeLeft = _timers.Create(_config.WatchingTimer));
+        spirit.Add((ref WatchingTimer timer) => timer.TimeLeft = _timers.Create(_config.WatchingTime));
       }
     }
   }

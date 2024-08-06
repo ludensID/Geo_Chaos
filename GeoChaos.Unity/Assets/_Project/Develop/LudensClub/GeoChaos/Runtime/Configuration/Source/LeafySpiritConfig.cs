@@ -44,7 +44,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float WaitAfterAttackTime;
 
     [Title("Watching")]
-    public float WatchingTimer;
+    public float WatchingTime;
 
     [Title("Relaxation")]
     public float RelaxationTime;
