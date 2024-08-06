@@ -8,28 +8,29 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying
 {
   public class DestroyEntitySystem : IEcsRunSystem
   {
-    private readonly List<IPushable> _pushables;
+    private readonly List<IPushable> _pools;
     private readonly EcsWorld _game;
-    private readonly EcsEntities _destroyings;
+    private readonly EcsEntities _destroyingEntities;
 
-    public DestroyEntitySystem(GameWorldWrapper gameWorldWrapper, List<IPushable> pushables)
+    public DestroyEntitySystem(GameWorldWrapper gameWorldWrapper, List<IPushable> pools)
     {
-      _pushables = pushables;
+      _pools = pools;
       _game = gameWorldWrapper.World;
-      _destroyings = _game
+      
+      _destroyingEntities = _game
         .Filter<Destroying>()
         .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity destroying in _destroyings)
+      foreach (EcsEntity destroying in _destroyingEntities)
       {
         if (destroying.Has<ViewRef>())
         {
           BaseView view = destroying.Get<ViewRef>().View;
           if (destroying.Has<Poolable>())
-            _pushables.Find(x => x.HasId(destroying.Get<EntityId>().Id)).Push(view);
+            _pools.Find(x => x.HasId(destroying.Get<EntityId>().Id)).Push(view);
           else
             Object.Destroy(view.gameObject);
         }

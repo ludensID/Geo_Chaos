@@ -20,41 +20,56 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying
       _commands = _game
         .Filter<DestroyCommand>()
         .Collect();
-      
+
       _owneds = new Dictionary<EcsWorld, EcsEntities>(wrappers
-        .Select(x => new KeyValuePair<EcsWorld, EcsEntities>(x.World, x.World.Filter<Owner>().Collect())).ToList());
+        .Select(x => new KeyValuePair<EcsWorld, EcsEntities>(x.World,
+          x.World
+            .Filter<Owner>()
+            .Exc<DestroyCommand>()
+            .Exc<Destroying>()
+            .Collect()))
+        .ToList());
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity command in _commands)
+      while(_commands.Any())
       {
-        bool isOwner = false;
-        foreach (KeyValuePair<EcsWorld, EcsEntities> ownedPair in _owneds)
+        foreach (EcsEntity command in _commands)
         {
-          bool isGame = ownedPair.Key == _game;
-          foreach (EcsEntity owned in ownedPair.Value
-            .Check<Owner>(x => x.Entity.EqualsTo(command.PackedEntity)))
+          bool isOwner = DestroyOwnedEntities(command);
+          if (!isOwner)
           {
-            if (isGame)
-            {
-              owned.Has<DestroyCommand>(true);
-              isOwner = true;
-            }
-            else
-            {
-              owned.Dispose();
-            }
+            command
+              .Del<DestroyCommand>()
+              .Add<Destroying>();
           }
         }
+      }
+    }
 
-        if (!isOwner)
+    private bool DestroyOwnedEntities(EcsEntity command)
+    {
+      bool isOwner = false;
+      foreach (KeyValuePair<EcsWorld, EcsEntities> ownedPair in _owneds)
+      {
+        bool isGame = ownedPair.Key == _game;
+        foreach (EcsEntity owned in ownedPair.Value
+          .Check<Owner>(x => x.Entity.EqualsTo(command.PackedEntity)))
         {
-          command
-            .Del<DestroyCommand>()
-            .Add<Destroying>();
+          if (isGame)
+          {
+            owned.Add<DestroyCommand>();
+            isOwner = true;
+          }
+          else
+          {
+            owned.Dispose();
+          }
         }
       }
+
+      return isOwner;
     }
   }
 }
