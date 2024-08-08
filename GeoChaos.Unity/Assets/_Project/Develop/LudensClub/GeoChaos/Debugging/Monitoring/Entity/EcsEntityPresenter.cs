@@ -8,6 +8,7 @@ using LudensClub.GeoChaos.Runtime;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 using Unity.Profiling;
+using UnityEditor;
 
 namespace LudensClub.GeoChaos.Debugging.Monitoring
 {
@@ -140,6 +141,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
         _config = AssetFinder.FindAsset<EcsUniverseConfig>();
       if (_config)
         View.Components.Sort(_config.Comparer);
+
+      EditorUtility.SetDirty(View);
     }
 
     private void Resize()
@@ -191,7 +194,9 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       foreach (EcsComponentView component in View.ComponentPull)
       {
         _name = EditorContext.GetPrettyName(component.Value);
-        IEcsPool pool = _valuePools.First(x => EditorContext.GetPrettyName(x.GetComponentType()) == _name);
+        IEcsPool pool = _pools.FirstOrDefault(x => EditorContext.GetPrettyName(x.GetComponentType()) == _name) 
+          ?? _wrapper.World.GetPoolEnsure(component.Value.GetType());
+
         if (pool.Has(Entity))
           pool.SetRaw(Entity, component.Value);
         else
@@ -205,7 +210,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       foreach (EcsComponentView component in View.ComponentPull)
       {
         _name = EditorContext.GetPrettyName(component.Value);
-        IEcsPool pool = _valuePools.First(x => EditorContext.GetPrettyName(x.GetComponentType()) == _name);
+        IEcsPool pool = _pools.First(x => EditorContext.GetPrettyName(x.GetComponentType()) == _name);
         if (pool.Has(Entity))
           pool.Del(Entity);
       }

@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Jump
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,7 +10,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct JumpCommand : IEcsComponent
+  public struct FrogJumpContext : IEcsComponent
   {
+    public float Direction;
+    public float Height;
+    public float Length;
   }
 }

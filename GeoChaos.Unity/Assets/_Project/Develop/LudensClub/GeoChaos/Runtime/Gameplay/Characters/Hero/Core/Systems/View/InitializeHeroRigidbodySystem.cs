@@ -17,7 +17,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.View
       _world = gameWorldWrapper.World;
 
       _heroes = _world
-        .Filter<GravityScale>()
+        .Filter<HeroTag>()
+        .Inc<GravityScale>()
         .Inc<OnConverted>()
         .Inc<RigidbodyRef>()
         .Collect();
@@ -28,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.View
       foreach (EcsEntity hero in _heroes)
       {
         hero.Change((ref RigidbodyRef rigidbodyRef) =>
-          rigidbodyRef.Rigidbody.gravityScale = hero.Get<GravityScale>().Value);
+          rigidbodyRef.Rigidbody.gravityScale = hero.Get<GravityScale>().Scale);
       }
     }
   }

@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
@@ -20,7 +21,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump
       _config = configProvider.Get<HeroConfig>();
 
       _onGrounds = _game
-        .Filter<MovementVector>()
+        .Filter<HeroTag>()
+        .Inc<MovementVector>()
         .Inc<GravityScale>()
         .Exc<Falling>()
         .Collect();
@@ -36,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump
         
         onGround
           .Add<Falling>()
-          .Change((ref GravityScale gravity) => gravity.Value = _config.FallGravityScale);
+          .Change((ref GravityScale gravity) => gravity.Scale = _config.FallGravityScale);
       }
     }
   }

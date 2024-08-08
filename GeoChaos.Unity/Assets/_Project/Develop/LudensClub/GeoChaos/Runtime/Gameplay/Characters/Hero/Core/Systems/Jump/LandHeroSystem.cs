@@ -20,7 +20,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump
       _config = configProvider.Get<HeroConfig>();
 
       _fallings = _game
-        .Filter<Falling>()
+        .Filter<HeroTag>()
+        .Inc<Falling>()
         .Inc<MovementVector>()
         .Inc<GravityScale>()
         .Collect();
@@ -33,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump
       {
         falling
           .Del<Falling>()
-          .Change((ref GravityScale gravity) => gravity.Value = _config.GravityScale);
+          .Change((ref GravityScale gravity) => gravity.Scale = _config.GravityScale);
       }
     }
   }

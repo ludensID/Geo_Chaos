@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -15,7 +16,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump
     {
       _world = gameWorldWrapper.World;
 
-      _heroes = _world.Filter<HeroTag>()
+      _heroes = _world
+        .Filter<HeroTag>()
         .Inc<JumpAvailable>()
         .Inc<StopJumpCommand>()
         .Inc<MovementVector>()

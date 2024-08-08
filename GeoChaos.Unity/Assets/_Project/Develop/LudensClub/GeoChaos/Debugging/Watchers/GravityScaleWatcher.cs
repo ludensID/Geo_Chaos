@@ -5,6 +5,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Debugging.Watchers
 {
@@ -29,7 +30,7 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
 
     public bool IsDifferent()
     {
-      return _gravityScale != _config.GravityScale;
+      return _gravityScale.ApproximatelyEqual(_config.GravityScale);
     }
 
     public void Assign()
@@ -45,7 +46,7 @@ namespace LudensClub.GeoChaos.Debugging.Watchers
       foreach (EcsEntity hero in _heroes)
       {
         hero.Change((ref GravityScale gravity) =>
-          gravity.Value = hero.Has<Falling>() ? _config.FallGravityScale : _config.GravityScale);
+          gravity.Scale = hero.Has<Falling>() ? _config.FallGravityScale : _config.GravityScale);
       }
     }
   }

@@ -4,7 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
 using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.View
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics
 {
   public class SetViewGravitySystem : IEcsRunSystem
   {
@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.View
       {
         ref GravityScale gravity = ref body.Get<GravityScale>();
         ref RigidbodyRef rigidbodyRef = ref body.Get<RigidbodyRef>();
-        rigidbodyRef.Rigidbody.gravityScale = gravity.Enabled ? gravity.Value : 0;
+        rigidbodyRef.Rigidbody.gravityScale = gravity.Enabled ? gravity.Scale : 0;
       }
     }
   }

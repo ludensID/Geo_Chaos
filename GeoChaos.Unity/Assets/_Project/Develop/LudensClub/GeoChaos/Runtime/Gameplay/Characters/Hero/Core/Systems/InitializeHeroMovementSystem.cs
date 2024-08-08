@@ -37,7 +37,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems
       {
         hero
           .Change((ref HorizontalSpeed speed) => speed.Speed = _config.MovementSpeed)
-          .Change((ref GravityScale gravity) => gravity.Value = _config.GravityScale)
+          .Change((ref GravityScale gravity) => gravity.Scale = _config.GravityScale)
           .Has<DashAvailable>(_config.EnableDash)
           .Has<AttackAvailable>(_config.EnableAttack)
           .Has<HookAvailable>(_config.EnableHook)

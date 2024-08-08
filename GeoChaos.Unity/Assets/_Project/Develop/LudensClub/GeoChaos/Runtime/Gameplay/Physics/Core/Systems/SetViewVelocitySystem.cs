@@ -5,7 +5,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.View
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics
 {
   public class SetViewVelocitySystem : IEcsRunSystem
   {
@@ -15,6 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.View
     public SetViewVelocitySystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
+      
       _heroes = _game
         .Filter<RigidbodyRef>()
         .Inc<MovementVector>()

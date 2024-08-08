@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Jump
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,9 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct GravityScale : IEcsComponent
+  public struct StopJumpCommand : IEcsComponent
   {
-    public bool Enabled;
-    public float Scale;
   }
 }

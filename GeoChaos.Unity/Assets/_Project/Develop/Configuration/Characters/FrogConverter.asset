@@ -26,6 +26,11 @@ MonoBehaviour:
     _scriptableConverter: {fileID: 11400000, guid: e834491bf5eda944d96292f4193e5242,
       type: 2}
   - _serializedConverter:
+      rid: 2072450972819128403
+    _components:
+      Components: []
+    _scriptableConverter: {fileID: 0}
+  - _serializedConverter:
       rid: -2
     _components:
       Components:
@@ -64,3 +69,8 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         Direction: 1
+    - rid: 2072450972819128403
+      type: {class: GravityConverter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity,
+        asm: GeoChaos.Runtime}
+      data:
+        EnableGravityOnStart: 1

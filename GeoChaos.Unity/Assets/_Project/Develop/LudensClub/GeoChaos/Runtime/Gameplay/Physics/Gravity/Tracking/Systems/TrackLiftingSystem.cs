@@ -15,7 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity.Tracking
 
       _trackingEntities = _game
         .Filter<TrackingLifting>()
-        .Inc<OnLifted>()
+        .Exc<OnGround>()
         .Collect();
     }
     

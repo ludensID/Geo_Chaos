@@ -25,7 +25,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity.Tracking
         track
           .Del<StopTrackLandingCommand>()
           .Has<TrackingLifting>(false)
-          .Has<TrackingLanding>(false);
+          .Has<TrackingLanding>(false)
+          .Has<OnLandingDetected>();
       }
     }
   }
