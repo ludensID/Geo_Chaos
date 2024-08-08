@@ -73,6 +73,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindMessageWorldWrapper();
       BindPhysicsWorldWrapper();
 
+      BindCameraProvider();
+
       BindSelectionAlgorithmFactory();
       BindRingSelector();
       BindEnemySelector();
@@ -93,7 +95,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindLeafPool();
       BindShardFactory();
       BindShootService();
-      BindCameraService();
       BindFreeFallService();
 
 #if UNITY_EDITOR
@@ -111,6 +112,15 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
       
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindCameraProvider()
+    {
+      Container
+        .Bind<ICameraProvider>()
+        .To<CameraProvider>()
+        .AsSingle()
+        .WithArguments(_camera);
     }
 
     private void BindCollisionPacker()
@@ -251,15 +261,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .Bind<IFreeFallService>()
         .To<FreeFallService>()
         .AsSingle();
-    }
-
-    private void BindCameraService()
-    {
-      Container
-        .Bind<ICameraService>()
-        .To<CameraService>()
-        .AsSingle()
-        .WithArguments(_camera);
     }
 
     private void BindShootCooldownPresenter()
