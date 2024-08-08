@@ -4,24 +4,24 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Wait
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Wait
 {
-  public class LeafySpiritWaitingStrategy : IActionStrategy, IResetStrategy
+  public class FrogWaitingStrategy : IActionStrategy, IResetStrategy
   {
     private readonly EcsWorld _game;
     public EcsPackedEntity Entity { get; set; }
 
-    public LeafySpiritWaitingStrategy(GameWorldWrapper gameWorldWrapper)
+    public FrogWaitingStrategy(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
     }
 
     public BehaviourStatus Execute()
     {
-      if (Entity.TryUnpackEntity(_game, out EcsEntity spirit))
+      if (Entity.TryUnpackEntity(_game, out EcsEntity frog))
       {
-        if (!spirit.Has<WaitingTimer>())
-          spirit.Add<WaitCommand>();
+        if (!frog.Has<WaitingTimer>())
+          frog.Add<WaitCommand>();
 
         return Node.CONTINUE;
       }
@@ -31,10 +31,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Wa
 
     public void Reset()
     {
-      if (Entity.TryUnpackEntity(_game, out EcsEntity spirit) 
-        && spirit.Has<WaitingTimer>())
+      if (Entity.TryUnpackEntity(_game, out EcsEntity frog)
+        && frog.Has<WaitingTimer>())
       {
-        spirit.Add<StopWaitCommand>();
+        frog.Add<StopWaitCommand>();
       }
     }
   }

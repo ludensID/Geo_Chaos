@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7ad3e455054c1a9069dc1251b32b63, type: 3}
   m_Name: FrogConfig
   m_EditorClassIdentifier: 
+  WaitTime: 3

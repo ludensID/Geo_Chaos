@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Wait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;

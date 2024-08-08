@@ -63,4 +63,4 @@ MonoBehaviour:
       type: {class: BodyDirection, ns: LudensClub.GeoChaos.Runtime.Gameplay.View,
         asm: GeoChaos.Runtime}
       data:
-        Direction: 0
+        Direction: 1

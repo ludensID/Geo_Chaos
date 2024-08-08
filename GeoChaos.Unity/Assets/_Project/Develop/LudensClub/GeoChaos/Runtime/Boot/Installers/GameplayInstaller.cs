@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using LudensClub.GeoChaos.Runtime.Gameplay;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit;
@@ -63,6 +62,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEnemyTreeCreator();
       BindLamaTreeCreator();
       BindLeafySpiritTreeCreator();
+      BindFrogTreeCreator();
 
       BindTreeCreatorService();
       
@@ -112,6 +112,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
       
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindFrogTreeCreator()
+    {
+      Container
+        .Bind<IBehaviourTreeCreator>()
+        .To<FrogTreeCreator>()
+        .AsSingle();
     }
 
     private void BindCameraProvider()

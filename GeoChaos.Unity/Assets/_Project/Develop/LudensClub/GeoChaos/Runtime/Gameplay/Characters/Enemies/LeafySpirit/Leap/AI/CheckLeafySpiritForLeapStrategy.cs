@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Wait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Relaxation;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Rise;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
