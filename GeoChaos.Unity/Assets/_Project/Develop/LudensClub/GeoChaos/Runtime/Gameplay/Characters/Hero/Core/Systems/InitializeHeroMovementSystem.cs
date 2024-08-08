@@ -4,12 +4,12 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot.Aim;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems

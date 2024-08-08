@@ -1,10 +1,10 @@
-﻿using JetBrains.Annotations;
+﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Health
 {
-  [PublicAPI]
+  [Serializable]
   public class HealthConverter : IEcsSerializedConverter
   {
     public float Health;

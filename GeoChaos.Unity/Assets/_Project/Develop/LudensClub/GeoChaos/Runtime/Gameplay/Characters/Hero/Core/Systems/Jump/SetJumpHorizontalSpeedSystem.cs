@@ -1,8 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump
@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump
 
       _onLeftGrounds = _game
         .Filter<HorizontalSpeed>()
-        .Inc<OnLeftGround>()
+        .Inc<OnLifted>()
         .Collect();
     }
     

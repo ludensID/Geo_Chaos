@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump

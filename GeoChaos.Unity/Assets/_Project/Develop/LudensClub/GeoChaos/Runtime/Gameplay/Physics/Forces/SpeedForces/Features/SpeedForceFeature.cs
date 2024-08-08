@@ -1,6 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
@@ -8,8 +6,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   {
     public SpeedForceFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<CheckForHeroOnGroundSystem>());
-      
       Add(systems.Create<ConvertToSpeedForceSystem>());
       Add(systems.Create<DeleteNoImpactForcesSystem>());
       

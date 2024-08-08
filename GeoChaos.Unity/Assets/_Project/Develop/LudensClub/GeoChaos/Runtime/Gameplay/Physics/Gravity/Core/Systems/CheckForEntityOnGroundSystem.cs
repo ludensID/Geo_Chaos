@@ -1,22 +1,22 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity
 {
-  public class CheckForHeroOnGroundSystem : IEcsRunSystem
+  public class CheckForEntityOnGroundSystem : IEcsRunSystem
   {
     private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly PhysicsConfig _physics;
     private readonly EcsEntities _grounds;
     private readonly EcsEntities _onGrounds;
+    private ContactFilter2D _filter;
+    private readonly RaycastHit2D[] _hits;
 
-    public CheckForHeroOnGroundSystem(GameWorldWrapper gameWorldWrapper,
+    public CheckForEntityOnGroundSystem(GameWorldWrapper gameWorldWrapper,
       IConfigProvider configProvider,
       ITimerFactory timers)
     {
@@ -29,6 +29,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump
         .Inc<GroundCheckRef>()
         .Inc<GroundCheckTimer>()
         .Collect();
+
+      _hits = new RaycastHit2D[5];
+      _filter = new ContactFilter2D
+      {
+        useLayerMask = true,
+        layerMask = _physics.GroundMask,
+        useTriggers = false
+      };
     }
 
     public void Run(EcsSystems systems)
@@ -38,13 +46,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump
       {
         ref GroundCheckRef checkRef = ref ground.Get<GroundCheckRef>();
         bool onGround = ground.Has<OnGround>();
-        bool isGroundCasted = IsGroundCasted(checkRef.Bottom.position, true);
+        bool isGroundCasted = IsGroundCasted(checkRef.Bottom.position);
         switch (onGround, isGroundCasted)
         {
           case (true, false):
             ground
               .Del<OnGround>()
-              .Add<OnLeftGround>();
+              .Add<OnLifted>();
             break;
           case (false, true):
             ground
@@ -60,12 +68,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Jump
       }
     }
 
-    private bool IsGroundCasted(Vector3 position, bool waiting)
+    private bool IsGroundCasted(Vector3 position)
     {
-      RaycastHit2D raycastHit = Physics2D.CircleCast(position, _physics.AcceptableGroundDistance, Vector2.zero,
-        Mathf.Infinity, _physics.GroundMask);
-
-      return raycastHit.collider != null;
+      return 0 < Physics2D.CircleCast(position, _physics.AcceptableGroundDistance, Vector2.zero,_filter, _hits);
     }
   }
 }

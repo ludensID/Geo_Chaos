@@ -1,8 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.View
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -11,8 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.View
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct GroundCheckRef : IEcsComponent
+  public struct OnLanded : IEcsComponent
   {
-    public Transform Bottom;
   }
 }
