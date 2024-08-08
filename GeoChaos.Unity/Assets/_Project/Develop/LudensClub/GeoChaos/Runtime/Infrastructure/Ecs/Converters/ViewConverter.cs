@@ -1,5 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Props;
+using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
@@ -13,6 +14,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     {
       entity.Add((ref ViewRef viewRef) => viewRef.View = View);
       View.Entity = entity.Pack();
+
+      entity.SetActive(View.gameObject.activeSelf);
     }
 
     public void ConvertBack(EcsEntity entity)

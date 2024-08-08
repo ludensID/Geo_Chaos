@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+
+namespace LudensClub.GeoChaos.Runtime.Configuration
+{
+  [CreateAssetMenu(menuName = CAC.Names.FROG_MENU, fileName = CAC.Names.FROG_FILE)]
+  public class FrogConfig : ScriptableObject
+  {
+    
+  }
+}

@@ -52,6 +52,9 @@
       
       public const string ECS_UNIVERSE_CONFIG_MENU = CONFIG_MENU + "Ecs Universe Config";
       public const string ECS_UNIVERSE_CONFIG_FILE = "EcsUniverseConfig";
+      
+      public const string FROG_MENU = CONFIG_MENU + "Frog";
+      public const string FROG_FILE = "FrogConfig";
     }
   }
 }

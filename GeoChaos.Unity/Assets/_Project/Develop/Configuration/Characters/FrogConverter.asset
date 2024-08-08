@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133c2ae489ef48fc81c331d6cf2618a2, type: 3}
+  m_Name: FrogConverter
+  m_EditorClassIdentifier: 
+  Converters:
+  - _serializedConverter:
+      rid: -2
+    _components:
+      Components: []
+    _scriptableConverter: {fileID: 11400000, guid: 0eea58ea423e1294ea81b4a8ced2e1c2,
+      type: 2}
+  - _serializedConverter:
+      rid: -2
+    _components:
+      Components: []
+    _scriptableConverter: {fileID: 11400000, guid: e834491bf5eda944d96292f4193e5242,
+      type: 2}
+  - _serializedConverter:
+      rid: -2
+    _components:
+      Components:
+      - Value:
+          rid: 2072450941062479954
+      - Value:
+          rid: 2072450941062479955
+      - Value:
+          rid: 2072450941062479957
+    _scriptableConverter: {fileID: 0}
+  - _serializedConverter:
+      rid: 2072450941062479956
+    _components:
+      Components: []
+    _scriptableConverter: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 2072450941062479954
+      type: {class: FrogTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog,
+        asm: GeoChaos.Runtime}
+      data: 
+    - rid: 2072450941062479955
+      type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
+      data:
+        Id: 5
+    - rid: 2072450941062479956
+      type: {class: HealthConverter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Health,
+        asm: GeoChaos.Runtime}
+      data:
+        Health: 100
+    - rid: 2072450941062479957
+      type: {class: BodyDirection, ns: LudensClub.GeoChaos.Runtime.Gameplay.View,
+        asm: GeoChaos.Runtime}
+      data:
+        Direction: 0

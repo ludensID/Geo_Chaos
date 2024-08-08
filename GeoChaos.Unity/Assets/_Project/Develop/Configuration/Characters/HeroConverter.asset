@@ -16,6 +16,12 @@ MonoBehaviour:
   - _serializedConverter:
       rid: -2
     _components:
+      Components: []
+    _scriptableConverter: {fileID: 11400000, guid: e834491bf5eda944d96292f4193e5242,
+      type: 2}
+  - _serializedConverter:
+      rid: -2
+    _components:
       Components:
       - Value:
           rid: 674098060372213846
@@ -24,13 +30,9 @@ MonoBehaviour:
       - Value:
           rid: 674098060372213848
       - Value:
-          rid: 674097938592170099
-      - Value:
           rid: 674098060372213849
       - Value:
           rid: 674098060372213858
-      - Value:
-          rid: 674097938592170102
       - Value:
           rid: 674097938592170103
       - Value:
@@ -76,17 +78,6 @@ MonoBehaviour:
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
         Id: 1
-    - rid: 674097938592170099
-      type: {class: ForceAvailable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces,
-        asm: GeoChaos.Runtime}
-      data: 
-    - rid: 674097938592170102
-      type: {class: MovementVector, ns: LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces,
-        asm: GeoChaos.Runtime}
-      data:
-        Immutable: 0
-        Speed: {x: 0, y: 0}
-        Direction: {x: 0, y: 0}
     - rid: 674097938592170103
       type: {class: LastMovementVector, ns: LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces,
         asm: GeoChaos.Runtime}
