@@ -16,3 +16,6 @@ MonoBehaviour:
   TimeAfterJump: 1
   SmallJumpLength: 2
   SmallJumpHeight: 2
+  MaxVerticalDistance: 5
+  FrontRadius: 5
+  BackRadius: 3

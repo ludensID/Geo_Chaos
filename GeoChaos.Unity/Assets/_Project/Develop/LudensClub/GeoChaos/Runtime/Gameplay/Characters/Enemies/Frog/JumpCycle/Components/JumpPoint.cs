@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpCycle
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,8 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct FinishPatrolCommand : IEcsComponent
+  public struct JumpPoint : IEcsComponent
   {
-    
+    public float Point;
   }
 }

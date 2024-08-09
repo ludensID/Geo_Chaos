@@ -1,6 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Jump;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpCycle;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
@@ -35,12 +37,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
         float nextPoint = Mathf.Abs(currentPoint - center) <= _config.SmallJumpLength 
             ? bounds[Random.Range(0, 2)] 
             : center;
-        
+
         frog
           .Del<PatrolCommand>()
           .Add<Patrolling>()
-          .Add<OnPatrolStarted>()
-          .Add((ref PatrolPoint point) => point.Point = nextPoint);
+          .Add<StartJumpCycleCommand>()
+          .Add((ref JumpPoint point) => point.Point = nextPoint)
+          .Add((ref FrogJumpContext ctx) =>
+          {
+            ctx.Length = _config.SmallJumpLength;
+            ctx.Height = _config.SmallJumpHeight;
+          });
       }
     }
   }
