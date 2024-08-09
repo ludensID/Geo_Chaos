@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Wait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -33,9 +34,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
       if (Entity.TryUnpackEntity(_game, out EcsEntity lama))
       {
         if (lama.Has<Patrolling>())
-          lama.Add<StopPatrollingCommand>();
+          lama.Add<StopPatrolCommand>();
 
-        if (lama.Has<OnPatrollFinished>())
+        if (lama.Has<OnPatrolFinished>())
           lama.Has<WaitingTimer>(false);
       }
     }

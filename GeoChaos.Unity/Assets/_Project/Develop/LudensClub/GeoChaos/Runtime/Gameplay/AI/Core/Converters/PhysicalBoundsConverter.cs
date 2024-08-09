@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using TriInspector;
 using UnityEngine;

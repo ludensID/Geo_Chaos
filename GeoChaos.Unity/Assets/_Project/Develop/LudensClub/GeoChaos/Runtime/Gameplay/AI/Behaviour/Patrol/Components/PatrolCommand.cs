@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
+namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct StopPatrollingCommand : IEcsComponent
+  public struct PatrolCommand : IEcsComponent
   {
   }
 }

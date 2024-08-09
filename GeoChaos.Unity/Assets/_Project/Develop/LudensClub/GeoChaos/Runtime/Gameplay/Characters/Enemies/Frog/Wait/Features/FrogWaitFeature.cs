@@ -2,9 +2,9 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Wait
 {
-  public class FrogWaitingFeature : EcsFeature
+  public class FrogWaitFeature : EcsFeature
   {
-    public FrogWaitingFeature(IEcsSystemFactory systems)
+    public FrogWaitFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<FrogWaitingSystem>());
       Add(systems.Create<FinishFrogWaitingSystem>());

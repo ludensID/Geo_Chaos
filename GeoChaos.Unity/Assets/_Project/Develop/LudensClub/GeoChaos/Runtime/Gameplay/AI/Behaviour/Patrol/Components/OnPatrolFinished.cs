@@ -1,8 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
+namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -11,8 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct PatrolBounds : IEcsComponent
+  public struct OnPatrolFinished : IEcsComponent
   {
-    public Vector2 Bounds;
   }
 }

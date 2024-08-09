@@ -34,8 +34,6 @@ MonoBehaviour:
       - Value:
           rid: 674097947670741308
       - Value:
-          rid: 674097960360607822
-      - Value:
           rid: 674098063239020634
       - Value:
           rid: 674098072352456889
@@ -54,10 +52,6 @@ MonoBehaviour:
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
         Id: 4
-    - rid: 674097960360607822
-      type: {class: PatrolBounds, ns: LudensClub.GeoChaos.Runtime.Gameplay.AI, asm: GeoChaos.Runtime}
-      data:
-        Bounds: {x: 0, y: 0}
     - rid: 674098060372213844
       type: {class: LeafySpiritTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit,
         asm: GeoChaos.Runtime}

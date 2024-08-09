@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -19,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
 
       _lamasCommands = _game
         .Filter<LamaTag>()
-        .Inc<StopPatrollingCommand>()
+        .Inc<StopPatrolCommand>()
         .Collect();
     }
 
@@ -27,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
     {
       foreach (EcsEntity command in _lamasCommands)
       {
-        command.Del<StopPatrollingCommand>();
+        command.Del<StopPatrolCommand>();
 
         if (command.Has<Patrolling>())
         {

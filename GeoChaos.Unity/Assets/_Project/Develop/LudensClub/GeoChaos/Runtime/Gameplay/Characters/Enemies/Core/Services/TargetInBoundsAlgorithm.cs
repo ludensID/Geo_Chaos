@@ -1,4 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;

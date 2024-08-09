@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
@@ -16,8 +17,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
       _game = gameWorldWrapper.World;
 
       _bounds = _game
-        .Filter<PatrolBounds>()
-        .Inc<PhysicalBoundsRef>()
+        .Filter<PhysicalBoundsRef>()
         .Collect();
     }
 
@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
       foreach (EcsEntity bound in _bounds)
       {
         Vector2 bounds = bound.Get<PhysicalBoundsRef>().GetBounds();
-        bound.Change((ref PatrolBounds patrolBounds) => patrolBounds.Bounds = bounds);
+        bound.Replace((ref PatrolBounds patrolBounds) => patrolBounds.Bounds = bounds);
       }
     }
   }

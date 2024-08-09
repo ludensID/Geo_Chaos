@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: FrogConfig
   m_EditorClassIdentifier: 
   WaitTime: 3
+  TimeAfterJump: 1
+  SmallJumpLength: 2
+  SmallJumpHeight: 2

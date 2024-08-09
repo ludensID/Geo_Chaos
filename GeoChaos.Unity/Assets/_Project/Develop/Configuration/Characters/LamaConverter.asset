@@ -36,8 +36,6 @@ MonoBehaviour:
       - Value:
           rid: 674097938592170089
       - Value:
-          rid: 674097938592170091
-      - Value:
           rid: 674097938592170092
     _scriptableConverter: {fileID: 0}
   - _serializedConverter:
@@ -55,10 +53,6 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         Direction: 1
-    - rid: 674097938592170091
-      type: {class: PatrolBounds, ns: LudensClub.GeoChaos.Runtime.Gameplay.AI, asm: GeoChaos.Runtime}
-      data:
-        Bounds: {x: 0, y: 0}
     - rid: 674097938592170092
       type: {class: ComboAttackCounter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage,
         asm: GeoChaos.Runtime}

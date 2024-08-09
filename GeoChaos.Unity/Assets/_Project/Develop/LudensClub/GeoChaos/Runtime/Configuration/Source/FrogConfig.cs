@@ -11,5 +11,10 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Jump")]
     public float TimeAfterJump;
+    
+    [Title("Patrol")]
+    public float SmallJumpLength;
+
+    public float SmallJumpHeight;
   }
 }
