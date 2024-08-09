@@ -8,5 +8,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
   {
     [Title("Wait")]
     public float WaitTime;
+
+    [Title("Jump")]
+    public float TimeAfterJump;
   }
 }
