@@ -37,6 +37,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
             : center;
         
         frog
+          .Del<PatrolCommand>()
           .Add<Patrolling>()
           .Add<OnPatrolStarted>()
           .Add((ref PatrolPoint point) => point.Point = nextPoint);

@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection;
+using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Detection
 {
@@ -9,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.De
       _algorithms.AddRange(new ISelectionAlgorithm[]
       {
         factory.Create<TargetInBoundsAlgorithm>(),
-        factory.Create<LeafySpiritTargetNearByVerticalAlgorithm>(),
+        factory.Create<TargetNearByVerticalAlgorithm>(),
         factory.Create<TargetReachedAlgorithm>()
       });
     }

@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -7,13 +7,13 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Detection
 {
-  public class FindLamaTargetInViewSystem : IEcsRunSystem
+  public class AimLamaOnTargetInViewSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _lamas;
     private readonly EcsEntities _heroes;
 
-    public FindLamaTargetInViewSystem(GameWorldWrapper gameWorldWrapper)
+    public AimLamaOnTargetInViewSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
@@ -32,7 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Detection
       foreach (EcsEntity hero in _heroes)
       foreach (EcsEntity lama in _lamas)
       {
-        lama.Has<AimInRadius>(lama.Has<Aimed>() || InRadius(hero, lama));
+        lama.Has<TargetInView>(lama.Has<Aimed>() || InRadius(hero, lama));
       }
     }
 

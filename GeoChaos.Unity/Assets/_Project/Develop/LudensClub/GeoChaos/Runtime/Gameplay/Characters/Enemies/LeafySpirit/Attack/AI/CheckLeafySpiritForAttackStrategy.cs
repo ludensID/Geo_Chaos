@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Correction;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
@@ -21,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.At
     public bool Check()
     {
       return Entity.TryUnpackEntity(_game, out EcsEntity spirit)
-        && (spirit.Has<AimInRadius>() && spirit.Has<ShouldAttackCommand>() || spirit.Has<Attacking>());
+        && (spirit.Has<TargetInView>() && spirit.Has<ShouldAttackCommand>() || spirit.Has<Attacking>());
     }
   }
 }

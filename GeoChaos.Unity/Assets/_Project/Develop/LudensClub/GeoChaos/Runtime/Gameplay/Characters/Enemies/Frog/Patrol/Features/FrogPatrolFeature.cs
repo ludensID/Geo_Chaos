@@ -8,7 +8,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
     {
       Add(systems.Create<DeleteFrogPatrolStartedEventSystem>());
       Add(systems.Create<SelectFrogPatrolPointSystem>());
-      Add(systems.Create<DeleteFrogPatrolCommandSystem>());
       
       Add(systems.Create<PrepareFrogJumpDuringPatrollingSystem>());
       Add(systems.Create<SyncFrogBodyDirectionWithPatrollingDirectionSystem>());

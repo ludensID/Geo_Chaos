@@ -29,6 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
 
       _patrollingFrogs = _game
         .Filter<FrogTag>()
+        .Inc<Patrolling>()
         .Inc<OnJumpWaitFinished>()
         .Collect();
     }
@@ -50,7 +51,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
     {
       float currentPoint = frog.Get<ViewRef>().View.transform.position.x;
       float nextPoint = frog.Get<PatrolPoint>().Point;
-      
+
       frog
         .Add<JumpCommand>()
         .Add((ref FrogJumpContext ctx) =>

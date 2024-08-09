@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Rise;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Co
     
     public bool Check()
     {
-      return Entity.TryUnpackEntity(_game, out EcsEntity spirit) && spirit.Has<AimInRadius>() && spirit.Has<OnRiseFinished>();
+      return Entity.TryUnpackEntity(_game, out EcsEntity spirit) && spirit.Has<TargetInView>() && spirit.Has<OnRiseFinished>();
     }
   }
 }

@@ -11,10 +11,16 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Jump")]
     public float TimeAfterJump;
-    
+
     [Title("Patrol")]
     public float SmallJumpLength;
 
     public float SmallJumpHeight;
+
+    [Title("Detection")]
+    public float MaxVerticalDistance;
+
+    public float FrontRadius;
+    public float BackRadius;
   }
 }

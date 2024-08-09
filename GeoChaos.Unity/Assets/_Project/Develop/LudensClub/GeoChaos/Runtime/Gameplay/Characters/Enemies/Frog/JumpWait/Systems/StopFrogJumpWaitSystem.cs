@@ -25,7 +25,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpWait
       {
         frog
           .Del<StopWaitJumpCommand>()
-          .Has<JumpWaitTimer>(false);
+          .Has<JumpWaitTimer>(false)
+          .Has<OnJumpWaitFinished>(false);
       }
     }
   }

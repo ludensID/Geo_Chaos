@@ -28,10 +28,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
       {
         frog
           .Del<StopPatrolCommand>()
-          .Del<Patrolling>()
-          .Del<PatrolPoint>()
-          .Has<StopJumpCommand>(frog.Has<Jumping>())
-          .Has<StopWaitJumpCommand>(frog.Has<JumpWaitTimer>());
+          .Has<Patrolling>(false)
+          .Has<PatrolPoint>(false)
+          .Add<StopJumpCommand>()
+          .Add<StopWaitJumpCommand>();
       }
     }
   }

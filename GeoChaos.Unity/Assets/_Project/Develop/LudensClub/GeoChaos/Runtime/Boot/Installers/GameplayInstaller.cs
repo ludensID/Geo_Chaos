@@ -1,6 +1,7 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit;
@@ -81,6 +82,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindAimedLamaSelector();
       BindAimedLeafySpiritSelector();
       BindAimInRadiusLeafySpiritSelector();
+      BindFrogTargetInViewSelector();
+      BindFrogTargetInFrontSelector();
+      BindFrogTargetInBackSelector();
       
       BindDragForceService();
       BindADControlService();
@@ -112,6 +116,27 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
       
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindFrogTargetInBackSelector()
+    {
+      Container
+        .BindInterfacesAndSelfTo<FrogTargetInBackSelector>()
+        .AsSingle();
+    }
+
+    private void BindFrogTargetInFrontSelector()
+    {
+      Container
+        .BindInterfacesAndSelfTo<FrogTargetInFrontSelector>()
+        .AsSingle();
+    }
+
+    private void BindFrogTargetInViewSelector()
+    {
+      Container
+        .BindInterfacesAndSelfTo<FrogTargetInViewSelector>()
+        .AsSingle();
     }
 
     private void BindFrogTreeCreator()

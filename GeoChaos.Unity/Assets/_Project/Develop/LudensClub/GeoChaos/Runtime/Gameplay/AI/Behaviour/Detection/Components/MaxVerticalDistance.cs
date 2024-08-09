@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour
+namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,7 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct AimInRadius : IEcsComponent
+  public struct MaxVerticalDistance : IEcsComponent
   {
+    public float Distance;
   }
 }

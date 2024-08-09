@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
@@ -41,7 +41,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit
         ref DealDamageMessage damage = ref message.Get<DealDamageMessage>();
         if (damage.Target.TryUnpackEntity(_game, out EcsEntity spirit)
           && spirit.Has<LeafySpiritTag>()
-          && !spirit.Has<AimInRadius>())
+          && !spirit.Has<TargetInView>())
         {
           damage.Damage *= _config.DampingDamageByDistance;
         }
