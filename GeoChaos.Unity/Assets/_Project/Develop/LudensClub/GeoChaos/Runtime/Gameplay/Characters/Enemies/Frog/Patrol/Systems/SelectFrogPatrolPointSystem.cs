@@ -42,8 +42,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
           .Del<PatrolCommand>()
           .Add<Patrolling>()
           .Add<StartJumpCycleCommand>()
-          .Add((ref JumpPoint point) => point.Point = nextPoint)
-          .Add((ref FrogJumpContext ctx) =>
+          .Replace((ref JumpPoint point) => point.Point = nextPoint)
+          .Replace((ref FrogJumpContext ctx) =>
           {
             ctx.Length = _config.SmallJumpLength;
             ctx.Height = _config.SmallJumpHeight;

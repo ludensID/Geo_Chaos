@@ -17,5 +17,7 @@ MonoBehaviour:
   SmallJumpLength: 2
   SmallJumpHeight: 2
   MaxVerticalDistance: 5
-  FrontRadius: 5
+  FrontRadius: 3
   BackRadius: 3
+  BigJumpLength: 4
+  BigJumpHeight: 4

@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Chase;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Chase
 {

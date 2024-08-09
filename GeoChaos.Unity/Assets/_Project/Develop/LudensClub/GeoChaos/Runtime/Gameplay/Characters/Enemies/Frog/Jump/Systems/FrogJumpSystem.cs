@@ -43,7 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Jump
 
         frog
           .Del<JumpCommand>()
-          .Add<Jumping>()
+          .Has<Jumping>(true)
           .Add<TrackLandingCommand>();
       }
     }

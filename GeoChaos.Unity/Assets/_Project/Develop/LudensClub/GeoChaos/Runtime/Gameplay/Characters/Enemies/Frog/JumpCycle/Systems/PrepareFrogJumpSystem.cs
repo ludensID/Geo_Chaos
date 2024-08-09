@@ -27,6 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpCycle
         .Filter<FrogTag>()
         .Inc<JumpCycling>()
         .Inc<OnJumpWaitFinished>()
+        .Exc<JumpCommand>()
         .Collect();
     }
 

@@ -22,5 +22,10 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     public float FrontRadius;
     public float BackRadius;
+
+    [Title("Chase")]
+    public float BigJumpLength;
+
+    public float BigJumpHeight;
   }
 }

@@ -4,24 +4,24 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Chase
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Chase.AI
 {
-  public class ChaseHeroByLamaStrategy : IActionStrategy, IResetStrategy
+  public class FrogChasingStrategy : IActionStrategy, IResetStrategy
   {
     private readonly EcsWorld _game;
     public EcsPackedEntity Entity { get; set; }
 
-    public ChaseHeroByLamaStrategy(GameWorldWrapper gameWorldWrapper)
+    public FrogChasingStrategy(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
     }
 
     public BehaviourStatus Execute()
     {
-      if (Entity.TryUnpackEntity(_game, out EcsEntity lama))
+      if (Entity.TryUnpackEntity(_game, out EcsEntity frog))
       {
-        if (!lama.Has<Chasing>())
-          lama.Add<ChaseCommand>();
+        if (!frog.Has<Chasing>())
+          frog.Add<ChaseCommand>();
 
         return Node.CONTINUE;
       }
@@ -31,8 +31,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Chase
 
     public void Reset()
     {
-      if (Entity.TryUnpackEntity(_game, out EcsEntity lama))
-        lama.Add<StopChaseCommand>();
+      if (Entity.TryUnpackEntity(_game, out EcsEntity frog)
+        && frog.Has<Chasing>())
+      {
+        frog.Add<StopChaseCommand>();
+      }
     }
   }
 }
