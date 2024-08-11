@@ -2,7 +2,7 @@
 using LudensClub.GeoChaos.Editor.General;
 using LudensClub.GeoChaos.Runtime;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Converters;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Props;
 using UnityEditor;

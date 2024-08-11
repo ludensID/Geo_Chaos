@@ -1,5 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.View;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;

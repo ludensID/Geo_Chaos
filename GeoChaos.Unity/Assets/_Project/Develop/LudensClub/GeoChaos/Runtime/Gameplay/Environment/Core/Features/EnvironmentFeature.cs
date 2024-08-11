@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.HealthShard;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Lever;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
@@ -12,6 +13,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
   {
     public EnvironmentFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<RingFeature>());
+      
       Add(systems.Create<DamageFromSpikeSystem>());
 
       Add(systems.Create<FadingPlatformFeature>());

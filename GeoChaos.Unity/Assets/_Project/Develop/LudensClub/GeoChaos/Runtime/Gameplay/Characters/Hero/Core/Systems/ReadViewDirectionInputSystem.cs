@@ -21,7 +21,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems
       _input = inputWorldWrapper.World;
 
       _heroes = _game
-        .Filter<Movable>()
+        .Filter<HeroTag>()
+        .Inc<Movable>()
         .Inc<ViewDirection>()
         .Collect();
 

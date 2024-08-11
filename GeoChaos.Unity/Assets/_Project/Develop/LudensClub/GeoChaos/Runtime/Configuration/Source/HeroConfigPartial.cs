@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Linq;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Converters;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Props;
 using TriInspector;

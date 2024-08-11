@@ -18,24 +18,26 @@ MonoBehaviour:
     _components:
       Components:
       - Value:
-          rid: 674097754407698513
+          rid: 2072451042721398784
       - Value:
           rid: 674097754407698514
       - Value:
-          rid: 674097754407698515
+          rid: 2072451042721398785
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 674097754407698513
-      type: {class: RingTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Ring, asm: GeoChaos.Runtime}
-      data: 
     - rid: 674097754407698514
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
         Id: 15
-    - rid: 674097754407698515
-      type: {class: Selectable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Ring, asm: GeoChaos.Runtime}
+    - rid: 2072451042721398784
+      type: {class: RingTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring,
+        asm: GeoChaos.Runtime}
+      data: 
+    - rid: 2072451042721398785
+      type: {class: Selectable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring,
+        asm: GeoChaos.Runtime}
       data: 

@@ -2,7 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characteristics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Creation;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;

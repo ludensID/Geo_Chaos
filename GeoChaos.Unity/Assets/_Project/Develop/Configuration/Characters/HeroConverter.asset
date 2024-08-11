@@ -53,7 +53,7 @@ MonoBehaviour:
       - Value:
           rid: 674097938592170111
       - Value:
-          rid: 674098060372213857
+          rid: 2072451042721398786
       - Value:
           rid: 674098060372213859
       - Value:
@@ -125,12 +125,6 @@ MonoBehaviour:
       data:
         Owner: 0
         Layer: 2147483647
-    - rid: 674098060372213857
-      type: {class: ShootPosition, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot.Aim,
-        asm: GeoChaos.Runtime}
-      data:
-        Origin: {x: 0, y: 0}
-        Position: {x: 0, y: 0}
     - rid: 674098060372213858
       type: {class: ShootDirection, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot,
         asm: GeoChaos.Runtime}
@@ -162,3 +156,9 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         EnableGravityOnStart: 1
+    - rid: 2072451042721398786
+      type: {class: ShootPosition, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Aim,
+        asm: GeoChaos.Runtime}
+      data:
+        Origin: {x: 0, y: 0}
+        Position: {x: 0, y: 0}

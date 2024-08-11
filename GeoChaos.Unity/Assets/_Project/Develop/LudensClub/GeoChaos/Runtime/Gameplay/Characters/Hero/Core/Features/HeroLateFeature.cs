@@ -1,9 +1,8 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Hook;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.Shoot.Aim;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems.View;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Aim;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
 {
   public class HeroLateFeature : EcsFeature
   {
@@ -11,10 +10,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Features
     {
       Add(systems.Create<MoveCameraSystem>());
         
-      Add(systems.Create<PrecastHookViewSystem>());
-      Add(systems.Create<DrawHookViewSystem>());
+      Add(systems.Create<HeroHookLateFeature>());
       
-      Add(systems.Create<DrawAimLineSystem>());
+      Add(systems.Create<HeroAimLateFeature>());
     }
   }
 }
