@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Chase;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Wait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Watch;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI;
@@ -45,8 +46,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama
         .ToParent()
         .AddSequence()
         .ToChild()
-        .AddCondition<CheckLamaForLookingStrategy>()
-        .AddAction<LamaLookingStrategy>()
+        .AddCondition<CheckLamaForWaitingStrategy>()
+        .AddAction<LamaWaitingStrategy>()
         .ToParent()
         .End();
     }

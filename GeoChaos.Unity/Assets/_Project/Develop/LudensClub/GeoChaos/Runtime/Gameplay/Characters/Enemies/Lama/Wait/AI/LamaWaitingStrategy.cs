@@ -4,14 +4,14 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Wait
 {
-  public class LamaLookingStrategy : IActionStrategy, IResetStrategy
+  public class LamaWaitingStrategy : IActionStrategy, IResetStrategy
   {
     private readonly EcsWorld _game;
     public EcsPackedEntity Entity { get; set; }
 
-    public LamaLookingStrategy(GameWorldWrapper gameWorldWrapper)
+    public LamaWaitingStrategy(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
     }
