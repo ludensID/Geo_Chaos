@@ -27,5 +27,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float BigJumpLength;
 
     public float BigJumpHeight;
+
+    [Title("Attack")]
+    public float JumpAttackHeight;
   }
 }

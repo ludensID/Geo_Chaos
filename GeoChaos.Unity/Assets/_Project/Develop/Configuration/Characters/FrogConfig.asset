@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaitTime: 3
   TimeAfterJump: 1
-  SmallJumpLength: 2
-  SmallJumpHeight: 2
+  SmallJumpLength: 1
+  SmallJumpHeight: 1
   MaxVerticalDistance: 5
-  FrontRadius: 3
-  BackRadius: 3
-  BigJumpLength: 4
-  BigJumpHeight: 4
+  FrontRadius: 5
+  BackRadius: 2
+  BigJumpLength: 2
+  BigJumpHeight: 1
+  JumpAttackHeight: 3

@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Jump
         float time = 2 * Mathf.Sqrt(2 * ctx.Height / Mathf.Abs(gravityScale * Physics2D.gravity.y));
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Jump, frog.PackedEntity, Vector2.one)
         {
-          Speed = new Vector2(ctx.Length / time, ctx.Height / (time / 2)),
+          Speed = new Vector2(ctx.Length / time, 4 * ctx.Height / time),
           Direction = new Vector2(ctx.Direction, 1),
           Instant = true
         });

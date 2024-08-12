@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Chase.AI;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Wait;
@@ -30,6 +31,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog
         .ToChild()
         .AddCondition<CheckForFrogChasingStrategy>()
         .AddAction<FrogChasingStrategy>()
+        .ToParent()
+        .AddSequence()
+        .ToChild()
+        .AddCondition<CheckForFrogAttackStrategy>()
+        .AddAction<FrogAttackStrategy>()
         .ToParent()
         .AddSequence()
         .ToChild()
