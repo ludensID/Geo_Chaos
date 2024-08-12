@@ -1,4 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Tongue;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
@@ -8,6 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
     public EnvironmentFixedFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<LeafFixedFeature>());
+      Add(systems.Create<TongueFixedFeature>());
     }
   }
 }

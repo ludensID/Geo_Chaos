@@ -730,11 +730,11 @@ GameObject:
   - component: {fileID: 2405868705543771571}
   - component: {fileID: -4470947871162947153}
   - component: {fileID: 5955171661119470606}
-  - component: {fileID: 5619485382491563823}
   - component: {fileID: 8543738325755002118}
   - component: {fileID: 971485785347915579}
   - component: {fileID: 5745268808117257973}
   - component: {fileID: 4906445478601338556}
+  - component: {fileID: 15198111433414115}
   m_Layer: 3
   m_Name: Hero
   m_TagString: Untagged
@@ -897,19 +897,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 4220543373771047474}
---- !u!114 &5619485382491563823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4479722840739274266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d557b54fbd4345f497ff9f94e73501e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collider: {fileID: 4140852320947023786}
 --- !u!114 &8543738325755002118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -965,6 +952,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShootLine: {fileID: 4312124680677126774}
+--- !u!114 &15198111433414115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4479722840739274266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2432979f8b45d6bf81a3c7544e9075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 4140852320947023786}
 --- !u!1 &5266338463231931691
 GameObject:
   m_ObjectHideFlags: 0

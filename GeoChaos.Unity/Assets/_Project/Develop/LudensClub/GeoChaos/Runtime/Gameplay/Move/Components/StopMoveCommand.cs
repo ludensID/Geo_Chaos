@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Move
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;

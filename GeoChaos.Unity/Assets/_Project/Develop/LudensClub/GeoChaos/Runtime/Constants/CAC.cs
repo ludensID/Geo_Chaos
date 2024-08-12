@@ -28,6 +28,9 @@
       
       public const string LEAF_POOL_MENU = CONFIG_MENU + "Leaf Pool";
       public const string LEAF_POOL_FILE = "LeafPoolConfig";
+      
+      public const string TONGUE_POOL_CONFIG_MENU = CONFIG_MENU + "Tongue Pool";
+      public const string TONGUE_POOL_CONFIG_FILE = "TonguePoolConfig";
 
       public const string LAMA_MENU = CONFIG_MENU + "Lama";
       public const string LAMA_FILE = "LamaConfig";
@@ -43,18 +46,21 @@
 
       public const string ECS_CONVERTER_MENU = ECS_MENU + "Converter";
       public const string ECS_CONVERTER_FILE = "NewEntityConverter";
-      
+
       public const string LEAFY_SPIRIT_MENU = CONFIG_MENU + "Leafy Spirit";
       public const string LEAFY_SPIRIT_FILE = "LeafySpiritConfig";
 
       public const string LEAF_MENU = CONFIG_MENU + "Leaf";
       public const string LEAF_FILE = "LeafConfig";
-      
-      public const string ECS_UNIVERSE_CONFIG_MENU = CONFIG_MENU + "Ecs Universe Config";
+
+      public const string ECS_UNIVERSE_CONFIG_MENU = CONFIG_MENU + "Ecs Universe";
       public const string ECS_UNIVERSE_CONFIG_FILE = "EcsUniverseConfig";
-      
+
       public const string FROG_MENU = CONFIG_MENU + "Frog";
       public const string FROG_FILE = "FrogConfig";
+      
+      public const string TONGUE_CONFIG_MENU = CONFIG_MENU + "Tongue";
+      public const string TONGUE_CONFIG_FILE = "TongueConfig";
     }
   }
 }

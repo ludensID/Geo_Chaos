@@ -42,7 +42,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.Ju
         
         if (length <= 0.1f)
           length = 0;
-
+        
         frog
           .Del<AttackJumpCommand>()
           .Add<JumpAttacking>()

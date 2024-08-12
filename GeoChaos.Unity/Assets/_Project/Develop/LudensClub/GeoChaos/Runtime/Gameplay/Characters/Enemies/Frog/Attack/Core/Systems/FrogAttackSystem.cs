@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Bite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.Jump;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.Tongue;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
@@ -45,9 +46,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack
         float half = _config.FrontRadius / 2;
 
         if (Mathf.Abs(heroPoint - frogPoint) < half)
+        {
           frog.Add<BiteCommand>();
+        }
         else
-          frog.Add<AttackJumpCommand>();
+        {
+          float select = Random.Range(0f, 1f);
+          if (select < 0.5f)
+            frog.Add<AttackToungueCommand>();
+          else
+            frog.Add<AttackJumpCommand>();
+        }
       }
     }
   }

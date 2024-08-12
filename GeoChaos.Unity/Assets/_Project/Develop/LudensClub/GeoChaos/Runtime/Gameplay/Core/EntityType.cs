@@ -16,6 +16,7 @@
     Door = Key + 1,
     Lever = Door + 1,
     HealthShard = Lever + 1,
-    Leaf = HealthShard + 1
+    Leaf = HealthShard + 1,
+    Tongue = Leaf + 1
   }
 }

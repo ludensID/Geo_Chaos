@@ -19,6 +19,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 using LudensClub.GeoChaos.Runtime.Props;
 using LudensClub.GeoChaos.Runtime.Props.Leaf;
 using LudensClub.GeoChaos.Runtime.Props.Shard;
+using LudensClub.GeoChaos.Runtime.Props.Tongue;
 using LudensClub.GeoChaos.Runtime.UI;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealth;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealthShard;
@@ -97,6 +98,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindCollisionService();
       BindShardPool();
       BindLeafPool();
+      BindTonguePool();
       BindShardFactory();
       BindShootService();
       BindFreeFallService();
@@ -116,6 +118,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
       
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindTonguePool()
+    {
+      Container
+        .BindInterfacesAndSelfTo<TonguePool>()
+        .AsSingle();
     }
 
     private void BindFrogTargetInBackSelector()

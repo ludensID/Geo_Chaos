@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Props
 
     public void Initialize()
     {
-      _parent = new GameObject($"{typeof(TView).Name} Pool").transform;
+      _parent = new GameObject($"{typeof(TView).Name}Pool").transform;
       _parent.transform.position = Vector3.left * _config.DistanceFromOrigin;
       
       for (int i = 0; i < _config.InstanceCount; i++)

@@ -60,6 +60,8 @@
       public const string MATCHED_DOOR_CONVERTER = CONVERTERS + "Matched Door Converter";
       public const string CALM_COLLIDER_CONVERTER = CONVERTERS + "Calm Collider Converter";
       public const string BITE_COLLIDER_CONVERTER = CONVERTERS + "Bite Collider Converter";
+      public const string TONGUE_LINE_CONVERTER = CONVERTERS + "Tongue Line Converter";
+      public const string TONGUE_POINT_CONVERTER = CONVERTERS + "Tongue Point Converter";
 
       public const string COROUTINE_RUNNER = CORE + "Coroutine Runner";
       public const string COLLISION_DETECTOR = CORE + "Collision Detector";
