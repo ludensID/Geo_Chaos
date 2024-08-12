@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Testing.EditMode
       var sender = new PackedCollider(null, ColliderType.Attack, master.Pack());
       var other = new PackedCollider(null, ColliderType.Body, target.Pack());
       collisionSvc.AssignCollision(new TwoSideCollision(CollisionType.Enter, other, sender));
-      collisionSvc.TryUnpackEntities(world);
+      collisionSvc.TryUnpackBothEntities(world);
 
       // Act.
       collisionSvc.TrySelectByMasterCollider(x => x.Type == ColliderType.Attack);

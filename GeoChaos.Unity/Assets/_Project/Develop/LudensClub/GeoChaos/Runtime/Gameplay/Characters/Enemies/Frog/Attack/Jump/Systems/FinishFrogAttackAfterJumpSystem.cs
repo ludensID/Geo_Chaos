@@ -7,12 +7,12 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.Jump
 {
-  public class FinishFrogJumpAttackSystem : IEcsRunSystem
+  public class FinishFrogAttackAfterJumpSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _attackingFrogs;
 
-    public FinishFrogJumpAttackSystem(GameWorldWrapper gameWorldWrapper)
+    public FinishFrogAttackAfterJumpSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 

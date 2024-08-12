@@ -70,6 +70,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot
     {
       if (_collisionSvc.UnpackEntities(_game)
         && _collisionSvc.TrySelectByMasterCollider(x => x.Type == ColliderType.Attack)
+        && info.Master.IsAlive()
         && info.Master.Has<ShardTag>()
         && info.TargetCollider.Type != ColliderType.Action
         && (!info.Target.IsAlive() || !info.Master.Get<Owner>().Entity.EqualsTo(info.PackedTarget)))

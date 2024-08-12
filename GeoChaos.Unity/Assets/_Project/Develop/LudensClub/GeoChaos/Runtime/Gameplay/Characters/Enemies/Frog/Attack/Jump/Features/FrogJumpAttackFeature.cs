@@ -6,7 +6,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.Ju
   {
     public FrogJumpAttackFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<FinishFrogJumpAttackSystem>());
+      Add(systems.Create<FinishFrogAttackAfterJumpSystem>());
       
       Add(systems.Create<FrogJumpAttackSystem>());
       Add(systems.Create<StopFrogJumpAttackSystem>());

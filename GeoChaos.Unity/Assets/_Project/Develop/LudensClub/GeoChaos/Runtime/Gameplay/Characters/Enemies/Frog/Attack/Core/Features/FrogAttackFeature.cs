@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.Jump;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.Bite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.Jump;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack
@@ -16,6 +17,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack
       Add(systems.Create<StopFrogAttackSystem>());
         
       Add(systems.Create<FrogJumpAttackFeature>());
+      Add(systems.Create<FrogBiteFeature>());
     }
   }
 }

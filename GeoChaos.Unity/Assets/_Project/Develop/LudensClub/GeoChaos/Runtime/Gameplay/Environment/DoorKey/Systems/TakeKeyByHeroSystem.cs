@@ -2,7 +2,6 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
@@ -35,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.DoorKey
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
         DamageCollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
-        if (_collisionSvc.TryUnpackEntities(_game)
+        if (_collisionSvc.TryUnpackBothEntities(_game)
           && _collisionSvc.TrySelectByEntitiesTag<KeyTag, HeroTag>()
           && info.MasterCollider.Type == ColliderType.Action
           && info.TargetCollider.Type is ColliderType.Body or ColliderType.Dash)

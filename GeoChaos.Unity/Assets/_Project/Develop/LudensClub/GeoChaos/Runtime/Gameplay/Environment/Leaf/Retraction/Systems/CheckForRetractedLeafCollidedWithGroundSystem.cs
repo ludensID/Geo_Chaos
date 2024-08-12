@@ -38,8 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Retraction
         ref OneSideCollision collision = ref col.Get<OneSideCollision>();
         DamageCollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
-        if (_collisionSvc.UnpackEntities(_game)
-          && info.Master.IsAlive()
+        if (_collisionSvc.TryUnpackByMasterEntity(_game)
           && info.Master.Has<LeafTag>()
           && !info.TargetCollider.Collider.isTrigger
           && _physics.GroundMask.Contains(info.TargetCollider.Collider.gameObject.layer)

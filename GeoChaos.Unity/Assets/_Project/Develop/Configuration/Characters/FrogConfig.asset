@@ -22,3 +22,4 @@ MonoBehaviour:
   BigJumpLength: 2
   BigJumpHeight: 1
   JumpAttackHeight: 3
+  BiteTime: 1

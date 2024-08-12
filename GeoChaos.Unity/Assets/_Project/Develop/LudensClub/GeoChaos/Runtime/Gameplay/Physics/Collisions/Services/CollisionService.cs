@@ -87,10 +87,28 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
         x => Info.TargetCollider.Entity.EqualsTo(x.Pack()), false);
     }
 
-    public bool TryUnpackEntities(EcsWorld world)
+    public bool TryUnpackBothEntities(EcsWorld world)
     {
       return Info.MasterCollider.Entity.TryUnpackEntity(world, out Info.Master)
         && Info.TargetCollider.Entity.TryUnpackEntity(world, out Info.Target);
+    }
+
+    public bool TryUnpackByMasterEntity(EcsWorld world)
+    {
+      Info.TargetCollider.Entity.TryUnpackEntity(world, out Info.Target);
+      return Info.MasterCollider.Entity.TryUnpackEntity(world, out Info.Master);
+    }
+
+    public bool TryUnpackByTargetEntity(EcsWorld world)
+    {
+      Info.MasterCollider.Entity.TryUnpackEntity(world, out Info.Master);
+      return Info.TargetCollider.Entity.TryUnpackEntity(world, out Info.Target);
+    }
+    
+    public bool TryUnpackAnyEntity(EcsWorld world)
+    {
+      return Info.MasterCollider.Entity.TryUnpackEntity(world, out Info.Master)
+        || Info.TargetCollider.Entity.TryUnpackEntity(world, out Info.Target);
     }
 
     public bool UnpackEntities(EcsWorld world)

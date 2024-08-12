@@ -20,7 +20,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     bool TrySelectByEntities(Predicate<EcsEntity> masterSelector, Predicate<EcsEntity> targetSelector, bool sync = true);
     bool SyncCollidersWithEntities();
     bool SyncEntitiesWithColliders();
-    bool TryUnpackEntities(EcsWorld world);
+    bool TryUnpackBothEntities(EcsWorld world);
     bool UnpackEntities(EcsWorld world);
+    bool TryUnpackByMasterEntity(EcsWorld world);
+    bool TryUnpackByTargetEntity(EcsWorld world);
+    bool TryUnpackAnyEntity(EcsWorld world);
   }
 }

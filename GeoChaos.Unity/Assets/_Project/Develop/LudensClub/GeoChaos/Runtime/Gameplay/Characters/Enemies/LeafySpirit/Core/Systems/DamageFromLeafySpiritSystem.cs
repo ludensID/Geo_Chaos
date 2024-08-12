@@ -3,7 +3,6 @@ using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
-using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
@@ -40,7 +39,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
         DamageCollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
-        if (_collisionSvc.TryUnpackEntities(_game)
+        if (_collisionSvc.TryUnpackBothEntities(_game)
           && _collisionSvc.TrySelectByEntitiesTag<LeafySpiritTag, HeroTag>()
           && info.MasterCollider.Type == ColliderType.Body
           && info.TargetCollider.Type == ColliderType.Body)

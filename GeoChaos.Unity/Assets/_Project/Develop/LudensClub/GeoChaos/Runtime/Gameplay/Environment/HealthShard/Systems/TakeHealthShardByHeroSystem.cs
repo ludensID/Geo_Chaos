@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.HealthShard
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
         DamageCollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
-        if (_collisionSvc.TryUnpackEntities(_game)
+        if (_collisionSvc.TryUnpackBothEntities(_game)
           && _collisionSvc.TrySelectByEntitiesTag<HealthShardTag, HeroTag>()
           && info.MasterCollider.Type == ColliderType.Action
           && info.TargetCollider.Type is ColliderType.Body or ColliderType.Dash)

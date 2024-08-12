@@ -34,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
         DamageCollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
-        if (_collisionSvc.TryUnpackEntities(_game)
+        if (_collisionSvc.TryUnpackBothEntities(_game)
           && _collisionSvc.TrySelectByEntitiesTag<FadingPlatformTag, HeroTag>()
           && info.MasterCollider.Type == ColliderType.Body
           && info.TargetCollider.Type == ColliderType.Body)
