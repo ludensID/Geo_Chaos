@@ -41,5 +41,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Watch")]
     public float WatchTime;
+
+    [Title("Turn")]
+    public float TimeBeforeTurn;
   }
 }

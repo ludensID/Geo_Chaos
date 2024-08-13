@@ -27,3 +27,4 @@ MonoBehaviour:
   BiteTime: 1
   HitCooldown: 3
   WatchTime: 10
+  TimeBeforeTurn: 2
