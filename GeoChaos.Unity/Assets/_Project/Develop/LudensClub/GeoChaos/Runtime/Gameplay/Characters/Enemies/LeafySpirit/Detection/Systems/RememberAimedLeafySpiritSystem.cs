@@ -1,30 +1,12 @@
-﻿using Leopotam.EcsLite;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Detection
 {
-  public class RememberAimedLeafySpiritSystem : IEcsRunSystem
+  public class RememberAimedLeafySpiritSystem : RememberAimedEntitySystem<LeafySpiritTag>
   {
-    private readonly EcsWorld _game;
-    private readonly EcsEntities _aimedSpirits;
-
-    public RememberAimedLeafySpiritSystem(GameWorldWrapper gameWorldWrapper)
+    public RememberAimedLeafySpiritSystem(GameWorldWrapper gameWorldWrapper) : base(gameWorldWrapper)
     {
-      _game = gameWorldWrapper.World;
-
-      _aimedSpirits = _game
-        .Filter<LeafySpiritTag>()
-        .Inc<Aimed>()
-        .Collect();
-    }
-    
-    public void Run(EcsSystems systems)
-    {
-      foreach (EcsEntity spirit in _aimedSpirits)
-      {
-        spirit.Add<WasAimed>();
-      }
     }
   }
 }

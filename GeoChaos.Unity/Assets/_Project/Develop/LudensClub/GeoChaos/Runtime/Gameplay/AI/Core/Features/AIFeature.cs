@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 {
@@ -7,10 +8,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
     public AIFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<CreateBehaviourTreeSystem>());
-      Add(systems.Create<AddBoundsRefSystem>());
       Add(systems.Create<SetStartPositionSystem>());
       
-      Add(systems.Create<SetPhysicalBoundsSystem>());
+      Add(systems.Create<AIPatrolFeature>());
       
       Add(systems.Create<RunBehaviourTreeSystem>());
     } 

@@ -6,6 +6,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Detection
   {
     public FrogDetectionFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<DeleteFrogWasAimedSystem>());
+      Add(systems.Create<RememberAimedFrogSystem>());
+      
       Add(systems.Create<PrepareFrogToSelectionSystem>());
       Add(systems.Create<AimFrogOnTargetInViewSystem>());
       Add(systems.Create<AimFrogOnTargetInFrontSystem>());

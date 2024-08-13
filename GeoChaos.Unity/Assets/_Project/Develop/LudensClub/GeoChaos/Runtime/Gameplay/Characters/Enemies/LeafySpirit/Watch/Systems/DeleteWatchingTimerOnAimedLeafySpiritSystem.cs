@@ -1,4 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Watch;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Watch

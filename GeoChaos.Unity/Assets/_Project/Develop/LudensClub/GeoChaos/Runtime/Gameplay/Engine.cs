@@ -40,6 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<ApplyFreeFallFeature>())
         .Add(factory.Create<EnvironmentFixedFeature>())
         .Add(factory.Create<HeroFixedFeature>())
+        .Add(factory.Create<AIFixedFeature>())
         .Add(factory.Create<EnemyFixedFeature>())
         .Add(factory.Create<ViewFixedFeature>());
 

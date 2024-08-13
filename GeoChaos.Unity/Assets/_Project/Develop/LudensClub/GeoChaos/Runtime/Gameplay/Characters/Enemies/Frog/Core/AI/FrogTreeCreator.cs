@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.AttackWait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Chase;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpBack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Wait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -27,6 +28,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog
         .ToChild()
         .AddCondition<CheckForFrogAttackWaitingStrategy>()
         .AddAction<FrogAttackWaitingStrategy>()
+        .ToParent()
+        .AddSequence()
+        .ToChild()
+        .AddCondition<CheckForFrogJumpBackStrategy>()
+        .AddAction<FrogJumpBackStrategy>()
         .ToParent()
         .AddSequence()
         .ToChild()

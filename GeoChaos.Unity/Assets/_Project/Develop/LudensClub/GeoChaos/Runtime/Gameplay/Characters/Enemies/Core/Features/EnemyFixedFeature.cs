@@ -10,8 +10,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies
     {
       Add(systems.Create<LamaFixedFeature>());
       Add(systems.Create<LeafySpiritFixedFeature>());
-        
-      Add(systems.Create<KeepInBoundsSystem>());
     }
   }
 }

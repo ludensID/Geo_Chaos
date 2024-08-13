@@ -12,10 +12,20 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title("Jump")]
     public float TimeAfterJump;
 
-    [Title("Patrol")]
+    [Title("Small Jump")]
     public float SmallJumpLength;
 
     public float SmallJumpHeight;
+
+    [Title("Big Jump")]
+    public float BigJumpLength;
+
+    public float BigJumpHeight;
+
+    [Title("Jump Back")]
+    public float JumpBackLength;
+
+    public float JumpBackHeight;
 
     [Title("Detection")]
     public float MaxVerticalDistance;
@@ -23,15 +33,13 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float FrontRadius;
     public float BackRadius;
 
-    [Title("Chase")]
-    public float BigJumpLength;
-
-    public float BigJumpHeight;
-
     [Title("Attack")]
     public float JumpAttackHeight;
 
     public float BiteTime;
     public float HitCooldown;
+
+    [Title("Watch")]
+    public float WatchTime;
   }
 }

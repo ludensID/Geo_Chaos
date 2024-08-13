@@ -16,11 +16,14 @@ MonoBehaviour:
   TimeAfterJump: 1
   SmallJumpLength: 1
   SmallJumpHeight: 1
+  BigJumpLength: 2
+  BigJumpHeight: 1
+  JumpBackLength: 3
+  JumpBackHeight: 2
   MaxVerticalDistance: 5
   FrontRadius: 5
   BackRadius: 2
-  BigJumpLength: 2
-  BigJumpHeight: 1
   JumpAttackHeight: 3
   BiteTime: 1
   HitCooldown: 3
+  WatchTime: 10
