@@ -53,7 +53,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack
         {
           float select = Random.Range(0f, 1f);
           if (select < 0.5f)
-            frog.Add<AttackToungueCommand>();
+            frog.Add<AttackTongueCommand>();
           else
             frog.Add<AttackJumpCommand>();
         }

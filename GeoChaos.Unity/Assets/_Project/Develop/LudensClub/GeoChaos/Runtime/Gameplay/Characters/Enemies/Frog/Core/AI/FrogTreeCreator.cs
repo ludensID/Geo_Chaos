@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Chase.AI;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.AttackWait;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Chase;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Wait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -22,6 +23,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog
     public BehaviourTree Create(EcsPackedEntity entity)
     {
       return _builder.Create(entity)
+        .AddSequence()
+        .ToChild()
+        .AddCondition<CheckForFrogAttackWaitingStrategy>()
+        .AddAction<FrogAttackWaitingStrategy>()
+        .ToParent()
         .AddSequence()
         .ToChild()
         .AddCondition<CheckForFrogPatrollingStrategy>()

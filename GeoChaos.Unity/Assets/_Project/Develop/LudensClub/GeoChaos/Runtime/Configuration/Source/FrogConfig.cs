@@ -32,5 +32,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float JumpAttackHeight;
 
     public float BiteTime;
+    public float HitCooldown;
   }
 }

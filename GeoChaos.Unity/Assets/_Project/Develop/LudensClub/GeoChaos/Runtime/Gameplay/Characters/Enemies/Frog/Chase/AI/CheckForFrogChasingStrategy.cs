@@ -8,7 +8,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Chase.AI
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Chase
 {
   public class CheckForFrogChasingStrategy : IConditionStrategy
   {

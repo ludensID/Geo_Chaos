@@ -1,6 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Chase.Features
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Chase
 {
   public class FrogChasingFeature : EcsFeature
   {

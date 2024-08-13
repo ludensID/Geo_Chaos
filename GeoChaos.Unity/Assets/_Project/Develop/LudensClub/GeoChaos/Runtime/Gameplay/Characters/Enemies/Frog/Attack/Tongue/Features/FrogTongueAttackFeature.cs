@@ -7,7 +7,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.To
     public FrogTongueAttackFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<FrogTongueAttackSystem>());
-      Add(systems.Create<FinishFrogTongueAttackSystem>());
     }
   }
 }
