@@ -20,6 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama
       _boundeds = _game
         .Filter<MovementVector>()
         .Inc<PatrolBounds>()
+        .Inc<PhysicalBounded>()
         .Inc<ViewRef>()
         .Collect();
     }

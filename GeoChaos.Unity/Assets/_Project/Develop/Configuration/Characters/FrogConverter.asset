@@ -20,12 +20,6 @@ MonoBehaviour:
     _scriptableConverter: {fileID: 11400000, guid: 0eea58ea423e1294ea81b4a8ced2e1c2,
       type: 2}
   - _serializedConverter:
-      rid: -2
-    _components:
-      Components: []
-    _scriptableConverter: {fileID: 11400000, guid: e834491bf5eda944d96292f4193e5242,
-      type: 2}
-  - _serializedConverter:
       rid: 2072450972819128403
     _components:
       Components: []
