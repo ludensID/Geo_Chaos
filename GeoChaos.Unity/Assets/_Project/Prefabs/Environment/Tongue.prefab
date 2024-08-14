@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6340400583668268817}
   - component: {fileID: 3990717677619293658}
   - component: {fileID: 5019746435160593452}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Tongue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348c620513bc41ab99a9deb828b54891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colliderType: 2
+  _colliderType: 1
   _view: {fileID: 6737271106220669886}
   _collider: {fileID: 680525762691873660}
   WhenEnter: 1

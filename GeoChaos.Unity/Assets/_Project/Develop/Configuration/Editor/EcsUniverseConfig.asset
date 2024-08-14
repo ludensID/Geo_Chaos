@@ -281,10 +281,6 @@ MonoBehaviour:
     Index: 66
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: AttackToughCommand
-    Index: 67
-    Locked: 0
-    Config: {fileID: 11400000}
   - Name: BideCommand
     Index: 68
     Locked: 0
@@ -1267,5 +1263,61 @@ MonoBehaviour:
     Config: {fileID: 11400000}
   - Name: WatchingTimer
     Index: 313
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: AttackTongueCommand
+    Index: 313
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: AttackWaitingTimer
+    Index: 314
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: InBounds
+    Index: 315
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: JumpBackCommand
+    Index: 316
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: JumpingBack
+    Index: 317
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: PhysicalBounded
+    Index: 318
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopJumpBackCommand
+    Index: 319
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopWaitAttackCommand
+    Index: 320
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StunCommand
+    Index: 321
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Stunned
+    Index: 322
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StunTimer
+    Index: 323
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: TurnCommand
+    Index: 324
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: TurningTimer
+    Index: 325
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: WaitAttackCommand
+    Index: 326
     Locked: 0
     Config: {fileID: 11400000}

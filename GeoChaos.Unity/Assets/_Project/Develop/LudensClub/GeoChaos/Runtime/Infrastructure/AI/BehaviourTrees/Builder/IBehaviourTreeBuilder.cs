@@ -9,8 +9,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
     IBehaviourTreeBuilder ToChild();
     IBehaviourTreeBuilder ToParent();
     BehaviourTree End();
-    IBehaviourTreeBuilder AddAction(IActionStrategy strategy);
-    IBehaviourTreeBuilder AddCondition(IConditionStrategy strategy);
     IBehaviourTreeBuilder AddSelector();
     IBehaviourTreeBuilder AddSequence();
     IBehaviourTreeBuilder AddAction<TStrategy>() where TStrategy : IActionStrategy;

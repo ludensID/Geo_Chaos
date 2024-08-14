@@ -5,12 +5,12 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Turn
 {
-  public class TurnFrogIfTimerExpiredSystem : IEcsRunSystem
+  public class TurnFrogWhenTimerExpiredSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _turningFrogs;
 
-    public TurnFrogIfTimerExpiredSystem(GameWorldWrapper gameWorldWrapper)
+    public TurnFrogWhenTimerExpiredSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 

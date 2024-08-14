@@ -44,5 +44,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Turn")]
     public float TimeBeforeTurn;
+
+    [Title("Stun")]
+    public float StunTime;
   }
 }

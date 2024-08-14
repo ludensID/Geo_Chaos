@@ -1,16 +1,17 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Detection;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Stun;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Turn
 {
-  public class TurnFrogIfTargetInBackSystem : IEcsRunSystem
+  public class StartTurnFrogWhenTargetInBackSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _frogs;
 
-    public TurnFrogIfTargetInBackSystem(GameWorldWrapper gameWorldWrapper)
+    public StartTurnFrogWhenTargetInBackSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
@@ -19,6 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Turn
         .Inc<TargetInBack>()
         .Exc<TurnCommand>()
         .Exc<TurningTimer>()
+        .Exc<Stunned>()
         .Collect();
     }
     

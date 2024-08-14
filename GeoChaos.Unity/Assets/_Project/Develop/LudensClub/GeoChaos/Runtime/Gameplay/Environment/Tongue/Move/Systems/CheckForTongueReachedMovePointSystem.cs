@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying;
+using LudensClub.GeoChaos.Runtime.Gameplay.Die;
 using LudensClub.GeoChaos.Runtime.Gameplay.Move;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
@@ -24,6 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Tongue.Move
         .Filter<TongueTag>()
         .Inc<Moving>()
         .Exc<DestroyCommand>()
+        .Exc<OnDied>()
         .Collect();
     }
       

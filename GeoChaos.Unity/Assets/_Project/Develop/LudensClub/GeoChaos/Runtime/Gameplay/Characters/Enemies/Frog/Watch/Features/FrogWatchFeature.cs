@@ -6,7 +6,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Watch
   {
     public FrogWatchFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<FrogWatchIfWasAimedSystem>());
+      Add(systems.Create<FrogWatchWhenWasAimedSystem>());
       Add(systems.Create<StartFrogWatchingTimerSystem>());
       
       Add(systems.Create<DeleteExpiredFrogWatchingTimerSystem>());

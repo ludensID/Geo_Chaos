@@ -28,3 +28,4 @@ MonoBehaviour:
   HitCooldown: 3
   WatchTime: 10
   TimeBeforeTurn: 2
+  StunTime: 5

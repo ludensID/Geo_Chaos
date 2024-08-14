@@ -27,6 +27,12 @@ MonoBehaviour:
           rid: 2072451061645574144
       - Value:
           rid: 2072451061645574145
+      - Value:
+          rid: 2072451100926804297
+      - Value:
+          rid: 2072451100926804295
+      - Value:
+          rid: 2072451100888530944
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
@@ -41,3 +47,14 @@ MonoBehaviour:
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
         Id: 24
+    - rid: 2072451100888530944
+      type: {class: CurrentEndurance, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Endurance,
+        asm: GeoChaos.Runtime}
+      data:
+        Endurance: 1
+    - rid: 2072451100926804295
+      type: {class: Damageable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage, asm: GeoChaos.Runtime}
+      data: 
+    - rid: 2072451100926804297
+      type: {class: Poolable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
+      data: 

@@ -32,21 +32,11 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
       return this;
     }
 
-    public IBehaviourTreeBuilder AddAction(IActionStrategy strategy)
-    {
-      return Add(new ActionNode(strategy, _bt.Entity));
-    }
-
     public IBehaviourTreeBuilder AddAction<TStrategy>() where TStrategy : IActionStrategy
     {
       return Add(new ActionNode(_factory.Create<TStrategy>(), _bt.Entity));
     }
 
-    public IBehaviourTreeBuilder AddCondition(IConditionStrategy strategy)
-    {
-      return Add(new ConditionNode(strategy, _bt.Entity));
-    }
-    
     public IBehaviourTreeBuilder AddCondition<TStrategy>() where TStrategy : IConditionStrategy
     {
       return Add(new ConditionNode(_factory.Create<TStrategy>(), _bt.Entity));

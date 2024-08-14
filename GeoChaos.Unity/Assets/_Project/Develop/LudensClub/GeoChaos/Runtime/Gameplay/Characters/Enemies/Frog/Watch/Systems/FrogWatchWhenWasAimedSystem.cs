@@ -1,17 +1,18 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Watch;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Stun;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Watch
 {
-  public class FrogWatchIfWasAimedSystem : IEcsRunSystem
+  public class FrogWatchWhenWasAimedSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _frogs;
 
-    public FrogWatchIfWasAimedSystem(GameWorldWrapper gameWorldWrapper)
+    public FrogWatchWhenWasAimedSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
@@ -20,6 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Watch
         .Inc<WasAimed>()
         .Exc<Aimed>()
         .Exc<WatchCommand>()
+        .Exc<Stunned>()
         .Collect();
     }
 
