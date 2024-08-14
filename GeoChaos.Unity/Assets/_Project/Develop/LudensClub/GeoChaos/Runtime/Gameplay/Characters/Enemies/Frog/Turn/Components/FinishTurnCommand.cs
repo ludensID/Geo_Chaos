@@ -10,8 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Turn
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct TurnCommand : IEcsComponent
+  public struct FinishTurnCommand : IEcsComponent
   {
-    
   }
 }

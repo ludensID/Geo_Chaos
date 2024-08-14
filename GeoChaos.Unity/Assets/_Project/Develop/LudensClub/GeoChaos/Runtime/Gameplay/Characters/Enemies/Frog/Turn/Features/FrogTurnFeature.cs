@@ -6,10 +6,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Turn
   {
     public FrogTurnFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<StartTurnFrogWhenTargetInBackSystem>());
       Add(systems.Create<StartFrogTurningTimerSystem>());
       Add(systems.Create<StopFrogTurningTimerSystem>());
-      Add(systems.Create<TurnFrogWhenTimerExpiredSystem>());
+      Add(systems.Create<CheckForFrogTurningTimerExpiredSystem>());      
+        
+      Add(systems.Create<DelayFrogTurnWhenBumpingSystem>());
+      Add(systems.Create<TurnFrogWhenFinishBumpingSystem>());
+      
+      Add(systems.Create<FinishTurnFrogSystem>());
     }
   }
 }

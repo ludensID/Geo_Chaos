@@ -156,6 +156,7 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         EnableGravityOnStart: 1
+        GravityScale: 0
     - rid: 2072451042721398786
       type: {class: ShootPosition, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Aim,
         asm: GeoChaos.Runtime}

@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.AttackWait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -19,8 +20,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack
     }
 
     public bool Check()
-    {
-      return Entity.TryUnpackEntity(_game, out EcsEntity frog) && !frog.Has<OnAttackFinished>()
+    { 
+      return Entity.TryUnpackEntity(_game, out EcsEntity frog) 
+        && !frog.Has<OnAttackFinished>() && !frog.Has<Bumping>()
         && (frog.Has<TargetInFront>() && !frog.Has<AttackWaitingTimer>() || frog.Has<Attacking>());
     }
   }

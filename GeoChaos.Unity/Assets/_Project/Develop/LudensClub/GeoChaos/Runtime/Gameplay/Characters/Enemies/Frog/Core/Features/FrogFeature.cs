@@ -1,5 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.AttackWait;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Chase;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Jump;
@@ -23,6 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog
         
       Add(systems.Create<FrogDetectionFeature>());
       Add(systems.Create<FrogStunFeature>());
+      Add(systems.Create<FrogBumpFeature>());
         
       Add(systems.Create<FrogWaitFeature>());
       Add(systems.Create<FrogPatrolFeature>());

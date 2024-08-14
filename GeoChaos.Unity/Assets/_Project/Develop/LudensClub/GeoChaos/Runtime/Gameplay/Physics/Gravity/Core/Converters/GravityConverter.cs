@@ -8,11 +8,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity
   public class GravityConverter : IEcsSerializedConverter
   {
     public bool EnableGravityOnStart = true;
+    public float GravityScale = 1;
     
     public void ConvertTo(EcsEntity entity)
     {
       entity
-        .Add((ref GravityScale gravity) => gravity.Enabled = EnableGravityOnStart)
+        .Add((ref GravityScale gravity) =>
+        {
+          gravity.Enabled = EnableGravityOnStart;
+          gravity.Scale = GravityScale;
+        })
         .Add<Ground>()
         .Add((ref GroundCheckTimer timer) => timer.TimeLeft = 0);
     }

@@ -1,33 +1,33 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Turn
 {
-  public class TurnFrogWhenTimerExpiredSystem : IEcsRunSystem
+  public class DelayFrogTurnWhenBumpingSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _turningFrogs;
 
-    public TurnFrogWhenTimerExpiredSystem(GameWorldWrapper gameWorldWrapper)
+    public DelayFrogTurnWhenBumpingSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
       _turningFrogs = _game
         .Filter<FrogTag>()
-        .Inc<TurningTimer>()
+        .Inc<FinishTurnCommand>()
+        .Inc<Bumping>()
         .Collect();
     }
-
+    
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity frog in _turningFrogs
-        .Check<TurningTimer>(x => x.TimeLeft <= 0))
+      foreach (EcsEntity frog in _turningFrogs)
       {
         frog
-          .Del<TurningTimer>()
-          .Change((ref BodyDirection direction) => direction.Direction *= -1);
+          .Del<FinishTurnCommand>()
+          .Add<DelayedTurn>();
       }
     }
   }

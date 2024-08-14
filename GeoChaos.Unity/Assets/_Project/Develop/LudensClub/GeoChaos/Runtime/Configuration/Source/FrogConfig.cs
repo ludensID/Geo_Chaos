@@ -47,5 +47,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Stun")]
     public float StunTime;
+
+    [Title("Bump")]
+    public Vector2 BumpForce;
   }
 }

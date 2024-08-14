@@ -1,6 +1,9 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Bump;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpWait;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Stun;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
@@ -23,7 +26,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Turn
 
       _turningFrogs = _game
         .Filter<FrogTag>()
-        .Inc<TurnCommand>()
+        .Inc<TargetInBack>()
+        .Exc<TurningTimer>()
+        .Exc<Bumping>()
+        .Exc<DelayedTurn>()
+        .Exc<Stunned>()
         .Collect();
     }
     
@@ -33,9 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Turn
       {
         if (!frog.Has<Attacking>() && !frog.Has<Jumping>() || frog.Has<JumpWaitTimer>())
         {
-          frog
-            .Del<TurnCommand>()
-            .Add((ref TurningTimer timer) => timer.TimeLeft = _timers.Create(_config.TimeBeforeTurn));
+          frog.Add((ref TurningTimer timer) => timer.TimeLeft = _timers.Create(_config.TimeBeforeTurn));
         }
       }
     }

@@ -4,29 +4,26 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity.Tracking
 {
-  public class StopTrackLandingSystem : IEcsRunSystem
+  public class RestartTrackLandingSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _trackingEntities;
 
-    public StopTrackLandingSystem(GameWorldWrapper gameWorldWrapper)
+    public RestartTrackLandingSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
       _trackingEntities = _game
-        .Filter<StopTrackLandingCommand>()
+        .Filter<TrackLandingCommand>()
+        .Inc<StopTrackLandingCommand>()
         .Collect();
     }
       
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity track in _trackingEntities)
+      foreach (EcsEntity entity in _trackingEntities)
       {
-        track
-          .Del<StopTrackLandingCommand>()
-          .Has<TrackingLifting>(false)
-          .Has<TrackingLanding>(false)
-          .Has<OnLandingDetected>(false);
+        entity.Del<StopTrackLandingCommand>();
       }
     }
   }

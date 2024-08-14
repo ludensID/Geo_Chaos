@@ -11,19 +11,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpCycle
   public class PrepareFrogJumpSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsEntities _startPatrollingFrogs;
-    private readonly EcsEntities _patrollingFrogs;
+    private readonly EcsEntities _startCyclingFrogs;
+    private readonly EcsEntities _cyclingFrogs;
 
     public PrepareFrogJumpSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
-      _startPatrollingFrogs = _game
+      _startCyclingFrogs = _game
         .Filter<FrogTag>()
         .Inc<StartJumpCycleCommand>()
         .Collect();
 
-      _patrollingFrogs = _game
+      _cyclingFrogs = _game
         .Filter<FrogTag>()
         .Inc<JumpCycling>()
         .Inc<OnJumpWaitFinished>()
@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpCycle
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity frog in _startPatrollingFrogs)
+      foreach (EcsEntity frog in _startCyclingFrogs)
       {
         frog
           .Del<StartJumpCycleCommand>()
@@ -42,7 +42,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpCycle
         PrepareJump(frog);
       }
 
-      foreach (EcsEntity frog in _patrollingFrogs)
+      foreach (EcsEntity frog in _cyclingFrogs)
       {
         PrepareJump(frog);
       }
