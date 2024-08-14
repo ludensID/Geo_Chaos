@@ -9,13 +9,13 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.View
 {
-  public class SetLeafySpiritBodyDirection : IEcsRunSystem
+  public class SetLeafySpiritBodyDirectionWhenRisingSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _heroes;
     private readonly EcsEntities _spirits;
 
-    public SetLeafySpiritBodyDirection(GameWorldWrapper gameWorldWrapper)
+    public SetLeafySpiritBodyDirectionWhenRisingSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 

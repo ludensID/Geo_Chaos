@@ -6,9 +6,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.View
   {
     public LamaViewFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<SetLamaBodyDirectionSystem>());
+
       Add(systems.Create<EnableLamaAttackColliderSystem>());
       Add(systems.Create<DisableLamaAttackColliderSystem>());
-      
+
       Add(systems.Create<SetColorToLamaAttackRenderersSystem>());
     }
   }

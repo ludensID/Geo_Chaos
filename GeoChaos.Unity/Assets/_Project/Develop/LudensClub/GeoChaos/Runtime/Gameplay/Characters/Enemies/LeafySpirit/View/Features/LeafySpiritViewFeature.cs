@@ -8,7 +8,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Vi
     {
       Add(systems.Create<EnableLeafySpiritBodyColliderSystem>());
       Add(systems.Create<ActivateLeafySpiritBodySystem>());
-      Add(systems.Create<SetLeafySpiritBodyDirection>());
+      Add(systems.Create<SetLeafySpiritBodyDirectionWhenRisingSystem>());
+      Add(systems.Create<SetLeafySpiritBodyDirectionByMovementSystem>());
     }
   }
 }

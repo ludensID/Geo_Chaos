@@ -1309,15 +1309,23 @@ MonoBehaviour:
     Index: 323
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: TurnCommand
-    Index: 324
-    Locked: 0
-    Config: {fileID: 11400000}
   - Name: TurningTimer
     Index: 325
     Locked: 0
     Config: {fileID: 11400000}
   - Name: WaitAttackCommand
     Index: 326
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DelayedTurn
+    Index: 326
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: FinishTurnCommand
+    Index: 327
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnJumpStarted
+    Index: 328
     Locked: 0
     Config: {fileID: 11400000}

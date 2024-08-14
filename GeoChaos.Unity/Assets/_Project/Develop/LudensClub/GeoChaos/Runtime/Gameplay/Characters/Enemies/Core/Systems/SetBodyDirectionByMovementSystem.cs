@@ -6,17 +6,18 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies
 {
-  public class SetEnemyBodyDirectionSystem : IEcsRunSystem
+  public class SetBodyDirectionByMovementSystem<TComponent> : IEcsRunSystem
+    where TComponent : struct, IEcsComponent
   {
     private readonly EcsWorld _game;
-    private readonly EcsEntities _enemies;
+    private readonly EcsEntities _entities;
 
-    public SetEnemyBodyDirectionSystem(GameWorldWrapper gameWorldWrapper)
+    public SetBodyDirectionByMovementSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
-      _enemies = _game
-        .Filter<EnemyTag>()
+      _entities = _game
+        .Filter<TComponent>()
         .Inc<BodyDirection>()
         .Inc<MovementVector>()
         .Collect();
@@ -24,10 +25,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies
     
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity enemy in _enemies)
+      foreach (EcsEntity entity in _entities)
       {
-        ref MovementVector vector = ref enemy.Get<MovementVector>();
-        ref BodyDirection direction = ref enemy.Get<BodyDirection>();
+        ref MovementVector vector = ref entity.Get<MovementVector>();
+        ref BodyDirection direction = ref entity.Get<BodyDirection>();
         if (vector.Speed.x * vector.Direction.x != 0)
           direction.Direction = vector.Direction.x;
       }

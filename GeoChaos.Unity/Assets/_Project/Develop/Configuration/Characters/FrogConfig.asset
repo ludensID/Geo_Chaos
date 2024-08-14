@@ -29,3 +29,4 @@ MonoBehaviour:
   WatchTime: 10
   TimeBeforeTurn: 2
   StunTime: 5
+  BumpForce: {x: 1, y: 3}

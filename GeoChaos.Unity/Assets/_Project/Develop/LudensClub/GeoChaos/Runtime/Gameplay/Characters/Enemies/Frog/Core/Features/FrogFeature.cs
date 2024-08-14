@@ -10,6 +10,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpWait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Stun;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Turn;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.View;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Wait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Watch;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -20,8 +21,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog
   {
     public FrogFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<InitializeFrogSystem>());
-        
       Add(systems.Create<FrogDetectionFeature>());
       Add(systems.Create<FrogStunFeature>());
       Add(systems.Create<FrogBumpFeature>());
@@ -38,6 +37,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog
       Add(systems.Create<FrogJumpCycleFeature>());
       Add(systems.Create<FrogJumpFeature>());
       Add(systems.Create<FrogJumpWaitFeature>());
+      
+      Add(systems.Create<FrogViewFeature>());
     }
   }
 }

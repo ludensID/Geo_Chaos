@@ -15,7 +15,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies
       Add(systems.Create<LeafySpiritFeature>());
       Add(systems.Create<FrogFeature>());
       
-      Add(systems.Create<SetEnemyBodyDirectionSystem>());
       Add(systems.Create<SetHealthViewSystem>());
     }
   }
