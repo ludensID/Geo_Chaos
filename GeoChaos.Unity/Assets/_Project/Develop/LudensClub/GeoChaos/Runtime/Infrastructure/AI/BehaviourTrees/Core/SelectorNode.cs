@@ -1,6 +1,4 @@
-﻿using Leopotam.EcsLite;
-
-namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
+﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
 {
   public class SelectorNode : CompositeNode
   {
@@ -8,7 +6,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
     {
     }
 
-    public SelectorNode(EcsPackedEntity entity) : base(entity)
+    public SelectorNode(EcsEntity entity) : base(entity)
     {
     }
 

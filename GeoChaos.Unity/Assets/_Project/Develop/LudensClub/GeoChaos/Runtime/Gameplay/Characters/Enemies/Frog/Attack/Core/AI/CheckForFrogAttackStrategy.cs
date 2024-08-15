@@ -12,7 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack
   public class CheckForFrogAttackStrategy : IConditionStrategy
   {
     private readonly EcsWorld _game;
-    public EcsPackedEntity Entity { get; set; }
+    public EcsEntity Entity { get; set; }
 
     public CheckForFrogAttackStrategy(GameWorldWrapper gameWorldWrapper)
     {
@@ -21,9 +21,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack
 
     public bool Check()
     { 
-      return Entity.TryUnpackEntity(_game, out EcsEntity frog) 
-        && !frog.Has<OnAttackFinished>() && !frog.Has<Bumping>()
-        && (frog.Has<TargetInFront>() && !frog.Has<AttackWaitingTimer>() || frog.Has<Attacking>());
+      return !Entity.Has<OnAttackFinished>() && !Entity.Has<Bumping>()
+        && (Entity.Has<TargetInFront>() && !Entity.Has<AttackWaitingTimer>() || Entity.Has<Attacking>());
     }
   }
 }

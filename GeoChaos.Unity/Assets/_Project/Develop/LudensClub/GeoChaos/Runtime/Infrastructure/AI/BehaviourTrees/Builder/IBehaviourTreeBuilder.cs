@@ -1,10 +1,8 @@
-﻿using Leopotam.EcsLite;
-
-namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
+﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
 {
   public interface IBehaviourTreeBuilder
   {
-    IBehaviourTreeBuilder Create(EcsPackedEntity entity);
+    IBehaviourTreeBuilder Create(EcsEntity entity);
     IBehaviourTreeBuilder Add(Node node);
     IBehaviourTreeBuilder ToChild();
     IBehaviourTreeBuilder ToParent();

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees;
 
@@ -14,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI
       _creators = creators;
     }
 
-    public BehaviourTree Create(EntityType id, EcsPackedEntity entity)
+    public BehaviourTree Create(EntityType id, EcsEntity entity)
     {
       return _creators.Find(x => x.Id == id).Create(entity);
     }

@@ -1,12 +1,10 @@
-﻿using Leopotam.EcsLite;
-
-namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
+﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
 {
   public class ConditionNode : StrategyNode
   {
     private readonly IConditionStrategy _strategy;
 
-    public ConditionNode(IConditionStrategy strategy, EcsPackedEntity entity) : base(strategy, entity)
+    public ConditionNode(IConditionStrategy strategy, EcsEntity entity) : base(strategy, entity)
     {
       _strategy = strategy;
     }

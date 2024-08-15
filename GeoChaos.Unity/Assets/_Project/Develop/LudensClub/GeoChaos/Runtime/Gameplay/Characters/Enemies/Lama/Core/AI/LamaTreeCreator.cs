@@ -1,10 +1,10 @@
-﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Attack;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Chase;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Wait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Watch;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees;
 
@@ -21,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama
       _builder = builder;
     }
 
-    public BehaviourTree Create(EcsPackedEntity entity)
+    public BehaviourTree Create(EcsEntity entity)
     {
       return _builder.Create(entity)
         .AddSequence()

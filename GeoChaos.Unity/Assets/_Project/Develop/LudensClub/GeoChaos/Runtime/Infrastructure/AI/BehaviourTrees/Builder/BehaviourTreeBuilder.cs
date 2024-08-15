@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Leopotam.EcsLite;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
 {
@@ -16,7 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
       _factory = factory;
     }
 
-    public IBehaviourTreeBuilder Create(EcsPackedEntity entity)
+    public IBehaviourTreeBuilder Create(EcsEntity entity)
     {
       Reset();
 

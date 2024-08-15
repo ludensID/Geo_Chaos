@@ -1,40 +1,8 @@
-﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Relaxation
 {
-  public class LeafySpiritRelaxationStrategy : IActionStrategy, IResetStrategy
+  public class LeafySpiritRelaxationStrategy : ActionWithResetStrategy<Relaxing, RelaxCommand, StopRelaxCommand>
   {
-    private readonly EcsWorld _game;
-    public EcsPackedEntity Entity { get; set; }
-
-    public LeafySpiritRelaxationStrategy(GameWorldWrapper gameWorldWrapper)
-    {
-      _game = gameWorldWrapper.World;
-    }
-
-    public BehaviourStatus Execute()
-    {
-      if (Entity.TryUnpackEntity(_game, out EcsEntity spirit))
-      {
-        if (!spirit.Has<Relaxing>())
-          spirit.Add<RelaxCommand>();
-
-        return Node.CONTINUE;
-      }
-
-      return Node.FALSE;
-    }
-
-    public void Reset()
-    {
-      if (Entity.TryUnpackEntity(_game, out EcsEntity spirit)
-        && spirit.Has<Relaxing>())
-      {
-        spirit.Add<StopRelaxCommand>();
-      }
-    }
   }
 }

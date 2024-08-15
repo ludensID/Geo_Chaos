@@ -14,7 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
   public class CheckForFrogPatrollingStrategy : IConditionStrategy
   {
     private readonly EcsWorld _game;
-    public EcsPackedEntity Entity { get; set; }
+    public EcsEntity Entity { get; set; }
 
     public CheckForFrogPatrollingStrategy(GameWorldWrapper gameWorldWrapper)
     {
@@ -23,10 +23,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
 
     public bool Check()
     {
-      return Entity.TryUnpackEntity(_game, out EcsEntity frog) && !frog.Has<Attacking>()
-        && (!frog.Has<Aimed>() && !frog.Has<OnPatrolFinished>() && !frog.Has<WaitingTimer>()
-          && !frog.Has<WatchingTimer>() && !frog.Has<TurningTimer>()
-          || frog.Has<Patrolling>() && !frog.Has<OnJumpWaitFinished>());
+      return !Entity.Has<Attacking>() 
+        && (!Entity.Has<Aimed>() && !Entity.Has<OnPatrolFinished>() && !Entity.Has<WaitingTimer>()
+          && !Entity.Has<WatchingTimer>() && !Entity.Has<TurningTimer>()
+          || Entity.Has<Patrolling>() && !Entity.Has<OnJumpWaitFinished>());
     }
   }
 }

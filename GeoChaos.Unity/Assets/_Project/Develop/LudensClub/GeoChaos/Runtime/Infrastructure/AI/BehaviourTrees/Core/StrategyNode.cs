@@ -1,5 +1,4 @@
-﻿using Leopotam.EcsLite;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
 {
@@ -8,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees
     [SerializeReference]
     public INodeStrategy Strategy;
 
-    protected StrategyNode(INodeStrategy strategy, EcsPackedEntity entity) : base(entity)
+    protected StrategyNode(INodeStrategy strategy, EcsEntity entity) : base(entity)
     {
       Strategy = strategy;
       strategy.Entity = _entity;
