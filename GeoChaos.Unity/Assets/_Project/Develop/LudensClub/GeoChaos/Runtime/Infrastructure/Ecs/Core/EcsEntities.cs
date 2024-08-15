@@ -13,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     private readonly EcsFilter _filter;
     private readonly EcsWorld _world;
     private readonly EcsEntity _cachedEntity;
-    private readonly PredicateInvoker _invoker;
+    private readonly InvokePredicateClosure _invokePredicateClosure;
 
     public EcsFilter Filter => _filter;
     public EcsWorld World => _world;
@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       _filter = filter;
       _world = filter.GetWorld();
       _cachedEntity = new EcsEntity(_world);
-      _invoker = new PredicateInvoker();
+      _invokePredicateClosure = new InvokePredicateClosure();
     }
 
     public Enumerator GetEnumerator()
@@ -66,13 +66,19 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       return this;
     }
 
-    private class PredicateInvoker : IPredicate<IEcsPredicate>
+    public class InvokePredicateClosure : EcsClosure<IEcsPredicate>
     {
       public int I;
 
-      public bool Predicate(IEcsPredicate p)
+      public Predicate<IEcsPredicate> SpecifyPredicate(int i)
       {
-        return p.Invoke(I);
+        I = i;
+        return Predicate;
+      }
+
+      protected override bool Call(IEcsPredicate predicate)
+      {
+        return predicate.Invoke(I);
       }
     }
 
@@ -102,9 +108,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       {
         while (_enumerator.MoveNext())
         {
-          _entities._invoker.I = _enumerator.Current;
-          if (_entities._predicates.AllNonAlloc(_entities._invoker)
-            && _entities._tempPredicates.AllNonAlloc(_entities._invoker))
+          _entities._invokePredicateClosure.I = _enumerator.Current;
+          if (_entities._predicates.AllNonAlloc(_entities._invokePredicateClosure.Predicate)
+            && _entities._tempPredicates.AllNonAlloc(_entities._invokePredicateClosure.Predicate))
           {
             return true;
           }

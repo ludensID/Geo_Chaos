@@ -15,6 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     private readonly EcsEntities _simpleForces;
     private readonly EcsEntities _addedForces;
     private readonly EcsEntities _uniqueForces;
+    private readonly IsEntityOwnerClosure _isEntityOwnerClosure;
 
     public CalculateTargetMovementVectorSystem(PhysicsWorldWrapper physicsWorldWrapper,
       GameWorldWrapper gameWorldWrapper)
@@ -26,6 +27,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         .Filter<ForceAvailable>()
         .Inc<MovementVector>()
         .Collect();
+
+      _isEntityOwnerClosure = new IsEntityOwnerClosure();
 
       _simpleForces = _physics
         .Filter<MovementVector>()
@@ -59,7 +62,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         Vector2 velocity = movementVector.Speed * movementVector.Direction;
 
         foreach (EcsEntity force in _simpleForces
-          .Check<Owner>(x => x.Entity.EqualsTo(owner.PackedEntity)))
+          .Check(_isEntityOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
         {
           velocity = AssignVelocityByImpact(force, velocity);
 
@@ -70,13 +73,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         }
         
         foreach (EcsEntity force in _addedForces
-          .Check<Owner>(x => x.Entity.EqualsTo(owner.PackedEntity)))
+          .Check(_isEntityOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
         {
           velocity = AddVelocityByImpact(force, velocity);
         }
         
         foreach (EcsEntity force in _uniqueForces
-          .Check<Owner>(x => x.Entity.EqualsTo(owner.PackedEntity)))
+          .Check(_isEntityOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
         {
           velocity = AssignVelocityByImpact(force, velocity);
           movementVector.Immutable = force.Has<Immutable>();
@@ -96,7 +99,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       return ChangeVelocityByImpact(force, velocity, (v, s, d) => v + s * d);
     }
 
-    private Vector2 ChangeVelocityByImpact(EcsEntity force, Vector2 velocity, Func<float, float, float, float> vectorOperator)
+    private Vector2 ChangeVelocityByImpact(EcsEntity force, Vector2 velocity,
+      Func<float, float, float, float> vectorOperator)
     {
       ref Impact impact = ref force.Get<Impact>();
       ref MovementVector vector = ref force.Get<MovementVector>();

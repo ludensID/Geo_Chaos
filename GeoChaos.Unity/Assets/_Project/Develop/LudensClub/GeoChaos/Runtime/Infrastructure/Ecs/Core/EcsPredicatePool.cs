@@ -9,9 +9,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     private static readonly Dictionary<Type, List<PooledPredicate>>
       _predicates = new Dictionary<Type, List<PooledPredicate>>();
 
-    private static readonly EcsPredicateFinder _ecsPredicateFinder = new EcsPredicateFinder();    
-    private static readonly NotUsedPooledPredicateFinder _notUsedPooledPredicateFinder =
-      new NotUsedPooledPredicateFinder();
+    private static readonly IsPooledPredicateEqualsClosure _isPooledPredicateEqualsClosure = new IsPooledPredicateEqualsClosure();    
+    private static readonly Predicate<PooledPredicate> _isNotUsedPooledPredicate = x => !x.Used;
 
     public static EcsPredicate<TComponent> PopPredicate<TComponent>() where TComponent : struct, IEcsComponent
     {
@@ -23,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       }
 
       IEcsPredicate predicate;
-      PooledPredicate pooledPredicate = predicates.FindNonAlloc(_notUsedPooledPredicateFinder);
+      PooledPredicate pooledPredicate = predicates.FindNonAlloc(_isNotUsedPooledPredicate);
       if (pooledPredicate == null)
       {
         predicate = new EcsPredicate<TComponent>();
@@ -44,8 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     {
       if (_predicates.TryGetValue(predicate.ComponentType, out List<PooledPredicate> predicates))
       {
-        _ecsPredicateFinder.EcsPredicate = predicate;
-        PooledPredicate poolPredicate = predicates.FindNonAlloc(_ecsPredicateFinder);
+        PooledPredicate poolPredicate = predicates.FindNonAlloc(_isPooledPredicateEqualsClosure.SpecifyPredicate(predicate));
         if (poolPredicate != null)
           poolPredicate.Used = false;
       }
@@ -62,14 +60,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       }
     }
 
-    private class NotUsedPooledPredicateFinder : IPredicate<PooledPredicate>
-    {
-      public bool Predicate(PooledPredicate obj)
-      {
-        return !obj.Used;
-      }
-    }
-    
     private class EcsPredicateFinder : IPredicate<PooledPredicate>
     {
       public IEcsPredicate EcsPredicate;
@@ -77,6 +67,22 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       public bool Predicate(PooledPredicate obj)
       {
         return obj.Predicate == EcsPredicate;
+      }
+    }
+
+    private class IsPooledPredicateEqualsClosure : EcsClosure<PooledPredicate>
+    {
+      public IEcsPredicate EcsPredicate;
+
+      public Predicate<PooledPredicate> SpecifyPredicate(IEcsPredicate ecsPredicate)
+      {
+        EcsPredicate = ecsPredicate;
+        return Predicate;
+      }
+
+      protected override bool Call(PooledPredicate pooledPredicate)
+      {
+        return pooledPredicate.Predicate == EcsPredicate;
       }
     }
   }

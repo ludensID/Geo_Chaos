@@ -20,9 +20,9 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private readonly IEcsWorldWrapper _wrapper;
     private readonly IEcsEntityViewFactory _viewFactory;
     private readonly IEcsWorldPresenter _parent;
-    private readonly EcsComponentNameNegativeComparer _ecsNegativeComparer = new EcsComponentNameNegativeComparer();
-    private readonly EcsComponentViewNegativeComparer _viewNegativeComparer = new EcsComponentViewNegativeComparer();
-    private readonly EcsComponentViewComparer _viewComparer = new EcsComponentViewComparer();
+    private readonly IsStringNotEqualClosure _isStringNotEqualClosure = new IsStringNotEqualClosure();
+    private readonly IsComponentViewNameNotEqualsClosure _isComponentViewNameNotEqualsClosure = new IsComponentViewNameNotEqualsClosure();
+    private readonly IsComponentViewNameEqualsClosure _isComponentViewNameEqualsClosure = new IsComponentViewNameEqualsClosure();
     private readonly List<string> _componentNames = new List<string>();
     private EcsUniverseConfig _config;
     private Type[] _typesCache;
@@ -130,8 +130,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       {
         for (int i = 0; i < _componentCount; i++)
         {
-          _viewComparer.Obj = _componentNames[i];
-          int index = View.Components.FindIndexNonAlloc(_viewComparer);
+          int index = View.Components.FindIndexNonAlloc(_isComponentViewNameEqualsClosure.SpecifyPredicate(_componentNames[i]));
           View.Components[index].Value = (IEcsComponent)_components[i];
           View.Components[index].Name = _componentNames[i];
         }
@@ -153,8 +152,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       {
         for (int i = 0; i < View.Components.Count; i++)
         {
-          _ecsNegativeComparer.Obj = View.Components[i].Name;
-          if (_componentNames.AllNonAlloc(_ecsNegativeComparer))
+          if (_componentNames.AllNonAlloc(_isStringNotEqualClosure.SpecifyPredicate(View.Components[i].Name)))
             View.Components.RemoveAt(i--);
         }
       }
@@ -165,8 +163,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       {
         for (int i = 0; i < _componentCount; i++)
         {
-          _viewNegativeComparer.Obj = _componentNames[i];
-          if (View.Components.AllNonAlloc(_viewNegativeComparer))
+          if (View.Components.AllNonAlloc(_isComponentViewNameNotEqualsClosure.SpecifyPredicate(_componentNames[i])))
             View.Components.Add(new EcsComponentView
               { Value = (IEcsComponent)_components[i], Name = _componentNames[i] });
         }
@@ -216,33 +213,51 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       }
     }
 
-    private class EcsComponentNameNegativeComparer : IPredicate<string>
+    public class IsStringNotEqualClosure : EcsClosure<string>
     {
       public string Obj;
 
-      public bool Predicate(string obj)
+      public Predicate<string> SpecifyPredicate(string obj)
+      {
+        Obj = obj;
+        return Predicate;
+      }
+
+      protected override bool Call(string obj)
       {
         return obj != Obj;
       }
     }
 
-    private class EcsComponentViewNegativeComparer : IPredicate<EcsComponentView>
+    public class IsComponentViewNameNotEqualsClosure : EcsClosure<EcsComponentView>
     {
       public string Obj;
 
-      public bool Predicate(EcsComponentView obj)
+      public Predicate<EcsComponentView> SpecifyPredicate(string obj)
       {
-        return obj.Name != Obj;
+        Obj = obj;
+        return Predicate;
+      }
+
+      protected override bool Call(EcsComponentView ecsComponentView)
+      {
+        return ecsComponentView.Name != Obj;
       }
     }
 
-    private class EcsComponentViewComparer : IPredicate<EcsComponentView>
+    public class IsComponentViewNameEqualsClosure : EcsClosure<EcsComponentView>
     {
       public string Obj;
 
-      public bool Predicate(EcsComponentView obj)
+      public Predicate<EcsComponentView> SpecifyPredicate(string obj)
       {
-        return obj.Name == Obj;
+        Obj = obj;
+        return Predicate;
+      }
+
+      protected override bool Call(EcsComponentView ecsComponentView)
+      {
+        return ecsComponentView.Name == Obj;
       }
     }
   }
