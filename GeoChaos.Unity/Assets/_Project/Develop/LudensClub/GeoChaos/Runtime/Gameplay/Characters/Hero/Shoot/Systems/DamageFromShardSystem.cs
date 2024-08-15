@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot
     private readonly HeroConfig _config;
     private readonly EcsEntities _oneCollisions;
 
-    public DamageFromShardSystem(MessageWorldWrapper messageWorldWrapper, 
+    public DamageFromShardSystem(MessageWorldWrapper messageWorldWrapper,
       GameWorldWrapper gameWorldWrapper,
       IConfigProvider configProvider,
       ICollisionService collisionSvc)
@@ -50,12 +50,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot
           && info.Target.Has<Damageable>())
         {
           _message.CreateEntity()
-            .Add((ref DamageMessage damage) =>
-            {
-              damage.Damage = _config.ShardDamage;
-              damage.Master = info.PackedMaster;
-              damage.Target = info.PackedTarget;
-            });
+            .Add((ref DamageMessage damage) => damage.Info = new DamageInfo(info.PackedMaster, info.PackedTarget,
+              _config.ShardDamage, info.MasterCollider.EntityPosition));
         }
       }
 

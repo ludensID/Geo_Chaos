@@ -46,12 +46,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Attack
         {
           float damage = info.Master.Get<ComboAttackCounter>().Count == 3 ? _config.BiteDamage : _config.HitDamage;
           _message.CreateEntity()
-            .Add((ref DamageMessage message) =>
-            {
-              message.Damage = damage;
-              message.Master = info.PackedMaster;
-              message.Target = info.PackedTarget;
-            });
+            .Add((ref DamageMessage message) => message.Info = new DamageInfo(info.PackedMaster, info.PackedTarget,
+              damage, info.MasterCollider.EntityPosition));
         }
       }
     }

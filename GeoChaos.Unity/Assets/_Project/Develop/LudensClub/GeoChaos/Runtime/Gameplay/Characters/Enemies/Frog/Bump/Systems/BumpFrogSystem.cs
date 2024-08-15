@@ -38,19 +38,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Bump
     {
       foreach (EcsEntity entity in _damageEvents)
       {
-        ref OnDamaged damage = ref entity.Get<OnDamaged>();
+        ref DamageInfo damage = ref entity.Get<OnDamaged>().Info;
         if (damage.Target.TryUnpackEntity(_game, out EcsEntity frog) 
           && frog.Has<FrogTag>() 
           && !frog.Has<Jumping>() 
           && !frog.Has<Bumping>())
         {
            Vector2 direction = Vector2.zero;
-           if (damage.Master.TryUnpackEntity(_game, out EcsEntity master) && master.Has<ViewRef>())
+           if (damage.BumpPosition != Vector3.zero)
            {
-             float masterPoint = master.Get<ViewRef>().View.transform.position.x;
+             float masterPoint = damage.BumpPosition.x;
              float frogPoint = frog.Get<ViewRef>().View.transform.position.x;
 
-             direction = new Vector2(Mathf.Sign(masterPoint - frogPoint), 1);
+             direction = new Vector2(-Mathf.Sign(masterPoint - frogPoint), 1);
            }
 
            if (direction == Vector2.zero)

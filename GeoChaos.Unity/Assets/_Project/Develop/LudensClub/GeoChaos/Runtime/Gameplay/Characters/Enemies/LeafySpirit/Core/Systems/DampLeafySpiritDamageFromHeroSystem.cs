@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit
       foreach (EcsEntity hero in _heroes)
       foreach (EcsEntity message in _dealDamageMessages)
       {
-        ref DealDamageMessage damage = ref message.Get<DealDamageMessage>();
+        ref DamageInfo damage = ref message.Get<DealDamageMessage>().Info;
         if (damage.Target.TryUnpackEntity(_game, out EcsEntity spirit)
           && spirit.Has<LeafySpiritTag>()
           && !spirit.Has<TargetInView>())

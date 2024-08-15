@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Testing.EditMode
 {
@@ -19,8 +20,8 @@ namespace LudensClub.GeoChaos.Testing.EditMode
       EcsEntity target = world.CreateEntity().Add((ref EntityId id) => id.Id = EntityType.Enemy);
       CollisionService collisionSvc = new CollisionService();
       DamageCollisionInfo info = collisionSvc.Info;
-      var sender = new PackedCollider(null, ColliderType.Attack, master.Pack());
-      var other = new PackedCollider(null, ColliderType.Body, target.Pack());
+      var sender = new PackedCollider(null, Vector3.zero,  ColliderType.Attack, master.Pack());
+      var other = new PackedCollider(null, Vector3.zero, ColliderType.Body, target.Pack());
       collisionSvc.AssignCollision(new TwoSideCollision(CollisionType.Enter, other, sender));
       collisionSvc.TryUnpackBothEntities(world);
 

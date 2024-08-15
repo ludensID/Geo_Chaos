@@ -22,12 +22,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Damage
     {
       foreach (EcsEntity message in _damageMessages)
       {
-        ref DamageMessage damage = ref message.Get<DamageMessage>();
-        ref DealDamageMessage dealDamage = ref message.Add<DealDamageMessage>().Get<DealDamageMessage>();
-        dealDamage.Master = damage.Master;
-        dealDamage.Target = damage.Target;
-        dealDamage.Damage = damage.Damage;
-        message.Del<DamageMessage>();
+        message
+          .Add((ref DealDamageMessage dealDamage) => dealDamage.Info = message.Get<DamageMessage>().Info)
+          .Del<DamageMessage>();
       }
     }
   }

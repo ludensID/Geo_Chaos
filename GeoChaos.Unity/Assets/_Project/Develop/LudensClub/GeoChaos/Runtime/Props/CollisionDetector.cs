@@ -93,12 +93,12 @@ namespace LudensClub.GeoChaos.Runtime.Props
     private void SendCollision(CollisionType type, Collision2D collision)
     {
       Collider2D other = _collider == collision.collider ? collision.otherCollider : collision.collider;
-      _filler.Fill(type, _collider, _colliderType, _view.Entity, other);
+      SendCollision(type, other);
     }
 
     private void SendCollision(CollisionType type, Collider2D other)
     {
-      _filler.Fill(type, _collider, _colliderType, _view.Entity, other);
+      _filler.Fill(type, new PackedCollider(_collider, _view.transform.position, _colliderType, _view.Entity), other);
     }
 
     private void Reset()

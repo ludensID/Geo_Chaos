@@ -40,17 +40,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack
         if (_collisionSvc.TryUnpackBothEntities(_game)
           && _collisionSvc.TrySelectByMasterEntity(x => x.Has<HeroTag>())
           && info.MasterCollider.Type == ColliderType.Attack
-          && info.TargetCollider.Type == ColliderType.Body 
+          && info.TargetCollider.Type == ColliderType.Body
           && info.Target.Has<Damageable>()
           && !info.PackedMaster.EqualsTo(info.PackedTarget))
         {
           _message.CreateEntity()
-            .Add((ref DamageMessage message) =>
-            {
-              message.Damage = _config.HitDamages[info.Master.Get<ComboAttackCounter>().Count];
-              message.Master = info.PackedMaster;
-              message.Target = info.PackedTarget;
-            });
+            .Add((ref DamageMessage message) => message.Info = new DamageInfo(info.PackedMaster, info.PackedTarget,
+              _config.HitDamages[info.Master.Get<ComboAttackCounter>().Count], info.MasterCollider.EntityPosition));
         }
       }
     }

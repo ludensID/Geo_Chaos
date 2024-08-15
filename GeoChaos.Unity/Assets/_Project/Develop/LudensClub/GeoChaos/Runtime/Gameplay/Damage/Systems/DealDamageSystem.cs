@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Damage
     {
       foreach (EcsEntity message in _damages)
       {
-        ref DealDamageMessage damage = ref message.Get<DealDamageMessage>();
+        ref DamageInfo damage = ref message.Get<DealDamageMessage>().Info;
         if (damage.Target.TryUnpackEntity(_game, out EcsEntity target) && !target.Has<Immune>())
         {
           bool hasEndurance = target.Has<CurrentEndurance>();
@@ -45,9 +45,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Damage
           }
           
           ref OnDamaged damageEvent = ref _message.CreateEntity().AddOrGet<OnDamaged>();
-          damageEvent.Damage = hasHealth ? damage.Damage : 0;
-          damageEvent.Master = damage.Master;
-          damageEvent.Target = damage.Target;
+          damageEvent.Info = damage;
+          if(!hasHealth)
+            damageEvent.Info.Damage = 0;
 
           if (target.Has<ImmunityAvailable>())
             target.Add((ref Immune immune) => immune.Owner = MovementType.Bump);

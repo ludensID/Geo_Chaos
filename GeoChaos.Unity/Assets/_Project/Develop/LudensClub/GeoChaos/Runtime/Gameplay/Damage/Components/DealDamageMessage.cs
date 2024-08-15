@@ -1,5 +1,4 @@
 ﻿using System;
-using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Damage
@@ -13,8 +12,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Damage
   [Serializable]
   public struct DealDamageMessage : IEcsComponent
   {
-    public EcsPackedEntity Master;
-    public EcsPackedEntity Target;
-    public float Damage;
+    public DamageInfo Info;
   }
 }

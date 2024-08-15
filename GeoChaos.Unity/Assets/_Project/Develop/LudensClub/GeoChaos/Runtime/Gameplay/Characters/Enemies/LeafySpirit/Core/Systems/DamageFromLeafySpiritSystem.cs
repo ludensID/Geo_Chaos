@@ -45,12 +45,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit
           && info.TargetCollider.Type == ColliderType.Body)
         {
           _message.CreateEntity()
-            .Add((ref DamageMessage message) =>
-            {
-              message.Damage = _config.DamageFromBody;
-              message.Master = info.PackedMaster;
-              message.Target = info.PackedTarget;
-            });
+            .Add((ref DamageMessage message) => message.Info = new DamageInfo(info.PackedMaster, info.PackedTarget,
+              _config.DamageFromBody, info.MasterCollider.EntityPosition));
         }
       }
     }

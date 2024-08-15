@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Immunity
     {
       foreach (EcsEntity damaged in _damagedEvents)
       {
-        if(damaged.Get<OnDamaged>().Target.TryUnpackEntity(_game, out EcsEntity hero)  
+        if(damaged.Get<OnDamaged>().Info.Target.TryUnpackEntity(_game, out EcsEntity hero)  
           && hero.Has<HeroTag>() && hero.Has<Immune>())
         {
           hero.Add((ref ImmunityTimer timer) => timer.TimeLeft = _timers.Create(_config.ImmunityTime));

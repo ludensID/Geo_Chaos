@@ -44,12 +44,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash
           && info.Target.Has<Damageable>())
         {
           _message.CreateEntity()
-            .Add((ref DamageMessage damage) =>
-            {
-              damage.Damage = _config.DashDamage;
-              damage.Master = info.PackedMaster;
-              damage.Target = info.PackedTarget;
-            });
+            .Add((ref DamageMessage damage) => damage.Info = new DamageInfo(info.PackedMaster, info.PackedTarget,
+              _config.DashDamage, info.MasterCollider.EntityPosition));
         }
       }
     }
