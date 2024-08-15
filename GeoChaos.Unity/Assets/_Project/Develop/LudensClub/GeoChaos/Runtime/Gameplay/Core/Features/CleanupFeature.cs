@@ -8,8 +8,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   {
     public CleanupFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<Delete<OnLanded>>());
-      Add(systems.Create<Delete<OnLifted>>());
+      Add(systems.Create<DeleteSystem<OnLanded>>());
+      Add(systems.Create<DeleteSystem<OnLifted>>());
       
       Add(systems.Create<DestroyFeature>());
     }

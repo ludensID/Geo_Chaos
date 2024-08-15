@@ -11,7 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.View
       Add(systems.Create<SetActiveViewSystem>());
       
       Add(systems.Create<ShowNothingHappensWindowSystem>());
-      Add(systems.Create<Delete<NothingHappensMessage, MessageWorldWrapper>>());
+      Add(systems.Create<DeleteSystem<NothingHappensMessage, MessageWorldWrapper>>());
     }
   }
 }

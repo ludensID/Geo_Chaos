@@ -7,8 +7,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash
   {
     public HeroDashFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<Delete<DashCommand>>());
-      Add(systems.Create<Delete<StopDashCommand>>());
+      Add(systems.Create<DeleteSystem<DashCommand>>());
+      Add(systems.Create<DeleteSystem<StopDashCommand>>());
       Add(systems.Create<RemoveDashCooldownSystem>());
       Add(systems.Create<ReadDashInputSystem>());
       Add(systems.Create<ConvertDelayedToDashCommandSystem>());

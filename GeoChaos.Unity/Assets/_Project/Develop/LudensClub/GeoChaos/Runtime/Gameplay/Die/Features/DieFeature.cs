@@ -8,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Die
     public DieFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<DestroyDiedEntitiesSystem>());
-      Add(systems.Create<Delete<OnDied>>());
+      Add(systems.Create<DeleteSystem<OnDied>>());
       Add(systems.Create<CheckForDieSystem>());
     }
   }

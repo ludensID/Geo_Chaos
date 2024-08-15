@@ -2,7 +2,7 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform
 {
-  public class DeleteFadingPlatformStartFadeCommandSystem : Delete<StartFadeCommand, GameWorldWrapper>
+  public class DeleteFadingPlatformStartFadeCommandSystem : DeleteSystem<StartFadeCommand, GameWorldWrapper>
   {
     protected DeleteFadingPlatformStartFadeCommandSystem(GameWorldWrapper wrapper)
       : base(wrapper, x => x.Inc<FadingPlatformTag>())

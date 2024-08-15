@@ -2,7 +2,7 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Retraction
 {
-  public class DeleteLeafySpiritRetractionFinishedEventSystem : Delete<OnRetractionFinished>
+  public class DeleteLeafySpiritRetractionFinishedEventSystem : DeleteSystem<OnRetractionFinished>
   {
     protected DeleteLeafySpiritRetractionFinishedEventSystem(GameWorldWrapper gameWorldWrapper) 
       : base(gameWorldWrapper, x => x.Inc<LeafySpiritTag>())

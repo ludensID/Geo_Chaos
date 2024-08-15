@@ -3,7 +3,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.Bite
 {
-  public class DeleteFrogBiteStoppedEventSystem : Delete<OnBiteStopped>
+  public class DeleteFrogBiteStoppedEventSystem : DeleteSystem<OnBiteStopped>
   {
     protected DeleteFrogBiteStoppedEventSystem(GameWorldWrapper gameWorldWrapper) 
       : base(gameWorldWrapper, x => x.Inc<FrogTag>())

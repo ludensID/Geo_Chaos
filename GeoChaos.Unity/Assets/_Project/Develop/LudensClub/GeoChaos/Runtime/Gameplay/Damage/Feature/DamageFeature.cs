@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Damage
   {
     public DamageFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<Delete<OnDamaged, MessageWorldWrapper>>());
+      Add(systems.Create<DeleteSystem<OnDamaged, MessageWorldWrapper>>());
       Add(systems.Create<DealDamageSystem>());
       
       Add(systems.Create<ConvertDamageMessageToDealDamageMessageSystem>());

@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       Add(systems.Create<PrepareFreeFallSystem>());
       Add(systems.Create<PrepareDragForceSystem>());
       Add(systems.Create<PrepareADControlSystem>());
-      Add(systems.Create<Delete<OnActionStarted, GameWorldWrapper>>());
+      Add(systems.Create<DeleteSystem<OnActionStarted>>());
       
       Add(systems.Create<CheckForDelayExpiredSystem>());
       Add(systems.Create<StartFallFreeSystem>());

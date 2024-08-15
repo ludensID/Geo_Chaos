@@ -17,25 +17,25 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
       Add(systems.Create<MarkSelectedRingAsHookedSystem>());
       Add(systems.Create<HookSystem>());
       
-      Add(systems.Create<Delete<OnHookPrecastStarted>>());
-      Add(systems.Create<Delete<OnHookPrecastFinished>>());
+      Add(systems.Create<DeleteSystem<OnHookPrecastStarted>>());
+      Add(systems.Create<DeleteSystem<OnHookPrecastFinished>>());
       Add(systems.Create<PrecastHookSystem>());
       Add(systems.Create<CheckForHookPrecastTimerSystem>());
       
-      Add(systems.Create<Delete<OnHookPullingStarted>>());
-      Add(systems.Create<Delete<OnHookPullingFinished>>());
+      Add(systems.Create<DeleteSystem<OnHookPullingStarted>>());
+      Add(systems.Create<DeleteSystem<OnHookPullingFinished>>());
       Add(systems.Create<PullHeroOnHookSystem>());
       Add(systems.Create<StopHookPullingSystem>());
       
       Add(systems.Create<InterruptHookWhenHeroBumpSystem>());
       
-      Add(systems.Create<Delete<OnHookInterrupted>>());
+      Add(systems.Create<DeleteSystem<OnHookInterrupted>>());
       Add(systems.Create<InterruptHookSystem>());
       Add(systems.Create<FinishHookInterruptionSystem>());
       
       Add(systems.Create<StopHookSystem>());
       
-      Add(systems.Create<Delete<HookCommand>>());
+      Add(systems.Create<DeleteSystem<HookCommand>>());
     }
   }
 }

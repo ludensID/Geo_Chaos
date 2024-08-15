@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Interaction
   {
     public HeroInteractionFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<Delete<OnInteracted>>());
+      Add(systems.Create<DeleteSystem<OnInteracted>>());
       Add(systems.Create<ReadInteractionInputSystem>());
       Add(systems.Create<InteractSystem>());
       Add(systems.Create<DeleteHeroInteractCommandSystem>());

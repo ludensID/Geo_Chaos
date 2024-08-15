@@ -8,13 +8,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Aim
   {
     public HeroAimFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<Delete<OnAimStarted>>());
-      Add(systems.Create<Delete<OnAimFinished>>());
+      Add(systems.Create<DeleteSystem<OnAimStarted>>());
+      Add(systems.Create<DeleteSystem<OnAimFinished>>());
       Add(systems.Create<ReadAimInputSystem>());
       Add(systems.Create<CheckForHeroOnGroundToAimSystem>());
       Add(systems.Create<SwitchAimSystem>());
-      Add(systems.Create<Delete<StartAimCommand>>());
-      Add(systems.Create<Delete<FinishAimCommand>>());
+      Add(systems.Create<DeleteSystem<StartAimCommand>>());
+      Add(systems.Create<DeleteSystem<FinishAimCommand>>());
 
       Add(systems.Create<SetAimDirectionToViewDirectionSystem>());
       Add(systems.Create<ReadAimPositionSystem>());

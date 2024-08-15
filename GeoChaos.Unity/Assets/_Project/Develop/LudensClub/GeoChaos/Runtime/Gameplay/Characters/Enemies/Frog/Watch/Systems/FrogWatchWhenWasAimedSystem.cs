@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Watch;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Stun;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -18,8 +19,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Watch
 
       _frogs = _game
         .Filter<FrogTag>()
-        .Inc<WasAimed>()
-        .Exc<Aimed>()
+        .Inc<WasTargetInView>()
+        .Exc<TargetInView>()
         .Exc<WatchCommand>()
         .Exc<Stunned>()
         .Collect();

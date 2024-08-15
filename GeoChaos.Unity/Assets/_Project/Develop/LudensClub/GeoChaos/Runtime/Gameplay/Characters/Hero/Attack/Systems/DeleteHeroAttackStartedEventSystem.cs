@@ -3,7 +3,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack
 {
-  public class DeleteHeroAttackStartedEventSystem : Delete<OnAttackStarted>
+  public class DeleteHeroAttackStartedEventSystem : DeleteSystem<OnAttackStarted>
   {
     protected DeleteHeroAttackStartedEventSystem(GameWorldWrapper gameWorldWrapper)
       : base(gameWorldWrapper, x => x.Inc<HeroTag>())

@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Health
   {
     public HealthPreparingFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<Delete<OnHealthCalculated>>());
+      Add(systems.Create<DeleteSystem<OnHealthCalculated>>());
       Add(systems.Create<CalculateHealthSystem>());
     }
   }

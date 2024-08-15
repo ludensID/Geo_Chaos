@@ -2,7 +2,7 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Interaction
 {
-  public class DeleteHeroInteractCommandSystem : Delete<InteractCommand>
+  public class DeleteHeroInteractCommandSystem : DeleteSystem<InteractCommand>
   {
     protected DeleteHeroInteractCommandSystem(GameWorldWrapper gameWorldWrapper) 
       : base(gameWorldWrapper, x => x.Inc<HeroTag>())

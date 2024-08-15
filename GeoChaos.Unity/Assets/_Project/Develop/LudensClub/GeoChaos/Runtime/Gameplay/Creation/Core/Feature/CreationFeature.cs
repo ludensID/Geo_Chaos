@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation
     {
       Add(systems.Create<SpawnPointFeature>());
 
-      Add(systems.Create<Delete<OnConverted, GameWorldWrapper>>());
+      Add(systems.Create<DeleteSystem<OnConverted>>());
       Add(systems.Create<CreateEntityWithViewSystem>());
 
       Add(systems.Create<MoveToSpawnEntitySystem>());

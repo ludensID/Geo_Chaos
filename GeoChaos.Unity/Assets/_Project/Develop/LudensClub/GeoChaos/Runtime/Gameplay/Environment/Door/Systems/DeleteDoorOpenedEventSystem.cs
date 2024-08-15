@@ -2,7 +2,7 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
 {
-  public class DeleteDoorOpenedEventSystem: Delete<OnOpened>
+  public class DeleteDoorOpenedEventSystem: DeleteSystem<OnOpened>
   {
     protected DeleteDoorOpenedEventSystem(GameWorldWrapper gameWorldWrapper) 
       : base(gameWorldWrapper, x => x.Inc<DoorTag>())
