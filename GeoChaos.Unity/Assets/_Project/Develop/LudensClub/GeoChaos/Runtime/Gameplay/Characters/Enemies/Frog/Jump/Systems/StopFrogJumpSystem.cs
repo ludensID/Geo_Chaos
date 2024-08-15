@@ -1,7 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity.Tracking;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Jump
@@ -27,9 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Jump
       {
         frog
           .Del<StopJumpCommand>()
-          .Has<Jumping>(false)
-          .Has<OnLandingDetected>(false)
-          .Add<StopTrackLandingCommand>();
+          .Has<Jumping>(false);
       }
     }
   }

@@ -11,39 +11,36 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpCycle
   public class PrepareFrogJumpSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsEntities _startCyclingFrogs;
     private readonly EcsEntities _cyclingFrogs;
+    private readonly EcsEntities _afterJumpCyclingFrogs;
 
     public PrepareFrogJumpSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
-      _startCyclingFrogs = _game
+      _afterJumpCyclingFrogs = _game
         .Filter<FrogTag>()
-        .Inc<StartJumpCycleCommand>()
+        .Inc<JumpCycling>()
+        .Inc<OnJumpWaitFinished>()
         .Collect();
 
       _cyclingFrogs = _game
         .Filter<FrogTag>()
         .Inc<JumpCycling>()
-        .Inc<OnJumpWaitFinished>()
-        .Exc<JumpCommand>()
+        .Inc<PrepareJumpCommand>()
         .Collect();
     }
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity frog in _startCyclingFrogs)
+      foreach (EcsEntity frog in _afterJumpCyclingFrogs)
       {
-        frog
-          .Del<StartJumpCycleCommand>()
-          .Add<JumpCycling>();
-        
-        PrepareJump(frog);
+        frog.Has<PrepareJumpCommand>(true);
       }
 
       foreach (EcsEntity frog in _cyclingFrogs)
       {
+        frog.Del<PrepareJumpCommand>();
         PrepareJump(frog);
       }
     }

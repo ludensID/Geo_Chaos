@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity.Tracking;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Bump
@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Bump
       _bumpingFrogs = _game
         .Filter<FrogTag>()
         .Inc<Bumping>()
-        .Inc<OnLandingDetected>()
+        .Inc<OnLanded>()
         .Collect();
     }
 
@@ -26,9 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Bump
     {
       foreach (EcsEntity frog in _bumpingFrogs)
       {
-        frog
-          .Del<Bumping>()
-          .Del<OnLandingDetected>();
+        frog.Del<Bumping>();
       }      
     }
   }

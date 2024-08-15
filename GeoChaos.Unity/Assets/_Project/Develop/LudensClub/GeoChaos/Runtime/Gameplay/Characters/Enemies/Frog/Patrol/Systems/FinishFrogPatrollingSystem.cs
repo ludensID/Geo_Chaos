@@ -33,11 +33,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
       {
         float currentPoint = frog.Get<ViewRef>().View.transform.position.x;
         float nextPoint = frog.Get<JumpPoint>().Point;
-
+        
         if (Mathf.Abs(nextPoint - currentPoint) < _config.SmallJumpLength)
         {
           frog
             .Del<Patrolling>()
+            .Has<DelayedPatrol>(false)
             .Add<StopJumpCycleCommand>()
             .Add<OnPatrolFinished>();
         }

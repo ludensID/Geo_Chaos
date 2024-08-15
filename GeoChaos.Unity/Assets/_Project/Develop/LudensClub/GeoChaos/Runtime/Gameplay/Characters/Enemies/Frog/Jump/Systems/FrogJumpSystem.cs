@@ -3,7 +3,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity.Tracking;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
@@ -44,8 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Jump
         frog
           .Del<JumpCommand>()
           .Has<Jumping>(true)
-          .Add<OnJumpStarted>()
-          .Add<TrackLandingCommand>();
+          .Add<OnJumpStarted>();
       }
     }
   }

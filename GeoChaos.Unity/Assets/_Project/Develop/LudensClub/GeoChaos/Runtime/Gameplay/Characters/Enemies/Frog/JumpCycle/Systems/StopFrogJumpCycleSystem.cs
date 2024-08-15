@@ -29,6 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpCycle
         frog
           .Del<StopJumpCycleCommand>()
           .Has<JumpCycling>(false)
+          .Has<JumpCyclePausing>(false)
           .Has<JumpPoint>(false)
           .Has<FrogJumpContext>(false)
           .Has<JumpCommand>(false)

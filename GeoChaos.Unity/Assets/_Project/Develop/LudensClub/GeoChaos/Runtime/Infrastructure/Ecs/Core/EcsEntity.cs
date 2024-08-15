@@ -79,9 +79,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     [HideInCallstack]
     public ref TComponent AddOrGet<TComponent>() where TComponent : struct, IEcsComponent
     {
-      return ref World.Has<TComponent>(Entity)
-        ? ref World.Get<TComponent>(Entity)
-        : ref World.Add<TComponent>(Entity);
+      if (!Has<TComponent>())
+        Add<TComponent>();
+      
+      return ref Get<TComponent>();
     }
 
     [HideInCallstack]
@@ -125,10 +126,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       switch (value, World.Has<TComponent>(Entity))
       {
         case (true, false):
-          World.Add<TComponent>(Entity);
+          Add<TComponent>();
           break;
         case (false, true):
-          World.Del<TComponent>(Entity);
+          Del<TComponent>();
           break;
       }
 

@@ -5,7 +5,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
-using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity.Tracking;
 using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
@@ -64,9 +63,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Bump
              Instant = true
            });
 
-           frog
-             .Add<Bumping>()
-             .Add<TrackLandingCommand>();
+           frog.Add<Bumping>();
         }
       }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity.Tracking
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,7 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity.Tracking
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct TrackingLanding : IEcsComponent
+  public struct DelayedPatrol : IEcsComponent
   {
+   
   }
 }

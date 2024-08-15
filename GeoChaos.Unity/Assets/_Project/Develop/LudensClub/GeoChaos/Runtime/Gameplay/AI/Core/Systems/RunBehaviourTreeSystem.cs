@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Creation;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
@@ -15,6 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 
       _brains = _game
         .Filter<Brain>()
+        .Exc<OnConverted>()
         .Collect();
     }
     
