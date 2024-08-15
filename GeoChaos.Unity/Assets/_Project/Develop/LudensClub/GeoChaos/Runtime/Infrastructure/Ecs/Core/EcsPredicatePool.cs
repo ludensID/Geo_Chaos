@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       }
 
       IEcsPredicate predicate;
-      PooledPredicate pooledPredicate = predicates.FindNonAlloc(_isNotUsedPooledPredicate);
+      PooledPredicate pooledPredicate = predicates.Find(_isNotUsedPooledPredicate);
       if (pooledPredicate == null)
       {
         predicate = new EcsPredicate<TComponent>();
@@ -43,7 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     {
       if (_predicates.TryGetValue(predicate.ComponentType, out List<PooledPredicate> predicates))
       {
-        PooledPredicate poolPredicate = predicates.FindNonAlloc(_isPooledPredicateEqualsClosure.SpecifyPredicate(predicate));
+        PooledPredicate poolPredicate = predicates.Find(_isPooledPredicateEqualsClosure.SpecifyPredicate(predicate));
         if (poolPredicate != null)
           poolPredicate.Used = false;
       }
@@ -57,16 +57,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       public PooledPredicate(IEcsPredicate predicate)
       {
         Predicate = predicate;
-      }
-    }
-
-    private class EcsPredicateFinder : IPredicate<PooledPredicate>
-    {
-      public IEcsPredicate EcsPredicate;
-        
-      public bool Predicate(PooledPredicate obj)
-      {
-        return obj.Predicate == EcsPredicate;
       }
     }
 

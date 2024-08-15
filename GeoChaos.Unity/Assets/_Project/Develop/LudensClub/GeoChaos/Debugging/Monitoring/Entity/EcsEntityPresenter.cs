@@ -130,7 +130,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       {
         for (int i = 0; i < _componentCount; i++)
         {
-          int index = View.Components.FindIndexNonAlloc(_isComponentViewNameEqualsClosure.SpecifyPredicate(_componentNames[i]));
+          int index = View.Components.FindIndex(_isComponentViewNameEqualsClosure.SpecifyPredicate(_componentNames[i]));
           View.Components[index].Value = (IEcsComponent)_components[i];
           View.Components[index].Name = _componentNames[i];
         }
