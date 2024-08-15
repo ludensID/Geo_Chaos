@@ -7,6 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
   public class EcsFeature : IEcsPreInitSystem, IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem, IEcsPostDestroySystem
   {
     private readonly List<IEcsSystem> _systems = new List<IEcsSystem>();
+    private readonly List<IEcsRunSystem> _runSystems = new List<IEcsRunSystem>();
 
     public void Add(IEcsSystem system)
     {
@@ -17,6 +18,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     {
       foreach (IEcsPreInitSystem system in _systems.OfType<IEcsPreInitSystem>())
         system.PreInit(systems);
+
+      foreach (IEcsRunSystem system in _systems.OfType<IEcsRunSystem>())
+        _runSystems.Add(system);
     }
 
     public void Init(EcsSystems systems)
@@ -31,7 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       using (new Unity.Profiling.ProfilerMarker(EditorContext.GetPrettyName(this, nameof(Run))).Auto())
 #endif
       {
-        foreach (IEcsRunSystem system in _systems.OfType<IEcsRunSystem>())
+        foreach (IEcsRunSystem system in _runSystems)
         {
 #if UNITY_EDITOR && !DISABLE_PROFILING
           using (new Unity.Profiling.ProfilerMarker(EditorContext.GetPrettyName(system, "Run")).Auto())

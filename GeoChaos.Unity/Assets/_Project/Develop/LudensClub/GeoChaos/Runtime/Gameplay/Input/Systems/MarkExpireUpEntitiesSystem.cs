@@ -7,16 +7,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Input
 {
   public class MarkExpireUpEntitiesSystem : IEcsRunSystem
   {
-    private readonly EcsWorld _world;
+    private readonly EcsWorld _input;
     private readonly HeroConfig _config;
     private readonly EcsEntities _expirables;
 
     public MarkExpireUpEntitiesSystem(InputWorldWrapper inputWorldWrapper, IConfigProvider configProvider)
     {
-      _world = inputWorldWrapper.World;
+      _input = inputWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
 
-      _expirables = _world
+      _expirables = _input
         .Filter<ExpireTimer>()
         .Exc<ExpireUp>()
         .Collect();
