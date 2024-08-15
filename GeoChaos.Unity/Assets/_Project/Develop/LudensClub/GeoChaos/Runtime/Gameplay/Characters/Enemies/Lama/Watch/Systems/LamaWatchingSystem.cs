@@ -43,7 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Watch
           .Add((ref WatchingTimer timer) => timer.TimeLeft = _timers.Create(_config.ListenTime));
 
         foreach (EcsEntity force in _forceLoop
-          .GetLoop(SpeedForceType.Chase, lama.Pack()))
+          .GetLoop(SpeedForceType.Chase, lama.PackedEntity))
         {
           force.Change((ref SpeedForce speedForce) => speedForce.Type = SpeedForceType.Sneak);
         }

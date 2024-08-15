@@ -59,7 +59,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         Vector2 velocity = movementVector.Speed * movementVector.Direction;
 
         foreach (EcsEntity force in _simpleForces
-          .Check<Owner>(x => x.Entity.EqualsTo(owner.Pack())))
+          .Check<Owner>(x => x.Entity.EqualsTo(owner.PackedEntity)))
         {
           velocity = AssignVelocityByImpact(force, velocity);
 
@@ -70,13 +70,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         }
         
         foreach (EcsEntity force in _addedForces
-          .Check<Owner>(x => x.Entity.EqualsTo(owner.Pack())))
+          .Check<Owner>(x => x.Entity.EqualsTo(owner.PackedEntity)))
         {
           velocity = AddVelocityByImpact(force, velocity);
         }
         
         foreach (EcsEntity force in _uniqueForces
-          .Check<Owner>(x => x.Entity.EqualsTo(owner.Pack())))
+          .Check<Owner>(x => x.Entity.EqualsTo(owner.PackedEntity)))
         {
           velocity = AssignVelocityByImpact(force, velocity);
           movementVector.Immutable = force.Has<Immutable>();

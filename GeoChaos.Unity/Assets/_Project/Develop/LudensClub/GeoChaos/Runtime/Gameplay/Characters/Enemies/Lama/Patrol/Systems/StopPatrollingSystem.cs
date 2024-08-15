@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
             .Del<Patrolling>()
             .Del<PatrollingTimer>();
 
-          _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)
+          _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.PackedEntity, Vector2.right)
           {
             Instant = true
           });

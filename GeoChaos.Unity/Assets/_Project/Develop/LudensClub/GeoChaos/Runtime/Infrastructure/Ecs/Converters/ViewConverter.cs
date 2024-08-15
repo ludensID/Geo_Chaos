@@ -13,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
     public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref ViewRef viewRef) => viewRef.View = View);
-      View.Entity = entity.Pack();
+      View.Entity = entity.PackedEntity;
 
       entity.SetActive(View.gameObject.activeSelf);
     }

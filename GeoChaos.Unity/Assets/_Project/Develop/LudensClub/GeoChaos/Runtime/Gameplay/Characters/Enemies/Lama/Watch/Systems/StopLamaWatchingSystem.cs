@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Watch
           .Del<Watching>()
           .Has<WatchingTimer>(false);
 
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Sneak, lama.Pack(), Vector2.right)
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Sneak, lama.PackedEntity, Vector2.right)
         {
           Instant = true
         });

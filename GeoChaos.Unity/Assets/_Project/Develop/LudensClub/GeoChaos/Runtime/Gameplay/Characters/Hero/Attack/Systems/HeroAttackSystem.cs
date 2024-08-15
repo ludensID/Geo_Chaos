@@ -51,7 +51,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack
           .Add<Attacking>()
           .Del<AttackCommand>();
         
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Attack, hero.Pack(), Vector2.right)
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Attack, hero.PackedEntity, Vector2.right)
         {
           Instant = true
         });

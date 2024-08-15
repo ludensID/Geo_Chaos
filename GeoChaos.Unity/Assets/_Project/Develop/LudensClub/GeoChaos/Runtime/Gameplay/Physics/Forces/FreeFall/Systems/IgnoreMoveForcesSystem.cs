@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       foreach (EcsEntity fall in _freeFalls)
       {
         foreach (EcsEntity move in _forceLoop
-          .GetLoop(SpeedForceType.Move, fall.Pack()))
+          .GetLoop(SpeedForceType.Move, fall.PackedEntity))
         {
           move.Has<Ignored>(true);
         }

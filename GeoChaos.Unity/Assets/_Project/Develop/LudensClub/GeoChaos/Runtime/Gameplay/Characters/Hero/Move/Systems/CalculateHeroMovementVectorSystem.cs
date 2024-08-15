@@ -63,7 +63,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
 
         command.Change((ref HeroMoveDirection moveDirection) => moveDirection.Direction.x = direction);
 
-        CreateMoveSpeedForce(command.Pack(), normalized, speed, acceleration);
+        CreateMoveSpeedForce(command.PackedEntity, normalized, speed, acceleration);
 
         command.Add<Moving>();
       }
@@ -75,7 +75,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
 
         command.Change((ref HeroMoveDirection moveDirection) => moveDirection.Direction.x = direction);
 
-        EcsEntities forces = _forces.GetLoop(SpeedForceType.Move, command.Pack());
+        EcsEntities forces = _forces.GetLoop(SpeedForceType.Move, command.PackedEntity);
         ChangeMoveSpeedForce(forces, normalized, acceleration, speed);
 
         if (!forces.Any())
@@ -84,7 +84,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
 
       foreach (EcsEntity moving in _movings)
       {
-        EcsEntities forces = _forces.GetLoop(SpeedForceType.Move, moving.Pack());
+        EcsEntities forces = _forces.GetLoop(SpeedForceType.Move, moving.PackedEntity);
         if (!forces.Any())
         {
           moving.Del<Moving>();

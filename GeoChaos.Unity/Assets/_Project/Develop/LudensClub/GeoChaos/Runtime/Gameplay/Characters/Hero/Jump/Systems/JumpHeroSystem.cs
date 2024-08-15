@@ -35,7 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
     {
       foreach (EcsEntity hero in _heroes)
       {
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Jump, hero.Pack(), Vector2.up)
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Jump, hero.PackedEntity, Vector2.up)
         {
           Speed = new Vector2(0, _config.JumpForce),
           Direction = new Vector2(0, 1),

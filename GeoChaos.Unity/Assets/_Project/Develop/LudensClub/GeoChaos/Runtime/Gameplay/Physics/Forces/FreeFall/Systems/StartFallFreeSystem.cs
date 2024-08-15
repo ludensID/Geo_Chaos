@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       foreach (EcsEntity action in _actionEvents)
       {
         foreach (EcsEntity prepare in _prepares
-          .Check<Owner>(x => x.Entity.EqualsTo(action.Pack())))
+          .Check<Owner>(x => x.Entity.EqualsTo(action.PackedEntity)))
         {
           prepare
             .Del<Prepared>()

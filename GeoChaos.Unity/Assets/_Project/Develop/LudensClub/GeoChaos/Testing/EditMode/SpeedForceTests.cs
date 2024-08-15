@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Testing.EditMode
       entity.Add<MovementVector>()
         .Add<ForceAvailable>();
       Create.SpeedForce(physics, speed: speed, direction: Vector2.one, impact: new Impact { Vector = Vector2.one },
-        owner: entity.Pack());
+        owner: entity.PackedEntity);
 
       ref MovementVector vector = ref entity.Get<MovementVector>();
       systems.Add(new CalculateTargetMovementVectorSystem(physics, game));

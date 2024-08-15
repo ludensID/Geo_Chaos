@@ -37,7 +37,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         ref MovementVector movementVector = ref vector.Get<MovementVector>();
         Vector2 velocity = movementVector.Speed * movementVector.Direction;
         foreach (EcsEntity control in _controls
-          .Check<Owner>(x => x.Entity.EqualsTo(vector.Pack())))
+          .Check<Owner>(x => x.Entity.EqualsTo(vector.PackedEntity)))
         {
           float speed = control.Get<ControlSpeed>().Speed;
           velocity.x += speed;

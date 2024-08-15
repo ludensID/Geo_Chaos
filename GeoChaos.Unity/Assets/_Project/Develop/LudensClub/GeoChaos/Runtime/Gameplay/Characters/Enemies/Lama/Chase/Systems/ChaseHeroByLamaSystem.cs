@@ -34,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Chase
     {
       foreach (EcsEntity lama in _lamas)
       {
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Chase, lama.Pack(), Vector2.right)
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Chase, lama.PackedEntity, Vector2.right)
         {
           Speed = new Vector2(_config.MovementSpeed, 0),
           Direction = Vector2.one,

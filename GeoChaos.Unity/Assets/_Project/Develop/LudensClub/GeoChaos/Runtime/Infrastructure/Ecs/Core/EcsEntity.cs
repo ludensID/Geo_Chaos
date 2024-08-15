@@ -158,11 +158,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       Entity = -1;
     }
 
-    public EcsPackedEntity Pack()
-    {
-      return PackedEntity;
-    }
-
     public EcsPackedEntityWithWorld PackWithWorld()
     {
       return World.PackEntityWithWorld(Entity);

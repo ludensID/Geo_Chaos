@@ -41,7 +41,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         if(!startedAction.IsEmpty)
         {
           foreach (EcsEntity freeFall in _freeFalls
-            .Check<Owner>(owner => owner.Entity.EqualsTo(action.Pack())))
+            .Check<Owner>(owner => owner.Entity.EqualsTo(action.PackedEntity)))
           {
             freeFall.Add<PrepareCommand>();
           }

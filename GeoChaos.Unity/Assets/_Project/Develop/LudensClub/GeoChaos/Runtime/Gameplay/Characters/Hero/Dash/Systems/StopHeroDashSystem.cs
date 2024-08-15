@@ -37,7 +37,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash
     {
       foreach (EcsEntity command in _commands)
       {
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Dash, command.Pack(), Vector2.right)
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Dash, command.PackedEntity, Vector2.right)
         {
           Speed = Vector2.zero,
           Instant = true

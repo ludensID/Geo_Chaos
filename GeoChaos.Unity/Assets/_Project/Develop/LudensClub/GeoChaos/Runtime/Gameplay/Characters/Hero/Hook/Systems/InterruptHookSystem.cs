@@ -80,7 +80,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
 
     private void InterruptHookSpeed(EcsEntity entity)
     {
-      _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, entity.Pack()));
+      _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, entity.PackedEntity));
     }
 
     private void ReleaseRing()

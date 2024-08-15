@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
     {
       foreach (EcsEntity brain in _convertedBrains)
       {
-        brain.Change((ref Brain b) => b.Tree = _creator.Create(brain.Get<EntityId>().Id, brain.Pack()));
+        brain.Change((ref Brain b) => b.Tree = _creator.Create(brain.Get<EntityId>().Id, brain.PackedEntity));
       }
     }
   }

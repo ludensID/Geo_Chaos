@@ -77,14 +77,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 
     public bool SyncCollidersWithEntities()
     {
-      return TrySelectByColliders(x => x.Entity.EqualsTo(Info.Master.Pack()),
-        x => x.Entity.EqualsTo(Info.Target.Pack()), false);
+      return TrySelectByColliders(x => x.Entity.EqualsTo(Info.Master.PackedEntity),
+        x => x.Entity.EqualsTo(Info.Target.PackedEntity), false);
     }
 
     public bool SyncEntitiesWithColliders()
     {
-      return TrySelectByEntities(x => Info.MasterCollider.Entity.EqualsTo(x.Pack()),
-        x => Info.TargetCollider.Entity.EqualsTo(x.Pack()), false);
+      return TrySelectByEntities(x => Info.MasterCollider.Entity.EqualsTo(x.PackedEntity),
+        x => Info.TargetCollider.Entity.EqualsTo(x.PackedEntity), false);
     }
 
     public bool TryUnpackBothEntities(EcsWorld world)

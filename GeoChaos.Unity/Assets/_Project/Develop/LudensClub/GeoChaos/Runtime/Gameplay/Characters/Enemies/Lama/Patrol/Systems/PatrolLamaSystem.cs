@@ -47,7 +47,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
 
         if (direction != 0)
         {
-          _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.Pack(), Vector2.right)
+          _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, command.PackedEntity, Vector2.right)
           {
             Speed = Vector2.right * _config.MovementSpeed,
             Direction = Vector2.right * direction,

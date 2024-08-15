@@ -27,12 +27,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity controllable in _controllables)
       {
-        if (_controlSvc.GetADControl(controllable.Pack()) == null)
+        if (_controlSvc.GetADControl(controllable.PackedEntity) == null)
         {
           _physics.CreateEntity()
             .Add<FreeFall>()
             .Add<ADControl>()
-            .Add((ref Owner owner) => owner.Entity = controllable.Pack())
+            .Add((ref Owner owner) => owner.Entity = controllable.PackedEntity)
             .Add<Gradient>()
             .Add<GradientRate>()
             .Add<ControlSpeed>();

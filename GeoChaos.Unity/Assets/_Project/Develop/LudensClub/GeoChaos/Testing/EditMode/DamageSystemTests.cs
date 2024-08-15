@@ -20,8 +20,8 @@ namespace LudensClub.GeoChaos.Testing.EditMode
       EcsEntity target = world.CreateEntity().Add((ref EntityId id) => id.Id = EntityType.Enemy);
       CollisionService collisionSvc = new CollisionService();
       DamageCollisionInfo info = collisionSvc.Info;
-      var sender = new PackedCollider(null, Vector3.zero,  ColliderType.Attack, master.Pack());
-      var other = new PackedCollider(null, Vector3.zero, ColliderType.Body, target.Pack());
+      var sender = new PackedCollider(null, Vector3.zero,  ColliderType.Attack, master.PackedEntity);
+      var other = new PackedCollider(null, Vector3.zero, ColliderType.Body, target.PackedEntity);
       collisionSvc.AssignCollision(new TwoSideCollision(CollisionType.Enter, other, sender));
       collisionSvc.TryUnpackBothEntities(world);
 

@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         Vector2 delta = MathUtils.DecomposeVector(lastMovementVector.Direction * lastMovementVector.Speed
           - movementVector.Direction * movementVector.Speed).length;
         foreach (EcsEntity force in _forces
-          .Check<Owner>(x => x.Entity.EqualsTo(vector.Pack())))
+          .Check<Owner>(x => x.Entity.EqualsTo(vector.PackedEntity)))
         {
           ref Impact impact = ref force.Get<Impact>();
           ref MovementVector forceVector = ref force.Get<MovementVector>();

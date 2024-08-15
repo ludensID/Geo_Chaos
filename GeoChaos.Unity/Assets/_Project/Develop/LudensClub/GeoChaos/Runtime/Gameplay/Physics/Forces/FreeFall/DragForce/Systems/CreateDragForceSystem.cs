@@ -28,12 +28,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity draggable in _draggables)
       {
-        if (_dragForceSvc.GetDragForce(draggable.Pack()) == null)
+        if (_dragForceSvc.GetDragForce(draggable.PackedEntity) == null)
         {
           _physics.CreateEntity()
             .Add<FreeFall>()
             .Add<DragForce>()
-            .Add((ref Owner owner) => owner.Entity = draggable.Pack())
+            .Add((ref Owner owner) => owner.Entity = draggable.PackedEntity)
             .Add<Gradient>()
             .Add<GradientRate>()
             .Add<RelativeSpeed>();

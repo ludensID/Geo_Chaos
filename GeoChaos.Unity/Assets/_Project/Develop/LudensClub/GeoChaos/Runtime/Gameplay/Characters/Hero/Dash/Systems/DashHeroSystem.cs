@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash
     {
       foreach (EcsEntity hero in _heroes)
       {
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Dash, hero.Pack(), Vector2.one)
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Dash, hero.PackedEntity, Vector2.one)
         {
           Speed = new Vector2(_config.DashVelocity, 0),
           Direction = Vector2.right * hero.Get<BodyDirection>().Direction,

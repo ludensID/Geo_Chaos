@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
       foreach (EcsEntity pulling in _pullings)
       {
         foreach (EcsEntity force in _hookForces
-          .GetLoop(SpeedForceType.Hook, pulling.Pack()))
+          .GetLoop(SpeedForceType.Hook, pulling.PackedEntity))
         {
           ref MovementVector vector = ref force.Get<MovementVector>();
           if (vector.Speed == Vector2.zero && force.Get<Impact>().Vector != Vector2.zero)

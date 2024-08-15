@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
       foreach (EcsEntity timer in _patrollingTimers
         .Check<PatrollingTimer>(x => x.TimeLeft <= 0))
       {
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, timer.Pack(), Vector2.right)
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, timer.PackedEntity, Vector2.right)
         {
           Instant = true
         });

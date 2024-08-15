@@ -41,7 +41,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Chase
         float direction = Mathf.Sign(heroPosition.x - lamaPosition.x);
         
         foreach (EcsEntity force in _forceLoop
-          .GetLoop(SpeedForceType.Chase, lama.Pack()))
+          .GetLoop(SpeedForceType.Chase, lama.PackedEntity))
         {
           force.Change((ref MovementVector vector) => vector.Direction.x = direction);
         }

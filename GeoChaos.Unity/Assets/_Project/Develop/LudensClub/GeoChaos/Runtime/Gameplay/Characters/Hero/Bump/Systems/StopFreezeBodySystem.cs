@@ -34,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Bump
     {
       foreach (EcsEntity hero in _frozenHeroes)
       {
-        _forces.Check<Owner>(x => x.Entity.EqualsTo(hero.Pack()));
+        _forces.Check<Owner>(x => x.Entity.EqualsTo(hero.PackedEntity));
         if (_forces.Any() || hero.Get<MovementVector>().Speed == Vector2.zero)
           hero.Del<BodyFreezing>();
       }

@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Chase
       foreach (EcsEntity lama in _lamas)
       {
         lama.Del<Chasing>();
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Chase, lama.Pack(), Vector2.right)
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Chase, lama.PackedEntity, Vector2.right)
         {
           Instant = true
         });
