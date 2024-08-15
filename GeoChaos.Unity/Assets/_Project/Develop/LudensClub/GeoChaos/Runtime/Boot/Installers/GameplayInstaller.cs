@@ -67,7 +67,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindFrogTreeCreator();
 
       BindTreeCreatorService();
-      
+
       BindEcsDisposer();
       BindEcsSystemFactory();
       BindInputWorldWrapper();

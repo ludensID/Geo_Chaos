@@ -58,5 +58,16 @@ namespace LudensClub.GeoChaos.Runtime.Utils
 
       return -1;
     }
+
+    public static T FindNonAlloc<T>(this List<T> obj, IPredicate<T> predicate)
+    {
+      foreach (T value in obj)
+      {
+        if (predicate.Predicate(value))
+          return value;
+      }
+
+      return default(T);
+    }
   }
 }

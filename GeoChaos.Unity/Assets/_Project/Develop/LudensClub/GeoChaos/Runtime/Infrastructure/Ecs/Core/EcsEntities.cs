@@ -53,10 +53,13 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
     public EcsEntities Check<TComponent>(Predicate<TComponent> predicate) where TComponent : struct, IEcsComponent
     {
-      _tempPredicates.Add(new EcsPredicate<TComponent>(predicate, World.GetPool<TComponent>()));
+      EcsPredicate<TComponent> ecsPredicate = EcsPredicatePool.PopPredicate<TComponent>();
+      ecsPredicate.Predicate = predicate;
+      ecsPredicate.Pool = World.GetPool<TComponent>();
+      _tempPredicates.Add(ecsPredicate);
       return this;
     }
-    
+
     public EcsEntities Where<TComponent>(Predicate<TComponent> predicate) where TComponent : struct, IEcsComponent
     {
       _predicates.Add(new EcsPredicate<TComponent>(predicate, World.GetPool<TComponent>()));
@@ -100,7 +103,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
         while (_enumerator.MoveNext())
         {
           _entities._invoker.I = _enumerator.Current;
-          if (_entities._predicates.AllNonAlloc(_entities._invoker) 
+          if (_entities._predicates.AllNonAlloc(_entities._invoker)
             && _entities._tempPredicates.AllNonAlloc(_entities._invoker))
           {
             return true;
@@ -114,6 +117,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       public void Dispose()
       {
         _enumerator.Dispose();
+        foreach (IEcsPredicate predicate in _entities._tempPredicates)
+          EcsPredicatePool.PushPredicate(predicate);
+
         _entities._tempPredicates.Clear();
       }
     }
