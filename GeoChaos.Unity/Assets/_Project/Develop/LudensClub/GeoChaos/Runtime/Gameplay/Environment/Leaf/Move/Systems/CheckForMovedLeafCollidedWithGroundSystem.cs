@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Move
       foreach (EcsEntity col in _oneSideCollisions)
       {
         ref OneSideCollision collision = ref col.Get<OneSideCollision>();
-        DamageCollisionInfo info = _collisionSvc.Info;
+        CollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackByMasterEntity(_game)
           && info.Master.Has<LeafTag>()

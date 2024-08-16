@@ -33,6 +33,8 @@ MonoBehaviour:
           rid: 2072451100926804295
       - Value:
           rid: 2072451100888530944
+      - Value:
+          rid: 2072451147531026432
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
@@ -57,4 +59,8 @@ MonoBehaviour:
       data: 
     - rid: 2072451100926804297
       type: {class: Poolable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
+      data: 
+    - rid: 2072451147531026432
+      type: {class: DestroyableAfterCollision, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying,
+        asm: GeoChaos.Runtime}
       data: 

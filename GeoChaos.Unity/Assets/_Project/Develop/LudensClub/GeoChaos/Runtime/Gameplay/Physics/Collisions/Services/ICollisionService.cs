@@ -6,7 +6,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public interface ICollisionService
   {
-    DamageCollisionInfo Info { get; }
+    CollisionInfo Info { get; }
     void AssignCollision(TwoSideCollision collision);
     void AssignCollision(OneSideCollision collision);
     bool TrySelectByMasterCollider(Predicate<PackedCollider> selector, bool sync = true);

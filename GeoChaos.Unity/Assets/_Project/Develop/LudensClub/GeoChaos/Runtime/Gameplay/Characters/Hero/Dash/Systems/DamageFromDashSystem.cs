@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash
       foreach (EcsEntity col in _collisions)
       {
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
-        DamageCollisionInfo info = _collisionSvc.Info;
+        CollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackBothEntities(_game)
           && _collisionSvc.TrySelectByColliderTypes(ColliderType.Dash, ColliderType.Body)

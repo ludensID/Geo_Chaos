@@ -39,6 +39,11 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float BiteTime;
     public float HitCooldown;
 
+    public float DamageFromBody;
+    public float DamageFrogBite;
+    public float DamageFromJump;
+    public float DamageFromTongue;
+
     [Title("Watch")]
     public float WatchTime;
 

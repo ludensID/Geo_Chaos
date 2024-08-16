@@ -38,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Attack
       {
         ref TwoSideCollision collision = ref col.Get<TwoSideCollision>();
         _collisionSvc.AssignCollision(collision);
-        DamageCollisionInfo info = _collisionSvc.Info;
+        CollisionInfo info = _collisionSvc.Info;
         if (_collisionSvc.TryUnpackBothEntities(_game)
           && _collisionSvc.TrySelectByEntitiesTag<LamaTag, HeroTag>()
           && info.MasterCollider.Type == ColliderType.Attack

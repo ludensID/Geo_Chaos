@@ -9,6 +9,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack
   {
     public FrogAttackFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<DamageFromFrogSystem>());
+      
       Add(systems.Create<FrogAttackSystem>());
       
       Add(systems.Create<DeleteFrogAttackFinishedEventSystem>());

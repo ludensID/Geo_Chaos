@@ -3,7 +3,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
-  public class DamageCollisionInfo
+  public class CollisionInfo
   {
     public PackedCollider MasterCollider;
     public PackedCollider TargetCollider;

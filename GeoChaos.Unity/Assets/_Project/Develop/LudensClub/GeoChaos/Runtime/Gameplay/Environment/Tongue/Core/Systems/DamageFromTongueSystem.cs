@@ -1,29 +1,31 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Tongue
 {
-  public class DamageFromHeroAttackSystem : IEcsRunSystem
+  public class DamageFromTongueSystem : IEcsRunSystem
   {
     private readonly ICollisionService _collisionSvc;
     private readonly EcsWorld _message;
-    private readonly HeroConfig _config;
     private readonly EcsWorld _game;
     private readonly EcsEntities _collisions;
+    private readonly FrogConfig _config;
 
-    public DamageFromHeroAttackSystem(MessageWorldWrapper messageWorldWrapper,
+    public DamageFromTongueSystem(MessageWorldWrapper messageWorldWrapper,
       GameWorldWrapper gameWorldWrapper,
-      IConfigProvider configProvider,
-      ICollisionService collisionSvc)
+      ICollisionService collisionSvc,
+      IConfigProvider configProvider)
     {
       _collisionSvc = collisionSvc;
       _message = messageWorldWrapper.World;
       _game = gameWorldWrapper.World;
-      _config = configProvider.Get<HeroConfig>();
+      _config = configProvider.Get<FrogConfig>();
 
       _collisions = _message
         .Filter<TwoSideCollision>()
@@ -38,15 +40,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack
         CollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackBothEntities(_game)
-          && _collisionSvc.TrySelectByMasterEntity(x => x.Has<HeroTag>())
-          && info.MasterCollider.Type == ColliderType.Attack
-          && info.TargetCollider.Type == ColliderType.Body
-          && info.Target.Has<Damageable>()
-          && !info.PackedMaster.EqualsTo(info.PackedTarget))
+          && _collisionSvc.TrySelectByEntitiesTag<TongueTag, HeroTag>()
+          && info.TargetCollider.Type == ColliderType.Body)
         {
-          _message.CreateEntity()
-            .Add((ref DamageMessage message) => message.Info = new DamageInfo(info.PackedMaster, info.PackedTarget,
-              _config.HitDamages[info.Master.Get<ComboAttackCounter>().Count], info.MasterCollider.EntityPosition));
+            _message.CreateEntity()
+              .Add((ref DamageMessage message) => message.Info = new DamageInfo(info.PackedMaster, info.PackedTarget,
+                _config.DamageFromTongue, info.MasterCollider.EntityPosition));
         }
       }
     }

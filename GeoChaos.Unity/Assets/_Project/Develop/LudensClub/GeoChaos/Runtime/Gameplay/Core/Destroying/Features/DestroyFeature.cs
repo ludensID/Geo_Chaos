@@ -6,6 +6,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying
   {
     public DestroyFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<DestroyAfterCollisionSystem>());
+      
       Add(systems.Create<DestroyOwnedEntitiesSystem>());
       Add(systems.Create<DestroyEntitySystem>());
     }

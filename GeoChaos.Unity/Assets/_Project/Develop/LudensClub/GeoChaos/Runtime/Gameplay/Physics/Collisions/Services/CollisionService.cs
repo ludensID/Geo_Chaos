@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   public class CollisionService : ICollisionService
   {
-    public DamageCollisionInfo Info { get; } = new DamageCollisionInfo();
+    public CollisionInfo Info { get; } = new CollisionInfo();
 
     public void AssignCollision(TwoSideCollision collision)
     {
@@ -90,7 +90,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     public bool TryUnpackBothEntities(EcsWorld world)
     {
       return Info.MasterCollider.Entity.TryUnpackEntity(world, out Info.Master)
-        && Info.TargetCollider.Entity.TryUnpackEntity(world, out Info.Target);
+        & Info.TargetCollider.Entity.TryUnpackEntity(world, out Info.Target);
     }
 
     public bool TryUnpackByMasterEntity(EcsWorld world)
@@ -108,7 +108,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     public bool TryUnpackAnyEntity(EcsWorld world)
     {
       return Info.MasterCollider.Entity.TryUnpackEntity(world, out Info.Master)
-        || Info.TargetCollider.Entity.TryUnpackEntity(world, out Info.Target);
+        | Info.TargetCollider.Entity.TryUnpackEntity(world, out Info.Target);
     }
 
     public bool UnpackEntities(EcsWorld world)

@@ -7,6 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Tongue
   {
     public TongueFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<DamageFromTongueSystem>());
       Add(systems.Create<TongueMovingFeature>());
 
       Add(systems.Create<StunFrogWhenTongueDiedSystem>());
