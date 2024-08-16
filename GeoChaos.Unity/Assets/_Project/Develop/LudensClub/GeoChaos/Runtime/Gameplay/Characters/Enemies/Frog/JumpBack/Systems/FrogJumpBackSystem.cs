@@ -1,10 +1,11 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpCycle;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpBack
 {
@@ -29,11 +30,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpBack
     {
       foreach (EcsEntity frog in _jumpingFrogs)
       {
+        Vector2 bounds = frog.Get<PatrolBounds>().Bounds;
+        float center = (bounds.x + bounds.y) / 2;
+          
         frog
           .Del<JumpBackCommand>()
           .Add<JumpingBack>()
           .Add<StartJumpCycleCommand>()
-          .Replace((ref JumpPoint jumpPoint) => jumpPoint.Point = frog.Get<StartTransform>().Position.x)
+          .Replace((ref JumpPoint jumpPoint) => jumpPoint.Point = center)
           .Replace((ref FrogJumpContext ctx) =>
           {
             ctx.Length = _config.JumpBackLength;

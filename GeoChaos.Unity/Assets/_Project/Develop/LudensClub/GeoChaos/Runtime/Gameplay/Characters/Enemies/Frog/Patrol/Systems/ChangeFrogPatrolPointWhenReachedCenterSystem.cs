@@ -1,5 +1,4 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpCycle;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Jump;
@@ -10,16 +9,14 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
 {
-  public class FinishFrogPatrollingSystem : IEcsRunSystem
+  public class ChangeFrogPatrolPointWhenReachedCenterSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _patrollingFrogs;
-    private readonly FrogConfig _config;
 
-    public FinishFrogPatrollingSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
+    public ChangeFrogPatrolPointWhenReachedCenterSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
-      _config = configProvider.Get<FrogConfig>();
 
       _patrollingFrogs = _game
         .Filter<FrogTag>()
@@ -32,19 +29,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
     {
       foreach (EcsEntity frog in _patrollingFrogs)
       {
-        float currentPoint = frog.Get<ViewRef>().View.transform.position.x;
-        float nextPoint = frog.Get<JumpPoint>().Point;
+        Transform transform = frog.Get<ViewRef>().View.transform;
+        float currentPoint = transform.position.x;
         Vector2 bounds = frog.Get<PatrolBounds>().Bounds;
         float center = (bounds.x + bounds.y) / 2;
+        ref JumpPoint jumpPoint = ref frog.Get<JumpPoint>();
 
-        if (!nextPoint.ApproximatelyEqual(center)
-          && Mathf.Abs(nextPoint - currentPoint) < _config.SmallJumpLength)
+        if (jumpPoint.Point.ApproximatelyEqual(center)
+          && (currentPoint - center) * transform.right.x > 0)
         {
-          frog
-            .Del<Patrolling>()
-            .Has<DelayedPatrol>(false)
-            .Add<StopJumpCycleCommand>()
-            .Add<OnPatrolFinished>();
+          jumpPoint.Point = bounds[Random.Range(0, 2)];
         }
       }
     }
