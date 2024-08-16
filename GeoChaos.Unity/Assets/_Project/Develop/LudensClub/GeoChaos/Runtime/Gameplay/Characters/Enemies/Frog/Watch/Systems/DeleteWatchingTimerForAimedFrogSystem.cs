@@ -7,12 +7,12 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Watch
 {
-  public class DeleteWatchingTimerFroAimedFrogSystem : IEcsRunSystem
+  public class DeleteWatchingTimerForAimedFrogSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _watchingFrogs;
 
-    public DeleteWatchingTimerFroAimedFrogSystem(GameWorldWrapper gameWorldWrapper) 
+    public DeleteWatchingTimerForAimedFrogSystem(GameWorldWrapper gameWorldWrapper) 
     {
       _game = gameWorldWrapper.World;
 

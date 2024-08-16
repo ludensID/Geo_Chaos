@@ -40,7 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float HitCooldown;
 
     public float DamageFromBody;
-    public float DamageFrogBite;
+    public float DamageFromBite;
     public float DamageFromJump;
     public float DamageFromTongue;
 

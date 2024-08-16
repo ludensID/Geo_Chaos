@@ -65,7 +65,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack
 
       if (info.MasterCollider.Type == ColliderType.Attack && info.Master.Has<Biting>())
       {
-        damage = _config.DamageFrogBite;
+        damage = _config.DamageFromBite;
         return true;
       }
       

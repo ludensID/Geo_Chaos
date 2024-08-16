@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Watch
       Add(systems.Create<StartFrogWatchingTimerSystem>());
       
       Add(systems.Create<DeleteExpiredFrogWatchingTimerSystem>());
-      Add(systems.Create<DeleteWatchingTimerFroAimedFrogSystem>());
+      Add(systems.Create<DeleteWatchingTimerForAimedFrogSystem>());
     }
   }
 }

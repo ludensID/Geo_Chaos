@@ -27,7 +27,7 @@ MonoBehaviour:
   BiteTime: 1
   HitCooldown: 3
   DamageFromBody: 5
-  DamageFrogBite: 12
+  DamageFromBite: 12
   DamageFromJump: 12
   DamageFromTongue: 24
   WatchTime: 10
