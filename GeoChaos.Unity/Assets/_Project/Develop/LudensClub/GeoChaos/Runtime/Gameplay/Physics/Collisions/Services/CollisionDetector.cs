@@ -1,9 +1,9 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
+﻿using LudensClub.GeoChaos.Runtime.Props;
 using TriInspector;
 using UnityEngine;
 using Zenject;
 
-namespace LudensClub.GeoChaos.Runtime.Props
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 {
   [AddComponentMenu(ACC.Names.COLLISION_DETECTOR)]
   [DeclareFoldoutGroup(nameof(CollisionDetector), Title = "Detection Conditions")]

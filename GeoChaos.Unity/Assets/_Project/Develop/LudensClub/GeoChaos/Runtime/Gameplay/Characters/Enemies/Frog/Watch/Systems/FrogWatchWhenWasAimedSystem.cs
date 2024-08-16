@@ -19,8 +19,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Watch
 
       _frogs = _game
         .Filter<FrogTag>()
-        .Inc<WasTargetInView>()
-        .Exc<TargetInView>()
         .Exc<WatchCommand>()
         .Exc<Stunned>()
         .Collect();
@@ -30,7 +28,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Watch
     {
       foreach (EcsEntity frog in _frogs)
       {
-        frog.Add<WatchCommand>();
+        if (frog.Has<WasTargetInView>() && !frog.Has<TargetInView>()
+          || frog.Has<WasTargetInFront>() && !frog.Has<TargetInFront>())
+        {
+          frog.Add<WatchCommand>();
+        }
       }
     }
   }
