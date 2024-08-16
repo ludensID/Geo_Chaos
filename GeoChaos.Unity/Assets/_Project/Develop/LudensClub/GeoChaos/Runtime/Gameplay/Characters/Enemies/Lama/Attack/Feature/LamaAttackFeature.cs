@@ -27,6 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Attack
       Add(systems.Create<StopLamaAttackSystem>());
       Add(systems.Create<DeleteLamaStopAttackCommandSystem>());
 
+      Add(systems.Create<DamageFromLamaBodySystem>());
       Add(systems.Create<DamageFromLamaAttackSystem>());
     }
   }

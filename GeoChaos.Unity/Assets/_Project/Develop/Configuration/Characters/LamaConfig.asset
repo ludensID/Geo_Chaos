@@ -24,3 +24,4 @@ MonoBehaviour:
   ComboCooldown: 3
   HitDamage: 12
   BiteDamage: 24
+  DamageFromBody: 5

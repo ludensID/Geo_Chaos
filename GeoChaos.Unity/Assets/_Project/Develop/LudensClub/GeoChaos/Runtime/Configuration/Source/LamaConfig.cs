@@ -24,5 +24,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float ComboCooldown;
     public float HitDamage;
     public float BiteDamage;
+    public float DamageFromBody;
   }
 }
