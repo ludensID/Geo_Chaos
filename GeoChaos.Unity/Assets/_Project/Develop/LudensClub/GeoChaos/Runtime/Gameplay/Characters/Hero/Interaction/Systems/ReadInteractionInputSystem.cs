@@ -30,7 +30,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Interaction
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity _ in _inputs)
-      foreach (EcsEntity hero in _heroes)
+      foreach (EcsEntity hero in _heroes
+        .Check<MovementLayout>(x => x.Layer == MovementLayer.All))
       {
         hero.Add<InteractCommand>();
       }
