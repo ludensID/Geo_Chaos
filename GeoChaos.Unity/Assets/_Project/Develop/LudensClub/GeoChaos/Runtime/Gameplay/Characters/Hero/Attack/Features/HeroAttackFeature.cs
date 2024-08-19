@@ -10,7 +10,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack
       Add(systems.Create<DeleteHeroAttackFinishedEventSystem>());
       Add(systems.Create<ReadAttackInputSystem>());
       Add(systems.Create<ResetComboCounterSystem>());
+        
       Add(systems.Create<HeroAttackSystem>());
+      Add(systems.Create<DeleteHeroAttackCommandSystem>());
+        
       Add(systems.Create<StopHeroAttackSystem>());
       Add(systems.Create<DamageFromHeroAttackSystem>());
         
