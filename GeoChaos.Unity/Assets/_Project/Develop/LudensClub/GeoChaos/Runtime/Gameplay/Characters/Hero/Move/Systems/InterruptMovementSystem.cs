@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Move;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
@@ -17,6 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
       _movings = _game
         .Filter<HeroTag>()
         .Inc<Moving>()
+        .Exc<FreeFalling>()
         .Collect();
     }
     
