@@ -5,30 +5,41 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
   [Serializable]
-  [DeclareHorizontalGroup(nameof(SpineParameter<TParameterEnum>))]
-  public class SpineParameter<TParameterEnum> : ISpineParameter where TParameterEnum : Enum
+  [DeclareHorizontalGroup(nameof(SpineParameter))]
+  public class SpineParameter
   {
-    [GroupNext(nameof(SpineParameter<TParameterEnum>))]
+    [GroupNext(nameof(SpineParameter))]
     [SerializeField]
     [HideLabel]
-    private TParameterEnum _id;
+    private string _name;
 
     [SerializeField]
     [HideLabel]
     private SpineVariableType _variableType;
 
-    [SerializeReference]
-    [HideInInspector]
     private ISpineVariable _variable;
 
-    [SerializeField]
-    [HideInInspector]
-    private bool _isTrigger;
-
-    public TParameterEnum Id => _id;
-
+    public string Name => _name;
+    public SpineVariableType VariableType => _variableType;
     public ISpineVariable Variable => _variable;
 
-    public bool IsTrigger => _isTrigger;
+    public bool IsTrigger => _variableType == SpineVariableType.Trigger;
+
+    public SpineParameter()
+    {
+      _variable = GetVariable(_variableType);
+    }
+
+    private static ISpineVariable GetVariable(SpineVariableType type)
+    {
+      return type switch
+      {
+        SpineVariableType.Trigger => new SpineVariable<bool>(),
+        SpineVariableType.Bool => new SpineVariable<bool>(),
+        SpineVariableType.Integer => new SpineVariable<int>(),
+        SpineVariableType.Float => new SpineVariable<float>(),
+        _ => throw new ArgumentOutOfRangeException()
+      };
+    }
   }
 }

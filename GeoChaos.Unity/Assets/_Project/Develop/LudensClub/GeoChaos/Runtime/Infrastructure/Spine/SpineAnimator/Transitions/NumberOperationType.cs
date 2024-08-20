@@ -2,11 +2,11 @@
 {
   public enum NumberOperationType
   {
-    Equal,
-    NotEqual,
-    LessThan,
-    MoreThan,
-    LessThanOrEqual,
-    MoreThanOrEqual
+    Equal = 0,
+    NotEqual = 1,
+    LessThan = 2,
+    MoreThan = 3,
+    LessThanOrEqual = 4,
+    MoreThanOrEqual = 5
   }
 }

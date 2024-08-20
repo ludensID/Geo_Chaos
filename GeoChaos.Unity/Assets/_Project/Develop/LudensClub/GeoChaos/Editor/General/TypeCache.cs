@@ -10,19 +10,19 @@ namespace LudensClub.GeoChaos.Editor.General
     private readonly MemberCache<PropertyInfo> _propertyCache = new MemberCache<PropertyInfo>();
     private readonly MemberCache<MethodInfo> _methodCache = new MemberCache<MethodInfo>();
 
-    public FieldInfo GetCachedField(Type type, string s, bool isPrivate = false, bool isStatic = false)
+    public FieldInfo GetCachedField(Type type, string name, bool isPrivate = false, bool isStatic = false)
     {
-      return _fieldCache.GetMember(type, s, isPrivate, isStatic);
+      return _fieldCache.GetMember(type, name, isPrivate, isStatic);
     }
 
-    public PropertyInfo GetCachedProperty(Type type, string s, bool isPrivate = false, bool isStatic = false)
+    public PropertyInfo GetCachedProperty(Type type, string name, bool isPrivate = false, bool isStatic = false)
     {
-      return _propertyCache.GetMember(type, s, isPrivate, isStatic);
+      return _propertyCache.GetMember(type, name, isPrivate, isStatic);
     }
 
-    public MethodInfo GetCachedMethod(Type type, string s, bool isPrivate = false, bool isStatic = false)
+    public MethodInfo GetCachedMethod(Type type, string name, bool isPrivate = false, bool isStatic = false)
     {
-      return _methodCache.GetMember(type, s, isPrivate, isStatic);
+      return _methodCache.GetMember(type, name, isPrivate, isStatic);
     }
   }
 }

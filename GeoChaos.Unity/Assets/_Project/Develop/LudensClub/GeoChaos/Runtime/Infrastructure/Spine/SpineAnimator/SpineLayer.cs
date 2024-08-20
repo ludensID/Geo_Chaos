@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using Spine.Unity;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
   [Serializable]
-  public class SpineLayer<TAnimationEnum> where TAnimationEnum : Enum
+  public class SpineLayer
   {
-    public TAnimationEnum StartAnimation;
-    public List<ConfigurableSpineAnimation<TAnimationEnum>> Animations;
+    [SpineAnimation]
+    public string StartAnimation;
+
+    public List<ConfigurableSpineAnimation> Animations;
   }
 }

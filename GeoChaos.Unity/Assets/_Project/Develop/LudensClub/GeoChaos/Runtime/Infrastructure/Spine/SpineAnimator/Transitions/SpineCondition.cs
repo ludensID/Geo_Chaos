@@ -5,32 +5,49 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
   [Serializable]
-  [DeclareHorizontalGroup(nameof(SpineCondition<TParameterEnum>))]
-  public class SpineCondition<TParameterEnum> : ISpineCondition where TParameterEnum : Enum
+  [DeclareHorizontalGroup(nameof(SpineCondition))]
+  public class SpineCondition
   {
-    [GroupNext(nameof( SpineCondition<TParameterEnum>))]
+    [GroupNext(nameof(SpineCondition))]
+    [SerializeField]
     [HideLabel]
-    public TParameterEnum Parameter;
+    [SpineParameter]
+    [OnValueChanged(TriConstants.ON + nameof(Parameter) + TriConstants.CHANGED)]
+    private string _parameter;
 
     [SerializeReference]
     [HideReferencePicker]
     [InlineProperty]
     [HideLabel]
-    public ISpineProcessor Processor;
+    private ISpineProcessor _processor;
 
     public ISpineVariable Variable { get; set; }
+
+    public string Parameter
+    {
+      get => _parameter;
+      set => _parameter = value;
+    }
+
+    public ISpineProcessor Processor
+    {
+      get => _processor;
+      set => _processor = value;
+    }
 
     public bool Execute()
     {
       return Processor.Execute(Variable);
     }
 
-    public TIParameterEnum GetParameterId<TIParameterEnum>() where TIParameterEnum : Enum
+#if UNITY_EDITOR
+    [NonSerialized]
+    public bool WasChanged;
+    
+    private void OnParameterChanged()
     {
-      if (Parameter is not TIParameterEnum parameter)
-        throw new ArgumentException();
-
-      return parameter;
+      WasChanged = true;
     }
+#endif
   }
 }

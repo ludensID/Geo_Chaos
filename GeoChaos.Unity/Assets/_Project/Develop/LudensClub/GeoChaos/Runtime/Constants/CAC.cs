@@ -7,6 +7,7 @@
   {
     public const string PROJECT_MENU = "GeoChaos/";
     public const string CONFIG_MENU = PROJECT_MENU + "Configs/";
+    public const string SPINE_MENU = PROJECT_MENU + "Spine/";
     public const string ECS_MENU = PROJECT_MENU + "Ecs/";
     public const string POOL_MENU = CONFIG_MENU + "Pools/";
 
@@ -30,8 +31,8 @@
       public const string LEAF_POOL_MENU = POOL_MENU + "Leaf Pool";
       public const string LEAF_POOL_FILE = "LeafPoolConfig";
       
-      public const string TONGUE_POOL_CONFIG_MENU = POOL_MENU + "Tongue Pool";
-      public const string TONGUE_POOL_CONFIG_FILE = "TonguePoolConfig";
+      public const string TONGUE_POOL_MENU = POOL_MENU + "Tongue Pool";
+      public const string TONGUE_POOL_FILE = "TonguePoolConfig";
 
       public const string GAS_CLOUD_POOL_MENU = POOL_MENU + "Gas Cloud Pool";
       public const string GAS_CLOUD_POOL_FILE = "GasCloudPoolConfig";
@@ -57,8 +58,8 @@
       public const string LEAF_MENU = CONFIG_MENU + "Leaf";
       public const string LEAF_FILE = "LeafConfig";
 
-      public const string ECS_UNIVERSE_CONFIG_MENU = CONFIG_MENU + "Ecs Universe";
-      public const string ECS_UNIVERSE_CONFIG_FILE = "EcsUniverseConfig";
+      public const string ECS_UNIVERSE_MENU = CONFIG_MENU + "Ecs Universe";
+      public const string ECS_UNIVERSE_FILE = "EcsUniverseConfig";
 
       public const string FROG_MENU = CONFIG_MENU + "Frog";
       public const string FROG_FILE = "FrogConfig";
@@ -72,8 +73,11 @@
       public const string SHROOM_MENU = CONFIG_MENU + "Shroom";
       public const string SHROOM_FILE = "ShroomConfig";
       
-      public const string GAS_CLOUD_CONFIG_MENU = CONFIG_MENU + "Gas Cloud";
-      public const string GAS_CLOUD_CONFIG_FILE = "GasCloudConfig";
+      public const string GAS_CLOUD_MENU = CONFIG_MENU + "Gas Cloud";
+      public const string GAS_CLOUD_FILE = "GasCloudConfig";
+      
+      public const string SPINE_ANIMATOR_MENU = SPINE_MENU + "Spine Animator";
+      public const string SPINE_ANIMATOR_FILE = "NewSpineAnimator";
     }
   }
 }

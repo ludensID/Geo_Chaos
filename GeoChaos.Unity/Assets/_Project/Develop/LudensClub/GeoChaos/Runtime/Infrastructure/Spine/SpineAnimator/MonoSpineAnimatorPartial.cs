@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
-  public partial class MonoSpineAnimator<TParameterEnum, TAnimationEnum>
+  public partial class MonoSpineAnimator
   {
-    private readonly Dictionary<TParameterEnum, object> _parameters = new Dictionary<TParameterEnum, object>();
+    private readonly Dictionary<string, object> _parameters = new Dictionary<string, object>();
 
     [SerializeField]
     [ListDrawerSettings(Draggable = false, HideRemoveButton = true, HideAddButton = true)]
@@ -29,9 +29,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 
     private void CheckUserParameters()
     {
-      foreach (KeyValuePair<TParameterEnum, object> pair in _parameters)
+      foreach (KeyValuePair<string, object> pair in _parameters)
       {
-        ISpineVariable variable = _showParameters.Find(x => x.Id.Equals(pair.Key)).Variable;
+        ISpineVariable variable = _showParameters.Find(x => x.ParameterName == pair.Key).Variable;
         object value = variable.GetValue();
         if (!value.Equals(pair.Value))
         {
@@ -46,7 +46,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       if (_dirty)
       {
         foreach (VariableTuple tuple in _showParameters)
-          _parameters[tuple.Id] = tuple.Variable.GetValue();
+          _parameters[tuple.ParameterName] = tuple.Variable.GetValue();
 
         _dirty = false;
       }
@@ -59,7 +59,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       [GroupNext(nameof(VariableTuple))]
       [HideLabel]
       [DisplayAsString]
-      public TParameterEnum Id;
+      public string ParameterName;
 
       [SerializeReference]
       [HideReferencePicker]
@@ -67,9 +67,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       [HideLabel]
       public ISpineVariable Variable;
 
-      public VariableTuple(TParameterEnum id, ISpineVariable variable)
+      public VariableTuple(string parameterName, ISpineVariable variable)
       {
-        Id = id;
+        ParameterName = parameterName;
         Variable = variable;
       }
     }

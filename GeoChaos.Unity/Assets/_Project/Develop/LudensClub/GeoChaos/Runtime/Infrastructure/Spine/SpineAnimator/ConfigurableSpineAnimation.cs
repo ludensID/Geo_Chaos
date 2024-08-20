@@ -4,12 +4,11 @@ using Spine.Unity;
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
   [Serializable]
-  public class ConfigurableSpineAnimation<TAnimationEnum> where TAnimationEnum : Enum
+  public class ConfigurableSpineAnimation
   {
-    public TAnimationEnum Name;
-
-    public AnimationReferenceAsset Asset;
-
+    [SpineAnimation]
+    public string Name;
+      
     public float Speed = 1;
 
     public bool IsLoop;

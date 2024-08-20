@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
   [Serializable]
-  public class SpineAnimationState<TAnimationEnum> where TAnimationEnum : Enum
+  public class SpineAnimationState
   {
-    [HideInInspector]
-    public readonly List<SpineAnimationTransition<TAnimationEnum>> Transitions =
-      new List<SpineAnimationTransition<TAnimationEnum>>();
+    public readonly List<SpineAnimationTransition> Transitions =
+      new List<SpineAnimationTransition>();
     
-    public ConfigurableSpineAnimation<TAnimationEnum> Animation;
+    public ConfigurableSpineAnimation Animation;
 
-    public SpineAnimationState(ConfigurableSpineAnimation<TAnimationEnum> animation)
+    public SpineAnimationState(ConfigurableSpineAnimation animation)
     {
       Animation = animation;
     }
@@ -22,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     {
     }
 
-    public SpineAnimationTransition<TAnimationEnum> FindFirstCompletedCondition() =>
+    public SpineAnimationTransition FindFirstCompletedCondition() =>
       Transitions.Find(x => x.Execute());
   }
 }

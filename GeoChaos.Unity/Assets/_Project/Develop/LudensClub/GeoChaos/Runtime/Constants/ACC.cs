@@ -78,6 +78,7 @@
       public const string LEAFY_SPIRIT_GIZMO = PROPS + "Leafy Spirit Gizmo";
 
       public const string BUSH_ANIMATOR = ANIMATORS + "Bush Animator";
+      public const string MONO_SPINE_ANIMATOR = ANIMATORS + "Spine Animator";
     }
   }
 }

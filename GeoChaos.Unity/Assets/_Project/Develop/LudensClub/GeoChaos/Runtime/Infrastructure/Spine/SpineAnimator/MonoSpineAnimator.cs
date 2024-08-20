@@ -7,23 +7,23 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
+  [AddComponentMenu(ACC.Names.MONO_SPINE_ANIMATOR)]
   [RequireComponent(typeof(MonoInjector))]
-  public abstract partial class MonoSpineAnimator<TParameterEnum, TAnimationEnum> : MonoBehaviour, IInitializable, ITickable
-    where TParameterEnum : Enum where TAnimationEnum : Enum
+  public partial class MonoSpineAnimator : MonoBehaviour, IInitializable, ITickable
   {
     public SkeletonAnimation Skeleton;
     [LabelText("Animator Data")]
-    public SpineAnimatorAsset<TParameterEnum, TAnimationEnum> SharedAnimatorData;
+    public SpineAnimatorAsset SharedAnimatorData;
 
     [SerializeField]
     [ReadOnly]
     [InlineProperty]
     [HideLabel]
-    protected SpineAnimator<TAnimationEnum> _animator;
+    protected SpineAnimator _animator;
 
     protected bool _needCheck;
 
-    protected SpineAnimatorAsset<TParameterEnum, TAnimationEnum> _asset;
+    protected SpineAnimatorAsset _asset;
     protected int _sharedAssetId;
     protected bool _delayInitialize;
     
@@ -93,11 +93,11 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       _ticker.Remove(this);
     }
 
-    public virtual void SetVariable<TVariable>(TParameterEnum id, TVariable value)
+    public virtual void SetVariable<TVariable>(string parameterName, TVariable value)
     {
-      SpineParameter<TParameterEnum> parameter = _asset.Parameters.Find(x => x.Id.Equals(id));
+      SpineParameter parameter = _asset.Parameters.Find(x => x.Name == parameterName);
       if (parameter == null)
-        throw new ArgumentException($"Parameter {id} is not found");
+        throw new ArgumentException($"Parameter {parameterName} is not found");
 
       var variableValue = parameter.Variable.GetValue<TVariable>();
       if (!variableValue.Equals(value))
@@ -107,45 +107,66 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       }
     }
 
+    public virtual void SetTrigger(string parameterName, bool value = true)
+    {
+      SetVariable(parameterName, value);
+    }
+    
+    public virtual void SetVariable<TVariable>(int parameterHash, TVariable value)
+    {
+      if (!_asset.TryGetParameterByHash(parameterHash, out SpineParameter parameter))
+        throw new ArgumentException($"Parameter with {parameterHash} hash is not found");
+
+      var variableValue = parameter.Variable.GetValue<TVariable>();
+      if (!variableValue.Equals(value))
+      {
+        parameter.Variable.SetValue(value);
+        _needCheck = true;
+      }
+    }
+    
+    public virtual void SetTrigger(int parameterHash, bool value = true)
+    {
+      SetVariable(parameterHash, value);
+    }
+
     private void CreateAnimator()
     {
       _animator?.Dispose();
 
       _sharedAssetId = SharedAnimatorData.GetInstanceID();
       _asset = Instantiate(SharedAnimatorData);
-      _animator = new SpineAnimator<TAnimationEnum>(Skeleton, _asset.Layers);
-      foreach (SpineAnimatorLayer<TAnimationEnum> layer in _animator.Layers)
+      _animator = new SpineAnimator(Skeleton, _asset.Layers);
+      foreach (SpineAnimatorLayer layer in _animator.Layers)
         layer.OnTransitionPerformed += ResetTriggers;
       
-      foreach (SpineTransition<TParameterEnum, TAnimationEnum> transition in _asset.Transitions)
+      foreach (SpineTransition transition in _asset.Transitions)
       {
         _animator.AddTransition(transition);
-        foreach (ISpineCondition condition in transition.Conditions)
+        foreach (SpineCondition condition in transition.Conditions)
         {
-          var id = condition.GetParameterId<TParameterEnum>();
-          condition.Variable = _asset.Parameters.Find(x => x.Id.Equals(id)).Variable;
+          condition.Variable = _asset.GetParameterByHash(condition.Parameter.GetHashCode()).Variable;
         }
       }
       
 #if UNITY_EDITOR
       _showParameters.Clear();
-      _showParameters.AddRange(_asset.Parameters.Select(x => new VariableTuple(x.Id, x.Variable)));
+      _showParameters.AddRange(_asset.Parameters.Select(x => new VariableTuple(x.Name, x.Variable)));
       
       _parameters.Clear();
       foreach (VariableTuple tuple in _showParameters)
-        _parameters.Add(tuple.Id, tuple.Variable.GetValue());
+        _parameters.Add(tuple.ParameterName, tuple.Variable.GetValue());
 #endif
 
       if (_initialized)
         Initialize();
     }
 
-    private void ResetTriggers(SpineAnimationTransition<TAnimationEnum> transition)
+    private void ResetTriggers(SpineAnimationTransition transition)
     {
-      foreach (ISpineCondition condition in transition.Data.Conditions)
+      foreach (SpineCondition condition in transition.Data.Conditions)
       {
-        var id = condition.GetParameterId<TParameterEnum>();
-        SpineParameter<TParameterEnum> parameter = _asset.Parameters.Find(x => x.Id.Equals(id));
+        SpineParameter parameter = _asset.GetParameterByHash(condition.Parameter.GetHashCode());
         if(parameter.IsTrigger)
           parameter.Variable.SetValue(false);
       }

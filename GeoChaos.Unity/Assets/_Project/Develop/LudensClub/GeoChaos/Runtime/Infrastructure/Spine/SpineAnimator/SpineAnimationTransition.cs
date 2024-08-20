@@ -4,13 +4,13 @@ using LudensClub.GeoChaos.Runtime.Utils;
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
   [Serializable]
-  public class SpineAnimationTransition<TAnimationEnum> where TAnimationEnum : Enum
+  public class SpineAnimationTransition
   {
-    private readonly Predicate<ISpineCondition> _executor = x => x.Execute();
+    private readonly Predicate<SpineCondition> _executor = x => x.Execute();
     
-    public ISpineTransition<TAnimationEnum> Data;
+    public SpineTransition Data;
 
-    public SpineAnimationState<TAnimationEnum> Destination;
+    public SpineAnimationState Destination;
 
     public bool Execute()
     {

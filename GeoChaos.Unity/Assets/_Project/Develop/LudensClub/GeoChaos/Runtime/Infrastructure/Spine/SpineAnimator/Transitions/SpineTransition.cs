@@ -1,46 +1,83 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using Spine.Unity;
+using TriInspector;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
   [Serializable]
-  public class SpineTransition<TParameterEnum, TAnimationEnum> : ISpineTransition<TAnimationEnum>
-    where TParameterEnum : Enum where TAnimationEnum : Enum
+  public class SpineTransition
   {
     [SerializeField]
-    private List<TAnimationEnum> _from = new List<TAnimationEnum>();
+    [SpineAnimation]
+    private List<string> _origins = new List<string>();
 
     [SerializeField]
-    private TAnimationEnum _to;
+    [SpineAnimation]
+    [ValidateInput(TriConstants.VALIDATE + nameof(Destination))]
+    private string _destination;
 
     [SerializeField]
-    private List<SpineCondition<TParameterEnum>> _conditions = new List<SpineCondition<TParameterEnum>>();
+    [OnValueChanged(TriConstants.ON + nameof(Conditions) + TriConstants.CHANGED)]
+    [ValidateInput(TriConstants.VALIDATE + nameof(Conditions))]
+    private List<SpineCondition> _conditions = new List<SpineCondition>();
 
     [SerializeField]
     private bool _isHold;
 
-    public List<TAnimationEnum> Origins => _from;
-    public TAnimationEnum Destination => _to;
-    public List<ISpineCondition> Conditions => _conditions.Cast<ISpineCondition>().ToList();
+    public List<string> Origins => _origins;
+    public string Destination => _destination;
+    public List<SpineCondition> Conditions => _conditions;
     public bool IsHold => _isHold;
 
-
-    public List<TIAnimationEnum> GetOrigins<TIAnimationEnum>()
+#if UNITY_EDITOR
+    [Button("Clear")]
+    [PropertyOrder(0)]
+    [GUIColor(1f,0f,0f)]
+    private void Clear()
     {
-      if (_from is not List<TIAnimationEnum> from)
-        throw new ArgumentException();
+      _origins.Clear();
+      _destination = "";
+      _conditions.Clear();
+      _isHold = false;
+    }
+      
+    private TriValidationResult ValidateDestination()
+    {
+      if (_origins.Contains(_destination))
+      {
+        return TriValidationResult.Error("Animation can not transit into itself. Change destination animation or remove this animation from origin animations");
+      }
 
-      return from;
+      return TriValidationResult.Valid;
+    }
+    
+    private void OnConditionsChanged()
+    {
+      for (var i = 0; i < Conditions.Count; i++)
+      {
+        for (int j = i + 1; j < Conditions.Count; j++)
+        {
+          if (Conditions[i].Parameter == Conditions[j].Parameter
+            && Conditions[i].Processor == Conditions[j].Processor)
+          {
+            Conditions[j].WasChanged = true;
+          }
+        }
+      }
     }
 
-    public TIAnimationEnum GetDestination<TIAnimationEnum>()
+    private TriValidationResult ValidateConditions()
     {
-      if (_to is not TIAnimationEnum to)
-        throw new ArgumentException();
+      foreach (SpineCondition condition in Conditions)
+      {
+        if (Conditions.Exists(x => condition != x && condition.Parameter == x.Parameter))
+          return TriValidationResult.Error($"Condition with {condition.Parameter} parameter already exists");
+      }
 
-      return to;
+      return TriValidationResult.Valid;
     }
+#endif
   }
 }

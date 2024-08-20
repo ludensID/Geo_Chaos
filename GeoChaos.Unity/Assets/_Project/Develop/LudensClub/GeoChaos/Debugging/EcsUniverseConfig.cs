@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Debugging
 {
-  [CreateAssetMenu(menuName = CAC.Names.ECS_UNIVERSE_CONFIG_MENU, fileName = CAC.Names.ECS_UNIVERSE_CONFIG_FILE)]
+  [CreateAssetMenu(menuName = CAC.Names.ECS_UNIVERSE_MENU, fileName = CAC.Names.ECS_UNIVERSE_FILE)]
   public class EcsUniverseConfig : ScriptableObject
   {
     public readonly EcsComponentComparer Comparer = new EcsComponentComparer();

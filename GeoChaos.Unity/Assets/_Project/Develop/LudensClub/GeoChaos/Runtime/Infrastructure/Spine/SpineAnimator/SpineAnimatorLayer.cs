@@ -3,44 +3,40 @@ using System.Collections.Generic;
 using Spine;
 using Spine.Unity;
 using TriInspector;
-using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 {
   [Serializable]
-  public class SpineAnimatorLayer<TAnimationEnum> : IDisposable where TAnimationEnum : Enum
+  public class SpineAnimatorLayer : IDisposable
   {
-    [HideInInspector]
+    public readonly List<SpineAnimationState> States = new List<SpineAnimationState>();
     public readonly SkeletonAnimation Skeleton;
-
-    [HideInInspector]
-    public readonly List<SpineAnimationState<TAnimationEnum>> States = new List<SpineAnimationState<TAnimationEnum>>();
 
     public int Id;
 
     [NonSerialized]
-    public SpineAnimationState<TAnimationEnum> Start;
+    public SpineAnimationState Start;
 
     [NonSerialized]
-    public SpineAnimationState<TAnimationEnum> Current;
+    public SpineAnimationState Current;
 
     [NonSerialized]
-    public SpineAnimationTransition<TAnimationEnum> NextTransition;
+    public SpineAnimationTransition NextTransition;
 
     [NonSerialized]
     public bool Hold;
 
     [ShowInInspector]
     [LabelText(nameof(Current))]
-    public TAnimationEnum CurrentAnimation => Current != null ? Current.Animation.Name : default(TAnimationEnum);
+    public string CurrentAnimation => Current != null ? Current.Animation.Name : "None";
 
     [ShowInInspector]
     [LabelText("Next")]
-    public TAnimationEnum NextAnimation => Hold && NextTransition.Destination != null
+    public string NextAnimation => Hold && NextTransition.Destination != null
       ? NextTransition.Destination.Animation.Name
-      : default(TAnimationEnum);
+      : "None";
 
-    public event Action<SpineAnimationTransition<TAnimationEnum>> OnTransitionPerformed;
+    public event Action<SpineAnimationTransition> OnTransitionPerformed;
 
     public SpineAnimatorLayer(int id, SkeletonAnimation skeleton)
     {
@@ -48,15 +44,16 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       Skeleton = skeleton;
     }
 
-    public void ChangeAnimation(SpineAnimationState<TAnimationEnum> to)
+    public void ChangeAnimation(SpineAnimationState to)
     {
       Current = to;
       if (CheckTransition())
         return;
-      // UnityEngine.Debug.Log($"{_enumName} Change to {Current.Animation.Name}");
-      if (Current.Animation.Asset)
+      // UnityEngine.Debug.Log($"{Skeleton.AnimationName} Change to {CurrentAnimation}");
+      if (Current.Animation.Name != "")
       {
-        TrackEntry track = Skeleton.state.SetAnimation(Id, Current.Animation.Asset, Current.Animation.IsLoop);
+        Animation animation = Skeleton.Skeleton.Data.FindAnimation(Current.Animation.Name);
+        TrackEntry track = Skeleton.state.SetAnimation(Id, animation, Current.Animation.IsLoop);
         track.TimeScale = Current.Animation.Speed;
       }
       else
@@ -66,7 +63,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       }
     }
 
-    public void ChangeAnimation(SpineAnimationTransition<TAnimationEnum> transition)
+    public void ChangeAnimation(SpineAnimationTransition transition)
     {
       OnTransitionPerformed?.Invoke(transition);
       ChangeAnimation(transition.Destination);
@@ -75,7 +72,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     public bool CheckTransition()
     {
       ClearNext();
-      SpineAnimationTransition<TAnimationEnum> transition = Current?.FindFirstCompletedCondition();
+      SpineAnimationTransition transition = Current?.FindFirstCompletedCondition();
       // UnityEngine.Debug.Log($"It has {Current?.Transitions?.Count(x => x.Execute()) ?? 0} transitions");
       if (transition == null)
         return false;
@@ -103,7 +100,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
       }
     }
 
-    public void DelayAnimation(SpineAnimationTransition<TAnimationEnum> transition)
+    public void DelayAnimation(SpineAnimationTransition transition)
     {
       // UnityEngine.Debug.Log($"{_enumName} Delay from {Skeleton.state.Tracks.Items[0].Animation.Name}");
       // UnityEngine.Debug.Log($"{_enumName} Delay to {to.Animation.Name}");
@@ -114,7 +111,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
 
     public void OnAnimationCompleted(TrackEntry trackEntry)
     {
-      if (trackEntry.Animation != Current.Animation.Asset.Animation || trackEntry.TrackIndex != Id) return;
+      if (trackEntry.Animation.Name != Current.Animation.Name || trackEntry.TrackIndex != Id) return;
 
       // UnityEngine.Debug.Log($"{_enumName} Complete {trackEntry.Animation.Name}");
       // UnityEngine.Debug.Log($"{_enumName} Transit to {Next.Animation.Name}");

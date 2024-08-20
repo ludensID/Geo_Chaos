@@ -7,11 +7,11 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
   public class SpineBoolProcessor : ISpineProcessor
   {
     [HideLabel]
-    public bool Number; 
+    public bool Flag; 
     
     public bool Execute(ISpineVariable variable)
     {
-      return variable.GetValue<bool>() == Number;
+      return variable.GetValue<bool>() == Flag;
     }
   }
 }
