@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies
 {
-  public class TargetInBoundsAlgorithm : ISelectionAlgorithm
+  public class TargetInHorizontalBoundsAlgorithm : ISelectionAlgorithm
   {
     public void Select(EcsEntities origins, EcsEntities marks)
     {

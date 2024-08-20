@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.De
       _algorithms.AddRange(new ISelectionAlgorithm[]
       {
         factory.Create<TargetInAttackBoundsAlgorithm>(),
-        factory.Create<TargetNearByVerticalAlgorithm>(),
+        factory.Create<TargetInVerticalBoundsAlgorithm>(),
         factory.Create<TargetReachedAlgorithm>()
       });
     }

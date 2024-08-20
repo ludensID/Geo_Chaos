@@ -9,8 +9,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Detection
     {
       _algorithms.AddRange(new ISelectionAlgorithm[]
       {
-        factory.Create<TargetInBoundsAlgorithm>(),
-        factory.Create<TargetNearByVerticalAlgorithm>(),
+        factory.Create<TargetInHorizontalBoundsAlgorithm>(),
+        factory.Create<TargetInVerticalBoundsAlgorithm>(),
         factory.Create<TargetInViewAlgorithm>()
       });
     }

@@ -7,6 +7,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Detection.Selection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring;
@@ -88,6 +89,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindFrogTargetInViewSelector();
       BindFrogTargetInFrontSelector();
       BindFrogTargetInBackSelector();
+      BindTargetInBoundsSelector();
       
       BindDragForceService();
       BindADControlService();
@@ -120,6 +122,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
       
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindTargetInBoundsSelector()
+    {
+      Container
+        .BindInterfacesAndSelfTo<TargetInBoundsSelector>()
+        .AsSingle();
     }
 
     private void BindZombieTreeCreator()

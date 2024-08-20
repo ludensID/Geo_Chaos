@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection
 {
-  public class TargetNearByVerticalAlgorithm : ISelectionAlgorithm
+  public class TargetInVerticalBoundsAlgorithm : ISelectionAlgorithm
   {
     public void Select(EcsEntities origins, EcsEntities marks)
     {
@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection
         float originPoint = origin.Get<ViewRef>().View.transform.position.y;
         Rect bounds = selection.Get<PatrolBounds>().Bounds;
         
-        if (bounds.yMin < originPoint && originPoint < bounds.yMax)
+        if (originPoint < bounds.yMin && bounds.yMax < originPoint)
           selection.Del<Marked>();
       }
     }
