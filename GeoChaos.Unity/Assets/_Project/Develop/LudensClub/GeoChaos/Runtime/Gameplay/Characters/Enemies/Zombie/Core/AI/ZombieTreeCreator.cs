@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Wait;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Patrol;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Wait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI;
@@ -19,6 +20,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie
     public BehaviourTree Create(EcsEntity entity)
     {
       return _builder.Create(entity)
+        .AddSequence()
+        .ToChild()
+        .AddCondition<CheckForZombiePatrollingStrategy>()
+        .AddAction<ZombiePatrollingStrategy>()
+        .ToParent()
         .AddSequence()
         .ToChild()
         .AddCondition<CheckForZombieWaitingStrategy>()
