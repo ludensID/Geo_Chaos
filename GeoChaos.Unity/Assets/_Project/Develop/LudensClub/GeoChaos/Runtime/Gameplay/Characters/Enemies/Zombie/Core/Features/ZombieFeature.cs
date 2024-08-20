@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Wait;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie
 {
@@ -6,6 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie
   {
     public ZombieFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<ZombieWaitFeature>());
     }
   }
 }

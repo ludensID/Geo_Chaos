@@ -13,1319 +13,1331 @@ MonoBehaviour:
   m_Name: EcsUniverseConfig
   m_EditorClassIdentifier: 
   ComponentOrder:
-  - Name: TongueTag
+  - Name: ZombieTag
     Index: 0
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: DoorTag
+  - Name: TongueTag
     Index: 1
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: FadingPlatformTag
+  - Name: DoorTag
     Index: 2
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: HealthShardTag
+  - Name: FadingPlatformTag
     Index: 3
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: HeroTag
+  - Name: HealthShardTag
     Index: 4
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: KeyTag
+  - Name: HeroTag
     Index: 5
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: LamaTag
+  - Name: KeyTag
     Index: 6
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: LeafTag
+  - Name: LamaTag
     Index: 7
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: LeafySpiritTag
+  - Name: LeafTag
     Index: 8
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: LeverTag
+  - Name: LeafySpiritTag
     Index: 9
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: RingTag
+  - Name: LeverTag
     Index: 10
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: ShardTag
+  - Name: RingTag
     Index: 11
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: SpawnPointTag
+  - Name: ShardTag
     Index: 12
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: SpikeTag
+  - Name: SpawnPointTag
     Index: 13
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: FrogTag
+  - Name: SpikeTag
     Index: 14
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: EnemyTag
+  - Name: FrogTag
     Index: 15
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: EntityId
+  - Name: EnemyTag
     Index: 16
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: Brain
+  - Name: EntityId
     Index: 17
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: ViewRef
+  - Name: Brain
     Index: 18
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: RigidbodyRef
+  - Name: ViewRef
     Index: 19
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: ColliderRef
+  - Name: RigidbodyRef
     Index: 20
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: AttackCheckerRef
+  - Name: ColliderRef
     Index: 21
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: CalmColliderRef
+  - Name: AttackCheckerRef
     Index: 22
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: ConverterRef
+  - Name: CalmColliderRef
     Index: 23
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: DashColliderRef
+  - Name: ConverterRef
     Index: 24
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: GroundCheckRef
+  - Name: DashColliderRef
     Index: 25
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: HealthRef
+  - Name: GroundCheckRef
     Index: 26
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: HeroAttackCollidersRef
+  - Name: HealthRef
     Index: 27
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: HeroSwordViewRef
+  - Name: HeroAttackCollidersRef
     Index: 28
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: HookRef
+  - Name: HeroSwordViewRef
     Index: 29
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: ImmunityColliderRef
+  - Name: HookRef
     Index: 30
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: LamaAttackCollidersRef
+  - Name: ImmunityColliderRef
     Index: 31
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: LamaAttackRenderersRef
+  - Name: LamaAttackCollidersRef
     Index: 32
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: MatchedDoorRef
+  - Name: LamaAttackRenderersRef
     Index: 33
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: MatchedKeyRef
+  - Name: MatchedDoorRef
     Index: 34
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: PhysicalBoundsRef
+  - Name: MatchedKeyRef
     Index: 35
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: RingPointsRef
+  - Name: PhysicalBoundsRef
     Index: 36
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: ShootLineRef
+  - Name: RingPointsRef
     Index: 37
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: CurrentHealth
+  - Name: ShootLineRef
     Index: 38
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: DefaultHealth
+  - Name: CurrentHealth
     Index: 39
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: MaxCurrentHealth
+  - Name: DefaultHealth
     Index: 40
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: MovementVector
+  - Name: MaxCurrentHealth
     Index: 41
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: PatrolBounds
+  - Name: MovementVector
     Index: 42
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: Selectable
+  - Name: PatrolBounds
     Index: 43
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: Selected
+  - Name: Selectable
     Index: 44
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: Spawnable
+  - Name: Selected
     Index: 45
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: Spawned
+  - Name: Spawnable
     Index: 46
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: SpawnedEntityId
+  - Name: Spawned
     Index: 47
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: SpeedForce
+  - Name: SpawnedEntityId
     Index: 48
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: StartTransform
+  - Name: SpeedForce
     Index: 49
     Locked: 1
     Config: {fileID: 11400000}
-  - Name: Acceleration
+  - Name: StartTransform
     Index: 50
-    Locked: 0
+    Locked: 1
     Config: {fileID: 11400000}
-  - Name: Active
+  - Name: Acceleration
     Index: 51
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: ADControl
+  - Name: Active
     Index: 52
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: ADControllable
+  - Name: ADControl
     Index: 53
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: Added
+  - Name: ADControllable
     Index: 54
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: AimAvailable
+  - Name: Added
     Index: 55
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: AimButton
+  - Name: AimAvailable
     Index: 56
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: AimDirection
+  - Name: AimButton
     Index: 57
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: Aimed
+  - Name: AimDirection
     Index: 58
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: Aiming
+  - Name: Aimed
     Index: 59
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: AimPosition
+  - Name: Aiming
     Index: 60
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: AimRotation
+  - Name: AimPosition
     Index: 61
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: AppearCooldown
+  - Name: AimRotation
     Index: 62
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: AttackAvailable
+  - Name: AppearCooldown
     Index: 63
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: AttackCommand
+  - Name: AttackAvailable
     Index: 64
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: Attacking
+  - Name: AttackCommand
     Index: 65
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: AttackJumpCommand
+  - Name: Attacking
     Index: 66
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: BideCommand
-    Index: 68
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Biding
-    Index: 69
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: BidingTimer
-    Index: 70
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: BiteColliderRef
-    Index: 71
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: BiteCommand
-    Index: 72
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: BiteTimer
-    Index: 73
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Biting
-    Index: 74
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: BodyDirection
-    Index: 75
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: BodyFreezing
-    Index: 76
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: BrainContext
-    Index: 77
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: BumpAvailable
-    Index: 78
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Bumping
-    Index: 79
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: BumpTimer
-    Index: 80
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: CalculateHealthCommand
-    Index: 81
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: CanInteract
-    Index: 82
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ChaseCommand
-    Index: 83
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Chasing
-    Index: 84
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Closed
-    Index: 85
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: CollisionMessage
-    Index: 86
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ComboAttackCounter
-    Index: 87
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ComboAttackTimer
-    Index: 88
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ComboCooldown
-    Index: 89
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ComboCooldownUp
-    Index: 90
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ControlSpeed
-    Index: 91
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: CorrectCommand
-    Index: 92
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: CreateEntityMessage
-    Index: 93
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: CurrentEndurance
-    Index: 94
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Damageable
-    Index: 95
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DamageMessage
-    Index: 96
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DashAvailable
-    Index: 97
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DashCommand
-    Index: 98
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DashCooldown
-    Index: 99
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Dashing
-    Index: 100
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DealDamageMessage
-    Index: 101
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Delay
-    Index: 102
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DelayDashCommand
-    Index: 103
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DelayedInput
-    Index: 104
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DelayHookCommand
-    Index: 105
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DelayJumpCommand
-    Index: 106
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DestroyCommand
-    Index: 107
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Destroying
-    Index: 108
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DestroyInputCommand
-    Index: 109
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DestroyLeavesCommand
-    Index: 110
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Died
-    Index: 111
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Discharged
-    Index: 112
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DragForce
-    Index: 113
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: DragForceAvailable
-    Index: 114
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Draggable
-    Index: 115
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Enabled
-    Index: 116
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Expired
-    Index: 117
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ExpireTimer
-    Index: 118
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ExpireUp
-    Index: 119
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: FadeTimer
-    Index: 120
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Falling
-    Index: 121
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: FinishAimCommand
-    Index: 122
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: FinishAttackCommand
-    Index: 123
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: FinishMoveCommand
-    Index: 124
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ForceAvailable
-    Index: 125
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: FreeFall
-    Index: 126
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: FreeFalling
-    Index: 127
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: FreeRotating
-    Index: 128
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: FrogJumpContext
-    Index: 129
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Gradient
-    Index: 130
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: GradientRate
-    Index: 131
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: GravityScale
-    Index: 132
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Ground
-    Index: 133
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: GroundCheckTimer
-    Index: 134
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HealthShardCounter
-    Index: 135
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HeroMoveDirection
-    Index: 136
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HitCooldown
-    Index: 137
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HitCooldownUp
-    Index: 138
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HitTimer
-    Index: 139
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HookAvailable
-    Index: 140
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HookCommand
-    Index: 141
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Hooked
-    Index: 142
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Hooking
-    Index: 143
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HookInputCooldown
-    Index: 144
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HookPrecast
-    Index: 145
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HookPulling
-    Index: 146
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HookTimer
-    Index: 147
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HorizontalMovement
-    Index: 148
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: HorizontalSpeed
-    Index: 149
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Ignored
-    Index: 150
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Immortal
-    Index: 151
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Immune
-    Index: 152
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ImmunityAvailable
-    Index: 153
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ImmunityTimer
-    Index: 154
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Immutable
-    Index: 155
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Impact
-    Index: 156
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Inactive
-    Index: 157
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: InputDelay
-    Index: 158
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Instant
-    Index: 159
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Interactable
-    Index: 160
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: InteractCommand
-    Index: 161
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: InterruptHookAvailable
-    Index: 162
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: InterruptHookCommand
-    Index: 163
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: IsAttack
-    Index: 164
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: IsDash
-    Index: 165
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: IsHook
-    Index: 166
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: IsInteraction
-    Index: 167
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: IsJumpCanceled
-    Index: 168
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: IsJumpStarted
-    Index: 169
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: IsShoot
-    Index: 170
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: JumpAttacking
-    Index: 171
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: JumpAvailable
-    Index: 172
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: JumpCommand
-    Index: 173
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: JumpCycling
-    Index: 174
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Jumping
-    Index: 175
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: JumpPoint
-    Index: 176
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: JumpWaitTimer
-    Index: 177
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: LastMovementVector
-    Index: 178
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: LeapCommand
-    Index: 179
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Leaping
-    Index: 180
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: LeapPoint
-    Index: 181
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: LeapTimer
-    Index: 182
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: LifeTime
-    Index: 183
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Marked
-    Index: 184
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: MaxSpeed
-    Index: 185
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: MaxVerticalDistance
-    Index: 186
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Movable
-    Index: 187
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: MoveCommand
-    Index: 188
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: MoveDirection2
-    Index: 189
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: MoveHeroCommand
-    Index: 190
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: MovementLayout
-    Index: 191
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: MovePosition
-    Index: 192
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Moving
-    Index: 193
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: NothingHappensMessage
-    Index: 194
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnActionFinished
-    Index: 195
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnActionStarted
-    Index: 196
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnAimFinished
-    Index: 197
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnAimStarted
-    Index: 198
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnAttackFinished
-    Index: 199
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnAttackStarted
-    Index: 200
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnAttackStopped
-    Index: 201
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnBidingFinished
-    Index: 202
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnBiteFinished
-    Index: 203
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnBiteStarted
-    Index: 204
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnBiteStopped
-    Index: 205
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnConverted
-    Index: 206
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnDamaged
-    Index: 207
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnDied
-    Index: 208
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OneSideCollision
-    Index: 209
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnFallFinished
-    Index: 210
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnFallStarted
-    Index: 211
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnGround
-    Index: 212
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnHealthCalculated
-    Index: 213
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnHealthShardTaken
-    Index: 214
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnHitFinished
-    Index: 215
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnHitStarted
-    Index: 216
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnHookInterrupted
-    Index: 217
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnHookPrecastFinished
-    Index: 218
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnHookPrecastStarted
-    Index: 219
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnHookPullingFinished
-    Index: 220
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnHookPullingStarted
-    Index: 221
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnImmunityColliderCasted
-    Index: 222
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnImmunityFinished
-    Index: 223
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnInteracted
-    Index: 224
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnJumpFinished
-    Index: 225
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnJumpWaitFinished
-    Index: 226
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnLanded
-    Index: 227
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnLandingDetected
-    Index: 228
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnLeapFinished
-    Index: 229
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnLifted
-    Index: 230
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnOpened
-    Index: 231
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnPatrolFinished
-    Index: 232
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnRelaxationFinished
-    Index: 233
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnRetractionFinished
-    Index: 234
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OnRiseFinished
-    Index: 235
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: OpenCommand
-    Index: 236
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Opened
-    Index: 237
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Owner
-    Index: 238
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: PatrolCommand
-    Index: 239
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Patrolling
-    Index: 240
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: PatrollingTimer
-    Index: 241
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Poolable
-    Index: 242
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: PrecastLeapTimer
-    Index: 243
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: PrepareCommand
-    Index: 244
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Prepared
-    Index: 245
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ReadyAttack
-    Index: 246
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: RelativeSpeed
-    Index: 247
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: RelaxationTimer
-    Index: 248
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: RelaxCommand
-    Index: 249
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Relaxing
-    Index: 250
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ReleaseRingMessage
-    Index: 251
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Releasing
-    Index: 252
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Residual
-    Index: 253
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: RetractCommand
-    Index: 254
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Retracting
-    Index: 255
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: RiseCommand
-    Index: 256
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Risen
-    Index: 257
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: RiseTimer
-    Index: 258
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Rising
-    Index: 259
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ShootAvailable
-    Index: 260
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ShootCommand
-    Index: 261
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ShootCooldown
-    Index: 262
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ShootDirection
-    Index: 263
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ShootPosition
-    Index: 264
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ShouldAttackCommand
-    Index: 265
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ShouldMoveCommand
-    Index: 266
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: SpeedForceCommand
-    Index: 267
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StartAimCommand
-    Index: 268
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StartFadeCommand
-    Index: 269
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StartJumpCycleCommand
-    Index: 270
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StartMovePosition
-    Index: 271
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopAttackCommand
-    Index: 272
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopAttackJumpCommand
-    Index: 273
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopBideCommand
-    Index: 274
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopBiteCommand
-    Index: 275
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopChaseCommand
-    Index: 276
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopDashCommand
-    Index: 277
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopHookCommand
-    Index: 278
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopHookPullingCommand
-    Index: 279
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopJumpCommand
-    Index: 280
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopJumpCycleCommand
-    Index: 281
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopLeapCommand
-    Index: 282
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopMoveCommand
-    Index: 283
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopPatrolCommand
-    Index: 284
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopRelaxCommand
-    Index: 285
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopRetractCommand
-    Index: 286
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopTrackLandingCommand
-    Index: 287
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopWaitCommand
-    Index: 288
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopWaitJumpCommand
-    Index: 289
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: StopWatchCommand
-    Index: 290
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: TargetInBack
-    Index: 291
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: TargetInFront
-    Index: 292
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: TargetInView
-    Index: 293
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ThrownTongue
-    Index: 294
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: TongueLineRef
-    Index: 295
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: TonguePointRef
-    Index: 296
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: TrackingLanding
-    Index: 297
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: TrackingLifting
-    Index: 298
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: TrackLandingCommand
-    Index: 299
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: TwoSideCollision
-    Index: 300
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Unique
-    Index: 301
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Valuable
-    Index: 302
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: VerticalMovement
-    Index: 303
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ViewAngle
-    Index: 304
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ViewDirection
-    Index: 305
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: ViewRadius
-    Index: 306
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: WaitCommand
-    Index: 307
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: WaitingTimer
-    Index: 308
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: WaitJumpCommand
-    Index: 309
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: WasAimed
-    Index: 310
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: WatchCommand
-    Index: 311
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: Watching
-    Index: 312
-    Locked: 0
-    Config: {fileID: 11400000}
-  - Name: WatchingTimer
-    Index: 313
+  - Name: AttackJumpCommand
+    Index: 67
     Locked: 0
     Config: {fileID: 11400000}
   - Name: AttackTongueCommand
-    Index: 313
+    Index: 68
     Locked: 0
     Config: {fileID: 11400000}
   - Name: AttackWaitingTimer
-    Index: 314
+    Index: 69
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: InBounds
-    Index: 315
+  - Name: BideCommand
+    Index: 70
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: JumpBackCommand
-    Index: 316
+  - Name: Biding
+    Index: 71
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: JumpingBack
-    Index: 317
+  - Name: BidingTimer
+    Index: 72
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: PhysicalBounded
-    Index: 318
+  - Name: BiteColliderRef
+    Index: 73
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: StopJumpBackCommand
-    Index: 319
+  - Name: BiteCommand
+    Index: 74
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: StopWaitAttackCommand
-    Index: 320
+  - Name: BiteTimer
+    Index: 75
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: StunCommand
-    Index: 321
+  - Name: Biting
+    Index: 76
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: Stunned
-    Index: 322
+  - Name: BodyDirection
+    Index: 77
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: StunTimer
-    Index: 323
+  - Name: BodyFreezing
+    Index: 78
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: TurningTimer
-    Index: 325
+  - Name: BrainContext
+    Index: 79
     Locked: 0
     Config: {fileID: 11400000}
-  - Name: WaitAttackCommand
-    Index: 326
+  - Name: BumpAvailable
+    Index: 80
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Bumping
+    Index: 81
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: BumpTimer
+    Index: 82
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: CalculateHealthCommand
+    Index: 83
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: CanInteract
+    Index: 84
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ChaseCommand
+    Index: 85
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Chasing
+    Index: 86
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Closed
+    Index: 87
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: CollisionMessage
+    Index: 88
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ComboAttackCounter
+    Index: 89
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ComboAttackTimer
+    Index: 90
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ComboCooldown
+    Index: 91
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ComboCooldownUp
+    Index: 92
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ContinueJumpCycleCommand
+    Index: 93
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ControlSpeed
+    Index: 94
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: CorrectCommand
+    Index: 95
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: CreateEntityMessage
+    Index: 96
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: CurrentEndurance
+    Index: 97
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Damageable
+    Index: 98
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DamageMessage
+    Index: 99
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DashAvailable
+    Index: 100
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DashCommand
+    Index: 101
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DashCooldown
+    Index: 102
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Dashing
+    Index: 103
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DealDamageMessage
+    Index: 104
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Delay
+    Index: 105
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DelayDashCommand
+    Index: 106
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DelayedInput
+    Index: 107
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DelayedPatrol
+    Index: 108
     Locked: 0
     Config: {fileID: 11400000}
   - Name: DelayedTurn
-    Index: 326
+    Index: 109
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DelayHookCommand
+    Index: 110
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DelayJumpCommand
+    Index: 111
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DestroyableAfterCollision
+    Index: 112
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DestroyCommand
+    Index: 113
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Destroying
+    Index: 114
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DestroyInputCommand
+    Index: 115
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DestroyLeavesCommand
+    Index: 116
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Died
+    Index: 117
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Discharged
+    Index: 118
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DragForce
+    Index: 119
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: DragForceAvailable
+    Index: 120
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Draggable
+    Index: 121
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Enabled
+    Index: 122
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Expired
+    Index: 123
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ExpireTimer
+    Index: 124
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ExpireUp
+    Index: 125
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: FadeTimer
+    Index: 126
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Falling
+    Index: 127
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: FinishAimCommand
+    Index: 128
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: FinishAttackCommand
+    Index: 129
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: FinishMoveCommand
+    Index: 130
     Locked: 0
     Config: {fileID: 11400000}
   - Name: FinishTurnCommand
-    Index: 327
+    Index: 131
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ForceAvailable
+    Index: 132
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: FreeFall
+    Index: 133
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: FreeFalling
+    Index: 134
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: FreeRotating
+    Index: 135
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: FrogJumpContext
+    Index: 136
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Gradient
+    Index: 137
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: GradientRate
+    Index: 138
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: GravityScale
+    Index: 139
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Ground
+    Index: 140
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: GroundCheckTimer
+    Index: 141
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HealthShardCounter
+    Index: 142
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HeroMoveDirection
+    Index: 143
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HitCooldown
+    Index: 144
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HitCooldownUp
+    Index: 145
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HitTimer
+    Index: 146
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HookAvailable
+    Index: 147
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HookCommand
+    Index: 148
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Hooked
+    Index: 149
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Hooking
+    Index: 150
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HookInputCooldown
+    Index: 151
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HookPrecast
+    Index: 152
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HookPulling
+    Index: 153
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HookTimer
+    Index: 154
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HorizontalMovement
+    Index: 155
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: HorizontalSpeed
+    Index: 156
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Ignored
+    Index: 157
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Immortal
+    Index: 158
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Immune
+    Index: 159
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ImmunityAvailable
+    Index: 160
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ImmunityTimer
+    Index: 161
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Immutable
+    Index: 162
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Impact
+    Index: 163
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Inactive
+    Index: 164
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: InBounds
+    Index: 165
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: InputDelay
+    Index: 166
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Instant
+    Index: 167
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Interactable
+    Index: 168
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: InteractCommand
+    Index: 169
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: InterruptHookAvailable
+    Index: 170
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: InterruptHookCommand
+    Index: 171
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: IsAttack
+    Index: 172
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: IsDash
+    Index: 173
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: IsHook
+    Index: 174
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: IsInteraction
+    Index: 175
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: IsJumpCanceled
+    Index: 176
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: IsJumpStarted
+    Index: 177
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: IsShoot
+    Index: 178
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: JumpAttacking
+    Index: 179
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: JumpAvailable
+    Index: 180
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: JumpBackCommand
+    Index: 181
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: JumpCommand
+    Index: 182
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: JumpCyclePausing
+    Index: 183
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: JumpCycling
+    Index: 184
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Jumping
+    Index: 185
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: JumpingBack
+    Index: 186
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: JumpPoint
+    Index: 187
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: JumpWaitTimer
+    Index: 188
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: LastMovementVector
+    Index: 189
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: LeapCommand
+    Index: 190
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Leaping
+    Index: 191
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: LeapPoint
+    Index: 192
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: LeapTimer
+    Index: 193
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: LifeTime
+    Index: 194
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Marked
+    Index: 195
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: MaxSpeed
+    Index: 196
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Movable
+    Index: 197
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: MoveCommand
+    Index: 198
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: MoveDirection2
+    Index: 199
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: MoveHeroCommand
+    Index: 200
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: MovementLayout
+    Index: 201
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: MovePosition
+    Index: 202
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Moving
+    Index: 203
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: NothingHappensMessage
+    Index: 204
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnActionFinished
+    Index: 205
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnActionStarted
+    Index: 206
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnAimFinished
+    Index: 207
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnAimStarted
+    Index: 208
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnAttackFinished
+    Index: 209
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnAttackStarted
+    Index: 210
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnAttackStopped
+    Index: 211
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnBidingFinished
+    Index: 212
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnBiteFinished
+    Index: 213
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnBiteStarted
+    Index: 214
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnBiteStopped
+    Index: 215
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnConverted
+    Index: 216
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnDamaged
+    Index: 217
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnDied
+    Index: 218
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OneSideCollision
+    Index: 219
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnFallFinished
+    Index: 220
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnFallStarted
+    Index: 221
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnGround
+    Index: 222
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnHealthCalculated
+    Index: 223
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnHealthShardTaken
+    Index: 224
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnHitFinished
+    Index: 225
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnHitStarted
+    Index: 226
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnHookInterrupted
+    Index: 227
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnHookPrecastFinished
+    Index: 228
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnHookPrecastStarted
+    Index: 229
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnHookPullingFinished
+    Index: 230
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnHookPullingStarted
+    Index: 231
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnImmunityColliderCasted
+    Index: 232
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnImmunityFinished
+    Index: 233
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnInteracted
+    Index: 234
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnJumpFinished
+    Index: 235
     Locked: 0
     Config: {fileID: 11400000}
   - Name: OnJumpStarted
+    Index: 236
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnJumpWaitFinished
+    Index: 237
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnLanded
+    Index: 238
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnLeapFinished
+    Index: 239
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnLifted
+    Index: 240
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnOpened
+    Index: 241
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnPatrolFinished
+    Index: 242
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnRelaxationFinished
+    Index: 243
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnRetractionFinished
+    Index: 244
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OnRiseFinished
+    Index: 245
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: OpenCommand
+    Index: 246
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Opened
+    Index: 247
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Owner
+    Index: 248
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: PatrolCommand
+    Index: 249
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Patrolling
+    Index: 250
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: PatrollingTimer
+    Index: 251
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: PauseJumpCycleCommand
+    Index: 252
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: PhysicalBounded
+    Index: 253
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Poolable
+    Index: 254
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: PrecastLeapTimer
+    Index: 255
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: PrepareCommand
+    Index: 256
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Prepared
+    Index: 257
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: PrepareJumpCommand
+    Index: 258
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ReadyAttack
+    Index: 259
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: RelativeSpeed
+    Index: 260
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: RelaxationTimer
+    Index: 261
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: RelaxCommand
+    Index: 262
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Relaxing
+    Index: 263
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ReleaseRingMessage
+    Index: 264
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Releasing
+    Index: 265
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Residual
+    Index: 266
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: RetractCommand
+    Index: 267
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Retracting
+    Index: 268
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: RiseCommand
+    Index: 269
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Risen
+    Index: 270
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: RiseTimer
+    Index: 271
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Rising
+    Index: 272
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ShootAvailable
+    Index: 273
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ShootCommand
+    Index: 274
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ShootCooldown
+    Index: 275
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ShootDirection
+    Index: 276
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ShootPosition
+    Index: 277
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ShouldAttackCommand
+    Index: 278
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ShouldMoveCommand
+    Index: 279
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: SpeedForceCommand
+    Index: 280
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StartAimCommand
+    Index: 281
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StartFadeCommand
+    Index: 282
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StartJumpCycleCommand
+    Index: 283
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StartMovePosition
+    Index: 284
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopAttackCommand
+    Index: 285
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopAttackJumpCommand
+    Index: 286
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopBideCommand
+    Index: 287
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopBiteCommand
+    Index: 288
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopChaseCommand
+    Index: 289
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopDashCommand
+    Index: 290
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopHookCommand
+    Index: 291
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopHookPullingCommand
+    Index: 292
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopJumpBackCommand
+    Index: 293
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopJumpCommand
+    Index: 294
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopJumpCycleCommand
+    Index: 295
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopLeapCommand
+    Index: 296
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopMoveCommand
+    Index: 297
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopPatrolCommand
+    Index: 298
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopRelaxCommand
+    Index: 299
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopRetractCommand
+    Index: 300
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopWaitAttackCommand
+    Index: 301
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopWaitCommand
+    Index: 302
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopWaitJumpCommand
+    Index: 303
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StopWatchCommand
+    Index: 304
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StunCommand
+    Index: 305
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Stunned
+    Index: 306
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: StunTimer
+    Index: 307
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: TargetInBack
+    Index: 308
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: TargetInFront
+    Index: 309
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: TargetInView
+    Index: 310
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ThrownTongue
+    Index: 311
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: TongueLineRef
+    Index: 312
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: TonguePointRef
+    Index: 313
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: TurningTimer
+    Index: 314
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: TwoSideCollision
+    Index: 315
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Unique
+    Index: 316
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Valuable
+    Index: 317
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: VerticalMovement
+    Index: 318
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ViewAngle
+    Index: 319
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ViewDirection
+    Index: 320
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: ViewRadius
+    Index: 321
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: WaitAttackCommand
+    Index: 322
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: WaitCommand
+    Index: 323
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: WaitingTimer
+    Index: 324
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: WaitJumpCommand
+    Index: 325
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: WasAimed
+    Index: 326
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: WasTargetInFront
+    Index: 327
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: WasTargetInView
     Index: 328
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: WatchCommand
+    Index: 329
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: Watching
+    Index: 330
+    Locked: 0
+    Config: {fileID: 11400000}
+  - Name: WatchingTimer
+    Index: 331
     Locked: 0
     Config: {fileID: 11400000}

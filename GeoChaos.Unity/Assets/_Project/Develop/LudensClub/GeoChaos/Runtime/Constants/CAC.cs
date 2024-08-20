@@ -61,6 +61,9 @@
       
       public const string TONGUE_CONFIG_MENU = CONFIG_MENU + "Tongue";
       public const string TONGUE_CONFIG_FILE = "TongueConfig";
+      
+      public const string ZOMBIE_CONFIG_MENU = CONFIG_MENU + "Zombie";
+      public const string ZOMBIE_CONFIG_FILE = "ZombieConfig";
     }
   }
 }
