@@ -40,7 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Le
       foreach (EcsEntity spirit in _leapingSpirits)
       {
         float heroPoint = hero.Get<ViewRef>().View.transform.position.x;
-        Vector2 bounds = spirit.Get<PatrolBounds>().Bounds;
+        Vector2 bounds = spirit.Get<PatrolBounds>().HorizontalBounds;
         spirit.Change((ref LeapPoint point) => point.Point = CalculateNextPoint(heroPoint, bounds));
       }
     }

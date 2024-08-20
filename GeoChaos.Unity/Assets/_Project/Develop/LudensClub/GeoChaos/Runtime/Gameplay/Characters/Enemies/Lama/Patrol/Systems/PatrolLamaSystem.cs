@@ -39,7 +39,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
     {
       foreach (EcsEntity command in _commands)
       {
-        Vector2 bounds = command.Get<PatrolBounds>().Bounds;
+        Vector2 bounds = command.Get<PatrolBounds>().HorizontalBounds;
         Vector3 position = command.Get<ViewRef>().View.transform.position;
 
         float step = Random.Range(_config.PatrolStep.x, _config.PatrolStep.y);

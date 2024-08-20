@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol
     {
       foreach (EcsEntity entity in _boundedEntities)
       {
-        Vector2 bounds = entity.Get<PatrolBounds>().Bounds;
+        Vector2 bounds = entity.Get<PatrolBounds>().HorizontalBounds;
         Rigidbody2D rb = entity.Get<RigidbodyRef>().Rigidbody;
         float direction = entity.Get<MovementVector>().Direction.x;
         int index = GetBoundIndex(rb.position.x, direction, bounds);

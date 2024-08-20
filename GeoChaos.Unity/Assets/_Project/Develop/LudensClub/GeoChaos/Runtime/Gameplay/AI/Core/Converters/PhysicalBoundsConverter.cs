@@ -15,13 +15,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 
     public Transform RightBound;
 
-    public static Vector2 GetBounds(Transform left, Transform right)
+    public static Rect GetBounds(Transform left, Transform right)
     {
-      return new Vector2(GetBound(left, float.MinValue), GetBound(right, float.MaxValue));
-
-      float GetBound(Transform bound, float defaultValue)
+      var rect = new Rect
       {
-        return bound ? bound.position.x : defaultValue;
+        min = GetBound(left, Vector2.negativeInfinity),
+        max = GetBound(right, Vector2.positiveInfinity)
+      };
+      
+      return rect;
+
+      Vector2 GetBound(Transform bound, Vector2 defaultValue)
+      {
+        return bound ? bound.position : defaultValue;
       }
     }
 
@@ -40,8 +46,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
     }
 
 #if UNITY_EDITOR
+    private Rect Bounds => GetBounds(LeftBound, RightBound);
+
     [ShowInInspector]
-    private Vector2 Bounds => GetBounds(LeftBound, RightBound);
+    private Vector2 HorizontalBounds => new Vector2(Bounds.xMin, Bounds.xMax);
+
+    [ShowInInspector]
+    private Vector2 VerticalBounds => new Vector2(Bounds.yMin, Bounds.yMax);
 
     private bool CheckBounds()
     {

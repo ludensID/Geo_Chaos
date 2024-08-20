@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Utils
         .Has<Inactive>(!value);
     }
 
-    public static Vector2 GetBounds(this PhysicalBoundsRef obj)
+    public static Rect GetBounds(this PhysicalBoundsRef obj)
     {
       return PhysicalBoundsConverter.GetBounds(obj.Left, obj.Right);
     }

@@ -35,7 +35,7 @@ namespace LudensClub.GeoChaos.Debugging.Gizmo
       var leftBottom = new Vector3(bounds.Left.position.x - _config.AttackDistance, origin.y,
         src.transform.position.z);
       var rightTop = new Vector3(bounds.Right.position.x + _config.AttackDistance,
-        origin.y + _config.MaxVerticalDistance, src.transform.position.z);
+        bounds.Right.position.y, src.transform.position.z);
       
       Color color = Color.green;
       color.a = 0.5f;

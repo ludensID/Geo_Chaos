@@ -14,7 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies
       foreach (EcsEntity selection in marks)
       {
         Vector3 originPosition = origin.Get<ViewRef>().View.transform.position;
-        Vector2 bounds = selection.Get<PatrolBounds>().Bounds;
+        Vector2 bounds = selection.Get<PatrolBounds>().HorizontalBounds;
         if (originPosition.x < bounds.x || originPosition.x > bounds.y)
           selection.Del<Marked>();
       }

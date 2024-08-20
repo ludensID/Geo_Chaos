@@ -13,6 +13,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol
   [Serializable]
   public struct PatrolBounds : IEcsComponent
   {
-    public Vector2 Bounds;
+    public Rect Bounds;
+    public Vector2 HorizontalBounds;
+
+    public void SetBounds(Rect bounds)
+    {
+      Bounds = bounds;
+      HorizontalBounds = new Vector2(bounds.xMin, bounds.xMax);
+    }
   }
 }

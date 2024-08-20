@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol
       foreach (EcsEntity entity in _entities)
       {
         float point = entity.Get<ViewRef>().View.transform.position.x;
-        Vector2 bounds = entity.Get<PatrolBounds>().Bounds;
+        Vector2 bounds = entity.Get<PatrolBounds>().HorizontalBounds;
         entity.Has<InBounds>(bounds.x < point && point < bounds.y);
       }
     }

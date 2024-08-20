@@ -23,7 +23,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.De
       {
         Vector2 originPosition = origin.Get<ViewRef>().View.transform.position;
         Vector2 selectionPosition = selection.Get<ViewRef>().View.transform.position;
-        Vector2 bounds = selection.Get<PatrolBounds>().Bounds;
+        Vector2 bounds = selection.Get<PatrolBounds>().HorizontalBounds;
         var sqrDistance = _config.AttackDistance * _config.AttackDistance;
 
         bool left = (originPosition - new Vector2(bounds.x, selectionPosition.y)).sqrMagnitude <= sqrDistance;

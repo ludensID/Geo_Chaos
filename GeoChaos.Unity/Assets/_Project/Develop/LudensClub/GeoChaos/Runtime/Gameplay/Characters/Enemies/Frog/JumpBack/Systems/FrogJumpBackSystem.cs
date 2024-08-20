@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.JumpBack
     {
       foreach (EcsEntity frog in _jumpingFrogs)
       {
-        Vector2 bounds = frog.Get<PatrolBounds>().Bounds;
+        Vector2 bounds = frog.Get<PatrolBounds>().HorizontalBounds;
         float center = (bounds.x + bounds.y) / 2;
           
         frog

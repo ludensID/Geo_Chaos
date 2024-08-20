@@ -45,7 +45,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Mo
       {
         float heroPoint = hero.Get<ViewRef>().View.transform.position.x;
         float spiritPoint = spirit.Get<ViewRef>().View.transform.position.x;
-        Vector2 bounds = spirit.Get<PatrolBounds>().Bounds;
+        Vector2 bounds = spirit.Get<PatrolBounds>().HorizontalBounds;
 
         float distance = Mathf.Abs(heroPoint - spiritPoint);
         if (distance < _config.AttackDistance * _config.AttackDistanceMultiplier

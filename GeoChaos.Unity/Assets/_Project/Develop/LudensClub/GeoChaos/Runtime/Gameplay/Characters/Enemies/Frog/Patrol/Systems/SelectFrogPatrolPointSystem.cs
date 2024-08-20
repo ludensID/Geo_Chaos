@@ -31,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Patrol
       foreach (EcsEntity frog in _patrollingFrogs)
       {
         float currentPoint = frog.Get<ViewRef>().View.transform.position.x;
-        Vector2 bounds = frog.Get<PatrolBounds>().Bounds;
+        Vector2 bounds = frog.Get<PatrolBounds>().HorizontalBounds;
         float center = (bounds.x + bounds.y) / 2;
 
         float nextPoint = Mathf.Abs(currentPoint - center) <= _config.SmallJumpLength 
