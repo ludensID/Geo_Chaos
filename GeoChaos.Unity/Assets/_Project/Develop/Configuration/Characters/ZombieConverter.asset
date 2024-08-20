@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 133c2ae489ef48fc81c331d6cf2618a2, type: 3}
-  m_Name: LeafySpiritConverter
+  m_Name: ZombieConverter
   m_EditorClassIdentifier: 
   Converters:
   - _serializedConverter:
@@ -24,18 +24,16 @@ MonoBehaviour:
     _components:
       Components:
       - Value:
-          rid: 674098060372213844
+          rid: 2072451241627091049
       - Value:
-          rid: 674097947670741308
+          rid: 2072451241627091050
       - Value:
-          rid: 674098063239020634
+          rid: 2072451241627091051
       - Value:
-          rid: 674098072352456889
-      - Value:
-          rid: 2072451149037044008
+          rid: 2072451241627091052
     _scriptableConverter: {fileID: 0}
   - _serializedConverter:
-      rid: 2072450851691037172
+      rid: 2072451241627091053
     _components:
       Components: []
     _scriptableConverter: {fileID: 0}
@@ -44,29 +42,24 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 674097947670741308
-      type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
-      data:
-        Id: 4
-    - rid: 674098060372213844
-      type: {class: LeafySpiritTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit,
+    - rid: 2072451241627091049
+      type: {class: ZombieTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie,
         asm: GeoChaos.Runtime}
       data: 
-    - rid: 674098063239020634
+    - rid: 2072451241627091050
+      type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
+      data:
+        Id: 6
+    - rid: 2072451241627091051
       type: {class: BodyDirection, ns: LudensClub.GeoChaos.Runtime.Gameplay.View,
         asm: GeoChaos.Runtime}
       data:
-        Direction: 1
-    - rid: 674098072352456889
-      type: {class: ComboAttackCounter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage,
-        asm: GeoChaos.Runtime}
-      data:
-        Count: 0
-    - rid: 2072450851691037172
+        Direction: 0
+    - rid: 2072451241627091052
+      type: {class: Immortal, ns: LudensClub.GeoChaos.Runtime.Gameplay.Die, asm: GeoChaos.Runtime}
+      data: 
+    - rid: 2072451241627091053
       type: {class: HealthConverter, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Health,
         asm: GeoChaos.Runtime}
       data:
         Health: 100
-    - rid: 2072451149037044008
-      type: {class: Immortal, ns: LudensClub.GeoChaos.Runtime.Gameplay.Die, asm: GeoChaos.Runtime}
-      data: 

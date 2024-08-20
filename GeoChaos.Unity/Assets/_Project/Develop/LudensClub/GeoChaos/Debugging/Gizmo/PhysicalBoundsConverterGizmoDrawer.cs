@@ -3,6 +3,7 @@ using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI;
 using UnityEditor;
 using UnityEngine;
+using MathUtils = LudensClub.GeoChaos.Runtime.Utils.MathUtils;
 
 namespace LudensClub.GeoChaos.Debugging.Gizmo
 {
@@ -45,6 +46,8 @@ namespace LudensClub.GeoChaos.Debugging.Gizmo
       raycastData.Direction = Vector2.up;
       raycastData.Distance = GetDistance(raycastData.Position.y, src.RightBound.position.y);
       rect.yMax = Raycast(raycastData, hits, 1, src.RightBound.position.y);
+
+      rect.size = new Vector2(MathUtils.Clamp(rect.size.x, 0.1f), MathUtils.Clamp(rect.size.y, 0.1f));
 
       Color color = Color.blue;
       color.a = 0.5f;
