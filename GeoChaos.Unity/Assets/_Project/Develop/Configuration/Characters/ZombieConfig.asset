@@ -15,3 +15,5 @@ MonoBehaviour:
   WaitTime: 3
   CalmSpeed: 3
   BackDistance: 5
+  ArmsTime: 1
+  ArmsCooldown: 0.3

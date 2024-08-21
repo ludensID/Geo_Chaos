@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection
         float originPoint = origin.Get<ViewRef>().View.transform.position.y;
         Rect bounds = selection.Get<PatrolBounds>().Bounds;
         
-        if (originPoint < bounds.yMin && bounds.yMax < originPoint)
+        if (originPoint < bounds.yMin || bounds.yMax < originPoint)
           selection.Del<Marked>();
       }
     }
