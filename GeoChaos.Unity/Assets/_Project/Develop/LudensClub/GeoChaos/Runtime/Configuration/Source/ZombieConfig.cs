@@ -11,5 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Title("Move")]
     public float CalmSpeed;
+
+    [Title("Attack")]
+    public float BackDistance;
   }
 }

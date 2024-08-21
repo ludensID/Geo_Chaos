@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: ZombieConfig
   m_EditorClassIdentifier: 
   WaitTime: 3
-  CalmSpeed: 5
+  CalmSpeed: 3
+  BackDistance: 5

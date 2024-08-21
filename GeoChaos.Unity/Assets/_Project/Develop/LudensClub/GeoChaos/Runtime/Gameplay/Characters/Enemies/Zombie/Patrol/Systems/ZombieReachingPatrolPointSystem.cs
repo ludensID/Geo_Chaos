@@ -1,5 +1,4 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Move;
@@ -9,19 +8,15 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Patrol
 {
-  public class CheckForZombieReachedMovePointSystem : IEcsRunSystem
+  public class ZombieReachingPatrolPointSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly ZombieConfig _config;
     private readonly EcsEntities _patrollingZombies;
     private readonly SpeedForceLoop _forceLoop;
 
-    public CheckForZombieReachedMovePointSystem(GameWorldWrapper gameWorldWrapper,
-      IConfigProvider configProvider,
-      ISpeedForceLoopService forceLoopSvc)
+    public ZombieReachingPatrolPointSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
     {
       _game = gameWorldWrapper.World;
-      _config = configProvider.Get<ZombieConfig>();
       _forceLoop = forceLoopSvc.CreateLoop();
 
       _patrollingZombies = _game
@@ -37,8 +32,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Patrol
       {
         float currentPoint = zombie.Get<ViewRef>().View.transform.position.x;
         float movePoint = zombie.Get<MovePoint>().Point;
+        float speed = zombie.Get<MovementVector>().Speed.x;
 
-        if (Mathf.Abs(movePoint - currentPoint) < _config.CalmSpeed * Time.fixedDeltaTime)
+        if (Mathf.Abs(movePoint - currentPoint) < speed * Time.fixedDeltaTime)
         {
           zombie.Add<FinishPatrolCommand>();
           _forceLoop.ResetForcesToZero(SpeedForceType.Move, zombie.PackedEntity);

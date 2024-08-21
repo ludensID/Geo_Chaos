@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Patrol;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Patrol;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie
@@ -8,6 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie
     public ZombieFixedFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<ZombiePatrolFixedFeature>());
+      Add(systems.Create<ZombieAttackFixedFeature>());
     }
   }
 }

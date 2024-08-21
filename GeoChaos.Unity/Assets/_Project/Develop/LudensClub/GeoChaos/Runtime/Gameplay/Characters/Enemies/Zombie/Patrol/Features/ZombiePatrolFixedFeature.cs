@@ -6,7 +6,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Patrol
   {
     public ZombiePatrolFixedFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<CheckForZombieReachedMovePointSystem>());      
+      Add(systems.Create<ZombieReachingPatrolPointSystem>());      
     }    
   }
 }
