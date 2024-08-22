@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
@@ -47,9 +48,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Patrol
 
         zombie
           .Del<PatrolCommand>()
-          .Add<OnPatrolStarted>()
           .Add<Patrolling>()
-          .Replace((ref MovePoint point) => point.Point = nextPoint);
+          .Replace((ref MovePoint point) => point.Point = nextPoint)
+          .Change((ref BodyDirection bodyDirection) =>
+            bodyDirection.Direction = direction);
       }
     }
   }

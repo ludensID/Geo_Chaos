@@ -1,33 +1,37 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
 {
-  public class FinishZombieAttackSystem : IEcsRunSystem
+  public class StartZombieAttackCooldownSystem : IEcsRunSystem
   {
+    private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _attackingZombies;
+    private readonly ZombieConfig _config;
 
-    public FinishZombieAttackSystem(GameWorldWrapper gameWorldWrapper)
+    public StartZombieAttackCooldownSystem(GameWorldWrapper gameWorldWrapper,
+      IConfigProvider configProvider,
+      ITimerFactory timers)
     {
+      _timers = timers;
       _game = gameWorldWrapper.World;
+      _config = configProvider.Get<ZombieConfig>();
 
       _attackingZombies = _game
         .Filter<ZombieTag>()
-        .Inc<FinishAttackCommand>()
+        .Inc<OnAttackFinished>()
         .Collect();
     }
-      
+    
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity zombie in _attackingZombies)
       {
-        zombie
-          .Del<FinishAttackCommand>()
-          .Del<Attacking>()
-          .Add<OnAttackFinished>();
+        zombie.Add((ref AttackCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.AttackCooldown));
       }
     }
   }

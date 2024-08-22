@@ -6,10 +6,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Patrol
   {
     public ZombiePatrolFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<DeleteZombiePatrolStartedEventSystem>());
       Add(systems.Create<ZombiePatrollingSystem>());
-
-      Add(systems.Create<TurnZombieToMovePointSystem>());
 
       Add(systems.Create<DeleteZombiePatrolFinishedEventSystem>());
       Add(systems.Create<FinishZombiePatrollingSystem>());

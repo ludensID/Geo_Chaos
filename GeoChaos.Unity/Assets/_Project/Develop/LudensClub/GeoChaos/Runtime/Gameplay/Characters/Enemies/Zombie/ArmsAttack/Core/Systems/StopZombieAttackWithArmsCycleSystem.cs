@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.ArmsAtt
           .Has<AttackingWithArms>(false)
           .Has<AttackWithArmsTimer>(false)
           .Has<AttackWithArmsCooldown>(false)
-          .Add<OnAttackWithArmsFinished>();
+          .Has<OnAttackWithArmsFinished>(true);
       }
     }
   }

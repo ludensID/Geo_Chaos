@@ -5,29 +5,27 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
 {
-  public class FinishZombieAttackSystem : IEcsRunSystem
+  public class DeleteExpiredZombieAttackCooldownSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
-    private readonly EcsEntities _attackingZombies;
+    private readonly EcsEntities _zombies;
 
-    public FinishZombieAttackSystem(GameWorldWrapper gameWorldWrapper)
+    public DeleteExpiredZombieAttackCooldownSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
-      _attackingZombies = _game
+      _zombies = _game
         .Filter<ZombieTag>()
-        .Inc<FinishAttackCommand>()
+        .Inc<AttackCooldown>()
         .Collect();
     }
-      
+    
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity zombie in _attackingZombies)
+      foreach (EcsEntity zombie in _zombies
+        .Check<AttackCooldown>(x => x.TimeLeft <= 0))
       {
-        zombie
-          .Del<FinishAttackCommand>()
-          .Del<Attacking>()
-          .Add<OnAttackFinished>();
+        zombie.Del<AttackCooldown>();
       }
     }
   }

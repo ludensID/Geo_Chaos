@@ -1,0 +1,52 @@
+﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
+using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.View;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
+
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.AttackMove
+{
+  public class TurnZombieNearBoundsSystem : IEcsRunSystem
+  {
+    private readonly EcsWorld _game;
+    private readonly EcsEntities _movingZombies;
+    private readonly SpeedForceLoop _forceLoop;
+
+    public TurnZombieNearBoundsSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
+    {
+      _game = gameWorldWrapper.World;
+      _forceLoop = forceLoopSvc.CreateLoop();
+
+      _movingZombies = _game
+        .Filter<ZombieTag>()
+        .Inc<AttackMoving>()
+        .Collect();
+    }
+    
+    public void Run(EcsSystems systems)
+    {
+      foreach (EcsEntity zombie in _movingZombies)
+      {
+        float currentPoint = zombie.Get<ViewRef>().View.transform.position.x;
+        Vector2 bounds = zombie.Get<PatrolBounds>().HorizontalBounds;
+        float speed = zombie.Get<MovementVector>().Speed.x;
+        ref BodyDirection bodyDirection = ref zombie.Get<BodyDirection>();
+
+        float nextPoint = currentPoint + speed * Time.fixedDeltaTime * bodyDirection.Direction;
+
+        if (nextPoint < bounds.x || nextPoint > bounds.y)
+        {
+          foreach (EcsEntity force in _forceLoop
+            .GetLoop(SpeedForceType.Move, zombie.PackedEntity))
+          {
+            force.Change((ref MovementVector vector) => vector.Direction *= -1);
+          }
+
+          bodyDirection.Direction *= -1;
+        }
+      }
+    }
+  }
+}

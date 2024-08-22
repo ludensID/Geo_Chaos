@@ -19,5 +19,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float ArmsTime;
 
     public float ArmsCooldown;
+    public float AttackTime;
+    public float AttackSpeed;
+    public float AttackCooldown;
   }
 }

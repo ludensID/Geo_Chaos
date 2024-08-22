@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
       
     public bool Check()
     {
-      return Entity.Has<Aimed>() || Entity.Has<Attacking>();
+      return Entity.Has<Aimed>() && !Entity.Has<AttackCooldown>() || Entity.Has<Attacking>();
     }
   }
 }

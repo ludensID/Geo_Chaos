@@ -17,3 +17,6 @@ MonoBehaviour:
   BackDistance: 5
   ArmsTime: 1
   ArmsCooldown: 0.3
+  AttackTime: 5
+  AttackSpeed: 5
+  AttackCooldown: 2
