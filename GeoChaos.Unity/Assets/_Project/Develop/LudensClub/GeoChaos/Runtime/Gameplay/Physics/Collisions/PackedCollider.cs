@@ -1,5 +1,6 @@
 ﻿using System;
 using Leopotam.EcsLite;
+using TriInspector;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
@@ -10,6 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     public Collider2D Collider;
     public Vector3 EntityPosition;
     public ColliderType Type;
+
+    [ShowInInspector]
     public EcsPackedEntity Entity;
 
     public PackedCollider(Collider2D collider, Vector3 entityPosition, ColliderType type, EcsPackedEntity entity)

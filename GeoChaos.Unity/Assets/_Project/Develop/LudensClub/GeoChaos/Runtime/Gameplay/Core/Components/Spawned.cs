@@ -1,6 +1,7 @@
 ﻿using System;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using TriInspector;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
@@ -13,6 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Serializable]
   public struct Spawned : IEcsComponent
   {
+    [ShowInInspector]
     public EcsPackedEntity Spawn;
   }
 }

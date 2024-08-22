@@ -1,6 +1,7 @@
 ﻿using System;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using TriInspector;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.Tongue
 {
@@ -13,6 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.To
   [Serializable]
   public struct ThrownTongue : IEcsComponent
   {
+    [ShowInInspector]
     public EcsPackedEntity Tongue;
   }
 }

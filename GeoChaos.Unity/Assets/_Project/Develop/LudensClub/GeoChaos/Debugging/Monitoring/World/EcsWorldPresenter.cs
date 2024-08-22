@@ -19,6 +19,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private Type[] _typesCache;
     private int[] _entities;
 
+    public IEcsWorldWrapper Wrapper => _wrapper;
+    public List<IEcsEntityPresenter> Children => _children;
     public EcsWorldView View { get; private set; }
 
     public EcsWorldPresenter(IEcsWorldWrapper wrapper,

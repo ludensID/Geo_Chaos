@@ -1,12 +1,17 @@
 ﻿using Leopotam.EcsLite;
+using TriInspector;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Damage
 {
   public struct DamageInfo
   {
+    [ShowInInspector]
     public EcsPackedEntity Master;
+
+    [ShowInInspector]
     public EcsPackedEntity Target;
+
     public float Damage;
     public Vector3 BumpPosition;
 

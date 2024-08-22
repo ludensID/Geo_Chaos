@@ -11,9 +11,12 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private readonly List<IEcsWorldWrapper> _wrappers;
     private readonly IEcsUniverseViewFactory _viewFactory;
     private readonly IEcsWorldPresenterFactory _worldFactory;
-    private readonly List<IEcsWorldPresenter> _children = new();
+    private readonly List<IEcsWorldPresenter> _children = new List<IEcsWorldPresenter>();
 
+    public List<IEcsWorldPresenter> Children => _children;
     public EcsUniverseView View { get; private set; }
+
+    public bool WasInitialized { get; private set; }
 
     public EcsUniversePresenter(List<IEcsWorldWrapper> wrappers,
       IEcsUniverseViewFactory viewFactory,
@@ -35,6 +38,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
         _children.Add(instance);
         View.Worlds.Add(instance.View);
       }
+
+      WasInitialized = true;
     }
 
     public void Tick()
