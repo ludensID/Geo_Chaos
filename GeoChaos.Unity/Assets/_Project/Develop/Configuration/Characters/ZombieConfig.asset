@@ -20,3 +20,4 @@ MonoBehaviour:
   AttackTime: 5
   AttackSpeed: 5
   AttackCooldown: 2
+  WatchTime: 5

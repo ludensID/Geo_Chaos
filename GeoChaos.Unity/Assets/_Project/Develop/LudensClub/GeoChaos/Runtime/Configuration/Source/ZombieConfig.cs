@@ -22,5 +22,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float AttackTime;
     public float AttackSpeed;
     public float AttackCooldown;
+
+    [Title("Watch")]
+    public float WatchTime;
   }
 }
