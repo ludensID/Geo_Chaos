@@ -1,19 +1,20 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Watch;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.ArmsAttack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Watch
 {
-  public class DeleteExpiredZombieWatchTimerSystem : IEcsRunSystem
+  public class ZombieReachingWatchPointSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _watchingZombies;
     private readonly SpeedForceLoop _forceLoop;
 
-    public DeleteExpiredZombieWatchTimerSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
+    public ZombieReachingWatchPointSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
     {
       _game = gameWorldWrapper.World;
       _forceLoop = forceLoopSvc.CreateLoop(x => x.Exc<SpeedForceCommand>());
@@ -23,18 +24,20 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Watch
         .Inc<WatchingTimer>()
         .Collect();
     }
-      
+
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity zombie in _watchingZombies
-        .Check<WatchingTimer>(x => x.TimeLeft <= 0))
+      foreach (EcsEntity zombie in _watchingZombies)
       {
-        zombie
-            .Del<WatchingTimer>()
-            .Has<StopAttackWithArmsCommand>(true);
-        
-        _forceLoop.ResetForcesToZero(SpeedForceType.Move, zombie.PackedEntity);
-      } 
+        float currentPoint = zombie.Get<ViewRef>().View.transform.position.x;
+        float movePoint = zombie.Get<MovePoint>().Point;
+        float speed = zombie.Get<MovementVector>().Speed.x;
+
+        if (Mathf.Abs(movePoint - currentPoint) < speed * Time.fixedDeltaTime)
+        {
+          _forceLoop.ResetForcesToZero(SpeedForceType.Move, zombie.PackedEntity);
+        }
+      }
     }
   }
 }

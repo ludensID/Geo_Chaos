@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Watch;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.ArmsAttack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -25,7 +26,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Watch
     {
       foreach (EcsEntity zombie in _watchingZombies)
       {
-        zombie.Del<WatchingTimer>();
+        zombie
+            .Del<WatchingTimer>()
+            .Has<StopAttackWithArmsCommand>(true);
       }
     }
   }
