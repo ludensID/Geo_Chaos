@@ -13,12 +13,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
 
       Add(systems.Create<DeleteZombieAttackFinishedEventSystem>());
       Add(systems.Create<FinishZombieAttackSystem>());
-      
+
       Add(systems.Create<StartZombieAttackCooldownSystem>());
       Add(systems.Create<DeleteExpiredZombieAttackCooldownSystem>());
-      
+
       Add(systems.Create<ZombieAttackPreparingFeature>());
       Add(systems.Create<ZombieAttackMoveFeature>());
+
+      Add(systems.Create<DamageFromZombieBodySystem>());
+      Add(systems.Create<DamageFromZombieArmsSystem>());
     }
   }
 }

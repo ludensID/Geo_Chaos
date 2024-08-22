@@ -15,9 +15,11 @@ MonoBehaviour:
   WaitTime: 3
   CalmSpeed: 3
   BackDistance: 5
-  ArmsTime: 1
-  ArmsCooldown: 0.3
-  AttackTime: 5
+  AttackTime: 2
   AttackSpeed: 5
   AttackCooldown: 2
+  ArmsTime: 1
+  ArmsCooldown: 0.3
+  DamageFromBody: 5
+  DamageFromArms: 10
   WatchTime: 5

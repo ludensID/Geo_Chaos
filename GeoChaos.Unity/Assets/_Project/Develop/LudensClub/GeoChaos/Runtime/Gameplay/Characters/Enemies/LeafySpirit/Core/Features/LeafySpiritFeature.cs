@@ -34,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit
       Add(systems.Create<LeafySpiritRetractionFeature>());
       Add(systems.Create<LeafySpiritRelaxationFeature>());
       
-      Add(systems.Create<DamageFromLeafySpiritSystem>());
+      Add(systems.Create<DamageFromLeafySpiritBodySystem>());
       Add(systems.Create<DampLeafySpiritDamageFromHeroSystem>());
       
       Add(systems.Create<DestroyLeavesSystem>());
