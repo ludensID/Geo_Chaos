@@ -1,14 +1,11 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
-using LudensClub.GeoChaos.Runtime.Gameplay.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.Preparing
@@ -16,6 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.
   public class ZombieAttackPreparingSystem : IEcsRunSystem
   {
     private readonly ISpeedForceFactory _forceFactory;
+    private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _preparingZombies;
     private readonly ZombieConfig _config;
@@ -23,9 +21,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.
 
     public ZombieAttackPreparingSystem(GameWorldWrapper gameWorldWrapper,
       IConfigProvider configProvider,
-      ISpeedForceFactory forceFactory)
+      ISpeedForceFactory forceFactory,
+      ITimerFactory timers)
     {
       _forceFactory = forceFactory;
+      _timers = timers;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<ZombieConfig>();
 
@@ -46,10 +46,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.
       {
         float heroPoint = hero.Get<ViewRef>().View.transform.position.x;
         float currentPoint = zombie.Get<ViewRef>().View.transform.position.x;
-        Vector2 bounds = zombie.Get<PatrolBounds>().HorizontalBounds;
         float direction = -Mathf.Sign(heroPoint - currentPoint);
-        float nextPoint = currentPoint + _config.BackDistance * direction;
-        nextPoint = MathUtils.Clamp(nextPoint, bounds.x + 0.1f, bounds.y - 0.1f);
+        float time = _config.BackDistance / _config.CalmSpeed;
 
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, zombie.PackedEntity, Vector2.right)
         {
@@ -59,7 +57,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.
 
         zombie
           .Add<AttackPreparing>()
-          .Replace((ref MovePoint point) => point.Point = nextPoint)
+          .Add((ref AttackPreparingTimer timer) => timer.TimeLeft = _timers.Create(time))
           .Change((ref BodyDirection bodyDirection) => bodyDirection.Direction = -direction);
       }
     }

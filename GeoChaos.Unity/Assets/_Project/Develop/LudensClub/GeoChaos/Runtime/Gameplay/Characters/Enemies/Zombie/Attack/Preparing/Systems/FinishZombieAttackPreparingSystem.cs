@@ -26,6 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.
         zombie
           .Del<FinishPrepareToAttackCommand>()
           .Del<AttackPreparing>()
+          .Del<AttackPreparingTimer>()
           .Add<OnAttackPreparingFinished>();
       }
     }
