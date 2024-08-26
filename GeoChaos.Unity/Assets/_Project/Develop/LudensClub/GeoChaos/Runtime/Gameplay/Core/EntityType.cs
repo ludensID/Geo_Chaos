@@ -9,6 +9,7 @@
     LeafySpirit = Lama + 1,
     Frog = LeafySpirit + 1,
     Zombie = Frog + 1,
+    Shroom = Zombie + 1,
     Ring = 15,
     Shard = Ring + 1,
     Spike = Shard + 1,

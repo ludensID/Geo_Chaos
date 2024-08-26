@@ -64,6 +64,9 @@
       
       public const string ZOMBIE_CONFIG_MENU = CONFIG_MENU + "Zombie";
       public const string ZOMBIE_CONFIG_FILE = "ZombieConfig";
+      
+      public const string SHROOM_CONFIG_MENU = CONFIG_MENU + "Shroom";
+      public const string SHROOM_CONFIG_FILE = "ShroomConfig";
     }
   }
 }
