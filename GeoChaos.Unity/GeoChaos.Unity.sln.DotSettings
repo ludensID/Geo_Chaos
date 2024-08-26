@@ -236,4 +236,5 @@
     [System.Serializable]
     public struct $CLASS$ : LudensClub.GeoChaos.Runtime.Infrastructure.IComponent {$END$}
 }</s:String>
-	<s:Boolean x:Key="/Default/UserDictionary/Words/=Shroom/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Shroom/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=shrooms/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

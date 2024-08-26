@@ -1,4 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Detection;
@@ -8,7 +9,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Detection.Selection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring;
