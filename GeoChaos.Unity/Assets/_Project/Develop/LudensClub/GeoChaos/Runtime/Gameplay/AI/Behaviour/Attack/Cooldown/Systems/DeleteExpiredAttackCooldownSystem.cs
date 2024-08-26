@@ -3,19 +3,20 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
+namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Attack.Cooldown
 {
-  public class DeleteExpiredZombieAttackCooldownSystem : IEcsRunSystem
+  public class DeleteExpiredAttackCooldownSystem<TFilterComponent> : IEcsRunSystem
+    where TFilterComponent : struct, IEcsComponent
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _zombies;
 
-    public DeleteExpiredZombieAttackCooldownSystem(GameWorldWrapper gameWorldWrapper)
+    public DeleteExpiredAttackCooldownSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
       _zombies = _game
-        .Filter<ZombieTag>()
+        .Filter<TFilterComponent>()
         .Inc<AttackCooldown>()
         .Collect();
     }

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882d902f769540548099106a015a0085, type: 3}
   m_Name: ShroomConfig
   m_EditorClassIdentifier: 
+  ReloadingTime: 2

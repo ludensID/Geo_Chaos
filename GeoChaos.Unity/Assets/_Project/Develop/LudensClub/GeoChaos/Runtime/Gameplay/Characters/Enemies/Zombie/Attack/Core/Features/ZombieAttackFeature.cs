@@ -8,14 +8,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
   {
     public ZombieAttackFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<DeleteZombieAttackStartedEventSystem>());
-      Add(systems.Create<ZombieAttackSystem>());
-
-      Add(systems.Create<DeleteZombieAttackFinishedEventSystem>());
-      Add(systems.Create<FinishZombieAttackSystem>());
-
-      Add(systems.Create<StartZombieAttackCooldownSystem>());
-      Add(systems.Create<DeleteExpiredZombieAttackCooldownSystem>());
+      Add(systems.Create<ZombieAttackStateFeature>());
+      Add(systems.Create<ZombieAttackCooldownFeature>());
 
       Add(systems.Create<ZombieAttackPreparingFeature>());
       Add(systems.Create<ZombieAttackMoveFeature>());

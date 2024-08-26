@@ -11,7 +11,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     public float AttackTime;
     public float AttackSpeed;
-    public float AttackCooldown;
     
     [Title("Attack With Arms")]
     public float ArmsTime;

@@ -3,28 +3,29 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
+namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Attack.State
 {
-  public class ZombieAttackSystem : IEcsRunSystem
+  public class AttackStateSystem<TFilterComponent> : IEcsRunSystem
+    where TFilterComponent : struct, IEcsComponent
   {
     private readonly EcsWorld _game;
-    private readonly EcsEntities _attackingZombies;
+    private readonly EcsEntities _attackingEntities;
 
-    public ZombieAttackSystem(GameWorldWrapper gameWorldWrapper)
+    public AttackStateSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
-      _attackingZombies = _game
-        .Filter<ZombieTag>()
+      _attackingEntities = _game
+        .Filter<TFilterComponent>()
         .Inc<AttackCommand>()
         .Collect();
     }
       
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity zombie in _attackingZombies)
+      foreach (EcsEntity entity in _attackingEntities)
       {
-        zombie
+        entity
           .Del<AttackCommand>()
           .Add<OnAttackStarted>()
           .Add<Attacking>();
