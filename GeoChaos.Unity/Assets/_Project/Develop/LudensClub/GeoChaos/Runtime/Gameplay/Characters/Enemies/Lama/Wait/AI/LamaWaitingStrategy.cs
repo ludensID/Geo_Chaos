@@ -1,21 +1,9 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Wait;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI;
+using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Wait;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Wait
 {
-  public class LamaWaitingStrategy : IActionStrategy, IResetStrategy
+  public class LamaWaitingStrategy : ActionWithResetStrategy<WaitingTimer, WaitCommand, StopWaitCommand>
   {
-    public EcsEntity Entity { get; set; }
-
-    public BehaviourStatus Execute()
-    {
-      return Node.CONTINUE;
-    }
-
-    public void Reset()
-    {
-      Entity.Del<WaitingTimer>();
-    }
   }
 }

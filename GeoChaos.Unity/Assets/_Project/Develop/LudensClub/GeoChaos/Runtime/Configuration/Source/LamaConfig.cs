@@ -10,7 +10,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     
     [Title("Patrol")]
     public Vector2 PatrolStep;
-    public float LookingTime;
     
     [Title("Chase")]
     public float ViewRadius;

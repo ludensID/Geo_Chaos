@@ -1,14 +1,12 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Wait;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Wait
 {
-  public class ZombieWaitFeature : EcsFeature
+  public class ZombieWaitFeature : WaitFeature<ZombieTag>
   {
-    public ZombieWaitFeature(IEcsSystemFactory systems)
+    public ZombieWaitFeature(IEcsSystemFactory systems) : base(systems)
     {
-      Add(systems.Create<ZombieWaitingSystem>());
-      Add(systems.Create<FinishZombieWaitingSystem>());
-      Add(systems.Create<StopZombieWaitingSystem>());
     }
   }
 }

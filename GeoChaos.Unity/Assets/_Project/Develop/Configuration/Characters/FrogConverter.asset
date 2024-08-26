@@ -36,6 +36,8 @@ MonoBehaviour:
           rid: 2072450941062479957
       - Value:
           rid: 2072451100888531380
+      - Value:
+          rid: 2072451372232999018
     _scriptableConverter: {fileID: 0}
   - _serializedConverter:
       rid: 2072450941062479956
@@ -70,6 +72,12 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         EnableGravityOnStart: 1
+        GravityScale: 1
     - rid: 2072451100888531380
       type: {class: Immortal, ns: LudensClub.GeoChaos.Runtime.Gameplay.Die, asm: GeoChaos.Runtime}
       data: 
+    - rid: 2072451372232999018
+      type: {class: WaitTime, ns: LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Wait,
+        asm: GeoChaos.Runtime}
+      data:
+        Time: 3

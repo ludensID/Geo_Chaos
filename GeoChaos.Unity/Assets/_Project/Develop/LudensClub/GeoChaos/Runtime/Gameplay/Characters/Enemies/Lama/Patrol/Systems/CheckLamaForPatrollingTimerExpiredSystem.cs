@@ -1,5 +1,4 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Wait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -12,20 +11,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
   public class CheckLamaForPatrollingTimerExpiredSystem : IEcsRunSystem
   {
     private readonly ISpeedForceFactory _forceFactory;
-    private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _patrollingTimers;
-    private readonly LamaConfig _config;
 
     public CheckLamaForPatrollingTimerExpiredSystem(GameWorldWrapper gameWorldWrapper,
-      ISpeedForceFactory forceFactory,
-      ITimerFactory timers,
-      IConfigProvider configProvider)
+      ISpeedForceFactory forceFactory)
     {
       _forceFactory = forceFactory;
-      _timers = timers;
       _game = gameWorldWrapper.World;
-      _config = configProvider.Get<LamaConfig>();
 
       _patrollingTimers = _game
         .Filter<PatrollingTimer>()
@@ -46,8 +39,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
         timer
           .Del<PatrollingTimer>()
           .Del<Patrolling>()
-          .Add<OnPatrolFinished>()
-          .Add((ref WaitingTimer lookingTimer) => lookingTimer.TimeLeft = _timers.Create(_config.LookingTime));
+          .Add<OnPatrolFinished>();
       }
     }
   }

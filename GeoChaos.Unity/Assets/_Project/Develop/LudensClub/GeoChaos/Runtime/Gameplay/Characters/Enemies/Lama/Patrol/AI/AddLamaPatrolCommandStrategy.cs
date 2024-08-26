@@ -11,9 +11,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama.Patrol
     {
       if (Entity.Has<Patrolling>())
         Entity.Add<StopPatrolCommand>();
-
-      if (Entity.Has<OnPatrolFinished>())
-        Entity.Has<WaitingTimer>(false);
     }
   }
 }

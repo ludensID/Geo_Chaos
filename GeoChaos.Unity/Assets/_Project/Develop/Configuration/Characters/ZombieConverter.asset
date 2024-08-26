@@ -31,6 +31,8 @@ MonoBehaviour:
           rid: 2072451241627091051
       - Value:
           rid: 2072451241627091052
+      - Value:
+          rid: 2072451372232999019
     _scriptableConverter: {fileID: 0}
   - _serializedConverter:
       rid: 2072451241627091053
@@ -63,3 +65,8 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         Health: 100
+    - rid: 2072451372232999019
+      type: {class: WaitTime, ns: LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Wait,
+        asm: GeoChaos.Runtime}
+      data:
+        Time: 3
