@@ -1,17 +1,12 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Patrol
 {
-  public class ZombiePatrolFeature : EcsFeature
+  public class ZombiePatrolFeature : PatrolToRandomPointFeature<ZombieTag>
   {
-    public ZombiePatrolFeature(IEcsSystemFactory systems)
+    public ZombiePatrolFeature(IEcsSystemFactory systems) : base(systems)
     {
-      Add(systems.Create<ZombiePatrollingSystem>());
-
-      Add(systems.Create<DeleteZombiePatrolFinishedEventSystem>());
-      Add(systems.Create<FinishZombiePatrollingSystem>());
-
-      Add(systems.Create<StopZombiePatrollingSystem>());
     }
   }
 }

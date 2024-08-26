@@ -33,6 +33,8 @@ MonoBehaviour:
           rid: 2072451372232999000
       - Value:
           rid: 2072451372232999017
+      - Value:
+          rid: 2072451372232999049
     _scriptableConverter: {fileID: 0}
   - _serializedConverter:
       rid: 2072451372232998996
@@ -70,3 +72,8 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         Time: 1
+    - rid: 2072451372232999049
+      type: {class: PatrolSpeed, ns: LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Patrol,
+        asm: GeoChaos.Runtime}
+      data:
+        Speed: 3

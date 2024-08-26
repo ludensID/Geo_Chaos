@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom.Wait;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom.Patrol;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom.Wait;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI;
@@ -15,10 +16,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom
     {
       _builder = builder;
     }
-    
+
     public BehaviourTree Create(EcsEntity entity)
     {
       return _builder.Create(entity)
+        .AddSequence()
+        .ToChild()
+        .AddCondition<CheckForShroomPatrolStrategy>()
+        .AddAction<ShroomPatrolStrategy>()
+        .ToParent()
         .AddSequence()
         .ToChild()
         .AddCondition<CheckForShroomWaitStrategy>()

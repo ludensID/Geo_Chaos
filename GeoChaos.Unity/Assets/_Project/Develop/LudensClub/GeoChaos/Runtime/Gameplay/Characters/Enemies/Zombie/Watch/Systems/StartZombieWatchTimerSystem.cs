@@ -52,7 +52,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Watch
 
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, zombie.PackedEntity, Vector2.right)
         {
-          Speed = Vector2.right * _config.CalmSpeed,
+          Speed = Vector2.right * zombie.Get<PatrolSpeed>().Speed,
           Direction = Vector2.right * direction
         });
 

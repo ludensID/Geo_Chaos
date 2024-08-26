@@ -195,10 +195,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4968427778790887181, guid: df3bb003a5dd0674f84fa0d9d65575d1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968427778790887181, guid: df3bb003a5dd0674f84fa0d9d65575d1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5932876198085017566, guid: df3bb003a5dd0674f84fa0d9d65575d1,
         type: 3}
       propertyPath: m_Name
       value: ShroomSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926459563136203439, guid: df3bb003a5dd0674f84fa0d9d65575d1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926459563136203439, guid: df3bb003a5dd0674f84fa0d9d65575d1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8639245575682057970, guid: df3bb003a5dd0674f84fa0d9d65575d1,
         type: 3}
