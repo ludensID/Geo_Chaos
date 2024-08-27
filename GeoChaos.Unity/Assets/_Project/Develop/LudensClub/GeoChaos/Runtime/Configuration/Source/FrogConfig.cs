@@ -24,7 +24,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     public float JumpBackHeight;
 
+    [Title("Detection")]
     public float FrontRadius;
+
     public float BackRadius;
 
     [Title("Attack")]

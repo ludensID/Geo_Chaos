@@ -11,6 +11,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment.GasCloud;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
@@ -60,6 +61,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       
       BindGameplayPause();
       BindInitializingPhase();
+      
+      BindViewFactory();
 
       BindNodeStrategyFactory();
       BindBehaviourTreeBuilder();
@@ -79,6 +82,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindGameWorldWrapper();
       BindMessageWorldWrapper();
       BindPhysicsWorldWrapper();
+      
+      BindEcsSystemsFactory();
 
       BindCameraProvider();
 
@@ -92,19 +97,21 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindFrogTargetInFrontSelector();
       BindFrogTargetInBackSelector();
       BindTargetInBoundsSelector();
+        
+      BindShardPool();
+      BindLeafPool();
+      BindTonguePool();
+      BindGasCloudPool();
       
       BindDragForceService();
       BindADControlService();
       BindSpeedForceLoopService();
       BindSpeedForceFactory();
-      BindEcsSystemsFactory();
-      BindViewFactory();
+      
       BindCollisionFiller();
       BindCollisionPacker();
       BindCollisionService();
-      BindShardPool();
-      BindLeafPool();
-      BindTonguePool();
+      
       BindShardFactory();
       BindShootService();
       BindFreeFallService();
@@ -124,6 +131,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
       
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindGasCloudPool()
+    {
+      Container
+        .BindInterfacesAndSelfTo<GasCloudPool>()
+        .AsSingle();
     }
 
     private void BindShroomTreeCreator()

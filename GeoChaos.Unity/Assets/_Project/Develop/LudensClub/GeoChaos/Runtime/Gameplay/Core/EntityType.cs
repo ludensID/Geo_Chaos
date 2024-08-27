@@ -19,6 +19,7 @@
     Lever = Door + 1,
     HealthShard = Lever + 1,
     Leaf = HealthShard + 1,
-    Tongue = Leaf + 1
+    Tongue = Leaf + 1,
+    GasCloud = Tongue + 1,
   }
 }

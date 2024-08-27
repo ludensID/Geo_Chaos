@@ -8,6 +8,7 @@
     public const string PROJECT_MENU = "GeoChaos/";
     public const string CONFIG_MENU = PROJECT_MENU + "Configs/";
     public const string ECS_MENU = PROJECT_MENU + "Ecs/";
+    public const string POOL_MENU = CONFIG_MENU + "Pools/";
 
     public static class Names
     {
@@ -23,15 +24,18 @@
       public const string PREFAB_MENU = CONFIG_MENU + "Prefabs";
       public const string PREFAB_FILE = "PrefabConfig";
 
-      public const string SHARD_POOL_MENU = CONFIG_MENU + "Shard Pool";
+      public const string SHARD_POOL_MENU = POOL_MENU + "Shard Pool";
       public const string SHARD_POOL_FILE = "ShardPoolConfig";
       
-      public const string LEAF_POOL_MENU = CONFIG_MENU + "Leaf Pool";
+      public const string LEAF_POOL_MENU = POOL_MENU + "Leaf Pool";
       public const string LEAF_POOL_FILE = "LeafPoolConfig";
       
-      public const string TONGUE_POOL_CONFIG_MENU = CONFIG_MENU + "Tongue Pool";
+      public const string TONGUE_POOL_CONFIG_MENU = POOL_MENU + "Tongue Pool";
       public const string TONGUE_POOL_CONFIG_FILE = "TonguePoolConfig";
 
+      public const string GAS_CLOUD_POOL_MENU = POOL_MENU + "Gas Cloud Pool";
+      public const string GAS_CLOUD_POOL_FILE = "GasCloudPoolConfig";
+      
       public const string LAMA_MENU = CONFIG_MENU + "Lama";
       public const string LAMA_FILE = "LamaConfig";
 
@@ -58,15 +62,15 @@
 
       public const string FROG_MENU = CONFIG_MENU + "Frog";
       public const string FROG_FILE = "FrogConfig";
-      
-      public const string TONGUE_CONFIG_MENU = CONFIG_MENU + "Tongue";
-      public const string TONGUE_CONFIG_FILE = "TongueConfig";
-      
-      public const string ZOMBIE_CONFIG_MENU = CONFIG_MENU + "Zombie";
-      public const string ZOMBIE_CONFIG_FILE = "ZombieConfig";
-      
-      public const string SHROOM_CONFIG_MENU = CONFIG_MENU + "Shroom";
-      public const string SHROOM_CONFIG_FILE = "ShroomConfig";
+
+      public const string TONGUE_MENU = CONFIG_MENU + "Tongue";
+      public const string TONGUE_FILE = "TongueConfig";
+
+      public const string ZOMBIE_MENU = CONFIG_MENU + "Zombie";
+      public const string ZOMBIE_FILE = "ZombieConfig";
+
+      public const string SHROOM_MENU = CONFIG_MENU + "Shroom";
+      public const string SHROOM_FILE = "ShroomConfig";
     }
   }
 }

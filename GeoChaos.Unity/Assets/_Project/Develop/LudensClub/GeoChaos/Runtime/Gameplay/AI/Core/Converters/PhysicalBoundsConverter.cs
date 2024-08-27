@@ -9,7 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
   [AddComponentMenu(ACC.Names.PHYSICAL_BOUNDS_CONVERTER)]
   public class PhysicalBoundsConverter : MonoBehaviour, IEcsConverter
   {
-    [InfoBox("The left bound can not be more than the right one", TriMessageType.Error,
+    [InfoBox("The left bound must be to the left and below right", TriMessageType.Error,
       TriConstants.Names.Explicit.CHECK_BOUNDS)]
     public Transform LeftBound;
 
@@ -56,7 +56,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
 
     private bool CheckBounds()
     {
-      return LeftBound && RightBound && LeftBound.position.x > RightBound.position.x;
+      return LeftBound && RightBound &&
+        (LeftBound.position.x > RightBound.position.x || LeftBound.position.y > RightBound.position.y);
     }
 #endif
   }
