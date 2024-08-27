@@ -20,17 +20,17 @@ MonoBehaviour:
   EnableADControl: 1
   UseADControlGradient: 1
   ADControlSpeed: 4
-  MovementSpeed: 7
+  MovementSpeed: 15
   AccelerationTime: 0.15
-  JumpTime: 0.66
-  JumpHeight: 5
+  JumpTime: 0.55
+  JumpHeight: 7
   FallVelocityMultiplier: 1
-  JumpHorizontalSpeedMultiplier: 2
-  JumpLength: 9.240001
+  JumpHorizontalSpeedMultiplier: 1
+  JumpLength: 9.900001
   EnableDash: 1
   DashVelocity: 33.4
   DashTime: 0.15
-  DashCooldown: 4
+  DashCooldown: 1
   EnableAttack: 1
   HitDurations:
   - 0.2
@@ -44,7 +44,7 @@ MonoBehaviour:
   HookRadius: 20
   RingViewAngle: 90
   HookPrecastTime: 0.2
-  HookVelocity: 30
+  HookVelocity: 20
   BumpOnHookReaction: 0
   PullTimeOffset: 1
   HookInputCooldown: 0.1
@@ -63,7 +63,6 @@ MonoBehaviour:
   EnableBump: 1
   BumpForce: {x: 5, y: 15}
   BumpFreezeDuration: 0.3
-  Health: 100
   HealthShardPoint: 20
   DashDamage: 10
   ShardDamage: 15
