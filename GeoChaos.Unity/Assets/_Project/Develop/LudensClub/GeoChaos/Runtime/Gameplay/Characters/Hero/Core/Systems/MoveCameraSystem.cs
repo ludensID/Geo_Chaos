@@ -1,7 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
@@ -26,9 +25,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
     {
       foreach (EcsEntity hero in _heroes)
       {
+        Vector3 heroPosition = hero.Get<ViewRef>().View.transform.position;
         Vector3 position = _cameraProvider.Camera.transform.position;
-        position.x = hero.Get<ViewRef>().View.transform.position.x;
-        position.x = MathUtils.Clamp(position.x, 7.5f);
+        position.x = heroPosition.x;
+        position.y = heroPosition.y;
         _cameraProvider.Camera.transform.position = position;
       }
     }

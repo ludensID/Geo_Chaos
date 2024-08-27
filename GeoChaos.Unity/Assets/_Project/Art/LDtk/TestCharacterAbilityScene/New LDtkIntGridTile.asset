@@ -16,5 +16,5 @@ MonoBehaviour:
   _customPhysicsSprite: {fileID: 0}
   _tilemapTag: Untagged
   _tilemapLayerMask: 8
-  _physicsMaterial: {fileID: 0}
+  _physicsMaterial: {fileID: 6200000, guid: 8a52096240b6e6f4a980b592ed1068d2, type: 2}
   _gameObject: {fileID: 0}

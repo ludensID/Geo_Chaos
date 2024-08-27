@@ -4,6 +4,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems
 {
@@ -37,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems
     {
       ref MovementVector vector = ref entity.Get<MovementVector>();
       float viewDirX = entity.Get<ViewDirection>().Direction.x;
-      return (entity.Has<FreeRotating>() || vector.Direction.x * vector.Speed.x == 0) && viewDirX != 0
+      return (entity.Has<FreeRotating>() || (vector.Direction.x * vector.Speed.x).ApproximatelyEqual(0, 0.001f)) && viewDirX != 0
         ? viewDirX
         : vector.Direction.x;
     }
