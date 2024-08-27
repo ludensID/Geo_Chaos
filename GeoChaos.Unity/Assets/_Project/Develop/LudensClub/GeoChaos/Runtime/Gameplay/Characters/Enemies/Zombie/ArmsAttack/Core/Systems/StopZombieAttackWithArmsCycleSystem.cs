@@ -15,7 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.ArmsAtt
 
       _attackingZombies = _game
         .Filter<ZombieTag>()
-        .Inc<StopAttackWithArmsCommand>()
+        .Inc<StopAttackWithArmsCycleCommand>()
         .Collect();
     }
     
@@ -24,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.ArmsAtt
       foreach (EcsEntity zombie in _attackingZombies)
       {
         zombie
-          .Del<StopAttackWithArmsCommand>()
+          .Del<StopAttackWithArmsCycleCommand>()
           .Has<AttackingWithArms>(false)
           .Has<AttackWithArmsTimer>(false)
           .Has<AttackWithArmsCooldown>(false)

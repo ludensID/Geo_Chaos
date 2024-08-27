@@ -42,7 +42,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Watch
       foreach (EcsEntity zombie in _watchingZombies)
       {
         zombie
-          .Add<StartAttackWithArmsCommand>()
+          .Add<StartAttackWithArmsCycleCommand>()
           .Add((ref WatchingTimer timer) => timer.TimeLeft = _timers.Create(_config.WatchTime));
 
         float currentPoint = zombie.Get<ViewRef>().View.transform.position.x;

@@ -31,7 +31,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Watch
       {
         zombie
             .Del<WatchingTimer>()
-            .Has<StopAttackWithArmsCommand>(true);
+            .Has<StopAttackWithArmsCycleCommand>(true);
         
         _forceLoop.ResetForcesToZero(SpeedForceType.Move, zombie.PackedEntity);
       } 

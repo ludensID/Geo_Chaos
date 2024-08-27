@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133c2ae489ef48fc81c331d6cf2618a2, type: 3}
+  m_Name: GasCloudConverter
+  m_EditorClassIdentifier: 
+  Converters:
+  - _serializedConverter:
+      rid: -2
+    _components:
+      Components:
+      - Value:
+          rid: 2072451401200173057
+      - Value:
+          rid: 2072451401200173058
+      - Value:
+          rid: 2072451401200173059
+    _scriptableConverter: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 2072451401200173057
+      type: {class: GasCloudTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.GasCloud,
+        asm: GeoChaos.Runtime}
+      data: 
+    - rid: 2072451401200173058
+      type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
+      data:
+        Id: 25
+    - rid: 2072451401200173059
+      type: {class: Poolable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
+      data: 

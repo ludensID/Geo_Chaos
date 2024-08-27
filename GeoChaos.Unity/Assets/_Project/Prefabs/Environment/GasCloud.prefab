@@ -60,12 +60,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc7f384b43d4a218aed0e82fd56407b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _converters: []
+  _converters:
+  - _serializedConverter:
+      rid: -2
+    _components:
+      Components: []
+    _scriptableConverter: {fileID: 11400000, guid: 441044333e25ff04da3e069d9a275756,
+      type: 2}
   _createEntityOnStart: 1
   _createEntityOnEnable: 0
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!114 &7853196299375339392
 MonoBehaviour:
   m_ObjectHideFlags: 0

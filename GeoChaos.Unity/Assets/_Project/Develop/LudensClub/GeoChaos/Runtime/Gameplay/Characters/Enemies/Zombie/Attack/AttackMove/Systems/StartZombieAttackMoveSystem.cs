@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.
       {
         zombie
           .Add<AttackMoveCommand>()
-          .Add<StartAttackWithArmsCommand>();
+          .Add<StartAttackWithArmsCycleCommand>();
       }
     }
   }
