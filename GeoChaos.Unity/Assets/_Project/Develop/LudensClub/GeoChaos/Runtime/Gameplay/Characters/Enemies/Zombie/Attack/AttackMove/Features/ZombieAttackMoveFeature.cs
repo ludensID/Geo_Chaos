@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Attack.AttackMove;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.AttackMove
 {
@@ -6,8 +7,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.
   {
     public ZombieAttackMoveFeature(IEcsSystemFactory systems)
     {
-        Add(systems.Create<ZombieAttackMovingSystem>());
-        Add(systems.Create<FinishZombieAttackMovingSystem>());
+      Add(systems.Create<StartZombieAttackMoveSystem>());
+      Add(systems.Create<AttackMoveFeature<ZombieTag>>());
+      Add(systems.Create<StopAttackWithArmsWhenAttackMoveFinishedSystem>());
     }
   }
 }

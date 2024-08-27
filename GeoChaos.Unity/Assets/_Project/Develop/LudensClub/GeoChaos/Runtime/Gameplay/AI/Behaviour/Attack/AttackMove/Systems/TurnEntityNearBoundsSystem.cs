@@ -6,40 +6,41 @@ using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.AttackMove
+namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Attack.AttackMove
 {
-  public class TurnZombieNearBoundsSystem : IEcsRunSystem
+  public class TurnEntityNearBoundsSystem<TFilterComponent> : IEcsRunSystem
+    where TFilterComponent : struct, IEcsComponent
   {
     private readonly EcsWorld _game;
-    private readonly EcsEntities _movingZombies;
+    private readonly EcsEntities _movingEntities;
     private readonly SpeedForceLoop _forceLoop;
 
-    public TurnZombieNearBoundsSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
+    public TurnEntityNearBoundsSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
     {
       _game = gameWorldWrapper.World;
       _forceLoop = forceLoopSvc.CreateLoop();
 
-      _movingZombies = _game
-        .Filter<ZombieTag>()
+      _movingEntities = _game
+        .Filter<TFilterComponent>()
         .Inc<AttackMoving>()
         .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity zombie in _movingZombies)
+      foreach (EcsEntity entity in _movingEntities)
       {
-        float currentPoint = zombie.Get<ViewRef>().View.transform.position.x;
-        Vector2 bounds = zombie.Get<PatrolBounds>().HorizontalBounds;
-        float speed = zombie.Get<MovementVector>().Speed.x;
-        ref BodyDirection bodyDirection = ref zombie.Get<BodyDirection>();
+        float currentPoint = entity.Get<ViewRef>().View.transform.position.x;
+        Vector2 bounds = entity.Get<PatrolBounds>().HorizontalBounds;
+        float speed = entity.Get<MovementVector>().Speed.x;
+        ref BodyDirection bodyDirection = ref entity.Get<BodyDirection>();
 
         float nextPoint = currentPoint + speed * Time.fixedDeltaTime * bodyDirection.Direction;
 
         if (nextPoint < bounds.x || nextPoint > bounds.y)
         {
           foreach (EcsEntity force in _forceLoop
-            .GetLoop(SpeedForceType.Move, zombie.PackedEntity))
+            .GetLoop(SpeedForceType.Move, entity.PackedEntity))
           {
             force.Change((ref MovementVector vector) => vector.Direction *= -1);
           }

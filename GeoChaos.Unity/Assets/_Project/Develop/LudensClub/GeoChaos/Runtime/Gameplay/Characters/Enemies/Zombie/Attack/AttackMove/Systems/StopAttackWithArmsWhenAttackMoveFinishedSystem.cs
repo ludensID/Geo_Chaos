@@ -6,18 +6,18 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.AttackMove
 {
-  public class FinishZombieAttackMovingSystem : IEcsRunSystem
+  public class StopAttackWithArmsWhenAttackMoveFinishedSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _movingZombies;
 
-    public FinishZombieAttackMovingSystem(GameWorldWrapper gameWorldWrapper)
+    public StopAttackWithArmsWhenAttackMoveFinishedSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 
       _movingZombies = _game
         .Filter<ZombieTag>()
-        .Inc<FinishAttackMoveCommand>()
+        .Inc<FinishAttackCommand>()
         .Collect();
     }
     
@@ -25,11 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.
     {
       foreach (EcsEntity zombie in _movingZombies)
       {
-        zombie
-          .Del<FinishAttackMoveCommand>()
-          .Del<AttackMoving>()
-          .Add<FinishAttackCommand>()
-          .Add<StopAttackWithArmsCommand>();
+        zombie.Add<StopAttackWithArmsCommand>();
       }
     }
   }
