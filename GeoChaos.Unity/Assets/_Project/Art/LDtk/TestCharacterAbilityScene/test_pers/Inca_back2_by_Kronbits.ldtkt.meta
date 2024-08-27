@@ -1,0 +1,1976 @@
+fileFormatVersion: 2
+guid: cf30e03d960db5d48a620ed7f3786a17
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: f3268c876daf4890b6af6cd462063137, type: 3}
+  _reimportOnDependencyChange: 1
+  _pixelsPerUnit: 32
+  _sprites:
+  - name: Inca_back2_by_Kronbits_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 208
+      width: 16
+      height: 16
+    spriteID: 886f5085140b08d4b8fcbd3672c908e5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 208
+      width: 16
+      height: 16
+    spriteID: 0ffab7e4079ca0149a9fb777f16a661c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 208
+      width: 16
+      height: 16
+    spriteID: d6ce71ba1cdca55409452017a62d78ce
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 208
+      width: 16
+      height: 16
+    spriteID: 8299dca3c2c8b274e8c8bb40680e743f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 208
+      width: 16
+      height: 16
+    spriteID: ce94efbd86f2d5e46876ab33e0132751
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 208
+      width: 16
+      height: 16
+    spriteID: 0384f0cfe8dc404498bec9332f6403ef
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 208
+      width: 16
+      height: 16
+    spriteID: 3c0eaa3008b8cd348baf8e181d8427bb
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 208
+      width: 16
+      height: 16
+    spriteID: 95c24c10f15740d44ad4d137fd8f8fa3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 208
+      width: 16
+      height: 16
+    spriteID: 6d7daec8093a4bd498277dce3787e5d0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 208
+      width: 16
+      height: 16
+    spriteID: 73ead076a3924234ba77fc709fb85aa8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_10
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 192
+      width: 16
+      height: 16
+    spriteID: 61400eddd2f928e4fa93e0c53b4e9fe4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_11
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 192
+      width: 16
+      height: 16
+    spriteID: 1b2c26e8fe035ef48a0681f16113267f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_12
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 192
+      width: 16
+      height: 16
+    spriteID: 52ff09b5cb491c247bbac03164c27b2c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_13
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 192
+      width: 16
+      height: 16
+    spriteID: 32035cbcdf286c642a3889f005d6228a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_14
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 192
+      width: 16
+      height: 16
+    spriteID: 2c9aa5fb6e327ac4b8869a12b96aefa9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_15
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 192
+      width: 16
+      height: 16
+    spriteID: 2e0e1b58b96c3b1468a3a439d6b49fc7
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_16
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 192
+      width: 16
+      height: 16
+    spriteID: 7c99afecc0718854aacca41cb62c57d1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_17
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 192
+      width: 16
+      height: 16
+    spriteID: 953b6ed0a920019469caa6808bb5f3d3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_18
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 192
+      width: 16
+      height: 16
+    spriteID: ac2653f752b139c4280ab25ea2856af6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_19
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 192
+      width: 16
+      height: 16
+    spriteID: 668f916d164f30b4eb9d1b294d349d82
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_20
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 176
+      width: 16
+      height: 16
+    spriteID: 644c26a3f872d6e42ad7139b95ac72a9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_21
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 176
+      width: 16
+      height: 16
+    spriteID: b9277e684848cf94ba193eb5eb6c74d2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_22
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 176
+      width: 16
+      height: 16
+    spriteID: 3c904521e17b67545beb97907db136b8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_23
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 176
+      width: 16
+      height: 16
+    spriteID: ddd3250b616b7dd44be63e6fbcc33088
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_24
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 176
+      width: 16
+      height: 16
+    spriteID: fb83828b439b69942bcfae005abd49f9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_25
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 176
+      width: 16
+      height: 16
+    spriteID: 58406444fde5e254fb5a7c87521f5ef2
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_26
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 176
+      width: 16
+      height: 16
+    spriteID: ab98f26c6f3470949b47d143fd76bc52
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_27
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 176
+      width: 16
+      height: 16
+    spriteID: d8ee4848aedf2e34b82d5f18c4810182
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_28
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 176
+      width: 16
+      height: 16
+    spriteID: bab961ea61830bf4ba067ae8aef06454
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_29
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 176
+      width: 16
+      height: 16
+    spriteID: ea7b25278ad47114d8503ec340947fd1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_30
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 8df7c57a70c7ceb4a9774409ff97adeb
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_31
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 160
+      width: 16
+      height: 16
+    spriteID: b9014ee4abdd2574695e30f1f260b05c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_32
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 3f72983683b4a52429525f947c02c9d5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_33
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 160
+      width: 16
+      height: 16
+    spriteID: ffe339ca23606974fa2e1d7169a61c8b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_34
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 3fa389e535fea1c43a27b2540e038b06
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_35
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 94a3aef470e8eb744b637f0fdcd12e7a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_36
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 160
+      width: 16
+      height: 16
+    spriteID: df772bd352388804fb3f18c792742f9a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_37
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 160
+      width: 16
+      height: 16
+    spriteID: 9b52b29dee4ccb8468cd427c2dd1a66c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_38
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 160
+      width: 16
+      height: 16
+    spriteID: b838bb12e4289b645b3f1d6540f398c4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_39
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 160
+      width: 16
+      height: 16
+    spriteID: ee2dcb2ff18e2504c8e2d7966267d642
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_40
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 39e574274c8edd34392484d51d443a9c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_41
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 387b2604796cc1844aef35714a2bcb61
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_42
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 86044f399cd4f6749ae5a2bde050b0e0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_43
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 7b713154973c9a445a35e27368aee07a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_44
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 144
+      width: 16
+      height: 16
+    spriteID: cda1db7eb98c75740bc6a1b58b8e3830
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_45
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 0c542fbae21353147b21df20fdabe3b3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_46
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 550757217a1ec0d4a9faed1259caa8e4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_47
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 2742e7bd214c8ff449a980a197325bfa
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_48
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 144
+      width: 16
+      height: 16
+    spriteID: 3f54605d349ad7c4aa86f7711221eadb
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_49
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 144
+      width: 16
+      height: 16
+    spriteID: c09eb881847b7da4295ba159bf41e369
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_50
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 26b55597cb9ef024799defe0aec7106b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_51
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 944e4ed55e2203e43857f6cbda229715
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_52
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 128
+      width: 16
+      height: 16
+    spriteID: b1d471199123e9a4f97277e39e3f2ba0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_53
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 3b36ff05c52b18f4ca9b132ca909c91b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_54
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 128
+      width: 16
+      height: 16
+    spriteID: f70222fcc8570934da74b67917077136
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_55
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 313e6f4beb1bd6a4293bbb4f53373622
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_56
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 128
+      width: 16
+      height: 16
+    spriteID: a3803e3163d736342a14cd7f7de97b7a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_57
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 8ba5b10207a82704ab0842e20eec0c63
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_58
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 128
+      width: 16
+      height: 16
+    spriteID: 26adb476a13aa564f88558afabe71193
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_59
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 128
+      width: 16
+      height: 16
+    spriteID: c32466cb7efdc3541b9c0038fd6d5e79
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_60
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 051a0f53816bc9c42b1fd74b29ec810c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_61
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 09d7b06047219754e91a0985ecb805d5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_62
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 69909687d22d73841b8e8e467dee4afa
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_63
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 6f8b13accc842b24caaf3ad9d4b7a026
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_64
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 471c7548f8296ff4dba4b53a30b7911d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_65
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 2630b25b0b0897e4686e403988c6149a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_66
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 72942345ee235bf41b4b8bf39551b2b0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_67
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 112
+      width: 16
+      height: 16
+    spriteID: 341b6ec4fcc703d4fb5951d57303164c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_68
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 112
+      width: 16
+      height: 16
+    spriteID: d2666c28a11a219498f50b55d9675a4d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_69
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 112
+      width: 16
+      height: 16
+    spriteID: dea5843324514b0439998682ef94a657
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_70
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 96
+      width: 16
+      height: 16
+    spriteID: a556b0f9f825695419aeb12bc5c21326
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_71
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 96
+      width: 16
+      height: 16
+    spriteID: a2981c6c11588174e983453e66a56ac5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_72
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 290285ded133f834ba7c50201398e242
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_73
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 2d915787b3fae7148b25373e63cca43d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_74
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 1daabfd522b2eee4eb398e16fef78f9c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_75
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 48d394ed9b5c139468acc5b11ad49b48
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_76
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 41860938624057748a1492071d5a98d1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_77
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 1dfbee2998456e94d86adbf3c726c63a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_78
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 96
+      width: 16
+      height: 16
+    spriteID: a1c062fcf1a09b049b0393790660279b
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_79
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 96
+      width: 16
+      height: 16
+    spriteID: 1e1e03ea9b8ab8643b672f724418c066
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_80
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 80
+      width: 16
+      height: 16
+    spriteID: dfc44084154d67344b0579c4d845d7d9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_81
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 80
+      width: 16
+      height: 16
+    spriteID: a0d53a826adb49c439d781ff3d169c6c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_82
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 4cd0083745835064e84635f54df5a48c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_83
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 036190e1f91c58b429bec134849286ca
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_84
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 82bd5c280dfe1134d87d057b4fa81063
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_85
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 27762b283134e294b8c701e37b3eaeb5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_86
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 80
+      width: 16
+      height: 16
+    spriteID: e9f5d79de57f55d42a969a1573ab71c1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_87
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 80
+      width: 16
+      height: 16
+    spriteID: c8d29a7181e767a40b7c851e999c7db6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_88
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 377613aa13a0b834e90b73a5573ef522
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_89
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 80
+      width: 16
+      height: 16
+    spriteID: 5255783effb9c55438eab67581b7888c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_90
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 64
+      width: 16
+      height: 16
+    spriteID: 6bfb54c1993ed6d42a4f6d4ee8e55458
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_91
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 64
+      width: 16
+      height: 16
+    spriteID: 4bbce5afc0c6b7745976e0b4fc8ef5dc
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_92
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 64
+      width: 16
+      height: 16
+    spriteID: 73fb7c1e0af3bd449a1ba55592308e49
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_93
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 64
+      width: 16
+      height: 16
+    spriteID: a1ecac9ca6cf72a41ab24bdf0d6f1002
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_94
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 64
+      width: 16
+      height: 16
+    spriteID: bafeda353f6b8fe44897621e89860f16
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_95
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 64
+      width: 16
+      height: 16
+    spriteID: 664ea08bd6050fc409320e051a52524f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_96
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 64
+      width: 16
+      height: 16
+    spriteID: a6305cc3518633a428dc57acc001f4c0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_97
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 64
+      width: 16
+      height: 16
+    spriteID: ec44bc6c2c155684ea600db7a3f93f2d
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_98
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 64
+      width: 16
+      height: 16
+    spriteID: 87de354d0b998244daf1accb019688b5
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_99
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 64
+      width: 16
+      height: 16
+    spriteID: cdb41a3fb90941e41a09726bd0f9a49a
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_100
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 62c05bdf781398045b2fc23e08a2fdb1
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_101
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 48
+      width: 16
+      height: 16
+    spriteID: e8abecba16167c441bfd7adb3f1c2aae
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_102
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 24b95334eb45b3a41acc1a03847c54e8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_103
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 8d7c11e5d1f554149a913f587c033224
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_104
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 7a484b817b2f6ff4c844c52ea7c2316e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_105
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 48
+      width: 16
+      height: 16
+    spriteID: eaa258a9af2cdf54c96a278c3d974106
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_106
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 48
+      width: 16
+      height: 16
+    spriteID: f45db40653156554ca0226f1406abb9c
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_107
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 48
+      width: 16
+      height: 16
+    spriteID: e399486ea350da94a91b06cf66c09571
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_108
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 48
+      width: 16
+      height: 16
+    spriteID: 78b8b3b64909bb44e9eb2d7dbd71cad3
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_109
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 48
+      width: 16
+      height: 16
+    spriteID: fd0afaa1e55bc2e47b60267de3a4d756
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_110
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 7ec141bfc6e967f44ac24f6dda2fb341
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_111
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 09e924e113b41a947977af6748d8a096
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_112
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 8007aa42dc56da9418df1134a7e2f647
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_113
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 90345e81904c6f0408ea493d9c8ad7c8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_114
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 32
+      width: 16
+      height: 16
+    spriteID: a6228131a706236488aa8bf61a1da488
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_115
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 27c45863ae63de749bab2aa63c062574
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_116
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 32
+      width: 16
+      height: 16
+    spriteID: c55b57a1efef1c94a99e93b3892e5748
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_117
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 32
+      width: 16
+      height: 16
+    spriteID: d4fc6ebf429bb0649b7b94bc9706f895
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_118
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 7825297026f4efe4d84e9a287beea9e6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_119
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 32
+      width: 16
+      height: 16
+    spriteID: 42edd4605366b324c9b04fa204cf3ea6
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_120
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 910172f34344b3d4182de1e890a4e901
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_121
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 8d3e957e553aa6148b0303e678027179
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_122
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 653cee38a9b340a4a806c08ea17d252e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_123
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 2fc38dc774916ae479c91d5a989fb4bf
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_124
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 16
+      width: 16
+      height: 16
+    spriteID: cd0d3b89756aa0440afa41e2e38f4df9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_125
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 16
+      width: 16
+      height: 16
+    spriteID: f238c398894a6854ea718af5b4543630
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_126
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 5552eb7a094b7fb458c4141afb92cea8
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_127
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 4de69cb2f504fc14b97075bb3ae62736
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_128
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 16
+      width: 16
+      height: 16
+    spriteID: 2d7fb9a44734f2c4b834b1573375c36e
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_129
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 16
+      width: 16
+      height: 16
+    spriteID: e70093ef54a06e849b10afe9b927f066
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_130
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 155f631a0fbe58f4fa52beee442b6990
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_131
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 16
+      y: 0
+      width: 16
+      height: 16
+    spriteID: aa058dc5f33ffcf4aae8bbb7e06d599f
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_132
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 32
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 847db1966f89f6449bec8d0dc143bba9
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_133
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 0
+      width: 16
+      height: 16
+    spriteID: 7d8d508ffc696624fb87ac145a0cca44
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_134
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 0
+      width: 16
+      height: 16
+    spriteID: b7bbba2e0071c764ebbb7fb9a28d7bba
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_135
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 0
+      width: 16
+      height: 16
+    spriteID: dda2a9fa7606bd04c99b4f41309b6d66
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_136
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 0
+      width: 16
+      height: 16
+    spriteID: e8aea8e2d1c31394db9196937257cfea
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_137
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 0
+      width: 16
+      height: 16
+    spriteID: f42b501dbe6866b44a04ff3dfc7015b4
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_138
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 0
+      width: 16
+      height: 16
+    spriteID: fac830bd1452bd445bd97350bad66ec0
+    spriteOutline: []
+    tessellationDetail: 0
+  - name: Inca_back2_by_Kronbits_139
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 0
+      width: 16
+      height: 16
+    spriteID: b6e17262c1fec9e4182f6309128c7fa8
+    spriteOutline: []
+    tessellationDetail: 0
+  _secondaryTextures: []
+  _artifacts: {fileID: -2988177865379244337, guid: cf30e03d960db5d48a620ed7f3786a17,
+    type: 3}

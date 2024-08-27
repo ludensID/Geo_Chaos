@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 700c2c725ad59294c9e674355da49f54
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _reimportOnDependencyChange: 1
+  _jsonFile: {fileID: -164016180542632921, guid: 700c2c725ad59294c9e674355da49f54,
+    type: 3}
+  _pixelsPerUnit: 32
+  _customLevelPrefab: {instanceID: 0}
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 1
+  _geometryType: 0
+  _createBackgroundColor: 1
+  _createLevelBoundsTrigger: 0
+  _useParallax: 1
+  _intGridValues:
+  - _key: Walls_1
+    _asset: {fileID: 11400000, guid: 2d9336dfa2ed4804ca698d8d3194e30a, type: 2}
+  _entities: []
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 

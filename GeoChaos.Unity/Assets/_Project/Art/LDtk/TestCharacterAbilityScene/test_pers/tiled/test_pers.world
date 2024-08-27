@@ -1,0 +1,10 @@
+{
+	"maps": [
+		{ "fileName": "0001_Mosaic_demo.tmx", "x": 0, "y": 0 },
+		{ "fileName": "0002_World_Level_1.tmx", "x": 2160, "y": 0 },
+		{ "fileName": "0003_Mosaic_demo2.tmx", "x": 3328, "y": 0 },
+		{ "fileName": "0004_Mosaic_demo3.tmx", "x": 5488, "y": 0 },
+		{ "fileName": "0005_Mosaic_demo4.tmx", "x": 7648, "y": 0 }
+	],
+	"type": "world"
+}
