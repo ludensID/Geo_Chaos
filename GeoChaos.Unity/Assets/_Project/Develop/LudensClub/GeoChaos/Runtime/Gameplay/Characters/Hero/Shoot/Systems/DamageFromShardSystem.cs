@@ -2,8 +2,8 @@
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Shard;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
-using LudensClub.GeoChaos.Runtime.Gameplay.Shard;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot

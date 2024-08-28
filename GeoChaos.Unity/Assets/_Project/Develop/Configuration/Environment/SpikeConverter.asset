@@ -18,7 +18,7 @@ MonoBehaviour:
     _components:
       Components:
       - Value:
-          rid: 674097736093007991
+          rid: 2072451426269790208
       - Value:
           rid: 674097736093007992
     _scriptableConverter: {fileID: 0}
@@ -27,11 +27,11 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 674097736093007991
-      type: {class: SpikeTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Components,
-        asm: GeoChaos.Runtime}
-      data: 
     - rid: 674097736093007992
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
         Id: 17
+    - rid: 2072451426269790208
+      type: {class: SpikeTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Spike,
+        asm: GeoChaos.Runtime}
+      data: 

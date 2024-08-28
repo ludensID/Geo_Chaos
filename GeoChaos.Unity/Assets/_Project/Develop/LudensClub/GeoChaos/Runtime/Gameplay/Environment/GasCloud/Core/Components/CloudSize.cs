@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Shard
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.GasCloud
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,8 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Shard
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct LifeTime : IEcsComponent
+  public struct CloudSize : IEcsComponent
   {
-    public Timer TimeLeft;
+    public float Size;
   }
 }

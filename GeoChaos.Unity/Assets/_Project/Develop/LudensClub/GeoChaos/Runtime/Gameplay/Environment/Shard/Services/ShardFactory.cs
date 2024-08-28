@@ -3,7 +3,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Props.Shard;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Shard
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Shard
 {
   public class ShardFactory : IShardFactory
   {

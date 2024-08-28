@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Components
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Shard
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Components
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct SpikeTag : IEcsComponent
+  public struct ShardTag : IEcsComponent
   {
   }
 }

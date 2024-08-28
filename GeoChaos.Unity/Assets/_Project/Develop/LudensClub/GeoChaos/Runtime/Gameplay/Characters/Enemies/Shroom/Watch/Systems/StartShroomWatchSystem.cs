@@ -36,6 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom.Watch.S
       {
         shroom
           .Add((ref WatchingTimer timer) => timer.TimeLeft = _timers.Create(_config.PlayerWaitTime))
+          .Add<StartGasShootingCycleCommand>()
           .Replace((ref GasShootingCooldownTime time) => time.Time = _config.WaitShotCooldown);
       }
     }

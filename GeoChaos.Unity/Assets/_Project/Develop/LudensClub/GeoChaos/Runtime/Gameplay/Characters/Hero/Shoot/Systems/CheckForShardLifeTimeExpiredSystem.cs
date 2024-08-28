@@ -1,7 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying;
-using LudensClub.GeoChaos.Runtime.Gameplay.Shard;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Shard;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot

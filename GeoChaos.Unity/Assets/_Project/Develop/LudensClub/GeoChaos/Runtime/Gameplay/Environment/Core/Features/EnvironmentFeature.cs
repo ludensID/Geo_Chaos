@@ -1,10 +1,12 @@
 ﻿using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.DoorKey;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment.GasCloud;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.HealthShard;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Lever;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Spike;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Tongue;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -27,6 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
 
       Add(systems.Create<LeafFeature>());
       Add(systems.Create<TongueFeature>());
+      Add(systems.Create<GasCloudFeature>());
     }
   }
 }

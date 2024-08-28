@@ -3,12 +3,11 @@ using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
-using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Components;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Spike
 {
   public class DamageFromSpikeSystem : IEcsRunSystem
   {

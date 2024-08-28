@@ -18,7 +18,7 @@ MonoBehaviour:
     _components:
       Components:
       - Value:
-          rid: 674097943762436179
+          rid: 2072451426269790209
       - Value:
           rid: 674097943762436180
       - Value:
@@ -35,9 +35,6 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 674097943762436179
-      type: {class: ShardTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Shard, asm: GeoChaos.Runtime}
-      data: 
     - rid: 674097943762436180
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
@@ -58,5 +55,9 @@ MonoBehaviour:
       data: 
     - rid: 2072451147531026516
       type: {class: DestroyableAfterCollision, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying,
+        asm: GeoChaos.Runtime}
+      data: 
+    - rid: 2072451426269790209
+      type: {class: ShardTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Shard,
         asm: GeoChaos.Runtime}
       data: 

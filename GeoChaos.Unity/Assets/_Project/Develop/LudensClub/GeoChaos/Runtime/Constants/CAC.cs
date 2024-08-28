@@ -71,6 +71,9 @@
 
       public const string SHROOM_MENU = CONFIG_MENU + "Shroom";
       public const string SHROOM_FILE = "ShroomConfig";
+      
+      public const string GAS_CLOUD_CONFIG_MENU = CONFIG_MENU + "Gas Cloud";
+      public const string GAS_CLOUD_CONFIG_FILE = "GasCloudConfig";
     }
   }
 }
