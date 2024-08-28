@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       {
         force
           .Change((ref MovementVector vector) => vector.Speed = Vector2.zero)
-          .Has<Instant>(true);
+          .Add<Instant>();
       }
     }
   }

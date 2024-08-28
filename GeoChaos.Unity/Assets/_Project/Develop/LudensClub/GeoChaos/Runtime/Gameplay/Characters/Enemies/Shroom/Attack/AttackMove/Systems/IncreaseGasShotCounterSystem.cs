@@ -9,12 +9,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom.Attack.
 {
   public class IncreaseGasShotCounterSystem : IEcsRunSystem
   {
+    private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _shootingShrooms;
     private readonly ShroomConfig _config;
 
-    public IncreaseGasShotCounterSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
+    public IncreaseGasShotCounterSystem(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider, ITimerFactory timers)
     {
+      _timers = timers;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<ShroomConfig>();
 
@@ -34,9 +36,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom.Attack.
 
         if (counter.Count >= _config.ShotNumber)
         {
+          float time = _config.BrakingDistance / shroom.Get<AttackMoveSpeed>().Speed;
           shroom
-            .Add<FinishAttackMoveCommand>()
-            .Add<StopGasShootingCycleCommand>();
+            .Add<StopGasShootingCycleCommand>()
+            .Add((ref BrakeTimer timer) => timer.TimeLeft = _timers.Create(time));
         }
       }
     }

@@ -11,5 +11,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     public float ShotNumber;
     public float ShotCooldown;
+    public float BrakingDistance;
   }
 }

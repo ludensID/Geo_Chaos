@@ -6,11 +6,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom.GasShoo
 {
   public class StartGasShootingCycleSystem : IEcsRunSystem
   {
+    private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _shootingShrooms;
 
-    public StartGasShootingCycleSystem(GameWorldWrapper gameWorldWrapper)
+    public StartGasShootingCycleSystem(GameWorldWrapper gameWorldWrapper, ITimerFactory timers)
     {
+      _timers = timers;
       _game = gameWorldWrapper.World;
 
       _shootingShrooms = _game
@@ -25,7 +27,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom.GasShoo
       {
         shroom
           .Del<StartGasShootingCycleCommand>()
-          .Add<ShootingGas>();
+          .Add<ShootingGas>()
+          .Add((ref GasShootingCooldown cooldown) =>
+            cooldown.TimeLeft = _timers.Create(shroom.Get<GasShootingCooldownTime>().Time));;
       }
     }
   }
