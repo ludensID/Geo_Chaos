@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReloadingTime: 2
   ShotNumber: 6
-  ShotCooldown: 1
+  AttackShotCooldown: 1
   BrakingDistance: 3
+  WaitShotCooldown: 2
+  PlayerWaitTime: 6

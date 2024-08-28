@@ -6,12 +6,12 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Watch
 {
-  public class DeleteAimedZombieWatchTimerSystem : IEcsRunSystem
+  public class StopAimedZombieWatchSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _watchingZombies;
 
-    public DeleteAimedZombieWatchTimerSystem(GameWorldWrapper gameWorldWrapper)
+    public StopAimedZombieWatchSystem(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
 

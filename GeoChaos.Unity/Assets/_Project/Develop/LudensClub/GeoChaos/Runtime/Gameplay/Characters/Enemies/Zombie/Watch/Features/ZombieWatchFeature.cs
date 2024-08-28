@@ -7,8 +7,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Watch
     public ZombieWatchFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<StartZombieWatchTimerSystem>());
-      Add(systems.Create<DeleteExpiredZombieWatchTimerSystem>());
-      Add(systems.Create<DeleteAimedZombieWatchTimerSystem>());
+      Add(systems.Create<StopZombieWatchWhenTimerExpiredSystem>());
+      Add(systems.Create<StopAimedZombieWatchSystem>());
     }
   }
 }

@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom.Attack.
           .Add<AttackMoveCommand>()
           .Add<StartGasShootingCycleCommand>()
           .Replace((ref GasShotCounter counter) => counter.Count = 0)
-          .Replace((ref GasShootingCooldownTime time) => time.Time = _config.ShotCooldown);
+          .Replace((ref GasShootingCooldownTime time) => time.Time = _config.AttackShotCooldown);
       }
     }
   }

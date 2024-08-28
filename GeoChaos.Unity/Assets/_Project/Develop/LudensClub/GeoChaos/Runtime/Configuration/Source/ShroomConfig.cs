@@ -10,7 +10,11 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float ReloadingTime;
 
     public float ShotNumber;
-    public float ShotCooldown;
+    public float AttackShotCooldown;
     public float BrakingDistance;
+
+    [Title("Watch")]
+    public float PlayerWaitTime;
+    public float WaitShotCooldown;
   }
 }

@@ -7,13 +7,13 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Watch
 {
-  public class DeleteExpiredZombieWatchTimerSystem : IEcsRunSystem
+  public class StopZombieWatchWhenTimerExpiredSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _watchingZombies;
     private readonly SpeedForceLoop _forceLoop;
 
-    public DeleteExpiredZombieWatchTimerSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
+    public StopZombieWatchWhenTimerExpiredSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
     {
       _game = gameWorldWrapper.World;
       _forceLoop = forceLoopSvc.CreateLoop(x => x.Exc<SpeedForceCommand>());
