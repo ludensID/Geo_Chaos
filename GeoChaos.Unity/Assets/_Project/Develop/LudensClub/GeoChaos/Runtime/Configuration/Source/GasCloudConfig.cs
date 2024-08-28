@@ -8,5 +8,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float LifeTime;
     public float MinSize;
     public float ExpandSpeed;
+    public float Damage;
   }
 }

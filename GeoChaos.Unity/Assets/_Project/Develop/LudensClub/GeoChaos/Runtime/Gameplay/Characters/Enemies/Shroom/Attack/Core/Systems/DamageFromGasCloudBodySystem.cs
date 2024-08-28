@@ -7,17 +7,17 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom.Attack
 {
-  public class DamageFromZombieBodySystem : IEcsRunSystem
+  public class DamageFromGasCloudBodySystem : IEcsRunSystem
   {
     private readonly ICollisionService _collisionSvc;
     private readonly EcsWorld _message;
     private readonly EcsWorld _game;
     private readonly EcsEntities _collisions;
-    private readonly ZombieConfig _config;
+    private readonly ShroomConfig _config;
 
-    public DamageFromZombieBodySystem(MessageWorldWrapper messageWorldWrapper,
+    public DamageFromGasCloudBodySystem(MessageWorldWrapper messageWorldWrapper,
       GameWorldWrapper gameWorldWrapper,
       ICollisionService collisionSvc,
       IConfigProvider configProvider)
@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
       _collisionSvc = collisionSvc;
       _message = messageWorldWrapper.World;
       _game = gameWorldWrapper.World;
-      _config = configProvider.Get<ZombieConfig>();
+      _config = configProvider.Get<ShroomConfig>();
 
       _collisions = _message
         .Filter<TwoSideCollision>()
@@ -40,7 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
         CollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackBothEntities(_game)
-          && _collisionSvc.TrySelectByEntitiesTag<ZombieTag, HeroTag>()
+          && _collisionSvc.TrySelectByEntitiesTag<ShroomTag, HeroTag>()
           && info.MasterCollider.Type == ColliderType.Body
           && info.TargetCollider.Type == ColliderType.Body)
         {

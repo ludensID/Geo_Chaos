@@ -13,6 +13,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom.Attack
       
       Add(systems.Create<ReloadShroomFeature>());
       Add(systems.Create<ShroomAttackMoveFeature>());
+      
+      Add(systems.Create<DamageFromGasCloudBodySystem>());
     }
   }
 }

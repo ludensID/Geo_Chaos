@@ -15,3 +15,4 @@ MonoBehaviour:
   LifeTime: 3
   MinSize: 1
   ExpandSpeed: 0.33
+  Damage: 8

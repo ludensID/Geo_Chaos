@@ -10,6 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.GasCloud
       Add(systems.Create<ExpandGasCloudSystem>());
       Add(systems.Create<CheckForGasCloudLifeTimeExpiredSystem>());
       
+      Add(systems.Create<DamageFromGasCloudSystem>());
+      
       Add(systems.Create<SetGasCloudScaleSystem>());
     }
   }

@@ -16,5 +16,7 @@ MonoBehaviour:
   ShotNumber: 6
   AttackShotCooldown: 1
   BrakingDistance: 3
-  WaitShotCooldown: 2
+  DamageFromBody: 5
+  DamageFromCloud: 0
   PlayerWaitTime: 6
+  WaitShotCooldown: 2

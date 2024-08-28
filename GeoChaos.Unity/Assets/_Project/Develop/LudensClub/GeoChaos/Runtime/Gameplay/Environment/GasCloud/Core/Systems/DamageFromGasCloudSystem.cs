@@ -7,17 +7,17 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.GasCloud
 {
-  public class DamageFromZombieBodySystem : IEcsRunSystem
+  public class DamageFromGasCloudSystem : IEcsRunSystem
   {
     private readonly ICollisionService _collisionSvc;
     private readonly EcsWorld _message;
     private readonly EcsWorld _game;
     private readonly EcsEntities _collisions;
-    private readonly ZombieConfig _config;
+    private readonly GasCloudConfig _config;
 
-    public DamageFromZombieBodySystem(MessageWorldWrapper messageWorldWrapper,
+    public DamageFromGasCloudSystem(MessageWorldWrapper messageWorldWrapper,
       GameWorldWrapper gameWorldWrapper,
       ICollisionService collisionSvc,
       IConfigProvider configProvider)
@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
       _collisionSvc = collisionSvc;
       _message = messageWorldWrapper.World;
       _game = gameWorldWrapper.World;
-      _config = configProvider.Get<ZombieConfig>();
+      _config = configProvider.Get<GasCloudConfig>();
 
       _collisions = _message
         .Filter<TwoSideCollision>()
@@ -40,13 +40,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack
         CollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackBothEntities(_game)
-          && _collisionSvc.TrySelectByEntitiesTag<ZombieTag, HeroTag>()
-          && info.MasterCollider.Type == ColliderType.Body
+          && _collisionSvc.TrySelectByEntitiesTag<GasCloudTag, HeroTag>()
           && info.TargetCollider.Type == ColliderType.Body)
         {
           _message.CreateEntity()
             .Add((ref DamageMessage message) => message.Info = new DamageInfo(info.PackedMaster, info.PackedTarget,
-              _config.DamageFromBody, info.MasterCollider.EntityPosition));
+              _config.Damage, info.MasterCollider.EntityPosition));
         }
       }
     }
