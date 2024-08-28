@@ -11,17 +11,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Attack.AttackMove
   public class AttackMovingSystem<TFilterComponent> : IEcsRunSystem
     where TFilterComponent : struct, IEcsComponent
   {
-    private readonly ITimerFactory _timers;
     private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
     private readonly EcsEntities _movingEntities;
     private readonly EcsEntities _heroes;
 
-    public AttackMovingSystem(GameWorldWrapper gameWorldWrapper,
-      ITimerFactory timers,
-      ISpeedForceFactory forceFactory)
+    public AttackMovingSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceFactory forceFactory)
     {
-      _timers = timers;
       _forceFactory = forceFactory;
       _game = gameWorldWrapper.World;
 
@@ -42,14 +38,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Attack.AttackMove
       {
         entity
           .Del<AttackMoveCommand>()
-          .Add<AttackMoving>()
-          .Add((ref AttackMoveTimer timer) => timer.TimeLeft = _timers.Create(entity.Get<AttackMoveTime>().Time));
+          .Add<AttackMoving>();
 
         float heroPoint = hero.Get<ViewRef>().View.transform.position.x;
         float zombiePoint = entity.Get<ViewRef>().View.transform.position.x;
         float direction = Mathf.Sign(heroPoint - zombiePoint);
 
-        _forceFactory.Create(new SpeedForceData(SpeedForceType.Move, entity.PackedEntity, Vector2.right)
+        _forceFactory.Create(new SpeedForceData(SpeedForceType.Attack, entity.PackedEntity, Vector2.right)
         {
           Speed =  Vector2.right * entity.Get<AttackMoveSpeed>().Speed,
           Direction = Vector2.right * direction

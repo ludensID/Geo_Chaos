@@ -7,6 +7,7 @@ using Zenject;
 namespace LudensClub.GeoChaos.Runtime.Props
 {
   [AddComponentMenu(ACC.Names.BASE_VIEW)]
+  [SelectionBase]
   public class BaseView : MonoBehaviour
   {
     [ShowInInspector]

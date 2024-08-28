@@ -9,6 +9,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Title("Attack")]
     public float BackDistance;
 
+    public float AttackTime;
+
     [Title("Attack With Arms")]
     public float ArmsTime;
 

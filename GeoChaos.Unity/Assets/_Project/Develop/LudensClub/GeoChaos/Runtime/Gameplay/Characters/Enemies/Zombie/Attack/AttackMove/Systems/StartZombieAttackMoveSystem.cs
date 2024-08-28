@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Attack.AttackMove;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.ArmsAttack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.Preparing;
@@ -9,12 +10,18 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.
 {
   public class StartZombieAttackMoveSystem : IEcsRunSystem
   {
+    private readonly ITimerFactory _timers;
     private readonly EcsWorld _game;
     private readonly EcsEntities _movingZombies;
+    private readonly ZombieConfig _config;
 
-    public StartZombieAttackMoveSystem(GameWorldWrapper gameWorldWrapper)
+    public StartZombieAttackMoveSystem(GameWorldWrapper gameWorldWrapper,
+      ITimerFactory timers,
+      IConfigProvider configProvider)
     {
+      _timers = timers;
       _game = gameWorldWrapper.World;
+      _config = configProvider.Get<ZombieConfig>();
 
       _movingZombies = _game
         .Filter<ZombieTag>()
@@ -28,7 +35,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.
       {
         zombie
           .Add<AttackMoveCommand>()
-          .Add<StartAttackWithArmsCycleCommand>();
+          .Add<StartAttackWithArmsCycleCommand>()
+          .Add((ref AttackMoveTimer timer) => timer.TimeLeft = _timers.Create(_config.AttackTime));
       }
     }
   }

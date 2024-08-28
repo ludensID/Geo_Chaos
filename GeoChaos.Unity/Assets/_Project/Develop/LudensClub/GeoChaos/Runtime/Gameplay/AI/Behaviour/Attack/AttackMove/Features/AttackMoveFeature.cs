@@ -8,6 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Attack.AttackMove
     public AttackMoveFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<AttackMovingSystem<TFilterComponent>>());
+      Add(systems.Create<DeleteAttackMovingFinishedEventSystem<TFilterComponent>>());
       Add(systems.Create<FinishAttackMovingSystem<TFilterComponent>>());
     }
   }

@@ -40,7 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Attack.AttackMove
         if (nextPoint < bounds.x || nextPoint > bounds.y)
         {
           foreach (EcsEntity force in _forceLoop
-            .GetLoop(SpeedForceType.Move, entity.PackedEntity))
+            .GetLoop(SpeedForceType.Attack, entity.PackedEntity))
           {
             force.Change((ref MovementVector vector) => vector.Direction *= -1);
           }

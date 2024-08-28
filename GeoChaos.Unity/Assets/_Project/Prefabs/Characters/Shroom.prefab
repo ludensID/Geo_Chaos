@@ -87,6 +87,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3957088615102486775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7844018826023558900}
+  m_Layer: 0
+  m_Name: GasCloudPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7844018826023558900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3957088615102486775}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6079485835590521827}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8559148748078514237
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +224,7 @@ GameObject:
   - component: {fileID: 8416239953845017490}
   - component: {fileID: 7236305168769208463}
   - component: {fileID: 8387639981161891265}
+  - component: {fileID: 6766243362007475600}
   m_Layer: 9
   m_Name: Shroom
   m_TagString: Untagged
@@ -216,6 +248,7 @@ Transform:
   - {fileID: 5036195117305702374}
   - {fileID: 3788631676133263325}
   - {fileID: 2388284657545040958}
+  - {fileID: 7844018826023558900}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &3933175903461886945
@@ -414,6 +447,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   View: {fileID: 7653719419694027163}
+--- !u!114 &6766243362007475600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9078734090324148771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4156498586f048a8bbbeec4c2551646c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GasCloudPoint: {fileID: 7844018826023558900}
 --- !u!1001 &3721550470441780097
 PrefabInstance:
   m_ObjectHideFlags: 0

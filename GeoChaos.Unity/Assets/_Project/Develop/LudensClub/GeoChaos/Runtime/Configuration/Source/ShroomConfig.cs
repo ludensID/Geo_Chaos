@@ -8,5 +8,8 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
   {
     [Title("Attack")]
     public float ReloadingTime;
+
+    public float ShotNumber;
+    public float ShotCooldown;
   }
 }

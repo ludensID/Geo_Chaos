@@ -38,8 +38,6 @@ MonoBehaviour:
       - Value:
           rid: 2072451377236279540
       - Value:
-          rid: 2072451397874352130
-      - Value:
           rid: 2072451397874352131
     _scriptableConverter: {fileID: 0}
   - _serializedConverter:
@@ -85,11 +83,6 @@ MonoBehaviour:
         Speed: 3
     - rid: 2072451377236279540
       type: {class: AttackCooldownTime, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage,
-        asm: GeoChaos.Runtime}
-      data:
-        Time: 2
-    - rid: 2072451397874352130
-      type: {class: AttackMoveTime, ns: LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Attack.AttackMove,
         asm: GeoChaos.Runtime}
       data:
         Time: 2

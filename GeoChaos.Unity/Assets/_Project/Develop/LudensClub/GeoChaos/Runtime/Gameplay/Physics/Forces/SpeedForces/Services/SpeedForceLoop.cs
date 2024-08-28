@@ -16,11 +16,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       _entities = entities;
     }
 
-    public EcsEntities GetEntities()
-    {
-      return _entities;
-    }
-
     public EcsEntity GetForce(SpeedForceType type, EcsPackedEntity owner)
     {
       return GetLoop(type, owner).ToEnumerable().FirstOrDefault();
@@ -41,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       {
         force
           .Change((ref MovementVector vector) => vector.Speed = Vector2.zero)
-          .Add<Instant>();
+          .Has<Instant>(true);
       }
     }
   }

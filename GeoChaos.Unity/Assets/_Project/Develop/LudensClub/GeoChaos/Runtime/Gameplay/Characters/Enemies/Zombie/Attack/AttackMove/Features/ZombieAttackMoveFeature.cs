@@ -9,7 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie.Attack.
     {
       Add(systems.Create<StartZombieAttackMoveSystem>());
       Add(systems.Create<AttackMoveFeature<ZombieTag>>());
-      Add(systems.Create<StopAttackWithArmsWhenAttackMoveFinishedSystem>());
+      Add(systems.Create<StopAttackWhenAttackMoveFinishedSystem>());
     }
   }
 }

@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: ShroomConfig
   m_EditorClassIdentifier: 
   ReloadingTime: 2
+  ShotNumber: 6
+  ShotCooldown: 1

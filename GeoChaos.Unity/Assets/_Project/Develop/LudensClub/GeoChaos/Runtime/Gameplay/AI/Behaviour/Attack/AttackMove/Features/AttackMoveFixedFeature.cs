@@ -7,7 +7,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Attack.AttackMove
   {
     public AttackMoveFixedFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<CheckForAttackMoveTimerExpiredSystem<TFilterComponent>>());
       Add(systems.Create<TurnEntityNearBoundsSystem<TFilterComponent>>());
     }
   }
