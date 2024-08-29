@@ -29,7 +29,7 @@ MonoBehaviour:
   JumpLength: 9.900001
   EnableDash: 1
   DashVelocity: 33.4
-  DashTime: 0.15
+  DashTime: 0.2
   DashCooldown: 1
   EnableAttack: 1
   HitDurations:
