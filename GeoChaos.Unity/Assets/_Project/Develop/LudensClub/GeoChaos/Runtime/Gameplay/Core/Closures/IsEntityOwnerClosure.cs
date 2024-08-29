@@ -1,22 +1,13 @@
-﻿using System;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {
-  public class IsEntityOwnerClosure : EcsClosure<Owner>
+  public class IsEntityOwnerClosure : SpecifiedInternalClosure<Owner, EcsPackedEntity>
   {
-    public EcsPackedEntity PackedEntity;
-
-    public Predicate<Owner> SpecifyPredicate(EcsPackedEntity packedEntity)
+    protected override bool Call(Owner value, EcsPackedEntity data)
     {
-      PackedEntity = packedEntity;
-      return Predicate;
-    }
-
-    protected override bool Call(Owner owner)
-    {
-      return owner.Entity.EqualsTo(PackedEntity);
+      return value.Entity.EqualsTo(data);
     }
   }
 }

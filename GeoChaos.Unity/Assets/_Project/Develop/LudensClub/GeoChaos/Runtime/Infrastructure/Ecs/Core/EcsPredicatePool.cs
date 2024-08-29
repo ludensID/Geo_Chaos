@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
@@ -9,7 +8,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     private static readonly Dictionary<Type, List<PooledPredicate>>
       _predicates = new Dictionary<Type, List<PooledPredicate>>();
 
-    private static readonly IsPooledPredicateEqualsClosure _isPooledPredicateEqualsClosure = new IsPooledPredicateEqualsClosure();    
+    private static readonly PooledPredicateClosure _isPooledPredicateEqualsClosure
+      = new PooledPredicateClosure((poolPredicate, predicate) => poolPredicate.Predicate == predicate);
+
     private static readonly Predicate<PooledPredicate> _isNotUsedPooledPredicate = x => !x.Used;
 
     public static EcsPredicate<TComponent> PopPredicate<TComponent>() where TComponent : struct, IEcsComponent
@@ -27,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       {
         predicate = new EcsPredicate<TComponent>();
         pooledPredicate = new PooledPredicate(predicate);
-        predicates.Add(pooledPredicate);  
+        predicates.Add(pooledPredicate);
       }
       else
       {
@@ -60,19 +61,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       }
     }
 
-    private class IsPooledPredicateEqualsClosure : EcsClosure<PooledPredicate>
+    private class PooledPredicateClosure : SpecifiedClosure<PooledPredicate, IEcsPredicate>
     {
-      public IEcsPredicate EcsPredicate;
-
-      public Predicate<PooledPredicate> SpecifyPredicate(IEcsPredicate ecsPredicate)
+      public PooledPredicateClosure(Func<PooledPredicate, IEcsPredicate, bool> predicate) : base(predicate)
       {
-        EcsPredicate = ecsPredicate;
-        return Predicate;
-      }
-
-      protected override bool Call(PooledPredicate pooledPredicate)
-      {
-        return pooledPredicate.Predicate == EcsPredicate;
       }
     }
   }

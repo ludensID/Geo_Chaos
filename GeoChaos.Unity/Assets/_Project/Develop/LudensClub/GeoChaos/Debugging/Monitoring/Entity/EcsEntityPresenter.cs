@@ -16,7 +16,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private const string ENTITY_FORMAT = "D8";
     private const string UPDATE_VIEW = nameof(UpdateName) + "()";
 
-    private readonly PoolClosure _poolClosure = new PoolClosure();
+    private readonly SpecifiedClosure<IEcsComponentView, IEcsPool> _poolClosure 
+      = new SpecifiedClosure<IEcsComponentView, IEcsPool>((x, pool) => x.Pool == pool);
     private readonly IEcsWorldWrapper _wrapper;
     private readonly IEcsEntityViewFactory _viewFactory;
     private readonly IEcsComponentViewFactory _componentFactory;
@@ -192,22 +193,6 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     {
       IEcsPool pool = _parent.Pools.First(x => x.GetComponentType() == component.GetType());
       pool.SetRaw(Entity, component);
-    }
-
-    private class PoolClosure : EcsClosure<IEcsComponentView>
-    {
-      public IEcsPool Pool;
-
-      public Predicate<IEcsComponentView> SpecifyPredicate(IEcsPool pool)
-      {
-        Pool = pool;
-        return Predicate;
-      }
-
-      protected override bool Call(IEcsComponentView value)
-      {
-        return value.Pool == Pool;
-      }
     }
   }
 }
