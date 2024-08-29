@@ -15,6 +15,9 @@ namespace LudensClub.GeoChaos.Debugging
   {
     public readonly EcsComponentComparer Comparer = new EcsComponentComparer();
 
+    private readonly Comparison<StringTuple> _tupleComparer =
+      (x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal);
+
     [OnValueChanged(TriConstants.ON + nameof(ComponentOrder) + TriConstants.CHANGED)]
     [ListDrawerSettings(AlwaysExpanded = true, HideAddButton = true, HideRemoveButton = true)]
     public List<StringTuple> ComponentOrder;
@@ -34,15 +37,37 @@ namespace LudensClub.GeoChaos.Debugging
       if (ComponentOrder.Count != _componentNames.Count)
         throw new IndexOutOfRangeException();
     }
-    
+
     [Button("Sort")]
     [PropertyOrder(0)]
     private void Sort()
     {
-      List<StringTuple> sortedList = ComponentOrder.Where(x => !x.Locked).OrderBy(x => x.Name).ToList();
-      List<StringTuple> lockedList = ComponentOrder.Where(x => x.Locked).ToList();
+      var lockedList = new List<StringTuple>();
+      var constList = new List<StringTuple>();
+      var tempList = new List<StringTuple>();
+      foreach (StringTuple tuple in ComponentOrder)
+      {
+        switch (tuple.Status)
+        {
+          case StringStatus.Temp:
+            tempList.Add(tuple);
+            break;
+          case StringStatus.Const:
+            constList.Add(tuple);
+            break;
+          case StringStatus.Locked:
+            lockedList.Add(tuple);
+            break;
+          default:
+            throw new ArgumentOutOfRangeException();
+        }
+      }
+
+      constList.Sort(_tupleComparer);
+      tempList.Sort(_tupleComparer);
+
       ComponentOrder.Clear();
-      ComponentOrder = lockedList.Concat(sortedList).ToList();
+      ComponentOrder = lockedList.Concat(constList).Concat(tempList).ToList();
       Synchronize();
     }
 
@@ -104,6 +129,13 @@ namespace LudensClub.GeoChaos.Debugging
       }
     }
 
+    public enum StringStatus
+    {
+      Temp = 0,
+      Const = 1,
+      Locked = 2
+    }
+
     [Serializable]
     [InlineProperty]
     [DeclareHorizontalGroup(nameof(StringTuple), Sizes = new float[] { 0, 50 })]
@@ -121,8 +153,8 @@ namespace LudensClub.GeoChaos.Debugging
       [Dropdown(TriConstants.DROP + nameof(Index))]
       public int Index;
 
-      [HideInInspector]
-      public bool Locked;
+      [HideLabel]
+      public StringStatus Status;
 
       [HideInInspector]
       public EcsUniverseConfig Config;
@@ -135,15 +167,7 @@ namespace LudensClub.GeoChaos.Debugging
         return Config._componentNames;
       }
 
-      public string LockedButtonName => Locked ? "\u25cf" : "\u21bb";
-
       [GroupNext(nameof(StringTuple) + "/Buttons")]
-      [Button(ButtonSizes.Small, "$" + nameof(LockedButtonName))]
-      private void Lock()
-      {
-        Locked = !Locked;
-      }
-
       [Button("\u2193")]
       [EnableIf(nameof(CanMoveNext))]
       private void MoveNext()
