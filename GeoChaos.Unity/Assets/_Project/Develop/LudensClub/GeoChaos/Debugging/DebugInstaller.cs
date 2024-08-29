@@ -47,12 +47,22 @@ namespace LudensClub.GeoChaos.Debugging
 
       BindGlobalWatcher();
 
+      BindEcsComponentViewFactory();
+
       BindEcsUniverseViewFactory();
       BindEcsWorldPresenterFactory();
       BindEcsWorldViewFactory();
       BindEcsEntityPresenterFactory();
       BindEcsEntityViewFactory();
       BindEcsUniversePresenter();
+    }
+
+    private static void BindEcsComponentViewFactory()
+    {
+      Container
+        .Bind<IEcsComponentViewFactory>()
+        .To<EcsComponentViewFactory>()
+        .AsSingle();
     }
 
     private static void BindBumpAvailableWatcher()

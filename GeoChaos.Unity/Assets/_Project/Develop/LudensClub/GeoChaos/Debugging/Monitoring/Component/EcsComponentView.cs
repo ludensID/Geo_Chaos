@@ -1,4 +1,5 @@
 ﻿using System;
+using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using TriInspector;
 using UnityEditor;
@@ -11,20 +12,64 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
   {
     [LabelText("$" + nameof(ValueName))]
     [SerializeReference]
+    public IEcsComponent Value;
+
+    private string ValueName => ObjectNames.NicifyVariableName(Value?.GetType().Name ?? "[None]");
+  }
+
+  public interface IEcsComponentView
+  {
+    string Name { get; set; }
+    bool HasValue { get; set; }
+    int Entity { get; set; }
+    IEcsPool Pool { get; }
+    void SetPool(IEcsPool pool);
+    void Update();
+  }
+
+  [Serializable]
+  [InlineProperty]
+  public class EcsComponentView<TComponent> : IEcsComponentView
+    where TComponent : struct, IEcsComponent
+  {
+    [LabelText("$" + nameof(_valueName))]
+    [SerializeReference]
+    [HideReferencePicker]
     [OnValueChanged(nameof(OnValueChanged))]
     public IEcsComponent Value;
 
-    [HideInInspector]
-    public string Name;
+    private EcsPool<TComponent> _pool;
+    private readonly Type _componentType;
+    private readonly string _valueName;
 
-    [HideInInspector]
-    public IEcsEntityPresenter Presenter;
+    public string Name { get; set; }
+    public bool HasValue { get; set; }
+    public int Entity { get; set; }
+    public IEcsPool Pool => _pool;
 
-    private string ValueName => ObjectNames.NicifyVariableName(Value?.GetType().Name ?? "[None]");
+    public EcsComponentView()
+    {
+      _componentType = typeof(TComponent);
+      _valueName = ObjectNames.NicifyVariableName(_componentType.Name);
+    }
+
+    public void SetPool(IEcsPool pool)
+    {
+      if (pool is not EcsPool<TComponent> implicitPool)
+        throw new ArgumentException();
+
+      _pool = implicitPool;
+    }
+
+    public void Update()
+    {
+      HasValue = _pool.Has(Entity);
+      Value = HasValue ? _pool.Get(Entity) : null;
+    }
 
     private void OnValueChanged()
     {
-      Presenter.ChangeComponent(Value);
+      _pool.Get(Entity) = (TComponent)Value;
     }
   }
 }

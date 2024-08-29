@@ -15,5 +15,16 @@ namespace LudensClub.GeoChaos.Runtime.Utils
 
       return true;
     }
+    
+    public static bool AnyNonAlloc<T>(this List<T> obj, Predicate<T> predicate)
+    {
+      foreach (T p in obj)
+      {
+        if (predicate.Invoke(p))
+          return true;
+      }
+
+      return false;
+    }
   }
 }

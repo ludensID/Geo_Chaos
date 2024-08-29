@@ -217,11 +217,11 @@ namespace LudensClub.GeoChaos.Debugging
       }
     }
 
-    public class EcsComponentComparer : IComparer<EcsComponentView>
+    public class EcsComponentComparer : IComparer<IEcsComponentView>
     {
       public EcsUniverseConfig Config;
 
-      public int Compare(EcsComponentView left, EcsComponentView right)
+      public int Compare(IEcsComponentView left, IEcsComponentView right)
       {
         if (ReferenceEquals(left, right))
           return 0;

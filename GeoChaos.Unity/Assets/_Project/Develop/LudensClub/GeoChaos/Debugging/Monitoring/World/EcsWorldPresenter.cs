@@ -18,10 +18,12 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private readonly List<int> _updatables = new List<int>();
     private Type[] _typesCache;
     private int[] _entities;
+    private IEcsPool[] _pools;
 
     public IEcsWorldWrapper Wrapper => _wrapper;
     public List<IEcsEntityPresenter> Children => _children;
     public EcsWorldView View { get; private set; }
+    public IEcsPool[] Pools => _pools;
 
     public EcsWorldPresenter(IEcsWorldWrapper wrapper,
       IEcsWorldViewFactory viewFactory,
@@ -49,6 +51,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     public void Tick()
     {
+      UpdatePools();
+        
       _updatables.Clear();
       _updatables.Capacity = _children.Count - _dirtyEntities.Count;
 
@@ -80,6 +84,11 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       }
 
       _dirtyEntities.Clear();
+    }
+    
+    private void UpdatePools()
+    {
+      _wrapper.World.GetAllPools(ref _pools);
     }
 
     public void OnEntityCreated(int entity)
