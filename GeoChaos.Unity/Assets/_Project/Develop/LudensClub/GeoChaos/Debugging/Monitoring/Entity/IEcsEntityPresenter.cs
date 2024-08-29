@@ -1,4 +1,6 @@
-﻿namespace LudensClub.GeoChaos.Debugging.Monitoring
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+
+namespace LudensClub.GeoChaos.Debugging.Monitoring
 {
   public interface IEcsEntityPresenter
   {
@@ -11,5 +13,6 @@
     void UpdateView();
     void AddComponents();
     void RemoveComponents();
+    void ChangeComponent(IEcsComponent component);
   }
 }

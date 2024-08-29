@@ -21,8 +21,13 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private readonly IEcsEntityViewFactory _viewFactory;
     private readonly IEcsWorldPresenter _parent;
     private readonly IsStringNotEqualClosure _isStringNotEqualClosure = new IsStringNotEqualClosure();
-    private readonly IsComponentViewNameNotEqualsClosure _isComponentViewNameNotEqualsClosure = new IsComponentViewNameNotEqualsClosure();
-    private readonly IsComponentViewNameEqualsClosure _isComponentViewNameEqualsClosure = new IsComponentViewNameEqualsClosure();
+
+    private readonly IsComponentViewNameNotEqualsClosure _isComponentViewNameNotEqualsClosure =
+      new IsComponentViewNameNotEqualsClosure();
+
+    private readonly IsComponentViewNameEqualsClosure _isComponentViewNameEqualsClosure =
+      new IsComponentViewNameEqualsClosure();
+
     private readonly List<string> _componentNames = new List<string>();
     private EcsUniverseConfig _config;
     private Type[] _typesCache;
@@ -165,7 +170,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
         {
           if (View.Components.AllNonAlloc(_isComponentViewNameNotEqualsClosure.SpecifyPredicate(_componentNames[i])))
             View.Components.Add(new EcsComponentView
-              { Value = (IEcsComponent)_components[i], Name = _componentNames[i] });
+              { Value = (IEcsComponent)_components[i], Name = _componentNames[i], Presenter = this });
         }
       }
 
@@ -191,7 +196,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       foreach (EcsComponentView component in View.ComponentPull)
       {
         _name = EditorContext.GetPrettyName(component.Value);
-        IEcsPool pool = _pools.FirstOrDefault(x => EditorContext.GetPrettyName(x.GetComponentType()) == _name) 
+        IEcsPool pool = _pools.FirstOrDefault(x => EditorContext.GetPrettyName(x.GetComponentType()) == _name)
           ?? _wrapper.World.GetPoolEnsure(component.Value.GetType());
 
         if (pool.Has(Entity))
@@ -211,6 +216,13 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
         if (pool.Has(Entity))
           pool.Del(Entity);
       }
+    }
+
+    public void ChangeComponent(IEcsComponent component)
+    {
+      UpdatePools();
+      IEcsPool pool = _pools.First(x => x.GetComponentType() == component.GetType());
+      pool.SetRaw(Entity, component);
     }
 
     public class IsStringNotEqualClosure : EcsClosure<string>
