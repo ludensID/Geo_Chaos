@@ -17,6 +17,5 @@ MonoBehaviour:
   AttackShotCooldown: 1
   BrakingDistance: 3
   DamageFromBody: 5
-  DamageFromCloud: 0
   PlayerWaitTime: 6
   WaitShotCooldown: 2

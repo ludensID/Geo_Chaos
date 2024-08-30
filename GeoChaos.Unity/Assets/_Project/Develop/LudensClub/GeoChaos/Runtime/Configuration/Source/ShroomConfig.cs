@@ -14,7 +14,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float BrakingDistance;
 
     public float DamageFromBody;
-    public float DamageFromCloud;
 
     [Title("Watch")]
     public float PlayerWaitTime;
