@@ -1,6 +1,6 @@
 ﻿using System;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment.DoorKey;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Props.Environment.Key;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
 {

@@ -1,6 +1,6 @@
 ﻿using LudensClub.GeoChaos.Editor.General;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Props.Lama;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Lama;
 using UnityEditor;
 using UnityEngine;
 

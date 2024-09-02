@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 917807212666212059}
   - component: {fileID: 3096212242499763310}
   - component: {fileID: 534530470674101751}
+  - component: {fileID: 8036329109723479164}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -529,6 +530,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmsCollider: {fileID: 4061600359501653115}
+--- !u!114 &8036329109723479164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5964920398389124973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5243aae03745dc87593e8fd8518fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 4852958873228660960}
 --- !u!1 &7555412856877973622
 GameObject:
   m_ObjectHideFlags: 0

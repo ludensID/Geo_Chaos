@@ -2,7 +2,6 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Props.Environment.Door;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Lever
 {

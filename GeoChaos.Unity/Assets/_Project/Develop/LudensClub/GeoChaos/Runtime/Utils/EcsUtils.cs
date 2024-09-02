@@ -38,7 +38,11 @@ namespace LudensClub.GeoChaos.Runtime.Utils
 
     public static Rect GetBounds(this PhysicalBoundsRef obj)
     {
-      return PhysicalBoundsConverter.GetBounds(obj.Left, obj.Right);
+      return new Rect
+      {
+        min = obj.Left.position,
+        max = obj.Right.position
+      };
     }
 
     public static bool TrySelectByColliderTypes(this ICollisionService obj, ColliderType master, ColliderType target)

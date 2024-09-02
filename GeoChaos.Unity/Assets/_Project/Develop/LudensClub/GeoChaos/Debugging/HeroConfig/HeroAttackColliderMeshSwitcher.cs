@@ -4,7 +4,7 @@ using LudensClub.GeoChaos.Runtime;
 using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Props;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;

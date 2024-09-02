@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Props;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using TriInspector;
 using UnityEditor;
 using UnityEditor.SceneManagement;

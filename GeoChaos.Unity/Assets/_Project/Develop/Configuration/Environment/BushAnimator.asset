@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ba4e481aa14a6b841ed72f0e30b49a, type: 3}
+  m_Name: BushAnimator
+  m_EditorClassIdentifier: 
+  _skeletonDataAsset: {fileID: 11400000, guid: 424f62e0d409fe94ba05f80f246a8fe7, type: 2}
+  _parameters:
+  - _name: Hit
+    _variableType: 0
+  Layers:
+  - StartAnimation: bushIdle
+    Animations:
+    - Name: bushIdle
+      Speed: 1
+      IsLoop: 1
+    - Name: bushHit
+      Speed: 1
+      IsLoop: 0
+  Transitions:
+  - _origins:
+    - bushIdle
+    _destination: bushHit
+    _conditions:
+    - _parameter: Hit
+      _processor:
+        rid: 3599071045893488732
+    _isHold: 0
+  - _origins:
+    - bushHit
+    _destination: bushIdle
+    _conditions: []
+    _isHold: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 3599071045893488732
+      type: {class: SpineTriggerProcessor, ns: LudensClub.GeoChaos.Runtime.Infrastructure.Spine,
+        asm: GeoChaos.Runtime}
+      data: 

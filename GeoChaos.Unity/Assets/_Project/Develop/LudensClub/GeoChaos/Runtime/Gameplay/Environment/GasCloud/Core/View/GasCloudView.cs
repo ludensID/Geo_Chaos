@@ -1,4 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Props;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.GasCloud
 {

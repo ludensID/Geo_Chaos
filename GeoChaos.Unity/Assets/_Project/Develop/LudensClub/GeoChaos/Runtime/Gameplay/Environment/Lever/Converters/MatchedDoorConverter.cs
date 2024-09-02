@@ -1,6 +1,6 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
-using LudensClub.GeoChaos.Runtime.Props.Environment.Door;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Lever

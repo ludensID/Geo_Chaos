@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 7236305168769208463}
   - component: {fileID: 8387639981161891265}
   - component: {fileID: 6766243362007475600}
+  - component: {fileID: 7478533367406509968}
   m_Layer: 9
   m_Name: Shroom
   m_TagString: Untagged
@@ -460,6 +461,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GasCloudPoint: {fileID: 7844018826023558900}
+--- !u!114 &7478533367406509968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9078734090324148771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5243aae03745dc87593e8fd8518fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 1783633117907144473}
 --- !u!1001 &3721550470441780097
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,7 +2,6 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
-using LudensClub.GeoChaos.Runtime.Props;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.SpawnPoint
 {

@@ -1,6 +1,5 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Props;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
 {

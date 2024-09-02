@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Props;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using TriInspector;
 using UnityEngine;
 

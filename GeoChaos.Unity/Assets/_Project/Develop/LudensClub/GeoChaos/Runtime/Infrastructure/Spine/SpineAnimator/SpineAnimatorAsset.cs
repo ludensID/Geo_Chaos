@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Spine
     [HideReferencePicker]
     [ListDrawerSettings(AlwaysExpanded = true)]
     [ValidateInput("ValidateParameters")]
-    private List<SpineParameter> _parameters;
+    private List<SpineParameter> _parameters = new List<SpineParameter>();
 
     [ListDrawerSettings(ShowElementLabels = true)]
     public List<SpineLayer> Layers;

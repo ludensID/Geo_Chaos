@@ -1,4 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Props;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 using TriInspector;
 using UnityEngine;
 using Zenject;

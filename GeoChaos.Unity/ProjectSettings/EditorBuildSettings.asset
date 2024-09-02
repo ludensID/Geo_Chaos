@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/Scenes/Gameplay.unity
+    path: Assets/_Project/Scenes/Workbench.unity
     guid: ac829ae1f00bcd04c8a9c9741ceaa2de
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

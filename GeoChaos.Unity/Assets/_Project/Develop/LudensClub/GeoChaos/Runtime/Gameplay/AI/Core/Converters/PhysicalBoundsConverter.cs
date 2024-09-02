@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
         return bound ? bound.position : defaultValue;
       }
     }
-
+    
     public void ConvertTo(EcsEntity entity)
     {
       entity.Add((ref PhysicalBoundsRef bounds) =>

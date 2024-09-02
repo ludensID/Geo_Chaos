@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8118882743103654883}
   - component: {fileID: 8245768028869095333}
   - component: {fileID: 376463382468597028}
-  - component: {fileID: 2468904827723703030}
   - component: {fileID: 4506296284040397834}
+  - component: {fileID: 8237282930618888204}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -131,26 +131,6 @@ MonoBehaviour:
   _animationName: 
   loop: 0
   timeScale: 1
---- !u!114 &2468904827723703030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8948546949680039044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fef12cf21ab64ffcbc464d32dba66c0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Skeleton: {fileID: 376463382468597028}
-  SharedAnimatorData: {fileID: 11400000, guid: b3ec6a8991851924c9ba91b0dd4cd31d, type: 2}
-  _animator:
-    _layers: []
-  _showParameters: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &4506296284040397834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +143,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bad22c7d76847f782cd2f9cbf909800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8237282930618888204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948546949680039044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe15d4c58304948a778aee3d00e9556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skeleton: {fileID: 376463382468597028}
+  SharedAnimatorData: {fileID: 11400000, guid: 6e8df3df0df3c9e438ee4efb093b1724, type: 2}
+  _animator:
+    _layers: []
+  _showParameters: []
+  references:
+    version: 2
+    RefIds: []

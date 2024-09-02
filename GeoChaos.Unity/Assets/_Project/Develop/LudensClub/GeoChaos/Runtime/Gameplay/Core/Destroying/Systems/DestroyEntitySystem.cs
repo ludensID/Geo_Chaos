@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Props;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying
