@@ -38,6 +38,9 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     [OnValueChanged(nameof(OnValueChanged))]
     public IEcsComponent Value;
 
+    [HideInInspector]
+    public TComponent Component;
+    
     private EcsPool<TComponent> _pool;
     private readonly Type _componentType;
     private readonly string _valueName;
@@ -64,12 +67,14 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     public void Update()
     {
       HasValue = _pool.Has(Entity);
-      Value = HasValue ? _pool.Get(Entity) : null;
+      if (HasValue)
+        Component = _pool.Get(Entity);
     }
 
     private void OnValueChanged()
     {
-      _pool.Get(Entity) = (TComponent)Value;
+      Component = (TComponent)Value;
+      _pool.Get(Entity) = Component;
     }
   }
 }

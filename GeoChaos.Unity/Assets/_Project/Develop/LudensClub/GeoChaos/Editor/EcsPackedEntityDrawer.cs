@@ -8,7 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using Zenject;
 
-[assembly: RegisterTriValueDrawer(typeof(EcsPackedEntityDrawer), TriDrawerOrder.Inspector)]
+[assembly: RegisterTriValueDrawer(typeof(EcsPackedEntityDrawer), TriDrawerOrder.Fallback)]
 
 namespace LudensClub.GeoChaos.Editor
 {

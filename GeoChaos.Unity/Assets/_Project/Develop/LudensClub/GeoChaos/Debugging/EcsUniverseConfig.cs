@@ -14,6 +14,7 @@ namespace LudensClub.GeoChaos.Debugging
   public class EcsUniverseConfig : ScriptableObject
   {
     public readonly EcsComponentComparer Comparer = new EcsComponentComparer();
+    public Comparison<IEcsComponentView> Comparison;
 
     private readonly Comparison<StringTuple> _tupleComparer =
       (x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal);
@@ -23,6 +24,13 @@ namespace LudensClub.GeoChaos.Debugging
     public List<StringTuple> ComponentOrder;
 
     private List<string> _componentNames;
+
+    private void OnEnable()
+    {
+      Comparison = Comparer.Compare;
+      
+      Update();
+    }
 
     [Button("Update")]
     [PropertyOrder(0)]
@@ -69,11 +77,6 @@ namespace LudensClub.GeoChaos.Debugging
       ComponentOrder.Clear();
       ComponentOrder = lockedList.Concat(constList).Concat(tempList).ToList();
       Synchronize();
-    }
-
-    private void OnEnable()
-    {
-      Update();
     }
 
     private void GetComponentNames()

@@ -14,10 +14,11 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
   public class EcsEntityPresenter : IEcsEntityPresenter
   {
     private const string ENTITY_FORMAT = "D8";
-    private const string UPDATE_VIEW = nameof(UpdateName) + "()";
+    private const string TRY_UPDATE_NAME = nameof(TryUpdateName) + "()";
 
-    private readonly SpecifiedClosure<IEcsComponentView, IEcsPool> _poolClosure 
+    private readonly SpecifiedClosure<IEcsComponentView, IEcsPool> _poolClosure
       = new SpecifiedClosure<IEcsComponentView, IEcsPool>((x, pool) => x.Pool == pool);
+
     private readonly IEcsWorldWrapper _wrapper;
     private readonly IEcsEntityViewFactory _viewFactory;
     private readonly IEcsComponentViewFactory _componentFactory;
@@ -26,6 +27,10 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private EcsUniverseConfig _config;
     private int _componentCount;
     private string _name;
+    private string _entityWithDelimiter;
+    private string _gameObjectName;
+    private bool _isNameWithComponent;
+    private IEcsComponentView _namedComponentView;
 
     public int Entity { get; }
     public string EntityString { get; }
@@ -43,58 +48,67 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       _parent = parent;
       Entity = entity;
       EntityString = Entity.ToString(ENTITY_FORMAT);
+      _entityWithDelimiter = EntityString + ":";
     }
 
     public void Initialize()
     {
       View = _viewFactory.Create(_parent.View.transform);
       View.SetController(this);
+      _gameObjectName = EntityString;
+      View.gameObject.name = _gameObjectName;
     }
 
     public void Tick()
     {
-      string entityName = EntityString;
-      if (_wrapper.World.GetEntityGen(Entity) > 0)
-      {
-        UpdateView();
+      UpdateView();
 
 #if !DISABLE_PROFILING
-        using (new ProfilerMarker(UPDATE_VIEW).Auto())
+      using (new ProfilerMarker(TRY_UPDATE_NAME).Auto())
 #endif
+      {
+        if (TryUpdateName())
         {
-          entityName = UpdateName();
+          View.gameObject.name = _gameObjectName;
         }
       }
-      else
-      {
-        View.Components.Clear();
-        _componentCount = 0;
-      }
-
-      View.gameObject.name = entityName;
     }
 
-    private string UpdateName()
+    private bool TryUpdateName()
     {
-      using Utf16ValueStringBuilder builder = ZString.CreateStringBuilder();
-      builder.Append(EntityString);
-      if (View.Components.Count > 0)
+      bool hasComponents = View.Components.Count > 0;
+      if (!_isNameWithComponent && hasComponents)
       {
-        builder.Append(":");
-        builder.Append(View.Components[0].Name);
+        _isNameWithComponent = true;
+        _namedComponentView = View.Components[0];
+        _gameObjectName = ZString.Concat(_entityWithDelimiter, _namedComponentView.Name);
+        return true;
       }
 
-#if !DISABLE_PROFILING
-      using ProfilerMarker.AutoScope marker = new ProfilerMarker(nameof(ToString)).Auto();
-#endif
-      return builder.ToString();
+      if (_isNameWithComponent && !hasComponents)
+      {
+        _isNameWithComponent = false;
+        _namedComponentView = null;
+        _gameObjectName = EntityString;
+        return true;
+      }
+
+      if (_isNameWithComponent && _namedComponentView != View.Components[0])
+      {
+        _namedComponentView = View.Components[0];
+        _gameObjectName = ZString.Concat(_entityWithDelimiter, _namedComponentView.Name);
+        return true;
+      }
+
+      return false;
     }
 
     public void UpdateView()
     {
-      if (!View.gameObject.activeSelf)
+      if (_wrapper.World.GetEntityGen(Entity) < 0)
       {
         View.Components.Clear();
+        _componentCount = 0;
         return;
       }
 
@@ -112,10 +126,15 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
         Resize();
       }
 
-      if (!_config)
-        _config = AssetFinder.FindAsset<EcsUniverseConfig>();
-      if (_config)
-        View.Components.Sort(_config.Comparer);
+#if !DISABLE_PROFILING
+      using (new ProfilerMarker("Sort()").Auto())
+#endif
+      {
+        if (!_config)
+          _config = AssetFinder.FindAsset<EcsUniverseConfig>();
+        if (_config)
+          View.Components.Sort(_config.Comparison);
+      }
 
       EditorUtility.SetDirty(View);
     }

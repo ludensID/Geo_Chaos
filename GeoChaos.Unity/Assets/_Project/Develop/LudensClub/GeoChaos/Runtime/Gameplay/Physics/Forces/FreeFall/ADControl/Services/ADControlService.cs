@@ -9,6 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   {
     private readonly PhysicsWorldWrapper _physicsWorldWrapper;
     private readonly EcsEntities _controls;
+    private readonly IsEntityOwnerClosure _isEntityOwnerClosure = new IsEntityOwnerClosure();
 
     public ADControlService(PhysicsWorldWrapper physicsWorldWrapper)
     {
@@ -26,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 
     public EcsEntities GetLoop(EcsPackedEntity owner)
     {
-      return _controls.Clone().Where<Owner>(x => x.Entity.EqualsTo(owner));
+      return _controls.Clone().Where(_isEntityOwnerClosure.SpecifyPredicate(owner));
     }
   }
 }
