@@ -71,13 +71,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
             force.Dispose();
           }
         }
-        
+
         foreach (EcsEntity force in _addedForces
           .Check(_isEntityOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
         {
           velocity = AddVelocityByImpact(force, velocity);
         }
-        
+
         foreach (EcsEntity force in _uniqueForces
           .Check(_isEntityOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
         {
@@ -85,6 +85,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           movementVector.Immutable = force.Has<Immutable>();
         }
 
+        velocity = ClampToZero(velocity);
         movementVector.AssignVector(velocity, true);
       }
     }
@@ -112,5 +113,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 
       return velocity;
     }
-  }
+
+    private static Vector2 ClampToZero(Vector2 vector)
+    {
+      vector.x = MathUtils.ClampTo(vector.x, 0);
+      vector.y = MathUtils.ClampTo(vector.y, 0);
+
+      return vector;
+    }
+}
 }

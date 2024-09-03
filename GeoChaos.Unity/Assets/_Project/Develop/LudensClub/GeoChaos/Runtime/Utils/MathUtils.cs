@@ -25,6 +25,11 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     {
       return Mathf.Clamp(value, min, max);
     }
+
+    public static float ClampTo(float value, float limit, float tolerance = TOLERANCE)
+    {
+      return value.ApproximatelyEqual(limit, tolerance) ? limit : value;
+    }
     
     public static float DecreaseToZero(float value, float delta)
     {

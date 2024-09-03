@@ -57,7 +57,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity
           case (false, true):
             ground
               .Add<OnGround>()
-              .Add<OnLanded>();
+              .Has<OnLanded>(true);
             break;
         }
 
