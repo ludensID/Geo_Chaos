@@ -15,6 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       Add(systems.Create<SetInstantZeroForcesSystem>());
       
       Add(systems.Create<CalculateTargetMovementVectorSystem>());
+      Add(systems.Create<DeleteInstantForcesSystem>());
       Add(systems.Create<AssignLastMovementVectorSystem>());
     }
   }

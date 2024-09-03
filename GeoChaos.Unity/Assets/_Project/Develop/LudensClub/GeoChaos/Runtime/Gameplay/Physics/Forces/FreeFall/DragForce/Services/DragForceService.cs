@@ -9,7 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   {
     private readonly PhysicsWorldWrapper _physicsWorldWrapper;
     private readonly EcsEntities _drags;
-    private readonly IsEntityOwnerClosure _isEntityOwnerClosure = new IsEntityOwnerClosure();
+    private readonly BelongOwnerClosure _belongOwnerClosure = new BelongOwnerClosure();
 
     public DragForceService(PhysicsWorldWrapper physicsWorldWrapper)
     {
@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 
     public EcsEntities GetLoop(EcsPackedEntity owner)
     {
-      return _drags.Clone().Where(_isEntityOwnerClosure.SpecifyPredicate(owner));
+      return _drags.Clone().Where(_belongOwnerClosure.SpecifyPredicate(owner));
     }
   }
 }

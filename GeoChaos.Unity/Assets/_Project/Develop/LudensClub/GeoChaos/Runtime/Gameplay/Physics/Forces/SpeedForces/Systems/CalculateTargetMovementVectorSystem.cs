@@ -15,7 +15,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     private readonly EcsEntities _simpleForces;
     private readonly EcsEntities _addedForces;
     private readonly EcsEntities _uniqueForces;
-    private readonly IsEntityOwnerClosure _isEntityOwnerClosure;
+    private readonly BelongOwnerClosure _belongOwnerClosure;
+    private readonly EcsEntities _spareForces;
 
     public CalculateTargetMovementVectorSystem(PhysicsWorldWrapper physicsWorldWrapper,
       GameWorldWrapper gameWorldWrapper)
@@ -28,12 +29,22 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         .Inc<MovementVector>()
         .Collect();
 
-      _isEntityOwnerClosure = new IsEntityOwnerClosure();
+      _belongOwnerClosure = new BelongOwnerClosure();
+
+      _spareForces = _physics
+        .Filter<MovementVector>()
+        .Inc<Owner>()
+        .Inc<Spare>()
+        .Exc<Added>()
+        .Exc<Unique>()
+        .Exc<Ignored>()
+        .Collect();
 
       _simpleForces = _physics
         .Filter<MovementVector>()
         .Inc<Owner>()
         .Exc<Added>()
+        .Exc<Spare>()
         .Exc<Unique>()
         .Exc<Ignored>()
         .Collect();
@@ -61,25 +72,26 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
         movementVector.Immutable = false;
         Vector2 velocity = movementVector.Speed * movementVector.Direction;
 
-        foreach (EcsEntity force in _simpleForces
-          .Check(_isEntityOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
+        foreach (EcsEntity force in _spareForces
+          .Check(_belongOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
         {
           velocity = AssignVelocityByImpact(force, velocity);
-
-          if (force.Has<Instant>())
-          {
-            force.Dispose();
-          }
+        }
+          
+        foreach (EcsEntity force in _simpleForces
+          .Check(_belongOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
+        {
+          velocity = AssignVelocityByImpact(force, velocity);
         }
 
         foreach (EcsEntity force in _addedForces
-          .Check(_isEntityOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
+          .Check(_belongOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
         {
           velocity = AddVelocityByImpact(force, velocity);
         }
 
         foreach (EcsEntity force in _uniqueForces
-          .Check(_isEntityOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
+          .Check(_belongOwnerClosure.SpecifyPredicate(owner.PackedEntity)))
         {
           velocity = AssignVelocityByImpact(force, velocity);
           movementVector.Immutable = force.Has<Immutable>();

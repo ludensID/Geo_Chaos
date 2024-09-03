@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
   {
     None = 0,
     Shoot = 1,
-    Stay = (Shoot << 1) | Shoot,
+    Stay = (1 << 1) | Shoot,
     Interrupt = 1 << 2,
     All = int.MaxValue
   }

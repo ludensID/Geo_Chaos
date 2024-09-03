@@ -13,9 +13,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
     private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
     private readonly HeroConfig _config;
-    private readonly EcsEntities _movings;
-    private readonly EcsEntities _commands;
-    private readonly EcsEntities _startCommands;
+    private readonly EcsEntities _stopMovingCommands;
+    private readonly EcsEntities _continueMovingCommands;
+    private readonly EcsEntities _startMovingCommands;
     private readonly SpeedForceLoop _forces;
 
     public CalculateHeroMovementVectorSystem(GameWorldWrapper gameWorldWrapper,
@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
 
       _forces = forceLoopSvc.CreateLoop();
 
-      _startCommands = _game
+      _startMovingCommands = _game
         .Filter<HeroTag>()
         .Inc<Movable>()
         .Inc<MovementVector>()
@@ -37,7 +37,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
         .Exc<Moving>()
         .Collect();
 
-      _commands = _game
+      _continueMovingCommands = _game
         .Filter<HeroTag>()
         .Inc<Movable>()
         .Inc<MovementVector>()
@@ -45,7 +45,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
         .Inc<Moving>()
         .Collect();
 
-      _movings = _game
+      _stopMovingCommands = _game
         .Filter<HeroTag>()
         .Inc<Movable>()
         .Inc<MovementVector>()
@@ -56,7 +56,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
 
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity command in _startCommands)
+      foreach (EcsEntity command in _startMovingCommands)
       {
         float direction = command.Get<MoveHeroCommand>().Direction;
         (float normalized, float speed, float acceleration) = GetSpeedForceValues(command, direction);
@@ -68,7 +68,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
         command.Add<Moving>();
       }
 
-      foreach (EcsEntity command in _commands)
+      foreach (EcsEntity command in _continueMovingCommands)
       {
         float direction = command.Get<MoveHeroCommand>().Direction;
         (float normalized, float speed, float acceleration) = GetSpeedForceValues(command, direction);
@@ -82,7 +82,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
           command.Del<Moving>();
       }
 
-      foreach (EcsEntity moving in _movings)
+      foreach (EcsEntity moving in _stopMovingCommands)
       {
         EcsEntities forces = _forces.GetLoop(SpeedForceType.Move, moving.PackedEntity);
         if (!forces.Any())

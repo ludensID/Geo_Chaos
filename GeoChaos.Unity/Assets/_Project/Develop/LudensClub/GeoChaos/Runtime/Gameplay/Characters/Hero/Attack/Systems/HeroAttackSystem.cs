@@ -17,7 +17,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack
     private readonly EcsEntities _heroes;
     private readonly EcsWorld _physics;
     private readonly EcsEntities _forces;
-    private readonly IsEntityOwnerClosure _isEntityOwnerClosure = new IsEntityOwnerClosure();
+    private readonly BelongOwnerClosure _belongOwnerClosure = new BelongOwnerClosure();
 
     public HeroAttackSystem(GameWorldWrapper gameWorldWrapper,
       PhysicsWorldWrapper physicsWorldWrapper,
@@ -61,7 +61,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack
           .Add<Attacking>();
 
         foreach (EcsEntity force in _forces
-          .Check(_isEntityOwnerClosure.SpecifyPredicate(hero.PackedEntity)))
+          .Check(_belongOwnerClosure.SpecifyPredicate(hero.PackedEntity)))
         {
           force.Dispose();
         }

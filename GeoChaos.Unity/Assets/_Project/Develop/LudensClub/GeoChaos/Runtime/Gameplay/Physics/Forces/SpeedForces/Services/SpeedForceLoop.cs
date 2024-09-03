@@ -8,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
   public class SpeedForceLoop
   {
-    private readonly IsEntityOwnerClosure _isEntityOwnerClosure = new IsEntityOwnerClosure();
+    private readonly BelongOwnerClosure _belongOwnerClosure = new BelongOwnerClosure();
     private readonly EcsEntities _entities;
 
     public SpeedForceLoop(EcsEntities entities)
@@ -25,18 +25,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       return _entities.Clone()
         .Where<SpeedForce>(x => x.Type == type)
-        .Where<Owner>(x => x.Entity.EqualsTo(owner));
+        .Where(_belongOwnerClosure.SpecifyPredicate(owner));
     }
     
     public void ResetForcesToZero(SpeedForceType type, EcsPackedEntity owner)
     {
       foreach (EcsEntity force in _entities
         .Check<SpeedForce>(x => x.Type == type)
-        .Check(_isEntityOwnerClosure.SpecifyPredicate(owner)))
+        .Check(_belongOwnerClosure.SpecifyPredicate(owner)))
       {
         force
           .Change((ref MovementVector vector) => vector.Speed = Vector2.zero)
-          .Add<Instant>();
+          .Add<Instant>()
+          .Add<Spare>();
       }
     }
   }

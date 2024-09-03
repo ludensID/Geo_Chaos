@@ -10,10 +10,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _movings;
+    private readonly SpeedForceLoop _forceLoop;
 
-    public InterruptMovementSystem(GameWorldWrapper gameWorldWrapper)
+    public InterruptMovementSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
     {
       _game = gameWorldWrapper.World;
+      _forceLoop = forceLoopSvc.CreateLoop();
 
       _movings = _game
         .Filter<HeroTag>()
@@ -28,6 +30,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
         .Check<MovementLayout>(x => x.Layer != MovementLayer.All))
       {
         moving.Del<Moving>();
+        _forceLoop.ResetForcesToZero(SpeedForceType.Move, moving.PackedEntity);
       }
     }
   }
