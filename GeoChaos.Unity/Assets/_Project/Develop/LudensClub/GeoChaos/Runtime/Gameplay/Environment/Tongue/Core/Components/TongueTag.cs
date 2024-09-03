@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Tongue
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.CONST)]
   public struct TongueTag : IEcsComponent
   {
   }

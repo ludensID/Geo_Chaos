@@ -1,4 +1,5 @@
 ﻿using LudensClub.GeoChaos.Debugging.Monitoring;
+using LudensClub.GeoChaos.Debugging.Monitoring.Sorting;
 using LudensClub.GeoChaos.Debugging.Watchers;
 using Zenject;
 
@@ -47,6 +48,7 @@ namespace LudensClub.GeoChaos.Debugging
 
       BindGlobalWatcher();
 
+      BindEcsComponentSorter();
       BindEcsComponentViewFactory();
 
       BindEcsUniverseViewFactory();
@@ -55,6 +57,14 @@ namespace LudensClub.GeoChaos.Debugging
       BindEcsEntityPresenterFactory();
       BindEcsEntityViewFactory();
       BindEcsUniversePresenter();
+    }
+
+    private static void BindEcsComponentSorter()
+    {
+      Container
+        .Bind<IEcsComponentSorter>()
+        .To<EcsComponentSorter>()
+        .AsSingle();
     }
 
     private static void BindEcsComponentViewFactory()

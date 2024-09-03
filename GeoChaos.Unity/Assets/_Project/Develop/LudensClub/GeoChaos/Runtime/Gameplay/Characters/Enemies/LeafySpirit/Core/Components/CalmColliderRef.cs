@@ -11,6 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct CalmColliderRef : IEcsComponent
   {
     public Collider2D Collider;

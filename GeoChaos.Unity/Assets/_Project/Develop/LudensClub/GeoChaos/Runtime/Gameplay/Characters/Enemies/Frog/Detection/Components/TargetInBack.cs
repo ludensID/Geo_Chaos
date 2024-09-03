@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Detection
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.CONTINUOUS)]
   public struct TargetInBack : IEcsComponent
   {
   }

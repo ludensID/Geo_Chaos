@@ -11,6 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Frog.Attack.To
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct TonguePointRef : IEcsComponent
   {
     public Transform Point;

@@ -11,6 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct Brain : IEcsComponent
   {
     public BehaviourTree Tree;

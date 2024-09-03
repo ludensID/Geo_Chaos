@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Move
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct MovePoint : IEcsComponent
   {
     public float Point;

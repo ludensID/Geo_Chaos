@@ -11,6 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Aim
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct ShootPosition : IEcsComponent
   {
     public Vector2 Origin;

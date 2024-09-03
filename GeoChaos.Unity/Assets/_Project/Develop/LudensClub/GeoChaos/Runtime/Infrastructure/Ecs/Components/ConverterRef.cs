@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct ConverterRef : IEcsComponent
   {
     public IGameObjectConverter Converter;

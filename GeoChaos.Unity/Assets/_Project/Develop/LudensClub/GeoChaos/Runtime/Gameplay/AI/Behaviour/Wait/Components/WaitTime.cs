@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Wait
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct WaitTime : IEcsComponent
   {
     public float Time;

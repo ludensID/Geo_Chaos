@@ -11,6 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Lever
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct MatchedDoorRef : IEcsComponent
   {
     public DoorView Door;

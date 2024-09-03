@@ -2,6 +2,7 @@
 using System.Linq;
 using Cysharp.Text;
 using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Debugging.Monitoring.Sorting;
 using LudensClub.GeoChaos.Editor.General;
 using LudensClub.GeoChaos.Runtime;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -23,8 +24,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private readonly IEcsEntityViewFactory _viewFactory;
     private readonly IEcsComponentViewFactory _componentFactory;
     private readonly IEcsWorldPresenter _parent;
+    private readonly IEcsComponentSorter _sorter;
 
-    private EcsUniverseConfig _config;
     private int _componentCount;
     private string _name;
     private string _entityWithDelimiter;
@@ -40,12 +41,14 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       IEcsWorldWrapper wrapper,
       IEcsEntityViewFactory viewFactory,
       IEcsComponentViewFactory componentFactory,
-      IEcsWorldPresenter parent)
+      IEcsWorldPresenter parent,
+      IEcsComponentSorter sorter)
     {
       _wrapper = wrapper;
       _viewFactory = viewFactory;
       _componentFactory = componentFactory;
       _parent = parent;
+      _sorter = sorter;
       Entity = entity;
       EntityString = Entity.ToString(ENTITY_FORMAT);
       _entityWithDelimiter = EntityString + ":";
@@ -130,10 +133,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       using (new ProfilerMarker("Sort()").Auto())
 #endif
       {
-        if (!_config)
-          _config = AssetFinder.FindAsset<EcsUniverseConfig>();
-        if (_config)
-          View.Components.Sort(_config.Comparison);
+        View.Components.Sort(_sorter.EcsComponentViewComparator);
       }
 
       EditorUtility.SetDirty(View);

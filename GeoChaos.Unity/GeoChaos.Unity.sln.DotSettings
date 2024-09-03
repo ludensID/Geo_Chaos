@@ -12,6 +12,15 @@
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=6DEBA835BCC98A49B7F7AD26BD13FAC9/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=6DEBA835BCC98A49B7F7AD26BD13FAC9/EntryName/@EntryValue">&lt;No Name&gt;</s:String>
 	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=6DEBA835BCC98A49B7F7AD26BD13FAC9/Position/@EntryValue">32</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=739121F1FC89614FB2F58CC28ED39E3F/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=739121F1FC89614FB2F58CC28ED39E3F/EntryName/@EntryValue">coc</s:String>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=739121F1FC89614FB2F58CC28ED39E3F/Position/@EntryValue">40</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=AD8AA585909E764C903D76E8D68BCBBA/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=AD8AA585909E764C903D76E8D68BCBBA/EntryName/@EntryValue">cos</s:String>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=AD8AA585909E764C903D76E8D68BCBBA/Position/@EntryValue">39</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=F1FCD6C3E17B78469B7D94DAE728999B/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=F1FCD6C3E17B78469B7D94DAE728999B/EntryName/@EntryValue">acc</s:String>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=7F292FD322E41246839AFE76D9914B34/Entry/=F1FCD6C3E17B78469B7D94DAE728999B/Position/@EntryValue">38</s:Int64>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=11933CA185E78342829F111F05E3ACA0/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=11933CA185E78342829F111F05E3ACA0/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=11933CA185E78342829F111F05E3ACA0/Description/@EntryValue">Ecs Closure</s:String>
@@ -136,6 +145,18 @@
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=69FCA882025B7149BDBB3023506C8F4A/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=69FCA882025B7149BDBB3023506C8F4A/Text/@EntryValue">(ref $COMPONENT$ $VARIABLE$) =&gt; $END$</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEBA835BCC98A49B7F7AD26BD13FAC9/@KeyIndexDefined">False</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/Description/@EntryValue">EcsComponentOrder attribute for continuous component</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/Scope/=74A278E9BF386142B53D57114609A033/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/Scope/=74A278E9BF386142B53D57114609A033/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/Scope/=74A278E9BF386142B53D57114609A033/Type/@EntryValue">InCSharpExceptStringLiterals</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/Scope/=D85851B63EB87C41B67E66379E8F3CEB/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/Scope/=D85851B63EB87C41B67E66379E8F3CEB/Type/@EntryValue">MustBeInUnityCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/Shortcut/@EntryValue">coco</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=739121F1FC89614FB2F58CC28ED39E3F/Text/@EntryValue">[LudensClub.GeoChaos.Runtime.Infrastructure.EcsComponentOrder(EcsComponentOrder.CONTINUOUS)]</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=84E35948797B9C4FA8FAAB5A12E3A6AE/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=84E35948797B9C4FA8FAAB5A12E3A6AE/Scope/=A32573B30A4F5B408A5C00ECA4ED3B30/Type/@EntryValue"></s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=84E35948797B9C4FA8FAAB5A12E3A6AE/Scope/=D85851B63EB87C41B67E66379E8F3CEB/@KeyIndexDefined">True</s:Boolean>
@@ -192,6 +213,18 @@
 	
 	
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=A1DC91A5E7AAE14C9B98ADC4AB0E3B32/CustomProperties/=ValidateFileName/@EntryIndexedValue">True</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/Description/@EntryValue">EcsComponentOrder attribute for static component</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/Scope/=74A278E9BF386142B53D57114609A033/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/Scope/=74A278E9BF386142B53D57114609A033/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/Scope/=74A278E9BF386142B53D57114609A033/Type/@EntryValue">InCSharpExceptStringLiterals</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/Scope/=D85851B63EB87C41B67E66379E8F3CEB/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/Scope/=D85851B63EB87C41B67E66379E8F3CEB/Type/@EntryValue">MustBeInUnityCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/Shortcut/@EntryValue">coc</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AD8AA585909E764C903D76E8D68BCBBA/Text/@EntryValue">[LudensClub.GeoChaos.Runtime.Infrastructure.EcsComponentOrder(EcsComponentOrder.CONST)]</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B45D0C99CB81D34C912841EA1BC3A1E3/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B45D0C99CB81D34C912841EA1BC3A1E3/Field/=COMPONENT/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B45D0C99CB81D34C912841EA1BC3A1E3/Field/=COMPONENT/Expression/@EntryValue">completeType("")</s:String>
@@ -216,6 +249,18 @@
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E1A9D21841F2F347A74A086F504ED4F7/Scope/=B68999B9D6B43E47A02B22C12A54C3CC/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E1A9D21841F2F347A74A086F504ED4F7/Scope/=B68999B9D6B43E47A02B22C12A54C3CC/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E1A9D21841F2F347A74A086F504ED4F7/Scope/=B68999B9D6B43E47A02B22C12A54C3CC/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/Description/@EntryValue">EcsComponentOrder attribute for static component</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/Scope/=74A278E9BF386142B53D57114609A033/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/Scope/=74A278E9BF386142B53D57114609A033/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/Scope/=74A278E9BF386142B53D57114609A033/Type/@EntryValue">InCSharpExceptStringLiterals</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/Scope/=D85851B63EB87C41B67E66379E8F3CEB/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/Scope/=D85851B63EB87C41B67E66379E8F3CEB/Type/@EntryValue">MustBeInUnityCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/Shortcut/@EntryValue">cos</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F1FCD6C3E17B78469B7D94DAE728999B/Text/@EntryValue">[LudensClub.GeoChaos.Runtime.Infrastructure.EcsComponentOrder(EcsComponentOrder.STATIC)]</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F73920CA22A40C438B3ECB21798DFDB8/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F73920CA22A40C438B3ECB21798DFDB8/Field/=VARIABLE/Expression/@EntryValue">typeName()</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F73920CA22A40C438B3ECB21798DFDB8/Scope/=74A278E9BF386142B53D57114609A033/@KeyIndexDefined">True</s:Boolean>

@@ -12,6 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct Owner : IEcsComponent
   {
     [ShowInInspector]

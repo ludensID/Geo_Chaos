@@ -11,6 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.View
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct RigidbodyRef : IEcsComponent
   {
     public Rigidbody2D Rigidbody;
