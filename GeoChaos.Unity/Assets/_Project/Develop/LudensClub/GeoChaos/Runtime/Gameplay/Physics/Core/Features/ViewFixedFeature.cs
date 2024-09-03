@@ -6,8 +6,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics
   {
     public ViewFixedFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<SetViewVelocitySystem>());
       Add(systems.Create<SetViewGravitySystem>());
+      Add(systems.Create<SetViewVelocitySystem>());
     }
   }
 }

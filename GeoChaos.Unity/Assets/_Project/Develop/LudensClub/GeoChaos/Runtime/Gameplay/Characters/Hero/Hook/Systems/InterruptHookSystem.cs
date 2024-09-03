@@ -12,21 +12,21 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
 {
   public class InterruptHookSystem : IEcsRunSystem
   {
-    private readonly ISpeedForceFactory _forceFactory;
     private readonly EcsWorld _game;
     private readonly EcsWorld _message;
     private readonly EcsEntities _interruptCommands;
     private readonly HeroConfig _config;
+    private readonly SpeedForceLoop _forceLoop;
 
     public InterruptHookSystem(GameWorldWrapper gameWorldWrapper,
       MessageWorldWrapper messageWorldWrapper,
-      ISpeedForceFactory forceFactory,
-      IConfigProvider configProvider)
+      IConfigProvider configProvider,
+      ISpeedForceLoopService forceLoopSvc)
     {
-      _forceFactory = forceFactory;
       _game = gameWorldWrapper.World;
       _message = messageWorldWrapper.World;
       _config = configProvider.Get<HeroConfig>();
+      _forceLoop = forceLoopSvc.CreateLoop();
 
       _interruptCommands = _game
         .Filter<HeroTag>()
@@ -80,7 +80,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
 
     private void InterruptHookSpeed(EcsEntity entity)
     {
-      _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, entity.PackedEntity));
+      _forceLoop.ResetForcesToZero(SpeedForceType.Hook, entity.PackedEntity);
     }
 
     private void ReleaseRing()

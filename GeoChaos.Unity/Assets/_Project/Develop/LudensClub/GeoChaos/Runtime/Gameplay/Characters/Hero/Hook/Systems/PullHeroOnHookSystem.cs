@@ -49,14 +49,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
       foreach (EcsEntity ring in _hookedRings)
       foreach (EcsEntity precast in _finishedPrecasts)
       {
-        Vector3 precastPosition = precast.Get<ViewRef>().View.transform.position;
-        Vector3 target = ring.Get<RingPointsRef>().TargetPoint.position;
+        Vector2 precastPosition = precast.Get<ViewRef>().View.transform.position;
+        Vector2 target = ring.Get<RingPointsRef>().TargetPoint.position;
 
-        Vector3 vector = target - precastPosition;
+        Vector2 vector = target - precastPosition;
         float time = vector.magnitude / _config.HookVelocity;
         Vector2 velocity = vector / time;
 
-        (Vector3 length, Vector3 direction) = MathUtils.DecomposeVector(velocity);
+        (Vector2 length, Vector2 direction) = MathUtils.DecomposeVector(velocity);
         _forceFactory.Create(new SpeedForceData(SpeedForceType.Hook, precast.PackedEntity, Vector2.one)
         {
           Speed = length,
