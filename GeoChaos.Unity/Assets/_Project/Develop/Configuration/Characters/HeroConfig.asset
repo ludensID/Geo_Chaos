@@ -61,7 +61,7 @@ MonoBehaviour:
     m_Bits: 913
   ImmunityTime: 3
   EnableBump: 1
-  BumpForce: {x: 5, y: 15}
+  BumpForce: {x: 10, y: 20}
   BumpFreezeDuration: 0.3
   HealthShardPoint: 20
   DashDamage: 10
