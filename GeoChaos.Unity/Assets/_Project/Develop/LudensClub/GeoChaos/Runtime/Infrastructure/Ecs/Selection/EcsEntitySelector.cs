@@ -4,6 +4,10 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
 {
   public class EcsEntitySelector : IEcsEntitySelector
   {
+#if UNITY_EDITOR && !DISABLE_PROFILING
+    private static readonly System.Type _algorithmType = typeof(ISelectionAlgorithm);
+#endif
+      
     protected List<ISelectionAlgorithm> _algorithms = new List<ISelectionAlgorithm>();
 
     public virtual void Select<TComponent>(EcsEntities origins, EcsEntities targets, EcsEntities marks)
@@ -25,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
       foreach (ISelectionAlgorithm algorithm in _algorithms)
       {
 #if UNITY_EDITOR && !DISABLE_PROFILING
-        using (new Unity.Profiling.ProfilerMarker(EditorContext.GetPrettyName(algorithm, "Select")).Auto())
+        using (new Unity.Profiling.ProfilerMarker(EditorContext.GetPrettyName(algorithm, "Select", _algorithmType)).Auto())
 #endif
         {
           algorithm.Select(origins, marks);

@@ -2,7 +2,8 @@
     "name": "GeoChaos.Editor.General",
     "rootNamespace": "",
     "references": [
-        "GUID:9371e440cf19b314d952c476e4723af7"
+        "GUID:9371e440cf19b314d952c476e4723af7",
+        "GUID:33661e06c33d31b4c9223810bf503247"
     ],
     "includePlatforms": [
         "Editor"

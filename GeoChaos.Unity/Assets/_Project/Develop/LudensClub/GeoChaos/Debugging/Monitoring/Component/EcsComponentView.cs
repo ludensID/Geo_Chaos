@@ -25,6 +25,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     IEcsPool Pool { get; }
     void SetPool(IEcsPool pool);
     void Update();
+    void AssignComponent();
   }
 
   [Serializable]
@@ -69,6 +70,11 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
       HasValue = _pool.Has(Entity);
       if (HasValue)
         Component = _pool.Get(Entity);
+    }
+
+    public void AssignComponent()
+    {
+      Value = Component;
     }
 
     private void OnValueChanged()

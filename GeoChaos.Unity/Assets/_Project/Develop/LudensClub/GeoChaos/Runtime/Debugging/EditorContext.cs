@@ -7,19 +7,19 @@ namespace LudensClub.GeoChaos.Runtime
   {
     public static IEditorContainer Container;
 
-    public static string GetPrettyName(object context, string methodName)
+    public static string GetPrettyName(object target, string methodName, Type context)
     {
-      return Container.ProfilerService.GetPrettyName(context, methodName);
+      return Container.ProfilerService.GetPrettyName(target, methodName, context);
     }
 
-    public static string GetPrettyName(object context)
+    public static string GetPrettyName(object target, Type context)
     {
-      return Container.ProfilerService.GetPrettyName(context);
+      return Container.ProfilerService.GetPrettyName(target, context);
     }
 
-    public static string GetPrettyName(Type type)
+    public static string GetPrettyName(Type type, Type context)
     {
-      return Container.ProfilerService.GetPrettyName(type);
+      return Container.ProfilerService.GetPrettyName(type, context);
     }
   }
 }

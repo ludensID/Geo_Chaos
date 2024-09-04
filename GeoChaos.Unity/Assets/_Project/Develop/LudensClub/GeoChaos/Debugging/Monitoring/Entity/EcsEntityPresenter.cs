@@ -16,6 +16,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     private const string ENTITY_FORMAT = "D8";
     private const string TRY_UPDATE_NAME = nameof(TryUpdateName) + "()";
 
+    private static readonly Type _componentType = typeof(IEcsComponent);
+
     private readonly SpecifiedClosure<IEcsComponentView, IEcsPool> _poolClosure
       = new SpecifiedClosure<IEcsComponentView, IEcsPool>((x, pool) => x.Pool == pool);
 
@@ -163,7 +165,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
             Type componentType = pool.GetComponentType();
             IEcsComponentView componentView =
               _componentFactory.Create(componentType, Entity, pool);
-            componentView.Name = EditorContext.GetPrettyName(componentType);
+            componentView.Name = EditorContext.GetPrettyName(componentType, _componentType);
             componentView.Update();
             View.Components.Add(componentView);
           }
@@ -185,8 +187,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     {
       foreach (EcsComponentView component in View.ComponentPull)
       {
-        _name = EditorContext.GetPrettyName(component.Value);
-        IEcsPool pool = _parent.Pools.FirstOrDefault(x => EditorContext.GetPrettyName(x.GetComponentType()) == _name)
+        _name = EditorContext.GetPrettyName(component.Value, _componentType);
+        IEcsPool pool = _parent.Pools.FirstOrDefault(x => EditorContext.GetPrettyName(x.GetComponentType(), _componentType) == _name)
           ?? _wrapper.World.GetPoolEnsure(component.Value.GetType());
 
         if (pool.Has(Entity))
@@ -200,8 +202,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     {
       foreach (EcsComponentView component in View.ComponentPull)
       {
-        _name = EditorContext.GetPrettyName(component.Value);
-        IEcsPool pool = _parent.Pools.First(x => EditorContext.GetPrettyName(x.GetComponentType()) == _name);
+        _name = EditorContext.GetPrettyName(component.Value, _componentType);
+        IEcsPool pool = _parent.Pools.First(x => EditorContext.GetPrettyName(x.GetComponentType(), _componentType) == _name);
         if (pool.Has(Entity))
           pool.Del(Entity);
       }
