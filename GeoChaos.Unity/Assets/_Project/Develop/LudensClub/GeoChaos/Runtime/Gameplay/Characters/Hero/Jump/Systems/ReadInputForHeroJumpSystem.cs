@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Glide;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
@@ -23,7 +24,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
       _landedHeroes = _world
         .Filter<HeroTag>()
         .Inc<JumpAvailable>()
-        .Inc<OnGround>()
         .Inc<MovementLayout>()
         .Collect();
 
@@ -50,7 +50,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
       foreach (EcsEntity hero in _landedHeroes
         .Check<MovementLayout>(x => x.Layer == MovementLayer.All))
       {
-        hero.Add<JumpCommand>();
+        if (hero.Has<OnGround>() 
+          || hero.AddOrGet<LastGlideMovement>().Movement is MovementType.Dash or MovementType.Hook)
+        {
+          hero.Add<JumpCommand>();
+        }
       }
 
       foreach (EcsEntity _ in _jumpCanceledInputs)

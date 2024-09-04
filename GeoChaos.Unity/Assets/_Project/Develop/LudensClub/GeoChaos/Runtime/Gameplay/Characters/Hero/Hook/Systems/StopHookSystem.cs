@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Glide;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Immunity;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
@@ -41,13 +42,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
             .Del<Immune>()
             .Add<OnImmunityFinished>();
         }
-        
+
         ref MovementLayout layout = ref command.Get<MovementLayout>();
         if (layout.Owner == MovementType.Hook)
         {
           layout.Layer = MovementLayer.All;
           layout.Owner = MovementType.None;
         }
+
+        command.Replace((ref LastGlideMovement glide) => glide.Movement = MovementType.Hook);
       }
     }
   }

@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Glide;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
@@ -41,12 +42,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
           Direction = Vector2.up,
           Instant = true
         });
-        
+
         hero
           .Add<Jumping>()
           .Del<JumpCommand>()
           .Replace((ref ActionState actionState) => actionState.StartNew())
-          .Replace((ref ActionContext ctx) => ctx.IsEmpty = true);
+          .Replace((ref ActionContext ctx) => ctx.IsEmpty = true)
+          .Replace((ref LastGlideMovement glide) => glide.Movement = MovementType.Jump);
       }
     }
   }

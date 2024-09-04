@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Glide;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
@@ -46,7 +47,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash
         command
           .Del<Dashing>()
           .Add((ref DashCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.DashCooldown))
-          .Change((ref GravityScale gravity) => gravity.Enabled = true);
+          .Change((ref GravityScale gravity) => gravity.Enabled = true)
+          .Replace((ref LastGlideMovement glide) => glide.Movement = MovementType.Dash); 
           
         ref MovementLayout layout = ref command.Get<MovementLayout>();
         if (layout.Owner == MovementType.Dash)

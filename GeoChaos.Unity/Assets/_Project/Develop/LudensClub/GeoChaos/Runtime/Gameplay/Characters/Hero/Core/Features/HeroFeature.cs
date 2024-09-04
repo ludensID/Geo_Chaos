@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Glide;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.HealthShard;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Immunity;
@@ -23,8 +24,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
       Add(systems.Create<HeroBumpFeature>());
 
       Add(systems.Create<ReadViewDirectionInputSystem>());
-
+      
       Add(systems.Create<HeroMovingFeature>());
+      Add(systems.Create<HeroGlideFeature>());
       Add(systems.Create<HeroJumpFeature>());
       Add(systems.Create<HeroDashFeature>());
       Add(systems.Create<HeroAttackFeature>());

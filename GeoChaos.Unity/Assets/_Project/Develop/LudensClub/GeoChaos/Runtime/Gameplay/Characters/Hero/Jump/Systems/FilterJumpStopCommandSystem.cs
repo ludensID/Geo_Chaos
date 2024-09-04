@@ -6,12 +6,12 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
 {
-  public class SowJumpStopCommandSystem : IEcsRunSystem
+  public class FilterJumpStopCommandSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
     private readonly EcsEntities _heroes;
 
-    public SowJumpStopCommandSystem(GameWorldWrapper gameWorldWrapper)
+    public FilterJumpStopCommandSystem(GameWorldWrapper gameWorldWrapper)
     {
       _world = gameWorldWrapper.World;
 

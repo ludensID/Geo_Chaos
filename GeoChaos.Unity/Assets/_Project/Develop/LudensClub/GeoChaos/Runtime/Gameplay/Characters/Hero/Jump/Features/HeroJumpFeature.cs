@@ -17,7 +17,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
       Add(systems.Create<ConvertDelayedToJustComponentSystem<DelayJumpCommand, JumpCommand>>());
       Add(systems.Create<ReadJumpDelayedInputSystem>());
       Add(systems.Create<JumpHeroSystem>());
-      Add(systems.Create<SowJumpStopCommandSystem>());
+      Add(systems.Create<FilterJumpStopCommandSystem>());
       Add(systems.Create<StopHeroJumpSystem>());
     }
   }
