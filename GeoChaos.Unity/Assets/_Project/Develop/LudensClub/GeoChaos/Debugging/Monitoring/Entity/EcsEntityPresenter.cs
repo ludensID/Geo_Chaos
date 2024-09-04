@@ -3,7 +3,6 @@ using System.Linq;
 using Cysharp.Text;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Debugging.Monitoring.Sorting;
-using LudensClub.GeoChaos.Editor.General;
 using LudensClub.GeoChaos.Runtime;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;

@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Jump;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
 {
@@ -13,6 +14,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
 
       Add(systems.Create<ReadInputForHeroJumpSystem>());
       Add(systems.Create<InterruptHeroJumpSystem>());
+      Add(systems.Create<ConvertDelayedToJustComponentSystem<DelayJumpCommand, JumpCommand>>());
+      Add(systems.Create<ReadJumpDelayedInputSystem>());
       Add(systems.Create<JumpHeroSystem>());
       Add(systems.Create<SowJumpStopCommandSystem>());
       Add(systems.Create<StopHeroJumpSystem>());

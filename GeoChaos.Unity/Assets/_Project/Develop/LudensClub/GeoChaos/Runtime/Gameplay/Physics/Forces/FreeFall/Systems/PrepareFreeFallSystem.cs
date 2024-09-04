@@ -34,11 +34,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity action in _actionEvents)
       {
-        ref OnActionStarted startedAction = ref action.Get<OnActionStarted>();
         if (action.Has<FreeFalling>())
           _freeFallSvc.StopFreeFall(action, _freeFalls);
         
-        if(!startedAction.IsEmpty)
+        ref ActionContext ctx = ref action.Get<ActionContext>();
+        if(!ctx.IsEmpty)
         {
           foreach (EcsEntity freeFall in _freeFalls
             .Check<Owner>(owner => owner.Entity.EqualsTo(action.PackedEntity)))

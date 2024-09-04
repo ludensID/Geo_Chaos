@@ -10,9 +10,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
   public class ReadInputForHeroJumpSystem : IEcsRunSystem
   {
     private readonly EcsWorld _world;
-    private readonly EcsEntities _grounds;
+    private readonly EcsEntities _landedHeroes;
     private readonly EcsEntities _jumpStartedInputs;
-    private readonly EcsEntities _noStoppeds;
+    private readonly EcsEntities _liftedHeroes;
     private readonly EcsEntities _jumpCanceledInputs;
 
     public ReadInputForHeroJumpSystem(GameWorldWrapper gameWorldWrapper, InputWorldWrapper inputWorldWrapper)
@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
       _world = gameWorldWrapper.World;
       EcsWorld inputWorld = inputWorldWrapper.World;
 
-      _grounds = _world
+      _landedHeroes = _world
         .Filter<HeroTag>()
         .Inc<JumpAvailable>()
         .Inc<OnGround>()
@@ -32,7 +32,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
         .Inc<IsJumpStarted>()
         .Collect();
 
-      _noStoppeds = _world
+      _liftedHeroes = _world
         .Filter<HeroTag>()
         .Inc<JumpAvailable>()
         .Inc<Jumping>()
@@ -47,17 +47,17 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity _ in _jumpStartedInputs)
-      foreach (EcsEntity ground in _grounds
+      foreach (EcsEntity hero in _landedHeroes
         .Check<MovementLayout>(x => x.Layer == MovementLayer.All))
       {
-        ground.Add<JumpCommand>();
+        hero.Add<JumpCommand>();
       }
 
       foreach (EcsEntity _ in _jumpCanceledInputs)
-      foreach (EcsEntity noStopped in _noStoppeds
+      foreach (EcsEntity hero in _liftedHeroes
         .Check<MovementLayout>(x => x.Layer == MovementLayer.All))
       {
-        noStopped.Add<StopJumpCommand>();
+        hero.Add<StopJumpCommand>();
       }
     }
   }

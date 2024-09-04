@@ -41,12 +41,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity action in _actionEvents)
       {
-        ref OnActionStarted startedAction = ref action.Get<OnActionStarted>();
+        ref ActionContext ctx = ref action.Get<ActionContext>();
 
         foreach (EcsEntity control in _controls
           .Check<Owner>(owner => owner.Entity.EqualsTo(action.PackedEntity)))
         {
-          _freeFallSvc.PrepareFreeFall(control, startedAction.Time, _config.StartADControlCoefficient,
+          _freeFallSvc.PrepareFreeFall(control, ctx.Time, _config.StartADControlCoefficient,
             _config.UseADControlGradient);
 
           control.Change((ref ControlSpeed speed) => speed.Speed = 0);

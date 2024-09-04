@@ -1,5 +1,6 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 {
@@ -10,7 +11,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  public struct OnActionStarted : IEcsComponent
+  public struct ActionContext : IEcsComponent
   {
+    public bool IsEmpty;
+    public float Time;
+    public Vector2 Velocity;
   }
 }

@@ -57,7 +57,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
         else if (hasPulling)
         {
           interrupt
-            .Add<OnActionFinished>()
+            .Replace((ref ActionState actionState) => actionState.States.Add(StateType.Finish))
             .Del<HookPulling>()
             .Del<HookTimer>()
             .Has<OnHookPullingStarted>(false)

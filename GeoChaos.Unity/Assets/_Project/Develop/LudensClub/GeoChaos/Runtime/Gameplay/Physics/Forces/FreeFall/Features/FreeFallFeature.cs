@@ -12,8 +12,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
 
       Add(systems.Create<CreateADControlSystem>());
       Add(systems.Create<DeleteADControlSystem>());
-
-      Add(systems.Create<DiscardADControlSystem>());
+      
+      Add(systems.Create<ConvertActionStatesToEventsSystem>());
 
       Add(systems.Create<PrepareFreeFallSystem>());
       Add(systems.Create<PrepareDragForceSystem>());
@@ -26,7 +26,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       Add(systems.Create<IncreaseGradientSystem>());
 
       Add(systems.Create<CalculateDragForceSystem>());
+      
       Add(systems.Create<IgnoreMoveForcesSystem>());
+      Add(systems.Create<DiscardADControlSystem>());
       Add(systems.Create<StopIgnoreMoveForcesSystem>());
       Add(systems.Create<CalculateControlSpeedSystem>());
 

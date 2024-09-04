@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
       Add(systems.Create<DeleteHookInputCooldownSystem>());
       Add(systems.Create<ReadHookInputSystem>());
       
-      Add(systems.Create<ConvertDelayedToCurrentHookInputSystem>());
+      Add(systems.Create<ConvertDelayedToJustComponentSystem<DelayHookCommand, HookCommand>>());
       Add(systems.Create<ReadHookDelayedInputSystem>());
       
       Add(systems.Create<CheckForSelectedRingSystem>());

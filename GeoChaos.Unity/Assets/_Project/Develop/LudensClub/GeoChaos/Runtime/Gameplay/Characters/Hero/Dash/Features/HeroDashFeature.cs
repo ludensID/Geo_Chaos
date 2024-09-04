@@ -11,7 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash
       Add(systems.Create<DeleteSystem<StopDashCommand>>());
       Add(systems.Create<RemoveDashCooldownSystem>());
       Add(systems.Create<ReadDashInputSystem>());
-      Add(systems.Create<ConvertDelayedToDashCommandSystem>());
+      Add(systems.Create<ConvertDelayedToJustComponentSystem<DelayDashCommand, DashCommand>>());
       Add(systems.Create<ReadDashDelayedInputSystem>());
       Add(systems.Create<SowDashCommandSystem>());
       Add(systems.Create<DashHeroSystem>());

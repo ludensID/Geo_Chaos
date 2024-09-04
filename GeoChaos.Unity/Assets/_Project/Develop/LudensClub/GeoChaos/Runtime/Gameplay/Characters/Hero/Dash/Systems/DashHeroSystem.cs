@@ -54,7 +54,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash
             layout.Owner = MovementType.Dash;
           })
           .Change((ref GravityScale gravity) => gravity.Enabled = false)
-          .Add((ref OnActionStarted action) => action.IsEmpty = true);
+          .Replace((ref ActionState actionState) => actionState.StartNew())
+          .Replace((ref ActionContext ctx) => ctx.IsEmpty = true);
       }
     }
   }

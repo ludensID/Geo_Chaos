@@ -73,10 +73,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
             pulling.Target = target;
           })
           .Change((ref GravityScale gravity) => gravity.Enabled = false)
-          .Add((ref OnActionStarted action) =>
+          .Replace((ref ActionState actionState) => actionState.StartNew())
+          .Replace((ref ActionContext ctx) =>
           {
-            action.Time = time;
-            action.Velocity = velocity;
+            ctx.Time = time;
+            ctx.Velocity = velocity;
           });
       }
     }

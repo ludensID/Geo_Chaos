@@ -81,7 +81,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     {
       if (!Has<TComponent>())
         Add<TComponent>();
-      
+
       return ref Get<TComponent>();
     }
 

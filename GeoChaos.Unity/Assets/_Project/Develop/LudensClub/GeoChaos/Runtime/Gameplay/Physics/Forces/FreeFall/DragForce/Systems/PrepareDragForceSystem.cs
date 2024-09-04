@@ -42,15 +42,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     {
       foreach (EcsEntity action in _actionEvents)
       {
-        ref OnActionStarted startedAction = ref action.Get<OnActionStarted>();
+        ref ActionContext ctx = ref action.Get<ActionContext>();
 
         foreach (EcsEntity drag in _dragForces
           .Check<Owner>(owner => owner.Entity.EqualsTo(action.PackedEntity)))
         {
-          _freeFallSvc.PrepareFreeFall(drag, startedAction.Time, _config.StartDragForceCoefficient,
+          _freeFallSvc.PrepareFreeFall(drag, ctx.Time, _config.StartDragForceCoefficient,
             _config.UseDragForceGradient);
 
-          Vector2 velocity = startedAction.Velocity;
+          Vector2 velocity = ctx.Velocity;
           drag.Change((ref RelativeSpeed relative) =>
               relative.Speed = new Vector2(Mathf.Abs(velocity.x), Mathf.Abs(velocity.y)));
         }

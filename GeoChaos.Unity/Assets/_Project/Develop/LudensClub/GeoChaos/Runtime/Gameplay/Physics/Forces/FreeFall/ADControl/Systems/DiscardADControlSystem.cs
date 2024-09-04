@@ -1,5 +1,4 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
@@ -13,6 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     private readonly EcsEntities _vectors;
     private readonly EcsWorld _physics;
     private readonly EcsEntities _controls;
+    private readonly BelongOwnerClosure _belongOwnerClosure = new BelongOwnerClosure();
 
     public DiscardADControlSystem(GameWorldWrapper gameWorldWrapper,
       PhysicsWorldWrapper physicsWorldWrapper)
@@ -36,7 +36,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
       foreach (EcsEntity vector in _vectors)
       {
         ref MovementVector movementVector = ref vector.Get<MovementVector>();
-        foreach (EcsEntity control in _controls)
+        foreach (EcsEntity control in _controls
+          .Check(_belongOwnerClosure.SpecifyPredicate(vector.PackedEntity)))
         {
           float speed = control.Get<ControlSpeed>().Speed;
           movementVector.Speed.x = MathUtils.DecreaseToZero(movementVector.Speed.x, Mathf.Abs(speed));
