@@ -6,5 +6,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
   [AddComponentMenu(ACC.Names.HERO_VIEW)]
   public class HeroView : BaseView
   {
+    public Transform CameraPoint;
   }
 }

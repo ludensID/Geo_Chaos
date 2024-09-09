@@ -78,6 +78,9 @@
       
       public const string SPINE_ANIMATOR_MENU = SPINE_MENU + "Spine Animator";
       public const string SPINE_ANIMATOR_FILE = "NewSpineAnimator";
+      
+      public const string CAMERA_MENU = CONFIG_MENU + "Camera";
+      public const string CAMERA_FILE = "CameraConfig";
     }
   }
 }

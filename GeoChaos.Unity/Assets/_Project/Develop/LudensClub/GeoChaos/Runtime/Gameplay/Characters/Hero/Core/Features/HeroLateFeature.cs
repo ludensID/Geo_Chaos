@@ -8,10 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
   {
     public HeroLateFeature(IEcsSystemFactory systems) 
     {
-      Add(systems.Create<MoveCameraSystem>());
-        
       Add(systems.Create<HeroHookLateFeature>());
-      
       Add(systems.Create<HeroAimLateFeature>());
     }
   }

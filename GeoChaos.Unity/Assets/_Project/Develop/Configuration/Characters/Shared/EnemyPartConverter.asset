@@ -26,7 +26,7 @@ MonoBehaviour:
       - Value:
           rid: 674098060372213847
       - Value:
-          rid: 674097938592170083
+          rid: 3599071205236932697
       - Value:
           rid: 2072450811591918055
     _scriptableConverter: {fileID: 0}
@@ -35,9 +35,6 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 674097938592170083
-      type: {class: Brain, ns: LudensClub.GeoChaos.Runtime.Gameplay.AI, asm: GeoChaos.Runtime}
-      data: {}
     - rid: 674098060372213847
       type: {class: EnemyTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies,
         asm: GeoChaos.Runtime}
@@ -45,3 +42,6 @@ MonoBehaviour:
     - rid: 2072450811591918055
       type: {class: Damageable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage, asm: GeoChaos.Runtime}
       data: 
+    - rid: 3599071205236932697
+      type: {class: Brain, ns: LudensClub.GeoChaos.Runtime.Gameplay.AI, asm: GeoChaos.Runtime}
+      data: {}

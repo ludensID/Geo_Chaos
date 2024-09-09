@@ -16,6 +16,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Shard;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Tongue;
+using LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
@@ -114,6 +115,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindShootService();
       BindFreeFallService();
 
+      BindHeroBinder();
+      BindHeroRotationInterpolator();
+
 #if UNITY_EDITOR
       DebugBridge.InstallGameplay(Container);
 #endif
@@ -129,6 +133,20 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
       
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindHeroRotationInterpolator()
+    {
+      Container
+        .BindInterfacesTo<HeroRotationInterpolator>()
+        .AsSingle();
+    }
+
+    private void BindHeroBinder()
+    {
+      Container
+        .BindInterfacesTo<HeroBinder>()
+        .AsSingle();
     }
 
     private void BindGasCloudPool()
