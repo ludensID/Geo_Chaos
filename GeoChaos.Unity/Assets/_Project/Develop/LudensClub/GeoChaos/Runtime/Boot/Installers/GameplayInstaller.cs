@@ -41,7 +41,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
     [SerializeField]
     private ShootCooldownView _shootCooldownView;
-    
+
     [SerializeField]
     private HeroHealthView _healthView;
 
@@ -57,10 +57,10 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     public override void InstallBindings()
     {
       BindCoroutineRunner();
-      
+
       BindGameplayPause();
       BindInitializingPhase();
-      
+
       BindViewFactory();
 
       BindNodeStrategyFactory();
@@ -81,7 +81,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindGameWorldWrapper();
       BindMessageWorldWrapper();
       BindPhysicsWorldWrapper();
-      
+
       BindEcsSystemsFactory();
 
       BindCameraProvider();
@@ -96,27 +96,26 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindFrogTargetInFrontSelector();
       BindFrogTargetInBackSelector();
       BindTargetInBoundsSelector();
-        
+
       BindShardPool();
       BindLeafPool();
       BindTonguePool();
       BindGasCloudPool();
-      
+
       BindDragForceService();
       BindADControlService();
       BindSpeedForceLoopService();
       BindSpeedForceFactory();
-      
+
       BindCollisionFiller();
       BindCollisionPacker();
       BindCollisionService();
-      
+
       BindShardFactory();
       BindShootService();
       BindFreeFallService();
 
       BindHeroBinder();
-      BindHeroRotationInterpolator();
 
 #if UNITY_EDITOR
       DebugBridge.InstallGameplay(Container);
@@ -124,15 +123,25 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindEngine();
 
+      BindHeroRotationInterpolator();
+      BindHeroFallingInterpolator();
+
       BindNothingHappensPresenter();
-      
+
       BindDashCooldownPresenter();
       BindShootCooldownPresenter();
       BindHeroHealthPresenter();
       BindImmunityDurationPresenter();
       BindHeroHealthShardPresenter();
-      
+
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindHeroFallingInterpolator()
+    {
+      Container
+        .BindInterfacesTo<VerticalDampingInterpolator>()
+        .AsSingle();
     }
 
     private void BindHeroRotationInterpolator()
@@ -538,7 +547,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .BindInterfacesTo<Engine>()
         .AsSingle();
     }
-    
+
     private void BindCoroutineRunner()
     {
       Container

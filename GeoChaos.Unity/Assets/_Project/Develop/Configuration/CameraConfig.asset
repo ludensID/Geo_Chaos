@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: CameraConfig
   m_EditorClassIdentifier: 
   RotationTime: 0.2
+  VerticalDampingInterpolationTime: 0.35
+  DefaultVerticalDamping: 2
+  FallVerticalDamping: 0.25

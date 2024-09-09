@@ -82,6 +82,7 @@
       
       public const string HERO_FOLLOWER = CAMERA + "Hero Follower";
       public const string VIRTUAL_CAMERA_BINDER = CAMERA + "Virtual Camera Binder";
+      public const string POSITION_COMPOSER_LINKER = CAMERA + "Position Composer Linker";
     }
   }
 }

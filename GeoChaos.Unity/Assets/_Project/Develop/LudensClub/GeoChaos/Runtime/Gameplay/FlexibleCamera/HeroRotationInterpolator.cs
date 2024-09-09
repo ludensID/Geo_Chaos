@@ -39,7 +39,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     {
       if (!IsBound)
         return;
-
+        
       float currentTarget = _heroTransform.rotation.eulerAngles.y;
       if (!_target.ApproximatelyEqual(currentTarget))
       {
@@ -55,7 +55,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
       if (!IsBound)
         return;
 
-      _heroFollower.transform.position = _heroTransform.position;
+      _heroFollower.Rb.MovePosition(_heroTransform.position);
     }
   }
 }

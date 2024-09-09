@@ -214,6 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5879495532684135330}
   - component: {fileID: 1444177621773162909}
+  - component: {fileID: 8378377891166817677}
   m_Layer: 0
   m_Name: CameraFollow
   m_TagString: Untagged
@@ -248,7 +249,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ae6037db124874aa0fc98d0ff89438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationTime: 0.2
+  Rb: {fileID: 0}
+--- !u!50 &8378377891166817677
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788758396140331183}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 2
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &9069644124601567683
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +288,7 @@ GameObject:
   - component: {fileID: 475675276726078401}
   - component: {fileID: 2312060621058411702}
   - component: {fileID: 7817748460170700750}
+  - component: {fileID: 1226905445404426739}
   m_Layer: 0
   m_Name: VirtualCamera
   m_TagString: Untagged
@@ -356,3 +385,15 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
+--- !u!114 &1226905445404426739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9069644124601567683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a1c0344d964df0b39630c9fd1150f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
