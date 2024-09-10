@@ -1,4 +1,4 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
+﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public interface IHeroBinder
   {

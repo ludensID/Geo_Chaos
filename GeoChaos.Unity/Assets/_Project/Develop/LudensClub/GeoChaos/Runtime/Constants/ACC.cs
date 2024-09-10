@@ -83,6 +83,7 @@
       public const string HERO_FOLLOWER = CAMERA + "Hero Follower";
       public const string PLAYER_CAMERA_LINKER = CAMERA + "Player Camera Linker";
       public const string EDGE_TRIGGER_DETECTOR = CAMERA + "Edge Trigger Detector";
+      public const string CAMERA_TRIGGER_DETECTOR = CAMERA + "Camera Trigger Detector";  
     }
   }
 }

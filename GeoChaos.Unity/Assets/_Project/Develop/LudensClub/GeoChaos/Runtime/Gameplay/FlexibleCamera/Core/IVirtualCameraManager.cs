@@ -8,6 +8,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     ICinemachineCamera MainCamera { get; }
     CinemachinePositionComposer MainComposer { get; }
     event Action OnCameraChanged;
+    void SetDefaultCamera(CinemachineCamera camera);
+    void SetDefaultCamera();
     void SetCamera(CinemachineCamera camera);
+    void UnsetCamera(CinemachineCamera camera);
   }
 }
