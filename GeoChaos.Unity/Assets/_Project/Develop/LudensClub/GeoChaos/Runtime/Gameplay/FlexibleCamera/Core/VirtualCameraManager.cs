@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using Unity.Cinemachine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
   public class VirtualCameraManager : IVirtualCameraManager
   {
+    private readonly List<CinemachineCamera> _stack = new List<CinemachineCamera>();
+
     private CinemachineCamera _defaultCamera;
     private CinemachineCamera _mainCamera;
+
     public ICinemachineCamera MainCamera { get; private set; }
     public CinemachinePositionComposer MainComposer { get; private set; }
 
@@ -19,10 +23,26 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 
     public void SetDefaultCamera()
     {
+      _stack.Clear();
       SetCamera(_defaultCamera);
     }
 
     public void SetCamera(CinemachineCamera camera)
+    {
+      SetCameraInternal(camera, true);
+    }
+
+    public void UnsetCamera(CinemachineCamera camera)
+    {
+      int lastIndex = _stack.LastIndexOf(camera);
+      if (lastIndex != -1)
+        _stack.RemoveAt(lastIndex);
+
+      if (camera == _mainCamera)
+        SetCameraInternal(_stack[^1], false);
+    }
+
+    private void SetCameraInternal(CinemachineCamera camera, bool addToStack)
     {
       if (camera == _mainCamera)
         return;
@@ -35,18 +55,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 
       _mainCamera = camera;
       if (camera)
+      {
         camera.enabled = true;
+        MainComposer = camera.GetComponent<CinemachinePositionComposer>();
+        if (addToStack)
+          _stack.Add(camera);
+      }
 
       MainCamera = camera;
-      MainComposer = camera.GetComponent<CinemachinePositionComposer>();
 
       OnCameraChanged?.Invoke();
-    }
-
-    public void UnsetCamera(CinemachineCamera camera)
-    {
-      if (camera == _mainCamera)
-        SetCamera(_defaultCamera);
     }
   }
 }
