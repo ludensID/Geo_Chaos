@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7493600055306036155}
   - component: {fileID: 4146716141703541630}
   - component: {fileID: 844198677526383394}
-  - component: {fileID: 3190575194072801289}
   m_Layer: 0
   m_Name: CameraBounds
   m_TagString: Untagged
@@ -99,73 +98,13 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 3190575194072801289}
-    m_ColliderPaths:
-    - - X: 364149024
-        Y: 369316704
-      - X: -523053120
-        Y: 369316704
-      - X: -523053120
-        Y: -132898408
-      - X: 364149024
-        Y: -132898408
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: 36.414875, y: -13.289841}
-      - {x: 36.414875, y: 36.93167}
-      - {x: -52.305313, y: 36.93164}
-      - {x: -52.305283, y: -13.289841}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 1621221124557199048}
---- !u!61 &3190575194072801289
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621221124557199048}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 1
-  m_CompositeOrder: 0
-  m_Offset: {x: -7.945204, y: 11.820915}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 88.720215, y: 50.22151}
-  m_EdgeRadius: 0
 --- !u!1 &3247356481044487024
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,8 +394,8 @@ GameObject:
   - component: {fileID: 475675276726078401}
   - component: {fileID: 2312060621058411702}
   - component: {fileID: 7817748460170700750}
-  - component: {fileID: 1226905445404426739}
   - component: {fileID: 5015249672711042823}
+  - component: {fileID: 1721680614046911098}
   m_Layer: 0
   m_Name: MainVirtualCamera
   m_TagString: Untagged
@@ -553,18 +492,6 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
---- !u!114 &1226905445404426739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9069644124601567683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24a1c0344d964df0b39630c9fd1150f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5015249672711042823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,3 +511,15 @@ MonoBehaviour:
     Enabled: 1
     MaxWindowSize: 10
   m_LegacyMaxWindowSize: -2
+--- !u!114 &1721680614046911098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9069644124601567683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e5cf243d0e41f5bae5f04ccf60ecb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

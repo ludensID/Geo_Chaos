@@ -123,8 +123,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindEngine();
 
+      BindVirtualCameraModel();
+      BindVirtualCameraManager();
       BindHeroRotationInterpolator();
       BindHeroFallingInterpolator();
+      BindMainCameraSyncher();
+      BindPlayerCameraSetter();
+      BindEdgeOffsetInterpolator();
 
       BindNothingHappensPresenter();
 
@@ -135,6 +140,43 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindEdgeOffsetInterpolator()
+    {
+      Container
+        .Bind<IEdgeOffsetInterpolator>()
+        .To<EdgeOffsetInterpolator>()
+        .AsSingle();
+    }
+
+    private void BindPlayerCameraSetter()
+    {
+      Container
+        .BindInterfacesTo<PlayerCameraSetter>()
+        .AsSingle();
+    }
+
+    private void BindMainCameraSyncher()
+    {
+      Container
+        .BindInterfacesTo<MainCameraSyncer>()
+        .AsSingle();
+    }
+
+    private void BindVirtualCameraModel()
+    {
+      Container
+        .Bind<VirtualCameraModel>()
+        .AsSingle();
+    }
+
+    private void BindVirtualCameraManager()
+    {
+      Container
+        .Bind<IVirtualCameraManager>()
+        .To<VirtualCameraManager>()
+        .AsSingle();
     }
 
     private void BindHeroFallingInterpolator()

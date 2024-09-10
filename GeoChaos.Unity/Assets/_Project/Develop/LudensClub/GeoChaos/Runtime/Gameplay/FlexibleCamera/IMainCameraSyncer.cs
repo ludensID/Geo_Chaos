@@ -1,6 +1,7 @@
 ﻿namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
-  public interface IVerticalDampingInterpolator
+  public interface IMainCameraSyncer
   {
+    void SyncCameraWithModel();
   }
 }

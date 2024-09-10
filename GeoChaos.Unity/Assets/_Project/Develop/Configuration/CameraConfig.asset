@@ -16,3 +16,5 @@ MonoBehaviour:
   VerticalDampingInterpolationTime: 0.35
   DefaultVerticalDamping: 2
   FallVerticalDamping: 0.25
+  EdgeVerticalOffsetInterpolationTime: 0.35
+  EdgeVerticalOffset: 3

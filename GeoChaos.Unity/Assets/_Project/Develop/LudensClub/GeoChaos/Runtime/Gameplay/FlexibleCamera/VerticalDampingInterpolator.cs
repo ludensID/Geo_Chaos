@@ -8,25 +8,26 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
-using Unity.Cinemachine;
-using UnityEngine;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
   public class VerticalDampingInterpolator : IVerticalDampingInterpolator, ITickable
   {
+    private readonly VirtualCameraModel _model;
     private readonly EcsWorld _game;
     private readonly CameraConfig _config;
     private readonly EcsEntities _heroes;
     private readonly TweenerCore<float, float, FloatOptions> _fallTween;
-    private readonly TweenerCore<float,float,FloatOptions> _backTween;
+    private readonly TweenerCore<float, float, FloatOptions> _backTween;
 
-    private CinemachinePositionComposer _composer;
     private float _target;
 
-    public VerticalDampingInterpolator(GameWorldWrapper gameWorldWrapper, IConfigProvider configProvider)
+    public VerticalDampingInterpolator(GameWorldWrapper gameWorldWrapper,
+      IConfigProvider configProvider,
+      VirtualCameraModel model)
     {
+      _model = model;
       _game = gameWorldWrapper.World;
       _config = configProvider.Get<CameraConfig>();
 
@@ -34,24 +35,30 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
         .Filter<HeroTag>()
         .Collect();
 
-      _fallTween = GetTween(_config.FallVerticalDamping)
-        .SetAutoKill(false)
-        .Pause();
+      _fallTween = GetTween(_config.FallVerticalDamping);
+      _backTween = GetTween(_config.DefaultVerticalDamping);
 
-      _backTween = GetTween(_config.DefaultVerticalDamping)
-        .SetAutoKill(false)
-        .Pause();
-    }
-
-    public void SetComposer(CinemachinePositionComposer composer)
-    {
-      _composer = composer;
+      _model.VerticalDamping.SetValueSilent(_config.DefaultVerticalDamping);
     }
 
     private TweenerCore<float, float, FloatOptions> GetTween(float endValue)
     {
-      return DOTween.To(GetDamping, SetDamping, endValue,
-        _config.VerticalDampingInterpolationTime);
+      TweenerCore<float, float, FloatOptions> tween = DOTween.To(GetDamping, SetDamping, endValue,
+          _config.VerticalDampingInterpolationTime)
+        .SetAutoKill(false)
+        .Pause();
+
+      return tween;
+    }
+
+    private void SetDamping(float x)
+    {
+      _model.VerticalDamping.Value = x;
+    }
+
+    private float GetDamping()
+    {
+      return _model.VerticalDamping;
     }
 
     public void Tick()
@@ -65,27 +72,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
       }
     }
 
-    private void TryPlayTween(TweenerCore<float, float, FloatOptions> playTween, TweenerCore<float, float, FloatOptions> pauseTween)
+    private void TryPlayTween(TweenerCore<float, float, FloatOptions> playTween,
+      TweenerCore<float, float, FloatOptions> pauseTween)
     {
-      if ((!playTween.IsActive() || !playTween.IsPlaying()) && !_target.ApproximatelyEqual(playTween.endValue))
+      if (!playTween.IsPlaying() && !_target.ApproximatelyEqual(playTween.endValue))
       {
         pauseTween.Pause();
         _target = playTween.endValue;
         playTween.Restart();
-        playTween.Play();
       }
-    }
-
-    private void SetDamping(float x)
-    {
-      Vector3 damping = _composer.Damping;
-      damping.y = x;
-      _composer.Damping = damping;
-    }
-
-    private float GetDamping()
-    {
-      return _composer.Damping.y;
     }
   }
 }
