@@ -1,6 +1,6 @@
 ﻿namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
-  public interface IEdgeOffsetInterpolator
+  public interface IEdgeOffsetSetter
   {
     void SetEdgeOffset();
     void SetDefaultOffset();

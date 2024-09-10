@@ -3,7 +3,7 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
-  public class MainCameraSyncer : IMainCameraSyncer, IDisposable
+  public class MainCameraSyncer : IDisposable
   {
     private readonly IVirtualCameraManager _manager;
     private readonly VirtualCameraModel _model;
@@ -15,22 +15,22 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 
       _manager.OnCameraChanged += SyncCameraWithModel;
       _model.VerticalDamping.OnChanged += SyncCameraWithModel;
-      _model.EdgeVerticalOffset.OnChanged += SyncCameraWithModel;
+      _model.VerticalOffset.OnChanged += SyncCameraWithModel;
     }
 
     public void Dispose()
     {
       _manager.OnCameraChanged -= SyncCameraWithModel;
       _model.VerticalDamping.OnChanged -= SyncCameraWithModel;
-      _model.EdgeVerticalOffset.OnChanged -= SyncCameraWithModel;
+      _model.VerticalOffset.OnChanged -= SyncCameraWithModel;
     }
 
-    public void SyncCameraWithModel()
+    private void SyncCameraWithModel()
     {
       if (_manager.MainComposer)
       {
-        _manager.MainComposer.Damping.SetY(_model.VerticalDamping);        
-        _manager.MainComposer.TargetOffset.SetY(_model.EdgeVerticalOffset);
+        _manager.MainComposer.Damping.SetY(_model.VerticalDamping);
+        _manager.MainComposer.TargetOffset.SetY(_model.VerticalOffset);
       }
     }
   }

@@ -130,6 +130,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindMainCameraSyncher();
       BindPlayerCameraSetter();
       BindEdgeOffsetInterpolator();
+      BindVerticalViewInterpolator();
+      BindVerticalOffsetTweener();
 
       BindNothingHappensPresenter();
 
@@ -142,11 +144,25 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       Container.DefaultParent = new GameObject("Runtime").transform;
     }
 
+    private void BindVerticalOffsetTweener()
+    {
+      Container
+        .BindInterfacesTo<VerticalOffsetInterpolator>()
+        .AsSingle();
+    }
+
+    private void BindVerticalViewInterpolator()
+    {
+      Container
+        .BindInterfacesTo<VerticalViewOffsetSetter>()
+        .AsSingle();
+    }
+
     private void BindEdgeOffsetInterpolator()
     {
       Container
-        .Bind<IEdgeOffsetInterpolator>()
-        .To<EdgeOffsetInterpolator>()
+        .Bind<IEdgeOffsetSetter>()
+        .To<EdgeOffsetSetter>()
         .AsSingle();
     }
 

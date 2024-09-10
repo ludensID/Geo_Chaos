@@ -283,4 +283,5 @@
 }</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=cinemachine/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Shroom/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/UserDictionary/Words/=shrooms/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=shrooms/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Tweener/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

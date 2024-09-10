@@ -3,17 +3,16 @@ using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Configuration;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
-  public class VerticalDampingInterpolator : IVerticalDampingInterpolator, ITickable
+  public class VerticalDampingInterpolator : IVerticalDampingInterpolator, IHeroBindable, ITickable
   {
+    private readonly EcsEntity _hero = new EcsEntity();
     private readonly VirtualCameraModel _model;
     private readonly EcsWorld _game;
     private readonly CameraConfig _config;
@@ -23,17 +22,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 
     private float _target;
 
-    public VerticalDampingInterpolator(GameWorldWrapper gameWorldWrapper,
-      IConfigProvider configProvider,
-      VirtualCameraModel model)
+    public bool IsBound { get; set; }
+
+    public VerticalDampingInterpolator(IConfigProvider configProvider, VirtualCameraModel model)
     {
       _model = model;
-      _game = gameWorldWrapper.World;
       _config = configProvider.Get<CameraConfig>();
-
-      _heroes = _game
-        .Filter<HeroTag>()
-        .Collect();
 
       _fallTween = GetTween(_config.FallVerticalDamping);
       _backTween = GetTween(_config.DefaultVerticalDamping);
@@ -61,11 +55,16 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
       return _model.VerticalDamping;
     }
 
+    public void BindHero(EcsEntity hero)
+    {
+      _hero.Copy(hero);
+    }
+
     public void Tick()
     {
-      foreach (EcsEntity hero in _heroes)
+      if (_hero.IsAlive())
       {
-        if (hero.Has<Falling>())
+        if (_hero.Has<Falling>())
           TryPlayTween(_fallTween, _backTween);
         else
           TryPlayTween(_backTween, _fallTween);

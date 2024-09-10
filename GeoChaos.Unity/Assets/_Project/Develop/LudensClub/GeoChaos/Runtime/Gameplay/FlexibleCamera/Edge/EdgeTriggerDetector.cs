@@ -6,19 +6,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
   [AddComponentMenu(ACC.Names.EDGE_TRIGGER_DETECTOR)]
   public class EdgeTriggerDetector : MonoBehaviour
   {
-    private IEdgeOffsetInterpolator _interpolator;
+    private IEdgeOffsetSetter _setter;
 
     [Inject]
-    public void Construct(IEdgeOffsetInterpolator interpolator)
+    public void Construct(IEdgeOffsetSetter setter)
     {
-      _interpolator = interpolator;
+      _setter = setter;
     }
       
     private void OnTriggerEnter2D(Collider2D other)
     {
       if (other.attachedRigidbody.CompareTag("Player"))
       {
-        _interpolator.SetEdgeOffset();
+        _setter.SetEdgeOffset();
       }
     }
 
@@ -26,7 +26,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     {
       if (other.attachedRigidbody.CompareTag("Player"))
       {
-        _interpolator.SetDefaultOffset();
+        _setter.SetDefaultOffset();
       }
     }
   }
