@@ -1,5 +1,4 @@
-﻿using Unity.Cinemachine;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera.Swap
@@ -8,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera.Swap
   public class CameraTriggerDetector : MonoBehaviour
   {
     [SerializeField]
-    private CinemachineCamera _camera;
+    private VirtualCameraView _camera;
     
     private IVirtualCameraManager _manager;
 

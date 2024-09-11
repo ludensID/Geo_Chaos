@@ -35,8 +35,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     private void UpdateOffset()
     {
       float offset = 0;
-      if (!_manager.MainComposer.Composition.DeadZone.Enabled)
+      if (!_manager.MainCamera.Composer.Composition.DeadZone.Enabled)
         offset = _model.EdgeVerticalOffset;
+      
       if (_model.VerticalViewOffset != 0)
         offset = _model.VerticalViewOffset;
 

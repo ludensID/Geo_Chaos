@@ -27,10 +27,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 
     private void SyncCameraWithModel()
     {
-      if (_manager.MainComposer)
+      if (_manager.MainCamera.Composer)
       {
-        _manager.MainComposer.Damping.SetY(_model.VerticalDamping);
-        _manager.MainComposer.TargetOffset.SetY(_model.VerticalOffset);
+        _manager.MainCamera.Composer.Damping.SetY(_model.VerticalDamping);
+        _manager.MainCamera.Composer.TargetOffset.SetY(_model.VerticalOffset);
       }
     }
   }

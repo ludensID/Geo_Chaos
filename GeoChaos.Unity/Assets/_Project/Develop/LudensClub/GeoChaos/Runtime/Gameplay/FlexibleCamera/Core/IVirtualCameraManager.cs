@@ -1,16 +1,14 @@
 ﻿using System;
-using Unity.Cinemachine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
   public interface IVirtualCameraManager
   {
-    ICinemachineCamera MainCamera { get; }
-    CinemachinePositionComposer MainComposer { get; }
+    VirtualCameraView MainCamera { get; }
     event Action OnCameraChanged;
-    void SetDefaultCamera(CinemachineCamera camera);
+    void SetDefaultCamera(VirtualCameraView camera);
     void SetDefaultCamera();
-    void SetCamera(CinemachineCamera camera);
-    void UnsetCamera(CinemachineCamera camera);
+    void SetCamera(VirtualCameraView camera);
+    void UnsetCamera(VirtualCameraView camera);
   }
 }

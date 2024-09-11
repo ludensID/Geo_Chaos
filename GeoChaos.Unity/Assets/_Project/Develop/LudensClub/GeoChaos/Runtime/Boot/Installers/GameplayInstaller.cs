@@ -126,12 +126,11 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindVirtualCameraModel();
       BindVirtualCameraManager();
       BindHeroRotationInterpolator();
-      BindHeroFallingInterpolator();
-      BindMainCameraSyncher();
-      BindPlayerCameraSetter();
-      BindEdgeOffsetInterpolator();
-      BindVerticalViewInterpolator();
-      BindVerticalOffsetTweener();
+      BindVerticalDampingInterpolator();
+      BindMainCameraSyncer();
+      BindEdgeOffsetSetter();
+      BindVerticalViewOffsetSetter();
+      BindVerticalOffsetInterpolator();
 
       BindNothingHappensPresenter();
 
@@ -144,21 +143,21 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       Container.DefaultParent = new GameObject("Runtime").transform;
     }
 
-    private void BindVerticalOffsetTweener()
+    private void BindVerticalOffsetInterpolator()
     {
       Container
         .BindInterfacesTo<VerticalOffsetInterpolator>()
         .AsSingle();
     }
 
-    private void BindVerticalViewInterpolator()
+    private void BindVerticalViewOffsetSetter()
     {
       Container
         .BindInterfacesTo<VerticalViewOffsetSetter>()
         .AsSingle();
     }
 
-    private void BindEdgeOffsetInterpolator()
+    private void BindEdgeOffsetSetter()
     {
       Container
         .Bind<IEdgeOffsetSetter>()
@@ -166,14 +165,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .AsSingle();
     }
 
-    private void BindPlayerCameraSetter()
-    {
-      Container
-        .BindInterfacesTo<PlayerCameraSetter>()
-        .AsSingle();
-    }
-
-    private void BindMainCameraSyncher()
+    private void BindMainCameraSyncer()
     {
       Container
         .BindInterfacesTo<MainCameraSyncer>()
@@ -190,12 +182,11 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindVirtualCameraManager()
     {
       Container
-        .Bind<IVirtualCameraManager>()
-        .To<VirtualCameraManager>()
+        .BindInterfacesTo<VirtualCameraManager>()
         .AsSingle();
     }
 
-    private void BindHeroFallingInterpolator()
+    private void BindVerticalDampingInterpolator()
     {
       Container
         .BindInterfacesTo<VerticalDampingInterpolator>()

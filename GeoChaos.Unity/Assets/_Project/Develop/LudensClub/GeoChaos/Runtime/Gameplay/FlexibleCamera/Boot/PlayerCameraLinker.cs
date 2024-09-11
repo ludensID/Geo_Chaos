@@ -1,5 +1,4 @@
-﻿using Unity.Cinemachine;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
@@ -8,12 +7,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
   public class PlayerCameraLinker : MonoBehaviour
   {
     [SerializeField]
-    private CinemachineCamera _camera;
+    private VirtualCameraView _camera;
 
     [Inject]
-    public void Construct(IPlayerCameraSetter setter)
+    public void Construct(IVirtualCameraManager manager)
     {
-      setter.SetCamera(_camera);
+      manager.SetDefaultCamera(_camera);
     }
   }
 }

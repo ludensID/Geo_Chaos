@@ -18,7 +18,7 @@
 
     public static class Names
     {
-      public const string BASE_VIEW = VIEW + "View"; 
+      public const string BASE_VIEW = VIEW + "View";
       public const string SHARD_VIEW = VIEW + "Shard View";
       public const string RING_VIEW = VIEW + "Ring View";
       public const string HERO_VIEW = VIEW + "Hero View";
@@ -79,11 +79,13 @@
       public const string LEAFY_SPIRIT_GIZMO = PROPS + "Leafy Spirit Gizmo";
 
       public const string MONO_SPINE_ANIMATOR = ANIMATORS + "Spine Animator";
-      
+
       public const string HERO_FOLLOWER = CAMERA + "Hero Follower";
       public const string PLAYER_CAMERA_LINKER = CAMERA + "Player Camera Linker";
       public const string EDGE_TRIGGER_DETECTOR = CAMERA + "Edge Trigger Detector";
-      public const string CAMERA_TRIGGER_DETECTOR = CAMERA + "Camera Trigger Detector";  
+      public const string CAMERA_TRIGGER_DETECTOR = CAMERA + "Camera Trigger Detector";
+      public const string AXIS_LOCKER = CAMERA + "Axis Locker";
+      public const string VIRTUAL_CAMERA_VIEW = CAMERA + "Virtual Camera View";
     }
   }
 }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3990157261403079751}
   - component: {fileID: 6664152799966886912}
-  - component: {fileID: 1942129269681453346}
   - component: {fileID: 7612237276050778928}
+  - component: {fileID: 1942129269681453346}
   m_Layer: 0
   m_Name: EdgeTrigger
   m_TagString: Untagged
@@ -80,18 +80,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 10, y: 10}
   m_EdgeRadius: 0
---- !u!114 &1942129269681453346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5016259292153942548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0bcce67264c40fda1f3f2b752717cd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &7612237276050778928
 Rigidbody2D:
   serializedVersion: 4
@@ -119,3 +107,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1942129269681453346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5016259292153942548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0bcce67264c40fda1f3f2b752717cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
