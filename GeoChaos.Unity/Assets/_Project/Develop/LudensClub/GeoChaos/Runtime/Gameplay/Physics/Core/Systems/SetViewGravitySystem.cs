@@ -26,8 +26,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics
       foreach (EcsEntity body in _bodies)
       {
         ref GravityScale gravity = ref body.Get<GravityScale>();
-        ref RigidbodyRef rigidbodyRef = ref body.Get<RigidbodyRef>();
-        rigidbodyRef.Rigidbody.gravityScale = gravity.Enabled ? gravity.Scale : 0;
+        if (gravity.Enabled.Uncheck() || gravity.Scale.Uncheck())
+        {
+          ref RigidbodyRef rigidbodyRef = ref body.Get<RigidbodyRef>();
+          rigidbodyRef.Rigidbody.gravityScale = gravity.Enabled ? gravity.Scale : 0;
+        }
       }
     }
   }

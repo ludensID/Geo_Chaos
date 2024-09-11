@@ -33,7 +33,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
       {
         falling
           .Del<Falling>()
-          .Change((ref GravityScale gravity) => gravity.Scale = _config.GravityScale);
+          .Change((ref GravityScale gravity) => gravity.Scale.Value = _config.GravityScale);
       }
     }
   }

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using TriInspector;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   [Serializable]
-  public class CallbackProperty<TValue> : IEquatable<CallbackProperty<TValue>>
+  [InlineProperty]
+  public class CallbackValue<TValue> : IEquatable<CallbackValue<TValue>>
   {
     [SerializeField]
     private TValue _value;
@@ -27,11 +29,11 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 
     public event ChangedHandler OnChanged;
 
-    public CallbackProperty()
+    public CallbackValue()
     {
     }
 
-    public CallbackProperty(TValue value)
+    public CallbackValue(TValue value)
     {
       _value = value;
     }
@@ -41,7 +43,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       _value = value;
     }
 
-    public bool Equals(CallbackProperty<TValue> other)
+    public bool Equals(CallbackValue<TValue> other)
     {
       if (ReferenceEquals(null, other))
         return false;
@@ -63,12 +65,12 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       if (obj.GetType() != GetType())
         return false;
 
-      return Equals((CallbackProperty<TValue>)obj);
+      return Equals((CallbackValue<TValue>)obj);
     }
 
     public override int GetHashCode() => EqualityComparer<TValue>.Default.GetHashCode(_value);
 
-    public static bool operator ==(CallbackProperty<TValue> left, CallbackProperty<TValue> right)
+    public static bool operator ==(CallbackValue<TValue> left, CallbackValue<TValue> right)
     {
       if (ReferenceEquals(left, right))
         return true;
@@ -79,19 +81,19 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       return left.Equals(right);
     }
 
-    public static bool operator !=(CallbackProperty<TValue> left, CallbackProperty<TValue> right)
+    public static bool operator !=(CallbackValue<TValue> left, CallbackValue<TValue> right)
     {
       return !(left == right);
     }
 
-    public static implicit operator TValue(CallbackProperty<TValue> obj)
+    public static implicit operator TValue(CallbackValue<TValue> obj)
     {
       return obj.Value;
     }
 
-    public static explicit operator CallbackProperty<TValue>(TValue obj)
+    public static explicit operator CallbackValue<TValue>(TValue obj)
     {
-      return new CallbackProperty<TValue>(obj);
+      return new CallbackValue<TValue>(obj);
     }
   }
 }

@@ -44,7 +44,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
           pulling
             .Replace((ref ActionState actionState) => actionState.States.Add(StateType.Finish))
             .Add<StopHookPullingCommand>()
-            .Change((ref GravityScale gravity) => gravity.Enabled = true);
+            .Change((ref GravityScale gravity) => gravity.Enabled.Value = true);
         }
       }
     }

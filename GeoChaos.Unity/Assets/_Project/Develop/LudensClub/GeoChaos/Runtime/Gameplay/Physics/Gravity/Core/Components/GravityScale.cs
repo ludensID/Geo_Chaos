@@ -13,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity
   [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct GravityScale : IEcsComponent
   {
-    public bool Enabled;
-    public float Scale;
+    public OverriddenValue<bool> Enabled;
+    public OverriddenValue<float> Scale;
   }
 }

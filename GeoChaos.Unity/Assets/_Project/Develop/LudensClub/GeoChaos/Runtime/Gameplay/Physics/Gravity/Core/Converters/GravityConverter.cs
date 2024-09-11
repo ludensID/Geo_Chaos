@@ -15,8 +15,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity
       entity
         .Add((ref GravityScale gravity) =>
         {
-          gravity.Enabled = EnableGravityOnStart;
-          gravity.Scale = GravityScale;
+          gravity.Enabled.Value = EnableGravityOnStart;
+          gravity.Scale.Value = GravityScale;
         })
         .Add<Ground>()
         .Add((ref GroundCheckTimer timer) => timer.TimeLeft = 0);

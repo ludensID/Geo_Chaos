@@ -62,7 +62,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
             .Del<HookTimer>()
             .Has<OnHookPullingStarted>(false)
             .Has<OnHookPullingFinished>(false)
-            .Change((ref GravityScale gravity) => gravity.Enabled = true);
+            .Change((ref GravityScale gravity) => gravity.Enabled.Value = true);
         }
 
         if (_config.BumpOnHookReaction == BumpOnHookReactionType.Immunity && interrupt.Has<Immune>()
