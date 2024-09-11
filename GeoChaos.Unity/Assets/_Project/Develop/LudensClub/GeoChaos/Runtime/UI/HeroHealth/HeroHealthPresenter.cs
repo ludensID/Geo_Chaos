@@ -6,14 +6,13 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.UI.HeroHealth
 {
-  public class HeroHealthPresenter : IInitializable, ITickable
+  public class HeroHealthPresenter : IHeroHealthPresenter, IInitializable, ITickable
   {
-    private readonly HeroHealthView _view;
     private readonly EcsEntities _heroes;
+    private HeroHealthView _view;
 
-    public HeroHealthPresenter(HeroHealthView view, GameWorldWrapper gameWorldWrapper)
+    public HeroHealthPresenter(GameWorldWrapper gameWorldWrapper)
     {
-      _view = view;
       _heroes = gameWorldWrapper.World
         .Filter<HeroTag>()
         .Collect();
@@ -22,6 +21,11 @@ namespace LudensClub.GeoChaos.Runtime.UI.HeroHealth
     public void Initialize()
     {
       Reset();
+    }
+
+    public void SetView(HeroHealthView view)
+    {
+      _view = view;
     }
 
     public void Tick()

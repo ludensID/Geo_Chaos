@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.UI
 {
@@ -8,6 +9,12 @@ namespace LudensClub.GeoChaos.Runtime.UI
   {
     [SerializeField]
     private TMP_Text _text;
+
+    [Inject]
+    public void Construct(IDashCooldownPresenter presenter)
+    {
+      presenter.SetView(this);
+    }
 
     public void SetText(string text)
     {

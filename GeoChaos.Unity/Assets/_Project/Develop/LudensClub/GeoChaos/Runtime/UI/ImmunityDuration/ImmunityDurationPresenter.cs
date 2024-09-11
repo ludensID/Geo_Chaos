@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Immunity;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -10,15 +9,14 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.UI.ImmunityDuration
 {
-  public class ImmunityDurationPresenter : IInitializable, ITickable
+  public class ImmunityDurationPresenter : IImmunityDurationPresenter, IInitializable, ITickable
   {
-    private readonly ImmunityDurationView _view;
     private readonly EcsWorld _game;
     private readonly EcsEntities _immuneHeroes;
+    private ImmunityDurationView _view;
 
-    public ImmunityDurationPresenter(ImmunityDurationView view, GameWorldWrapper gameWorldWrapper)
+    public ImmunityDurationPresenter(GameWorldWrapper gameWorldWrapper)
     {
-      _view = view;
       _game = gameWorldWrapper.World;
 
       _immuneHeroes = _game
@@ -30,6 +28,11 @@ namespace LudensClub.GeoChaos.Runtime.UI.ImmunityDuration
     public void Initialize()
     {
       Reset();
+    }
+
+    public void SetView(ImmunityDurationView view)
+    {
+      _view = view;
     }
 
     public void Tick()

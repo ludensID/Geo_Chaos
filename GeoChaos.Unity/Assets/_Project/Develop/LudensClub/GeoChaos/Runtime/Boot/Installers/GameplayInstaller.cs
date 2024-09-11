@@ -37,21 +37,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
   public class GameplayInstaller : MonoInstaller
   {
     [SerializeField]
-    private DashCooldownView _dashCooldownView;
-
-    [SerializeField]
-    private ShootCooldownView _shootCooldownView;
-
-    [SerializeField]
-    private HeroHealthView _healthView;
-
-    [SerializeField]
-    private ImmunityDurationView _immunityDurationView;
-
-    [SerializeField]
-    private HeroHealthShardView _healthShardView;
-
-    [SerializeField]
     private Camera _camera;
 
     public override void InstallBindings()
@@ -331,8 +316,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     {
       Container
         .BindInterfacesTo<HeroHealthShardPresenter>()
-        .AsSingle()
-        .WithArguments(_healthShardView);
+        .AsSingle();
     }
 
     private void BindNothingHappensPresenter()
@@ -355,16 +339,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     {
       Container
         .BindInterfacesTo<ImmunityDurationPresenter>()
-        .AsSingle()
-        .WithArguments(_immunityDurationView);
+        .AsSingle();
     }
 
     private void BindHeroHealthPresenter()
     {
       Container
         .BindInterfacesTo<HeroHealthPresenter>()
-        .AsSingle()
-        .WithArguments(_healthView);
+        .AsSingle();
     }
 
     private void BindAimedLamaSelector()
@@ -426,8 +408,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     {
       Container
         .BindInterfacesTo<ShootCooldownPresenter>()
-        .AsSingle()
-        .WithArguments(_shootCooldownView);
+        .AsSingle();
     }
 
     private void BindShootService()
@@ -541,8 +522,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     {
       Container
         .BindInterfacesTo<DashCooldownPresenter>()
-        .AsSingle()
-        .WithArguments(_dashCooldownView);
+        .AsSingle();
     }
 
     private void BindViewFactory()

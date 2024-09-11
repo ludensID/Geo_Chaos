@@ -8,15 +8,14 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.UI
 {
-  public class DashCooldownPresenter : IInitializable, ITickable
+  public class DashCooldownPresenter : IDashCooldownPresenter, IInitializable, ITickable
   {
-    private readonly DashCooldownView _view;
     private readonly EcsWorld _game;
     private readonly EcsEntities _heroCooldowns;
+    private DashCooldownView _view;
 
-    public DashCooldownPresenter(DashCooldownView view, GameWorldWrapper gameWorldWrapper)
+    public DashCooldownPresenter(GameWorldWrapper gameWorldWrapper)
     {
-      _view = view;
       _game = gameWorldWrapper.World;
 
       _heroCooldowns = _game
@@ -28,6 +27,11 @@ namespace LudensClub.GeoChaos.Runtime.UI
     public void Initialize()
     {
       Reset();
+    }
+
+    public void SetView(DashCooldownView view)
+    {
+      _view = view;
     }
 
     public void Tick()

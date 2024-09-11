@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.UI.HeroHealthShard
 {
@@ -9,6 +10,12 @@ namespace LudensClub.GeoChaos.Runtime.UI.HeroHealthShard
     [SerializeField]
     private TMP_Text _text;
 
+    [Inject]
+    public void Construct(IHeroHealthShardPresenter presenter)
+    {
+      presenter.SetView(this);
+    }
+    
     public void SetText(string text)
     {
       _text.text = text;

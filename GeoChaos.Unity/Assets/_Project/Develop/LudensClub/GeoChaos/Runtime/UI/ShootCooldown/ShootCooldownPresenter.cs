@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
@@ -9,15 +8,14 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.UI
 {
-  public class ShootCooldownPresenter : IInitializable, ITickable
+  public class ShootCooldownPresenter : IShootCooldownPresenter, IInitializable, ITickable
   {
-    private readonly ShootCooldownView _view;
     private readonly EcsWorld _game;
     private readonly EcsEntities _heroCooldowns;
+    private ShootCooldownView _view;
 
-    public ShootCooldownPresenter(ShootCooldownView view, GameWorldWrapper gameWorldWrapper)
+    public ShootCooldownPresenter(GameWorldWrapper gameWorldWrapper)
     {
-      _view = view;
       _game = gameWorldWrapper.World;
 
       _heroCooldowns = _game
@@ -29,6 +27,11 @@ namespace LudensClub.GeoChaos.Runtime.UI
     public void Initialize()
     {
       Reset();
+    }
+
+    public void SetView(ShootCooldownView view)
+    {
+      _view = view;
     }
 
     public void Tick()
