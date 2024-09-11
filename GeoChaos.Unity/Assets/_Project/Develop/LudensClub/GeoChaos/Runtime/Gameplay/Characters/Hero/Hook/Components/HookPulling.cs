@@ -15,6 +15,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
   public struct HookPulling : IEcsComponent
   {
     public Vector2 Velocity;
-    public Vector3 Target;
+    public Vector2 Target;
   }
 }

@@ -15,5 +15,5 @@ MonoBehaviour:
   GroundMask:
     serializedVersion: 2
     m_Bits: 385
-  AcceptableGroundDistance: 0.02
+  AcceptableGroundDistance: 0.05
   GroundCheckTime: 0.06
