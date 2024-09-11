@@ -11,6 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.TEMPORARY)]
   public struct RingPointsRef : IEcsComponent
   {
     public Transform TargetPoint;

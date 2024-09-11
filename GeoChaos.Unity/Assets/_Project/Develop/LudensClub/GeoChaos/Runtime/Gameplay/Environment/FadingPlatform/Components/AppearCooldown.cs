@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.TEMPORARY)]
   public struct AppearCooldown : IEcsComponent
   {
     public Timer TimeLeft;

@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.AI.Behaviour.Chase
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.TEMPORARY)]
   public struct Chasing : IEcsComponent
   {
   }

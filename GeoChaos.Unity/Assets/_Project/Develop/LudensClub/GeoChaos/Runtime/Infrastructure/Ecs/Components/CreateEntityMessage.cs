@@ -12,6 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.TEMPORARY)]
   public struct CreateEntityMessage : IEcsComponent
   {
     [ShowInInspector]

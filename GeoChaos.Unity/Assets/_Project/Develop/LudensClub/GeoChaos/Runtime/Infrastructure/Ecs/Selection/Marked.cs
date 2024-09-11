@@ -9,6 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.TEMPORARY)]
   public struct Marked : IEcsComponent
   {
   }

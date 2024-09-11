@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 using NUnit.Framework;
 
 namespace LudensClub.GeoChaos.Testing.EditMode
