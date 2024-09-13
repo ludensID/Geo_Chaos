@@ -1,5 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.View;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics
 {
@@ -9,7 +8,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics
     {
       Add(systems.Create<SetViewGravitySystem>());
       Add(systems.Create<SetViewVelocitySystem>());
-      Add(systems.Create<SetViewRotationSystem>());
     }
   }
 }

@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
@@ -32,7 +33,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
         Vector2 position = hero.Get<ViewRef>().View.transform.position;
         Vector2 target = hero.Get<HookPulling>().Target;
         ref MovementVector vector = ref force.Get<MovementVector>();
-        vector.Speed = (target - position).normalized * vector.Speed.magnitude;
+        
+        Vector2 velocity = vector.Speed * vector.Direction;
+        velocity = (target - position).normalized * velocity.magnitude;
+        (Vector2 length, Vector2 direction) = MathUtils.DecomposeVector(velocity);
+        vector.Speed = length;
+        vector.Direction = direction;
       }
     }
   }
