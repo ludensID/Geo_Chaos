@@ -10,7 +10,7 @@
     Frog = LeafySpirit + 1,
     Zombie = Frog + 1,
     Shroom = Zombie + 1,
-    Ring = 15,
+    Ring = 200,
     Shard = Ring + 1,
     Spike = Shard + 1,
     FadingPlatform = Spike + 1,
@@ -21,5 +21,7 @@
     Leaf = HealthShard + 1,
     Tongue = Leaf + 1,
     GasCloud = Tongue + 1,
+    SpawnPoint = 500,
+    CheckPoint = SpawnPoint + 1
   }
 }

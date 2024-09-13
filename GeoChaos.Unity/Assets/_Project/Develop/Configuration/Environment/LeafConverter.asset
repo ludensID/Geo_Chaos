@@ -44,14 +44,14 @@ MonoBehaviour:
     - rid: 674097946472480856
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
-        Id: 23
+        Id: 208
     - rid: 674098072352456835
       type: {class: LeafTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf,
         asm: GeoChaos.Runtime}
-      data: {}
+      data: 
     - rid: 674098072352456882
       type: {class: Poolable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
-      data: {}
+      data: 
     - rid: 674098098997559378
       type: {class: StartMovePosition, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Leaf.Move,
         asm: GeoChaos.Runtime}
@@ -59,7 +59,7 @@ MonoBehaviour:
         Position: {x: 0, y: 0, z: 0}
     - rid: 2072450811591918054
       type: {class: Damageable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage, asm: GeoChaos.Runtime}
-      data: {}
+      data: 
     - rid: 2072450849916059857
       type: {class: CurrentEndurance, ns: LudensClub.GeoChaos.Runtime.Gameplay.Characteristics.Endurance,
         asm: GeoChaos.Runtime}

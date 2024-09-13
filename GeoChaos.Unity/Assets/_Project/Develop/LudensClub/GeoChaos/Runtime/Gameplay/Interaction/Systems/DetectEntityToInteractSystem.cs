@@ -3,18 +3,17 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Interaction
 {
-  public class DetectHeroNearDoorSystem : IEcsRunSystem
+  public class DetectEntityToInteractSystem : IEcsRunSystem
   {
     private readonly ICollisionService _collisionSvc;
     private readonly EcsWorld _message;
     private readonly EcsWorld _game;
     private readonly EcsEntities _collisions;
 
-    public DetectHeroNearDoorSystem(MessageWorldWrapper messageWorldWrapper,
+    public DetectEntityToInteractSystem(MessageWorldWrapper messageWorldWrapper,
       GameWorldWrapper gameWorldWrapper,
       ICollisionService collisionSvc)
     {
@@ -35,12 +34,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
         CollisionInfo info = _collisionSvc.Info;
         _collisionSvc.AssignCollision(collision);
         if (_collisionSvc.TryUnpackBothEntities(_game)
-          && _collisionSvc.TrySelectByEntitiesTag<DoorTag, HeroTag>()
-          && info.MasterCollider.Type == ColliderType.Action
-          && info.TargetCollider.Type == ColliderType.Body
-          && info.Master.Has<Interactable>())
+          && _collisionSvc.TrySelectByMasterEntity(x => x.Has<HeroTag>())
+          && info.MasterCollider.Type == ColliderType.Body
+          && info.Target.Has<Interactable>())
         {
-          info.Master.Has<CanInteract>(collision.Type == CollisionType.Enter);
+          info.Target.Has<CanInteract>(collision.Type == CollisionType.Enter);
         }
       }
     }

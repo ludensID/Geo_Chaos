@@ -6,7 +6,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Lever
   {
     public LeverFeature(IEcsSystemFactory systems)
     {
-      Add(systems.Create<DetectHeroNearLeverSystem>());
       Add(systems.Create<InteractWithLeverSystem>());
     }
   }

@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Checkpoint;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.DoorKey;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.GasCloud;
@@ -16,6 +17,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
   {
     public EnvironmentFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<CheckpointFeature>());
       Add(systems.Create<RingFeature>());
 
       Add(systems.Create<DamageFromSpikeSystem>());

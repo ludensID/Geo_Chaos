@@ -73,6 +73,7 @@
       public const string PLATFORM_FADE = HIGHLIGHTERS + "Platform Fade";
       public const string DOOR_FADE = HIGHLIGHTERS + "Door Fade";
       public const string LEVER_SWITCHER = HIGHLIGHTERS + "Lever Switcher";
+      public const string CHECKPOINT_HIGHLIGHTER = HIGHLIGHTERS + "Checkpoint Highlighter";
 
       public const string SPAWN_GIZMO = PROPS + "Spawn Gizmo";
       public const string LAMA_GIZMO = PROPS + "Lama Gizmo";

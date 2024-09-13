@@ -22,7 +22,7 @@ MonoBehaviour:
       - Value:
           rid: 674097777330618529
       - Value:
-          rid: 674097777330618530
+          rid: 3599071298436726872
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
@@ -36,8 +36,8 @@ MonoBehaviour:
     - rid: 674097777330618529
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
-        Id: 20
-    - rid: 674097777330618530
-      type: {class: Closed, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door,
+        Id: 205
+    - rid: 3599071298436726872
+      type: {class: Closed, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment,
         asm: GeoChaos.Runtime}
       data: 

@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Checkpoint
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -10,8 +10,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
-  [EcsComponentOrder(EcsComponentOrder.STATIC)]
-  public struct Closed : IEcsComponent
+  [EcsComponentOrder(EcsComponentOrder.CONST)]
+  public struct CheckpointTag : IEcsComponent
   {
   }
 }

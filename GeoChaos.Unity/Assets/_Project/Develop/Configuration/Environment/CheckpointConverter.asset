@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 133c2ae489ef48fc81c331d6cf2618a2, type: 3}
-  m_Name: GasCloudConverter
+  m_Name: CheckpointConverter
   m_EditorClassIdentifier: 
   Converters:
   - _serializedConverter:
@@ -18,25 +18,31 @@ MonoBehaviour:
     _components:
       Components:
       - Value:
-          rid: 2072451401200173057
+          rid: 3599071298436726875
       - Value:
-          rid: 2072451401200173058
+          rid: 3599071298436726876
       - Value:
-          rid: 2072451401200173059
+          rid: 3599071298436726877
+      - Value:
+          rid: 3599071298436727564
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 2072451401200173057
-      type: {class: GasCloudTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.GasCloud,
+    - rid: 3599071298436726875
+      type: {class: CheckpointTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Checkpoint,
         asm: GeoChaos.Runtime}
       data: 
-    - rid: 2072451401200173058
+    - rid: 3599071298436726876
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
-        Id: 210
-    - rid: 2072451401200173059
-      type: {class: Poolable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
+        Id: 501
+    - rid: 3599071298436726877
+      type: {class: Closed, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment,
+        asm: GeoChaos.Runtime}
+      data: 
+    - rid: 3599071298436727564
+      type: {class: Interactable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data: 

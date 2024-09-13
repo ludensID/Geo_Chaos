@@ -32,7 +32,7 @@ MonoBehaviour:
     - rid: 674097754407698514
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
-        Id: 15
+        Id: 200
     - rid: 2072451042721398784
       type: {class: RingTag, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring,
         asm: GeoChaos.Runtime}

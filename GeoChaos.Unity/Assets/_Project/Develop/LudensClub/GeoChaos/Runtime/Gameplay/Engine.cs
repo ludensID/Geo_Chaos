@@ -9,6 +9,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Damage;
 using LudensClub.GeoChaos.Runtime.Gameplay.Die;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment;
 using LudensClub.GeoChaos.Runtime.Gameplay.Input;
+using LudensClub.GeoChaos.Runtime.Gameplay.Interaction;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
@@ -49,6 +50,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<CollisionFeature>())
         .Add(factory.Create<InputFeature>())
         .Add(factory.Create<CharacteristicPreparingFeature>())
+        .Add(factory.Create<InteractionFeature>())
         .Add(factory.Create<EnvironmentFeature>())
         .Add(factory.Create<HeroFeature>())
         .Add(factory.Create<AIFeature>())

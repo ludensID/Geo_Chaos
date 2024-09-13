@@ -36,7 +36,7 @@ MonoBehaviour:
     - rid: 674097803314594356
       type: {class: EntityId, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data:
-        Id: 21
+        Id: 206
     - rid: 674097803314594357
       type: {class: Interactable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
       data: 

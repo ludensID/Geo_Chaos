@@ -1,7 +1,7 @@
 ﻿using System;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment
 {
 #if ENABLE_IL2CPP
   using Unity.IL2CPP.CompilerServices;
@@ -11,7 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
 #endif
   [Serializable]
   [EcsComponentOrder(EcsComponentOrder.STATIC)]
-  public struct Opened : IEcsComponent
+  public struct Closed : IEcsComponent
   {
   }
 }
