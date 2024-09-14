@@ -24,13 +24,13 @@ MonoBehaviour:
   AccelerationTime: 0.15
   JumpTime: 0.55
   JumpHeight: 7
-  FallVelocityMultiplier: 1
+  FallVelocityMultiplier: 1.5
   JumpHorizontalSpeedMultiplier: 1
   MaxFallVelocity: 50
-  JumpLength: 9.900001
+  JumpLength: 8.25
   EnableDash: 1
   DashVelocity: 33.4
-  DashTime: 0.2
+  DashTime: 0.3
   DashCooldown: 1
   EnableAttack: 1
   HitDurations:
@@ -45,15 +45,15 @@ MonoBehaviour:
   HookRadius: 20
   RingViewAngle: 90
   HookPrecastTime: 0.2
-  HookVelocity: 20
+  HookVelocity: 30
   BumpOnHookReaction: 0
   PullTimeOffset: 1
   HookInputCooldown: 0.1
   RingReleasingTime: 0.1
   EnableShoot: 1
-  ShardVelocity: 40
+  ShardVelocity: 70
   AutoShootRadius: 20
-  ShootCooldown: 1
+  ShootCooldown: 0.3
   EnemyViewAngle: 90
   EnableAim: 1
   ShardLifeTime: 3
