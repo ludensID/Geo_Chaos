@@ -36,9 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
         
         Vector2 velocity = vector.Speed * vector.Direction;
         velocity = (target - position).normalized * velocity.magnitude;
-        (Vector2 length, Vector2 direction) = MathUtils.DecomposeVector(velocity);
-        vector.Speed = length;
-        vector.Direction = direction;
+        vector.AssignVector(velocity);
       }
     }
   }

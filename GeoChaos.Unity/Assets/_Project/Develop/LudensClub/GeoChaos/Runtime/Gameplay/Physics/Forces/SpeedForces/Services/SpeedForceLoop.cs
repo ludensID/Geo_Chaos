@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
@@ -14,11 +13,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
     public SpeedForceLoop(EcsEntities entities)
     {
       _entities = entities;
-    }
-
-    public EcsEntity GetForce(SpeedForceType type, EcsPackedEntity owner)
-    {
-      return GetLoop(type, owner).ToEnumerable().FirstOrDefault();
     }
 
     public EcsEntities GetLoop(SpeedForceType type, EcsPackedEntity owner)

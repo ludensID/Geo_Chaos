@@ -36,11 +36,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
         ref HookPulling hookPulling = ref pulling.Get<HookPulling>();
         if (IsHeroReachedRing(hookPulling.Target, heroTransform.position, hookPulling.Velocity))
         {
-          _forces.GetForce(SpeedForceType.Hook, pulling.PackedEntity)
-            .Change((ref Impact impact) => impact.Vector.y = 0)
-            .Add<Valuable>()
-            .Add<Residual>();
-          
+          foreach (EcsEntity force in _forces
+            .GetLoop(SpeedForceType.Hook, pulling.PackedEntity))
+          {
+            force
+              .Change((ref Impact impact) => impact.Vector.y = 0)
+              .Add<Valuable>()
+              .Add<Residual>();
+          }
+
           pulling
             .Replace((ref ActionState actionState) => actionState.States.Add(StateType.Finish))
             .Add<StopHookPullingCommand>()
