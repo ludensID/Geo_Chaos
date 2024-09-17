@@ -1,33 +1,29 @@
-﻿using UnityEngine;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
   [AddComponentMenu(ACC.Names.EDGE_TRIGGER_DETECTOR)]
-  public class EdgeTriggerDetector : MonoBehaviour
+  public class EdgeTriggerDetector : HeroDetector
   {
     private IEdgeOffsetSetter _setter;
 
     [Inject]
-    public void Construct(IEdgeOffsetSetter setter)
+    public void Construct(IEdgeOffsetSetter setter, IHeroBinder heroBinder)
     {
       _setter = setter;
-    }
-      
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-      if (other.attachedRigidbody.CompareTag("Player"))
-      {
-        _setter.SetEdgeOffset();
-      }
+      base.Construct(heroBinder);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    public override void OnHeroEnter()
     {
-      if (other.attachedRigidbody.CompareTag("Player"))
-      {
+        _setter.SetEdgeOffset();
+    }
+
+    public override void OnHeroExit()
+    {
         _setter.SetDefaultOffset();
-      }
     }
   }
 }

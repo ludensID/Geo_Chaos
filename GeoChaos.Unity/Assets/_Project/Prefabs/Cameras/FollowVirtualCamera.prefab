@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 8786103232832151091, guid: 92cb293c68a456e4ba7c9e41e9217056,
         type: 3}
       propertyPath: m_Name
-      value: PlayerVirtualCamera
+      value: FollowVirtualCamera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -69,7 +69,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8786103232832151091, guid: 92cb293c68a456e4ba7c9e41e9217056,
         type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: -8556353858258729242}
   m_SourcePrefab: {fileID: 100100000, guid: 92cb293c68a456e4ba7c9e41e9217056, type: 3}
 --- !u!1 &2098445405614647911 stripped

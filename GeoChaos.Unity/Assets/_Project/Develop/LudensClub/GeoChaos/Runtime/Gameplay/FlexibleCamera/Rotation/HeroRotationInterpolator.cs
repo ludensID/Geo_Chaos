@@ -45,7 +45,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
       {
         _tweener?.Kill();
         _tweener = _heroFollower.transform
-          .DORotate(_heroTransform.rotation.eulerAngles, _config.RotationTime).SetUpdate(UpdateType.Fixed);
+          .DORotate(_heroTransform.rotation.eulerAngles, _config.RotationTime)
+          .SetUpdate(UpdateType.Fixed);
         _target = currentTarget;
       }
     }

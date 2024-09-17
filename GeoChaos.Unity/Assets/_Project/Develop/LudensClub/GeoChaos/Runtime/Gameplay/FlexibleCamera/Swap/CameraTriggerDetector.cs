@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+using UnityEngine;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera.Swap
 {
   [AddComponentMenu(ACC.Names.CAMERA_TRIGGER_DETECTOR)]
-  public class CameraTriggerDetector : MonoBehaviour
+  public class CameraTriggerDetector : HeroDetector
   {
     [SerializeField]
     private VirtualCameraView _camera;
@@ -12,25 +13,20 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera.Swap
     private IVirtualCameraManager _manager;
 
     [Inject]
-    public void Construct(IVirtualCameraManager manager)
+    public void Construct(IVirtualCameraManager manager, IHeroBinder heroBinder)
     {
       _manager = manager;
+      base.Construct(heroBinder);
     }
       
-    private void OnTriggerEnter2D(Collider2D other)
+    public override void OnHeroEnter()
     {
-      if (other.attachedRigidbody.CompareTag("Player"))
-      {
         _manager.SetCamera(_camera);
-      }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    public override void OnHeroExit()
     {
-      if (other.attachedRigidbody.CompareTag("Player"))
-      {
         _manager.UnsetCamera(_camera);
-      }
     }
   }
 }
