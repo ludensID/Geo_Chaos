@@ -30,7 +30,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces
           switch (list[i])
           {
             case StateType.Start:
-              action.Has<OnActionStarted>(true);
+              action
+                .Has<OnActionFinished>(false)
+                .Has<OnActionStarted>(true);
               break;
             case StateType.Finish:
               action.Has<OnActionFinished>(true);
