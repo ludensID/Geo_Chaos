@@ -31,16 +31,15 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring
       foreach (EcsEntity origin in origins)
       foreach (EcsEntity selection in marks)
       {
-        Vector3 originPosition = origin.Get<ViewRef>().View.transform.position;
-        Transform selectionTransform = selection.Get<ViewRef>().View.transform;
-        Vector3 selectionPosition = selectionTransform.position;
+        Vector2 originPosition = origin.Get<ViewRef>().View.transform.position;
+        Vector2 selectionPosition = selection.Get<RingPointsRef>().TargetPoint.transform.position;
         
-        Vector3 vector = selectionPosition - originPosition;
+        Vector2 vector = selectionPosition - originPosition;
         _hits.Clear();
         bool hasCenterHit = 0 < Physics2D.Raycast(originPosition, vector.normalized, _filter, _hits, vector.magnitude);
         
         _hits.Clear();
-        bool hasTopHit = 0 < Physics2D.Raycast(originPosition + Vector3.up, vector.normalized,
+        bool hasTopHit = 0 < Physics2D.Raycast(originPosition + Vector2.up, vector.normalized,
           _filter, _hits, vector.magnitude);
         
         if (hasCenterHit || hasTopHit)

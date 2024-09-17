@@ -19,9 +19,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
       foreach (EcsEntity selection in marks)
       {
         Transform originTransform = origin.Get<ViewRef>().View.transform;
-        Vector3 selectionPosition = selection.Get<ViewRef>().View.transform.position;
-        Vector3 selectionVector = selectionPosition - originTransform.position;
-        if (Vector3.Angle(originTransform.right, selectionVector) > _data.ViewAngle)
+        Vector2 selectionPosition = selection.Get<ViewRef>().View.transform.position;
+        Vector2 selectionVector = selectionPosition - (Vector2) originTransform.position;
+        if (Vector2.Angle(originTransform.right, selectionVector) > _data.ViewAngle)
           selection.Del<Marked>();
       }
     }

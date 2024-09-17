@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 using UnityEngine;
 
@@ -16,9 +17,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
       foreach (EcsEntity origin in origins)
       foreach (EcsEntity selection in marks)
       {
-        Vector3 originPosition = origin.Get<ViewRef>().View.transform.position;
-        Vector3 selectionPosition = selection.Get<ViewRef>().View.transform.position;
-        float distance = Vector3.Distance(selectionPosition, originPosition);
+        Vector2 originPosition = origin.Get<ViewRef>().View.transform.position;
+        Vector2 selectionPosition = selection.Get<RingPointsRef>().TargetPoint.transform.position;
+        float distance = Vector2.Distance(selectionPosition, originPosition);
         if (distance < minDistance)
         {
           minDistance = distance;
