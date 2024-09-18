@@ -4,7 +4,7 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies
 {
   [AddComponentMenu(ACC.Names.ENEMY_VIEW)]
-  public class EnemyView : BaseView
+  public class EnemyView : BaseEntityView
   {
   }
 }

@@ -47,7 +47,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
       if (!isPrefab)
       {
         var config = FindAsset<PrefabConfig>(nameof(PrefabConfig));
-        BaseView hero = config.Get(EntityType.Hero);
+        BaseEntityView hero = config.Get(EntityType.Hero);
         converter = hero.GetComponent<HeroAttackCollidersConverter>();
       }
 

@@ -5,6 +5,6 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
   public interface IPushable
   {
     bool HasId(EntityType id);
-    void Push(BaseView instance);
+    void Push(BaseEntityView instance);
   }
 }

@@ -17,7 +17,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Lever
 
     private TickableManager _ticker;
     private EcsWorld _game;
-    private BaseView _view;
+    private BaseEntityView _view;
 
     [Inject]
     public void Construct(GameWorldWrapper gameWorldWrapper, TickableManager ticker)
@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Lever
       _ticker = ticker;
       _game = gameWorldWrapper.World;
 
-      _view = GetComponent<BaseView>();
+      _view = GetComponent<BaseEntityView>();
       
       _ticker.Add(this);
     }

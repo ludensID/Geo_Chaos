@@ -13,6 +13,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core
   [EcsComponentOrder(EcsComponentOrder.CONST + 30)]
   public struct ViewRef : IEcsComponent
   {
-    public BaseView View;
+    public BaseEntityView View;
   }
 }

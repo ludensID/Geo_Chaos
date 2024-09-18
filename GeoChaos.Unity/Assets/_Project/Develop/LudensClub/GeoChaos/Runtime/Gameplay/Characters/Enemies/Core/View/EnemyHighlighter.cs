@@ -14,13 +14,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies
     private SpriteRenderer _spriteRenderer;
     
     private EcsWorld _game;
-    private BaseView _view;
+    private BaseEntityView _view;
 
     [Inject]
     public void Construct(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
-      _view = GetComponent<BaseView>();
+      _view = GetComponent<BaseEntityView>();
     }
 
     private void Update()

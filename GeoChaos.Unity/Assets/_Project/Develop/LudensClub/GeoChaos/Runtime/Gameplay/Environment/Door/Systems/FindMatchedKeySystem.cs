@@ -24,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
     {
       foreach (EcsEntity door in _interactedDoors)
       {
-        BaseView keyView = door.Get<MatchedKeyRef>().Key;
+        BaseEntityView keyView = door.Get<MatchedKeyRef>().Key;
         if (keyView && keyView.Entity.TryUnpackEntity(_game, out EcsEntity key)
           && key.Has<Owner>()
           && key.Get<Owner>().Entity.TryUnpackEntity(_game, out EcsEntity hero)

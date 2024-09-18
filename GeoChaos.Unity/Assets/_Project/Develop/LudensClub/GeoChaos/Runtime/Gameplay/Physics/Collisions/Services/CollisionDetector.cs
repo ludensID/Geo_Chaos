@@ -13,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
     private ColliderType _colliderType;
 
     [SerializeField]
-    private BaseView _view;
+    private BaseEntityView _view;
 
     [SerializeField]
     private Collider2D _collider;
@@ -103,7 +103,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions
 
     private void Reset()
     {
-      _view = GetComponent<BaseView>();
+      _view = GetComponent<BaseEntityView>();
       _collider = GetComponent<Collider2D>();
     }
   }

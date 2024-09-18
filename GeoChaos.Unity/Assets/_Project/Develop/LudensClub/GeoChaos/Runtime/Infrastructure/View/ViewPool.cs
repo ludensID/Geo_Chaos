@@ -6,7 +6,7 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
-  public abstract class ViewPool<TView> : IPool<TView>, IInitializable where TView : BaseView
+  public abstract class ViewPool<TView> : IPool<TView>, IInitializable where TView : BaseEntityView
   {
     private readonly PoolConfig _config;
     private readonly IViewFactory _factory;
@@ -63,7 +63,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       return instance;
     }
 
-    public void Push(BaseView instance)
+    public void Push(BaseEntityView instance)
     {
       instance.gameObject.SetActive(false);
       instance.transform.SetParent(_parent);

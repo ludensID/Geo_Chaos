@@ -2,7 +2,7 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.GasCloud
 {
-  public class GasCloudView : BaseView
+  public class GasCloudView : BaseEntityView
   {
   }
 }

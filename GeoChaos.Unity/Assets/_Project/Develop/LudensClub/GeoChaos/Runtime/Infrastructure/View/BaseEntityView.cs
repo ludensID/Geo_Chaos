@@ -6,9 +6,9 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
-  [AddComponentMenu(ACC.Names.BASE_VIEW)]
+  [AddComponentMenu(ACC.Names.BASE_ENTITY_VIEW)]
   [SelectionBase]
-  public class BaseView : MonoBehaviour
+  public class BaseEntityView : MonoBehaviour
   {
     [ShowInInspector]
     public EcsPackedEntity Entity;

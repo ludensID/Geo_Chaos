@@ -2,7 +2,7 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Tongue
 {
-  public class TongueView : BaseView
+  public class TongueView : BaseEntityView
   {
   }
 }

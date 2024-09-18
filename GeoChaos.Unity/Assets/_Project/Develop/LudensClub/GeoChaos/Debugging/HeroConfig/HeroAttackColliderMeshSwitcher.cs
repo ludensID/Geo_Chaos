@@ -30,7 +30,7 @@ namespace LudensClub.GeoChaos.Debugging
       if (!isPrefab)
       {
         var config = AssetFinder.FindAsset<PrefabConfig>();
-        BaseView hero = config.Get(EntityType.Hero);
+        BaseEntityView hero = config.Get(EntityType.Hero);
         converter = hero.GetComponent<HeroAttackCollidersConverter>();
       }
 

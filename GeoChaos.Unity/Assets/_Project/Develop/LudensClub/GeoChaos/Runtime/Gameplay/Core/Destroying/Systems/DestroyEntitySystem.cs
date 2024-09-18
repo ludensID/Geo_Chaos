@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Destroying
       {
         if (destroying.Has<ViewRef>())
         {
-          BaseView view = destroying.Get<ViewRef>().View;
+          BaseEntityView view = destroying.Get<ViewRef>().View;
           if (destroying.Has<Poolable>())
             _pools.Find(x => x.HasId(destroying.Get<EntityId>().Id)).Push(view);
           else

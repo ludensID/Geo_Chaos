@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
   [AddComponentMenu(ACC.Names.VIEW_CONVERTER)]
   public class ViewConverter : MonoBehaviour, IEcsConverter
   {
-    public BaseView View;
+    public BaseEntityView View;
 
     public void ConvertTo(EcsEntity entity)
     {
@@ -24,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Converters
 
     private void Reset()
     {
-      View = GetComponent<BaseView>();
+      View = GetComponent<BaseEntityView>();
     }
   }
 }

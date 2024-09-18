@@ -19,14 +19,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.FadingPlatform
     private Color _fadeColor;
 
     private EcsWorld _game;
-    private BaseView _view;
+    private BaseEntityView _view;
     private SpriteRenderer _renderer;
 
     [Inject]
     public void Construct(GameWorldWrapper gameWorldWrapper)
     {
       _game = gameWorldWrapper.World;
-      _view = GetComponent<BaseView>();
+      _view = GetComponent<BaseEntityView>();
       _renderer = GetComponent<SpriteRenderer>();
     }
 

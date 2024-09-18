@@ -18,7 +18,7 @@
 
     public static class Names
     {
-      public const string BASE_VIEW = VIEW + "View";
+      public const string BASE_ENTITY_VIEW = VIEW + "Entity View";
       public const string SHARD_VIEW = VIEW + "Shard View";
       public const string RING_VIEW = VIEW + "Ring View";
       public const string HERO_VIEW = VIEW + "Hero View";

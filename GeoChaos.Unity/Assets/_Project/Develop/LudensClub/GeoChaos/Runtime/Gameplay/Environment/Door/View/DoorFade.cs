@@ -11,7 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
   {
     private TickableManager _ticker;
     private EcsWorld _game;
-    private BaseView _view;
+    private BaseEntityView _view;
     private SpriteRenderer _renderer;
 
     [Inject]
@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
     {
       _ticker = ticker;
       _game = gameWorldWrapper.World;
-      _view = GetComponent<BaseView>();
+      _view = GetComponent<BaseEntityView>();
       _renderer = GetComponent<SpriteRenderer>();
 
       _ticker.Add(this);

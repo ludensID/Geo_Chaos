@@ -13,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [ListDrawerSettings(AlwaysExpanded = true)]
     public List<ViewPrefabTuple> Prefabs;
 
-    public BaseView Get(EntityType id)
+    public BaseEntityView Get(EntityType id)
     {
       return Prefabs.Find(x => x.Id == id).Prefab;
     }
@@ -29,6 +29,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
 
     [Group(nameof(ViewPrefabTuple))]
     [HideLabel]
-    public BaseView Prefab;
+    public BaseEntityView Prefab;
   }
 }

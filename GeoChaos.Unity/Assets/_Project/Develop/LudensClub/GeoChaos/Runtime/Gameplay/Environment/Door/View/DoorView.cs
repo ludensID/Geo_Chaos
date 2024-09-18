@@ -4,7 +4,7 @@ using UnityEngine;
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Door
 {
   [AddComponentMenu(ACC.Names.DOOR_VIEW)]
-  public class DoorView : BaseView
+  public class DoorView : BaseEntityView
   {
   }
 }
