@@ -58,30 +58,14 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [ReadOnly]
     public float JumpLength;
 
-    [ShowInInspector]
-    [PropertyOrder(15)]
-    [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float Gravity => -2 * JumpHeight * Mathf.Pow(1 + 1 / FallVelocityMultiplier, 2) / (JumpTime * JumpTime);
     
-    [ShowInInspector]
-    [PropertyOrder(16)]
-     
-    [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float GravityScale => Gravity / Physics2D.gravity.y;
 
-    [ShowInInspector]
-    [PropertyOrder(17)]
-    [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float FallGravityScale => Mathf.Pow(FallVelocityMultiplier, 2) * GravityScale;
 
-    [ShowInInspector]
-    [PropertyOrder(18)]
-    [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float JumpForce => (1 + 1 / FallVelocityMultiplier) * 2 * JumpHeight / JumpTime;
 
-    [ShowInInspector]
-    [PropertyOrder(19)]
-    [Group(TriConstants.TECH + TriConstants.Names.JUMP)]
     public float JumpHorizontalSpeed => MovementSpeed * JumpHorizontalSpeedMultiplier;
 
     public float PositiveGravity => Mathf.Abs(Gravity);
