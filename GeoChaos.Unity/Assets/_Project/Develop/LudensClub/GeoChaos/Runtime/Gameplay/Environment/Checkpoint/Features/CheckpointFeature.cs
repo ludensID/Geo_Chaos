@@ -6,6 +6,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Checkpoint
   {
     public CheckpointFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<OpenCheckpointWindowSystem>());
+      
       Add(systems.Create<DeleteCheckpointOpenedEventSystem>());
       Add(systems.Create<OpenCheckpointSystem>());
     }

@@ -28,7 +28,7 @@ using LudensClub.GeoChaos.Runtime.UI.HeroHealth;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealthShard;
 using LudensClub.GeoChaos.Runtime.UI.ImmunityDuration;
 using LudensClub.GeoChaos.Runtime.Windows;
-using LudensClub.GeoChaos.Runtime.Windows.NothingHappens;
+using LudensClub.GeoChaos.Runtime.Windows.Simple;
 using UnityEngine;
 using Zenject;
 
@@ -119,7 +119,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindVerticalViewOffsetSetter();
       BindVerticalOffsetInterpolator();
 
-      BindNothingHappensPresenter();
+      BindSimpleWindowPresenter();
 
       BindDashCooldownPresenter();
       BindShootCooldownPresenter();
@@ -128,6 +128,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindSimpleWindowPresenter()
+    {
+      Container
+        .Bind<ISimpleWindowPresenter>()
+        .To<SimpleWindowPresenter>()
+        .AsTransient();
     }
 
     private void BindWindowManager()
@@ -327,14 +335,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       Container
         .Bind<IHeroHealthShardPresenter>()
         .To<HeroHealthShardPresenter>()
-        .AsSingle();
-    }
-
-    private void BindNothingHappensPresenter()
-    {
-      Container
-        .Bind<INothingHappensPresenter>()
-        .To<NothingHappensPresenter>()
         .AsSingle();
     }
 

@@ -15,7 +15,9 @@
     public const string PROPS = PROJECT + "Props/";
     public const string ANIMATORS = PROJECT + "Animators/";
     public const string CAMERA = PROJECT + "Camera/";
-    public const string WINDOW = PROJECT + "Window/";
+    public const string UI = PROJECT + "UI/";
+    public const string WINDOWS = UI + "Window/";
+    public const string BUTTONS = UI + "Buttons/";
 
     public static class Names
     {
@@ -31,7 +33,6 @@
       public const string HERO_HEALTH_VIEW = VIEW + "Hero Health View";
       public const string IMMUNITY_DURATION_VIEW = VIEW + "Immunity Duration View";
       public const string KEY_VIEW = VIEW + "Key View";
-      public const string NOTHING_HAPPENS_VIEW = VIEW + "Nothing Happens View";
       public const string DOOR_VIEW = VIEW + "Door View";
       public const string HERO_HEALTH_SHARD_VIEW = VIEW + "Hero Health Shard View";
       public const string LEAF_VIEW = VIEW + "Leaf View";
@@ -89,7 +90,12 @@
       public const string AXIS_LOCKER = CAMERA + "Axis Locker";
       public const string VIRTUAL_CAMERA_VIEW = CAMERA + "Virtual Camera View";
       
-      public const string BASE_WINDOW_VIEW = WINDOW + "Window View";
+      public const string BASE_WINDOW_VIEW = WINDOWS + "Window";
+      public const string SIMPLE_WINDOW_VIEW = WINDOWS + "Simple Window View";
+      
+      public const string CLOSE_BUTTON_VIEW = BUTTONS + "Close Button View";
+      public const string MOVE_BUTTON_VIEW = BUTTONS + "Move Button View";
+      public const string SAVE_BUTTON_VIEW = BUTTONS + "Save Button View";
     }
   }
 }

@@ -1,21 +1,19 @@
 ﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 using Zenject;
 
-namespace LudensClub.GeoChaos.Runtime.Windows.NothingHappens
+namespace LudensClub.GeoChaos.Runtime.Windows.Simple
 {
-  public class NothingHappensPresenter : INothingHappensPresenter, IInitializable
+  public class SimpleWindowPresenter : ISimpleWindowPresenter, IInitializable
   {
     private readonly IGameplayPause _pause;
-    private readonly IWindowManager _windowManager;
-    private NothingHappensView _view;
+    private SimpleWindowView _view;
 
-    public WindowType Id => WindowType.NothingHappens;
+    public WindowType Id => _view.Id;
     public bool IsOpened { get; private set; }
 
-    public NothingHappensPresenter(IGameplayPause pause, IWindowManager windowManager, InitializableManager initializer)
+    public SimpleWindowPresenter(IGameplayPause pause, IWindowManager windowManager, InitializableManager initializer)
     {
       _pause = pause;
-      _windowManager = windowManager;
       windowManager.Add(this);
       initializer.Add(this);
     }
@@ -26,15 +24,9 @@ namespace LudensClub.GeoChaos.Runtime.Windows.NothingHappens
       IsOpened = false;
     }
 
-    public void SetView(NothingHappensView view)
+    public void SetView(SimpleWindowView view)
     {
       _view = view;
-    }
-
-    public void CloseItself()
-    {
-      if (IsOpened)
-        _windowManager.Close();
     }
 
     public void Open()
@@ -55,6 +47,6 @@ namespace LudensClub.GeoChaos.Runtime.Windows.NothingHappens
         _pause.SetPause(false);
         IsOpened = false;
       }
-    }
+    }    
   }
 }
