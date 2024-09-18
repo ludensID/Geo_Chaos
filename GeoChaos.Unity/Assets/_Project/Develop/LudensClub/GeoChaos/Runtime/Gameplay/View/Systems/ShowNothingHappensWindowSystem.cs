@@ -1,19 +1,19 @@
 ﻿using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow;
+using LudensClub.GeoChaos.Runtime.Windows;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.View
 {
   public class ShowNothingHappensWindowSystem : IEcsRunSystem
   {
-    private readonly INothingHappensPresenter _presenter;
+    private readonly IWindowManager _windowManager;
     private readonly EcsWorld _message;
     private readonly EcsEntities _nothingHappensMessages;
 
-    public ShowNothingHappensWindowSystem(MessageWorldWrapper messageWorldWrapper, INothingHappensPresenter presenter)
+    public ShowNothingHappensWindowSystem(MessageWorldWrapper messageWorldWrapper, IWindowManager windowManager)
     {
-      _presenter = presenter;
+      _windowManager = windowManager;
       _message = messageWorldWrapper.World;
 
       _nothingHappensMessages = _message
@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.View
     {
       if (_nothingHappensMessages.Any())
       {
-       _presenter.ShowWindow(); 
+        _windowManager.Open(WindowType.NothingHappens);
       }
     }
   }

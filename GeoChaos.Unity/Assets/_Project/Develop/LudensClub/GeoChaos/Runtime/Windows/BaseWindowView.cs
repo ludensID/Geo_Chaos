@@ -6,6 +6,5 @@ namespace LudensClub.GeoChaos.Runtime.Windows
   [SelectionBase]
   public class BaseWindowView : MonoBehaviour
   {
-    public WindowType Id;
   }
 }

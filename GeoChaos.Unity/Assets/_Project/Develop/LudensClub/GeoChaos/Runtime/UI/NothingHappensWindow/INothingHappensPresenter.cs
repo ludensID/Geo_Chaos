@@ -1,9 +1,10 @@
-﻿namespace LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow
+﻿using LudensClub.GeoChaos.Runtime.Windows;
+
+namespace LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow
 {
-  public interface INothingHappensPresenter
+  public interface INothingHappensPresenter : IWindowController
   {
     void SetView(NothingHappensView view);
-    void ShowWindow();
-    void CloseWindow();
+    void CloseItself();
   }
 }

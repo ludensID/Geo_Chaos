@@ -17,17 +17,17 @@ namespace LudensClub.GeoChaos.Runtime.Windows
       _hasWindowIdClosure = new SpecifiedClosure<IWindowController, WindowType>((ctrl, id) => ctrl.Id == id);
     }
 
-    public void AddWindow(IWindowController window)
+    public void Add(IWindowController window)
     {
       _windows.Add(window);
     }
 
-    public void OpenWindow(WindowType id)
+    public void Open(WindowType id)
     {
       OpenWindowInternal(id);
     }
 
-    public void OpenWindowAsNew(WindowType id)
+    public void OpenAsNew(WindowType id)
     {
       IWindowController window = FindWindowById(id);
       Current?.Close();
@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows
       _stack.Add(window);
     }
 
-    public void CloseWindow()
+    public void Close()
     {
       if (Current != null)
       {
@@ -46,12 +46,12 @@ namespace LudensClub.GeoChaos.Runtime.Windows
       }
     }
 
-    public void CloseWindow(WindowType id)
+    public void Close(WindowType id)
     {
       if (Current != null)
       {
         if(Current.Id == id)
-          CloseWindow();
+          Close();
         else
           _stack.Remove(FindWindowById(id));
       }

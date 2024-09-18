@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using LudensClub.GeoChaos.Runtime.Windows;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow
 {
   [AddComponentMenu(ACC.Names.NOTHING_HAPPENS_VIEW)]
-  public class NothingHappensView : MonoBehaviour
+  public class NothingHappensView : BaseWindowView
   {
     [SerializeField]
     private Button _button;
@@ -17,7 +18,17 @@ namespace LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow
     {
       _presenter = presenter;
       _presenter.SetView(this);
-      _button.onClick.AddListener(_presenter.CloseWindow);
+      _button.onClick.AddListener(OnButtonClicked);
+    }
+
+    private void OnDestroy()
+    {
+      _button.onClick.RemoveListener(OnButtonClicked);
+    }
+
+    private void OnButtonClicked()
+    {
+      _presenter.CloseItself();
     }
   }
 }
