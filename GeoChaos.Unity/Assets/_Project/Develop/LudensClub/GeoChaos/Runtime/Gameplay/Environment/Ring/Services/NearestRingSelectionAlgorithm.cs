@@ -1,11 +1,11 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring;
+﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring
 {
-  public class NearestTargetSelectionAlgorithm : ISelectionAlgorithm
+  public class NearestRingSelectionAlgorithm : ISelectionAlgorithm
   {
     private readonly EcsEntity _nearestTarget = new EcsEntity();
 
@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Core.Selection
       foreach (EcsEntity selection in marks)
       {
         Vector2 originPosition = origin.Get<ViewRef>().View.transform.position;
-        Vector2 selectionPosition = selection.Get<ViewRef>().View.transform.position;
+        Vector2 selectionPosition = selection.Get<RingPointsRef>().TargetPoint.transform.position;
         float distance = Vector2.Distance(selectionPosition, originPosition);
         if (distance < minDistance)
         {

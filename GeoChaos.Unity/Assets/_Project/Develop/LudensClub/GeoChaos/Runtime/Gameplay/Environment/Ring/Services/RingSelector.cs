@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Ring
         factory.Create<InRadiusSelectionAlgorithm>(_data),
         factory.Create<ReachedRingAlgorithm>(),
         factory.Create<InTargetViewSelectionAlgorithm>(_data),
-        factory.Create<NearestTargetSelectionAlgorithm>()
+        factory.Create<NearestRingSelectionAlgorithm>()
       });
 
       Update(); 
