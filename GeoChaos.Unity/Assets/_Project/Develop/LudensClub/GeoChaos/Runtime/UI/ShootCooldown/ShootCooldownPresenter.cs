@@ -14,7 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.UI
     private readonly EcsEntities _heroCooldowns;
     private ShootCooldownView _view;
 
-    public ShootCooldownPresenter(GameWorldWrapper gameWorldWrapper)
+    public ShootCooldownPresenter(GameWorldWrapper gameWorldWrapper, InitializableManager initializer, TickableManager ticker)
     {
       _game = gameWorldWrapper.World;
 
@@ -22,6 +22,9 @@ namespace LudensClub.GeoChaos.Runtime.UI
         .Filter<HeroTag>()
         .Inc<ShootCooldown>()
         .Collect();
+
+      initializer.Add(this);
+      ticker.Add(this);
     }
     
     public void Initialize()

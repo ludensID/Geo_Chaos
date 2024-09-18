@@ -325,14 +325,16 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindHeroHealthShardPresenter()
     {
       Container
-        .BindInterfacesTo<HeroHealthShardPresenter>()
+        .Bind<IHeroHealthShardPresenter>()
+        .To<HeroHealthShardPresenter>()
         .AsSingle();
     }
 
     private void BindNothingHappensPresenter()
     {
       Container
-        .BindInterfacesTo<NothingHappensPresenter>()
+        .Bind<INothingHappensPresenter>()
+        .To<NothingHappensPresenter>()
         .AsSingle();
     }
 
@@ -348,14 +350,16 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindImmunityDurationPresenter()
     {
       Container
-        .BindInterfacesTo<ImmunityDurationPresenter>()
+        .Bind<IImmunityDurationPresenter>()
+        .To<ImmunityDurationPresenter>()
         .AsSingle();
     }
 
     private void BindHeroHealthPresenter()
     {
       Container
-        .BindInterfacesTo<HeroHealthPresenter>()
+        .Bind<IHeroHealthPresenter>()
+        .To<HeroHealthPresenter>()
         .AsSingle();
     }
 
@@ -417,7 +421,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindShootCooldownPresenter()
     {
       Container
-        .BindInterfacesTo<ShootCooldownPresenter>()
+        .Bind<IShootCooldownPresenter>()
+        .To<ShootCooldownPresenter>()
         .AsSingle();
     }
 
@@ -531,7 +536,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindDashCooldownPresenter()
     {
       Container
-        .BindInterfacesTo<DashCooldownPresenter>()
+        .Bind<IDashCooldownPresenter>()
+        .To<DashCooldownPresenter>()
         .AsSingle();
     }
 

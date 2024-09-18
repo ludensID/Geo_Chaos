@@ -11,11 +11,15 @@ namespace LudensClub.GeoChaos.Runtime.UI.HeroHealthShard
     private readonly EcsEntities _heroes;
     private HeroHealthShardView _view;
 
-    public HeroHealthShardPresenter(GameWorldWrapper gameWorldWrapper)
+    public HeroHealthShardPresenter(GameWorldWrapper gameWorldWrapper, InitializableManager initializer,
+      TickableManager ticker)
     {
       _heroes = gameWorldWrapper.World
         .Filter<HeroTag>()
         .Collect();
+
+      initializer.Add(this);
+      ticker.Add(this);
     }
 
     public void Initialize()

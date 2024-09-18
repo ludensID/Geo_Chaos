@@ -15,7 +15,7 @@ namespace LudensClub.GeoChaos.Runtime.UI.ImmunityDuration
     private readonly EcsEntities _immuneHeroes;
     private ImmunityDurationView _view;
 
-    public ImmunityDurationPresenter(GameWorldWrapper gameWorldWrapper)
+    public ImmunityDurationPresenter(GameWorldWrapper gameWorldWrapper, InitializableManager initializer, TickableManager ticker)
     {
       _game = gameWorldWrapper.World;
 
@@ -23,6 +23,9 @@ namespace LudensClub.GeoChaos.Runtime.UI.ImmunityDuration
         .Filter<HeroTag>()
         .Inc<Immune>()
         .Collect();
+
+      initializer.Add(this);
+      ticker.Add(this);
     }
 
     public void Initialize()
