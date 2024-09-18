@@ -28,6 +28,7 @@ using LudensClub.GeoChaos.Runtime.UI.HeroHealth;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealthShard;
 using LudensClub.GeoChaos.Runtime.UI.ImmunityDuration;
 using LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow;
+using LudensClub.GeoChaos.Runtime.Windows;
 using UnityEngine;
 using Zenject;
 
@@ -45,6 +46,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindGameplayPause();
       BindInitializingPhase();
+      BindWindowManager();
 
       BindViewFactory();
 
@@ -126,6 +128,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindWindowManager()
+    {
+      Container
+        .Bind<IWindowManager>()
+        .To<WindowManager>()
+        .AsSingle();
     }
 
     private void BindVerticalOffsetInterpolator()

@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
+
+namespace LudensClub.GeoChaos.Runtime.Windows
+{
+  public class WindowManager : IWindowManager
+  {
+    private readonly List<IWindowController> _windows = new List<IWindowController>();
+    private readonly List<IWindowController> _stack = new List<IWindowController>();
+    private readonly SpecifiedClosure<IWindowController, WindowType> _hasWindowIdClosure;
+
+    public IWindowController Current => _stack.Count > 0 ? _stack[^1] : null;
+
+    public WindowManager()
+    {
+      _hasWindowIdClosure = new SpecifiedClosure<IWindowController, WindowType>((ctrl, id) => ctrl.Id == id);
+    }
+
+    public void AddWindow(IWindowController window)
+    {
+      _windows.Add(window);
+    }
+
+    public void OpenWindow(WindowType id)
+    {
+      OpenWindowInternal(id);
+    }
+
+    public void OpenWindowAsNew(WindowType id)
+    {
+      IWindowController window = FindWindowById(id);
+      Current?.Close();
+      _stack.Clear();
+      window.Open();
+      _stack.Add(window);
+    }
+
+    public void CloseWindow()
+    {
+      if (Current != null)
+      {
+        Current.Close();
+        _stack.Remove(Current);
+        Current?.Open();
+      }
+    }
+
+    public void CloseWindow(WindowType id)
+    {
+      if (Current != null)
+      {
+        if(Current.Id == id)
+          CloseWindow();
+        else
+          _stack.Remove(FindWindowById(id));
+      }
+    }
+
+    private IWindowController FindWindowById(WindowType id)
+    {
+      IWindowController window = _windows.Find(_hasWindowIdClosure.SpecifyPredicate(id));
+      if (window == null)
+        throw new ArgumentException($"There is no window with id {id}");
+      
+      return window;
+    }
+
+    private void OpenWindowInternal(WindowType id, bool addToStack = true)
+    {
+      IWindowController window = FindWindowById(id);
+
+      Current?.Close();
+      window.Open();
+
+      if (addToStack)
+        _stack.Add(window);
+    }
+  }
+}
