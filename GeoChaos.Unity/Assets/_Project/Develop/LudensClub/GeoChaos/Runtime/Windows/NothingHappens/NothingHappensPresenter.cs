@@ -1,8 +1,7 @@
 ﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Windows;
 using Zenject;
 
-namespace LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow
+namespace LudensClub.GeoChaos.Runtime.Windows.NothingHappens
 {
   public class NothingHappensPresenter : INothingHappensPresenter, IInitializable
   {

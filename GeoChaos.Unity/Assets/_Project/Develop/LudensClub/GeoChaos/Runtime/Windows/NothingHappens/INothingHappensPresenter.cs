@@ -1,6 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Windows;
-
-namespace LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow
+﻿namespace LudensClub.GeoChaos.Runtime.Windows.NothingHappens
 {
   public interface INothingHappensPresenter : IWindowController
   {

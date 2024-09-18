@@ -1,9 +1,8 @@
-﻿using LudensClub.GeoChaos.Runtime.Windows;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow
+namespace LudensClub.GeoChaos.Runtime.Windows.NothingHappens
 {
   [AddComponentMenu(ACC.Names.NOTHING_HAPPENS_VIEW)]
   public class NothingHappensView : BaseWindowView

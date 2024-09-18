@@ -27,8 +27,8 @@ using LudensClub.GeoChaos.Runtime.UI;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealth;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealthShard;
 using LudensClub.GeoChaos.Runtime.UI.ImmunityDuration;
-using LudensClub.GeoChaos.Runtime.UI.NothingHappensWindow;
 using LudensClub.GeoChaos.Runtime.Windows;
+using LudensClub.GeoChaos.Runtime.Windows.NothingHappens;
 using UnityEngine;
 using Zenject;
 
