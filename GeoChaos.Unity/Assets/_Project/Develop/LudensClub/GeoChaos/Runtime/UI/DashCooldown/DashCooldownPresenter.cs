@@ -14,9 +14,7 @@ namespace LudensClub.GeoChaos.Runtime.UI
     private readonly EcsEntities _heroCooldowns;
     private DashCooldownView _view;
 
-    public DashCooldownPresenter(GameWorldWrapper gameWorldWrapper,
-      InitializableManager initializer,
-      TickableManager ticker)
+    public DashCooldownPresenter(GameWorldWrapper gameWorldWrapper, IExplicitInitializer initializer)
     {
       _game = gameWorldWrapper.World;
 
@@ -26,7 +24,6 @@ namespace LudensClub.GeoChaos.Runtime.UI
         .Collect();
 
       initializer.Add(this);
-      ticker.Add(this);
     }
 
     public void Initialize()

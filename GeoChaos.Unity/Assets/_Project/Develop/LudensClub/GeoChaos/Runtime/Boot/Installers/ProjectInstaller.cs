@@ -1,6 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Infrastructure.Converters;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -27,9 +26,19 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindTimerFactory();
       BindCoroutineRunner();
 
+      BindExplicitInitializer();
+
 #if UNITY_EDITOR
       DebugBridge.InstallProject(Container);
 #endif
+    }
+
+    private void BindExplicitInitializer()
+    {
+      Container
+        .Bind<IExplicitInitializer>()
+        .To<ExplicitInitializer>()
+        .AsSingle();
     }
 
     private void BindInputSwitcher()

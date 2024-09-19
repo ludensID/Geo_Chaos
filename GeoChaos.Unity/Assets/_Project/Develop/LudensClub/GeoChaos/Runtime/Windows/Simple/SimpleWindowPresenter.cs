@@ -11,7 +11,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Simple
     public WindowType Id => _view.Id;
     public bool IsOpened { get; private set; }
 
-    public SimpleWindowPresenter(IGameplayPause pause, IWindowManager windowManager, InitializableManager initializer)
+    public SimpleWindowPresenter(IGameplayPause pause, IWindowManager windowManager, IExplicitInitializer initializer)
     {
       _pause = pause;
       windowManager.Add(this);
