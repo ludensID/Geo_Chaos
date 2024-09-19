@@ -156,7 +156,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Horizontal Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -167,7 +167,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Horizontal Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -178,7 +178,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Gamepad>/leftStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Horizontal Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -189,7 +189,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -200,7 +200,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -211,7 +211,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -222,7 +222,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -233,7 +233,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -244,7 +244,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -255,7 +255,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Hook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -266,7 +266,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Hook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -288,7 +288,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Vertical Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -299,7 +299,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Vertical Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -310,7 +310,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Gamepad>/leftStick/y"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Vertical Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -321,7 +321,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -343,7 +343,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -354,7 +354,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -365,7 +365,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Aim Direction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -376,7 +376,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Aim Position"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -387,7 +387,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Aim Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -398,7 +398,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -406,18 +406,324 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                 {
                     ""name"": """",
                     ""id"": ""ee72737f-9ac9-4333-aeb2-5f416cad81c1"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""6c3c5c88-d356-4759-bd63-918541a0ece3"",
+            ""actions"": [
+                {
+                    ""name"": ""Navigate"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""ea4b8591-6849-446b-b811-0ba6683cf1e5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Submit"",
+                    ""type"": ""Button"",
+                    ""id"": ""d29782c0-2b8d-4bad-a942-d74fcd4f5d7e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""307ec399-9b3c-4717-aa33-6ce91b312b9a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Point"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d517b40d-ef83-421e-b12b-4091a64284ac"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""f949cd28-087b-466d-b596-84223e815626"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ScrollWheel"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""982dae9b-2d22-44d6-a945-2944115828e2"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MiddleClick"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""b67802ca-7813-4a8e-bbe8-fa4c60687091"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightClick"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""e07de09c-a49d-4600-9e65-30f1c98d535a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""0617c4a8-ab59-438a-9229-3c70b98c50ad"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Interact"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""00a31e60-971d-4fcf-a625-e14bc7b88e61"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""e8753610-9764-4452-bcb2-84507a0800a4"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e58ca905-4035-47c0-b418-417591cd4fc7"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""39a4d3df-3c73-4fc5-a324-88979c651864"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""2f6b3b49-cb90-46d0-931d-92117ca45581"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""fe06ee82-5bae-40aa-80c2-3aa7de6b66e9"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""33cb027b-13db-4e4a-a4d2-5f9dc2bcb5af"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ca6a3dc1-4dde-424a-b358-65ab79d40d5a"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""de3d7a90-8b82-4a1b-9306-d14fb433e623"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08a7e6a7-e41e-4ad6-914c-e28ee6e3c73d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4dbf6c46-fe8b-4fd6-9235-49148414bd2b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d1428fb-eb83-4390-816e-a3b8bd43c5f1"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3681f168-ce65-44dc-807d-ebb07bb40c64"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Point"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4fbc511-aa5b-4b7f-921f-869e0d9c4e91"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a224e71-37b3-44f5-888f-45c203b44e5d"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""ScrollWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18fed741-ecea-4c98-8a4e-9e75f1c9708c"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""MiddleClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3283cadf-6d0f-4d0b-93dd-7d3b7557946d"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Keyboard & Mouse"",
+            ""bindingGroup"": ""Keyboard & Mouse"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Gamepad"",
+            ""bindingGroup"": ""Gamepad"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
             // Gameplay
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
@@ -433,6 +739,16 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
             m_Gameplay_AimPosition = m_Gameplay.FindAction("Aim Position", throwIfNotFound: true);
             m_Gameplay_AimRotation = m_Gameplay.FindAction("Aim Rotation", throwIfNotFound: true);
             m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+            // UI
+            m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+            m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
+            m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
+            m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
+            m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
+            m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
+            m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
+            m_UI_MiddleClick = m_UI.FindAction("MiddleClick", throwIfNotFound: true);
+            m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -624,6 +940,126 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
             }
         }
         public GameplayActions @Gameplay => new GameplayActions(this);
+
+        // UI
+        private readonly InputActionMap m_UI;
+        private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+        private readonly InputAction m_UI_Navigate;
+        private readonly InputAction m_UI_Submit;
+        private readonly InputAction m_UI_Cancel;
+        private readonly InputAction m_UI_Point;
+        private readonly InputAction m_UI_Click;
+        private readonly InputAction m_UI_ScrollWheel;
+        private readonly InputAction m_UI_MiddleClick;
+        private readonly InputAction m_UI_RightClick;
+        public struct UIActions
+        {
+            private @InputConfig m_Wrapper;
+            public UIActions(@InputConfig wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
+            public InputAction @Submit => m_Wrapper.m_UI_Submit;
+            public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
+            public InputAction @Point => m_Wrapper.m_UI_Point;
+            public InputAction @Click => m_Wrapper.m_UI_Click;
+            public InputAction @ScrollWheel => m_Wrapper.m_UI_ScrollWheel;
+            public InputAction @MiddleClick => m_Wrapper.m_UI_MiddleClick;
+            public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
+            public InputActionMap Get() { return m_Wrapper.m_UI; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+            public void AddCallbacks(IUIActions instance)
+            {
+                if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+                @Navigate.started += instance.OnNavigate;
+                @Navigate.performed += instance.OnNavigate;
+                @Navigate.canceled += instance.OnNavigate;
+                @Submit.started += instance.OnSubmit;
+                @Submit.performed += instance.OnSubmit;
+                @Submit.canceled += instance.OnSubmit;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+                @Point.started += instance.OnPoint;
+                @Point.performed += instance.OnPoint;
+                @Point.canceled += instance.OnPoint;
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
+                @ScrollWheel.started += instance.OnScrollWheel;
+                @ScrollWheel.performed += instance.OnScrollWheel;
+                @ScrollWheel.canceled += instance.OnScrollWheel;
+                @MiddleClick.started += instance.OnMiddleClick;
+                @MiddleClick.performed += instance.OnMiddleClick;
+                @MiddleClick.canceled += instance.OnMiddleClick;
+                @RightClick.started += instance.OnRightClick;
+                @RightClick.performed += instance.OnRightClick;
+                @RightClick.canceled += instance.OnRightClick;
+            }
+
+            private void UnregisterCallbacks(IUIActions instance)
+            {
+                @Navigate.started -= instance.OnNavigate;
+                @Navigate.performed -= instance.OnNavigate;
+                @Navigate.canceled -= instance.OnNavigate;
+                @Submit.started -= instance.OnSubmit;
+                @Submit.performed -= instance.OnSubmit;
+                @Submit.canceled -= instance.OnSubmit;
+                @Cancel.started -= instance.OnCancel;
+                @Cancel.performed -= instance.OnCancel;
+                @Cancel.canceled -= instance.OnCancel;
+                @Point.started -= instance.OnPoint;
+                @Point.performed -= instance.OnPoint;
+                @Point.canceled -= instance.OnPoint;
+                @Click.started -= instance.OnClick;
+                @Click.performed -= instance.OnClick;
+                @Click.canceled -= instance.OnClick;
+                @ScrollWheel.started -= instance.OnScrollWheel;
+                @ScrollWheel.performed -= instance.OnScrollWheel;
+                @ScrollWheel.canceled -= instance.OnScrollWheel;
+                @MiddleClick.started -= instance.OnMiddleClick;
+                @MiddleClick.performed -= instance.OnMiddleClick;
+                @MiddleClick.canceled -= instance.OnMiddleClick;
+                @RightClick.started -= instance.OnRightClick;
+                @RightClick.performed -= instance.OnRightClick;
+                @RightClick.canceled -= instance.OnRightClick;
+            }
+
+            public void RemoveCallbacks(IUIActions instance)
+            {
+                if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IUIActions instance)
+            {
+                foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public UIActions @UI => new UIActions(this);
+        private int m_KeyboardMouseSchemeIndex = -1;
+        public InputControlScheme KeyboardMouseScheme
+        {
+            get
+            {
+                if (m_KeyboardMouseSchemeIndex == -1) m_KeyboardMouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard & Mouse");
+                return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
+            }
+        }
+        private int m_GamepadSchemeIndex = -1;
+        public InputControlScheme GamepadScheme
+        {
+            get
+            {
+                if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+                return asset.controlSchemes[m_GamepadSchemeIndex];
+            }
+        }
         public interface IGameplayActions
         {
             void OnHorizontalMovement(InputAction.CallbackContext context);
@@ -638,6 +1074,17 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
             void OnAimPosition(InputAction.CallbackContext context);
             void OnAimRotation(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
+        }
+        public interface IUIActions
+        {
+            void OnNavigate(InputAction.CallbackContext context);
+            void OnSubmit(InputAction.CallbackContext context);
+            void OnCancel(InputAction.CallbackContext context);
+            void OnPoint(InputAction.CallbackContext context);
+            void OnClick(InputAction.CallbackContext context);
+            void OnScrollWheel(InputAction.CallbackContext context);
+            void OnMiddleClick(InputAction.CallbackContext context);
+            void OnRightClick(InputAction.CallbackContext context);
         }
     }
 }

@@ -13,6 +13,21 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u0418\u0433\u0440\u0430 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0430!"
       objectReference: {fileID: 0}
+    - target: {fileID: 2123994040641816286, guid: 5faa743febdfd40498234fc1a9a0b7ed,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123994040641816286, guid: 5faa743febdfd40498234fc1a9a0b7ed,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.30588236
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123994040641816286, guid: 5faa743febdfd40498234fc1a9a0b7ed,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.22352941
+      objectReference: {fileID: 0}
     - target: {fileID: 3617323294139243167, guid: 5faa743febdfd40498234fc1a9a0b7ed,
         type: 3}
       propertyPath: m_Pivot.x
@@ -118,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 5700692048036988889, guid: 5faa743febdfd40498234fc1a9a0b7ed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -127,6 +147,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3986670464849472799}
   m_SourcePrefab: {fileID: 100100000, guid: 5faa743febdfd40498234fc1a9a0b7ed, type: 3}
+--- !u!224 &472080637992347233 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2450637197613436052, guid: 5faa743febdfd40498234fc1a9a0b7ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 2634398364514659061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7751731162663857452 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5700692048036988889, guid: 5faa743febdfd40498234fc1a9a0b7ed,
@@ -146,3 +172,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 101
+  FirstNavigationElement: {fileID: 472080637992347233}

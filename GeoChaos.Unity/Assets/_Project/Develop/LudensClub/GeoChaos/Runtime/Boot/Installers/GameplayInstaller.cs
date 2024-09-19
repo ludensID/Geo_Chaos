@@ -30,6 +30,7 @@ using LudensClub.GeoChaos.Runtime.UI.ImmunityDuration;
 using LudensClub.GeoChaos.Runtime.Windows;
 using LudensClub.GeoChaos.Runtime.Windows.Simple;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Boot
@@ -43,6 +44,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     public override void InstallBindings()
     {
       BindCoroutineRunner();
+
+      BindEventSystem();
 
       BindGameplayPause();
       BindInitializingPhase();
@@ -128,6 +131,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindEventSystem()
+    {
+      var eventSystem = FindAnyObjectByType<EventSystem>();
+      Container
+        .BindInstance(eventSystem)
+        .AsSingle();
     }
 
     private void BindSimpleWindowPresenter()
