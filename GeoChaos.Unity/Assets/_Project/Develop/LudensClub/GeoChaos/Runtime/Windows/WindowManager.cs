@@ -36,6 +36,12 @@ namespace LudensClub.GeoChaos.Runtime.Windows
       _stack.Add(window);
     }
 
+    public void CloseAll()
+    {
+      while (Current != null)
+        Close();
+    }
+
     public void Close()
     {
       if (Current != null)

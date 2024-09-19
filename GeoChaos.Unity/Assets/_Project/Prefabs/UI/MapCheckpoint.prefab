@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8083409904837721580}
   - component: {fileID: 3323459923338736339}
   - component: {fileID: 895407681198827384}
+  - component: {fileID: 8101370093541287238}
   m_Layer: 5
   m_Name: MapCheckpoint
   m_TagString: Untagged
@@ -120,3 +121,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8101370093541287238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6585269274822905803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85bf1e0c7e8f4e489be64067486c7627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Checkpoint: {fileID: 0}
+  _button: {fileID: 895407681198827384}

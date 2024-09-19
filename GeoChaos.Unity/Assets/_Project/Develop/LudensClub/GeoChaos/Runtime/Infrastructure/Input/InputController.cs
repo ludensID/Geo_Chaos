@@ -16,6 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       _input = input;
       _data = data;
       _input.actions = _config.asset;
+      _config.UI.Enable();
     }
 
     public void Tick()
@@ -34,6 +35,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       _data.AimPosition = _config.Gameplay.AimPosition.ReadValue<Vector2>();
       _data.AimRotation = _config.Gameplay.AimRotation.ReadValue<Vector2>();
       _data.IsInteraction = _config.Gameplay.Interact.WasPerformedThisFrame();
+      
+      _data.Cancel = _config.UI.Cancel.WasPerformedThisFrame();
     }
 
     public void Clear()

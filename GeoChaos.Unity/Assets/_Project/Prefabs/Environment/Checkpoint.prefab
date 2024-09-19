@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1031412624513437047}
   - component: {fileID: -2034718400050656920}
   - component: {fileID: 5654884638227051716}
-  - component: {fileID: 2520448629462957226}
+  - component: {fileID: 2112413679797891735}
   - component: {fileID: 4615566783938791313}
   - component: {fileID: 4207639733023549291}
   m_Layer: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
---- !u!114 &2520448629462957226
+--- !u!114 &2112413679797891735
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3903830235170051256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a14799b18fe844ffa08fe1482bd17b36, type: 3}
+  m_Script: {fileID: 11500000, guid: 137c8602c8fd4367b859b9ceb9a3de17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Converter: {fileID: 0}
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6412848474748d3a83f2337726299a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  View: {fileID: 2520448629462957226}
+  View: {fileID: 2112413679797891735}
 --- !u!114 &4207639733023549291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colliderType: 101
-  _view: {fileID: 2520448629462957226}
+  _view: {fileID: 2112413679797891735}
   _collider: {fileID: 3932421727828513139}
   WhenEnter: 1
   WhenStay: 0

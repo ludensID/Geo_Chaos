@@ -36,6 +36,7 @@
       public const string DOOR_VIEW = VIEW + "Door View";
       public const string HERO_HEALTH_SHARD_VIEW = VIEW + "Hero Health Shard View";
       public const string LEAF_VIEW = VIEW + "Leaf View";
+      public const string CHECKPOINT_VIEW = VIEW + "Checkpoint View";
 
       public const string GAMEPLAY_INSTALLER = BOOT + "Gameplay Installer";
       public const string PROJECT_INSTALLER = BOOT + "Project Installer";
@@ -90,12 +91,14 @@
       public const string AXIS_LOCKER = CAMERA + "Axis Locker";
       public const string VIRTUAL_CAMERA_VIEW = CAMERA + "Virtual Camera View";
       
-      public const string BASE_WINDOW_VIEW = WINDOWS + "Window";
+      public const string BASE_WINDOW_VIEW = WINDOWS + "Window View";
       public const string SIMPLE_WINDOW_VIEW = WINDOWS + "Simple Window View";
-      
+      public const string MAP_WINDOW_VIEW = WINDOWS + "Map Window View";
+
       public const string CLOSE_BUTTON_VIEW = BUTTONS + "Close Button View";
       public const string MOVE_BUTTON_VIEW = BUTTONS + "Move Button View";
       public const string SAVE_BUTTON_VIEW = BUTTONS + "Save Button View";
+      public const string MAP_CHECKPOINT_BUTTON_VIEW = BUTTONS + "Map Checkpoint Button View";
     }
   }
 }

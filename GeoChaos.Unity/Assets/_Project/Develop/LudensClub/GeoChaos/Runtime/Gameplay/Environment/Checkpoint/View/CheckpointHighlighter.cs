@@ -4,7 +4,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 using Zenject;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Checkpoint.View
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Checkpoint
 {
   [AddComponentMenu(ACC.Names.CHECKPOINT_HIGHLIGHTER)]
   public class CheckpointHighlighter : MonoBehaviour

@@ -9,6 +9,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.LeafySpirit.Detection;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Shroom;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies.Zombie;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment.GasCloud;
@@ -28,9 +29,9 @@ using LudensClub.GeoChaos.Runtime.UI.HeroHealth;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealthShard;
 using LudensClub.GeoChaos.Runtime.UI.ImmunityDuration;
 using LudensClub.GeoChaos.Runtime.Windows;
+using LudensClub.GeoChaos.Runtime.Windows.Map;
 using LudensClub.GeoChaos.Runtime.Windows.Simple;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Boot
@@ -45,11 +46,10 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     {
       BindCoroutineRunner();
 
-      BindEventSystem();
-
       BindGameplayPause();
       BindInitializingPhase();
       BindWindowManager();
+      BindWindowCloser();
 
       BindViewFactory();
 
@@ -106,6 +106,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindFreeFallService();
 
       BindHeroBinder();
+      BindHeroTransporter();
 
 #if UNITY_EDITOR
       DebugBridge.InstallGameplay(Container);
@@ -124,6 +125,10 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindSimpleWindowPresenter();
 
+      BindMapModel();
+      BindMapCheckpointButtonPresenter();
+      BindMapWindowPresenter();
+
       BindDashCooldownPresenter();
       BindShootCooldownPresenter();
       BindHeroHealthPresenter();
@@ -133,13 +138,44 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       Container.DefaultParent = new GameObject("Runtime").transform;
     }
 
-    private void BindEventSystem()
+    private void BindWindowCloser()
     {
-      var eventSystem = FindAnyObjectByType<EventSystem>();
       Container
-        .BindInstance(eventSystem)
+        .BindInterfacesTo<WindowCloser>()
         .AsSingle();
     }
+
+    private void BindMapModel()
+    {
+      Container
+        .Bind<MapModel>()
+        .AsSingle();
+    }
+
+    private void BindMapWindowPresenter()
+    {
+      Container
+        .Bind<IMapWindowPresenter>()
+        .To<MapWindowPresenter>()
+        .AsSingle();
+    }
+
+    private void BindMapCheckpointButtonPresenter()
+    {
+      Container
+        .Bind<IMapCheckpointButtonPresenter>()
+        .To<MapCheckpointButtonPresenter>()
+        .AsTransient();
+    }
+
+    private void BindHeroTransporter()
+    {
+      Container
+        .BindInterfacesAndSelfTo<HeroTransporter>()
+        .AsSingle();
+    }
+
+    
 
     private void BindSimpleWindowPresenter()
     {

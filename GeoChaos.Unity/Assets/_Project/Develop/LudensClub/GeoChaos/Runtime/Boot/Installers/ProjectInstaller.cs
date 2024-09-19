@@ -1,6 +1,7 @@
 ﻿using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Zenject;
 
@@ -15,6 +16,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     [SerializeField]
     private PlayerInput _input;
 
+    [SerializeField]
+    private EventSystem _eventSystem;
+
     public override void InstallBindings()
     {
       BindConfigProvider();
@@ -26,11 +30,20 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindTimerFactory();
       BindCoroutineRunner();
 
+      BindEventSystem();
+
       BindExplicitInitializer();
 
 #if UNITY_EDITOR
       DebugBridge.InstallProject(Container);
 #endif
+    }
+
+    private void BindEventSystem()
+    {
+      Container
+        .BindInstance(_eventSystem)
+        .AsSingle();
     }
 
     private void BindExplicitInitializer()

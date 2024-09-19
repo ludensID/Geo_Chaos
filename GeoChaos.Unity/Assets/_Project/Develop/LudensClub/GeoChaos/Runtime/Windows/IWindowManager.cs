@@ -8,5 +8,6 @@
     void OpenAsNew(WindowType id);
     void Close();
     void Close(WindowType id);
+    void CloseAll();
   }
 }

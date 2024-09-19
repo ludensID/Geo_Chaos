@@ -24,7 +24,7 @@ MonoBehaviour:
       - Value:
           rid: 3599071298436726877
       - Value:
-          rid: 3599071298436727564
+          rid: 3599071434780180577
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
@@ -43,6 +43,7 @@ MonoBehaviour:
       type: {class: Closed, ns: LudensClub.GeoChaos.Runtime.Gameplay.Environment,
         asm: GeoChaos.Runtime}
       data: 
-    - rid: 3599071298436727564
-      type: {class: Interactable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
+    - rid: 3599071434780180577
+      type: {class: Interactable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Interaction,
+        asm: GeoChaos.Runtime}
       data: 

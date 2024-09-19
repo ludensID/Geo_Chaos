@@ -24,13 +24,14 @@ MonoBehaviour:
     _components:
       Components:
       - Value:
-          rid: 674097803314594365
+          rid: 3599071434780180578
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 674097803314594365
-      type: {class: Interactable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Core, asm: GeoChaos.Runtime}
+    - rid: 3599071434780180578
+      type: {class: Interactable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Interaction,
+        asm: GeoChaos.Runtime}
       data: 
