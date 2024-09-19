@@ -20,7 +20,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindConfigProvider();
       BindInputConfig();
       BindInputDataProvider();
-      BindInputSwitcher();  
+      BindInputSwitcher();
       BindInputController();
       BindTimerService();
       BindTimerFactory();
@@ -38,7 +38,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       Container
         .Bind<IExplicitInitializer>()
         .To<ExplicitInitializer>()
-        .AsSingle();
+        .AsSingle()
+        .CopyIntoAllSubContainers();
     }
 
     private void BindInputSwitcher()
