@@ -81,6 +81,9 @@
       
       public const string CAMERA_MENU = CONFIG_MENU + "Camera";
       public const string CAMERA_FILE = "CameraConfig";
+      
+      public const string PERSISTENCE_CONFIG_MENU = CONFIG_MENU + "Persistence";
+      public const string PERSISTENCE_CONFIG_FILE = "PersistenceConfig";
     }
   }
 }

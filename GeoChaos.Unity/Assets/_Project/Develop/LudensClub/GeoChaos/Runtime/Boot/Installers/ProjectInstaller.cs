@@ -1,5 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Persistence;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -21,6 +22,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
     public override void InstallBindings()
     {
+      BindEventSystem();
+      BindExplicitInitializer();
       BindConfigProvider();
       BindInputConfig();
       BindInputDataProvider();
@@ -29,14 +32,64 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindTimerService();
       BindTimerFactory();
       BindCoroutineRunner();
-
-      BindEventSystem();
-
-      BindExplicitInitializer();
+      BindPathHandler();
+      BindFileHandler();
+      
+      BindPersistenceProvider();
+      BindGameDataLoader();
+      BindGamePersistenceProcessor();
+      BindPersistenceService();
 
 #if UNITY_EDITOR
       DebugBridge.InstallProject(Container);
 #endif
+    }
+
+    private void BindPersistenceService()
+    {
+      Container
+        .Bind<IPersistenceService>()
+        .To<PersistenceService>()
+        .AsSingle();
+    }
+
+    private void BindGamePersistenceProcessor()
+    {
+      Container
+        .BindInterfacesTo<GamePersistenceProcessor>()
+        .AsSingle();
+    }
+
+    private void BindGameDataLoader()
+    {
+      Container
+        .Bind<IGameDataLoader>()
+        .To<GameDataLoader>()
+        .AsSingle();
+    }
+
+    private void BindFileHandler()
+    {
+      Container
+        .Bind<IFileHandler>()
+        .To<FileHandler>()
+        .AsSingle();
+    }
+
+    private void BindPathHandler()
+    {
+      Container
+        .Bind<IPathHandler>()
+        .To<PathHandler>()
+        .AsSingle();
+    }
+
+    private void BindPersistenceProvider()
+    {
+      Container
+        .Bind<IGameDataProvider>()
+        .To<GameDataProvider>()
+        .AsSingle();
     }
 
     private void BindEventSystem()
