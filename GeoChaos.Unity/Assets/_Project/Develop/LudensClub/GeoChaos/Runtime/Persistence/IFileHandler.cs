@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 
 namespace LudensClub.GeoChaos.Runtime.Persistence
 {
   public interface IFileHandler
   {
-    Task<TData> LoadAsync<TData>(string filePath) where TData : class;
-    Task SaveAsync<TData>(string filePath, TData data) where TData : class;
+    UniTask<TData> LoadAsync<TData>(string filePath) where TData : class;
+    UniTask SaveAsync<TData>(string filePath, TData data) where TData : class;
   }
 }

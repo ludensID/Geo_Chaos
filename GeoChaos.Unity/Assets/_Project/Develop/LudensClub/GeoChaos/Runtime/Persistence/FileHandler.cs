@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
 {
   public class FileHandler : IFileHandler
   {
-    public async Task<TData> LoadAsync<TData>(string filePath) where TData : class
+    public async UniTask<TData> LoadAsync<TData>(string filePath) where TData : class
     {
       try
       {
@@ -24,7 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
       }
     }
 
-    public async Task SaveAsync<TData>(string filePath, TData data) where TData : class
+    public async UniTask SaveAsync<TData>(string filePath, TData data) where TData : class
     {
       try
       {

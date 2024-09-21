@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 
 namespace LudensClub.GeoChaos.Runtime.Persistence
 {
@@ -21,9 +21,16 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
       _loader = loader;
     }
 
-    public async Task LoadAsync()
+    public async UniTask LoadAsync()
     {
       await _loader.LoadAsync();
+      Data ??= new GameData();
+    }
+
+    public GameData GetDirtyData()
+    {
+      _processor.SetDirty();
+      return Data;
     }
 
     public void Save()

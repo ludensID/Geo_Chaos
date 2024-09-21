@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 
 namespace LudensClub.GeoChaos.Runtime.Persistence
 {
   public interface IGameDataLoader
   {
-    Task LoadAsync();
-    Task SaveAsync();
+    UniTask LoadAsync();
+    UniTask SaveAsync();
   }
 }
