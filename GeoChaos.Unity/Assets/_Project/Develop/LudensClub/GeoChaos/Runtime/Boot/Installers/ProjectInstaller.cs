@@ -1,5 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine;
 using LudensClub.GeoChaos.Runtime.Persistence;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -22,6 +23,11 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
     public override void InstallBindings()
     {
+      BindProjectInitializer();
+        
+      BindStateFactory();
+      BindGameStateMachine();
+        
       BindEventSystem();
       BindExplicitInitializer();
       BindConfigProvider();
@@ -43,6 +49,29 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 #if UNITY_EDITOR
       DebugBridge.InstallProject(Container);
 #endif
+    }
+
+    private void BindProjectInitializer()
+    {
+      Container
+        .Bind<IInitializable>()
+        .To<ProjectInitializer>()
+        .AsSingle();
+    }
+
+    private void BindGameStateMachine()
+    {
+      Container
+        .Bind<GameStateMachine.GameStateMachine>()
+        .AsSingle();
+    }
+
+    private void BindStateFactory()
+    {
+      Container
+        .Bind<IStateFactory>()
+        .To<StateFactory>()
+        .AsSingle();
     }
 
     private void BindPersistenceService()
