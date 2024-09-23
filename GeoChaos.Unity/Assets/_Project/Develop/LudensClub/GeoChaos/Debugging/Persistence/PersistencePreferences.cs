@@ -24,11 +24,5 @@ namespace LudensClub.GeoChaos.Debugging.Persistence
     {
       PersistenceFunctions.OpenPersistenceFolder();
     }
-
-    [Button(ButtonSizes.Medium, MIC.Names.OPEN_PERSISTENCE_WINDOW)]
-    public void OpenPersistenceWindow()
-    {
-      PersistenceFunctions.OpenPersistenceWindow();
-    }
   }
 }
