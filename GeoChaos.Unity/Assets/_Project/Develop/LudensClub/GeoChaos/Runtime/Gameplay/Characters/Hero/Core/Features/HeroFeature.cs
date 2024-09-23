@@ -21,10 +21,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
     public HeroFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<HeroInitializingFeature>());
+      Add(systems.Create<LoadHeroSystem>());
+
       Add(systems.Create<HeroBumpFeature>());
 
       Add(systems.Create<ReadViewDirectionInputSystem>());
-      
+
       Add(systems.Create<HeroMovingFeature>());
       Add(systems.Create<HeroGlideFeature>());
       Add(systems.Create<HeroJumpFeature>());
@@ -34,13 +36,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
       Add(systems.Create<HeroAimFeature>());
       Add(systems.Create<HeroShootFeature>());
       Add(systems.Create<HeroInteractionFeature>());
-      
+
       Add(systems.Create<HeroImmunityFeature>());
-      
+
       Add(systems.Create<HeroHealthShardFeature>());
-      
+
       Add(systems.Create<SetHeroBodyDirectionSystem>());
-      
     }
   }
 }
