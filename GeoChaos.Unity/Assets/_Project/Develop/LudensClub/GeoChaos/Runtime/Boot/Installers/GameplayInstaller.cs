@@ -29,6 +29,7 @@ using LudensClub.GeoChaos.Runtime.UI.HeroHealth;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealthShard;
 using LudensClub.GeoChaos.Runtime.UI.ImmunityDuration;
 using LudensClub.GeoChaos.Runtime.Windows;
+using LudensClub.GeoChaos.Runtime.Windows.Checkpoint;
 using LudensClub.GeoChaos.Runtime.Windows.Map;
 using LudensClub.GeoChaos.Runtime.Windows.Simple;
 using UnityEngine;
@@ -125,6 +126,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindSimpleWindowPresenter();
 
+      BindSaveButtonPresenter();
       BindMapModel();
       BindMapCheckpointButtonPresenter();
       BindMapWindowPresenter();
@@ -136,6 +138,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindSaveButtonPresenter()
+    {
+      Container
+        .Bind<ISaveButtonPresenter>()
+        .To<SaveButtonPresenter>()
+        .AsSingle();
     }
 
     private void BindWindowCloser()

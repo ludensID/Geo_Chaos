@@ -12,6 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
     private readonly PersistenceConfig _config;
     private bool _isDirty;
     private Timer _saveDelay = 0;
+    private bool _isSaving;
 
     public GamePersistenceProcessor(IGameDataLoader loader, ITimerFactory timers, IConfigProvider configProvider)
     {
@@ -28,20 +29,25 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
 
     public void Tick()
     {
-      if (_saveDelay <= 0)
+      if (_saveDelay <= 0 && !_isSaving && _isDirty)
       {
-        if (_isDirty)
-        {
-          _isDirty = false;
-          SaveExplicitAsync().Forget();
-        }
+        SaveExplicitAsync().Forget();
       }
+    }
+
+    public async UniTask SaveDirectAsync()
+    {
+      await UniTask.WaitWhile(() => _isSaving);
+      await SaveExplicitAsync();
     }
 
     private async UniTask SaveExplicitAsync()
     {
+      _isSaving = true;
+      _isDirty = false;
       await _loader.SaveAsync();
       _saveDelay = _timers.Create(_config.SaveInterval);
+      _isSaving = false;
     }
   }
 }

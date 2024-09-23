@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine;
 using LudensClub.GeoChaos.Runtime.Persistence;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -23,6 +24,12 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
     public override void InstallBindings()
     {
+      JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+      {
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+        Formatting = Formatting.Indented
+      };
+      
       BindProjectInitializer();
         
       BindStateFactory();

@@ -8,5 +8,6 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
     UniTask LoadAsync();
     GameData GetDirtyData();
     void Save();
+    UniTask SaveDirect();
   }
 }

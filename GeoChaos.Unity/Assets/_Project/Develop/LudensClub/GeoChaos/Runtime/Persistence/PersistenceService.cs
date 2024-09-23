@@ -37,5 +37,10 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
     {
       _processor.SetDirty();
     }
+
+    public UniTask SaveDirect()
+    {
+      return _processor.SaveDirectAsync();
+    }
   }
 }

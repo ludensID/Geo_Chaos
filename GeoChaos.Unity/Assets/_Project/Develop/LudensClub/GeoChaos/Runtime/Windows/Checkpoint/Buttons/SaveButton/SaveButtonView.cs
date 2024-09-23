@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -10,12 +11,12 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Checkpoint
     [SerializeField]
     private Button _button;
 
-    private IWindowManager _windowManager;
+    private ISaveButtonPresenter _presenter;
 
     [Inject]
-    public void Construct(IWindowManager windowManager)
+    public void Construct(ISaveButtonPresenter presenter)
     {
-      _windowManager = windowManager;
+      _presenter = presenter;
       _button.onClick.AddListener(OnButtonClicked);
     }
 
@@ -26,8 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Checkpoint
 
     private void OnButtonClicked()
     {
-      Debug.Log("Save");
-      _windowManager.Open(WindowType.Save);
+      _presenter.SaveAsync().Forget();
     }
 
     private void Reset()
