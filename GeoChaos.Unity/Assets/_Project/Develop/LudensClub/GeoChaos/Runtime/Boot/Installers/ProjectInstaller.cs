@@ -69,7 +69,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindGameStateMachine()
     {
       Container
-        .Bind<GameStateMachine.GameStateMachine>()
+        .Bind<GameStateMachine>()
         .AsSingle();
     }
 
@@ -78,7 +78,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       Container
         .Bind<IStateFactory>()
         .To<StateFactory>()
-        .AsSingle();
+        .AsSingle()
+        .CopyIntoAllSubContainers();
     }
 
     private void BindPersistenceService()

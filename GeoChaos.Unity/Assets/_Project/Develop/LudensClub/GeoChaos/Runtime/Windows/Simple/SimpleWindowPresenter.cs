@@ -1,4 +1,5 @@
-﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using Cysharp.Threading.Tasks;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine.EventSystems;
 using Zenject;
 
@@ -6,19 +7,19 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Simple
 {
   public class SimpleWindowPresenter : ISimpleWindowPresenter, IInitializable
   {
-    private readonly IGameplayPause _pause;
+    private readonly LevelStateMachine _levelStateMachine;
     private readonly EventSystem _eventSystem;
     private SimpleWindowView _view;
 
     public WindowType Id => _view.Id;
     public bool IsOpened { get; private set; }
 
-    public SimpleWindowPresenter(IGameplayPause pause,
+    public SimpleWindowPresenter(LevelStateMachine levelStateMachine,
       IWindowManager windowManager,
       IExplicitInitializer initializer,
       EventSystem eventSystem)
     {
-      _pause = pause;
+      _levelStateMachine = levelStateMachine;
       _eventSystem = eventSystem;
       windowManager.Add(this);
       initializer.Add(this);
@@ -39,7 +40,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Simple
     {
       if (!IsOpened)
       {
-        _pause.SetPause(true);
+        _levelStateMachine.SwitchState<PauseLevelState>().Forget();
         _view.gameObject.SetActive(true);
         IsOpened = true;
         _eventSystem.SetSelectedGameObject(_view.FirstNavigationElement.gameObject);
@@ -51,7 +52,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Simple
       if (IsOpened)
       {
         _view.gameObject.SetActive(false);
-        _pause.SetPause(false);
+        _levelStateMachine.SwitchState<GameplayLevelState>().Forget();
         IsOpened = false;
         _eventSystem.SetSelectedGameObject(null);
       }

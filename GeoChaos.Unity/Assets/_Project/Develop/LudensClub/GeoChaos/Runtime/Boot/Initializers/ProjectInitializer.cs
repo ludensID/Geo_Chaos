@@ -1,5 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
-using LudensClub.GeoChaos.Runtime.GameStateMachine.States;
+using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine;
 using Zenject;
 
@@ -7,10 +7,10 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 {
   public class ProjectInitializer : IInitializable
   {
-    private readonly GameStateMachine.GameStateMachine _gameStateMachine;
+    private readonly GameStateMachine _gameStateMachine;
     private readonly IStateFactory _stateFactory;
 
-    public ProjectInitializer(GameStateMachine.GameStateMachine gameStateMachine, IStateFactory stateFactory)
+    public ProjectInitializer(GameStateMachine gameStateMachine, IStateFactory stateFactory)
     {
       _gameStateMachine = gameStateMachine;
       _stateFactory = stateFactory;
@@ -18,10 +18,10 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       
     public void Initialize()
     {
-      _gameStateMachine.RegisterState(_stateFactory.Create<LoadingState>());
-      _gameStateMachine.RegisterState(_stateFactory.Create<GameplayState>());
+      _gameStateMachine.RegisterState(_stateFactory.Create<LoadingGameState>());
+      _gameStateMachine.RegisterState(_stateFactory.Create<GameplayGameState>());
 
-      _gameStateMachine.SwitchState<LoadingState>().Forget();
+      _gameStateMachine.SwitchState<LoadingGameState>().Forget();
     }
   }
 }

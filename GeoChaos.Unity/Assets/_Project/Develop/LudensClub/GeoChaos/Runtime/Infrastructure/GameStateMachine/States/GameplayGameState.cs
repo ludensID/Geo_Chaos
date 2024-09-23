@@ -1,9 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
 using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine;
 
-namespace LudensClub.GeoChaos.Runtime.GameStateMachine.States
+namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
-  public class GameplayState : IState 
+  public class GameplayGameState : IState 
   {
     public UniTask Exit()
     {

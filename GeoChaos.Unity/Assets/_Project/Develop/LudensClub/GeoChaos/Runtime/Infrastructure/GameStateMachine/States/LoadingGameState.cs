@@ -2,14 +2,14 @@
 using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine;
 using LudensClub.GeoChaos.Runtime.Persistence;
 
-namespace LudensClub.GeoChaos.Runtime.GameStateMachine.States
+namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
-  public class LoadingState : IState
+  public class LoadingGameState : IState
   {
     private readonly IPersistenceService _persistence;
     private readonly GameStateMachine _gameStateMachine;
 
-    public LoadingState(IPersistenceService persistence, GameStateMachine gameStateMachine)
+    public LoadingGameState(IPersistenceService persistence, GameStateMachine gameStateMachine)
     {
       _persistence = persistence;
       _gameStateMachine = gameStateMachine;
@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.GameStateMachine.States
     public async UniTask Enter()
     {
       await _persistence.LoadAsync();
-      await _gameStateMachine.SwitchState<GameplayState>();
+      await _gameStateMachine.SwitchState<GameplayGameState>();
     }
 
     public UniTask Exit()

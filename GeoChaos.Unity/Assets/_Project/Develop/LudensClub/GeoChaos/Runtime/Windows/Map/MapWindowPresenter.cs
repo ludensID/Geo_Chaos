@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine.EventSystems;
@@ -9,22 +10,23 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Map
 {
   public class MapWindowPresenter : IMapWindowPresenter, IInitializable
   {
-    private List<MapCheckpointButtonView> _children;
-    private MapWindowView _view;
-    private readonly IGameplayPause _pause;
+    private readonly LevelStateMachine _levelStateMachine;
     private readonly EventSystem _eventSystem;
     private readonly MapModel _model;
+    
+    private List<MapCheckpointButtonView> _children;
+    private MapWindowView _view;
 
     public WindowType Id => WindowType.Map;
     public bool IsOpened { get; private set; }
 
-    public MapWindowPresenter(IGameplayPause pause,
+    public MapWindowPresenter(LevelStateMachine levelStateMachine,
       IWindowManager windowManager,
       IExplicitInitializer initializer,
       EventSystem eventSystem,
       MapModel model)
     {
-      _pause = pause;
+      _levelStateMachine = levelStateMachine;
       _eventSystem = eventSystem;
       _model = model;
       windowManager.Add(this);
@@ -48,7 +50,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Map
     {
       if (!IsOpened)
       {
-        _pause.SetPause(true);
+        _levelStateMachine.SwitchState<PauseLevelState>().Forget();
         SelectInteractedCheckpoint();
         
         _view.gameObject.SetActive(true);
@@ -72,7 +74,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Map
       if (IsOpened)
       {
         _view.gameObject.SetActive(false);
-        _pause.SetPause(false);
+        _levelStateMachine.SwitchState<GameplayLevelState>().Forget();
         IsOpened = false;
         _eventSystem.SetSelectedGameObject(null);
       }

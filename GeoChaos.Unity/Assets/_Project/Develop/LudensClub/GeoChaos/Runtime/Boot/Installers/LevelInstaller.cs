@@ -38,14 +38,18 @@ using Zenject;
 namespace LudensClub.GeoChaos.Runtime.Boot
 {
   [AddComponentMenu(ACC.Names.GAMEPLAY_INSTALLER)]
-  public class GameplayInstaller : MonoInstaller
+  public class LevelInstaller : MonoInstaller
   {
     [SerializeField]
     private Camera _camera;
 
     public override void InstallBindings()
     {
+      BindLevelInitializer();
+      
       BindCoroutineRunner();
+
+      BindLevelStateMachine();
 
       BindGameplayPause();
       BindInitializingPhase();
@@ -138,6 +142,21 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindLevelInitializer()
+    {
+      Container
+        .Bind<IInitializable>()
+        .To<LevelInitializer>()
+        .AsSingle();
+    }
+
+    private void BindLevelStateMachine()
+    {
+      Container
+        .Bind<LevelStateMachine>()
+        .AsSingle();
     }
 
     private void BindSaveButtonPresenter()

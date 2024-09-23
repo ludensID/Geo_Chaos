@@ -2,6 +2,7 @@
 {
   public interface IGameplayPause
   {
-    void SetPause(bool pause);
+    void SetPause();
+    void UnsetPause();
   }
 }

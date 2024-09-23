@@ -11,18 +11,16 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       _input = input;
     }
 
-    public void SetPause(bool pause)
+    public void SetPause()
     {
-      if (pause)
-      {
-        Time.timeScale = 0;
-        _input.EnableGameplayMap(false);
-      }
-      else
-      {
-        Time.timeScale = 1;
-        _input.EnableGameplayMap(true);
-      }
+      Time.timeScale = 0;
+      _input.EnableGameplayMap(false);
+    }
+
+    public void UnsetPause()
+    {
+      Time.timeScale = 1;
+      _input.EnableGameplayMap(true);
     }
   }
 }
