@@ -67,6 +67,7 @@
       public const string TONGUE_LINE_CONVERTER = CONVERTERS + "Tongue Line Converter";
       public const string TONGUE_POINT_CONVERTER = CONVERTERS + "Tongue Point Converter";
       public const string ARMS_COLLIDER_CONVERTER = CONVERTERS + "Arms Collider Converter";
+      public const string HERO_POINT_CONVERTER = CONVERTERS + "Hero Point Converter";
 
       public const string COROUTINE_RUNNER = CORE + "Coroutine Runner";
       public const string COLLISION_DETECTOR = CORE + "Collision Detector";
@@ -90,7 +91,7 @@
       public const string CAMERA_TRIGGER_DETECTOR = CAMERA + "Camera Trigger Detector";
       public const string AXIS_LOCKER = CAMERA + "Axis Locker";
       public const string VIRTUAL_CAMERA_VIEW = CAMERA + "Virtual Camera View";
-      
+
       public const string BASE_WINDOW_VIEW = WINDOWS + "Window View";
       public const string SIMPLE_WINDOW_VIEW = WINDOWS + "Simple Window View";
       public const string MAP_WINDOW_VIEW = WINDOWS + "Map Window View";

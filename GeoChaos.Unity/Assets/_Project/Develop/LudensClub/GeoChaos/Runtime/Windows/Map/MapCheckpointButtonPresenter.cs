@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero;
 using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Gameplay.Environment;
+using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Checkpoint;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using Zenject;
 
@@ -57,10 +58,11 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Map
 
     public void MoveHero()
     {
-      if (!_view.Checkpoint.Entity.EqualsTo(_model.CurrentCheckpoint.PackedEntity))
+      if (!_view.Checkpoint.Entity.EqualsTo(_model.CurrentCheckpoint.PackedEntity)
+        && _view.Checkpoint.Entity.TryUnpackEntity(_game, out EcsEntity checkpoint))
       {
         _windowManager.CloseAll();
-        _heroTransporter.MoveTo(_view.Checkpoint.transform.position);
+        _heroTransporter.MoveTo(checkpoint.Get<HeroPointRef>().Point.position);
       }
     }
   }
