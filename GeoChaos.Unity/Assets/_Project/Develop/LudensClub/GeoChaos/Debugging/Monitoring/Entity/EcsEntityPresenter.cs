@@ -165,7 +165,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
             Type componentType = pool.GetComponentType();
             IEcsComponentView componentView =
               _componentFactory.Create(componentType, Entity, pool);
-            componentView.Name = EditorContext.GetPrettyName(componentType, _componentType);
+            componentView.Name = EditorMediator.GetPrettyName(componentType, _componentType);
             componentView.Update();
             View.Components.Add(componentView);
           }
@@ -187,8 +187,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     {
       foreach (EcsComponentView component in View.ComponentPull)
       {
-        _name = EditorContext.GetPrettyName(component.Value, _componentType);
-        IEcsPool pool = _parent.Pools.FirstOrDefault(x => EditorContext.GetPrettyName(x.GetComponentType(), _componentType) == _name)
+        _name = EditorMediator.GetPrettyName(component.Value, _componentType);
+        IEcsPool pool = _parent.Pools.FirstOrDefault(x => EditorMediator.GetPrettyName(x.GetComponentType(), _componentType) == _name)
           ?? _wrapper.World.GetPoolEnsure(component.Value.GetType());
 
         if (pool.Has(Entity))
@@ -202,8 +202,8 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     {
       foreach (EcsComponentView component in View.ComponentPull)
       {
-        _name = EditorContext.GetPrettyName(component.Value, _componentType);
-        IEcsPool pool = _parent.Pools.First(x => EditorContext.GetPrettyName(x.GetComponentType(), _componentType) == _name);
+        _name = EditorMediator.GetPrettyName(component.Value, _componentType);
+        IEcsPool pool = _parent.Pools.First(x => EditorMediator.GetPrettyName(x.GetComponentType(), _componentType) == _name);
         if (pool.Has(Entity))
           pool.Del(Entity);
       }

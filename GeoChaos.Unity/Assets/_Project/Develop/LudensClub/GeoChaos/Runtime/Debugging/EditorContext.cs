@@ -1,25 +1,38 @@
 ﻿#if UNITY_EDITOR
 using System;
+using System.Collections.Generic;
+using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime
 {
-  public static class EditorContext
+  public class EditorContext
   {
-    public static IEditorContainer Container;
+    private readonly List<Action> _listeners = new List<Action>();
+    
+    public DiContainer Container { get; } = new DiContainer();
 
-    public static string GetPrettyName(object target, string methodName, Type context)
+    public EditorContext()
     {
-      return Container.ProfilerService.GetPrettyName(target, methodName, context);
+      Container.BindInstance(this);
+    }
+    
+    public void AddListener(Action action)
+    {
+      _listeners.Add(action);
     }
 
-    public static string GetPrettyName(object target, Type context)
+    public void RemoveListener(Action action)
     {
-      return Container.ProfilerService.GetPrettyName(target, context);
+      _listeners.Remove(action);
     }
 
-    public static string GetPrettyName(Type type, Type context)
+    public void ResolveRoots()
     {
-      return Container.ProfilerService.GetPrettyName(type, context);
+      Container.ResolveRoots();
+      foreach (Action listener in new List<Action>(_listeners))
+      {
+        listener?.Invoke();
+      }
     }
   }
 }

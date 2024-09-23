@@ -2,19 +2,14 @@
 
 namespace LudensClub.GeoChaos.Debugging.Boot
 {
-  public class EditorInstaller : MonoInstaller, IInitializable
+  public class EditorInstaller : MonoInstaller
   {
     public override void InstallBindings()
     {
       Container
         .Bind<IInitializable>()
-        .FromInstance(this)
+        .To<EditorInitializer>()
         .AsSingle();
-    }
-
-    public void Initialize()
-    {
-      PlayModeSceneLoader.LoadCurrentScene();
     }
   }
 }

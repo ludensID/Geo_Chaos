@@ -1,6 +1,8 @@
 ﻿using LudensClub.GeoChaos.Debugging.Monitoring;
 using LudensClub.GeoChaos.Debugging.Monitoring.Sorting;
+using LudensClub.GeoChaos.Debugging.Persistence;
 using LudensClub.GeoChaos.Debugging.Watchers;
+using LudensClub.GeoChaos.Runtime.Persistence;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Debugging
@@ -21,6 +23,15 @@ namespace LudensClub.GeoChaos.Debugging
     private static void InstallProjectInternal()
     {
       BindInputDebug();
+      RebindGameDataLoader();
+    }
+
+    private static void RebindGameDataLoader()
+    {
+      Container
+        .Rebind<IGameDataLoader>()
+        .To<DebugGameDataLoader>()
+        .AsSingle();
     }
 
     public static void InstallGameplay(DiContainer container)
@@ -147,7 +158,7 @@ namespace LudensClub.GeoChaos.Debugging
         .NonLazy();
     }
 
-    public static void BindInputDebug()
+    private static void BindInputDebug()
     {
       Container
         .Bind<InputDebug>()
@@ -157,7 +168,7 @@ namespace LudensClub.GeoChaos.Debugging
         .NonLazy();
     }
 
-    public static void BindInputWatcherDebug()
+    private static void BindInputWatcherDebug()
     {
       Container
         .BindInterfacesTo<InputDelayWatcher>()
@@ -165,7 +176,7 @@ namespace LudensClub.GeoChaos.Debugging
         .NonLazy();
     }
 
-    public static void BindGravityScaleWatcher()
+    private static void BindGravityScaleWatcher()
     {
       Container
         .BindInterfacesTo<GravityScaleWatcher>()
@@ -173,7 +184,7 @@ namespace LudensClub.GeoChaos.Debugging
         .NonLazy();
     }
 
-    public static void BindEcsUniverseViewFactory()
+    private static void BindEcsUniverseViewFactory()
     {
       Container
         .Bind<IEcsUniverseViewFactory>()
@@ -181,7 +192,7 @@ namespace LudensClub.GeoChaos.Debugging
         .AsSingle();
     }
 
-    public static void BindEcsWorldPresenterFactory()
+    private static void BindEcsWorldPresenterFactory()
     {
       Container
         .Bind<IEcsWorldPresenterFactory>()
@@ -189,7 +200,7 @@ namespace LudensClub.GeoChaos.Debugging
         .AsSingle();
     }
 
-    public static void BindEcsWorldViewFactory()
+    private static void BindEcsWorldViewFactory()
     {
       Container
         .Bind<IEcsWorldViewFactory>()
@@ -197,7 +208,7 @@ namespace LudensClub.GeoChaos.Debugging
         .AsSingle();
     }
 
-    public static void BindEcsEntityPresenterFactory()
+    private static void BindEcsEntityPresenterFactory()
     {
       Container
         .Bind<IEcsEntityPresenterFactory>()
@@ -205,7 +216,7 @@ namespace LudensClub.GeoChaos.Debugging
         .AsSingle();
     }
 
-    public static void BindEcsEntityViewFactory()
+    private static void BindEcsEntityViewFactory()
     {
       Container
         .Bind<IEcsEntityViewFactory>()
@@ -213,7 +224,7 @@ namespace LudensClub.GeoChaos.Debugging
         .AsSingle();
     }
 
-    public static void BindEcsUniversePresenter()
+    private static void BindEcsUniversePresenter()
     {
       Container
         .BindInterfacesTo<EcsUniversePresenter>()

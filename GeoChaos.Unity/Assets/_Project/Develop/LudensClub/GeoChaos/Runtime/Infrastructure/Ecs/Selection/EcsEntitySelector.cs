@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.Selection
       foreach (ISelectionAlgorithm algorithm in _algorithms)
       {
 #if UNITY_EDITOR && !DISABLE_PROFILING
-        using (new Unity.Profiling.ProfilerMarker(EditorContext.GetPrettyName(algorithm, "Select", _algorithmType)).Auto())
+        using (new Unity.Profiling.ProfilerMarker(EditorMediator.GetPrettyName(algorithm, "Select", _algorithmType)).Auto())
 #endif
         {
           algorithm.Select(origins, marks);

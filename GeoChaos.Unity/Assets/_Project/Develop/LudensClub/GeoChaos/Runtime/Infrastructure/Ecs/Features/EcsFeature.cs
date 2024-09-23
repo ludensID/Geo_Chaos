@@ -37,14 +37,14 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     public void Run(EcsSystems systems)
     {
 #if UNITY_EDITOR && !DISABLE_PROFILING
-      using (new Unity.Profiling.ProfilerMarker(EditorContext.GetPrettyName(this, nameof(Run), _featureType)).Auto())
+      using (new Unity.Profiling.ProfilerMarker(EditorMediator.GetPrettyName(this, nameof(Run), _featureType)).Auto())
 #endif
       {
         foreach (IEcsRunSystem system in _runSystems)
         {
 #if UNITY_EDITOR && !DISABLE_PROFILING
           if (system is not EcsFeature)
-            using (new Unity.Profiling.ProfilerMarker(EditorContext.GetPrettyName(system, "Run", _systemType)).Auto())
+            using (new Unity.Profiling.ProfilerMarker(EditorMediator.GetPrettyName(system, "Run", _systemType)).Auto())
               RunSystem();
           else
             RunSystem();
