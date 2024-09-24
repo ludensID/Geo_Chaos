@@ -16,7 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [LabelText("Enabled")]
     public bool EnableDragForce; 
     
-    [LabelText("UseGradient")]
+    [LabelText("Use Gradient")]
     public bool UseDragForceGradient;
     public float StartDragForceCoefficient => 1f / (UseDragForceGradient ? 3f : 2f);
     
@@ -29,7 +29,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [LabelText("Enabled")]
     public bool EnableADControl;
 
-    [LabelText("UseGradient")]
+    [LabelText("Use Gradient")]
     public bool UseADControlGradient;
     
     public float StartADControlCoefficient => 1f / (UseADControlGradient ? 3f : 2f);

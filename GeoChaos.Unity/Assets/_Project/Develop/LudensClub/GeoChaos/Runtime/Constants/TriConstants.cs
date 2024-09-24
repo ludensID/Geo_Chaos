@@ -16,7 +16,7 @@
       public const string ACTION_NAMES = "ActionNames";
       public const string JUMP = "Jump";
       public const string ATTACK_COLLIDERS = "Attack Colliders";
-      public const string GRAPPLING_HOOK = "Grapling Hook";
+      public const string GRAPPLING_HOOK = "Grappling Hook";
       public const string DRAG_FORCE = "Drag Force";
       public const string FREE_FALLING = "Free Falling";
       public const string SHOOT = "Shoot";
