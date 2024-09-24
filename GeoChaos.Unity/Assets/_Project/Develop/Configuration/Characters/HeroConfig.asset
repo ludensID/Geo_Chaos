@@ -22,9 +22,11 @@ MonoBehaviour:
   ADControlSpeed: 4
   MovementSpeed: 15
   AccelerationTime: 0.15
-  JumpTime: 0.55
+  JumpTime: 0.73333335
   JumpHeight: 7
-  FallVelocityMultiplier: 1.5
+  FallVelocityMultiplier: 0.6
+  LockJumpForce: 1
+  CachedJumpForce: 50.90909
   JumpHorizontalSpeedMultiplier: 1
   MaxFallVelocity: 50
   JumpLength: 8.25
