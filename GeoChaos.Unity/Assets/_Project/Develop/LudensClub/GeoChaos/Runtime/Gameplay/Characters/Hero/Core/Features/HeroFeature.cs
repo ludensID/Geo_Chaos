@@ -11,7 +11,6 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Interaction;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot;
-using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero

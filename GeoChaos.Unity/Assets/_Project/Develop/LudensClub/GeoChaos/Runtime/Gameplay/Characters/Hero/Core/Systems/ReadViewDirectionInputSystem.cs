@@ -6,7 +6,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
 {
   public class ReadViewDirectionInputSystem : IEcsRunSystem
   {

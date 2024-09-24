@@ -10,10 +10,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     private IEdgeOffsetSetter _setter;
 
     [Inject]
-    public void Construct(IEdgeOffsetSetter setter, IHeroBinder heroBinder)
+    public void Construct(IEdgeOffsetSetter setter)
     {
       _setter = setter;
-      base.Construct(heroBinder);
     }
 
     public override void OnHeroEnter()

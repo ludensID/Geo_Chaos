@@ -40,7 +40,8 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Map
 
     public void Dispose()
     {
-      _mapWindow.OnBeforeOpen -= SelectInteractedCheckpoint;
+      if (_mapWindow != null)
+        _mapWindow.OnBeforeOpen -= SelectInteractedCheckpoint;
     }
 
     private void SelectInteractedCheckpoint()

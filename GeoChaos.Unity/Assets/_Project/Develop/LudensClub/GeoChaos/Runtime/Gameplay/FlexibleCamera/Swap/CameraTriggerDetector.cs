@@ -13,10 +13,9 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera.Swap
     private IVirtualCameraManager _manager;
 
     [Inject]
-    public void Construct(IVirtualCameraManager manager, IHeroBinder heroBinder)
+    public void Construct(IVirtualCameraManager manager)
     {
       _manager = manager;
-      base.Construct(heroBinder);
     }
       
     public override void OnHeroEnter()

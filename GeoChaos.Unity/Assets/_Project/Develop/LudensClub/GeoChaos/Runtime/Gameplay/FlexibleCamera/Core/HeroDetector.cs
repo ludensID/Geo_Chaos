@@ -5,21 +5,18 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
-  public abstract class HeroDetector : MonoBehaviour, IHeroBindable
+  public abstract class HeroDetector : MonoBehaviour
   {
-    private Rigidbody2D _heroRigidbody;
+    private IHeroHolder _heroHolder;
+    private EcsEntity _hero;
 
     public bool IsBound { get; set; }
 
     [Inject]
-    public virtual void Construct(IHeroBinder heroBinder)
+    public void Construct(IHeroHolder heroHolder)
     {
-      heroBinder.Add(this);
-    }
-
-    public void BindHero(EcsEntity hero)
-    {
-      _heroRigidbody = hero.Get<RigidbodyRef>().Rigidbody;
+      _heroHolder = heroHolder;
+      _hero = _heroHolder.Hero;
     }
 
     public virtual void OnHeroEnter()
@@ -48,7 +45,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 
     private bool IsHeroRigidbody(Rigidbody2D rb)
     {
-      return _heroRigidbody == rb;
+      return _hero.IsAlive() && _heroHolder.Hero.Get<RigidbodyRef>().Rigidbody == rb;
     }
   }
 }

@@ -6,7 +6,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Utils;
 
-namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Systems
+namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
 {
   public class SetHeroBodyDirectionSystem : IEcsRunSystem
   {

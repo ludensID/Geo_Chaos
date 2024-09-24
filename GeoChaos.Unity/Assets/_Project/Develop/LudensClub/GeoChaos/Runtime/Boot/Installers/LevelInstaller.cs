@@ -282,7 +282,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindHeroBinder()
     {
       Container
-        .BindInterfacesTo<HeroBinder>()
+        .BindInterfacesTo<HeroHolder>()
         .AsSingle();
     }
 

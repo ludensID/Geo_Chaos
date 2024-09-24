@@ -8,21 +8,22 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
-  public class HeroRotationInterpolator : IHeroRotationInterpolator, IHeroBindable, ITickable, IFixedTickable
+  public class HeroRotationInterpolator : IHeroRotationInterpolator, ITickable, IFixedTickable
   {
+    private readonly IHeroHolder _heroHolder;
     private readonly CameraConfig _config;
+    private readonly EcsEntity _hero;
     
     private HeroFollower _heroFollower;
-    private Transform _heroTransform;
     
     private float _target;
     private Tweener _tweener;
 
-    public bool IsBound { get; set; }
-
-    public HeroRotationInterpolator(IConfigProvider configProvider)
+    public HeroRotationInterpolator(IConfigProvider configProvider, IHeroHolder heroHolder)
     {
+      _heroHolder = heroHolder;
       _config = configProvider.Get<CameraConfig>();
+      _hero = _heroHolder.Hero;
     }
 
     public void SetFollower(HeroFollower follower)
@@ -30,33 +31,32 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
       _heroFollower = follower;
     }
 
-    public void BindHero(EcsEntity hero)
-    {
-      _heroTransform = hero.Get<ViewRef>().View.transform;
-    }
-
     public void Tick()
     {
-      if (!IsBound)
-        return;
-        
-      float currentTarget = _heroTransform.rotation.eulerAngles.y;
-      if (!_target.ApproximatelyEqual(currentTarget))
+      if (_hero.IsAlive())
       {
-        _tweener?.Kill();
-        _tweener = _heroFollower.transform
-          .DORotate(_heroTransform.rotation.eulerAngles, _config.RotationTime)
-          .SetUpdate(UpdateType.Fixed);
-        _target = currentTarget;
+        Transform heroTransform = GetHeroTransform();
+        float currentTarget = heroTransform.rotation.eulerAngles.y;
+        if (!_target.ApproximatelyEqual(currentTarget))
+        {
+          _tweener?.Kill();
+          _tweener = _heroFollower.transform
+            .DORotate(heroTransform.rotation.eulerAngles, _config.RotationTime)
+            .SetUpdate(UpdateType.Fixed);
+          _target = currentTarget;
+        }
       }
     }
 
     public void FixedTick()
     {
-      if (!IsBound)
-        return;
+      if(_hero.IsAlive())
+        _heroFollower.Rb.MovePosition(GetHeroTransform().position);
+    }
 
-      _heroFollower.Rb.MovePosition(_heroTransform.position);
+    private Transform GetHeroTransform()
+    {
+      return _hero.Get<ViewRef>().View.transform;
     }
   }
 }

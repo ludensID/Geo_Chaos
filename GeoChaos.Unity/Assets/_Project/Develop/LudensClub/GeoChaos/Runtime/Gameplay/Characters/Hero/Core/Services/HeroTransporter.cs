@@ -4,20 +4,21 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
 {
-  public class HeroTransporter : IHeroBindable, IHeroTransporter
+  public class HeroTransporter : IHeroTransporter
   {
-    private BaseEntityView _view;
+    private readonly IHeroHolder _heroHolder;
+    private readonly EcsEntity _hero;
 
-    public bool IsBound { get; set; }
-
-    public void BindHero(EcsEntity hero)
+    public HeroTransporter(IHeroHolder heroHolder)
     {
-      _view = hero.Get<ViewRef>().View;
+      _heroHolder = heroHolder;
+      _hero = _heroHolder.Hero;
     }
 
     public void MoveTo(Vector3 position)
     {
-      _view.transform.position = position;
+      if (_hero.IsAlive())
+        _hero.Get<ViewRef>().View.transform.position = position;
     }
   }
 }

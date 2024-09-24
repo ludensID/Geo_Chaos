@@ -1,7 +1,7 @@
 ﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
-  public interface IHeroBinder
+  public interface IHeroHolder
   {
-    void Add(IHeroBindable bind);
+    EcsEntity Hero { get; }
   }
 }
