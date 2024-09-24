@@ -184,8 +184,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindMapWindowPresenter()
     {
       Container
-        .Bind<IMapWindowPresenter>()
-        .To<MapWindowPresenter>()
+        .Bind<IMapNavigationElementSetter>()
+        .To<MapNavigationElementSetter>()
         .AsSingle();
     }
 
@@ -209,8 +209,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindSimpleWindowPresenter()
     {
       Container
-        .Bind<ISimpleWindowPresenter>()
-        .To<SimpleWindowPresenter>()
+        .Bind<INavigationElementSetter>()
+        .To<NavigationElementSetter>()
         .AsTransient();
     }
 

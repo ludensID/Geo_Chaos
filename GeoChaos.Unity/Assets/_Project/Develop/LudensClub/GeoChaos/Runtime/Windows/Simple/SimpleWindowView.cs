@@ -4,18 +4,14 @@ using Zenject;
 namespace LudensClub.GeoChaos.Runtime.Windows.Simple
 {
   [AddComponentMenu(ACC.Names.SIMPLE_WINDOW_VIEW)]
-  public class SimpleWindowView : BaseWindowView
+  public class SimpleWindowView : WindowView
   {
-    public WindowType Id;
-    public RectTransform FirstNavigationElement;
+    public GameObject FirstNavigationElement;
     
-    private ISimpleWindowPresenter _presenter;
-
     [Inject]
-    public void Construct(ISimpleWindowPresenter presenter)
+    public void Construct(INavigationElementSetter setter)
     {
-      _presenter = presenter;
-      _presenter.SetView(this);
+      setter.SetView(this);
     }
   }
 }

@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine;
 using LudensClub.GeoChaos.Runtime.Persistence;
+using LudensClub.GeoChaos.Runtime.Windows;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -29,12 +30,12 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
         Formatting = Formatting.Indented
       };
-      
+
       BindProjectInitializer();
-        
+
       BindStateFactory();
       BindGameStateMachine();
-        
+
       BindEventSystem();
       BindExplicitInitializer();
       BindConfigProvider();
@@ -47,15 +48,34 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindCoroutineRunner();
       BindPathHandler();
       BindFileHandler();
-      
+
       BindPersistenceProvider();
       BindGameDataLoader();
       BindGamePersistenceProcessor();
       BindPersistenceService();
 
+      BindBaseWindowModel();
+      BindBaseWindowController();
+
 #if UNITY_EDITOR
       DebugBridge.InstallProject(Container);
 #endif
+    }
+
+    private void BindBaseWindowModel()
+    {
+      Container
+        .Bind<WindowModel>()
+        .AsTransient()
+        .CopyIntoDirectSubContainers();
+    }
+
+    private void BindBaseWindowController()
+    {
+      Container
+        .Bind<WindowController>()
+        .AsTransient()
+        .CopyIntoDirectSubContainers();
     }
 
     private void BindProjectInitializer()

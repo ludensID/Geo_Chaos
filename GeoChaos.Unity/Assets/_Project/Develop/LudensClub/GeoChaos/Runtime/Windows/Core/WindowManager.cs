@@ -22,6 +22,15 @@ namespace LudensClub.GeoChaos.Runtime.Windows
       _windows.Add(window);
     }
 
+    public IWindowController FindWindowById(WindowType id)
+    {
+      IWindowController window = _windows.Find(_hasWindowIdClosure.SpecifyPredicate(id));
+      if (window == null)
+        throw new ArgumentException($"There is no window with id {id}");
+      
+      return window;
+    }
+
     public void Open(WindowType id)
     {
       OpenWindowInternal(id);
@@ -61,15 +70,6 @@ namespace LudensClub.GeoChaos.Runtime.Windows
         else
           _stack.Remove(FindWindowById(id));
       }
-    }
-
-    private IWindowController FindWindowById(WindowType id)
-    {
-      IWindowController window = _windows.Find(_hasWindowIdClosure.SpecifyPredicate(id));
-      if (window == null)
-        throw new ArgumentException($"There is no window with id {id}");
-      
-      return window;
     }
 
     private void OpenWindowInternal(WindowType id, bool addToStack = true)

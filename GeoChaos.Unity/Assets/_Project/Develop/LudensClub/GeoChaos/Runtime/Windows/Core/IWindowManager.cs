@@ -9,5 +9,6 @@
     void Close();
     void Close(WindowType id);
     void CloseAll();
+    IWindowController FindWindowById(WindowType id);
   }
 }

@@ -1,6 +1,6 @@
 ﻿namespace LudensClub.GeoChaos.Runtime.Windows.Map
 {
-  public interface IMapWindowPresenter : IWindowController, ICloseHandler
+  public interface IMapNavigationElementSetter
   {
     void SetView(MapWindowView view);
   }

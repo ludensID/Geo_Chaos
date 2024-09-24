@@ -1,47 +1,48 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using Cysharp.Threading.Tasks;
-using Leopotam.EcsLite;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using UnityEngine.EventSystems;
 using Zenject;
 
-namespace LudensClub.GeoChaos.Runtime.Windows.Map
+namespace LudensClub.GeoChaos.Runtime.Windows
 {
-  public class MapWindowPresenter : IMapWindowPresenter, IInitializable
+  public class WindowController : IWindowController, IInitializable, ICloseHandler
   {
     private readonly LevelStateMachine _levelStateMachine;
     private readonly EventSystem _eventSystem;
-    private readonly MapModel _model;
-    
-    private List<MapCheckpointButtonView> _children;
-    private MapWindowView _view;
+    private readonly WindowModel _model;
 
-    public WindowType Id => WindowType.Map;
+    private WindowView _view;
+
+    public WindowType Id => _view.Id;
     public bool IsOpened { get; private set; }
 
-    public MapWindowPresenter(LevelStateMachine levelStateMachine,
+    public WindowModel Model => _model;
+
+    public event Action OnBeforeOpen;
+    public event Action OnBeforeClose;
+
+    public WindowController(LevelStateMachine levelStateMachine,
       IWindowManager windowManager,
       IExplicitInitializer initializer,
       EventSystem eventSystem,
-      MapModel model)
+      WindowModel model)
     {
       _levelStateMachine = levelStateMachine;
       _eventSystem = eventSystem;
       _model = model;
-      windowManager.Add(this);
+
       initializer.Add(this);
+      windowManager.Add(this);
     }
 
-    public void SetView(MapWindowView view)
+    public void SetView(WindowView view)
     {
       _view = view;
     }
 
     public void Initialize()
     {
-      _children = _view.GetComponentsInChildren<MapCheckpointButtonView>().ToList();
-
       _view.gameObject.SetActive(false);
       IsOpened = false;
     }
@@ -50,22 +51,11 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Map
     {
       if (!IsOpened)
       {
+        OnBeforeOpen?.Invoke();
         _levelStateMachine.SwitchState<PauseLevelState>().Forget();
-        SelectInteractedCheckpoint();
-        
         _view.gameObject.SetActive(true);
         IsOpened = true;
-      }
-    }
-
-    private void SelectInteractedCheckpoint()
-    {
-      foreach (MapCheckpointButtonView child in _children)
-      {
-        if (child.Checkpoint.Entity.EqualsTo(_model.CurrentCheckpoint.PackedEntity))
-        {
-          _eventSystem.SetSelectedGameObject(child.gameObject);
-        }
+        _eventSystem.SetSelectedGameObject(_model.FirstNavigationElement);
       }
     }
 
@@ -73,9 +63,10 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Map
     {
       if (IsOpened)
       {
+        OnBeforeClose?.Invoke();
         _view.gameObject.SetActive(false);
-        _levelStateMachine.SwitchState<GameplayLevelState>().Forget();
         IsOpened = false;
+        _levelStateMachine.SwitchState<GameplayLevelState>().Forget();
         _eventSystem.SetSelectedGameObject(null);
       }
     }
