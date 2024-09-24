@@ -130,7 +130,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindVerticalDampingInterpolator();
       BindMainCameraSyncer();
       BindEdgeOffsetSetter();
-      BindVerticalViewOffsetSetter();
+      // BindVerticalViewOffsetSetter();
       BindVerticalOffsetInterpolator();
 
       BindSaveButtonPresenter();
