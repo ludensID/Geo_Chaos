@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.SpawnPoint
         .Inc<Spawnable>()
         .Collect();
 
-      _spawnedEntity = new EcsEntity(_game, -1);
+      _spawnedEntity = new EcsEntity(_game);
     }
       
     public void Run(EcsSystems systems)

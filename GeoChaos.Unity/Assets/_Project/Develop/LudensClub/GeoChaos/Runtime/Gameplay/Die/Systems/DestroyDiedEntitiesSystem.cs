@@ -16,6 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Die
 
       _diedEntities = _game
         .Filter<OnDied>()
+        .Inc<DestroyableOnDeath>()
         .Collect();
     }
       

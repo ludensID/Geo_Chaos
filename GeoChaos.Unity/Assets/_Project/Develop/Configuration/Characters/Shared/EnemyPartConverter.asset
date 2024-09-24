@@ -29,6 +29,8 @@ MonoBehaviour:
           rid: 3599071205236932697
       - Value:
           rid: 2072450811591918055
+      - Value:
+          rid: 3599071552647725161
     _scriptableConverter: {fileID: 0}
   references:
     version: 2
@@ -45,3 +47,7 @@ MonoBehaviour:
     - rid: 3599071205236932697
       type: {class: Brain, ns: LudensClub.GeoChaos.Runtime.Gameplay.AI, asm: GeoChaos.Runtime}
       data: {}
+    - rid: 3599071552647725161
+      type: {class: DestroyableOnDeath, ns: LudensClub.GeoChaos.Runtime.Gameplay.Die,
+        asm: GeoChaos.Runtime}
+      data: 

@@ -21,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation
         .Inc<ViewRef>()
         .Collect();
 
-      _spawn = new EcsEntity(_game, -1);
+      _spawn = new EcsEntity(_game);
     }
 
     public void Run(EcsSystems systems)
