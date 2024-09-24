@@ -49,7 +49,14 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float JumpHeight;
 
     [Range(0.001f, 10)]
+    [OnValueChanged(TriConstants.ON + nameof(FallVelocityMultiplier) + TriConstants.CHANGED)]
     public float FallVelocityMultiplier = 1;
+
+    [OnValueChanged(TriConstants.ON + nameof(LockJumpForce) + TriConstants.CHANGED)]
+    public bool LockJumpForce;
+
+    [HideInInspector]
+    public float CachedJumpForce;
 
     [OnValueChanged(TriConstants.ON + nameof(JumpHorizontalSpeedMultiplier) + TriConstants.CHANGED)]
     [Range(0.001f, 10)]
@@ -68,7 +75,6 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float FallGravityScale => Mathf.Pow(FallVelocityMultiplier, 2) * GravityScale;
 
     public float JumpForce => (1 + 1 / FallVelocityMultiplier) * 2 * JumpHeight / JumpTime;
-
     public float JumpHorizontalSpeed => MovementSpeed * JumpHorizontalSpeedMultiplier;
 
     public float PositiveGravity => Mathf.Abs(Gravity);

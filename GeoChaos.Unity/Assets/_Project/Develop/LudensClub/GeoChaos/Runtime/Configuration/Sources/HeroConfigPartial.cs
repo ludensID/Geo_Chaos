@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     }
 
     [PropertySpace(SpaceBefore = 20)]
-    [PropertyOrder(23)]
+    [PropertyOrder(24)]
     [Range(0.01f, 5)]
     [EnableInEditMode]
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
@@ -72,7 +72,21 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
       }
     }
 
-    public static T FindAsset<T>(string typeName) where T : Object
+    public void OnLockJumpForceChanged()
+    {
+      if (LockJumpForce)
+        CachedJumpForce = JumpForce;
+    }
+
+    public void OnFallVelocityMultiplierChanged()
+    {
+      if (LockJumpForce)
+      {
+        JumpTime = (1 + 1 / FallVelocityMultiplier) * 2 * JumpHeight / CachedJumpForce;
+      }
+    }
+
+    private static T FindAsset<T>(string typeName) where T : Object
     {
       string[] asset = AssetDatabase.FindAssets($"t:{typeName}", null);
       return asset.Length == 1
