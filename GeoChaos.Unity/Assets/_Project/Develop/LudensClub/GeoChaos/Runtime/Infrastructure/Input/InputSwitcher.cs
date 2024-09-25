@@ -2,19 +2,19 @@
 {
   public class InputSwitcher : IInputSwitcher
   {
-    private readonly InputConfig _config;
+    private readonly PlayerInputActions _actions;
 
-    public InputSwitcher(InputConfig config)
+    public InputSwitcher(PlayerInputActions actions)
     {
-      _config = config;
+      _actions = actions;
     }
       
     public void EnableGameplayMap(bool enable)
     {
       if (enable)
-        _config.Gameplay.Enable();
+        _actions.Gameplay.Enable();
       else 
-        _config.Gameplay.Disable();
+        _actions.Gameplay.Disable();
     }
   }
 }

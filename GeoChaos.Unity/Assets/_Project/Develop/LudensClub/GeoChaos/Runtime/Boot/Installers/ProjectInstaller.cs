@@ -40,13 +40,17 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindEventSystem();
       BindExplicitInitializer();
       BindConfigProvider();
-      BindInputConfig();
+      BindPlayerInputActions();
       BindInputDataProvider();
-      BindInputSwitcher();
-      BindInputController();
+      BindCoroutineRunner();
+      
       BindTimerService();
       BindTimerFactory();
-      BindCoroutineRunner();
+      
+      BindRandomOppositeInputProcessor();
+      
+      BindInputSwitcher();  
+      BindInputController();
 
       InstallPersistence();
 
@@ -136,6 +140,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .CopyIntoAllSubContainers();
     }
 
+    private void BindRandomOppositeInputProcessor()
+    {
+      Container
+        .Bind<IRandomOppositeInputProcessor>()
+        .To<RandomOppositeInputProcessor>()
+        .AsSingle();
+    }
+
     private void BindInputSwitcher()
     {
       Container
@@ -144,10 +156,10 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .AsSingle();
     }
 
-    private void BindInputConfig()
+    private void BindPlayerInputActions()
     {
       Container
-        .BindInterfacesAndSelfTo<InputConfig>()
+        .BindInterfacesAndSelfTo<PlayerInputActions>()
         .AsSingle();
     }
 

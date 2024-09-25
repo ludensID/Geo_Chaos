@@ -19,5 +19,5 @@ MonoBehaviour:
   VerticalOffsetInterpolationTime: 0.35
   EdgeVerticalShift: 3
   DelayBeforeLook: 1
-  LookUpShift: 3
+  LookUpShift: 2.5
   LookDownShift: 2
