@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
       foreach (EcsEntity hero in _hookedHeroes)
       {
         ref MovementLayout layout = ref hero.Get<MovementLayout>();
-        if (_config.BumpOnHookReaction == BumpOnHookReactionType.Interruption && layout.Owner == MovementType.Bump)
+        if (_config.BumpOnHookReaction == BumpOnHookReactionType.Interruption && layout.Movement == MovementType.Bump)
         {
           hero.Has<InterruptHookCommand>(true);
         }

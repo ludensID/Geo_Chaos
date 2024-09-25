@@ -85,7 +85,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Bump
             .Change((ref MovementLayout layout) =>
             {
               layout.Layer = MovementLayer.Shoot;
-              layout.Owner = MovementType.Bump;
+              layout.Movement = MovementType.Bump;
             })
             .Replace((ref BumpTimer timer) => timer.TimeLeft = _timers.Create(_config.BumpFreezeDuration));
         }

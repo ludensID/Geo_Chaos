@@ -55,7 +55,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack
           .Change((ref MovementLayout layout) =>
           {
             layout.Layer = MovementLayer.None;
-            layout.Owner = MovementType.Attack;
+            layout.Movement = MovementType.Attack;
           })
           .Add<OnAttackStarted>()
           .Add<Attacking>();

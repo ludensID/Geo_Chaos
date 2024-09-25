@@ -15,10 +15,13 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     public float DefaultVerticalDamping;
     public float FallVerticalDamping;
 
-    [Title("Vertical Offset")]
+    [Title("Vertical Shift")]
     public float VerticalOffsetInterpolationTime;
 
-    public float EdgeVerticalOffset;
-    public float VerticalViewOffset;
+    public float EdgeVerticalShift;
+
+    public float DelayBeforeLook;
+    public float LookUpShift;
+    public float LookDownShift;
   }
 }

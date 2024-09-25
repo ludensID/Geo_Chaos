@@ -28,10 +28,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
           .Del<StopHookCommand>();
         
         ref MovementLayout layout = ref hook.Get<MovementLayout>();
-        if (layout.Owner == MovementType.Hook)
+        if (layout.Movement == MovementType.Hook)
         {
           layout.Layer = MovementLayer.All;
-          layout.Owner = MovementType.None;
+          layout.Movement = MovementType.None;
         }
       }
     }

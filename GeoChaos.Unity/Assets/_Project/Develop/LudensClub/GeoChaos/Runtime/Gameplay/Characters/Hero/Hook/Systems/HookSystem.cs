@@ -34,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
           .Change((ref MovementLayout layout) =>
           {
             layout.Layer = command.Has<InterruptHookAvailable>() ? MovementLayer.Interrupt : MovementLayer.None;
-            layout.Owner = MovementType.Hook;
+            layout.Movement = MovementType.Hook;
           })
           .Add((ref HookInputCooldown cooldown) => cooldown.TimeLeft = _timers.Create(_config.HookInputCooldown));
 

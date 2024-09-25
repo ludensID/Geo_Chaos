@@ -36,7 +36,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Aim
           .Change((ref MovementLayout layout) =>
           {
             layout.Layer = MovementLayer.Shoot;
-            layout.Owner = MovementType.Aim;
+            layout.Movement = MovementType.Aim;
           })
           .Add<OnAimStarted>()
           .Add<Aiming>();
@@ -49,10 +49,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Aim
           .Del<Aiming>();
 
         ref MovementLayout layout = ref command.Get<MovementLayout>();
-        if (layout.Owner == MovementType.Aim)
+        if (layout.Movement == MovementType.Aim)
         {
           layout.Layer = MovementLayer.All;
-          layout.Owner = MovementType.None;
+          layout.Movement = MovementType.None;
         }
       }
     }

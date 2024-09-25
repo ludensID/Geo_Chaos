@@ -7,7 +7,7 @@ using LudensClub.GeoChaos.Runtime.Utils;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
-  public class VerticalOffsetInterpolator : IDisposable
+  public class VerticalShiftInterpolator : IDisposable
   {
     private readonly IVirtualCameraManager _manager;
     private readonly VirtualCameraModel _model;
@@ -16,35 +16,35 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     private Tween _tweener;
     private float _target;
 
-    public VerticalOffsetInterpolator(IVirtualCameraManager manager, VirtualCameraModel model, IConfigProvider configProvider)
+    public VerticalShiftInterpolator(IVirtualCameraManager manager, VirtualCameraModel model, IConfigProvider configProvider)
     {
       _manager = manager;
       _model = model;
       _config = configProvider.Get<CameraConfig>();
       
-      _model.EdgeVerticalOffset.OnChanged += UpdateOffset;
-      _model.VerticalViewOffset.OnChanged += UpdateOffset;
+      _model.EdgeVerticalShift.OnChanged += UpdateShift;
+      _model.VerticalViewShift.OnChanged += UpdateShift;
     }
 
     public void Dispose()
     {
-      _model.EdgeVerticalOffset.OnChanged -= UpdateOffset;
-      _model.VerticalViewOffset.OnChanged -= UpdateOffset;
+      _model.EdgeVerticalShift.OnChanged -= UpdateShift;
+      _model.VerticalViewShift.OnChanged -= UpdateShift;
     }
 
-    private void UpdateOffset()
+    private void UpdateShift()
     {
-      float offset = 0;
+      float shift = 0;
       if (!_manager.MainCamera.Composer.Composition.DeadZone.Enabled)
-        offset = _model.EdgeVerticalOffset;
+        shift = _model.EdgeVerticalShift;
       
-      if (_model.VerticalViewOffset != 0)
-        offset = _model.VerticalViewOffset;
+      if (_model.VerticalViewShift != 0)
+        shift = _model.VerticalViewShift;
 
-      if (!_target.ApproximatelyEqual(offset))
+      if (!_target.ApproximatelyEqual(shift))
       {
         _tweener?.Kill();
-        _target = offset;
+        _target = shift;
         _tweener = GetTween(_target);
       }
     }
@@ -56,12 +56,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 
     private void SetOffset(float x)
     {
-      _model.VerticalOffset.Value = x;
+      _model.VerticalShift.Value = x;
     }
 
     private float GetOffset()
     {
-      return _model.VerticalOffset;
+      return _model.VerticalShift;
     }
   }
 }

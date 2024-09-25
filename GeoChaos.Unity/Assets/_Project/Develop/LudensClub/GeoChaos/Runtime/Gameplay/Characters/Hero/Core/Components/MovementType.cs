@@ -9,6 +9,6 @@
     Hook = Dash + 1,
     Attack = Hook + 1,
     Aim = Attack + 1,
-    Bump = Aim + 1
+    Bump = Aim + 1,
   }
 }

@@ -130,7 +130,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindVerticalDampingInterpolator();
       BindMainCameraSyncer();
       BindEdgeOffsetSetter();
-      // BindVerticalViewOffsetSetter();
+      BindVerticalViewShiftSetter();
       BindVerticalOffsetInterpolator();
 
       BindSaveButtonPresenter();
@@ -255,22 +255,22 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindVerticalOffsetInterpolator()
     {
       Container
-        .BindInterfacesTo<VerticalOffsetInterpolator>()
+        .BindInterfacesTo<VerticalShiftInterpolator>()
         .AsSingle();
     }
 
-    private void BindVerticalViewOffsetSetter()
+    private void BindVerticalViewShiftSetter()
     {
       Container
-        .BindInterfacesTo<VerticalViewOffsetSetter>()
+        .BindInterfacesTo<VerticalViewShiftSetter>()
         .AsSingle();
     }
 
     private void BindEdgeOffsetSetter()
     {
       Container
-        .Bind<IEdgeOffsetSetter>()
-        .To<EdgeOffsetSetter>()
+        .Bind<IEdgeShiftSetter>()
+        .To<EdgeShiftSetter>()
         .AsSingle();
     }
 

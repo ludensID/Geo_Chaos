@@ -30,10 +30,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Bump
           .Del<BumpTimer>();
         
         ref MovementLayout layout = ref hero.Get<MovementLayout>();
-        if (layout.Owner == MovementType.Bump)
+        if (layout.Movement == MovementType.Bump)
         {
           layout.Layer = MovementLayer.All;
-          layout.Owner = MovementType.None;
+          layout.Movement = MovementType.None;
         }
       }
     }

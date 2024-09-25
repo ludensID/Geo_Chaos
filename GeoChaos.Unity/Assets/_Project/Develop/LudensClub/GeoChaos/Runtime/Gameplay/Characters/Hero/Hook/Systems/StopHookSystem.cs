@@ -44,10 +44,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
         }
 
         ref MovementLayout layout = ref command.Get<MovementLayout>();
-        if (layout.Owner == MovementType.Hook)
+        if (layout.Movement == MovementType.Hook)
         {
           layout.Layer = MovementLayer.All;
-          layout.Owner = MovementType.None;
+          layout.Movement = MovementType.None;
         }
 
         command.Replace((ref LastGlideMovement glide) => glide.Movement = MovementType.Hook);

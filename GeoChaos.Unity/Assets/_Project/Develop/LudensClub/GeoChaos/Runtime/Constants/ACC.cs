@@ -95,6 +95,7 @@
       public const string CAMERA_TRIGGER_DETECTOR = CAMERA + "Camera Trigger Detector";
       public const string AXIS_LOCKER = CAMERA + "Axis Locker";
       public const string VIRTUAL_CAMERA_VIEW = CAMERA + "Virtual Camera View";
+      public const string VERTICAL_SHIFTER = CAMERA + "Vertical Shifter";
 
       public const string WINDOW_VIEW = WINDOWS + "Window View";
       public const string SIMPLE_WINDOW_VIEW = WINDOWS + "Simple Window View";

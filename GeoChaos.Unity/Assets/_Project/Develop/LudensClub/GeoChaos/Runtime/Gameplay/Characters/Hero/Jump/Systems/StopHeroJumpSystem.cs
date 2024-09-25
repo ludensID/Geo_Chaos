@@ -38,6 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
         
         hero
           .Del<Jumping>()
+          .Change((ref MovementLayout layout) => layout.Movement = MovementType.None)
           .Del<StopJumpCommand>();
       }
     }

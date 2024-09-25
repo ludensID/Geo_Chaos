@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
         .Inc<Jumping>()
         .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity jumping in _jumpings

@@ -46,6 +46,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
         hero
           .Add<Jumping>()
           .Del<JumpCommand>()
+          .Change((ref MovementLayout layout) => layout.Movement = MovementType.Jump)
           .Replace((ref ActionState actionState) => actionState.StartNew())
           .Replace((ref ActionContext ctx) => ctx.IsEmpty = true)
           .Replace((ref LastGlideMovement glide) => glide.Movement = MovementType.Jump);

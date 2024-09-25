@@ -51,10 +51,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash
           .Replace((ref LastGlideMovement glide) => glide.Movement = MovementType.Dash); 
           
         ref MovementLayout layout = ref command.Get<MovementLayout>();
-        if (layout.Owner == MovementType.Dash)
+        if (layout.Movement == MovementType.Dash)
         {
           layout.Layer = MovementLayer.All;
-          layout.Owner = MovementType.None;
+          layout.Movement = MovementType.None;
         }
       }
     }

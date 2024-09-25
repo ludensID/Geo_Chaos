@@ -2,12 +2,12 @@
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
-  public class EdgeOffsetSetter : IEdgeOffsetSetter
+  public class EdgeShiftSetter : IEdgeShiftSetter
   {
     private readonly VirtualCameraModel _model;
     private readonly CameraConfig _config;
 
-    public EdgeOffsetSetter(VirtualCameraModel model, IConfigProvider configProvider)
+    public EdgeShiftSetter(VirtualCameraModel model, IConfigProvider configProvider)
     {
       _model = model;
       _config = configProvider.Get<CameraConfig>();
@@ -15,12 +15,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 
     public void SetEdgeOffset()
     {
-      _model.EdgeVerticalOffset.Value = -_config.EdgeVerticalOffset;
+      _model.EdgeVerticalShift.Value = -_config.EdgeVerticalShift;
     }
 
     public void SetDefaultOffset()
     {
-      _model.EdgeVerticalOffset.Value = 0;
+      _model.EdgeVerticalShift.Value = 0;
     }
   }
 }

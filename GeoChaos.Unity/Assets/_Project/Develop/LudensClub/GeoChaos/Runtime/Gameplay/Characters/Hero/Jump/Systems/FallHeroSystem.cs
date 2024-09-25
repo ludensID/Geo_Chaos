@@ -33,8 +33,12 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump
         .Check<MovementVector>(x => x.Direction.y <= 0))
       {
         if (onGround.Has<Jumping>())
-          onGround.Del<Jumping>();
-        
+        {
+          onGround
+            .Del<Jumping>()
+            .Change((ref MovementLayout layout) => layout.Movement = MovementType.None);
+        }
+
         onGround
           .Add<Falling>()
           .Change((ref GravityScale gravity) => gravity.Scale.Value = _config.FallGravityScale);

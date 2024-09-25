@@ -13,7 +13,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
   [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct MovementLayout : IEcsComponent
   {
-    public MovementType Owner;
+    public MovementType Movement;
     public MovementLayer Layer;
   }
 }

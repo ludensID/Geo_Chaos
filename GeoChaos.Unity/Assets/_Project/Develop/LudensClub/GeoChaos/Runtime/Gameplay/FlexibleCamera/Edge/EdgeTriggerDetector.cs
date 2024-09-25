@@ -7,10 +7,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
   [AddComponentMenu(ACC.Names.EDGE_TRIGGER_DETECTOR)]
   public class EdgeTriggerDetector : HeroDetector
   {
-    private IEdgeOffsetSetter _setter;
+    private IEdgeShiftSetter _setter;
 
     [Inject]
-    public void Construct(IEdgeOffsetSetter setter)
+    public void Construct(IEdgeShiftSetter setter)
     {
       _setter = setter;
     }

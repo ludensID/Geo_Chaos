@@ -38,10 +38,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack
           .Add<OnAttackFinished>();
 
         ref MovementLayout layout = ref hero.Get<MovementLayout>();
-        if (layout.Owner == MovementType.Attack)
+        if (layout.Movement == MovementType.Attack)
         {
           layout.Layer = MovementLayer.All;
-          layout.Owner = MovementType.None;
+          layout.Movement = MovementType.None;
         }
 
         ref ComboAttackCounter counter = ref hero.Get<ComboAttackCounter>();

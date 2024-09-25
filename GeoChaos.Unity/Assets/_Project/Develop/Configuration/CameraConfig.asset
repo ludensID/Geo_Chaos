@@ -17,5 +17,7 @@ MonoBehaviour:
   DefaultVerticalDamping: 2
   FallVerticalDamping: 0.25
   VerticalOffsetInterpolationTime: 0.35
-  EdgeVerticalOffset: 3
-  VerticalViewOffset: 7
+  EdgeVerticalShift: 3
+  DelayBeforeLook: 1
+  LookUpShift: 3
+  LookDownShift: 2
