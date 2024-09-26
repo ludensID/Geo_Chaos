@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
-  public class VerticalShiftUpdater : IDisposable
+  public class CameraShiftUpdater : IDisposable
   {
     private readonly IVirtualCameraManager _manager;
     private readonly VirtualCameraModel _model;
     
-    public VerticalShiftUpdater(IVirtualCameraManager manager, VirtualCameraModel model)
+    public CameraShiftUpdater(IVirtualCameraManager manager, VirtualCameraModel model)
     {
       _manager = manager;
       _model = model;

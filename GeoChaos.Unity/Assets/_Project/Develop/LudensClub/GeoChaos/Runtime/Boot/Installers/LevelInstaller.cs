@@ -264,7 +264,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindVerticalShiftUpdater()
     {
       Container
-        .BindInterfacesTo<VerticalShiftUpdater>()
+        .BindInterfacesTo<CameraShiftUpdater>()
         .AsSingle();
     }
 
