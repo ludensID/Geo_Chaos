@@ -9,9 +9,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
     {
       Add(systems.Create<DeleteSystem<MoveHeroCommand>>());
       Add(systems.Create<ReadMovementSystem>());
-      Add(systems.Create<SowMoveCommandSystem>());
-      Add(systems.Create<InterruptMovementSystem>());
       Add(systems.Create<CalculateHeroMovementVectorSystem>());
+      Add(systems.Create<IgnoreMovementSystem>());
     }
   }
 }

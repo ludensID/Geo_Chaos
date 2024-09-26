@@ -6,13 +6,13 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
 {
-  public class InterruptMovementSystem : IEcsRunSystem
+  public class IgnoreMovementSystem : IEcsRunSystem
   {
     private readonly EcsWorld _game;
     private readonly EcsEntities _movings;
     private readonly SpeedForceLoop _forceLoop;
 
-    public InterruptMovementSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
+    public IgnoreMovementSystem(GameWorldWrapper gameWorldWrapper, ISpeedForceLoopService forceLoopSvc)
     {
       _game = gameWorldWrapper.World;
       _forceLoop = forceLoopSvc.CreateLoop();
@@ -20,17 +20,19 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move
       _movings = _game
         .Filter<HeroTag>()
         .Inc<Moving>()
-        .Exc<FreeFalling>()
         .Collect();
     }
     
     public void Run(EcsSystems systems)
     {
-      foreach (EcsEntity moving in _movings
-        .Check<MovementLayout>(x => x.Layer != MovementLayer.All))
+      foreach (EcsEntity moving in _movings)
       {
-        moving.Del<Moving>();
-        _forceLoop.ResetForcesToZero(SpeedForceType.Move, moving.PackedEntity);
+        bool shouldIgnore = moving.Get<MovementLayout>().Layer != MovementLayer.All || moving.Has<FreeFalling>();
+        foreach (EcsEntity force in _forceLoop
+          .GetLoop(SpeedForceType.Move, moving.PackedEntity))
+        {
+          force.Has<Ignored>(shouldIgnore);
+        }
       }
     }
   }
