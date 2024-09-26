@@ -52,6 +52,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 
       BindLevelStateMachine();
 
+      BindRestartProcessor();
       BindGameplayPause();
       BindInitializingPhase();
       BindWindowManager();
@@ -144,6 +145,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindRestartProcessor()
+    {
+      Container
+        .Bind<IRestartProcessor>()
+        .To<RestartProcessor>()
+        .AsSingle();
     }
 
     private void BindLevelRestartActivator()
