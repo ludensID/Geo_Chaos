@@ -76,6 +76,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook
           .Replace((ref ActionState actionState) => actionState.StartNew())
           .Replace((ref ActionContext ctx) =>
           {
+            ctx.IsEmpty = false;
             ctx.Time = time;
             ctx.Velocity = velocity;
           });
