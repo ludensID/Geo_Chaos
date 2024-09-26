@@ -10,8 +10,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     private IHeroHolder _heroHolder;
     private EcsEntity _hero;
 
-    public bool IsBound { get; set; }
-
     [Inject]
     public void Construct(IHeroHolder heroHolder)
     {

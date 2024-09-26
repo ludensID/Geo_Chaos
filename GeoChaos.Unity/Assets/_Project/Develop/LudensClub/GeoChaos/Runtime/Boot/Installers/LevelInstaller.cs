@@ -131,7 +131,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindMainCameraSyncer();
       BindEdgeOffsetSetter();
       BindVerticalViewShiftSetter();
-      BindVerticalOffsetInterpolator();
+      BindAimShiftSetter();
+      BindVerticalShiftUpdater();
+      BindCameraShiftInterpolator();
 
       BindSaveButtonPresenter();
       BindMoveButtonPresenter();
@@ -252,10 +254,24 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .AsSingle();
     }
 
-    private void BindVerticalOffsetInterpolator()
+    private void BindAimShiftSetter()
     {
       Container
-        .BindInterfacesTo<VerticalShiftInterpolator>()
+        .BindInterfacesTo<AimShiftSetter>()
+        .AsSingle();
+    }
+
+    private void BindVerticalShiftUpdater()
+    {
+      Container
+        .BindInterfacesTo<VerticalShiftUpdater>()
+        .AsSingle();
+    }
+
+    private void BindCameraShiftInterpolator()
+    {
+      Container
+        .BindInterfacesTo<CameraShiftInterpolator>()
         .AsSingle();
     }
 

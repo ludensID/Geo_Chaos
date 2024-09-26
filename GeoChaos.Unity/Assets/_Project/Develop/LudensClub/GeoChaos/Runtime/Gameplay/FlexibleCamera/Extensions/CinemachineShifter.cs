@@ -3,18 +3,21 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 {
-  [AddComponentMenu(ACC.Names.VERTICAL_SHIFTER)]
+  [AddComponentMenu(ACC.Names.CINEMACHINE_SHIFTER)]
   [ExecuteInEditMode]
   [DisallowMultipleComponent]
   [SaveDuringPlay]
-  public class VerticalShifter : CinemachineExtension
+  public class CinemachineShifter : CinemachineExtension
   {
-    public float Shift;
-      
+    public Vector2 Shift;
+
     protected override void PostPipelineStageCallback(CinemachineVirtualCameraBase vcam, CinemachineCore.Stage stage,
       ref CameraState state, float deltaTime)
     {
-      state.RawPosition += Vector3.up * Shift;
+      if (stage == CinemachineCore.Stage.Body)
+      {
+        state.RawPosition += (Vector3)Shift;
+      }
     }
   }
 }

@@ -13,13 +13,10 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     private readonly EcsEntity _hero;
     private readonly VirtualCameraModel _model;
     private readonly ITimerFactory _timers;
-    private readonly IHeroHolder _heroHolder;
     private readonly CameraConfig _config;
 
     private float _target;
     private Timer _delay = 1;
-
-    public bool IsBound { get; set; }
 
     public VerticalViewShiftSetter(VirtualCameraModel model,
       IConfigProvider configProvider,
@@ -28,7 +25,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     {
       _model = model;
       _timers = timers;
-      _heroHolder = heroHolder;
       _config = configProvider.Get<CameraConfig>();
 
       _hero = heroHolder.Hero;

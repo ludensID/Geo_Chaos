@@ -15,14 +15,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 
       _manager.OnCameraChanged += SyncCameraWithModel;
       _model.VerticalDamping.OnChanged += SyncCameraWithModel;
-      _model.VerticalShift.OnChanged += SyncCameraWithModel;
+      _model.SmoothShift.OnChanged += SyncCameraWithModel;
     }
 
     public void Dispose()
     {
       _manager.OnCameraChanged -= SyncCameraWithModel;
       _model.VerticalDamping.OnChanged -= SyncCameraWithModel;
-      _model.VerticalShift.OnChanged -= SyncCameraWithModel;
+      _model.SmoothShift.OnChanged -= SyncCameraWithModel;
     }
 
     private void SyncCameraWithModel()
@@ -34,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
 
       if (_manager.MainCamera.Shifter)
       {
-        _manager.MainCamera.Shifter.Shift = _model.VerticalShift;
+        _manager.MainCamera.Shifter.Shift = _model.SmoothShift;
       }
     }
   }

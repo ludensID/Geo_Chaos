@@ -56,5 +56,38 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     {
       obj.SetIndex(2, z);
     }
+
+    public static void SetXY(this ref Vector3 obj, float x, float y)
+    {
+      obj.SetX(x);
+      obj.SetY(y);
+    }
+    
+    public static void SetXY(this ref Vector3 obj, Vector2 xy)
+    {
+      obj.SetXY(xy.x, xy.y);
+    }
+
+    public static void SetYZ(this ref Vector3 obj, float y, float z)
+    {
+      obj.SetY(y);
+      obj.SetZ(z);
+    }
+    
+    public static void SetYZ(this ref Vector3 obj, Vector2 yz)
+    {
+      obj.SetYZ(yz.x, yz.y);
+    }
+
+    public static void SetXZ(this ref Vector3 obj, float x, float z)
+    {
+      obj.SetX(x);
+      obj.SetZ(z);
+    }
+    
+    public static void SetXZ(this ref Vector3 obj, Vector2 xz)
+    {
+      obj.SetXZ(xz.x, xz.y);
+    }
   }
 }

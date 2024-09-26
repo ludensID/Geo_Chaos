@@ -14,7 +14,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
   {
     private readonly EcsEntity _hero;
     private readonly VirtualCameraModel _model;
-    private readonly IHeroHolder _heroHolder;
     private readonly EcsWorld _game;
     private readonly CameraConfig _config;
     private readonly EcsEntities _heroes;
@@ -26,7 +25,6 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     public VerticalDampingInterpolator(IConfigProvider configProvider, VirtualCameraModel model, IHeroHolder heroHolder)
     {
       _model = model;
-      _heroHolder = heroHolder;
       _config = configProvider.Get<CameraConfig>();
       _hero = heroHolder.Hero;
 

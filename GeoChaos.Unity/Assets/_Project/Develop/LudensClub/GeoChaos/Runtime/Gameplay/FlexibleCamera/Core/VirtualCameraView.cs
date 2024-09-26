@@ -15,14 +15,14 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera
     public CinemachinePositionComposer Composer;
 
     [HideInInspector]
-    public VerticalShifter Shifter;
+    public CinemachineShifter Shifter;
 
     [Inject]
     public void Construct()
     {
       Camera = GetComponent<CinemachineCamera>();
       Composer = GetComponent<CinemachinePositionComposer>();
-      Shifter = GetComponent<VerticalShifter>();
+      Shifter = GetComponent<CinemachineShifter>();
     }
   }
 }
