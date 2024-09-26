@@ -21,6 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows
 
     public event Action OnBeforeOpen;
     public event Action OnBeforeClose;
+    public event Action OnClosed;
 
     public WindowController(LevelStateMachine levelStateMachine,
       IWindowManager windowManager,
@@ -68,6 +69,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows
         IsOpened = false;
         _levelStateMachine.SwitchState<GameplayLevelState>().Forget();
         _eventSystem.SetSelectedGameObject(null);
+        OnClosed?.Invoke();
       }
     }
   }

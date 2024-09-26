@@ -24,11 +24,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows
 
     public IWindowController FindWindowById(WindowType id)
     {
-      IWindowController window = _windows.Find(_hasWindowIdClosure.SpecifyPredicate(id));
-      if (window == null)
-        throw new ArgumentException($"There is no window with id {id}");
-      
-      return window;
+      return _windows.Find(_hasWindowIdClosure.SpecifyPredicate(id));
     }
 
     public void Open(WindowType id)

@@ -30,6 +30,7 @@ using LudensClub.GeoChaos.Runtime.UI.HeroHealthShard;
 using LudensClub.GeoChaos.Runtime.UI.ImmunityDuration;
 using LudensClub.GeoChaos.Runtime.Windows;
 using LudensClub.GeoChaos.Runtime.Windows.Checkpoint;
+using LudensClub.GeoChaos.Runtime.Windows.Death;
 using LudensClub.GeoChaos.Runtime.Windows.Map;
 using LudensClub.GeoChaos.Runtime.Windows.Simple;
 using UnityEngine;
@@ -134,6 +135,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindMapModel();
       BindMapCheckpointButtonPresenter();
       BindMapWindowPresenter();
+      BindLevelRestartActivator();
 
       BindDashCooldownPresenter();
       BindShootCooldownPresenter();
@@ -142,6 +144,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindLevelRestartActivator()
+    {
+      Container
+        .BindInterfacesTo<LevelRestartActivator>()
+        .AsSingle();
     }
 
     private void BindLevelInitializer()

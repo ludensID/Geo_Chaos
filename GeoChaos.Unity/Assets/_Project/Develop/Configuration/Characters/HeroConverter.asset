@@ -59,8 +59,6 @@ MonoBehaviour:
       - Value:
           rid: 674097938592170114
       - Value:
-          rid: 2072450807949951756
-      - Value:
           rid: 2072450811591918056
     _scriptableConverter: {fileID: 0}
   - _serializedConverter:
@@ -140,9 +138,6 @@ MonoBehaviour:
         asm: GeoChaos.Runtime}
       data:
         Direction: {x: 0, y: 0}
-    - rid: 2072450807949951756
-      type: {class: Immortal, ns: LudensClub.GeoChaos.Runtime.Gameplay.Die, asm: GeoChaos.Runtime}
-      data: 
     - rid: 2072450811591918056
       type: {class: Damageable, ns: LudensClub.GeoChaos.Runtime.Gameplay.Damage, asm: GeoChaos.Runtime}
       data: 

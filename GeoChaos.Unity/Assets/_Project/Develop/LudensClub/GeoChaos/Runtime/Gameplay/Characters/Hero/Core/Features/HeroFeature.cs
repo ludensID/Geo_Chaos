@@ -2,6 +2,7 @@
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Attack;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Bump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Dash;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Death;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Glide;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.HealthShard;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Hook;
@@ -41,6 +42,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
       Add(systems.Create<HeroHealthShardFeature>());
 
       Add(systems.Create<SetHeroBodyDirectionSystem>());
+      
+      Add(systems.Create<OpenDeathWindowSystem>());
     }
   }
 }

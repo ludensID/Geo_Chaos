@@ -7,5 +7,6 @@
     Checkpoint = NothingHappens + 1,
     Save = Checkpoint + 1,
     Map = Save + 1,
+    Death = Map + 1
   }
 }

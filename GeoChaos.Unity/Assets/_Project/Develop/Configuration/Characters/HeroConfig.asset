@@ -59,7 +59,7 @@ MonoBehaviour:
   ShootMask:
     serializedVersion: 2
     m_Bits: 913
-  ImmunityTime: 3
+  ImmunityTime: 1
   EnableBump: 1
   BumpForce: {x: 10, y: 20}
   BumpFreezeDuration: 0.3

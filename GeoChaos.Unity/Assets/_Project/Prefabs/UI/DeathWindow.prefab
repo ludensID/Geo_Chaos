@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2634398364514659061
+--- !u!1001 &555829577104114817
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,25 +8,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1757864443653027205, guid: 5faa743febdfd40498234fc1a9a0b7ed,
+        type: 3}
+      propertyPath: m_text
+      value: "\u041E\u043A"
+      objectReference: {fileID: 0}
     - target: {fileID: 1894332628104334677, guid: 5faa743febdfd40498234fc1a9a0b7ed,
         type: 3}
       propertyPath: m_text
-      value: "\u0418\u0433\u0440\u0430 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0430!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2123994040641816286, guid: 5faa743febdfd40498234fc1a9a0b7ed,
-        type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2123994040641816286, guid: 5faa743febdfd40498234fc1a9a0b7ed,
-        type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0.30588236
-      objectReference: {fileID: 0}
-    - target: {fileID: 2123994040641816286, guid: 5faa743febdfd40498234fc1a9a0b7ed,
-        type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0.22352941
+      value: "\u0412\u044B \u0443\u043C\u0435\u0440\u043B\u0438"
       objectReference: {fileID: 0}
     - target: {fileID: 3617323294139243167, guid: 5faa743febdfd40498234fc1a9a0b7ed,
         type: 3}
@@ -131,7 +121,7 @@ PrefabInstance:
     - target: {fileID: 5700692048036988889, guid: 5faa743febdfd40498234fc1a9a0b7ed,
         type: 3}
       propertyPath: m_Name
-      value: SaveWindow
+      value: DeathWindow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -140,31 +130,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5700692048036988889, guid: 5faa743febdfd40498234fc1a9a0b7ed,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3986670464849472799}
+      addedObject: {fileID: 5321481621637405620}
   m_SourcePrefab: {fileID: 100100000, guid: 5faa743febdfd40498234fc1a9a0b7ed, type: 3}
---- !u!1 &4665597466345922645 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7219493917979757216, guid: 5faa743febdfd40498234fc1a9a0b7ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 2634398364514659061}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7751731162663857452 stripped
+--- !u!1 &5236095617646838616 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5700692048036988889, guid: 5faa743febdfd40498234fc1a9a0b7ed,
     type: 3}
-  m_PrefabInstance: {fileID: 2634398364514659061}
+  m_PrefabInstance: {fileID: 555829577104114817}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3986670464849472799
+--- !u!114 &5321481621637405620
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7751731162663857452}
+  m_GameObject: {fileID: 5236095617646838616}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95bb4a1bea6f4dd5962216011fed0b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 101
-  FirstNavigationElement: {fileID: 4665597466345922645}
+  Id: 103
+  FirstNavigationElement: {fileID: 7171559618424114721}
+--- !u!1 &7171559618424114721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7219493917979757216, guid: 5faa743febdfd40498234fc1a9a0b7ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 555829577104114817}
+  m_PrefabAsset: {fileID: 0}
