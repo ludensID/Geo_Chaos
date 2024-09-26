@@ -5,10 +5,19 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
 {
   public class RestartLevelState : IState
   {
-    public UniTask Enter()
+    private readonly LevelStateMachine _levelStateMachine;
+    private readonly IRestartProcessor _restartProcessor;
+
+    public RestartLevelState(LevelStateMachine levelStateMachine, IRestartProcessor restartProcessor)
     {
-      return UniTask.CompletedTask;
-      
+      _levelStateMachine = levelStateMachine;
+      _restartProcessor = restartProcessor;
+    }
+    
+    public async UniTask Enter()
+    {
+      await _restartProcessor.RestartAsync();
+      await _levelStateMachine.SwitchState<GameplayLevelState>();
     }
 
     public UniTask Exit()
