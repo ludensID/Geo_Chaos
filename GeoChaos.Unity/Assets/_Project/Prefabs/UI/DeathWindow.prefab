@@ -18,6 +18,21 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u0412\u044B \u0443\u043C\u0435\u0440\u043B\u0438"
       objectReference: {fileID: 0}
+    - target: {fileID: 2123994040641816286, guid: 5faa743febdfd40498234fc1a9a0b7ed,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123994040641816286, guid: 5faa743febdfd40498234fc1a9a0b7ed,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.30588236
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123994040641816286, guid: 5faa743febdfd40498234fc1a9a0b7ed,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.22352941
+      objectReference: {fileID: 0}
     - target: {fileID: 3617323294139243167, guid: 5faa743febdfd40498234fc1a9a0b7ed,
         type: 3}
       propertyPath: m_Pivot.x

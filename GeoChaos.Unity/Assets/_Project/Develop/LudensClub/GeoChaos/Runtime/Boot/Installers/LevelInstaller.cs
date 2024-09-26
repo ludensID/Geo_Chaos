@@ -20,6 +20,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Environment.Tongue;
 using LudensClub.GeoChaos.Runtime.Gameplay.FlexibleCamera;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
+using LudensClub.GeoChaos.Runtime.Gameplay.Restart;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees;
@@ -47,7 +48,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     public override void InstallBindings()
     {
       BindLevelInitializer();
-      
+
       BindCoroutineRunner();
 
       BindLevelStateMachine();
@@ -99,6 +100,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindTonguePool();
       BindGasCloudPool();
 
+      BindEcsRestartService();
+
       BindDragForceService();
       BindADControlService();
       BindSpeedForceLoopService();
@@ -145,6 +148,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindEcsRestartService()
+    {
+      Container
+        .Bind<IEcsRestartService>()
+        .To<EcsRestartService>()
+        .AsSingle();
     }
 
     private void BindRestartProcessor()
@@ -221,8 +232,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .BindInterfacesAndSelfTo<HeroTransporter>()
         .AsSingle();
     }
-
-    
 
     private void BindSimpleWindowPresenter()
     {
