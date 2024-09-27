@@ -200,6 +200,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint
       objectReference: {fileID: 0}
+    - target: {fileID: 6509891357976049971, guid: 808bd9e14d984964380f2378be2ecfd9,
+        type: 3}
+      propertyPath: _identifier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509891357976049971, guid: 808bd9e14d984964380f2378be2ecfd9,
+        type: 3}
+      propertyPath: <IsError>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8777858864468300031, guid: 808bd9e14d984964380f2378be2ecfd9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -328,6 +338,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Checkpoint (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509891357976049971, guid: 808bd9e14d984964380f2378be2ecfd9,
+        type: 3}
+      propertyPath: _identifier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8777858864468300031, guid: 808bd9e14d984964380f2378be2ecfd9,
         type: 3}
@@ -612,6 +627,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6509891357976049971, guid: 808bd9e14d984964380f2378be2ecfd9,
+        type: 3}
+      propertyPath: _identifier
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8777858864468300031, guid: 808bd9e14d984964380f2378be2ecfd9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -888,6 +908,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Checkpoint (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509891357976049971, guid: 808bd9e14d984964380f2378be2ecfd9,
+        type: 3}
+      propertyPath: _identifier
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8777858864468300031, guid: 808bd9e14d984964380f2378be2ecfd9,
         type: 3}

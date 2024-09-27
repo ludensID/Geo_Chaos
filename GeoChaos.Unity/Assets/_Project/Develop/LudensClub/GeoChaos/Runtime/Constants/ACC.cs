@@ -18,6 +18,7 @@
     public const string UI = PROJECT + "UI/";
     public const string WINDOWS = UI + "Window/";
     public const string BUTTONS = UI + "Buttons/";
+    public const string PERSISTENCE = PROJECT + "Persistence/";
 
     public static class Names
     {
@@ -100,6 +101,8 @@
       public const string MOVE_BUTTON_VIEW = BUTTONS + "Move Button View";
       public const string SAVE_BUTTON_VIEW = BUTTONS + "Save Button View";
       public const string MAP_CHECKPOINT_BUTTON_VIEW = BUTTONS + "Map Checkpoint Button View";
+      
+      public const string PERSISTENCE_IDENTIFIER = PERSISTENCE + "Persistence Identifier";
     }
   }
 }
