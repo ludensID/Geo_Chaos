@@ -14,8 +14,6 @@ namespace LudensClub.GeoChaos.Editor
     private static EditorContext _context;
     private static DiContainer _container => _context.Container;
 
-    public static event Action OnContextInitialized;
-
     static EditorEnterPoint()
     {
       EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
@@ -27,7 +25,7 @@ namespace LudensClub.GeoChaos.Editor
     {
       if (state == PlayModeStateChange.EnteredEditMode)
       {
-        InitializeContext();
+        RecreateContainer();
       }
     }
 
@@ -43,8 +41,14 @@ namespace LudensClub.GeoChaos.Editor
 
       InstallBindings();
       _context.ResolveRoots();
+    }
 
-      OnContextInitialized?.Invoke();
+    private static void RecreateContainer()
+    {
+      _context.CreateContainer();
+        
+      InstallBindings();
+      _context.ResolveRoots();
     }
 
     private static void InstallBindings()

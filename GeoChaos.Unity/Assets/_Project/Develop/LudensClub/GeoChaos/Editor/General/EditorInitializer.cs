@@ -7,6 +7,8 @@ namespace LudensClub.GeoChaos.Editor.General
   {
     private readonly List<IEditorInitializable> _initializables = new List<IEditorInitializable>();
 
+    private bool _initialized;
+
     public EditorInitializer(List<IEditorInitializable> initializables, EditorContext context)
     {
       _initializables.AddRange(initializables);
@@ -16,6 +18,9 @@ namespace LudensClub.GeoChaos.Editor.General
     public void Add(IEditorInitializable initializable)
     {
       _initializables.Add(initializable);
+      
+      if(_initialized)
+        initializable.Initialize();
     }
 
     private void Initialize()
@@ -24,6 +29,8 @@ namespace LudensClub.GeoChaos.Editor.General
       {
         initializable.Initialize();
       }
+      
+      _initialized = true;
     }
   }
 }
