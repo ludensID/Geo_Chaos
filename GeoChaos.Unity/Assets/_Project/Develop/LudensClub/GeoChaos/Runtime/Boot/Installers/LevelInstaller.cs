@@ -136,6 +136,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindSimpleWindowPresenter();
 
       BindSaveButtonPresenter();
+      BindMoveButtonPresenter();
       BindMapModel();
       BindMapCheckpointButtonPresenter();
       BindMapWindowPresenter();
@@ -148,6 +149,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindMoveButtonPresenter()
+    {
+      Container
+        .Bind<IMoveButtonPresenter>()
+        .To<MoveButtonPresenter>()
+        .AsSingle();
     }
 
     private void BindEcsRestartService()

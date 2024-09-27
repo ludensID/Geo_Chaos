@@ -10,12 +10,13 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Checkpoint
     [SerializeField]
     private Button _button;
 
-    private IWindowManager _windowManager;
+    private IMoveButtonPresenter _presenter;
 
     [Inject]
-    public void Construct(IWindowManager windowManager)
+    public void Construct(IMoveButtonPresenter presenter)
     {
-      _windowManager = windowManager;
+      _presenter = presenter;
+      _presenter.SetView(this);
       _button.onClick.AddListener(OnButtonClicked);
     }
 
@@ -26,7 +27,12 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Checkpoint
 
     private void OnButtonClicked()
     {
-      _windowManager.Open(WindowType.Map);
+      _presenter.OpenMap();
+    }
+
+    public void SetActiveButton(bool active)
+    {
+      _button.interactable = active;
     }
 
     private void Reset()
