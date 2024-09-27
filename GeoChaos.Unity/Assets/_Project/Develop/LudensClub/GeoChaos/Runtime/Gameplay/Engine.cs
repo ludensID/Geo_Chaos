@@ -14,6 +14,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Physics;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Collisions;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Forces;
 using LudensClub.GeoChaos.Runtime.Gameplay.Physics.Gravity;
+using LudensClub.GeoChaos.Runtime.Gameplay.Restart;
 using LudensClub.GeoChaos.Runtime.Gameplay.View;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using Zenject;
@@ -46,6 +47,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay
         .Add(factory.Create<ViewFixedFeature>());
 
       _updateSystems
+        .Add(factory.Create<RestartFeature>())
         .Add(factory.Create<CreationFeature>())
         .Add(factory.Create<CollisionFeature>())
         .Add(factory.Create<InputFeature>())
