@@ -19,21 +19,33 @@ namespace LudensClub.GeoChaos.Debugging.Persistence
       _preferencesLoader = EditorMediator.Context.Container.Resolve<IPersistencePreferencesLoader>();
       _preferencesProvider = EditorMediator.Context.Container.Resolve<IPersistencePreferencesProvider>();
     }
-      
+
     public async UniTask LoadAsync()
     {
       await _gameDataLoader.LoadAsync();
-      if (_preferencesProvider.Preferences.EnableSaving && _preferencesProvider.Preferences.EnableSync)
+      if (_preferencesProvider.Preferences.EnableSaving)
       {
-        _gameDataProvider.Data = _preferencesProvider.Preferences.GameData;
-        _preferencesProvider.Preferences.GameData = _gameDataProvider.Data;
+        if (_preferencesProvider.Preferences.EnableSync)
+        {
+          _gameDataProvider.Data = _preferencesProvider.Preferences.GameData;
+          _preferencesProvider.Preferences.GameData = _gameDataProvider.Data;
+        }
+      }
+      else
+      {
+        _gameDataProvider.Data = null;
       }
     }
 
     public UniTask SaveAsync()
     {
-      _preferencesLoader.SaveToJson();
-      return _gameDataLoader.SaveAsync();
+      if (_preferencesProvider.Preferences.EnableSaving)
+      {
+        _preferencesLoader.SaveToJson();
+        return _gameDataLoader.SaveAsync();
+      }
+      
+      return UniTask.CompletedTask;
     }
   }
 }
