@@ -11,6 +11,7 @@ using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Initialize;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Interaction;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Jump;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Move;
+using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Restart;
 using LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero.Shoot;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 
@@ -20,6 +21,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
   {
     public HeroFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<HeroRestartFeature>());
+        
       Add(systems.Create<HeroInitializingFeature>());
       Add(systems.Create<LoadHeroSystem>());
 

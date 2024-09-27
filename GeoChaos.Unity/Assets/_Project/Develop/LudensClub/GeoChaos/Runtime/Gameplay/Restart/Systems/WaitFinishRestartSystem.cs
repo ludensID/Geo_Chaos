@@ -4,27 +4,27 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Restart
 {
-  public class CleanSceneBeforeRestartSystem : IEcsRunSystem
+  public class WaitFinishRestartSystem : IEcsRunSystem
   {
     private readonly EcsWorld _message;
     private readonly EcsEntities _restartMessages;
 
-    public CleanSceneBeforeRestartSystem(MessageWorldWrapper messageWorldWrapper)
+    public WaitFinishRestartSystem(MessageWorldWrapper messageWorldWrapper)
     {
       _message = messageWorldWrapper.World;
 
       _restartMessages = _message
-        .Filter<RestartLevelMessage>()
+        .Filter<OnRestartMessage>()
         .Collect();
     }
-    
+
     public void Run(EcsSystems systems)
     {
       foreach (EcsEntity restart in _restartMessages)
       {
         restart
-          .Add<BeforeRestartMessage>()
-          .Del<RestartLevelMessage>();
+          .Add<AfterRestartMessage>()
+          .Del<OnRestartMessage>();
       }
     }
   }

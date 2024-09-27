@@ -6,6 +6,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Creation.SpawnPoint
   {
     public SpawnPointFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<RestartSpawnSystem>());
       Add(systems.Create<SpawnSystem>());
     }
   }

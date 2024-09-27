@@ -23,8 +23,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Restart
       foreach (EcsEntity restart in _beforeRestartMessages)
       {
         restart
-          .Del<BeforeRestartMessage>()
-          .Add<AfterRestartMessage>();
+          .Add<OnRestartMessage>()
+          .Del<BeforeRestartMessage>();
       }
     }
   }

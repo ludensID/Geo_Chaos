@@ -1,5 +1,4 @@
-﻿using LudensClub.GeoChaos.Runtime.Gameplay.Core;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
 
 namespace LudensClub.GeoChaos.Runtime.Gameplay.Restart
 {
@@ -8,8 +7,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Restart
     public RestartFeature(IEcsSystemFactory systems)
     {
       Add(systems.Create<FinishRestartSystem>());
-      
-      Add(systems.Create<DeleteSystem<AfterRestartMessage, MessageWorldWrapper>>());
+
+      Add(systems.Create<WaitFinishRestartSystem>());
       Add(systems.Create<CreateEntitiesOnRestartSystem>());
       Add(systems.Create<CleanSceneBeforeRestartSystem>());
     } 
