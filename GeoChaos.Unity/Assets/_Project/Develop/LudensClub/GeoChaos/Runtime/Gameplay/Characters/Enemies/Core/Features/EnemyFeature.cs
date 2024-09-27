@@ -11,6 +11,8 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Enemies
   {
     public EnemyFeature(IEcsSystemFactory systems)
     {
+      Add(systems.Create<DestroyEnemiesOnRestartSystem>());
+        
       Add(systems.Create<SelectNearestDamageableEntitySystem>());
       
       Add(systems.Create<LamaFeature>());
