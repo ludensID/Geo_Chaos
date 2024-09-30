@@ -2,8 +2,8 @@
 {
   public interface IPathHandler
   {
-    string GetGameFolder();
-    string GetGameDataPath();
-    string GetSettingsDataPath();
+    string GameFolder { get; }
+    string GameDataPath { get; }
+    string SettingsDataPath { get; }
   }
 }

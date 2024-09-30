@@ -13,9 +13,9 @@ namespace LudensClub.GeoChaos.Debugging.Persistence
     public static void DeleteGameplaySavings()
     {
       var pathHandler = new PathHandler();
-      if (File.Exists(pathHandler.GetGameDataPath()))
+      if (File.Exists(pathHandler.GameDataPath))
       {
-        File.Delete(pathHandler.GetGameDataPath());
+        File.Delete(pathHandler.GameDataPath);
         Debug.Log("Gameplay Savings was successfully deleted");
       }
     }
@@ -24,9 +24,9 @@ namespace LudensClub.GeoChaos.Debugging.Persistence
     public static void OpenPersistenceFolder()
     {
       var pathHandler = new PathHandler();
-      if (Directory.Exists(pathHandler.GetGameFolder()))
+      if (Directory.Exists(pathHandler.GameFolder))
       {
-        Process.Start(pathHandler.GetGameFolder());
+        Process.Start(pathHandler.GameFolder);
       }
       else
       {

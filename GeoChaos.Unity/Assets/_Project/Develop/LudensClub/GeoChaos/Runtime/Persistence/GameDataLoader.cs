@@ -17,12 +17,12 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
 
     public async UniTask LoadAsync()
     {
-      _gameDataProvider.Data = await _fileHandler.LoadAsync<GameData>(_pathHandler.GetGameDataPath());
+      _gameDataProvider.Data = await _fileHandler.LoadAsync<GameData>(_pathHandler.GameDataPath);
     }
 
     public async UniTask SaveAsync()
     {
-      await _fileHandler.SaveAsync(_pathHandler.GetGameDataPath(), _gameDataProvider.Data);
+      await _fileHandler.SaveAsync(_pathHandler.GameDataPath, _gameDataProvider.Data);
     }
   }
 }
