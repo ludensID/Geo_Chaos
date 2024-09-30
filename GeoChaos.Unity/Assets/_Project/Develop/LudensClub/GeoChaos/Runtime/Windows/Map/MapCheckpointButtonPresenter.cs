@@ -17,7 +17,6 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Map
     private MapCheckpointButtonView _view;
     private readonly EcsWorld _game;
 
-
     public MapCheckpointButtonPresenter(IWindowManager windowManager,
       IExplicitInitializer initializer,
       GameWorldWrapper gameWorldWrapper,

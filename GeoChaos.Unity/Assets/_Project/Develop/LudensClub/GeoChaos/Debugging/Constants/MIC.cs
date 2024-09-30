@@ -1,4 +1,4 @@
-﻿namespace LudensClub.GeoChaos.Editor
+﻿namespace LudensClub.GeoChaos.Debugging
 {
   /// <summary>
   /// Menu Item Constants
