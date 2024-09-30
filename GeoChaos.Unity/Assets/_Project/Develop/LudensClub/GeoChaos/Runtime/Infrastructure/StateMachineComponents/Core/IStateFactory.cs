@@ -1,4 +1,4 @@
-﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine
+﻿namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents
 {
   public interface IStateFactory
   {

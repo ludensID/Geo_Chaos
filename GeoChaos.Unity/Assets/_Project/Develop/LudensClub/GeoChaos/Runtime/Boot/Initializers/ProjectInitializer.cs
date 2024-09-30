@@ -1,6 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
-using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine;
+using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Boot

@@ -25,6 +25,7 @@ using LudensClub.GeoChaos.Runtime.Infrastructure;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI;
 using LudensClub.GeoChaos.Runtime.Infrastructure.AI.BehaviourTrees;
 using LudensClub.GeoChaos.Runtime.Infrastructure.Selection;
+using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents;
 using LudensClub.GeoChaos.Runtime.UI;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealth;
 using LudensClub.GeoChaos.Runtime.UI.HeroHealthShard;

@@ -1,7 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
-using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine;
 
-namespace LudensClub.GeoChaos.Runtime.Infrastructure
+namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents
 {
   public class PauseLevelState : IState
   {

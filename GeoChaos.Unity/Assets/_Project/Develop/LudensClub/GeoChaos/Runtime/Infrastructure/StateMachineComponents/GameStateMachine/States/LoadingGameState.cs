@@ -1,8 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
-using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine;
 using LudensClub.GeoChaos.Runtime.Persistence;
 
-namespace LudensClub.GeoChaos.Runtime.Infrastructure
+namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents
 {
   public class LoadingGameState : IState
   {

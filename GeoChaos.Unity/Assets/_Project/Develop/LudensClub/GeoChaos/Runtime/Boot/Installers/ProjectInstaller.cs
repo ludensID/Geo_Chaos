@@ -1,6 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine;
+using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents;
 using LudensClub.GeoChaos.Runtime.Persistence;
 using LudensClub.GeoChaos.Runtime.Windows;
 using Newtonsoft.Json;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 
-namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachine
+namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents
 {
   public class StateMachine : IStateMachine
   {
