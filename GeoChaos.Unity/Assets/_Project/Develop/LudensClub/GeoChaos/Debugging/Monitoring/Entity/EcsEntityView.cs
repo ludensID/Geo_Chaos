@@ -8,11 +8,12 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
   [AddComponentMenu(ACC.Names.ECS_ENTITY_VIEW)]
   public class EcsEntityView : MonoBehaviour
   {
+    public List<EcsComponentView> ComponentPull = new List<EcsComponentView>();
+
     [SerializeReference]
     [HideReferencePicker]
     public List<IEcsComponentView> Components = new List<IEcsComponentView>();
-    public List<EcsComponentView> ComponentPull = new List<EcsComponentView>();
-    
+
     private IEcsEntityPresenter _presenter;
 
     private bool AnyComponents => ComponentPull.Any();
@@ -24,6 +25,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     [EnableIf(nameof(AnyComponents))]
     [GUIColor(0.8f, 1.0f, 0.6f)]
+    [PropertyOrder(1)]
     [Button("Add Components")]
     public void AddComponents()
     {
@@ -32,6 +34,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
 
     [EnableIf(nameof(AnyComponents))]
     [GUIColor(1.0f, 0.6f, 0.6f)]
+    [PropertyOrder(1)]
     [Button("Remove Components")]
     public void RemoveComponents()
     {
@@ -39,6 +42,7 @@ namespace LudensClub.GeoChaos.Debugging.Monitoring
     }
 
     [GUIColor(0.6f, 0.9f, 1.0f)]
+    [PropertyOrder(1)]
     [Button("Clear Pull")]
     public void Clear()
     {
