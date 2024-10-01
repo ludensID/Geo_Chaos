@@ -10,6 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 #endif
   [Serializable]
+  [EcsComponentOrder(EcsComponentOrder.STATIC)]
   public struct PersistenceIdRef : IEcsComponent
   {
     public PersistenceIdentifier Identifier;

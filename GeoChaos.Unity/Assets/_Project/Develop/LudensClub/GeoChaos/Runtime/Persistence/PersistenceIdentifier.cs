@@ -11,9 +11,9 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
   {
     [SerializeField]
     [ReadOnly]
-    private int _ids;
+    private int _id;
 
-    public int Id => _ids;
+    public int Id => _id;
 
 #if UNITY_EDITOR
     [OnValueChanged(nameof(OnCustomIdentifierChanged))]
@@ -28,7 +28,7 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
 
     public void SetId(int id)
     {
-      _ids = id;
+      _id = id;
     }
 #endif
 
@@ -43,12 +43,12 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
       {
         if (!identifiers.Contains(i))
         {
-          _ids = i;
+          _id = i;
           break;
         }
       }
 
-      CustomId = _ids;
+      CustomId = _id;
     }
   }
 }

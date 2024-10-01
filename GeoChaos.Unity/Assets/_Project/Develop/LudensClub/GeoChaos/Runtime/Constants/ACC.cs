@@ -69,6 +69,7 @@
       public const string TONGUE_POINT_CONVERTER = CONVERTERS + "Tongue Point Converter";
       public const string ARMS_COLLIDER_CONVERTER = CONVERTERS + "Arms Collider Converter";
       public const string HERO_POINT_CONVERTER = CONVERTERS + "Hero Point Converter";
+      public const string PERSISTENCE_ID_CONVERTER = CONVERTERS + "Persistence Id Converter";
 
       public const string COROUTINE_RUNNER = CORE + "Coroutine Runner";
       public const string COLLISION_DETECTOR = CORE + "Collision Detector";
@@ -101,7 +102,7 @@
       public const string MOVE_BUTTON_VIEW = BUTTONS + "Move Button View";
       public const string SAVE_BUTTON_VIEW = BUTTONS + "Save Button View";
       public const string MAP_CHECKPOINT_BUTTON_VIEW = BUTTONS + "Map Checkpoint Button View";
-      
+
       public const string PERSISTENCE_IDENTIFIER = PERSISTENCE + "Persistence Identifier";
     }
   }

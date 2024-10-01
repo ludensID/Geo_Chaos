@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace LudensClub.GeoChaos.Runtime.Persistence
 {
+  [AddComponentMenu(ACC.Names.PERSISTENCE_ID_CONVERTER)]
   public class PersistenceIdConverter : MonoBehaviour, IEcsConverter
   {
     public PersistenceIdentifier Identifier;
