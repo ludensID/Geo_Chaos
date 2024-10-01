@@ -55,6 +55,9 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     [Range(0.001f, 10)]
     public float JumpHorizontalSpeedMultiplier = 1;
 
+    [Range(0, 100)]
+    public float MaxFallVelocity;
+
     [ReadOnly]
     public float JumpLength;
 
@@ -82,7 +85,7 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     public float DashTime;
 
     [ShowInInspector]
-    [PropertyOrder(20)]
+    [PropertyOrder(21)]
     public float DashDistance => DashVelocity * DashTime;
 
     public float DashCooldown;

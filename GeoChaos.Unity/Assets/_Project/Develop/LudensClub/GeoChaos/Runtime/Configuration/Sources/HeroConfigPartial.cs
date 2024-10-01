@@ -25,13 +25,13 @@ namespace LudensClub.GeoChaos.Runtime.Configuration
     }
 
     [PropertySpace(SpaceBefore = 20)]
-    [PropertyOrder(22)]
+    [PropertyOrder(23)]
     [Range(0.01f, 5)]
     [EnableInEditMode]
     [ListDrawerSettings(HideAddButton = true, HideRemoveButton = true)]
     [OnValueChanged(TriConstants.ON + nameof(HitColliderSizes) + TriConstants.CHANGED)]
     [LabelText("$" + nameof(HitColliderSizesEditModeName))]
-    public List<float> HitColliderSizes = new(3) { 1, 1, 1 };
+    public List<float> HitColliderSizes = new List<float>(3) { 1, 1, 1 };
 
     public string HitColliderSizesEditModeName =>
       nameof(HitColliderSizes) + (EditorApplication.isPlaying ? " (Only In Edit Mode)" : "");

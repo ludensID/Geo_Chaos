@@ -26,6 +26,7 @@ MonoBehaviour:
   JumpHeight: 7
   FallVelocityMultiplier: 1
   JumpHorizontalSpeedMultiplier: 1
+  MaxFallVelocity: 50
   JumpLength: 9.900001
   EnableDash: 1
   DashVelocity: 33.4
