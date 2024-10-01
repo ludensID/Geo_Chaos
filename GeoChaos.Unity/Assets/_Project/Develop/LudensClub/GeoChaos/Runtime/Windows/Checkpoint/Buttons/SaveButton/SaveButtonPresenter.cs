@@ -1,5 +1,4 @@
 ﻿using Cysharp.Threading.Tasks;
-using LudensClub.GeoChaos.Runtime.Gameplay.Core;
 using LudensClub.GeoChaos.Runtime.Persistence;
 using LudensClub.GeoChaos.Runtime.Windows.Map;
 
@@ -22,7 +21,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Checkpoint
     {
       if (_mapModel.CurrentCheckpoint.IsAlive())
       {
-        _persistence.Data.LastCheckpoint = _mapModel.CurrentCheckpoint.Get<ViewRef>().View.transform.position;
+        _persistence.Data.LastCheckpoint = _mapModel.CurrentCheckpoint.Get<PersistenceIdRef>().Identifier.Id;
       }
       
       await _persistence.SaveDirect();

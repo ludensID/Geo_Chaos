@@ -1,32 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using LudensClub.GeoChaos.Runtime.Persistence;
 using TriInspector.Editors;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
-using TypeCache = LudensClub.GeoChaos.Editor.General.TypeCache;
 
 namespace LudensClub.GeoChaos.Editor
 {
   [CustomEditor(typeof(PersistenceIdentifier), true)]
   public class PersistenceIdentifierDrawer : UnityEditor.Editor
   {
-    private static readonly TypeCache _typeCache = new TypeCache();
-
     private readonly List<PersistenceIdentifier> _identifiers = new List<PersistenceIdentifier>();
     private readonly HashSet<PersistenceIdentifier> _hashedIdentifiers = new HashSet<PersistenceIdentifier>();
 
     private TriEditorCore _core;
     private bool _initialized;
 
-    private FieldInfo _identifierField;
     private PersistenceIdentifier _value;
 
     private void OnEnable()
     {
-      _identifierField = _typeCache.GetCachedField(typeof(PersistenceIdentifier), "_identifier", true);
       _core = new TriEditorCore(this);
       _initialized = false;
     }
@@ -34,7 +28,7 @@ namespace LudensClub.GeoChaos.Editor
     private void Initialize()
     {
       _value = (PersistenceIdentifier)serializedObject.targetObject;
-      _value.CustomIdentifier = _value.Identifier;
+      _value.CustomId = _value.Id;
       _initialized = true;
     }
 
@@ -68,9 +62,9 @@ namespace LudensClub.GeoChaos.Editor
 
       if (_value.IsChanged)
       {
-        if (!IsBadIdentifier(_value.CustomIdentifier))
+        if (!IsBadIdentifier(_value.CustomId))
         {
-          _identifierField.SetValue(_value, _value.CustomIdentifier);
+          _value.SetId(_value.CustomId);
           Save();
         }
 
@@ -87,16 +81,16 @@ namespace LudensClub.GeoChaos.Editor
     private bool IsBadIdentifier(int id)
     {
       return id <= 0
-        || _identifiers.Any(x => x != _value && x.Identifier == id);
+        || _identifiers.Any(x => x != _value && x.Id == id);
     }
 
     private void CheckIdentifier()
     {
-      if (IsBadIdentifier(_value.Identifier))
+      if (IsBadIdentifier(_value.Id))
       {
-        int id = _value.Identifier;
+        int id = _value.Id;
         RecalculateIdentifier();
-        Debug.Log($"Recalculated identifier {id} to {_value.Identifier}", _value);
+        Debug.Log($"Recalculated identifier {id} to {_value.Id}", _value);
       }
     }
 
@@ -104,10 +98,10 @@ namespace LudensClub.GeoChaos.Editor
     {
       for (int i = 1; i < int.MaxValue; i++)
       {
-        if (_identifiers.All(x => x.Identifier != i))
+        if (_identifiers.All(x => x.Id != i))
         {
-          _identifierField.SetValue(_value, i);
-          _value.CustomIdentifier = i;
+          _value.SetId(i);
+          _value.CustomId = i;
           Save();
           break;
         }

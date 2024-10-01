@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using LudensClub.GeoChaos.Runtime.Persistence;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TypeCache = LudensClub.GeoChaos.Editor.General.TypeCache;
 
 namespace LudensClub.GeoChaos.Editor
 {
@@ -15,14 +13,12 @@ namespace LudensClub.GeoChaos.Editor
   {
     private static readonly Dictionary<int, int> _identifierCounts = new Dictionary<int, int>();
     private static readonly List<PersistenceIdentifier> _duplicateIdentifiers = new List<PersistenceIdentifier>();
-    private static readonly TypeCache _cache = new TypeCache();
-    private static readonly FieldInfo _identifierField;
-    
+    private static readonly List<PersistenceIdentifier> _tempIdentifiers = new List<PersistenceIdentifier>();
+
     private static PersistenceIdentifier[] _identifiers;
 
     static PersistenceIdentifierValidator()
     {
-      _identifierField = _cache.GetCachedField(typeof(PersistenceIdentifier), "_identifier", true);
       EditorSceneManager.sceneOpened += ValidateIdentifiers;
       SceneManager.sceneLoaded += ValidateIdentifiers;
       ValidateIdentifiersInternal();
@@ -40,7 +36,8 @@ namespace LudensClub.GeoChaos.Editor
 
     private static void ValidateIdentifiersInternal()
     {
-      _identifiers = Object.FindObjectsByType<PersistenceIdentifier>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+      _identifiers =
+        Object.FindObjectsByType<PersistenceIdentifier>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
       CollectIdentifierCounts();
       CollectDuplicateIdentifiers();
@@ -52,21 +49,27 @@ namespace LudensClub.GeoChaos.Editor
       _identifierCounts.Clear();
       foreach (PersistenceIdentifier identifier in _identifiers)
       {
-        if (!_identifierCounts.TryAdd(identifier.Identifier, 1))
-          _identifierCounts[identifier.Identifier]++;
+        if (!_identifierCounts.TryAdd(identifier.Id, 1))
+          _identifierCounts[identifier.Id]++;
       }
     }
 
     private static void CollectDuplicateIdentifiers()
     {
+      _tempIdentifiers.Clear();
+      foreach (PersistenceIdentifier identifier in _identifiers)
+        _tempIdentifiers.Add(identifier);
+
       _duplicateIdentifiers.Clear();
-      foreach (KeyValuePair<int, int> pair in _identifierCounts.Where(x => x.Value > 1))
+      foreach (KeyValuePair<int, int> pair in _identifierCounts)
       {
         int i = pair.Value;
-        while (i > 1)
+        int end = pair.Key > 0 ? 1 : 0;
+        while (i > end)
         {
-          PersistenceIdentifier identifier = _identifiers.Last(x => x.Identifier == pair.Key);
+          PersistenceIdentifier identifier = _tempIdentifiers.Last(x => x.Id == pair.Key);
           _duplicateIdentifiers.Add(identifier);
+          _tempIdentifiers.Remove(identifier);
           i--;
         }
       }
@@ -80,7 +83,7 @@ namespace LudensClub.GeoChaos.Editor
         if (k >= _duplicateIdentifiers.Count)
           break;
 
-        if (_identifiers.All(x => x.Identifier != i))
+        if (_identifiers.All(x => x.Id != i))
         {
           SetIdentifierWithLog(_duplicateIdentifiers[k++], i);
         }
@@ -89,17 +92,17 @@ namespace LudensClub.GeoChaos.Editor
 
     private static void SetIdentifierWithLog(PersistenceIdentifier identifier, int value)
     {
-      int oldIdentifier = identifier.Identifier;
+      int oldIdentifier = identifier.Id;
       SetIdentifier(identifier, value);
       Debug.LogWarning($"Persistence identifier of object {identifier.gameObject.name} was changed "
-        + $"from {oldIdentifier} to {identifier.Identifier} in order to prevent duplicate identifiers.",
+        + $"from {oldIdentifier} to {identifier.Id} in order to prevent duplicate identifiers.",
         identifier);
     }
 
     private static void SetIdentifier(PersistenceIdentifier identifier, int value)
     {
-      _identifierField.SetValue(identifier, value);
-      identifier.CustomIdentifier = value;
+      identifier.SetId(value);
+      identifier.CustomId = value;
       EditorUtility.SetDirty(identifier);
     }
   }
