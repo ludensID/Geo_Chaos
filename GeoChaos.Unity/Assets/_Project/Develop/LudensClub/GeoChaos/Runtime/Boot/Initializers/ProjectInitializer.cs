@@ -13,9 +13,10 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       _gameStateMachine = gameStateMachine;
       _stateFactory = stateFactory;
     }
-      
+
     public void Initialize()
     {
+      _gameStateMachine.RegisterState(_stateFactory.Create<MenuGameState>());
       _gameStateMachine.RegisterState(_stateFactory.Create<GameplayGameState>());
     }
   }

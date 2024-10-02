@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: SceneConfig
   m_EditorClassIdentifier: 
   _scenes:
+  - Id: 1
+    Name: Assets/_Project/Scenes/Boot.unity
+  - Id: 2
+    Name: Assets/_Project/Scenes/Menu.unity
   - Id: 3
     Name: Assets/_Project/Scenes/TechnicalTests/TestCheckpoint.unity

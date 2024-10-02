@@ -6,10 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/Scenes/Workbench.unity
-    guid: ac829ae1f00bcd04c8a9c9741ceaa2de
+    path: Assets/_Project/Scenes/Boot.unity
+    guid: fc84b261d9b030a4785a75adbf1873a1
+  - enabled: 1
+    path: Assets/_Project/Scenes/Menu.unity
+    guid: 6a3432eef5bd74e44803cc8bd0fa48a5
   - enabled: 1
     path: Assets/_Project/Scenes/TechnicalTests/TestCheckpoint.unity
     guid: c5448254b485a1b44aea90ab793cc509
+  - enabled: 1
+    path: Assets/_Project/Scenes/Workbench.unity
+    guid: ac829ae1f00bcd04c8a9c9741ceaa2de
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
