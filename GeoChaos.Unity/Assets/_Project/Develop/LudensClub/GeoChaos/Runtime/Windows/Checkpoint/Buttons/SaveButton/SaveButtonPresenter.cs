@@ -25,7 +25,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Checkpoint
       }
       
       await _persistence.SaveDirect();
-      _windowManager.Open(WindowType.Save);
+      _windowManager.OpenAsNew(WindowType.Save);
     }
   }
 }
