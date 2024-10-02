@@ -97,6 +97,7 @@
       public const string WINDOW_VIEW = WINDOWS + "Window View";
       public const string SIMPLE_WINDOW_VIEW = WINDOWS + "Simple Window View";
       public const string MAP_WINDOW_VIEW = WINDOWS + "Map Window View";
+      public const string CURTAIN_VIEW = WINDOWS + "Curtain View";
 
       public const string CLOSE_BUTTON_VIEW = BUTTONS + "Close Button View";
       public const string MOVE_BUTTON_VIEW = BUTTONS + "Move Button View";

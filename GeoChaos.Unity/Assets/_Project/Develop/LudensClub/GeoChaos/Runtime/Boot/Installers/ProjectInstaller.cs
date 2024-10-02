@@ -57,9 +57,16 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindBaseWindowModel();
       BindBaseWindowController();
 
+      InstallCurtain();
+        
 #if UNITY_EDITOR
       DebugBridge.InstallProject(Container);
 #endif
+    }
+
+    private void InstallCurtain()
+    {
+      CurtainInstaller.Install(Container);
     }
 
     private void BindBaseWindowModel()
