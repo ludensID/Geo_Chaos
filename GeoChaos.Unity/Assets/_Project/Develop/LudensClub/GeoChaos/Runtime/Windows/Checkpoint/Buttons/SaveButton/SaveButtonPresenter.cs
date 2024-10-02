@@ -21,10 +21,10 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Checkpoint
     {
       if (_mapModel.CurrentCheckpoint.IsAlive())
       {
-        _persistence.Data.LastCheckpoint = _mapModel.CurrentCheckpoint.Get<PersistenceIdRef>().Identifier.Id;
+        _persistence.GamePersistence.LastCheckpoint = _mapModel.CurrentCheckpoint.Get<PersistenceIdRef>().Identifier.Id;
       }
       
-      await _persistence.SaveDirect();
+      await _persistence.SaveGameDirect();
       _windowManager.OpenAsNew(WindowType.Save);
     }
   }

@@ -5,35 +5,35 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Debugging.Persistence
 {
-  public class DebugGameDataLoader : IGameDataLoader
+  public class DebugGamePersistenceLoader : IGamePersistenceLoader
   {
-    private readonly IGameDataProvider _gameDataProvider;
-    private readonly GameDataLoader _gameDataLoader;
+    private readonly IGamePersistenceProvider _gamePersistenceProvider;
+    private readonly GamePersistenceLoader _gamePersistenceLoader;
     private readonly IPersistencePreferencesLoader _preferencesLoader;
     private readonly IPersistencePreferencesProvider _preferencesProvider;
 
-    public DebugGameDataLoader(IInstantiator instantiator, IGameDataProvider gameDataProvider)
+    public DebugGamePersistenceLoader(IInstantiator instantiator, IGamePersistenceProvider gamePersistenceProvider)
     {
-      _gameDataProvider = gameDataProvider;
-      _gameDataLoader = instantiator.Instantiate<GameDataLoader>();
+      _gamePersistenceProvider = gamePersistenceProvider;
+      _gamePersistenceLoader = instantiator.Instantiate<GamePersistenceLoader>();
       _preferencesLoader = EditorMediator.Context.Container.Resolve<IPersistencePreferencesLoader>();
       _preferencesProvider = EditorMediator.Context.Container.Resolve<IPersistencePreferencesProvider>();
     }
 
     public async UniTask LoadAsync()
     {
-      await _gameDataLoader.LoadAsync();
+      await _gamePersistenceLoader.LoadAsync();
       if (_preferencesProvider.Preferences.EnableSaving)
       {
         if (_preferencesProvider.Preferences.EnableSync)
         {
-          _gameDataProvider.Data = _preferencesProvider.Preferences.GameData;
-          _preferencesProvider.Preferences.GameData = _gameDataProvider.Data;
+          _gamePersistenceProvider.Persistence = _preferencesProvider.Preferences.GamePersistence;
+          _preferencesProvider.Preferences.GamePersistence = _gamePersistenceProvider.Persistence;
         }
       }
       else
       {
-        _gameDataProvider.Data = null;
+        _gamePersistenceProvider.Persistence = null;
       }
     }
 
@@ -42,7 +42,7 @@ namespace LudensClub.GeoChaos.Debugging.Persistence
       if (_preferencesProvider.Preferences.EnableSaving)
       {
         _preferencesLoader.SaveToJson();
-        return _gameDataLoader.SaveAsync();
+        return _gamePersistenceLoader.SaveAsync();
       }
       
       return UniTask.CompletedTask;

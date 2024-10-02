@@ -34,7 +34,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Characters.Hero
     {
       foreach (EcsEntity checkpoint in _checkpoints)
       {
-        if (checkpoint.Get<PersistenceIdRef>().Identifier.Id == _persistence.Data.LastCheckpoint)
+        if (checkpoint.Get<PersistenceIdRef>().Identifier.Id == _persistence.GamePersistence.LastCheckpoint)
         {
           Vector2 position = checkpoint.Get<ViewRef>().View.transform.position;
           foreach (EcsEntity hero in _heroes)

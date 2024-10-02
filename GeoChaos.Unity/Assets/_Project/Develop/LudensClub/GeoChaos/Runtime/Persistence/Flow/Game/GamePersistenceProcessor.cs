@@ -7,14 +7,14 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
 {
   public class GamePersistenceProcessor : IGamePersistenceProcessor, ITickable
   {
-    private readonly IGameDataLoader _loader;
+    private readonly IGamePersistenceLoader _loader;
     private readonly ITimerFactory _timers;
     private readonly PersistenceConfig _config;
     private bool _isDirty;
     private Timer _saveDelay = 0;
     private bool _isSaving;
 
-    public GamePersistenceProcessor(IGameDataLoader loader, ITimerFactory timers, IConfigProvider configProvider)
+    public GamePersistenceProcessor(IGamePersistenceLoader loader, ITimerFactory timers, IConfigProvider configProvider)
     {
       _loader = loader;
       _timers = timers;

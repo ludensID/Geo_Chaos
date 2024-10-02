@@ -4,10 +4,13 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
 {
   public interface IPersistenceService
   {
-    GameData Data { get; set; }
-    UniTask LoadAsync();
-    GameData GetDirtyData();
-    void Save();
-    UniTask SaveDirect();
+    GamePersistence GamePersistence { get; set; }
+    SettingsPersistence SettingsPersistence { get; set; }
+    UniTask LoadGameAsync();
+    GamePersistence GetDirtyGamePersistence();
+    void SaveGame();
+    UniTask SaveGameDirect();
+    UniTask LoadSettingsAsync();
+    UniTask SaveSettings();
   }
 }

@@ -4,43 +4,68 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
 {
   public class PersistenceService : IPersistenceService
   {
-    private readonly IGamePersistenceProcessor _processor;
-    private readonly IGameDataProvider _provider;
-    private readonly IGameDataLoader _loader;
-      
-    public GameData Data
+    private readonly IGamePersistenceProcessor _gameProcessor;
+    private readonly IGamePersistenceProvider _gameProvider;
+    private readonly IGamePersistenceLoader _gameLoader;
+    private readonly ISettingsPersistenceLoader _settingsLoader;
+    private readonly ISettingsPersistenceProvider _settingsProvider;
+
+    public GamePersistence GamePersistence
     {
-      get => _provider.Data;
-      set => _provider.Data = value;
+      get => _gameProvider.Persistence;
+      set => _gameProvider.Persistence = value;
     }
 
-    public PersistenceService(IGamePersistenceProcessor processor, IGameDataProvider provider, IGameDataLoader loader)
+    public SettingsPersistence SettingsPersistence
     {
-      _processor = processor;
-      _provider = provider;
-      _loader = loader;
+      get => _settingsProvider.Persistence;
+      set => _settingsProvider.Persistence = value;
     }
 
-    public async UniTask LoadAsync()
+    public PersistenceService(IGamePersistenceProcessor gameProcessor,
+      IGamePersistenceProvider gameProvider,
+      IGamePersistenceLoader gameLoader,
+      ISettingsPersistenceLoader settingsLoader,
+      ISettingsPersistenceProvider settingsProvider)
     {
-      await _loader.LoadAsync();
-      Data ??= new GameData();
+      _gameProcessor = gameProcessor;
+      _gameProvider = gameProvider;
+      _gameLoader = gameLoader;
+      _settingsLoader = settingsLoader;
+      _settingsProvider = settingsProvider;
     }
 
-    public GameData GetDirtyData()
+    public async UniTask LoadGameAsync()
     {
-      _processor.SetDirty();
-      return Data;
+      await _gameLoader.LoadAsync();
+      GamePersistence ??= new GamePersistence();
     }
 
-    public void Save()
+    public async UniTask LoadSettingsAsync()
     {
-      _processor.SetDirty();
+      await _settingsLoader.LoadAsync();
+      SettingsPersistence ??= new SettingsPersistence();
     }
 
-    public UniTask SaveDirect()
+    public GamePersistence GetDirtyGamePersistence()
     {
-      return _processor.SaveDirectAsync();
+      _gameProcessor.SetDirty();
+      return GamePersistence;
+    }
+
+    public void SaveGame()
+    {
+      _gameProcessor.SetDirty();
+    }
+
+    public UniTask SaveGameDirect()
+    {
+      return _gameProcessor.SaveDirectAsync();
+    }
+
+    public UniTask SaveSettings()
+    {
+      return _settingsLoader.SaveAsync();
     }
   }
 }

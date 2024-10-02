@@ -1,5 +1,4 @@
-﻿using LudensClub.GeoChaos.Editor;
-using LudensClub.GeoChaos.Runtime.Persistence;
+﻿using LudensClub.GeoChaos.Runtime.Persistence;
 using TriInspector;
 using UnityEngine;
 
@@ -11,7 +10,7 @@ namespace LudensClub.GeoChaos.Debugging.Persistence
     public bool EnableSaving;
     public bool EnableSync;
       
-    public GameData GameData;
+    public GamePersistence GamePersistence;
 
     [Button(ButtonSizes.Medium, MIC.Names.DELETE_GAMEPLAY_SAVINGS)]
     public void DeleteGameplaySavings()

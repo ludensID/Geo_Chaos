@@ -47,13 +47,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindTimerService();
       BindTimerFactory();
       BindCoroutineRunner();
-      BindPathHandler();
-      BindFileHandler();
-
-      BindPersistenceProvider();
-      BindGameDataLoader();
-      BindGamePersistenceProcessor();
-      BindPersistenceService();
+        
+      InstallPersistence();
 
       BindBaseWindowModel();
       BindBaseWindowController();
@@ -65,6 +60,11 @@ namespace LudensClub.GeoChaos.Runtime.Boot
 #if UNITY_EDITOR
       DebugBridge.InstallProject(Container);
 #endif
+    }
+
+    private void InstallPersistence()
+    {
+      PersistenceInstaller.Install(Container);
     }
 
     private void BindSceneLoader()
@@ -118,53 +118,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .To<StateFactory>()
         .AsSingle()
         .CopyIntoAllSubContainers();
-    }
-
-    private void BindPersistenceService()
-    {
-      Container
-        .Bind<IPersistenceService>()
-        .To<PersistenceService>()
-        .AsSingle();
-    }
-
-    private void BindGamePersistenceProcessor()
-    {
-      Container
-        .BindInterfacesTo<GamePersistenceProcessor>()
-        .AsSingle();
-    }
-
-    private void BindGameDataLoader()
-    {
-      Container
-        .Bind<IGameDataLoader>()
-        .To<GameDataLoader>()
-        .AsSingle();
-    }
-
-    private void BindFileHandler()
-    {
-      Container
-        .Bind<IFileHandler>()
-        .To<FileHandler>()
-        .AsSingle();
-    }
-
-    private void BindPathHandler()
-    {
-      Container
-        .Bind<IPathHandler>()
-        .To<PathHandler>()
-        .AsSingle();
-    }
-
-    private void BindPersistenceProvider()
-    {
-      Container
-        .Bind<IGameDataProvider>()
-        .To<GameDataProvider>()
-        .AsSingle();
     }
 
     private void BindEventSystem()

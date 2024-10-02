@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents
     {
       await _curtainPresenter.ShowAsync();
         
-      await _persistenceSvc.LoadAsync();
+      await _persistenceSvc.LoadGameAsync();
       await _sceneLoader.LoadAsync(SceneType.Game);
         
       await _curtainPresenter.HideAsync();

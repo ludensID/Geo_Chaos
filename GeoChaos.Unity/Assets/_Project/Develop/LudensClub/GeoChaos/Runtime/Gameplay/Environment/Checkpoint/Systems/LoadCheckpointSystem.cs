@@ -27,7 +27,7 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Checkpoint
     {
       foreach (EcsEntity checkpoint in _convertedCheckpoints)
       {
-        if (_persistence.Data.OpenedCheckpoints.Contains(checkpoint.Get<PersistenceIdRef>().Identifier.Id))
+        if (_persistence.GamePersistence.OpenedCheckpoints.Contains(checkpoint.Get<PersistenceIdRef>().Identifier.Id))
         {
           checkpoint
             .Del<Closed>()

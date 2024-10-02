@@ -2,7 +2,7 @@
 
 namespace LudensClub.GeoChaos.Runtime.Persistence
 {
-  public interface IGameDataLoader
+  public interface IPersistenceDataLoader
   {
     UniTask LoadAsync();
     UniTask SaveAsync();

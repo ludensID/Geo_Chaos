@@ -29,8 +29,8 @@ namespace LudensClub.GeoChaos.Debugging
     private static void RebindGameDataLoader()
     {
       Container
-        .Rebind<IGameDataLoader>()
-        .To<DebugGameDataLoader>()
+        .Rebind<IGamePersistenceLoader>()
+        .To<DebugGamePersistenceLoader>()
         .AsSingle();
     }
 
