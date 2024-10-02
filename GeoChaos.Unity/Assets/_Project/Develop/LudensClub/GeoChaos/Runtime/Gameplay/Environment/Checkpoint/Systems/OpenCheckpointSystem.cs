@@ -32,8 +32,11 @@ namespace LudensClub.GeoChaos.Runtime.Gameplay.Environment.Checkpoint
           .Del<Closed>()
           .Add<Opened>()
           .Add<OnOpened>();
-        
-        _persistence.GetDirtyData().OpenedCheckpoints.Add(checkpoint.Get<PersistenceIdRef>().Identifier.Id);
+
+        int id = checkpoint.Get<PersistenceIdRef>().Identifier.Id;
+        GameData gameData = _persistence.GetDirtyData();
+        gameData.OpenedCheckpoints.Add(id);
+        gameData.LastCheckpoint = id;
       }
     }
   }
