@@ -1,30 +1,21 @@
-﻿using LudensClub.GeoChaos.Debugging.Persistence;
-using LudensClub.GeoChaos.Runtime;
-using LudensClub.GeoChaos.Runtime.Persistence;
+﻿using Cysharp.Threading.Tasks;
+using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Debugging.Boot
 {
   public class EditorInitializer : IInitializable
   {
-    private readonly IGameDataProvider _gameDataProvider;
-    private readonly IPersistencePreferencesProvider _provider;
+    private readonly GameStateMachine _gameStateMachine;
 
-    public EditorInitializer(IGameDataProvider gameDataProvider)
+    public EditorInitializer(GameStateMachine gameStateMachine)
     {
-      _gameDataProvider = gameDataProvider;
-      _provider = EditorMediator.Context.Container.Resolve<IPersistencePreferencesProvider>();
+      _gameStateMachine = gameStateMachine;
     }
 
     public void Initialize()
     {
-      if (_provider.Preferences.EnableSaving && _provider.Preferences.EnableSync)
-      {
-        _gameDataProvider.Data = _provider.Preferences.GameData;
-        _provider.Preferences.GameData = _gameDataProvider.Data;
-      }
-
-      PlayModeSceneLoader.LoadCurrentScene();
+      _gameStateMachine.SwitchState<GameplayGameState>().Forget();
     }
   }
 }

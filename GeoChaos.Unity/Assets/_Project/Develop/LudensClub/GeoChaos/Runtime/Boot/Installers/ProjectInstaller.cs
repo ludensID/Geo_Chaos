@@ -1,5 +1,6 @@
 ﻿using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Infrastructure.SceneLoading;
 using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents;
 using LudensClub.GeoChaos.Runtime.Persistence;
 using LudensClub.GeoChaos.Runtime.Windows;
@@ -58,10 +59,20 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindBaseWindowController();
 
       InstallCurtain();
+
+      BindSceneLoader();
         
 #if UNITY_EDITOR
       DebugBridge.InstallProject(Container);
 #endif
+    }
+
+    private void BindSceneLoader()
+    {
+      Container
+        .Bind<ISceneLoader>()
+        .To<SceneLoader>()
+        .AsSingle();
     }
 
     private void InstallCurtain()

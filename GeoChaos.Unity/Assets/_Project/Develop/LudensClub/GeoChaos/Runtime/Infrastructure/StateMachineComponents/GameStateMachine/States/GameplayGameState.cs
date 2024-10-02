@@ -1,15 +1,34 @@
 ﻿using Cysharp.Threading.Tasks;
+using LudensClub.GeoChaos.Runtime.Infrastructure.SceneLoading;
+using LudensClub.GeoChaos.Runtime.Persistence;
+using LudensClub.GeoChaos.Runtime.Windows.Curtain;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents
 {
   public class GameplayGameState : IState 
   {
-    public UniTask Exit()
+    private readonly ISceneLoader _sceneLoader;
+    private readonly IPersistenceService _persistenceSvc;
+    private readonly ICurtainPresenter _curtainPresenter;
+
+    public GameplayGameState(ISceneLoader sceneLoader, IPersistenceService persistenceSvc, ICurtainPresenter curtainPresenter)
     {
-      return UniTask.CompletedTask;
+      _sceneLoader = sceneLoader;
+      _persistenceSvc = persistenceSvc;
+      _curtainPresenter = curtainPresenter;
+    }
+      
+    public async UniTask Enter()
+    {
+      await _curtainPresenter.ShowAsync();
+        
+      await _persistenceSvc.LoadAsync();
+      await _sceneLoader.LoadAsync(SceneType.Game);
+        
+      await _curtainPresenter.HideAsync();
     }
 
-    public UniTask Enter()
+    public UniTask Exit()
     {
       return UniTask.CompletedTask;
     }

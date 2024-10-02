@@ -1,5 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
-using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents;
+﻿using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Boot
@@ -17,10 +16,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       
     public void Initialize()
     {
-      _gameStateMachine.RegisterState(_stateFactory.Create<LoadingGameState>());
       _gameStateMachine.RegisterState(_stateFactory.Create<GameplayGameState>());
-
-      _gameStateMachine.SwitchState<LoadingGameState>().Forget();
     }
   }
 }

@@ -86,6 +86,9 @@
       public const string PERSISTENCE_CONFIG_FILE = "PersistenceConfig";
       public const string CURTAIN_CONFIG_MENU = CONFIG_MENU + "Curtain";
       public const string CURTAIN_CONFIG_FILE = "CurtainConfig";
+      
+      public const string SCENE_CONFIG_MENU = CONFIG_MENU + "Scene";
+      public const string SCENE_CONFIG_FILE = "SceneConfig";
     }
   }
 }
