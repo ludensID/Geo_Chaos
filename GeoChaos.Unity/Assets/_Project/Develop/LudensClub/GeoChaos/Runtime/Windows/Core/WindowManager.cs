@@ -9,6 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows
     private readonly List<IWindowController> _stack = new List<IWindowController>();
     private readonly SpecifiedClosure<IWindowController, WindowType> _hasWindowIdClosure;
 
+    public List<IWindowController> Windows => _windows;
     public IWindowController Current => _stack.Count > 0 ? _stack[^1] : null;
 
     public WindowManager()

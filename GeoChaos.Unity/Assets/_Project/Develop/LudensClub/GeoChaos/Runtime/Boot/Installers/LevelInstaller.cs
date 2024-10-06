@@ -34,7 +34,6 @@ using LudensClub.GeoChaos.Runtime.Windows;
 using LudensClub.GeoChaos.Runtime.Windows.Checkpoint;
 using LudensClub.GeoChaos.Runtime.Windows.Death;
 using LudensClub.GeoChaos.Runtime.Windows.Map;
-using LudensClub.GeoChaos.Runtime.Windows.Simple;
 using UnityEngine;
 using Zenject;
 
@@ -50,15 +49,14 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     {
       BindLevelInitializer();
 
-      BindCoroutineRunner();
-
       BindLevelStateMachine();
+      
+      InstallWindowBindings();
+      BindWindowPauseHandler();
 
       BindRestartProcessor();
       BindGameplayPause();
       BindInitializingPhase();
-      BindWindowManager();
-      BindWindowCloser();
 
       BindViewFactory();
 
@@ -134,8 +132,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindVerticalViewOffsetSetter();
       BindVerticalOffsetInterpolator();
 
-      BindSimpleWindowPresenter();
-
       BindSaveButtonPresenter();
       BindMoveButtonPresenter();
       BindMapModel();
@@ -150,6 +146,18 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindWindowPauseHandler()
+    {
+      Container
+        .BindInterfacesTo<WindowPauseHandler>()
+        .AsSingle();
+    }
+
+    private void InstallWindowBindings()
+    {
+      WindowInstaller.Install(Container);
     }
 
     private void BindMoveButtonPresenter()
@@ -206,13 +214,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .AsSingle();
     }
 
-    private void BindWindowCloser()
-    {
-      Container
-        .BindInterfacesTo<WindowCloser>()
-        .AsSingle();
-    }
-
     private void BindMapModel()
     {
       Container
@@ -240,22 +241,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     {
       Container
         .BindInterfacesAndSelfTo<HeroTransporter>()
-        .AsSingle();
-    }
-
-    private void BindSimpleWindowPresenter()
-    {
-      Container
-        .Bind<INavigationElementSetter>()
-        .To<NavigationElementSetter>()
-        .AsTransient();
-    }
-
-    private void BindWindowManager()
-    {
-      Container
-        .Bind<IWindowManager>()
-        .To<WindowManager>()
         .AsSingle();
     }
 
@@ -703,17 +688,6 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     {
       Container
         .BindInterfacesTo<Engine>()
-        .AsSingle();
-    }
-
-    private void BindCoroutineRunner()
-    {
-      Container
-        .Bind<ICoroutineRunner>()
-        .To<CoroutineRunner>()
-        .FromNewComponentOnNewGameObject()
-        .WithGameObjectName("CoroutineRunner")
-        .UnderTransform(transform)
         .AsSingle();
     }
   }

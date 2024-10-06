@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using LudensClub.GeoChaos.Runtime.Windows;
+using UnityEngine;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Boot
@@ -8,6 +9,23 @@ namespace LudensClub.GeoChaos.Runtime.Boot
   {
     public override void InstallBindings()
     {
+      InstallWindowBindings();
+      BindMenuInitializer();
+    }
+
+    private void InstallWindowBindings()
+    {
+      WindowInstaller.Install(Container);
+    }
+
+    private void BindMenuInitializer()
+    {
+      Container
+        .Bind<IInitializable>()
+        .To<MenuInitializer>()
+        .AsSingle();
+
+      Container.BindInitializableExecutionOrder<MenuInitializer>(1);
     }
   }
 }

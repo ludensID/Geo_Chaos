@@ -6,6 +6,7 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Windows.Menu
 {
+  [AddComponentMenu(ACC.Names.START_NEW_GAME_BUTTON_VIEW)]
   public class StartNewGameButtonView : MonoBehaviour
   {
     [SerializeField]

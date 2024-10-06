@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows
     public WindowType Id;
     
     [Inject]
-    public void Construct(WindowController controller)
+    public void Construct(IWindowController controller)
     {
       controller.SetView(this);
     }

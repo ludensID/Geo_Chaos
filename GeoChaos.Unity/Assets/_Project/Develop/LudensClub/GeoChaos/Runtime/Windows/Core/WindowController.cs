@@ -1,7 +1,5 @@
 ﻿using System;
-using Cysharp.Threading.Tasks;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
-using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents;
 using UnityEngine.EventSystems;
 using Zenject;
 
@@ -9,7 +7,6 @@ namespace LudensClub.GeoChaos.Runtime.Windows
 {
   public class WindowController : IWindowController, IInitializable, ICloseHandler
   {
-    private readonly LevelStateMachine _levelStateMachine;
     private readonly EventSystem _eventSystem;
     private readonly WindowModel _model;
 
@@ -24,13 +21,11 @@ namespace LudensClub.GeoChaos.Runtime.Windows
     public event Action OnBeforeClose;
     public event Action OnClosed;
 
-    public WindowController(LevelStateMachine levelStateMachine,
-      IWindowManager windowManager,
+    public WindowController(IWindowManager windowManager,
       IExplicitInitializer initializer,
       EventSystem eventSystem,
       WindowModel model)
     {
-      _levelStateMachine = levelStateMachine;
       _eventSystem = eventSystem;
       _model = model;
 
@@ -45,8 +40,8 @@ namespace LudensClub.GeoChaos.Runtime.Windows
 
     public void Initialize()
     {
-      _view.gameObject.SetActive(false);
-      IsOpened = false;
+      if (!IsOpened)
+        _view.gameObject.SetActive(false);
     }
 
     public void Open()
@@ -54,7 +49,6 @@ namespace LudensClub.GeoChaos.Runtime.Windows
       if (!IsOpened)
       {
         OnBeforeOpen?.Invoke();
-        _levelStateMachine.SwitchState<PauseLevelState>().Forget();
         _view.gameObject.SetActive(true);
         IsOpened = true;
         _eventSystem.SetSelectedGameObject(_model.FirstNavigationElement);
@@ -68,7 +62,6 @@ namespace LudensClub.GeoChaos.Runtime.Windows
         OnBeforeClose?.Invoke();
         _view.gameObject.SetActive(false);
         IsOpened = false;
-        _levelStateMachine.SwitchState<GameplayLevelState>().Forget();
         _eventSystem.SetSelectedGameObject(null);
         OnClosed?.Invoke();
       }

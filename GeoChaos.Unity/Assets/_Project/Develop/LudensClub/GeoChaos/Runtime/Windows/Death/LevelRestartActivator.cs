@@ -9,7 +9,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Death
   {
     private readonly IWindowManager _windowManager;
     private readonly LevelStateMachine _levelStateMachine;
-    private WindowController _window;
+    private IWindowController _window;
 
     public LevelRestartActivator(IWindowManager windowManager, LevelStateMachine levelStateMachine)
     {
@@ -19,7 +19,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Death
 
     public void Initialize()
     {
-      _window = (WindowController)_windowManager.FindWindowById(WindowType.Death);
+      _window = _windowManager.FindWindowById(WindowType.Death);
       if (_window != null)
         _window.OnClosed += RestartLevel;
     }

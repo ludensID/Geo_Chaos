@@ -7,7 +7,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Simple
   {
     private readonly IWindowManager _windowManager;
     private SimpleWindowView _view;
-    private WindowController _window;
+    private IWindowController _window;
 
     public NavigationElementSetter(IWindowManager windowManager, IExplicitInitializer initializer)
     {
@@ -22,7 +22,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Simple
 
     public void Initialize()
     {
-      _window = (WindowController) _windowManager.FindWindowById(_view.Id);
+      _window = _windowManager.FindWindowById(_view.Id);
       _window.Model.FirstNavigationElement = _view.FirstNavigationElement;
     }
   }

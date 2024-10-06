@@ -4,6 +4,7 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Windows.Menu
 {
+  [AddComponentMenu(ACC.Names.EXIT_GAME_BUTTON_VIEW)]
   public class ExitGameButtonView : MonoBehaviour
   {
     [SerializeField]

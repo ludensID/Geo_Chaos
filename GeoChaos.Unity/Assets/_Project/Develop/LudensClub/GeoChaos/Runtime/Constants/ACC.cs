@@ -105,6 +105,9 @@
       public const string MOVE_BUTTON_VIEW = BUTTONS + "Move Button View";
       public const string SAVE_BUTTON_VIEW = BUTTONS + "Save Button View";
       public const string MAP_CHECKPOINT_BUTTON_VIEW = BUTTONS + "Map Checkpoint Button View";
+      public const string EXIT_GAME_BUTTON_VIEW = BUTTONS + "Exit Game Button View";
+      public const string START_GAME_BUTTON_VIEW = BUTTONS + "Start Game Button View";
+      public const string START_NEW_GAME_BUTTON_VIEW = BUTTONS + "Start New Game Button View";
 
       public const string PERSISTENCE_IDENTIFIER = PERSISTENCE + "Persistence Identifier";
     }

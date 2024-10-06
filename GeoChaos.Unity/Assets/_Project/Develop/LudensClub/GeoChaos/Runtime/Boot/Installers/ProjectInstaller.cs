@@ -91,7 +91,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindBaseWindowController()
     {
       Container
-        .Bind<WindowController>()
+        .Bind<IWindowController>()
+        .To<WindowController>()
         .AsTransient()
         .CopyIntoDirectSubContainers();
     }
@@ -196,8 +197,9 @@ namespace LudensClub.GeoChaos.Runtime.Boot
         .To<CoroutineRunner>()
         .FromNewComponentOnNewGameObject()
         .WithGameObjectName("CoroutineRunner")
-        .UnderTransform(transform)
-        .AsSingle();
+        .UnderTransform(ctx => ctx.Container.Resolve<Context>().transform)
+        .AsSingle()
+        .CopyIntoDirectSubContainers();
     }
   }
 }

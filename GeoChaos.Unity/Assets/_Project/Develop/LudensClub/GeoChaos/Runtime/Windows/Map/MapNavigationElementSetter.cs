@@ -18,7 +18,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Map
 
     private List<MapCheckpointButtonView> _children;
     private MapWindowView _view;
-    private WindowController _mapWindow;
+    private IWindowController _mapWindow;
 
     public MapNavigationElementSetter(IWindowManager windowManager, MapModel model, IExplicitInitializer initializer)
     {
@@ -35,7 +35,7 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Map
 
     public void Initialize()
     {
-      _mapWindow = (WindowController)_windowManager.FindWindowById(WindowType.Map);
+      _mapWindow = _windowManager.FindWindowById(WindowType.Map);
       _mapWindow.OnBeforeOpen += SelectInteractedCheckpoint;
     }
 

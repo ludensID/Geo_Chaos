@@ -1,5 +1,4 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +6,7 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Windows.Menu
 {
+  [AddComponentMenu(ACC.Names.START_GAME_BUTTON_VIEW)]
   public class StartGameButtonView : MonoBehaviour
   {
     [SerializeField]
