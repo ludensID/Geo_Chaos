@@ -12,5 +12,6 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
     UniTask SaveGameDirect();
     UniTask LoadSettingsAsync();
     UniTask SaveSettings();
+    void ResetGamePersistence();
   }
 }

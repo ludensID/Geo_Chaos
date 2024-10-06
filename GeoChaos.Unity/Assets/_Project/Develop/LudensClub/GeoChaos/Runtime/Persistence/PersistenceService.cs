@@ -41,6 +41,11 @@ namespace LudensClub.GeoChaos.Runtime.Persistence
       GamePersistence ??= new GamePersistence();
     }
 
+    public void ResetGamePersistence()
+    {
+      GamePersistence = new GamePersistence();
+    }
+
     public async UniTask LoadSettingsAsync()
     {
       await _settingsLoader.LoadAsync();

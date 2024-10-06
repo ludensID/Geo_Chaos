@@ -33,15 +33,15 @@ namespace LudensClub.GeoChaos.Runtime.Windows.Curtain
 
     public async UniTask ShowAsync()
     {
+      await UniTask.Delay(TimeSpan.FromSeconds(_config.TimeToOpen), true);
       _view.gameObject.SetActive(true);
       OnProgressChanged();
-      await UniTask.Delay(TimeSpan.FromSeconds(_config.TimeToOpen), true);
     }
 
     public async UniTask HideAsync()
     {
-      _view.gameObject.SetActive(false);
       await UniTask.Delay(TimeSpan.FromSeconds(_config.TimeToClose), true);
+      _view.gameObject.SetActive(false);
     }
 
     private void OnProgressChanged()

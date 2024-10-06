@@ -10,7 +10,7 @@ namespace LudensClub.GeoChaos.Debugging.Boot
   {
     private static string _currentScenePath;
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
+    // [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
     private static void Load()
     {
       _currentScenePath = SceneManager.GetActiveScene().path;
@@ -23,5 +23,7 @@ namespace LudensClub.GeoChaos.Debugging.Boot
     {
       EditorSceneManager.LoadSceneInPlayMode(_currentScenePath, new LoadSceneParameters());
     }
+    
+    
   }
 }

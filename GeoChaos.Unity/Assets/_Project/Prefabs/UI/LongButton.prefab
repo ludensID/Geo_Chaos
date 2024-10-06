@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 2820141156041405525}
   - component: {fileID: 383169679756599806}
   m_Layer: 5
-  m_Name: CheckpointButton
+  m_Name: LongButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
