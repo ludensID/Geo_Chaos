@@ -39,7 +39,7 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Boot
 {
-  [AddComponentMenu(ACC.Names.GAMEPLAY_INSTALLER)]
+  [AddComponentMenu(ACC.Names.LEVEL_INSTALLER)]
   public class LevelInstaller : MonoInstaller
   {
     [SerializeField]

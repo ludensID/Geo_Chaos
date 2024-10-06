@@ -1,11 +1,12 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using LudensClub.GeoChaos.Runtime.Infrastructure.SceneLoading;
 using LudensClub.GeoChaos.Runtime.Persistence;
 using LudensClub.GeoChaos.Runtime.Windows.Curtain;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents
 {
-  public class GameplayGameState : IState, IPaylodedState<StartNewGamePayload>
+  public class GameplayGameState : IState, IPaylodedState<StartNewGamePayload>, IPaylodedState<CustomLoadScenePayload>
   {
     private readonly ISceneLoader _sceneLoader;
     private readonly IPersistenceService _persistenceSvc;
@@ -30,12 +31,17 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents
       await StartGameplay(true);
     }
 
+    public async UniTask Enter(CustomLoadScenePayload payload)
+    {
+      await StartGameplay(sceneLoader: payload.SceneLoader);
+    }
+
     public UniTask Exit()
     {
       return UniTask.CompletedTask;
     }
 
-    private async UniTask StartGameplay(bool startNewGame = false)
+    private async UniTask StartGameplay(bool startNewGame = false, Func<UniTask> sceneLoader = null)
     {
       await _curtainPresenter.ShowAsync();
 
@@ -43,7 +49,11 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents
         _persistenceSvc.ResetGamePersistence();
       else
         await _persistenceSvc.LoadGameAsync();
-      await _sceneLoader.LoadAsync(SceneType.Game);
+
+      if (sceneLoader != null)
+        await sceneLoader.Invoke();
+      else
+        await _sceneLoader.LoadAsync(SceneType.Game);
 
       await _curtainPresenter.HideAsync();
     }

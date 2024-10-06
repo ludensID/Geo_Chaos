@@ -42,7 +42,7 @@
       public const string PROJECT_INSTALLER = BOOT + "Project Installer";
       public const string BOOT_INSTALLER = BOOT + "Boot Installer";
       public const string MENU_INSTALLER = BOOT + "Menu Installer";
-      public const string GAMEPLAY_INSTALLER = BOOT + "Gameplay Installer";
+      public const string LEVEL_INSTALLER = BOOT + "Level Installer";
       public const string MONO_INJECTOR = BOOT + "Injector";
 
       public const string DASH_COLLIDER_CONVERTER = CONVERTERS + "Dash Collider Converter";
