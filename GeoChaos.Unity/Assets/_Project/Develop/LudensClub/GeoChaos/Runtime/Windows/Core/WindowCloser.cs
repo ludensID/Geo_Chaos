@@ -4,10 +4,12 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Windows
 {
-  public class WindowCloser : ITickable
+  public class WindowCloser : IWindowCloser, ITickable
   {
     private readonly InputData _inputData;
     private readonly IWindowManager _windowManager;
+
+    public bool IsCancelledThisFrame { get; private set; }
 
     public WindowCloser(InputData inputData, IWindowManager windowManager)
     {
@@ -17,16 +19,9 @@ namespace LudensClub.GeoChaos.Runtime.Windows
 
     public void Tick()
     {
-      if(_inputData.IsPause && _windowManager.CurrentWindowNullOrDefault())
-      {
-        _windowManager.Open(WindowType.Pause);
-        return;
-      }
-
-      if (_inputData.IsCancel && _windowManager.Current.Id.IsCloseByCancel())
-      {
+      IsCancelledThisFrame = _inputData.IsCancel && _windowManager.Current.Id.IsCloseByCancel();
+      if (IsCancelledThisFrame)
         _windowManager.Close();
-      }
     }
   }
 }

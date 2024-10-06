@@ -53,6 +53,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       
       InstallWindowBindings();
       BindWindowPauseHandler();
+      BindPauseWindowSwitcher();
 
       BindRestartProcessor();
       BindGameplayPause();
@@ -146,6 +147,13 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindHeroHealthShardPresenter();
 
       Container.DefaultParent = new GameObject("Runtime").transform;
+    }
+
+    private void BindPauseWindowSwitcher()
+    {
+      Container
+        .BindInterfacesTo<PauseWindowSwitcher>()
+        .AsSingle();
     }
 
     private void BindWindowPauseHandler()
