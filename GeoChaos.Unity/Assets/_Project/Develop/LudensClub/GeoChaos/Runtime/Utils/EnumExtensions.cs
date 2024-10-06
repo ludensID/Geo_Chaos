@@ -12,7 +12,7 @@ namespace LudensClub.GeoChaos.Runtime.Utils
 
     public static bool IsReactiveOnPause(this WindowType type)
     {
-      return type >= WindowType.NothingHappens;
+      return type is WindowType.Pause or >= WindowType.NothingHappens;
     }
   }
 }

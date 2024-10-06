@@ -20,7 +20,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
     public Vector2 AimRotation;
     public bool IsInteraction;
 
-    public bool Cancel;
+    public bool IsCancel;
+    public bool IsPause;
 
     public void Clear()
     {
@@ -37,7 +38,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       AimPosition = Vector2.zero;
       AimRotation = Vector2.zero;
       IsInteraction = false;
-      Cancel = false;
+      IsCancel = false;
     }
   }
 }

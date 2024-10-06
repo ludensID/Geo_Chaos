@@ -16,7 +16,13 @@ namespace LudensClub.GeoChaos.Runtime.Windows
 
     public void Tick()
     {
-      if (_inputData.Cancel && _windowManager.Current is ICloseHandler)
+      if(_inputData.IsPause && _windowManager.Current == null)
+      {
+        _windowManager.Open(WindowType.Pause);
+        return;
+      }
+
+      if (_inputData.IsCancel && _windowManager.Current is ICloseHandler)
       {
         _windowManager.Close();
       }

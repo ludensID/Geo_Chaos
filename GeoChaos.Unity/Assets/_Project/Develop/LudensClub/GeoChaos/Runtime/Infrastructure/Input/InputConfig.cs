@@ -491,6 +491,15 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""84bf7d4b-8934-4c06-a7d8-2f1112208055"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -639,6 +648,17 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                 },
                 {
                     ""name"": """",
+                    ""id"": ""2f0f0125-7f84-4c2a-a64d-96d79dcbc23e"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3681f168-ce65-44dc-807d-ebb07bb40c64"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
@@ -689,6 +709,28 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
                     ""action"": ""RightClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aeafbf4b-3a2a-4e66-b528-9dd3af0113fb"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""032250fb-f50b-4951-93aa-a3b864a0c25a"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -749,6 +791,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
             m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
             m_UI_MiddleClick = m_UI.FindAction("MiddleClick", throwIfNotFound: true);
             m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
+            m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -952,6 +995,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
         private readonly InputAction m_UI_ScrollWheel;
         private readonly InputAction m_UI_MiddleClick;
         private readonly InputAction m_UI_RightClick;
+        private readonly InputAction m_UI_Pause;
         public struct UIActions
         {
             private @InputConfig m_Wrapper;
@@ -964,6 +1008,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
             public InputAction @ScrollWheel => m_Wrapper.m_UI_ScrollWheel;
             public InputAction @MiddleClick => m_Wrapper.m_UI_MiddleClick;
             public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
+            public InputAction @Pause => m_Wrapper.m_UI_Pause;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -997,6 +1042,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                 @RightClick.started += instance.OnRightClick;
                 @RightClick.performed += instance.OnRightClick;
                 @RightClick.canceled += instance.OnRightClick;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
 
             private void UnregisterCallbacks(IUIActions instance)
@@ -1025,6 +1073,9 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
                 @RightClick.started -= instance.OnRightClick;
                 @RightClick.performed -= instance.OnRightClick;
                 @RightClick.canceled -= instance.OnRightClick;
+                @Pause.started -= instance.OnPause;
+                @Pause.performed -= instance.OnPause;
+                @Pause.canceled -= instance.OnPause;
             }
 
             public void RemoveCallbacks(IUIActions instance)
@@ -1085,6 +1136,7 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
             void OnScrollWheel(InputAction.CallbackContext context);
             void OnMiddleClick(InputAction.CallbackContext context);
             void OnRightClick(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
     }
 }

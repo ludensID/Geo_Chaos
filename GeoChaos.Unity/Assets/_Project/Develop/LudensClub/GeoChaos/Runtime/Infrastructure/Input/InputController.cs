@@ -36,7 +36,8 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure
       _data.AimRotation = _config.Gameplay.AimRotation.ReadValue<Vector2>();
       _data.IsInteraction = _config.Gameplay.Interact.WasPerformedThisFrame();
       
-      _data.Cancel = _config.UI.Cancel.WasPerformedThisFrame();
+      _data.IsCancel = _config.UI.Cancel.WasPerformedThisFrame();
+      _data.IsPause = _config.UI.Pause.WasPerformedThisFrame();
     }
 
     public void Clear()
