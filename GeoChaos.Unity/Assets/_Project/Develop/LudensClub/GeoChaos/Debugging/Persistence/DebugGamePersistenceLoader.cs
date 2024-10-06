@@ -36,6 +36,7 @@ namespace LudensClub.GeoChaos.Debugging.Persistence
     {
       if (PersistencePreferences.instance.EnableSaving)
       {
+        PersistencePreferences.instance.GamePersistence = _gamePersistenceProvider.Persistence;
         PersistencePreferences.instance.Save();
         return _gamePersistenceLoader.SaveAsync();
       }
