@@ -1,4 +1,5 @@
 ﻿using LudensClub.GeoChaos.Runtime.Infrastructure;
+using LudensClub.GeoChaos.Runtime.Utils;
 using Zenject;
 
 namespace LudensClub.GeoChaos.Runtime.Windows
@@ -16,13 +17,13 @@ namespace LudensClub.GeoChaos.Runtime.Windows
 
     public void Tick()
     {
-      if(_inputData.IsPause && _windowManager.Current == null)
+      if(_inputData.IsPause && _windowManager.CurrentWindowNullOrDefault())
       {
         _windowManager.Open(WindowType.Pause);
         return;
       }
 
-      if (_inputData.IsCancel && _windowManager.Current is ICloseHandler)
+      if (_inputData.IsCancel && _windowManager.Current.Id.IsCloseByCancel())
       {
         _windowManager.Close();
       }

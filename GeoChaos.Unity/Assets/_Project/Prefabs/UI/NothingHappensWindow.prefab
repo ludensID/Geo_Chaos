@@ -146,3 +146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 99
+  FirstNavigationElement: {fileID: 2831654134878940826}
+--- !u!1 &2831654134878940826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7219493917979757216, guid: 5faa743febdfd40498234fc1a9a0b7ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 4862978409145263162}
+  m_PrefabAsset: {fileID: 0}

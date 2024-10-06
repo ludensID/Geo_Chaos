@@ -9,12 +9,29 @@ namespace LudensClub.GeoChaos.Runtime.Windows
     private readonly List<IWindowController> _stack = new List<IWindowController>();
     private readonly SpecifiedClosure<IWindowController, WindowType> _hasWindowIdClosure;
 
+    public WindowType DefaultWindowId { get; private set; }
     public List<IWindowController> Windows => _windows;
     public IWindowController Current => _stack.Count > 0 ? _stack[^1] : null;
 
     public WindowManager()
     {
       _hasWindowIdClosure = new SpecifiedClosure<IWindowController, WindowType>((ctrl, id) => ctrl.Id == id);
+    }
+
+    public IWindowController GetDefaultWindow()
+    {
+      return FindWindowById(DefaultWindowId);
+    }
+
+    public void SetDefaultWindow(WindowType id)
+    {
+      DefaultWindowId = id;
+    }
+
+    public void OpenDefaultWindow()
+    {
+      if (GetDefaultWindow() != null)
+        OpenAsNew(DefaultWindowId);
     }
 
     public void Add(IWindowController window)
@@ -43,13 +60,13 @@ namespace LudensClub.GeoChaos.Runtime.Windows
 
     public void CloseAll()
     {
-      while (Current != null)
+      while (Current != null && Current.Id != DefaultWindowId)
         Close();
     }
 
     public void Close()
     {
-      if (Current != null)
+      if (Current != null && Current.Id != DefaultWindowId)
       {
         Current.Close();
         _stack.Remove(Current);
@@ -59,13 +76,18 @@ namespace LudensClub.GeoChaos.Runtime.Windows
 
     public void Close(WindowType id)
     {
-      if (Current != null)
+      if (Current != null && id != DefaultWindowId)
       {
-        if(Current.Id == id)
+        if (Current.Id == id)
           Close();
         else
           _stack.Remove(FindWindowById(id));
       }
+    }
+
+    public bool CurrentWindowNullOrDefault()
+    {
+      return Current == null || Current.Id == DefaultWindowId;
     }
 
     private void OpenWindowInternal(WindowType id, bool addToStack = true)

@@ -14,5 +14,10 @@ namespace LudensClub.GeoChaos.Runtime.Utils
     {
       return type is WindowType.Pause or >= WindowType.NothingHappens;
     }
+
+    public static bool IsCloseByCancel(this WindowType type)
+    {
+      return type is WindowType.Pause or >= WindowType.NothingHappens;
+    }
   }
 }

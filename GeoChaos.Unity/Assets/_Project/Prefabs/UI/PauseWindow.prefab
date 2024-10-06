@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bb4a1bea6f4dd5962216011fed0b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 2
+  Id: 52
   FirstNavigationElement: {fileID: 466983769240053720}
 --- !u!1001 &3727556962778878851
 PrefabInstance:

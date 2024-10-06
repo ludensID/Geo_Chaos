@@ -6,7 +6,8 @@ namespace LudensClub.GeoChaos.Runtime.Windows
   {
     IWindowController Current { get; }
     List<IWindowController> Windows { get; }
-    
+    WindowType DefaultWindowId { get; }
+
     void Add(IWindowController window);
     void Open(WindowType id);
     void OpenAsNew(WindowType id);
@@ -15,5 +16,9 @@ namespace LudensClub.GeoChaos.Runtime.Windows
     void CloseAll();
       
     IWindowController FindWindowById(WindowType id);
+    void SetDefaultWindow(WindowType id);
+    void OpenDefaultWindow();
+    IWindowController GetDefaultWindow();
+    bool CurrentWindowNullOrDefault();
   }
 }

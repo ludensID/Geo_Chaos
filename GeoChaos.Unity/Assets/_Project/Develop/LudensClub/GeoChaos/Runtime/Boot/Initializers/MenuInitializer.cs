@@ -14,7 +14,8 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       
     public void Initialize()
     {
-      _windowManager.Open(WindowType.Menu);
+      _windowManager.SetDefaultWindow(WindowType.Menu);
+      _windowManager.OpenDefaultWindow();
     }
   }
 }
