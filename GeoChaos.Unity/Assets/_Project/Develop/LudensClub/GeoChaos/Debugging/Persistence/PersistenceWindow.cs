@@ -1,19 +1,14 @@
-﻿using LudensClub.GeoChaos.Editor.General;
-using LudensClub.GeoChaos.Runtime;
-using TriInspector;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.UIElements;
-using Zenject;
+using UnityEngine.SceneManagement;
 
 namespace LudensClub.GeoChaos.Debugging.Persistence
 {
-  [InlineEditor]
-  public class PersistenceWindow : EditorWindow, IEditorInitializable
+  public class PersistenceWindow : EditorWindow
   {
     private PersistencePreferencesEditor _editor;
-    private IPersistencePreferencesLoader _persistenceLoader;
-    private IPersistencePreferencesProvider _persistenceProvider;
+    private bool _recreated;
 
     [MenuItem("Window/Persistence Window")]
     public static void GetOrCreateWindow()
@@ -24,79 +19,47 @@ namespace LudensClub.GeoChaos.Debugging.Persistence
 
     private void OnEnable()
     {
-      Inject();
       Subscribe();
-    }
-
-    private void Inject()
-    {
-      EditorMediator.Context.Container.Inject(this);
+      RecreateGUI();
     }
 
     private void Subscribe()
     {
-      EditorMediator.Context.AddListener(Reinject);
+      SceneManager.activeSceneChanged += OnActiveSceneChanged;
+      EditorSceneManager.activeSceneChangedInEditMode += OnActiveSceneChanged;
+    }
+
+    private void OnActiveSceneChanged(Scene oldScene, Scene newScene)
+    {
+      RecreateGUI();
     }
 
     private void Unsubscribe()
     {
-      EditorMediator.Context.RemoveListener(Reinject);
+      SceneManager.activeSceneChanged -= OnActiveSceneChanged;
+      EditorSceneManager.activeSceneChangedInEditMode -= OnActiveSceneChanged;
     }
 
-    private void Reinject()
-    {
-      DisposeInternalData();
-      Inject();
-    }
-
-    [Inject]
-    public void Construct(IPersistencePreferencesLoader persistenceLoader,
-      IPersistencePreferencesProvider persistenceProvider, 
-      IEditorInitializer initializer)
-    {
-      _persistenceProvider = persistenceProvider;
-      _persistenceLoader = persistenceLoader;
-      initializer.Add(this);
-    }
-
-    public void Initialize()
-    {
-      Recreate();
-    }
-
-    private bool CheckState()
-    {
-      return _editor && _editor.target;
-    }
-
-    private void Recreate()
+    private void RecreateGUI()
     {
       if (_editor)
         DestroyImmediate(_editor);
 
-      _editor = (PersistencePreferencesEditor)UnityEditor.Editor.CreateEditor(_persistenceProvider.Preferences);
+      _editor = (PersistencePreferencesEditor)UnityEditor.Editor.CreateEditor(PersistencePreferences.instance);
       CreateGUI();
     }
 
     private void CreateGUI()
     {
       rootVisualElement.Clear();
-      rootVisualElement.Add(new IMGUIContainer(CheckGUI));
       rootVisualElement.Add(_editor.CreateInspectorGUI());
-    }
-
-    private void CheckGUI()
-    {
-      if (!CheckState())
-      {
-      }
     }
 
     private void OnGUI()
     {
-      if (EditorUtility.IsDirty(_persistenceProvider.Preferences))
+      if (EditorUtility.IsDirty(PersistencePreferences.instance))
       {
-        _persistenceLoader.SaveToJson();
+        PersistencePreferences.instance.Save();
       }
     }
 

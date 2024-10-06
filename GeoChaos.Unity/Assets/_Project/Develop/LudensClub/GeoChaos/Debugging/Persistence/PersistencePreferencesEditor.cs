@@ -8,17 +8,17 @@ namespace LudensClub.GeoChaos.Debugging.Persistence
   public class PersistencePreferencesEditor : UnityEditor.Editor
   {
     private TriEditorCore _core;
-    private bool _initialized;
+    public bool Initialized;
 
     private void OnEnable()
     {
       _core = new TriEditorCore(this);
-      _initialized = false;
+      Initialized = false;
     }
 
     private void Initialize()
     {
-      _initialized = true;
+      Initialized = true;
     }
 
     private void OnDisable()
@@ -49,7 +49,7 @@ namespace LudensClub.GeoChaos.Debugging.Persistence
 
     private void UpdateGUI()
     {
-      if (!_initialized)
+      if (!Initialized)
         Initialize();
     }
   }

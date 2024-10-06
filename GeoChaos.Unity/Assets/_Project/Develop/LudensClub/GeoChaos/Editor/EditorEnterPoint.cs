@@ -1,6 +1,4 @@
-﻿using System;
-using LudensClub.GeoChaos.Debugging.Persistence;
-using LudensClub.GeoChaos.Editor.General;
+﻿using LudensClub.GeoChaos.Editor.General;
 using LudensClub.GeoChaos.Runtime;
 using UnityEditor;
 using Zenject;
@@ -68,8 +66,6 @@ namespace LudensClub.GeoChaos.Editor
         .Bind<ITypeCache>()
         .To<TypeCache>()
         .AsSingle();
-
-      PersistenceEditorInstaller.Install(_container);
     }
   }
 }

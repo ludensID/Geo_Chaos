@@ -1,11 +1,12 @@
 ﻿using LudensClub.GeoChaos.Runtime.Persistence;
 using TriInspector;
-using UnityEngine;
+using UnityEditor;
 
 namespace LudensClub.GeoChaos.Debugging.Persistence
 {
   [HideMonoScript]
-  public class PersistencePreferences : ScriptableObject
+  [FilePath("UserSettings/GeoChaos/PersistencePreferences.asset", FilePathAttribute.Location.ProjectFolder)]
+  public class PersistencePreferences : ScriptableSingleton<PersistencePreferences>
   {
     public bool EnableSaving;
     public bool EnableSync;
