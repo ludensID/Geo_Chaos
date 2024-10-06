@@ -5,7 +5,7 @@ using LudensClub.GeoChaos.Runtime.Windows.Curtain;
 
 namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents
 {
-  public class MenuGameState : IState
+  public class MenuGameState : IState, IPaylodedState<OnlyLoadScenePayload>
   {
     private readonly IPersistenceService _persistenceSvc;
     private readonly ISceneLoader _sceneLoader;
@@ -22,17 +22,28 @@ namespace LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents
 
     public async UniTask Enter()
     {
-      await _curtainPresenter.ShowAsync();
+      await LoadMenu();
+    }
 
-      await _persistenceSvc.LoadSettingsAsync();
-      await _sceneLoader.LoadAsync(SceneType.Menu);
-
-      await _curtainPresenter.HideAsync();
+    public async UniTask Enter(OnlyLoadScenePayload _)
+    {
+      await LoadMenu(false);
     }
 
     public UniTask Exit()
     {
       return UniTask.CompletedTask;
+    }
+
+    private async UniTask LoadMenu(bool loadSettings = true)
+    {
+      await _curtainPresenter.ShowAsync();
+
+      if (loadSettings)
+        await _persistenceSvc.LoadSettingsAsync();
+      await _sceneLoader.LoadAsync(SceneType.Menu);
+
+      await _curtainPresenter.HideAsync();
     }
   }
 }

@@ -108,6 +108,8 @@
       public const string EXIT_GAME_BUTTON_VIEW = BUTTONS + "Exit Game Button View";
       public const string START_GAME_BUTTON_VIEW = BUTTONS + "Start Game Button View";
       public const string START_NEW_GAME_BUTTON_VIEW = BUTTONS + "Start New Game Button View";
+      public const string CONTINUE_GAME_BUTTON_VIEW = BUTTONS + "Continue Game Button View";
+      public const string EXIT_TO_MENU_BUTTON_VIEW = BUTTONS + "Exit To Menu Button View";
 
       public const string PERSISTENCE_IDENTIFIER = PERSISTENCE + "Persistence Identifier";
     }

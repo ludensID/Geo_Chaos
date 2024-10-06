@@ -4,26 +4,29 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace LudensClub.GeoChaos.Runtime.Windows.Menu
+namespace LudensClub.GeoChaos.Runtime.Windows.Pause
 {
-  [AddComponentMenu(ACC.Names.START_NEW_GAME_BUTTON_VIEW)]
-  public class StartNewGameButtonView : MonoBehaviour
+  [AddComponentMenu(ACC.Names.EXIT_TO_MENU_BUTTON_VIEW)]
+  public class ExitToMenuButtonView : MonoBehaviour
   {
     [SerializeField]
     private Button _button;
 
     private GameStateMachine _gameStateMachine;
+    private IWindowManager _windowManager;
 
     [Inject]
-    public void Construct(GameStateMachine gameStateMachine)
+    public void Construct(GameStateMachine gameStateMachine, IWindowManager windowManager)
     {
+      _windowManager = windowManager;
       _gameStateMachine = gameStateMachine;
       _button.onClick.AddListener(OnClick);
     }
 
     private void OnClick()
     {
-      _gameStateMachine.SwitchState<GameplayGameState, StartNewGamePayload>(new StartNewGamePayload()).Forget();
+      _windowManager.Close();
+      _gameStateMachine.SwitchState<MenuGameState, OnlyLoadScenePayload>(new OnlyLoadScenePayload()).Forget();
     }
 
     private void OnDestroy()
