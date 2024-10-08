@@ -1,7 +1,7 @@
 ﻿using LudensClub.GeoChaos.Editor.General;
 using LudensClub.GeoChaos.Runtime.Boot;
+using LudensClub.GeoChaos.Runtime.Configuration;
 using LudensClub.GeoChaos.Runtime.Infrastructure.SceneLoading;
-using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,8 +21,8 @@ namespace LudensClub.GeoChaos.Editor.Boot
       if (CurrentSceneType == SceneType.Boot)
         return;
 
-      var editorScene = AssetFinder.FindAsset<SceneAsset>(nameof(SceneAsset), "EditorBoot");
-      string path = AssetDatabase.GetAssetPath(editorScene);
+      var configProvider = AssetFinder.FindAsset<ConfigProvider>(nameof(ConfigProvider));
+      string path = configProvider.Get<SceneConfig>().GetSceneName(SceneType.Boot);
       EditorSceneManager.LoadSceneInPlayMode(path, new LoadSceneParameters());
     }
 

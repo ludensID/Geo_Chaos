@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using LudensClub.GeoChaos.Runtime.Boot;
 using LudensClub.GeoChaos.Runtime.Infrastructure.SceneLoading;
 using LudensClub.GeoChaos.Runtime.Infrastructure.StateMachineComponents;
 using UnityEngine.SceneManagement;
@@ -6,17 +7,25 @@ using Zenject;
 
 namespace LudensClub.GeoChaos.Editor.Boot
 {
-  public class EditorBootInitializer : IInitializable
+  public class DebugBootInitializer : IInitializable
   {
     private readonly GameStateMachine _gameStateMachine;
+    private readonly BootInitializer _bootInitializer;
 
-    public EditorBootInitializer(GameStateMachine gameStateMachine)
+    public DebugBootInitializer(GameStateMachine gameStateMachine)
     {
       _gameStateMachine = gameStateMachine;
+      _bootInitializer = new BootInitializer(gameStateMachine);
     }
 
     public void Initialize()
     {
+      if (PlayModeSceneLoader.CurrentSceneType == SceneType.Boot)
+      {
+        _bootInitializer.Initialize();
+        return;
+      }
+        
       var payload = new CustomLoadScenePayload { SceneLoader = LoadScene };
 
       if (PlayModeSceneLoader.CurrentSceneType == SceneType.Game)

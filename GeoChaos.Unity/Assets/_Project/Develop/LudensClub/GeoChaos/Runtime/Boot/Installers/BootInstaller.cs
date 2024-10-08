@@ -9,6 +9,10 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     public override void InstallBindings()
     {
       BindBootInitializer();
+
+#if UNITY_EDITOR
+      DebugBridge.InstallBoot(Container);
+#endif
     }
 
     private void BindBootInitializer()

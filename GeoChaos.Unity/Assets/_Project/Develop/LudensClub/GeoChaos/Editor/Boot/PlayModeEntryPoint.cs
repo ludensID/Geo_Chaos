@@ -9,6 +9,7 @@ namespace LudensClub.GeoChaos.Editor.Boot
     public static void Entry()
     {
       DebugBridge.OnProjectInstalled += DebugProjectInstaller.Install;
+      DebugBridge.OnBootInstalled += DebugBootInstaller.Install;
       DebugBridge.OnGameplayInstalled += DebugLevelInstaller.Install;
     }
   }
