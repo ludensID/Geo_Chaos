@@ -1,6 +1,8 @@
 ﻿using Leopotam.EcsLite;
-using LudensClub.GeoChaos.Debugging.Monitoring;
 using LudensClub.GeoChaos.Editor;
+using LudensClub.GeoChaos.Editor.Monitoring.Entity;
+using LudensClub.GeoChaos.Editor.Monitoring.Universe;
+using LudensClub.GeoChaos.Editor.Monitoring.World;
 using LudensClub.GeoChaos.Runtime;
 using LudensClub.GeoChaos.Runtime.Infrastructure;
 using TriInspector;

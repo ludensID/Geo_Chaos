@@ -10,20 +10,20 @@
         "GUID:343deaaf83e0cee4ca978e7df0b80d21",
         "GUID:7be4600869ec09d4ca9a37d1dbfbf1a2",
         "GUID:e59bf9fc7d5a44b18a819a92edd46163",
-        "GUID:79687c75aa9098745922e8c14c0ac063",
         "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
         "GUID:68765d262e2128e4ab49c983f3411946",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:33661e06c33d31b4c9223810bf503247"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [],
+    "defineConstraints": [
+        "UNITY_EDITOR"
+    ],
     "versionDefines": [],
     "noEngineReferences": false
 }
