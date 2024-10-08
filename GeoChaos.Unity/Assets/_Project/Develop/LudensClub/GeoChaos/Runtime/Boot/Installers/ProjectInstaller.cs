@@ -47,7 +47,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       BindTimerService();
       BindTimerFactory();
       BindCoroutineRunner();
-        
+
       InstallPersistence();
 
       BindBaseWindowModel();
@@ -56,7 +56,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
       InstallCurtain();
 
       BindSceneLoader();
-        
+
 #if UNITY_EDITOR
       DebugBridge.InstallProject(Container);
 #endif
@@ -70,8 +70,7 @@ namespace LudensClub.GeoChaos.Runtime.Boot
     private void BindSceneLoader()
     {
       Container
-        .Bind<ISceneLoader>()
-        .To<SceneLoader>()
+        .BindInterfacesTo<SceneLoader>()
         .AsSingle();
     }
 
