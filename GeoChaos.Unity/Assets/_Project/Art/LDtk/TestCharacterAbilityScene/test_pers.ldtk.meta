@@ -26,6 +26,9 @@ ScriptedImporter:
   - _key: Ring
     _asset: {fileID: 1049830224047074373, guid: b134f553d7804854ea03d3670efbbbe8,
       type: 3}
+  - _key: Platform
+    _asset: {fileID: 2614901268006489136, guid: 8ee10e6f33d88d64791b4fc654ee6834,
+      type: 3}
   - _key: SideRing
     _asset: {fileID: 1049830224047074373, guid: 9326fe45c0e3c9846b966cf4f7074691,
       type: 3}
