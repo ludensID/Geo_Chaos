@@ -22,7 +22,13 @@ ScriptedImporter:
   _intGridValues:
   - _key: Walls_1
     _asset: {fileID: 11400000, guid: 2d9336dfa2ed4804ca698d8d3194e30a, type: 2}
-  _entities: []
+  _entities:
+  - _key: Ring
+    _asset: {fileID: 1049830224047074373, guid: b134f553d7804854ea03d3670efbbbe8,
+      type: 3}
+  - _key: SideRing
+    _asset: {fileID: 1049830224047074373, guid: 9326fe45c0e3c9846b966cf4f7074691,
+      type: 3}
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 
